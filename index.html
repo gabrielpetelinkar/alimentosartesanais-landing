@@ -39,6 +39,18 @@
 <body>
 
   <!-- ============================================
+       MINI NAV (appears on scroll)
+       ============================================ -->
+  <nav class="mini-nav" id="mini-nav" aria-label="Navegação principal">
+    <div class="mini-nav__inner">
+      <span class="mini-nav__brand">Alimentos Artesanais</span>
+      <a href="https://pay.hotmart.com/SEU_PRODUTO_ID" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+        Quero Meu Guia — R$ 97
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============================================
        HERO SECTION
        ============================================ -->
   <section class="hero" id="hero">
@@ -68,6 +80,10 @@
           </a>
         </div>
         <p class="hero__cta-note">Acesso imediato após a compra. Garantia de 7 dias.</p>
+        <div class="hero__social-proof">
+          <span class="hero__social-proof-stars" aria-label="5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span>Mais de 500 produtores já transformaram seus negócios</span>
+        </div>
       </div>
     </div>
   </section>
@@ -236,7 +252,7 @@
       </div>
       <div class="content-overview__cta">
         <a href="https://pay.hotmart.com/SEU_PRODUTO_ID" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
-          Quero Aprender Tudo Isso — R$ 97
+          Sim, Quero Profissionalizar Meu Negócio
         </a>
       </div>
     </div>
@@ -481,10 +497,14 @@
   <section class="final-cta fade-in" id="comprar">
     <div class="container container--narrow">
       <h2 class="section-title">Comece Hoje a Transformar Seu Negócio</h2>
-      <p class="final-cta__price">R$ 97</p>
+      <p class="final-cta__price-anchor">De R$ 197</p>
+      <div class="final-cta__price-value">
+        <p class="final-cta__price">R$ 97</p>
+      </div>
+      <p class="final-cta__price-installment">ou 12x de R$ 9,67 no cartão</p>
       <p class="final-cta__price-note">Pagamento único. Acesso imediato e vitalício.</p>
       <a href="https://pay.hotmart.com/SEU_PRODUTO_ID" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
-        Quero Meu Guia Agora
+        Garantir Meu Guia com Desconto
       </a>
       <p class="final-cta__guarantee-note">7 dias de garantia incondicional. Risco zero.</p>
     </div>
@@ -509,13 +529,22 @@
   <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Consentimento de cookies">
     <div class="cookie-banner__content">
       <p class="cookie-banner__text">
-        Usamos cookies para análise de tráfego e otimização de anúncios. Ao aceitar, você concorda com o uso de Google Analytics e Meta Pixel conforme nossa Política de Privacidade.
+        Usamos cookies para análise de tráfego e otimização de anúncios. Ao aceitar, você concorda com o uso de Google Analytics e Meta Pixel conforme nossa <a href="/privacidade.html" style="color: var(--color-cream); text-decoration: underline;">Política de Privacidade</a>.
       </p>
       <div class="cookie-banner__actions">
         <button class="cookie-banner__btn cookie-banner__btn--accept" id="cookie-accept">Aceitar</button>
         <button class="cookie-banner__btn cookie-banner__btn--reject" id="cookie-reject">Recusar</button>
       </div>
     </div>
+  </div>
+
+  <!-- ============================================
+       STICKY MOBILE CTA
+       ============================================ -->
+  <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+    <a href="https://pay.hotmart.com/SEU_PRODUTO_ID" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+      Quero Meu Guia — R$ 97
+    </a>
   </div>
 
   <!-- Scripts -->

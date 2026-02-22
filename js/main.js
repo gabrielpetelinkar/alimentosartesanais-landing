@@ -93,10 +93,47 @@ function initCtaTracking() {
 }
 
 /* ------------------------------------------
+   Scroll-Aware UI (Mini Nav + Sticky CTA)
+   ------------------------------------------ */
+function initScrollUI() {
+  var miniNav = document.getElementById('mini-nav');
+  var stickyCta = document.getElementById('sticky-cta');
+  var hero = document.getElementById('hero');
+
+  if (!hero) return;
+
+  var heroBottom = hero.offsetTop + hero.offsetHeight;
+  var lastScrollY = 0;
+  var ticking = false;
+
+  function onScroll() {
+    lastScrollY = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(function () {
+        var pastHero = lastScrollY > heroBottom - 100;
+
+        if (miniNav) {
+          miniNav.classList.toggle('mini-nav--visible', pastHero);
+        }
+        if (stickyCta) {
+          stickyCta.classList.toggle('sticky-cta--visible', pastHero);
+        }
+
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+/* ------------------------------------------
    Initialize on DOM Ready
    ------------------------------------------ */
 document.addEventListener('DOMContentLoaded', function () {
   initAccordion();
   initScrollAnimations();
   initCtaTracking();
+  initScrollUI();
 });
