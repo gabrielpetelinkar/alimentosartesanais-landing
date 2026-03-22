@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como criar, vender e escalar alimentos artesanais — Gabriel Petelinkar</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN SYSTEM — White Mode Ebook
+   Adapted from Obsidian Gold Slide Design
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Foundation — Light Mode */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F5F0;
+  --bg-tertiary: #F0EDE6;
+  --bg-elevated: #FAFAF8;
+  --surface-glass: rgba(0,0,0,0.02);
+
+  /* Text */
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  --text-muted: #8A8A8A;
+  --text-warm: #2C2418;
+
+  /* CRIAR (Chapters 1-7) — Gold / Amber */
+  --criar-primary: #B8922E;
+  --criar-light: #D4A843;
+  --criar-dark: #8A6E22;
+  --criar-glow: rgba(184,146,46,0.08);
+  --criar-tint: rgba(184,146,46,0.05);
+  --criar-border: rgba(184,146,46,0.2);
+
+  /* VENDER (Chapters 8-11) — Terracotta / Copper */
+  --vender-primary: #B04E30;
+  --vender-light: #C45B3A;
+  --vender-dark: #8A3B22;
+  --vender-glow: rgba(176,78,48,0.08);
+  --vender-tint: rgba(176,78,48,0.05);
+  --vender-border: rgba(176,78,48,0.2);
+
+  /* ESCALAR (Chapters 12-15) — Forest Green */
+  --escalar-primary: #4A7832;
+  --escalar-light: #5B8C3E;
+  --escalar-dark: #3D6228;
+  --escalar-glow: rgba(74,120,50,0.08);
+  --escalar-tint: rgba(74,120,50,0.05);
+  --escalar-border: rgba(74,120,50,0.2);
+
+  /* Semantic */
+  --neutral-border: rgba(0,0,0,0.08);
+  --strong-border: rgba(0,0,0,0.12);
+
+  /* Typography */
+  --font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter', 'SF Pro Text', system-ui, sans-serif;
+  --font-editorial: 'Playfair Display', 'Georgia', serif;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  line-height: 1.6;
+}
+
+/* ── Print ── */
+@page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  .page { page-break-after: always; page-break-inside: avoid; }
+  .page:last-child { page-break-after: avoid; }
+  body { background: white; }
+}
+
+/* ── Page Layout ── */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 48px 56px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+@media screen {
+  .page {
+    max-width: 794px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+}
+
+/* ── Page Header (running header) ── */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--strong-border);
+  margin-bottom: 32px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+/* ── Page Footer ── */
+.page-footer {
+  position: absolute;
+  bottom: 36px;
+  left: 56px;
+  right: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--strong-border);
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ── Typography ── */
+.title-hero {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: var(--text-primary);
+}
+.title-cover {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  color: var(--text-primary);
+}
+.title-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+}
+.title-lg {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+.title-md {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+.subtitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+.body-text {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: justify;
+}
+.body-text-lg {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.caption {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+.quote-text {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+/* ── Section Labels ── */
+.section-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-label.criar { color: var(--criar-primary); }
+.section-label.vender { color: var(--vender-primary); }
+.section-label.escalar { color: var(--escalar-primary); }
+
+/* ── Accent Lines ── */
+.accent-line {
+  width: 60px;
+  height: 3px;
+  border: none;
+  margin: 16px 0;
+}
+.accent-line.criar { background: var(--criar-primary); }
+.accent-line.vender { background: var(--vender-primary); }
+.accent-line.escalar { background: var(--escalar-primary); }
+.accent-line.neutral { background: var(--strong-border); }
+
+/* ── Chapter Title ── */
+.chapter-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+/* ── Section Heading ── */
+.section-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-primary);
+  margin: 24px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--neutral-border);
+}
+.section-heading.criar { border-bottom-color: var(--criar-border); }
+.section-heading.vender { border-bottom-color: var(--vender-border); }
+.section-heading.escalar { border-bottom-color: var(--escalar-border); }
+
+/* ── Bullet Lists ── */
+.content-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+.content-list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  padding: 6px 0 6px 20px;
+  position: relative;
+}
+.content-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+.content-list.criar li::before { background: var(--criar-primary); }
+.content-list.vender li::before { background: var(--vender-primary); }
+.content-list.escalar li::before { background: var(--escalar-primary); }
+
+/* ── Stats Table ── */
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+.stats-table tr {
+  border-top: 1px solid var(--strong-border);
+}
+.stats-table tr:last-child {
+  border-bottom: 1px solid var(--strong-border);
+}
+.stats-table td {
+  padding: 16px 0;
+  vertical-align: top;
+}
+.stats-table .stat-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1;
+  width: 200px;
+  padding-right: 24px;
+}
+.stats-table .stat-value.criar { color: var(--criar-primary); }
+.stats-table .stat-value.vender { color: var(--vender-primary); }
+.stats-table .stat-value.escalar { color: var(--escalar-primary); }
+.stats-table .stat-desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ── Image ── */
+.ebook-img {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0;
+  object-fit: cover;
+}
+.ebook-img.h-sm { height: 160px; }
+.ebook-img.h-md { height: 220px; }
+.ebook-img.h-lg { height: 300px; }
+.ebook-img.h-xl { height: 380px; }
+
+/* ── Two Column ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.two-col-narrow {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── Cover Page ── */
+.page-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 56px 48px;
+}
+.cover-top-bar {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--strong-border);
+}
+
+/* ── Part Divider ── */
+.page-part {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 297mm;
+}
+.part-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+}
+.part-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+.part-title.criar { color: var(--criar-primary); }
+.part-title.vender { color: var(--vender-primary); }
+.part-title.escalar { color: var(--escalar-primary); }
+
+/* ── TOC (Index) ── */
+.toc-section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 0;
+  border-bottom: 2px solid var(--text-primary);
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+.toc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.toc-item .toc-page {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--text-primary);
+  min-width: 50px;
+  text-align: right;
+}
+
+/* ── Numbered List ── */
+.numbered-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  counter-reset: item;
+}
+.numbered-list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  padding: 8px 0 8px 32px;
+  position: relative;
+  counter-increment: item;
+}
+.numbered-list li::before {
+  content: counter(item) '.';
+  position: absolute;
+  left: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Author Bio Layout ── */
+.bio-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.bio-photo {
+  width: 100%;
+  height: 480px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.bio-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ── Full-width Statement ── */
+.statement-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(297mm - 120px);
+}
+.statement-text {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: var(--text-primary);
+}
+
+/* ── Contact Section ── */
+.contact-block {
+  margin: 16px 0;
+}
+.contact-block h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.contact-block p,
+.contact-block li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.contact-info {
+  margin-top: 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text-secondary);
+}
+
+/* ── Closing Quote ── */
+.closing-quote {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+}
+.closing-author {
+  margin-top: 40px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.closing-author strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+/* ── Chapter Number Badge (ghost) ── */
+.ch-ghost {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 140px;
+  line-height: 1;
+  opacity: 0.04;
+  pointer-events: none;
+  color: var(--text-primary);
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page page-cover">
+  <div class="cover-top-bar">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding-top:40px;">
+    <div class="title-cover" style="margin-bottom:24px;">
+      COMO CRIAR,<br>
+      VENDER E<br>
+      ESCALAR<br>
+      ALIMENTOS
+    </div>
+
+    <img class="ebook-img h-lg" style="margin:24px 0;" src="images/mesa-alimentos-artesanais.png" alt="Mesa com alimentos artesanais">
+
+    <div style="display:flex; align-items:baseline; gap:16px; margin-top:8px;">
+      <div class="title-cover">ARTESANAIS</div>
+    </div>
+
+    <hr class="accent-line neutral" style="width:100%; margin-top:16px;">
+    <div style="font-family:var(--font-body); font-size:13px; color:var(--text-muted);">Gabriel Petelinkar</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 2 — SUBTITLE / OPENING
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div style="display:flex; flex-direction:column; justify-content:center; min-height:calc(297mm - 200px);">
+    <div class="title-hero" style="margin-bottom:32px;">
+      DA AUTENTICIDADE AO<br>
+      RECONHECIMENTO DE<br>
+      MERCADO
+    </div>
+
+    <img class="ebook-img h-lg" src="images/mesa-produtores-alimentos.png" alt="Mesa com produtores e alimentos">
+  </div>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span></span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 3 — POR QUE ESTE GUIA + ESTRUTURA
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="chapter-title" style="font-size:28px;">POR QUE ESTE GUIA PODE TRANSFORMAR SEU NEGÓCIO?</div>
+
+  <div class="two-col">
+    <div>
+      <p class="body-text">Este material nasceu da prática de quem vive o universo artesanal todos os dias. É fruto de 12 anos de experiência desenvolvendo produtos, acompanhando produtores e analisando marcas que se tornaram referência em qualidade e autenticidade.</p>
+      <p class="body-text" style="margin-top:12px;">O conteúdo foi criado para ser aplicado imediatamente.</p>
+      <p class="body-text" style="margin-top:12px;">Se você já produz, este guia pode representar uma virada estratégica, ajudando a identificar oportunidades, aprimorar processos e fortalecer sua marca no mercado.</p>
+    </div>
+    <div>
+      <p class="body-text">Se você ainda não produz, este é o material ideal para começar do jeito certo: com propósito, estratégia e visão de futuro.</p>
+      <p class="body-text" style="margin-top:12px;">Produzir alimentos artesanais transcende o ofício, é expressar cultura, identidade e propósito. Quando essa paixão se une à gestão, técnica e comunicação estratégica, o artesanal deixa de ser apenas pequeno e se torna grande, sustentável e admirado.</p>
+    </div>
+  </div>
+
+  <hr class="accent-line neutral" style="width:100%; margin-top:28px;">
+
+  <div class="title-md" style="margin-top:20px;">Estrutura do guia</div>
+  <p class="body-text" style="margin-top:12px;">Para facilitar a aplicação prática, o conteúdo está estruturado em três grandes blocos:</p>
+
+  <p class="body-text" style="margin-top:16px;"><strong style="color:var(--text-primary);">1. Fatores de diferenciação do produto</strong> — O que faz um item artesanal se destacar em sabor, qualidade e autenticidade.</p>
+  <p class="body-text" style="margin-top:8px;"><strong style="color:var(--text-primary);">2. Estratégias de comunicação</strong> — Como contar sua história, construir uma marca sólida e conectar-se com o consumidor.</p>
+  <p class="body-text" style="margin-top:8px;"><strong style="color:var(--text-primary);">3. Gestão, propósito e credibilidade</strong> — As bases que sustentam negócios consistentes, humanos e de longo prazo.</p>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>3</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 4 — ÍNDICE
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="title-hero" style="font-size:44px; margin-bottom:24px;">ÍNDICE</div>
+
+  <div class="toc-section-title" style="color:var(--criar-primary); border-bottom-color:var(--criar-primary);">CRIAR — FATORES DE DIFERENCIAÇÃO DO PRODUTO</div>
+  <div class="toc-item"><span>1. Ingredientes nativos: regionalismo com pegada global</span><span class="toc-page">8</span></div>
+  <div class="toc-item"><span>2. Produtos Extremos: vitrine estratégica, não volume de vendas</span><span class="toc-page">10</span></div>
+  <div class="toc-item"><span>3. Produtos Agridoces: O equilíbrio que conquista paladares</span><span class="toc-page">12</span></div>
+  <div class="toc-item"><span>4. Fermentação: O sabor que nasce do tempo</span><span class="toc-page">14</span></div>
+  <div class="toc-item"><span>5. Experiência Sensorial: os cinco sentidos vendem</span><span class="toc-page">16</span></div>
+  <div class="toc-item"><span>6. Produto de nicho e exclusividade: encontre seu público</span><span class="toc-page">18</span></div>
+  <div class="toc-item"><span>7. Embalagem: seu vendedor silencioso</span><span class="toc-page">21</span></div>
+
+  <div class="toc-section-title" style="color:var(--vender-primary); border-bottom-color:var(--vender-primary);">VENDER — ESTRATÉGIAS DE COMUNICAÇÃO</div>
+  <div class="toc-item"><span>8. Narrativa e comunicação estratégica: sua história vende</span><span class="toc-page">25</span></div>
+  <div class="toc-item"><span>9. Eventos e degustações: criando defensores da marca</span><span class="toc-page">28</span></div>
+  <div class="toc-item"><span>10. Harmonização e versatilidade: ampliando ocasiões de consumo</span><span class="toc-page">30</span></div>
+  <div class="toc-item"><span>11. Educação do consumidor: criando embaixadores da marca</span><span class="toc-page">32</span></div>
+
+  <div class="toc-section-title" style="color:var(--escalar-primary); border-bottom-color:var(--escalar-primary);">ESCALAR — GESTÃO, PROPÓSITO E CREDIBILIDADE</div>
+  <div class="toc-item"><span>12. Colaboração e parcerias: juntos somos mais fortes</span><span class="toc-page">35</span></div>
+  <div class="toc-item"><span>13. Sustentabilidade e responsabilidade: o futuro é consciente</span><span class="toc-page">37</span></div>
+  <div class="toc-item"><span>14. Certificação e selos de qualidade: credibilidade tangível</span><span class="toc-page">39</span></div>
+  <div class="toc-item"><span>15. Profissionalização e consistência: a base do crescimento sustentável</span><span class="toc-page">42</span></div>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>4</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 5 — APLIQUE. EXPERIMENTE. EVOLUA.
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="statement-page">
+    <div class="statement-text">
+      APLIQUE.<br>
+      EXPERIMENTE.<br>
+      EVOLUA.
+    </div>
+    <p class="body-text-lg" style="margin-top:32px;">O artesanal do futuro começa com quem decide fazer diferente hoje.</p>
+    <p class="body-text-lg" style="margin-top:16px;">Mais do que um guia, este é um convite para repensar sua marca, fortalecer seu propósito e conquistar o reconhecimento que seu trabalho merece.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>5</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 6 — QUEM SOU EU
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="title-hero" style="font-size:44px; margin-bottom:20px;">QUEM SOU EU</div>
+
+  <div class="bio-layout">
+    <div>
+      <p class="body-text">Sou <strong style="color:var(--text-primary);">Gabriel Petelinkar Pereira</strong>, engenheiro agrônomo, especialista em agronegócios, liderança e gestão de pessoas, empreendedor e palestrante. Atuo como consultor nas áreas de gestão de pessoas no agro, liderança e processos de alimentos artesanais e agroindustriais, enquanto construo minha própria trajetória com produtos artesanais há mais de 12 anos.</p>
+
+      <p class="body-text" style="margin-top:12px;">Também sou jurado técnico do principal prêmio de qualidade artesanal do país, o que me proporciona uma visão ampla e atualizada sobre as práticas e tendências que moldaram o setor.</p>
+
+      <p class="body-text" style="margin-top:12px;">Desde 2008, quando iniciei minha graduação em Engenharia Agronômica na Universidade Federal da Paraíba, acompanho de perto a evolução do mercado de produtos alimentícios artesanais no Brasil. O campus da universidade, localizado em Areia (PB), cidade rural que se tornou um polo gastronômico e referência na produção de cachaças, doces, polpas de frutas e outras diversas delícias artesanais, foi o ponto de partida dessa jornada.</p>
+
+      <p class="body-text" style="margin-top:12px;">Minha trajetória une conhecimento técnico e vivência de mercado, permitindo compreender não apenas como desenvolver produtos de alta qualidade, mas também como transformá-los em marcas reconhecidas e desejadas pelos consumidores.</p>
+    </div>
+    <div>
+      <div class="bio-photo"><img src="images/autor-gabriel.jpg" alt="Gabriel Petelinkar"></div>
+      <p class="body-text" style="margin-top:16px;">Com este relatório, meu objetivo é compartilhar aprendizados, análises e caminhos práticos que ajudem produtores artesanais a crescer com autenticidade, propósito e visão de futuro.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>6</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 7 — PARTE I DIVIDER
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="page-part">
+    <div class="part-number">CRIAR</div>
+    <div class="part-title criar">
+      FATORES DE<br>
+      DIFERENCIAÇÃO<br>
+      DO PRODUTO
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>7</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 8-9 — CAPÍTULO 1: INGREDIENTES NATIVOS
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+  <div class="ch-ghost">01</div>
+
+  <div class="section-label criar">CRIAR — CAPÍTULO 1</div>
+  <div class="chapter-title">1. INGREDIENTES NATIVOS: REGIONALISMO COM PEGADA GLOBAL</div>
+  <hr class="accent-line criar">
+
+  <div class="section-heading criar">Apresentação geral</div>
+  <p class="body-text">A força dos ingredientes nativos e da identidade territorial representa hoje um dos pilares mais relevantes para produtos artesanais. Nos últimos anos, os ingredientes regionais deixaram de ser apenas curiosidade e passaram a representar uma estratégia concreta de valor e diferenciação no mercado.</p>
+  <p class="body-text" style="margin-top:10px;">O consumidor contemporâneo se conecta com histórias autênticas, e essa verdade se reflete diretamente no que consome. Por isso, seu produto precisa contar uma narrativa clara, envolvente e cheia de personalidade, mostrando de onde vem, evidenciando em cada detalhe sua origem e diferencial. É o regionalismo para um público global, sem perder a essência.</p>
+  <p class="body-text" style="margin-top:10px;">Selos geográficos, que valorizam a tradição local e garantem autenticidade e qualidade ao consumidor, não apenas certificam o produto, eles carregam consigo a cultura e o território de onde ele nasce.</p>
+  <p class="body-text" style="margin-top:10px;">Quando um produto traz um ingrediente regional bem aplicado, como o umbu do sertão nordestino, o pequi do cerrado, a pimenta jiquitaia da Amazônia ou o melado artesanal do Paraná, ele não vende apenas sabor: vende história, exclusividade, identidade e conexão emocional.</p>
+
+  <div class="section-heading criar">O que está acontecendo no mercado</div>
+  <p class="body-text">As marcas que mais se destacaram nos últimos anos não são necessariamente aquelas com os produtos mais refinados, grandes linhas de produção ou altos investimentos, mas sim as que traduzem o território em sabor.</p>
+  <p class="body-text" style="margin-top:10px;">No concurso em que atuei como jurado, isso ficou evidente: os molhos que utilizavam ingredientes locais de forma equilibrada, sem exageros e permitindo que cada elemento brilhasse, conquistaram as maiores notas e encantaram o paladar dos especialistas.</p>
+  <p class="body-text" style="margin-top:10px;">A lógica é simples: ingredientes diferenciados contam histórias únicas, difíceis de serem copiadas, e levam com orgulho sabores regionais aos quatro cantos do mundo. O mercado global de superalimentos, que inclui ingredientes nativos brasileiros, está em forte expansão, demonstrando o interesse crescente do consumidor por produtos autênticos e com origem comprovada.</p>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>8</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="section-heading criar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list criar">
+    <li><strong>Buscar o melhor do seu território:</strong> frutas nativas, ervas locais, especiarias regionais ou até uma forma única de usar um ingrediente comum.</li>
+    <li><strong>O equilíbrio é fundamental:</strong> o ingrediente especial deve se destacar no sabor e no aroma, sempre em harmonia com o restante do preparo.</li>
+    <li><strong>Ingredientes autênticos têm apelo internacional:</strong> quando bem apresentados, despertam desejo, curiosidade e percepção premium em mercados estrangeiros.</li>
+    <li><strong>Comunicação clara traduz histórias:</strong> explicar o contexto cultural e o significado dos ingredientes torna o produto acessível e envolvente para novos públicos.</li>
+  </ul>
+
+  <div class="section-heading criar">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list criar">
+    <li><strong>Use o ingrediente local como pilar de marketing e narrativa:</strong> fale sobre ele nas redes sociais, na embalagem e na história do produto.</li>
+    <li><strong>Valorize o produtor local:</strong> crie parcerias, conte quem fornece e como é produzido cada ingrediente.</li>
+    <li><strong>Registre o processo:</strong> mostre que é artesanal, feito por mãos humanas e conectado à terra.</li>
+    <li><strong>Combine criatividade e técnica:</strong> um produto aparentemente comum pode se tornar inovador e refinado com a escolha certa de ingredientes.</li>
+    <li><strong>O cotidiano pode ser seu diferencial:</strong> o que é comum para você pode ser extraordinário para seu cliente.</li>
+  </ul>
+
+  <div class="section-heading criar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value criar">297 bilhões</td><td class="stat-desc">Mercado global de superalimentos: projeção de atingir US$ 297,10 bilhões até 2029, crescendo a um CAGR de 10,24% — Mordor Intelligence, 2024</td></tr>
+    <tr><td class="stat-value criar">3,5%</td><td class="stat-desc">Frutas exóticas brasileiras: em 2024, representaram 1,2% do volume comercializado na CEAGESP, mas geraram 3,5% do faturamento, demonstrando alto valor agregado — Abrafrutas/CEAGESP, 2024</td></tr>
+    <tr><td class="stat-value criar">1,1 M toneladas</td><td class="stat-desc">Exportações de frutas: atingiram US$ 1,28 bilhão, com 1,1 milhão de toneladas, salto de 49% em uma década — Abrafrutas/MAPA, 2024/2025</td></tr>
+    <tr><td class="stat-value criar">3 bilhões</td><td class="stat-desc">Japão: importou mais de US$ 3 bilhões em produtos agropecuários brasileiros em 2024, com demanda crescente por ingredientes de alta qualidade como castanha-do-Brasil — Ministério da Agricultura, 2025</td></tr>
+  </table>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>9</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 10-11 — CAPÍTULO 2: PRODUTOS EXTREMOS
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+  <div class="ch-ghost">02</div>
+
+  <div class="section-label criar">CRIAR — CAPÍTULO 2</div>
+  <div class="chapter-title">2. PRODUTOS EXTREMOS: CATEGORIA ESTRATÉGICA NO PORTIFÓLIO</div>
+  <hr class="accent-line criar">
+
+  <div class="section-heading criar">Apresentação geral</div>
+  <p class="body-text">Depois de mais de uma década acompanhando o comportamento de produtores e consumidores de alimentos artesanais, ficou claro que produtos de nicho extremo não são um problema. Pelo contrário: são uma categoria estratégica dentro de um portfólio bem construído.</p>
+  <p class="body-text" style="margin-top:10px;">No contexto artesanal, chamamos de produtos extremos aqueles que apresentam alguma característica elevada acima do padrão tradicional, seja em intensidade sensorial, tempo de produção, complexidade técnica ou proposta de uso.</p>
+
+  <div class="section-heading criar">Exemplos comuns no mercado artesanal:</div>
+  <ul class="content-list criar">
+    <li>Queijos com maturação muito longa, acima de 12, 18 ou 24 meses</li>
+    <li>Cachaças ultra envelhecidas, com longos períodos em barris específicos</li>
+    <li>Molhos extremamente ardidos, feitos com pimentas de alta pungência</li>
+    <li>Vinagres muito ácidos ou concentrados, voltados a usos específicos</li>
+    <li>Fermentados com sabores intensos e pouco convencionais</li>
+  </ul>
+  <p class="body-text" style="margin-top:10px;">Esses produtos não existem para agradar todo mundo, e nem precisam. Eles existem para marcar território, construir identidade e abrir portas que produtos convencionais dificilmente abririam.</p>
+
+  <div class="section-heading criar">O que está acontecendo no mercado</div>
+  <p class="body-text">O mercado mostra que produtos extremos não são campeões de volume, mas são catalisadores de posicionamento. Marcas artesanais maduras utilizam esses produtos como acesso a mercados diferenciados, como:</p>
+  <ul class="content-list criar">
+    <li>lojas especializadas</li>
+    <li>empórios premium</li>
+    <li>restaurantes autorais</li>
+    <li>eventos gastronômicos</li>
+    <li>concursos e premiações</li>
+  </ul>
+  <p class="body-text">Enquanto isso, o faturamento recorrente vem dos produtos equilibrados, versáteis e fáceis de incorporar ao dia a dia.</p>
+
+  <img class="ebook-img h-sm" src="images/produtos-extremos.png" alt="Produtos artesanais extremos">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>10</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="section-heading criar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list criar">
+    <li><strong>Produtos extremos devem existir como categoria estratégica</strong>, não como aposta única.</li>
+    <li>Eles funcionam como <strong>ponte para mercados</strong> de maior valor percebido.</li>
+    <li>Ajudam a <strong>construir autoridade técnica</strong> e narrativa de marca.</li>
+    <li>Criam <strong>diferenciação real</strong>, difícil de copiar.</li>
+    <li>Raramente serão o campeão de vendas, mas frequentemente serão o produto que <strong>faz o cliente conhecer a marca</strong>.</li>
+  </ul>
+
+  <div class="section-heading criar">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list criar">
+    <li><strong>Inclua pelo menos um produto extremo no portfólio,</strong> com função clara de posicionamento.</li>
+    <li><strong>Deixe explícito o papel dele:</strong> "Este produto não é para todos, é para quem busca uma experiência específica."</li>
+    <li><strong>Use-o para acessar novos canais,</strong> não para sustentar o fluxo de caixa.</li>
+    <li><strong>Explore edições limitadas</strong>, lotes numerados e histórias de processo.</li>
+    <li><strong>Faça a ponte:</strong> quem entra pelo extremo deve ser conduzido para os produtos principais da marca.</li>
+  </ul>
+
+  <div class="section-heading criar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value criar">12% crescimento</td><td class="stat-desc">Queijos com maturação acima de 18 meses representam menos de 12% das vendas: Porém são os principais responsáveis por: Prêmios e reconhecimento técnico (Data & Trends of the European food and drink industry 2024)</td></tr>
+    <tr><td class="stat-value criar">R$ 85,30</td><td class="stat-desc">O Brasil é o maior mercado de condimentos da América Latina, com ticket médio de compra de R$ 85,30 por consumidor — Varejo360 / ABIA, 2024.</td></tr>
+    <tr><td class="stat-value criar">20 a 30%</td><td class="stat-desc">Produtos extremos tendem a ocupar o grupo dos 20–30% de SKUs que geram imagem e diferenciação, mas não volume constante. (NielsenIQ – Specialty & Gourmet Food Trends, 2024)</td></tr>
+  </table>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>11</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 12-13 — CAPÍTULO 3: PRODUTOS AGRIDOCES
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+  <div class="ch-ghost">03</div>
+
+  <div class="section-label criar">CRIAR — CAPÍTULO 3</div>
+  <div class="chapter-title">3. PRODUTOS AGRIDOCES: O EQUILÍBRIO QUE CONQUISTA PALADARES</div>
+  <hr class="accent-line criar">
+
+  <div class="section-heading criar">Apresentação geral</div>
+  <p class="body-text">Uma tendência que vem se consolidando nas prateleiras especializadas, feiras gastronômicas e no consumo doméstico é o crescimento dos produtos artesanais com perfil agridoce. Esse território sensorial vai muito além dos molhos e aparece em geleias, chutneys, conservas, antepastos, queijos, embutidos, bebidas fermentadas, vinagres e até panificados especiais.</p>
+  <p class="body-text" style="margin-top:10px;">O agridoce surge como resposta direta a um consumidor que busca equilíbrio, sofisticação e prazer, e não apenas intensidade. Ao combinar elementos adocicados naturais, como frutas, mel, rapadura ou caramelizações, com acidez, salinidade ou picância, esses produtos entregam uma experiência mais ampla e acessível.</p>
+  <p class="body-text" style="margin-top:10px;">Mais do que uma moda, os produtos agridoces representam uma evolução no consumo de alimentos artesanais. Eles deslocam o foco do "impacto imediato" para a harmonização, a versatilidade e o uso recorrente, ocupando espaço tanto no dia a dia quanto em ocasiões especiais. Quando bem posicionados, tornam-se peças-chave em experiências gastronômicas gourmet e na construção de valor percebido da marca.</p>
+
+  <div class="section-heading criar">O que está acontecendo no mercado</div>
+  <p class="body-text">O consumidor brasileiro, tradicionalmente acostumado a sabores intensos e marcantes, vem migrando gradualmente para experiências mais equilibradas e sensoriais. Produtos que combinam doce, salgado, ácido e, em alguns casos, picante, ganham destaque por entregarem complexidade sem agressividade.</p>
+  <p class="body-text" style="margin-top:10px;">Frutas como maracujá, goiaba, maçã, abacaxi, manga, caju, jabuticaba e frutas regionais são amplamente utilizadas para dar identidade e personalidade aos produtos, sem mascarar o ingrediente principal. Elementos como mel, rapadura e caramelizações naturais reforçam o apelo artesanal e aproximam o produto de narrativas ligadas à origem e ao território</p>
+
+  <img class="ebook-img h-sm" src="images/producao-agridoces.png" alt="Produção artesanal de agridoces">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>12</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2025</span>
+  </div>
+
+  <div class="section-heading criar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list criar">
+    <li><strong>Ampliam o público</strong> consumidor</li>
+    <li><strong>Agradam tanto quem busca sabores sofisticados quanto quem evita produtos muito intensos.</strong> Isso reduz barreiras de entrada e aumenta a base de clientes.</li>
+    <li><strong>Geram mais ocasiões</strong> de consumo</li>
+    <li><strong>São utilizados no café da manhã, em entradas, acompanhamentos, pratos principais e tábuas gastronômicas,</strong> o que aumenta a frequência de uso e a recompra.</li>
+    <li><strong>Funcionam como porta de entrada</strong> para novos consumidores</li>
+    <li><strong>O uso de frutas da região ou da estação reduz custos,</strong> fortalece o vínculo territorial e cria narrativas autênticas de origem e propósito.</li>
+  </ul>
+
+  <div class="section-heading criar">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list criar">
+    <li><strong>Use frutas nativas ou com identidade local:</strong> umbu, cajá, seriguela, jabuticaba. Isso agrega autenticidade e exclusividade.</li>
+    <li><strong>Busque equilíbrio real:</strong> o agridoce não deve ser melado nem ácido demais. O segredo está na harmonia entre doce e picante.</li>
+    <li><strong>Rótulos claros e atrativos:</strong> destaque visual para o ingrediente principal, como "Molho de Pimenta com Maracujá".</li>
+    <li><strong>Explore a versatilidade:</strong> mostre nas redes sociais como o produto combina com carnes, queijos, lanches e entradas.</li>
+    <li><strong>Eduque o consumidor:</strong> sugira harmonizações e receitas que ampliem as ocasiões de consumo.</li>
+  </ul>
+
+  <div class="section-heading criar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value criar">4,1%</td><td class="stat-desc">O mercado global de geleias, compotas e chutneys foi estimado em US$ 9,8 bilhões em 2024, com crescimento médio anual de 4,1% — IMARC Group, 2025.</td></tr>
+    <tr><td class="stat-value criar">52% e 89%</td><td class="stat-desc">Geleias gourmet com pimenta: morango com pimenta cresceu 52% e abacaxi com pimenta 89% no mesmo período — Bom Princípio Alimentos, 2025</td></tr>
+    <tr><td class="stat-value criar">4% das vendas</td><td class="stat-desc">Mercado Centro-Oeste: representa 4% das vendas da empresa, com elevado potencial de crescimento — Bom Princípio Alimentos, 2025</td></tr>
+    <tr><td class="stat-value criar">B2B</td><td class="stat-desc">Produtos agridoces estão entre os principais itens de harmonização em hamburguerias e cafeterias artesanais, segundo dados de mercado B2B 2025.</td></tr>
+  </table>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>13</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 14-15 — CAPÍTULO 4: FERMENTAÇÃO
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+  <div class="ch-ghost">04</div>
+
+  <div class="section-label criar">CRIAR — CAPÍTULO 4</div>
+  <div class="chapter-title">4. FERMENTAÇÃO: O SABOR QUE NASCE DO TEMPO</div>
+  <hr class="accent-line criar">
+
+  <div class="section-heading criar">Apresentação geral</div>
+  <p class="body-text">A fermentação materializa a valorização que o consumidor tem dado aos processos minuciosos de preparo, principalmente no universo dos produtos artesanais. Na pimenta, ela transforma o sabor, suaviza a ardência, aumenta a complexidade e adiciona uma assinatura única ao produto.</p>
+  <p class="body-text" style="margin-top:10px;">Massas, queijos, cervejas, vinhos de frutas, picles, iogurtes, kefirs, kombuchas, cachaças e doces, todos esses preparos passam por processos de fermentação que os diferenciam e agregam valor muito além do preço. A simples adição de "Fermentação Natural" ao lado da palavra "Pão", por exemplo, eleva significativamente a percepção sobre a qualidade do produto.</p>
+
+  <div class="section-heading criar">O que está acontecendo no mercado</div>
+  <p class="body-text">Com a aproximação da culinária internacional no Brasil, especialmente a oriental, os produtos fermentados vêm ganhando destaque crescente. O interesse do consumidor é motivado tanto pela curiosidade quanto pelo valor agregado, que traduz cuidado, tempo e habilidade na produção.</p>
+  <p class="body-text" style="margin-top:10px;">Marcas que investem na fermentação se destacam justamente pela originalidade e diferenciação. Não se trata apenas de técnica, mas de contar a história do tempo, do cuidado e da origem dos ingredientes, aproximando sabores tradicionais de influências globais.</p>
+  <p class="body-text" style="margin-top:10px;">O mercado global de alimentos e bebidas fermentados foi avaliado em <strong style="color:var(--text-primary);">US$702,72 bilhões em 2023</strong> e deve crescer a uma taxa anual composta de <strong style="color:var(--text-primary);">7,5% até 2030</strong>. Esse crescimento é impulsionado principalmente pela consciência sobre saúde intestinal, probióticos e benefícios digestivos.</p>
+
+  <img class="ebook-img h-sm" src="images/fermentacao-frascos.png" alt="Processo de fermentação com frascos">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>14</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="section-heading criar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list criar">
+    <li><strong>Fermentação é uma narrativa poderosa:</strong> mostra domínio técnico específico, paciência e diferenciação real.</li>
+    <li><strong>Aumenta a durabilidade natural:</strong> reduz a necessidade de conservantes artificiais, agregando valor ao produto.</li>
+    <li><strong>Cria produtos com complexidade única:</strong> competem não pelo preço, mas pela experiência que proporcionam ao consumidor.</li>
+    <li><strong>Benefícios funcionais:</strong> probióticos e melhor digestibilidade elevam a percepção de valor e justificam preços premium.</li>
+  </ul>
+
+  <div class="section-heading criar">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list criar">
+    <li><strong>Conte histórias únicas:</strong> mostre nas redes sociais, na embalagem e em vídeos cada etapa da fermentação, destacando o tempo e cuidado investidos.</li>
+    <li><strong>Eduque o consumidor:</strong> destaque os benefícios funcionais da fermentação, probióticos, digestibilidade, sabor complexo.</li>
+    <li><strong>Construa linhas de edição limitada:</strong> produtos fermentados exclusivos geram desejo e reforçam a imagem de artesanal premium.</li>
+    <li><strong>Explore harmonizações:</strong> sugira combinações que mostrem a versatilidade do produto e aumentem o consumo em diferentes ocasiões.</li>
+    <li><strong>Diferenciação técnica:</strong> fermentação controlada e bem executada é barreira de entrada para concorrentes amadores.</li>
+  </ul>
+
+  <div class="section-heading criar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value criar">US$ 383 bi</td><td class="stat-desc">O mercado global de alimentos fermentados foi avaliado em US$ 243,6 bilhões em 2024 e deve atingir US$ 383,8 bilhões até 2033 (CAGR ≈ 4,8%) — IMARC Group, 2025.</td></tr>
+    <tr><td class="stat-value criar">52% e 89%</td><td class="stat-desc">Preferência crescente: consumidores valorizam produtos naturais, funcionais e com benefícios digestivos, impulsionando a demanda — WHO, 2024</td></tr>
+    <tr><td class="stat-value criar">80 bilhões</td><td class="stat-desc">O mercado de produtos probióticos atingiu US$ 58 bilhões em 2024, com expectativa de chegar a US$ 80 bilhões até 2033 — Verified Market Reports, 2025.</td></tr>
+    <tr><td class="stat-value criar">57%</td><td class="stat-desc">57% dos consumidores priorizam produtos naturais e funcionais com benefícios digestivos — WHO / Global Consumer Trends, 2024.</td></tr>
+  </table>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>15</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 16-17 — CAPÍTULO 5: EXPERIÊNCIA SENSORIAL
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+  <div class="ch-ghost">05</div>
+
+  <div class="section-label criar">CRIAR — CAPÍTULO 5</div>
+  <div class="chapter-title">5. EXPERIÊNCIA SENSORIAL: OS CINCO SENTIDOS VENDEM</div>
+  <hr class="accent-line criar">
+
+  <div class="section-heading criar">Apresentação geral</div>
+  <p class="body-text">A experiência sensorial é o ponto de conexão mais poderoso entre o produto artesanal e o consumidor. Mais do que sabor, ela envolve textura, aroma, aparência, som e emoção. Quando bem trabalhada, transforma o simples ato de consumir em uma lembrança, e são as lembranças que constroem fidelidade.</p>
+  <p class="body-text" style="margin-top:10px;">A primeira impressão é a que fica. A cor, por exemplo, muitas vezes passa despercebida ou é tratada como detalhe secundário, mas é um elemento decisivo na decisão de compra.</p>
+  <p class="body-text" style="margin-top:10px;">No início da minha trajetória com molhos de pimenta, não dei atenção à cor e tive prejuízos significativos. O sabor e a qualidade estavam ali, mas o líquido opaco (oxidado) e amarelado afastava os interessados. Precisei recolher um lote inteiro, pedir desculpas a revendedores e clientes, corrigir o erro e trabalhar para reverter aquela imagem.</p>
+
+  <div class="section-heading criar">O que está acontecendo no mercado</div>
+  <p class="body-text">Os cinco sentidos, quando equilibrados, influenciam emoções, aumentam o reconhecimento da marca, comunicam identidade, fortalecem a primeira impressão, auxiliam na decisão de compra e fidelizam o cliente.</p>
+  <p class="body-text" style="margin-top:10px;">A cor do alimento, o design dos rótulos e embalagens, a textura do produto, a facilidade de manuseio, o som ao abrir e até o aroma que se espalha compõem a percepção de qualidade. Marcas que integram esses elementos de forma estratégica conseguem se destacar e criar reconhecimento imediato.</p>
+  <p class="body-text" style="margin-top:10px;">Estudos mostram que mais de 70% das decisões de compra são influenciadas por percepções visuais e táteis antes da degustação. Um produto artesanal precisa comunicar sua qualidade antes mesmo de ser provado, reafirmando que foi feito não apenas para ser consumido, mas para ser apreciado.</p>
+
+  <img class="ebook-img h-sm" src="images/experiencia-sensorial.png" alt="Experiência sensorial com alimentos">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>16</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="section-heading criar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list criar">
+    <li><strong>Visão:</strong> cor, brilho, textura e embalagem. Produtos com cores naturais, vibrantes e consistentes transmitem confiança e despertam apetite visual.</li>
+    <li><strong>Olfato:</strong> o aroma é o primeiro impacto real. Em molhos, geleias, cafés e queijos, deve equilibrar intensidade e identidade. Aromas limpos e naturais são sinal de qualidade.</li>
+    <li><strong>Paladar:</strong> o sabor é a assinatura do produtor. Encontrar o equilíbrio entre doçura, acidez, sal e picância define o caráter do produto.</li>
+    <li><strong>Tato:</strong> a textura comunica tanto quanto o sabor. Cremoso, crocante, aveludado ou firme, o importante é a coerência com a proposta.</li>
+    <li><strong>Audição:</strong> até o som da crocância ou o "pop" ao abrir uma garrafa influencia a experiência e desperta prazer.</li>
+  </ul>
+
+  <div class="section-heading criar">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list criar">
+    <li><strong>Realize testes sensoriais:</strong> com consumidores e influenciadores, comparando variações de cor, textura e sabor.</li>
+    <li><strong>Registre descritores sensoriais:</strong> picante, frutado, defumado, cítrico, encorpado. Use-os na comunicação estratégica.</li>
+    <li><strong>Embalagem como extensão sensorial:</strong> material, peso, toque e rótulo devem contar parte da história.</li>
+    <li><strong>Coerência entre promessa e entrega:</strong> se o produto se diz artesanal, o consumidor precisa sentir isso no sabor, textura e experiência completa.</li>
+    <li><strong>Explore degustações presenciais:</strong> em feiras e pontos de venda. O contato direto com o produto é o melhor argumento de venda.</li>
+    <li><strong>Invista em narrativas visuais e sonoras:</strong> vídeos mostrando textura, som e preparo despertam desejo de forma instantânea nas redes sociais.</li>
+  </ul>
+
+  <div class="section-heading criar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value criar">70%</td><td class="stat-desc">Mais de 70% das decisões de compra são influenciadas por percepções visuais e táteis antes da degustação — NielsenIQ, 2024.</td></tr>
+    <tr><td class="stat-value criar">60%</td><td class="stat-desc">Embalagens premium aumentam a percepção de valor em até 60%, quando alinhadas à identidade da marca — Lucidpress, 2024.</td></tr>
+    <tr><td class="stat-value criar">25%</td><td class="stat-desc">Consumidores pagam, em média, 25% a mais por produtos que oferecem experiências multissensoriais completas — Harvard Business Review, 2024.</td></tr>
+  </table>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>17</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 18-20 — CAPÍTULO 6: NICHO E EXCLUSIVIDADE
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+  <div class="ch-ghost">06</div>
+
+  <div class="section-label criar">CRIAR — CAPÍTULO 6</div>
+  <div class="chapter-title">6. PRODUTO DE NICHO E EXCLUSIVIDADE: ENCONTRE SEU PÚBLICO</div>
+  <hr class="accent-line criar">
+
+  <div class="section-heading criar">Apresentação geral</div>
+  <p class="body-text">Um dos grandes equívocos de quem começa a produzir artesanalmente é acreditar que o sucesso está em agradar a todos. No mercado artesanal, a força não está na escala, mas na identidade bem definida. Marcas sólidas nascem quando o produtor sabe exatamente para quem está produzindo e consegue comunicar de forma clara o valor que seu produto oferece.</p>
+  <p class="body-text" style="margin-top:10px;">O mercado artesanal não compete com grandes indústrias, ele ocupa espaços que elas não conseguem alcançar. É colocar o consumidor como protagonista, contando histórias que não cabem em linhas de produção industriais.</p>
+  <p class="body-text" style="margin-top:10px;">A exclusividade é uma ferramenta poderosa nesse contexto: diferencia produtos, cria conexão emocional e faz o consumidor sentir-se parte de um grupo seleto. Produtos raros ou limitados são percebidos como de maior qualidade, aumentam o desejo e reforçam a fidelidade.</p>
+
+  <div class="section-heading criar">O que está acontecendo no mercado</div>
+  <p class="body-text">Consumidores estão dispostos a pagar mais por produtos que representem seus valores, estilo de vida e identidade, itens que afirmem quem eles são e a que grupo pertencem.</p>
+  <p class="body-text" style="margin-top:10px;">O mercado global de artesanato movimentou aproximadamente <strong style="color:var(--text-primary);">US$51,51 bilhões em 2024</strong> e deve crescer para <strong style="color:var(--text-primary);">US$108,91 bilhões até 2033</strong>, impulsionado pela valorização de produtos exclusivos e sustentáveis.</p>
+  <p class="body-text" style="margin-top:10px;">Marcas artesanais estão explorando a exclusividade para diferenciar produtos em mercados competitivos, fortalecer conexão e engajamento com o público, e transformar lançamentos em experiências memoráveis.</p>
+
+  <img class="ebook-img h-sm" src="images/produto-nicho.png" alt="Produto artesanal de nicho">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>18</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="section-heading criar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list criar">
+    <li><strong>Definir o público-alvo é estratégico:</strong> vender para todos dispersa energia; conquistar os clientes certos gera fidelidade.</li>
+    <li><strong>Produtos de nicho permitem margens mais altas:</strong> originalidade, criatividade e identidade territorial tornam o produto mais valorizado.</li>
+    <li><strong>Edições limitadas geram desejo e expectativa:</strong> produtos não sempre disponíveis sempre aumentam interesse e engajamento.</li>
+    <li><strong>Personalização aproxima o consumidor:</strong> ele se sente parte do processo, engaja mais e fornece feedback direto.</li>
+    <li><strong>Exclusividade fortalece a narrativa da marca:</strong> cada lançamento pode contar uma história própria, consolidando identidade e autenticidade.</li>
+  </ul>
+
+  <div class="section-heading criar">Como transformar isso em vantagem competitiva</div>
+  <p class="body-text" style="margin-bottom:12px;"><strong style="color:var(--text-primary);">Para encontrar seu público ideal, cruze três perguntas fundamentais:</strong></p>
+  <ol class="numbered-list">
+    <li><strong>O que eu faço bem?</strong> Quais produtos, ingredientes ou processos fazem parte do seu DNA produtivo?</li>
+    <li><strong>O que o mercado valoriza e está disposto a pagar?</strong> Quais tendências dialogam com seu estilo e com sua região?</li>
+    <li><strong>O que me diferencia dos demais?</strong> Quais histórias, origens, sabores ou métodos tornam seu produto único?</li>
+  </ol>
+  <p class="body-text" style="margin-top:12px;"><strong style="color:var(--text-primary);">O ponto de interseção dessas respostas é onde seu nicho de marca deve nascer.</strong></p>
+
+  <p class="body-text" style="margin-top:16px;"><strong style="color:var(--text-primary);">Gerando desejo de exclusividade:</strong></p>
+  <ul class="content-list criar">
+    <li><strong>Lançamento de séries limitadas:</strong> com ingredientes sazonais ou blends especiais.</li>
+    <li><strong>Embalagens customizadas:</strong> para datas comemorativas ou eventos específicos.</li>
+    <li><strong>Produtos exclusivos:</strong> que geram engajamento e expectativa, aumentando interesse digital e físico.</li>
+  </ul>
+
+  <img class="ebook-img h-sm" src="images/edicao-limitada.png" alt="Certificado de edição limitada">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>19</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="section-heading criar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value criar">73%</td><td class="stat-desc">Preferência por autenticidade: 73% dos consumidores brasileiros preferem marcas que transmitem autenticidade e conexão emocional — Forbes Brasil, 2024</td></tr>
+    <tr><td class="stat-value criar">75%</td><td class="stat-desc">Disposição para pagar mais: 75% dos consumidores estão dispostos a pagar mais por produtos artesanais personalizados — SEBRAE, 2024.</td></tr>
+    <tr><td class="stat-value criar">61%</td><td class="stat-desc">Inovação com tradição: 61% preferem marcas que unem sabor tradicional e inovação — NielsenIQ, 2023.</td></tr>
+    <tr><td class="stat-value criar">109 bilhões</td><td class="stat-desc">O mercado global de produtos artesanais e de nicho foi estimado em US$ 52 bilhões em 2024, devendo atingir US$ 109 bilhões até 2033 (CAGR ≈ 8,7%) — Verified Market Reports, 2024.</td></tr>
+  </table>
+
+  <img class="ebook-img h-lg" src="images/caderno-anotacoes.png" alt="Caderno com anotações artesanais">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>20</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 21-23 — CAPÍTULO 7: EMBALAGEM
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+  <div class="ch-ghost">07</div>
+
+  <div class="section-label criar">CRIAR — CAPÍTULO 7</div>
+  <div class="chapter-title">7. EMBALAGEM: SEU VENDEDOR SILENCIOSO</div>
+  <hr class="accent-line criar">
+
+  <div class="section-heading criar">Apresentação geral</div>
+  <p class="body-text">Mais do que proteção, a embalagem é narrativa, identidade e marketing. É a primeira experiência sensorial do cliente com sua marca. Ela comunica cuidado, valor e personalidade, e muitas vezes decide se o produto será comprado ou ignorado.</p>
+  <p class="body-text" style="margin-top:10px;">É através da cor, forma, tamanho, design, criatividade, qualidade e praticidade que a embalagem chama atenção, diferencia a marca e cria impacto visual, estimulando o desejo de experimentar, repetir a compra e indicar o produto a outras pessoas.</p>
+  <p class="body-text" style="margin-top:10px;">A embalagem é a extensão do cuidado que começa na produção e termina nas mãos do cliente.</p>
+
+  <div class="section-heading criar">O que está acontecendo no mercado</div>
+  <p class="body-text">Antes mesmo de provar, o cliente avalia a autenticidade, o cuidado e a qualidade do produto através da embalagem.</p>
+  <p class="body-text" style="margin-top:10px;">Uma embalagem bem pensada comunica: "Este é um produto feito com atenção, pensado para você, que merece uma experiência completa."</p>
+  <p class="body-text" style="margin-top:10px;">Estudos mostram que mais de 70% das decisões de compra são influenciadas por percepções visuais e táteis antes da degustação. No universo artesanal, onde história, sabor e experiência se cruzam, a embalagem atua como um vendedor silencioso, capaz de transmitir valor, personalidade e propósito antes mesmo de o cliente provar.</p>
+  <p class="body-text" style="margin-top:10px;">O mercado global de embalagens premium está em franca expansão, movimentando bilhões de dólares, impulsionado pela demanda por produtos artesanais e sustentáveis.</p>
+
+  <img class="ebook-img h-sm" src="images/embalagem-laco.png" alt="Embalagem artesanal com laço">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>21</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="section-heading criar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list criar">
+    <li><strong>Material transmite percepção imediata:</strong> vidro comunica sofisticação, durabilidade e preservação do sabor; plástico pode ser mais acessível e prático.</li>
+    <li><strong>Formato e ergonomia são funcionais:</strong> frascos com bico dosador agregam praticidade; garrafas altas e finas transmitem elegância.</li>
+    <li><strong>Tamanho influencia valor percebido:</strong> embalagens pequenas incentivam experimentação; maiores sugerem economia e fidelização.</li>
+    <li><strong>Cor e acabamento geram emoções:</strong> tons vibrantes transmitem ousadia e sabor intenso; cores neutras e terrosas remetem à naturalidade e tradição.</li>
+    <li><strong>Detalhes funcionais comunicam cuidado:</strong> tampas, lacres e dosadores não servem apenas à função prática, comunicam higiene e atenção aos detalhes.</li>
+    <li><strong>Rótulo e design em harmonia:</strong> imagens, tipografia, ícones e informações sobre origem, ingredientes e processo artesanal precisam criar uma experiência coerente e sensorial.</li>
+  </ul>
+
+  <div class="section-heading criar">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list criar">
+    <li><strong>Destaque o ingrediente principal e a origem no rótulo:</strong> crie conexão emocional através da transparência.</li>
+    <li><strong>Use cores e tipografia coerentes:</strong> com a identidade da marca, criando reconhecimento imediato.</li>
+    <li><strong>Conte a história do produto:</strong> no rótulo ou por QR code que leva a conteúdos exclusivos.</li>
+    <li><strong>Considere sustentabilidade:</strong> embalagens reutilizáveis ou ecológicas agregam valor e atraem consumidores conscientes.</li>
+    <li><strong>Transforme cada escolha em vantagem:</strong> material, formato, tamanho, cor ou funcionalidade devem trabalhar juntos para criar experiência completa.</li>
+  </ul>
+
+  <img class="ebook-img h-md" src="images/embalagem-premium.png" alt="Embalagem artesanal premium">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>22</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--criar-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="section-heading criar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value criar">US$ 380 bi</td><td class="stat-desc">O mercado global de embalagens alimentícias alcançou US$ 380 bilhões em 2025, com projeção de CAGR ≈ 3,5% até 2030 — Mordor Intelligence, 2025.</td></tr>
+    <tr><td class="stat-value criar">60%</td><td class="stat-desc">Embalagens premium: aumentam a percepção de valor em até 60% quando bem executadas — Lucidpress, 2024.</td></tr>
+    <tr><td class="stat-value criar">US$ 45 bi</td><td class="stat-desc">O mercado de embalagens de vidro para alimentos foi estimado em US$ 45 bilhões em 2024, com crescimento anual de ≈ 4,5% — Allied Market Research, 2025.</td></tr>
+    <tr><td class="stat-value criar">67%</td><td class="stat-desc">Embalagens sustentáveis: preferidas por 67% dos consumidores, que priorizam marcas ecologicamente responsáveis — Nielsen, 2024.</td></tr>
+  </table>
+
+  <img class="ebook-img h-lg" src="images/colecao-embalagens.png" alt="Coleção de embalagens artesanais">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>23</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 24 — PARTE II DIVIDER
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="page-part">
+    <div class="part-number">VENDER</div>
+    <div class="part-title vender">
+      ESTRATÉGIAS DE<br>
+      COMUNICAÇÃO
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>24</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 25-27 — CAPÍTULO 8: NARRATIVA E COMUNICAÇÃO
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--vender-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+  <div class="ch-ghost">08</div>
+
+  <div class="section-label vender">VENDER — CAPÍTULO 8</div>
+  <div class="chapter-title">8. NARRATIVA E COMUNICAÇÃO ESTRATÉGICA: SUA HISTÓRIA VENDE</div>
+  <hr class="accent-line vender">
+
+  <div class="section-heading vender">Apresentação geral</div>
+  <p class="body-text">Somos movidos por histórias. Gostamos de ouvir, contar e fazer parte delas. O brasileiro, em especial, é criativo, emocional e curioso, conectando-se pelo afeto e pela narrativa. Por isso, não consumimos apenas o que um produto oferece, mas também os significados, lembranças e pessoas que o cercam.</p>
+  <p class="body-text" style="margin-top:10px;">Produtos artesanais que se destacam carregam histórias, do produtor, da origem, do processo e da comunidade envolvida, e transmitem valores que vão além da matéria-prima.</p>
+  <p class="body-text" style="margin-top:10px;">A comunicação estratégica transforma o trabalho artesanal em marca. Para o pequeno produtor, comunicar bem vai além de divulgar produtos: é mostrar com clareza o que torna sua produção única, alinhando cada detalhe, da embalagem ao conteúdo digital, para reforçar uma identidade autêntica e coerente.</p>
+
+  <div class="section-heading vender">O que está acontecendo no mercado</div>
+  <p class="body-text">Marcas artesanais com histórias fortes e autênticas se destacam no mercado. Consumidores compartilham produtos que têm significado, transformando cada compra em divulgação espontânea e construção de comunidade. Isso fortalece a marca, gera fidelidade e cria diferenciação real em um mercado competitivo.</p>
+  <p class="body-text" style="margin-top:10px;">Nos últimos anos, o comportamento do consumidor mudou radicalmente. Pesquisas indicam que marcas ativas nas redes sociais têm três vezes mais chances de fidelizar clientes e aumentar o ticket médio. O digital permite ensinar, engajar e criar comunidade de forma escalável.</p>
+  <p class="body-text" style="margin-top:10px;">Considerando que a população brasileira passa cerca de 9 horas por dia nas redes sociais, captar a atenção mesmo por alguns segundos pode transformar a percepção da marca (para o bem ou para o mal).</p>
+  <p class="body-text" style="margin-top:10px;">Hoje, o público busca autenticidade. Fotos e vídeos orgânicos, com narrativa própria e humor genuíno, geram muito mais engajamento do que campanhas tradicionais focadas apenas em promoção.</p>
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>25</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--vender-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="section-heading vender">O que o produtor pode aprender com isso</div>
+  <ul class="content-list vender">
+    <li><strong>Sua história é sua maior arma:</strong> conte sua origem e explique suas escolhas com transparência.</li>
+    <li><strong>Reforce valores, propósito e missão:</strong> de forma clara e constante em todos os pontos de contato.</li>
+    <li><strong>Crie experiências e abra diálogos:</strong> produtos isolados vendem menos; experiências conectam e geram comunidade.</li>
+    <li><strong>Narrativa consistente constrói autoridade:</strong> frente à concorrência, ela é um diferencial estratégico que não pode ser copiado.</li>
+  </ul>
+
+  <div class="section-heading vender">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list vender">
+    <li><strong>Mostre o processo e os bastidores:</strong> vídeos, fotos e conteúdo educativo aproximam o público da produção artesanal.</li>
+    <li><strong>Use redes sociais para humanizar a marca:</strong> crie identificação e engajamento mostrando pessoas e histórias reais.</li>
+    <li><strong>Desenvolva linhas ou coleções temáticas:</strong> valorize território, tradição ou memória afetiva.</li>
+    <li><strong>Convide o público a contar suas próprias histórias:</strong> mostrando a participação de seus produtos, criando conexões genuínas.</li>
+    <li><strong>Invista em vídeos curtos:</strong> reels e shorts educativos ou divertidos ampliam alcance e tornam a marca memorável.</li>
+    <li><strong>Mantenha consistência:</strong> frequência regular de publicações e identidade visual coerente ajudam a construir uma comunidade fiel.</li>
+  </ul>
+
+  <img class="ebook-img h-sm" src="images/caderno-caneta.png" alt="Caderno de anotações e caneta">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>26</span>
+  </div>
+</div>
+
+<div class="page" style="background: var(--vender-tint);">
+  <div class="page-header">
+    <span>Como criar, vender e escalar alimentos artesanais</span>
+    <span>2026</span>
+  </div>
+
+  <div class="section-heading vender">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value vender">73%</td><td class="stat-desc">73% das empresas consideram suas ações em redes sociais eficazes ou muito eficazes — Small Business Trends, 2024.</td></tr>
+    <tr><td class="stat-value vender">62%</td><td class="stat-desc">Marcas que publicam conteúdo com frequência têm 62% mais chances de gerar leads qualificados — Content Marketing Institute, 2024.</td></tr>
+    <tr><td class="stat-value vender">54% e 57%</td><td class="stat-desc">54% dos consumidores pesquisam produtos nas redes sociais e 57% compram de marcas que seguem — Varejo S.A, 2024.</td></tr>
+    <tr><td class="stat-value vender">60%</td><td class="stat-desc">Identidade visual coesa: aumenta confiança do consumidor em 60% — Lucidpress, 2024.</td></tr>
+    <tr><td class="stat-value vender">3x mais</td><td class="stat-desc">Feedback e retenção: marcas que monitoram e respondem ativamente ao feedback têm 3x mais chances de reter clientes (Microsoft, 2024)</td></tr>
+  </table>
+
+  <img class="ebook-img h-md" src="images/mesa-jornais.png" alt="Mesa com jornais e café">
+
+  <div class="page-footer">
+    <span>Gabriel Petelinkar</span>
+    <span>27</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 28-29 — CAPÍTULO 9: EVENTOS E DEGUSTAÇÕES
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--vender-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="ch-ghost">09</div>
+  <div class="section-label vender">VENDER — CAPÍTULO 9</div>
+  <div class="chapter-title">9. EVENTOS E DEGUSTAÇÕES: CRIANDO DEFENSORES DA MARCA</div>
+  <hr class="accent-line vender">
+  <div class="section-heading vender">Apresentação geral</div>
+  <p class="body-text">Eventos, feiras e degustações são oportunidades únicas de promover seu produto, educar o consumidor, gerar engajamento e transformar clientes em verdadeiros defensores da marca.</p>
+  <p class="body-text" style="margin-top:10px;">Além disso, esses momentos permitem ouvir feedbacks imediatos, entender preferências e ajustar produtos com agilidade, reforçando a percepção de cuidado e qualidade. Para o consumidor, experimentar vai muito além de provar: é vivenciar a história, o processo e a autenticidade por trás de cada produto.</p>
+  <p class="body-text" style="margin-top:10px;">Alguns dos meus marcos empresariais aconteceram em eventos e feiras que participei, graças às conexões e aos feedbacks que recebi. Aproveitar esses momentos para impulsionar a marca é uma estratégia poderosa, capaz de abrir portas e levar o negócio a outro patamar.</p>
+  <div class="section-heading vender">O que está acontecendo no mercado</div>
+  <p class="body-text">Produtores que investem em experiências presenciais se destacam em um mercado cada vez mais competitivo e impessoal. Degustações e eventos permitem que o público sinta, literalmente, a diferença entre produtos comuns e artesanais, percebendo cada detalhe: o sabor, o aroma, a textura, o cuidado na produção e o contato com quem realmente faz.</p>
+  <p class="body-text" style="margin-top:10px;">Essas experiências geram conexão emocional, fortalecem a fidelidade e posicionam a marca como algo que vai além da venda, algo pessoal. Além disso, o marketing boca a boca e as redes sociais ampliam o alcance dessas ações, transformando cada evento em uma estratégia de divulgação poderosa e autêntica.</p>
+  <p class="body-text" style="margin-top:10px;">No Brasil, feiras e eventos do setor alimentício movimentam bilhões anualmente, com crescimento constante na participação de marcas artesanais.</p>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>28</span></div>
+</div>
+
+<div class="page" style="background: var(--vender-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="section-heading vender">O que o produtor pode aprender com isso</div>
+  <ul class="content-list vender">
+    <li><strong>Experiências sensoriais criam lembrança de marca:</strong> aumentam significativamente a recompra.</li>
+    <li><strong>Educação sobre sabor, aroma e uso:</strong> ajuda a justificar o preço e reforçar o valor percebido.</li>
+    <li><strong>Eventos são networking valioso:</strong> grandes oportunidades de parcerias estratégicas.</li>
+    <li><strong>Feedback imediato:</strong> reação, compra ou comentários do público guiam ajustes rápidos e assertivos.</li>
+  </ul>
+  <div class="section-heading vender">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list vender">
+    <li><strong>Ofereça degustações estratégicas:</strong> em feiras, mercados e restaurantes parceiros.</li>
+    <li><strong>Crie kits de degustação:</strong> para venda ou assinatura, levando a experiência até a casa do cliente.</li>
+    <li><strong>Use eventos para educar:</strong> conte histórias e ensine sobre ingredientes e processos.</li>
+    <li><strong>Registre tudo:</strong> fotos, vídeos e depoimentos rendem excelente conteúdo para redes sociais.</li>
+    <li><strong>Participe de eventos locais e regionais:</strong> encare cada um como investimento em visibilidade e expansão de público.</li>
+    <li><strong>Transforme participantes em embaixadores:</strong> ofereça brindes ou descontos para quem compartilhar a experiência nas redes.</li>
+  </ul>
+  <div class="section-heading vender">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value vender">R$ 355 bi</td><td class="stat-desc">O setor de eventos no Brasil movimentou R$ 355 bilhões em 2024, com crescimento de ≈ 10% ao ano — ABEOC Brasil, 2025.</td></tr>
+    <tr><td class="stat-value vender">8-12%</td><td class="stat-desc">Feiras gastronômicas registraram crescimento anual de 8–12% na participação de expositores artesanais — ABRAPE / Setor Eventos, 2024.</td></tr>
+    <tr><td class="stat-value vender">5x maior</td><td class="stat-desc">Degustações presenciais apresentam taxa de conversão até 5 vezes maior que ações digitais isoladas — HubSpot Research, 2024.</td></tr>
+  </table>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>29</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 30-31 — CAPÍTULO 10: HARMONIZAÇÃO E VERSATILIDADE
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--vender-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="ch-ghost">10</div>
+  <div class="section-label vender">VENDER — CAPÍTULO 10</div>
+  <div class="chapter-title">10. HARMONIZAÇÃO E VERSATILIDADE: AMPLIANDO OCASIÕES DE CONSUMO</div>
+  <hr class="accent-line vender">
+  <div class="section-heading vender">Apresentação geral</div>
+  <p class="body-text">O consumidor moderno busca experiências gastronômicas completas e versáteis: produtos de qualidade que funcionem em diferentes contextos, do consumo diário a encontros informais ou situações especiais. Essa versatilidade não apenas amplia as oportunidades de venda, como também aumenta a recorrência e fidelidade. Um produto versátil pode ser percebido de diferentes formas, tornando-se útil e até indispensável, quase como uma marca registrada de quem o consome e oferece aos convidados.</p>
+  <p class="body-text" style="margin-top:10px;">Você provavelmente conhece alguém que não dispensa um determinado queijo para harmonizar com vinho, ou que não abre mão de certo doce em comemorações. Eu, por exemplo, já sou conhecido por nunca deixar faltar molhos de pimenta nos churrascos, garantindo combinações perfeitas com diferentes carnes e, claro, incentivando o uso dos meus próprios produtos.</p>
+  <div class="section-heading vender">O que está acontecendo no mercado</div>
+  <p class="body-text">Marcas que exploram harmonização não vendem apenas produtos, mas experiências completas. Consumidores valorizam produtos que podem ser usados de múltiplas maneiras. A percepção de versatilidade agrega valor e praticidade à marca. Produtos que combinam sabor, aroma e textura de forma harmoniosa aumentam a frequência de consumo e a fidelidade.</p>
+  <p class="body-text" style="margin-top:10px;">Harmonização estratégica transforma um simples ingrediente em peça central da refeição, permitindo que o consumidor explore combinações e momentos de consumo distintos. É fundamental que essa versatilidade seja comunicada de forma clara, seja no rótulo, na embalagem ou na comunicação institucional.</p>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>30</span></div>
+</div>
+
+<div class="page" style="background: var(--vender-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="section-heading vender">O que o produtor pode aprender com isso</div>
+  <ul class="content-list vender">
+    <li><strong>Atender diferentes públicos e ocasiões:</strong> um mesmo molho, geleia ou tempero pode ser usado em refeições do dia a dia, encontros especiais ou drinks criativos.</li>
+    <li><strong>Educar o consumidor reforça experiência:</strong> sugerir combinações aproxima o público da experiência artesanal e aumenta a percepção de cuidado.</li>
+    <li><strong>Transformar produtos simples em premium:</strong> ajustes na receita ou nas sugestões de uso elevam sabor, textura e aroma.</li>
+  </ul>
+  <div class="section-heading vender">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list vender">
+    <li><strong>Crie conteúdo mostrando diferentes usos:</strong> vídeos curtos, reels e fotos de receitas ajudam o consumidor a visualizar a versatilidade.</li>
+    <li><strong>Indique harmonizações em embalagens e redes:</strong> sugestões de combinações aumentam engajamento e incentivam novas compras.</li>
+    <li><strong>Desenvolva receitas exclusivas:</strong> para eventos, feiras e workshops. Experiências práticas geram prova social e fortalecem autoridade.</li>
+    <li><strong>Teste combinações inusitadas:</strong> mantendo equilíbrio e autenticidade. Novas experiências sensoriais surpreendem e destacam sua marca.</li>
+    <li><strong>Crie guias de harmonização:</strong> materiais impressos ou digitais que ensinem o consumidor a explorar todo o potencial do produto.</li>
+  </ul>
+  <div class="section-heading vender">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value vender">68%</td><td class="stat-desc">68% dos consumidores preferem produtos que possam ser usados de múltiplas formas — NielsenIQ, 2024.</td></tr>
+    <tr><td class="stat-value vender">35%</td><td class="stat-desc">Produtos com sugestões de harmonização têm 35% mais recompra — Euromonitor International, 2025.</td></tr>
+    <tr><td class="stat-value vender">12%</td><td class="stat-desc">O mercado global de experiências gastronômicas cresce ≈ 12% ao ano, impulsionado por produtos versáteis e experiências culinárias — Euromonitor / WTTC, 2025.</td></tr>
+    <tr><td class="stat-value vender">45%</td><td class="stat-desc">Conteúdo educativo: marcas que educam sobre uso e harmonização têm 45% mais engajamento nas redes sociais — Content Marketing Institute, 2024</td></tr>
+  </table>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>31</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 32-33 — CAPÍTULO 11: EDUCAÇÃO DO CONSUMIDOR
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--vender-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="ch-ghost">11</div>
+  <div class="section-label vender">VENDER — CAPÍTULO 11</div>
+  <div class="chapter-title">11. EDUCAÇÃO DO CONSUMIDOR: CRIANDO EMBAIXADORES DA MARCA</div>
+  <hr class="accent-line vender">
+  <div class="section-heading vender">Apresentação geral</div>
+  <p class="body-text">O consumidor de produtos artesanais valoriza principalmente a qualidade, autenticidade e cuidado na produção, buscando sabores diferenciados, ingredientes selecionados e métodos tradicionais.</p>
+  <p class="body-text" style="margin-top:10px;">Ele se interessa pela origem e história do produto, apreciando marcas que comunicam transparência e envolvimento do produtor. Observa com atenção a embalagem e a apresentação, que devem transmitir higiene, cuidado e valor percebido.</p>
+  <p class="body-text" style="margin-top:10px;">Além disso, está disposto a pagar mais, desde que o preço reflita a exclusividade e os diferenciais do produto. Muitos dão importância a práticas sustentáveis e éticas na produção e no acondicionamento.</p>
+  <p class="body-text" style="margin-top:10px;">Educar o cliente sobre os processos de produção, formas de uso, sugestões de receitas e descarte consciente fortalece a percepção de valor, criando uma relação baseada em confiança, propósito e experiência.</p>
+  <div class="section-heading vender">O que está acontecendo no mercado</div>
+  <p class="body-text">A educação do consumidor não é apenas uma estratégia de marketing: é uma forma de criar defensores da marca que compartilham experiências e atraem novos clientes.</p>
+  <p class="body-text" style="margin-top:10px;">Ao escolher produtos artesanais, os consumidores valorizam transparência, identidade visual coerente e experiências sensoriais que gerem conexão emocional.</p>
+  <p class="body-text" style="margin-top:10px;">Avaliações, redes sociais e recomendações de amigos influenciam fortemente suas decisões. Marcas que oferecem histórias envolventes, atenção aos detalhes e sensação de exclusividade conseguem fidelizar esse público.</p>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>32</span></div>
+</div>
+
+<div class="page" style="background: var(--vender-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="section-heading vender">O que o produtor pode aprender com isso</div>
+  <ul class="content-list vender">
+    <li><strong>Transparência gera confiança:</strong> informar sobre ingredientes e processos aproxima o consumidor da experiência artesanal.</li>
+    <li><strong>Clientes educados tornam-se embaixadores:</strong> quanto mais sabem, mais valorizam e divulgam o produto.</li>
+    <li><strong>Contar a história destaca diferenciais:</strong> não se trata apenas de sabor ou aparência, mas de mostrar o que torna seu produto único.</li>
+  </ul>
+  <div class="section-heading vender">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list vender">
+    <li><strong>Produzir conteúdos digitais explicativos:</strong> vídeos, posts e reels que detalham ingredientes, técnicas de preparo e sugestões de harmonização fortalecem a autoridade da marca.</li>
+    <li><strong>Oferecer workshops presenciais ou online:</strong> ensinar receitas, mostrar processos e degustar juntos cria experiências memoráveis e aproxima o consumidor.</li>
+    <li><strong>Criar guias ou fichas de degustação:</strong> documentos simples que ensinem a melhor forma de usar o produto aumentam engajamento e percepção de valor.</li>
+    <li><strong>Transformar curiosidade em compra:</strong> contar histórias que mostrem por que seu produto é único, incentivando decisões baseadas em conhecimento e confiança.</li>
+    <li><strong>Justificar preço e valor:</strong> consumidores bem informados compreendem esforço, qualidade e exclusividade, aceitando preços mais elevados sem resistência.</li>
+  </ul>
+  <div class="section-heading vender">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value vender">45 % e 30%</td><td class="stat-desc">Marcas que produzem conteúdo educativo têm 45% mais engajamento e 30% mais retenção de clientes — Content Marketing Institute, 2024.</td></tr>
+    <tr><td class="stat-value vender">60%</td><td class="stat-desc">Participantes de workshops e degustações têm 60% mais probabilidade de se tornarem clientes fiéis — Marketing Experiential Study, 2024.</td></tr>
+    <tr><td class="stat-value vender">80% e 25%</td><td class="stat-desc">80% dos consumidores afirmam que transparência aumenta confiança e disposição para pagar até 25% a mais — PwC Consumer Insights, 2024.</td></tr>
+  </table>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>33</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 34 — PARTE III DIVIDER
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="page-part">
+    <div class="part-number">ESCALAR</div>
+    <div class="part-title escalar">
+      GESTÃO,<br>
+      PROPÓSITO E<br>
+      CREDIBILIDADE
+    </div>
+  </div>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>34</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 35-36 — CAPÍTULO 12: COLABORAÇÃO E PARCERIAS
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--escalar-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="ch-ghost">12</div>
+  <div class="section-label escalar">ESCALAR — CAPÍTULO 12</div>
+  <div class="chapter-title">12. COLABORAÇÃO E PARCERIAS: JUNTOS SOMOS MAIS FORTES</div>
+  <hr class="accent-line escalar">
+  <div class="section-heading escalar">Apresentação geral</div>
+  <p class="body-text">Ninguém cresce sozinho,ou, pelo menos, é muito mais difícil. Parcerias estratégicas com produtores locais, chefs ou outros artesãos transformam produtos em experiências mais completas e ampliam o alcance da marca.</p>
+  <p class="body-text" style="margin-top:10px;">Além disso, essas colaborações reforçam autenticidade, conexão com o território e senso de pertencimento. Trabalhar em conjunto não significa perder autonomia; significa somar forças, compartilhar experiências e oferecer produtos e vivências que sozinhos seriam mais difíceis de alcançar.</p>
+  <div class="section-heading escalar">O que está acontecendo no mercado</div>
+  <p class="body-text">Você provavelmente conhece o poder das famosas "collabs". No mercado de produtos de nicho, algumas marcas ganharam notoriedade ao se associarem a outras, e no universo dos pequenos produtores, essa estratégia é ainda mais relevante.</p>
+  <p class="body-text" style="margin-top:10px;">Uma das características mais interessantes das colaborações é unir universos diferentes que normalmente não se encontrariam. Por exemplo, uma loja de doces artesanais pode se associar a rendeiras do Nordeste e criar um kit de bolsa + doces.</p>
+  <p class="body-text" style="margin-top:10px;">Parcerias entre semelhantes costumam ser mais simples de implementar e também muito eficazes. Imagine um produtor de molhos de pimenta unindo forças com uma queijaria para criar queijos levemente apimentados, ou uma panificadora artesanal se juntando a uma produtora de geleias para oferecer combos de mini pães que harmonizam perfeitamente com as frutas. Nós, na Chilliepig, por exemplo, criamos um produto em colaboração com uma empresa produtora de mel selvagem, que figura entre os mais vendidos do nosso portfólio.</p>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>35</span></div>
+</div>
+
+<div class="page" style="background: var(--escalar-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="section-heading escalar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list escalar">
+    <li><strong>Colaborações aceleram crescimento:</strong> aumentam visibilidade, credibilidade e engajamento, permitindo inovar de forma econômica.</li>
+    <li><strong>Criar produtos diferentes com baixo custo:</strong> aproveitando recursos e expertise de outros produtores.</li>
+    <li><strong>Produtos co-criados despertam curiosidade:</strong> atraem novos públicos e influenciadores, gerando engajamento digital.</li>
+    <li><strong>Fortalecer a cadeia produtiva local:</strong> trabalhar com produtores locais reforça a narrativa de autenticidade e constrói confiança.</li>
+  </ul>
+  <div class="section-heading escalar">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list escalar">
+    <li><strong>Desenvolva edições limitadas em parceria:</strong> experiências exclusivas ou produtos de nichos distintos ampliam alcance e despertam desejo.</li>
+    <li><strong>Conte a história de cada colaborador:</strong> nas redes sociais e no rótulo. Histórias humanas aproximam o consumidor e reforçam autenticidade.</li>
+    <li><strong>Use parcerias para criar eventos:</strong> degustações colaborativas fortalecem engajamento e prova social.</li>
+    <li><strong>Busque sinergia:</strong> cada parceiro deve agregar algo que você não teria sozinho, conhecimento, matéria-prima ou acesso a público.</li>
+    <li><strong>Crie programas de co-branding:</strong> que beneficiem ambas as marcas e ampliem o alcance de mercado.</li>
+  </ul>
+  <div class="section-heading escalar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value escalar">25%</td><td class="stat-desc">Parcerias estratégicas aumentam as vendas em média 25% durante o período da colaboração — Co-Branding Global Report, 2024.</td></tr>
+    <tr><td class="stat-value escalar">50%</td><td class="stat-desc">A combinação de audiências em ações conjuntas pode ampliar o alcance em até 50% — Marketing Dive, 2024.</td></tr>
+    <tr><td class="stat-value escalar">35%</td><td class="stat-desc">Custo de aquisição de clientes: redução de 35% em parcerias bem estruturadas (pesquisas de marketing, 2024)</td></tr>
+  </table>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>36</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 37-38 — CAPÍTULO 13: SUSTENTABILIDADE
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--escalar-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="ch-ghost">13</div>
+  <div class="section-label escalar">ESCALAR — CAPÍTULO 13</div>
+  <div class="chapter-title">13. SUSTENTABILIDADE E RESPONSABILIDADE: O FUTURO É CONSCIENTE</div>
+  <hr class="accent-line escalar">
+  <div class="section-heading escalar">Apresentação geral</div>
+  <p class="body-text">Sustentabilidade deixou de ser um diferencial opcional e se tornou uma expectativa do consumidor atual. No mercado artesanal, clientes valorizam marcas que cuidam do meio ambiente, da comunidade e dos produtores locais.</p>
+  <p class="body-text" style="margin-top:10px;">Investir em práticas sustentáveis, socialmente responsáveis e ambientalmente amigáveis fortalece a reputação da marca, fideliza clientes e abre portas para novos mercados e oportunidades.</p>
+  <p class="body-text" style="margin-top:10px;">Consumidores que percebem impacto positivo em suas compras tendem a se tornar defensores da marca, compartilhando a experiência e a história da empresa.</p>
+  <div class="section-heading escalar">O que está acontecendo no mercado</div>
+  <p class="body-text">Marcas que adotam práticas sustentáveis recebem reconhecimento e recomendação do público.</p>
+  <p class="body-text" style="margin-top:10px;">Embalagens ecológicas e recicláveis aumentam a percepção de valor e responsabilidade. O uso consciente de recursos reforça a imagem de marca ética e cuidadosa. O apoio a produtores locais gera impacto social positivo, fortalecendo a cadeia produtiva.</p>
+  <p class="body-text" style="margin-top:10px;">Quando o consumidor entende que sua compra contribui para algo maior que o produto em si, o valor percebido aumenta, criando conexão emocional e fidelidade.</p>
+  <p class="body-text" style="margin-top:10px;">Uma pesquisa da PwC em 2024 revelou que 80% dos consumidores estão dispostos a pagar mais por produtos sustentáveis, com média de 9,7% a mais, mesmo em um cenário de aumento no custo de vida e inflação.</p>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>37</span></div>
+</div>
+
+<div class="page" style="background: var(--escalar-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="section-heading escalar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list escalar">
+    <li><strong>Sustentabilidade genuína é postura:</strong> não é apenas marketing, mas prática integrada ao dia a dia da produção.</li>
+    <li><strong>Conexão emocional:</strong> contar histórias sobre produtores locais e preservação ambiental aproxima o consumidor da marca.</li>
+    <li><strong>Pequenas ações com grande impacto:</strong> reduzir plástico, usar materiais recicláveis e apoiar a comunidade local são passos simples, mas poderosos.</li>
+  </ul>
+  <div class="section-heading escalar">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list escalar">
+    <li><strong>Embalagens recicláveis ou reutilizáveis:</strong> sustentabilidade tangível reforça percepção de cuidado e valor.</li>
+    <li><strong>Histórias de impacto social:</strong> mostre quem produz, como faz e com que cuidado, criando narrativa autêntica.</li>
+    <li><strong>Valorização de fornecedores locais:</strong> apresente a cadeia produtiva e destaque a colaboração com produtores da região.</li>
+    <li><strong>Engajamento em iniciativas sociais:</strong> ações educativas, colaborações com ONGs ou projetos comunitários fortalecem vínculo e engajamento.</li>
+    <li><strong>Certificações ambientais:</strong> selos reconhecidos aumentam credibilidade e facilitam entrada em mercados premium.</li>
+  </ul>
+  <div class="section-heading escalar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value escalar">80%</td><td class="stat-desc">80% dos consumidores estão dispostos a pagar em média 9,7% a mais por produtos sustentáveis — PwC Voice of the Consumer, 2024.</td></tr>
+    <tr><td class="stat-value escalar">37%</td><td class="stat-desc">37% dos brasileiros pagam mais por produtos ecológicos e recicláveis — Investe SP / Nielsen, 2024.</td></tr>
+    <tr><td class="stat-value escalar">67%</td><td class="stat-desc">Embalagens sustentáveis: preferidas por 67% dos consumidores, que priorizam marcas ecologicamente responsáveis — Nielsen, 2024</td></tr>
+    <tr><td class="stat-value escalar">73%</td><td class="stat-desc">73% dos consumidores preferem marcas que apoiam comunidades locais — Harvard Business Review, 2024.</td></tr>
+  </table>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>38</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 39-41 — CAPÍTULO 14: CERTIFICAÇÃO E SELOS
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--escalar-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="ch-ghost">14</div>
+  <div class="section-label escalar">ESCALAR — CAPÍTULO 14</div>
+  <div class="chapter-title">14. CERTIFICAÇÃO E SELOS DE QUALIDADE: CREDIBILIDADE TANGÍVEL</div>
+  <hr class="accent-line escalar">
+  <div class="section-heading escalar">Apresentação geral</div>
+  <p class="body-text">A certificação é um processo formal conduzido por uma entidade reconhecida, que avalia se um produto cumpre normas e critérios previamente estabelecidos. Já o selo de qualidade é a expressão visual desse reconhecimento, um símbolo que comunica ao público que o item passou por uma avaliação rigorosa e atende a padrões de excelência.</p>
+  <p class="body-text" style="margin-top:10px;">Juntos, certificação e selo reforçam autenticidade, transparência e compromisso com a qualidade. No mercado artesanal, onde o vínculo entre produtor e consumidor é baseado principalmente na confiança, esses elementos são essenciais.</p>
+  <p class="body-text" style="margin-top:10px;">Produtos que transmitem credibilidade se destacam, conquistam clientes fiéis e ampliam seu alcance, tornando-se referência em seus segmentos. Mais do que simples identificações, certificações e selos de qualidade são ferramentas estratégicas que fortalecem a imagem da marca, demonstram cuidado em cada etapa do processo e aumentam o valor percebido do produto.</p>
+  <div class="section-heading escalar">O que está acontecendo no mercado</div>
+  <p class="body-text">Certificações e selos têm ganhado cada vez mais relevância na decisão de compra, especialmente em nichos artesanais, gourmet e sustentáveis. As Indicações Geográficas (IGs) têm se consolidado como um dos selos mais estratégicos para produtos artesanais no Brasil, reconhecendo e protegendo produtos com características únicas ligadas ao seu território de origem.</p>
+  <p class="body-text" style="margin-top:10px;">O Selo ARTE, criado pela Lei nº 13.680/2018, revolucionou o mercado artesanal brasileiro ao permitir que produtos de origem animal elaborados artesanalmente possam ser comercializados em todo o território nacional, desde que atendam aos padrões sanitários e de qualidade estabelecidos.</p>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>39</span></div>
+</div>
+
+<div class="page" style="background: var(--escalar-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <p class="body-text">Marcas certificadas se posicionam como profissionais e éticas, conquistando reconhecimento do público e do próprio mercado. Em um cenário de consumo cada vez mais consciente, investir em certificações é também investir em posicionamento e diferenciação.</p>
+  <p class="body-text" style="margin-top:10px;">O arroz vermelho do Vale do Piancó, na Paraíba, por exemplo, maior produtor mundial dessa variedade, está em processo de obtenção de IG, buscando valorizar as 5 mil famílias envolvidas na produção de 5 mil hectares anuais desse produto reconhecido como "tipo 1". Isso demonstra como as IGs não apenas protegem a tradição e a autenticidade, mas também agregam valor comercial significativo, abrem mercados premium nacionais e internacionais, e fortalecem a identidade territorial dos produtos artesanais.</p>
+  <div class="section-heading escalar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list escalar">
+    <li><strong>Certificações aumentam profissionalismo:</strong> mesmo em negócios de pequeno porte, processos bem estruturados e foco na qualidade podem alcançar o mesmo reconhecimento de grandes marcas.</li>
+    <li><strong>Selos atraem consumidores exigentes e distribuidores:</strong> abrindo novas oportunidades de venda e parcerias estratégicas.</li>
+    <li><strong>Certificações regionais são viáveis:</strong> com planejamento, organização e apoio de cooperativas ou associações locais, pequenas marcas podem conquistar reconhecimento formal.</li>
+    <li><strong>Fortalecimento territorial:</strong> certificações vinculadas à origem ou modo de produção valorizam a região e criam identidade coletiva que beneficia toda a cadeia.</li>
+    <li><strong>Acesso ao mercado nacional:</strong> a certificação permite que produtos como queijos artesanais, produtos lácteos, cárneos, pescados e derivados possam ser vendidos livremente em todo o território nacional, promovendo a desburocratização do registro e comercialização.</li>
+  </ul>
+
+  <img class="ebook-img h-sm" src="images/selo-qualidade.png" alt="Selo de qualidade artesanal">
+
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>40</span></div>
+</div>
+
+<div class="page" style="background: var(--escalar-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="section-heading escalar">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list escalar">
+    <li><strong>Escolha certificações alinhadas:</strong> priorize selos que agreguem valor real e tenham significado para seu cliente e produto.</li>
+    <li><strong>Valorize as certificações na comunicação:</strong> inclua os selos no rótulo, embalagens e ambiente digital, reforçando credibilidade em todos os pontos de contato.</li>
+    <li><strong>Eduque o consumidor:</strong> explique o que cada selo representa, aumentando confiança e ampliando percepção de valor.</li>
+    <li><strong>Associe certificação e storytelling:</strong> conte histórias sobre o processo artesanal, o cuidado com insumos e a conexão com o território, transforme o selo em parte da narrativa da marca.</li>
+    <li><strong>Mantenha coerência no dia a dia:</strong> certificação deve refletir práticas reais; consistência entre discurso e ação sustenta credibilidade no longo prazo.</li>
+  </ul>
+  <div class="section-heading escalar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value escalar">280</td><td class="stat-desc">O Selo ARTE alcançou mais de 280 produtos certificados em 2025, consolidando a expansão do reconhecimento artesanal — CIDASC / MAPA, 2025.</td></tr>
+    <tr><td class="stat-value escalar">129</td><td class="stat-desc">O Selo Agro SP Artesanal conta com 129 estabelecimentos registrados, com novas adesões previstas — Secretaria de Agricultura de SP, 2024.</td></tr>
+    <tr><td class="stat-value escalar">XX</td><td class="stat-desc">Produtos elegíveis: queijo, manteiga, doce de leite, salame, hambúrguer, mel e subprodutos de pescados podem receber o Selo ARTE</td></tr>
+    <tr><td class="stat-value escalar">122</td><td class="stat-desc">O Brasil possui 122 Indicações Geográficas registradas pelo INPI até 2024, cobrindo produtos de todas as regiões — INPI, 2024.</td></tr>
+  </table>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>41</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGES 42-44 — CAPÍTULO 15: PROFISSIONALIZAÇÃO E CONSISTÊNCIA
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page" style="background: var(--escalar-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="ch-ghost">15</div>
+  <div class="section-label escalar">ESCALAR — CAPÍTULO 15</div>
+  <div class="chapter-title">15. PROFISSIONALIZAÇÃO E CONSISTÊNCIA: A BASE DO CRESCIMENTO SUSTENTÁVEL</div>
+  <hr class="accent-line escalar">
+  <div class="section-heading escalar">Apresentação geral</div>
+  <p class="body-text">No universo artesanal, a qualidade de um produto está diretamente ligada à dedicação e ao cuidado de quem o produz. Mas transformar talento, paixão e criatividade em reconhecimento de mercado exige profissionalização e consistência.</p>
+  <p class="body-text" style="margin-top:10px;">Profissionalizar-se não depende de uma grande estrutura, e sim de organização, visão e constância. O primeiro passo é enxergar o ofício artesanal como um negócio, com metas, planejamento e propósito claros. Isso cria bases sólidas para crescer de forma sustentável.</p>
+  <p class="body-text" style="margin-top:10px;">Com o tempo, essas práticas se tornam diferenciais competitivos. O produto ganha reconhecimento, o produtor se fortalece como marca e o negócio artesanal conquista credibilidade, estabilidade e valor de mercado.</p>
+  <div class="section-heading escalar">O que está acontecendo no mercado</div>
+  <p class="body-text">O consumidor atual está cada vez mais atento à qualidade consistente e à experiência de compra previsível. Marcas que entregam produtos com o mesmo padrão de cor, textura, sabor e acabamento constroem confiança e fidelizam clientes.</p>
+  <p class="body-text" style="margin-top:10px;">No cenário artesanal, essa consistência vem se tornando um dos principais critérios de escolha. Produtos que mantêm seu padrão, mesmo em pequenas produções, destacam-se frente à concorrência e podem praticar preços justos e sustentáveis, pois transmitem profissionalismo e confiabilidade.</p>
+  <p class="body-text" style="margin-top:10px;">Além disso, parceiros comerciais e distribuidores preferem marcas organizadas, com processos claros e comunicação eficiente. A consistência operacional também melhora a logística, reduz perdas e aumenta a previsibilidade de entrega.</p>
+  <p class="body-text" style="margin-top:10px;">Importante destacar: a profissionalização não elimina a criatividade, ela potencializa. Quando o produtor domina seus processos, sobra mais espaço para inovar com segurança, sem comprometer a qualidade ou a identidade do produto.</p>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>42</span></div>
+</div>
+
+<div class="page" style="background: var(--escalar-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="section-heading escalar">O que o produtor pode aprender com isso</div>
+  <ul class="content-list escalar">
+    <li><strong>Consistência vale mais que quantidade:</strong> clientes fiéis valorizam produtos que entregam a mesma experiência a cada compra. Regularidade gera confiança e recompra.</li>
+    <li><strong>Padronização reduz desperdício e custos:</strong> controlar insumos, tempos e etapas evita erros e melhora eficiência. Pequenas melhorias diárias fazem grande diferença no resultado final.</li>
+    <li><strong>Profissionalização aumenta valor percebido:</strong> produtos com padrão de qualidade bem definido justificam preços mais altos e fortalecem a imagem do produtor.</li>
+    <li><strong>Planejamento abre portas:</strong> produtores organizados conseguem participar de feiras, cooperativas e programas de certificação, ampliando oportunidades de mercado.</li>
+    <li><strong>Gestão e colaboração fortalecem território:</strong> trocar experiências com outros artesãos, participar de associações e buscar apoio técnico ajuda a crescer com sustentabilidade e reconhecimento coletivo.</li>
+  </ul>
+
+  <img class="ebook-img h-md" src="images/caderno-planejamento.png" alt="Caderno de planejamento com ingredientes">
+
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>43</span></div>
+</div>
+
+<div class="page" style="background: var(--escalar-tint);">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+  <div class="section-heading escalar">Como transformar isso em vantagem competitiva</div>
+  <ul class="content-list escalar">
+    <li><strong>Organize seus processos:</strong> documente etapas de produção, defina padrões e tempos médios, e mantenha registros de insumos, custos e resultados. Isso garante previsibilidade e facilita melhorias.</li>
+    <li><strong>Invista em capacitação:</strong> participe, você e sua equipe, de cursos, oficinas e feiras do setor. Aprender sobre gestão, marketing, finanças e tendências amplia visão de mercado e fortalece posicionamento.</li>
+    <li><strong>Padronize a qualidade:</strong> mantenha o mesmo nível de cuidado e acabamento em cada peça. Consistência no resultado final constrói confiança do consumidor.</li>
+    <li><strong>Crie identidade de marca sólida:</strong> desenvolva nome, logotipo e estilo visual coerentes com seus valores e público. Isso diferencia seu produto e reforça profissionalismo.</li>
+    <li><strong>Comunique-se de forma clara e constante:</strong> use redes sociais, embalagens e pontos de venda para contar sua história, mostrar o processo e destacar o valor do artesanal.</li>
+    <li><strong>Monitore e ajuste:</strong> ouça seus clientes, acompanhe resultados e melhore continuamente. Profissionalização é um processo em evolução, construído passo a passo.</li>
+  </ul>
+  <div class="section-heading escalar">Números de mercado</div>
+  <table class="stats-table">
+    <tr><td class="stat-value escalar">45%</td><td class="stat-desc">Negócios artesanais formalizados têm 45% mais chances de expansão comercial — SEBRAE Estudos de Mercado, 2024.</td></tr>
+    <tr><td class="stat-value escalar">32%</td><td class="stat-desc">Produtores com registro sanitário e certificação aumentam o faturamento médio em até 32% — MAPA / Embrapa, 2025.</td></tr>
+    <tr><td class="stat-value escalar">21%</td><td class="stat-desc">O número de empreendedores artesanais registrados cresceu 21% entre 2023 e 2025, reforçando a profissionalização do setor — Observatório do Empreendedorismo Rural, 2025.</td></tr>
+  </table>
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>44</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 45 — CONCLUSÃO
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+
+  <div class="title-hero" style="font-size:40px; margin-bottom:24px;">CONCLUSÃO</div>
+
+  <div class="two-col">
+    <div>
+      <p class="body-text">Chegamos ao final deste guia, mas o verdadeiro começo está nas suas mãos.</p>
+      <p class="body-text" style="margin-top:10px;">Produzir alimentos artesanais é muito mais que dominar técnicas ou escolher ingredientes é construir uma marca que carrega história, identidade e propósito. É transformar paixão em negócio sustentável, autenticidade em diferencial competitivo, e qualidade em reconhecimento de mercado.</p>
+      <p class="body-text" style="margin-top:10px;">Ao longo destes 15 capítulos, exploramos os pilares que sustentam marcas artesanais de sucesso:</p>
+      <p class="body-text" style="margin-top:10px;"><strong style="color:var(--text-primary);">Diferenciação pelo produto:</strong> ingredientes nativos, equilíbrio de sabores, fermentação, experiência sensorial e versatilidade que ampliam ocasiões de consumo.</p>
+    </div>
+    <div>
+      <p class="body-text"><strong style="color:var(--text-primary);">Comunicação estratégica:</strong> narrativa autêntica, presença digital consistente, embalagens que vendem, eventos que criam defensores e educação que transforma clientes em embaixadores.</p>
+      <p class="body-text" style="margin-top:10px;"><strong style="color:var(--text-primary);">Gestão e credibilidade:</strong> parcerias estratégicas, sustentabilidade genuína, certificações que agregam valor, e profissionalização que garante consistência e crescimento.</p>
+      <p class="body-text" style="margin-top:10px;">O mercado de produtos artesanais está em franca expansão. Os números mostram consumidores cada vez mais dispostos a pagar por qualidade, autenticidade e experiências memoráveis. As oportunidades estão aí, para quem souber aproveitá-las com estratégia e propósito.</p>
+    </div>
+  </div>
+
+  <img class="ebook-img h-md" style="margin-top:24px;" src="images/mesa-producao.png" alt="Mesa com produção e alimentos">
+
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>45</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 46 — SEUS PRÓXIMOS PASSOS
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+
+  <div class="title-hero" style="font-size:36px; margin-bottom:24px;">SEUS PRÓXIMOS PASSOS</div>
+
+  <ol class="numbered-list">
+    <li><strong>Identifique seu diferencial único:</strong> O que seu território, sua história e seus processos têm de especial?</li>
+    <li><strong>Defina seu público ideal:</strong> Para quem você está produzindo? O que esse público valoriza?</li>
+    <li><strong>Conte sua história com autenticidade:</strong> Nas embalagens, nas redes sociais, nos eventos. Seja consistente e genuíno.</li>
+    <li><strong>Organize seus processos:</strong> Documente, padronize e melhore continuamente. Profissionalização potencializa criatividade.</li>
+    <li><strong>Busque certificações alinhadas:</strong> Selos de qualidade abrem portas e constroem credibilidade.</li>
+    <li><strong>Invista em relacionamento:</strong> Clientes educados e conectados com sua marca são seus maiores divulgadores.</li>
+    <li><strong>Colabore e fortaleça o território:</strong> Sozinho você vai rápido, junto você vai longe.</li>
+  </ol>
+
+  <div class="section-heading" style="margin-top:24px;">O artesanal do futuro</div>
+  <p class="body-text">O futuro dos produtos artesanais está na mão de quem une tradição e inovação, paixão e gestão, autenticidade e comunicação estratégica. Está na mão de quem entende que produzir com excelência é apenas o começo, e que construir uma marca sólida, reconhecida e admirada exige visão, consistência e propósito.</p>
+
+  <p class="body-text" style="margin-top:16px;"><strong style="color:var(--text-primary);">Este guia é seu ponto de partida. O reconhecimento que seu trabalho merece começa agora.</strong></p>
+  <p class="body-text" style="margin-top:12px;"><strong style="color:var(--text-primary);">Aplique. Experimente. Evolua.</strong></p>
+  <p class="body-text" style="margin-top:12px;"><strong style="color:var(--text-primary);">E lembre-se: o artesanal do futuro começa com quem decide fazer diferente hoje.</strong></p>
+
+  <img class="ebook-img h-md" style="margin-top:20px;" src="images/frutas-ingredientes.png" alt="Frutas e ingredientes naturais">
+
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>46</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 47 — COMO POSSO AJUDAR
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+
+  <div class="title-hero" style="font-size:32px; margin-bottom:24px;">COMO POSSO AJUDAR VOCÊ E SUA EMPRESA</div>
+
+  <div class="contact-block">
+    <h4>Mentoria individual e consultoria empresarial</h4>
+    <p>Acompanhamento personalizado para produtores que desejam profissionalizar sua marca, estruturar processos, desenvolver produtos diferenciados e conquistar novos mercados. Sessões focadas nas suas necessidades específicas, com planos de ação práticos e mensuráveis.</p>
+    <ul class="content-list" style="margin-top:8px;">
+      <li>Gestão de pessoas e liderança no agronegócio</li>
+      <li>Estruturação de processos produtivos artesanais</li>
+      <li>Desenvolvimento e aprimoramento de produtos</li>
+      <li>Estratégias de posicionamento e comunicação de marca</li>
+      <li>Certificações e adequações regulatórias</li>
+    </ul>
+  </div>
+
+  <div class="contact-block">
+    <h4>Palestras</h4>
+    <p>Conteúdos inspiradores e práticos sobre:</p>
+    <ul class="content-list" style="margin-top:8px;">
+      <li>Inovação e diferenciação no mercado artesanal</li>
+      <li>Liderança e gestão de equipes no agro</li>
+      <li>Empreendedorismo e propósito no setor alimentício</li>
+      <li>Tendências e oportunidades no mercado de produtos artesanais</li>
+      <li>Cultura organizacional e desenvolvimento humano</li>
+    </ul>
+  </div>
+
+  <div class="contact-block">
+    <h4>Treinamento de equipe</h4>
+    <p>Capacitação in company para:</p>
+    <ul class="content-list" style="margin-top:8px;">
+      <li>Equipes de produção artesanal (boas práticas, padronização, qualidade)</li>
+      <li>Times comerciais (storytelling, valor percebido, experiência do cliente)</li>
+      <li>Lideranças (gestão de pessoas, desenvolvimento de talentos, cultura de excelência)</li>
+    </ul>
+  </div>
+
+  <div class="contact-block">
+    <h4>Vamos conversar?</h4>
+    <p>Se você deseja transformar seu negócio artesanal em uma marca reconhecida e sustentável, ou se sua empresa busca capacitação especializada para suas equipes, entre em contato:</p>
+    <div class="contact-info">
+      E-mail: orizabrasil@gmail.com<br>
+      WhatsApp: 83 9650-8668<br>
+      LinkedIn: gabrielpetelinkar/<br>
+      Instagram: @gabrielpetelinkar
+    </div>
+  </div>
+
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>47</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 48 — CLOSING QUOTE
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header"><span>Como criar, vender e escalar alimentos artesanais</span><span>2026</span></div>
+
+  <div style="display:flex; flex-direction:column; justify-content:center; min-height:calc(297mm - 180px);">
+    <div class="closing-quote">
+      TRANSFORMAR O<br>
+      AGRO É<br>
+      DESENVOLVER<br>
+      PESSOAS E<br>
+      NEGÓCIOS QUE<br>
+      CARREGAM, EM<br>
+      CADA AÇÃO, A<br>
+      ESSÊNCIA E A<br>
+      HISTÓRIA DE<br>
+      QUEM OS CRIA.
+    </div>
+
+    <div class="closing-author">
+      <strong>Gabriel Petelinkar Pereira</strong>
+      Engenheiro Agrônomo | Especialista em Agronegócios, Liderança e Gestão de Pessoas<br>
+      Consultor em Agroindústria e Processos Artesanais de Alimentos | Empreendedor | Palestrante
+    </div>
+  </div>
+
+  <div class="page-footer"><span>Gabriel Petelinkar</span><span>48</span></div>
+</div>
+
+</body>
+</html>

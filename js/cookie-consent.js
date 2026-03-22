@@ -6,8 +6,8 @@
   'use strict';
 
   var CONSENT_KEY = 'cookie_consent';
-  var GA_MEASUREMENT_ID = 'G-SEU_ID_AQUI';
-  var META_PIXEL_ID = 'SEU_PIXEL_ID_AQUI';
+  var GA_MEASUREMENT_ID = 'G-RC7EMTZ71Q';
+  var META_PIXEL_ID = '1463178645411075';
 
   /* ------------------------------------------
      Check stored consent

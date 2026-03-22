@@ -3,156 +3,2584 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guia Estratégico para Produtores Artesanais | Transforme Sua Produção em Negócio</title>
-  <meta name="description" content="Guia estratégico com 15 capítulos práticos para produtores artesanais. Aprenda diferenciação de produto, comunicação estratégica e gestão de marca. Por Gabriel Petelinkar — 12 anos de experiência. R$ 97.">
+  <title>Curso Como Criar, Vender e Escalar Alimentos Artesanais | 15 Videoaulas</title>
+  <meta name="description" content="Curso completo com 15 videoaulas para produtores artesanais. Aprenda diferenciação de produto, comunicação estratégica e gestão de marca. Por Gabriel Petelinkar — 12+ anos de experiência. Inclui ebook + 3 bônus.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://alimentosartesanais.com.br/">
+  <link rel="canonical" href="https://www.alimentosartesanais.com.br/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="product">
-  <meta property="og:title" content="Guia Estratégico para Produtores Artesanais">
-  <meta property="og:description" content="Guia estratégico com 15 capítulos práticos para produtores artesanais. Aprenda diferenciação de produto, comunicação estratégica e gestão de marca. Por Gabriel Petelinkar — 12 anos de experiência. R$ 97.">
-  <meta property="og:image" content="https://alimentosartesanais.com.br/assets/images/og-image.jpg">
-  <meta property="og:url" content="https://alimentosartesanais.com.br/">
+  <meta property="og:title" content="Curso Como Criar, Vender e Escalar Alimentos Artesanais">
+  <meta property="og:description" content="Curso completo com 15 videoaulas para produtores artesanais. Aprenda diferenciação de produto, comunicação estratégica e gestão de marca. Por Gabriel Petelinkar — 12+ anos de experiência.">
+  <meta property="og:image" content="https://www.alimentosartesanais.com.br/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://www.alimentosartesanais.com.br/">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Alimentos Artesanais">
-  <meta property="product:price:amount" content="97.00">
-  <meta property="product:price:currency" content="BRL">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Guia Estratégico para Produtores Artesanais">
-  <meta name="twitter:description" content="Transforme sua produção artesanal em um negócio lucrativo. R$ 97.">
-  <meta name="twitter:image" content="https://alimentosartesanais.com.br/assets/images/og-image.jpg">
+  <meta name="twitter:title" content="Curso Como Criar, Vender e Escalar Alimentos Artesanais">
+  <meta name="twitter:description" content="Transforme sua produção artesanal em um negócio lucrativo. 15 videoaulas + ebook + bônus.">
+  <meta name="twitter:image" content="https://www.alimentosartesanais.com.br/assets/images/og-image.jpg">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#0D0D0D">
 
   <!-- Favicon -->
-  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 
-  <!-- Google Fonts: Preconnect + Load -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* ============================================
+       RESET
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ============================================
+       DESIGN TOKENS
+       ============================================ */
+    :root {
+      --bg-primary: #0D0D0D;
+      --bg-secondary: #1A1A1A;
+      --bg-elevated: #222222;
+
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0B0B0;
+      --text-muted: #7A7A7A;
+      --text-warm: #FAF5EB;
+
+      --criar: #D4A843;
+      --criar-glow: rgba(212,168,67,0.15);
+      --vender: #C45B3A;
+      --vender-glow: rgba(196,91,58,0.15);
+      --escalar: #5B8C3E;
+      --escalar-glow: rgba(91,140,62,0.15);
+
+      --border: rgba(255,255,255,0.08);
+
+      --font-display: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-editorial: 'Playfair Display', serif;
+
+      --radius: 14px;
+      --radius-sm: 8px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================
+       BASE
+       ============================================ */
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      line-height: 1.6;
+      background-color: var(--bg-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--criar);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: #E8BC55;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .container--narrow {
+      max-width: 800px;
+    }
+
+    /* ============================================
+       SECTION UTILITIES
+       ============================================ */
+    .section-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       BUTTONS
+       ============================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.875rem 2rem;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      min-height: 44px;
+      letter-spacing: 0.02em;
+    }
+
+    .btn--primary {
+      background-color: var(--criar);
+      color: var(--bg-primary);
+      box-shadow: 0 0 30px var(--criar-glow);
+    }
+
+    .btn--primary:hover {
+      background-color: #E8BC55;
+      color: var(--bg-primary);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 50px rgba(212,168,67,0.3);
+    }
+
+    .btn--primary:active {
+      transform: translateY(0) scale(1);
+    }
+
+    .btn--large {
+      font-size: 1.125rem;
+      padding: 1.125rem 3rem;
+    }
+
+    /* ============================================
+       SCROLL PROGRESS BAR
+       ============================================ */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9998;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--criar), var(--vender), var(--escalar));
+    }
+
+    /* ============================================
+       MINI NAV
+       ============================================ */
+    .mini-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(13, 13, 13, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--border);
+      z-index: 800;
+      padding: 0.5rem 1.5rem;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mini-nav--visible {
+      transform: translateY(0);
+    }
+
+    .mini-nav__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mini-nav__brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--criar);
+    }
+
+    .mini-nav .btn {
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      background-color: var(--bg-primary);
+      padding: 4rem 0 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,168,67,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero__content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__badge {
+      display: inline-block;
+      background: rgba(212,168,67,0.08);
+      color: var(--criar);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: 1px solid rgba(212,168,67,0.2);
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    .hero__subtitle {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .hero__quick-win {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--criar);
+      background: rgba(212,168,67,0.06);
+      border: 1px solid rgba(212,168,67,0.15);
+      border-left: 3px solid var(--criar);
+      padding: 1rem 1.25rem;
+      border-radius: 4px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .hero__image {
+      max-width: 320px;
+      margin: 0 auto 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 60px var(--criar-glow);
+    }
+
+    .hero__cta-wrapper {
+      margin-bottom: 1rem;
+    }
+
+    .hero__cta-note {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .hero__social-proof {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero__social-proof-stars {
+      color: var(--criar);
+      letter-spacing: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ============================================
+       PAIN POINTS
+       ============================================ */
+    .pain-points {
+      padding: 5rem 0;
+      background-color: var(--bg-secondary);
+    }
+
+    .pain-points__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pain-points__item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.5rem 1.75rem;
+      background: rgba(255,255,255,0.02);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .pain-points__item:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .pain-points__icon {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(212,168,67,0.1);
+      border: 1px solid rgba(212,168,67,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pain-points__text h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+
+    .pain-points__text p {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       PAIN SCENE ILLUSTRATIONS
+       ============================================ */
+    .pain-scene {
+      height: 140px;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-primary);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    /* Scene: Shelf */
+    .scene-shelf {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 12px;
+      height: 100%;
+      padding: 0 20px 20px;
+    }
+
+    .scene-shelf__jar {
+      width: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .scene-shelf__lid {
+      width: 32px;
+      height: 6px;
+      background: #333;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .scene-shelf__body {
+      width: 36px;
+      height: 50px;
+      background: #2A2A2A;
+      border-radius: 0 0 6px 6px;
+      border: 1px solid #333;
+      border-top: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scene-shelf__label {
+      width: 24px;
+      height: 16px;
+      background: #444;
+      border-radius: 2px;
+    }
+
+    .scene-shelf__jar--highlight .scene-shelf__body {
+      border-color: rgba(212,168,67,0.3);
+    }
+
+    .scene-shelf__jar--highlight .scene-shelf__label {
+      background: rgba(212,168,67,0.2);
+    }
+
+    .scene-shelf__question {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 1.5rem;
+      color: rgba(212,168,67,0.3);
+      font-weight: 700;
+    }
+
+    .scene-shelf__line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(212,168,67,0.15), transparent);
+    }
+
+    /* Scene: Story */
+    .scene-story {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 20px;
+      position: relative;
+    }
+
+    .scene-story__bubble {
+      width: 180px;
+      height: 70px;
+      background: rgba(255,255,255,0.03);
+      border: 1px dashed rgba(255,255,255,0.12);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .scene-story__bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid rgba(255,255,255,0.12);
+    }
+
+    .scene-story__dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .scene-story__dot {
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      animation: scene-blink 1.5s ease-in-out infinite;
+    }
+
+    .scene-story__dot:nth-child(2) { animation-delay: 0.3s; }
+    .scene-story__dot:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes scene-blink {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.5; }
+    }
+
+    .scene-story__person {
+      position: absolute;
+      bottom: 16px;
+      left: 24px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #2A2A2A;
+      border: 1px solid #444;
+    }
+
+    .scene-story__person::after {
+      content: '';
+      position: absolute;
+      top: 22px;
+      left: 4px;
+      width: 12px;
+      height: 16px;
+      background: #2A2A2A;
+      border-radius: 4px;
+      border: 1px solid #444;
+    }
+
+    /* Scene: Package */
+    .scene-package {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 24px;
+      padding: 20px;
+    }
+
+    .scene-package__box {
+      width: 70px;
+      height: 80px;
+      background: var(--bg-elevated);
+      border: 1px solid #333;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      position: relative;
+    }
+
+    .scene-package__label-line {
+      width: 40px;
+      height: 3px;
+      background: #333;
+      border-radius: 2px;
+    }
+
+    .scene-package__label-line--short {
+      width: 28px;
+    }
+
+    .scene-package__vs {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .scene-package__box--premium {
+      border-color: rgba(212,168,67,0.3);
+      box-shadow: 0 0 20px rgba(212,168,67,0.08);
+    }
+
+    .scene-package__box--premium .scene-package__label-line {
+      background: rgba(212,168,67,0.3);
+    }
+
+    .scene-package__star {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.6rem;
+      color: var(--criar);
+    }
+
+    /* Scene: Digital */
+    .scene-digital {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .scene-digital__phone {
+      width: 56px;
+      height: 90px;
+      background: var(--bg-elevated);
+      border: 2px solid #333;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 6px 6px;
+      gap: 4px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .scene-digital__notch {
+      width: 20px;
+      height: 3px;
+      background: #333;
+      border-radius: 2px;
+      position: absolute;
+      top: 4px;
+    }
+
+    .scene-digital__line {
+      width: 100%;
+      height: 3px;
+      background: #2A2A2A;
+      border-radius: 1px;
+      margin-top: 4px;
+    }
+
+    .scene-digital__line--short {
+      width: 60%;
+    }
+
+    .scene-digital__heart {
+      margin-top: auto;
+      font-size: 0.55rem;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .scene-digital__counter {
+      font-family: var(--font-display);
+      font-size: 0.5rem;
+      color: #444;
+    }
+
+    .scene-digital__stats {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .scene-digital__stat {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      color: #444;
+    }
+
+    .scene-digital__bar {
+      width: 50px;
+      height: 4px;
+      background: var(--bg-elevated);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .scene-digital__bar-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .scene-digital__bar-fill--low { width: 15%; background: #c0392b; }
+    .scene-digital__bar-fill--med { width: 25%; background: #444; }
+
+    /* Scene: Growth */
+    .scene-growth {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      height: 100%;
+      padding: 16px 24px 20px;
+      position: relative;
+      gap: 4px;
+    }
+
+    .scene-growth__bar {
+      width: 20px;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .scene-growth__bar--flat {
+      background: #2A2A2A;
+      border: 1px solid #333;
+      border-bottom: none;
+    }
+
+    .scene-growth__bar--potential {
+      background: none;
+      border: 1px dashed rgba(212,168,67,0.2);
+      border-bottom: none;
+    }
+
+    .scene-growth__flatline {
+      position: absolute;
+      top: 55%;
+      left: 24px;
+      right: 24px;
+      height: 1px;
+      background: rgba(212,168,67,0.15);
+    }
+
+    .scene-growth__flatline-label {
+      position: absolute;
+      top: 48%;
+      right: 24px;
+      font-family: var(--font-display);
+      font-size: 0.5rem;
+      color: rgba(212,168,67,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .scene-growth__axis {
+      position: absolute;
+      bottom: 18px;
+      left: 24px;
+      right: 24px;
+      height: 1px;
+      background: #222;
+    }
+
+    /* Scene: Cred */
+    .scene-cred {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .scene-cred__badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .scene-cred__badge-inner {
+      font-family: var(--font-display);
+      font-size: 0.5rem;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .scene-cred__badge--empty::after {
+      content: '?';
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 16px;
+      height: 16px;
+      background: var(--bg-elevated);
+      border: 1px solid #333;
+      border-radius: 50%;
+      font-size: 0.5rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scene-cred__plus {
+      font-size: 1rem;
+      color: #222;
+    }
+
+    /* ============================================
+       SOLUTION
+       ============================================ */
+    .solution {
+      padding: 5rem 0;
+      background-color: var(--bg-primary);
+      text-align: center;
+      position: relative;
+    }
+
+    .solution::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(212,168,67,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .solution__text {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      color: var(--text-secondary);
+      position: relative;
+    }
+
+    .solution__text strong {
+      color: var(--criar);
+    }
+
+    .solution__highlight {
+      font-family: var(--font-editorial);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--criar);
+      margin-top: 1.5rem;
+      position: relative;
+    }
+
+    /* ============================================
+       3 PILARES
+       ============================================ */
+    .pilares {
+      padding: 5rem 0;
+      background-color: var(--bg-secondary);
+      position: relative;
+    }
+
+    .pilares::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, var(--criar-glow) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, var(--vender-glow) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, var(--escalar-glow) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .pilares__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .pilar-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: left;
+      transition: var(--transition);
+    }
+
+    .pilar-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+
+    .pilar-card--criar { border-top: 3px solid var(--criar); }
+    .pilar-card--vender { border-top: 3px solid var(--vender); }
+    .pilar-card--escalar { border-top: 3px solid var(--escalar); }
+
+    .pilar-card__tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .pilar-card--criar .pilar-card__tag { background: var(--criar); color: var(--bg-primary); }
+    .pilar-card--vender .pilar-card__tag { background: var(--vender); color: #fff; }
+    .pilar-card--escalar .pilar-card__tag { background: var(--escalar); color: #fff; }
+
+    .pilar-card__name {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+
+    .pilar-card--criar .pilar-card__name { color: var(--criar); }
+    .pilar-card--vender .pilar-card__name { color: var(--vender); }
+    .pilar-card--escalar .pilar-card__name { color: var(--escalar); }
+
+    .pilar-card__desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.5rem;
+    }
+
+    .pilar-card__aulas {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .pilar-card__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .pilar-card__list li {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .pilar-card__list li::before {
+      content: '\2713';
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    .pilar-card--criar .pilar-card__list li::before { color: var(--criar); }
+    .pilar-card--vender .pilar-card__list li::before { color: var(--vender); }
+    .pilar-card--escalar .pilar-card__list li::before { color: var(--escalar); }
+
+    /* ============================================
+       CONTENT OVERVIEW
+       ============================================ */
+    .content-overview {
+      padding: 5rem 0;
+      background-color: var(--bg-primary);
+    }
+
+    .content-overview__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .content-overview__card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.75rem;
+      background: rgba(255,255,255,0.02);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .content-overview__card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .content-overview__number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--criar);
+      color: var(--bg-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.8rem;
+      margin-top: 2px;
+      box-shadow: 0 0 12px var(--criar-glow);
+    }
+
+    .content-overview__card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text-primary);
+    }
+
+    .content-overview__card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .content-overview__cta {
+      text-align: center;
+    }
+
+    /* ============================================
+       AUDIENCE
+       ============================================ */
+    .audience {
+      padding: 5rem 0;
+      background-color: var(--bg-secondary);
+    }
+
+    .audience__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .audience__card {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255,255,255,0.02);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .audience__card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .audience__icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--criar);
+    }
+
+    .audience__card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .audience__card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* ============================================
+       AUTHOR
+       ============================================ */
+    .author {
+      padding: 5rem 0;
+      background-color: var(--bg-primary);
+      position: relative;
+    }
+
+    .author::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(212,168,67,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .author__wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .author__photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 5%;
+      border: 3px solid var(--criar);
+      box-shadow: 0 0 40px var(--criar-glow);
+      background-color: var(--bg-elevated);
+    }
+
+    .author__name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+      color: var(--text-primary);
+    }
+
+    .author__role {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--criar);
+      margin-bottom: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .author__bio {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* ============================================
+       NUMBERS STRIP
+       ============================================ */
+    .numbers-strip {
+      padding: 3.5rem 0;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .numbers-strip__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .numbers-strip__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .numbers-strip__number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--criar);
+      line-height: 1;
+    }
+
+    .numbers-strip__label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ============================================
+       CREDIBILITY
+       ============================================ */
+    .credibility {
+      padding: 5rem 0;
+      background: var(--bg-primary);
+    }
+
+    .credibility__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .credibility__card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      transition: var(--transition);
+    }
+
+    .credibility__card:hover {
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .credibility__icon {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .credibility__card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .credibility__card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       TESTIMONIALS
+       ============================================ */
+    .testimonials {
+      padding: 5rem 0;
+      background: var(--bg-secondary);
+    }
+
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .testimonials__card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .testimonials__stars {
+      color: var(--criar);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonials__text {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-editorial);
+      font-style: italic;
+    }
+
+    .testimonials__text strong {
+      color: var(--text-primary);
+      font-style: normal;
+    }
+
+    .testimonials__author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonials__avatar-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--criar);
+      color: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .testimonials__info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonials__info strong {
+      font-size: 0.875rem;
+      color: var(--text-primary);
+    }
+
+    .testimonials__info span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================
+       BONUS STACK
+       ============================================ */
+    .bonus-stack {
+      padding: 5rem 0;
+      background: var(--bg-primary);
+      position: relative;
+    }
+
+    .bonus-stack::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(212,168,67,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .bonus-stack__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .bonus-stack__card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .bonus-stack__tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--bg-primary);
+      background: var(--criar);
+      padding: 2px 10px;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .bonus-stack__card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .bonus-stack__card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .bonus-stack__value {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    /* ============================================
+       BONUS MOCKUPS
+       ============================================ */
+    /* Mockup: Rotulo */
+    .mockup-rotulo {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .mockup-rotulo__header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mockup-rotulo__icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--criar) 0%, #C49B45 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--bg-primary);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .mockup-rotulo__title-bar span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    .mockup-rotulo__title-bar small {
+      font-size: 0.65rem;
+      color: #666;
+    }
+
+    .mockup-rotulo__label {
+      background: var(--bg-elevated);
+      border: 1px solid rgba(212,168,67,0.2);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .mockup-rotulo__label-name {
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--criar);
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .mockup-rotulo__label-sub {
+      text-align: center;
+      font-size: 0.6rem;
+      color: #666;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .mockup-rotulo__table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.6rem;
+      font-family: var(--font-display);
+    }
+
+    .mockup-rotulo__table th {
+      text-align: left;
+      color: var(--criar);
+      padding: 3px 6px;
+      border-bottom: 1px solid rgba(212,168,67,0.2);
+      font-weight: 600;
+    }
+
+    .mockup-rotulo__table td {
+      padding: 3px 6px;
+      color: #888;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .mockup-rotulo__table td:last-child {
+      text-align: right;
+      color: #aaa;
+    }
+
+    .mockup-rotulo__footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 0.55rem;
+      color: #555;
+      font-family: var(--font-display);
+    }
+
+    .mockup-rotulo__allergens {
+      margin-top: 8px;
+      font-size: 0.55rem;
+      color: #c0392b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    /* Mockup: Planilha */
+    .mockup-planilha {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .mockup-planilha__toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: #181818;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mockup-planilha__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .mockup-planilha__dot--r { background: #e74c3c; }
+    .mockup-planilha__dot--y { background: #f39c12; }
+    .mockup-planilha__dot--g { background: #27ae60; }
+
+    .mockup-planilha__tab {
+      font-size: 0.65rem;
+      color: #888;
+      background: rgba(255,255,255,0.05);
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    .mockup-planilha__tab--active {
+      color: var(--criar);
+      background: rgba(212,168,67,0.1);
+    }
+
+    .mockup-planilha__grid {
+      display: grid;
+      grid-template-columns: 40px repeat(4, 1fr);
+      font-size: 0.6rem;
+      font-family: var(--font-display);
+    }
+
+    .mockup-planilha__cell {
+      padding: 6px 8px;
+      border-right: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: #888;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .mockup-planilha__cell--header {
+      background: var(--bg-elevated);
+      color: var(--criar);
+      font-weight: 600;
+      font-size: 0.55rem;
+      text-align: center;
+    }
+
+    .mockup-planilha__cell--row-num {
+      background: #141414;
+      color: #555;
+      text-align: center;
+      font-size: 0.55rem;
+    }
+
+    .mockup-planilha__cell--highlight {
+      color: #27ae60;
+      font-weight: 600;
+    }
+
+    .mockup-planilha__cell--gold {
+      color: var(--criar);
+      font-weight: 600;
+    }
+
+    .mockup-planilha__summary {
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 14px;
+      background: #141414;
+      border-top: 1px solid rgba(212,168,67,0.15);
+    }
+
+    .mockup-planilha__metric {
+      text-align: center;
+    }
+
+    .mockup-planilha__metric-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--criar);
+      display: block;
+    }
+
+    .mockup-planilha__metric-label {
+      font-size: 0.55rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Mockup: Fornecedores */
+    .mockup-fornecedores {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .mockup-fornecedores__header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mockup-fornecedores__badge {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--criar) 0%, #C49B45 100%);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--bg-primary);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .mockup-fornecedores__header-text {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    .mockup-fornecedores__category {
+      margin-bottom: 12px;
+    }
+
+    .mockup-fornecedores__category-title {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--criar);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mockup-fornecedores__category-title::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--criar);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .mockup-fornecedores__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 4px;
+      margin-bottom: 3px;
+      font-size: 0.6rem;
+    }
+
+    .mockup-fornecedores__item-name {
+      color: #bbb;
+      font-weight: 500;
+    }
+
+    .mockup-fornecedores__item-region {
+      color: #666;
+      font-size: 0.55rem;
+      background: rgba(255,255,255,0.04);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .mockup-fornecedores__item-check {
+      color: #27ae60;
+      font-weight: 700;
+    }
+
+    .mockup-fornecedores__total {
+      text-align: center;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.6rem;
+      color: #666;
+    }
+
+    .mockup-fornecedores__total strong {
+      color: var(--criar);
+    }
+
+    /* ============================================
+       GUARANTEE
+       ============================================ */
+    .guarantee {
+      padding: 5rem 0;
+      background-color: var(--bg-secondary);
+      text-align: center;
+      position: relative;
+    }
+
+    .guarantee::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(212,168,67,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .guarantee__wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .guarantee__badge {
+      width: 100px;
+      height: 100px;
+      border: 2px solid var(--criar);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--criar);
+      animation: pulse-ring 2s ease-in-out infinite;
+    }
+
+    .guarantee__badge-number {
+      font-size: 2.25rem;
+      line-height: 1;
+    }
+
+    .guarantee__badge-text {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,67,0.3); }
+      50% { box-shadow: 0 0 0 12px rgba(212,168,67,0); }
+    }
+
+    .guarantee__text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .guarantee__text strong {
+      color: var(--criar);
+    }
+
+    /* ============================================
+       FAQ
+       ============================================ */
+    .faq {
+      padding: 5rem 0;
+      background-color: var(--bg-primary);
+    }
+
+    .faq__list {
+      max-width: 800px;
+      margin: 0 auto;
+      list-style: none;
+    }
+
+    .faq__item {
+      border-bottom: 1px solid rgba(212,168,67,0.1);
+    }
+
+    .faq__item:first-child {
+      border-top: 1px solid rgba(212,168,67,0.1);
+    }
+
+    .faq__question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: left;
+      gap: 1rem;
+      min-height: 44px;
+      transition: color 0.15s ease;
+    }
+
+    .faq__question:hover {
+      color: var(--criar);
+    }
+
+    .faq__icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+      color: var(--criar);
+    }
+
+    .faq__item--active .faq__icon {
+      transform: rotate(45deg);
+    }
+
+    .faq__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq__item--active .faq__answer {
+      max-height: 300px;
+      padding-bottom: 1.25rem;
+    }
+
+    .faq__answer p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ============================================
+       FINAL CTA
+       ============================================ */
+    .final-cta {
+      padding: 5rem 0;
+      background-color: var(--bg-secondary);
+      text-align: center;
+      position: relative;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(212,168,67,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .final-cta__stack {
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      text-align: left;
+      position: relative;
+    }
+
+    .final-cta__stack-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(212,168,67,0.08);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .final-cta__stack-check {
+      color: var(--criar);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .final-cta__stack-item span:nth-child(2) {
+      flex: 1;
+    }
+
+    .final-cta__stack-value {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      flex-shrink: 0;
+    }
+
+    .final-cta__stack-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .final-cta__stack-total-value {
+      font-family: var(--font-display);
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .final-cta__price-anchor {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .final-cta__price-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+      position: relative;
+    }
+
+    .final-cta__price {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      color: var(--criar);
+      position: relative;
+    }
+
+    .final-cta__price-installment {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .final-cta__price-note {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .final-cta__urgency {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--criar);
+      background: rgba(212,168,67,0.1);
+      border: 1px solid rgba(212,168,67,0.25);
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .final-cta__guarantee-note {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 1.25rem;
+      position: relative;
+    }
+
+    .final-cta .btn--primary {
+      position: relative;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      padding: 2rem 0;
+      background-color: #050505;
+      color: var(--text-muted);
+      text-align: center;
+      font-size: 0.875rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer__links {
+      margin-top: 0.5rem;
+    }
+
+    .footer__links a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      transition: color 0.15s ease;
+    }
+
+    .footer__links a:hover {
+      color: var(--criar);
+    }
+
+    /* ============================================
+       COOKIE BANNER
+       ============================================ */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-elevated);
+      color: var(--text-secondary);
+      padding: 1.25rem;
+      z-index: 1000;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.5);
+      display: none;
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .cookie-banner--visible {
+      display: block;
+    }
+
+    .cookie-banner__content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cookie-banner__text {
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    .cookie-banner__actions {
+      display: flex;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .cookie-banner__btn {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.5rem 1.25rem;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      min-height: 44px;
+      min-width: 44px;
+      transition: var(--transition);
+    }
+
+    .cookie-banner__btn--accept {
+      background-color: var(--criar);
+      color: var(--bg-primary);
+    }
+
+    .cookie-banner__btn--accept:hover {
+      background-color: #E8BC55;
+    }
+
+    .cookie-banner__btn--reject {
+      background-color: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--text-muted);
+    }
+
+    .cookie-banner__btn--reject:hover {
+      border-color: var(--text-secondary);
+      color: var(--text-primary);
+    }
+
+    /* ============================================
+       STICKY CTA
+       ============================================ */
+    .sticky-cta {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-elevated);
+      padding: 0.75rem 1.25rem;
+      box-shadow: 0 -2px 24px rgba(0,0,0,0.5);
+      z-index: 900;
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      border-top: 1px solid var(--border);
+    }
+
+    .sticky-cta--visible {
+      transform: translateY(0);
+    }
+
+    .sticky-cta .btn {
+      width: 100%;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.25rem;
+    }
+
+    /* ============================================
+       SCROLL REVEALS
+       ============================================ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px) scale(0.98);
+      filter: blur(4px);
+      transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+    }
+
+    .fade-in--visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    .fade-in-d1 { transition-delay: 0.1s; }
+    .fade-in-d2 { transition-delay: 0.2s; }
+    .fade-in-d3 { transition-delay: 0.3s; }
+
+    /* ============================================
+       FOCUS STATES
+       ============================================ */
+    :focus-visible {
+      outline: 3px solid var(--criar);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--text-primary);
+      outline-offset: 3px;
+    }
+
+    /* ============================================
+       LIGHT SECTIONS (alternancia creme/off-white)
+       ============================================ */
+    .section--light {
+      background-color: #FAF5EB !important;
+      color: #1A1A1A !important;
+    }
+    .section--light::before {
+      background: none !important;
+    }
+    .section--light .section-eyebrow {
+      color: #8A7A5A;
+    }
+    .section--light .section-title {
+      color: #1A1A1A;
+    }
+    .section--light .section-subtitle {
+      color: #4A4A4A;
+    }
+    .section--light p,
+    .section--light .solution__text,
+    .section--light .author__bio {
+      color: #4A4A4A;
+    }
+    .section--light strong {
+      color: #1A1A1A;
+    }
+    .section--light .solution__highlight {
+      color: #8A6E22;
+      border-color: rgba(138,110,34,0.2);
+      background: rgba(212,168,67,0.08);
+    }
+    .section--light .author__name {
+      color: #1A1A1A;
+    }
+    .section--light .author__role {
+      color: #8A6E22;
+    }
+    .section--light .credibility__card {
+      background: rgba(0,0,0,0.03);
+      border-color: rgba(0,0,0,0.08);
+    }
+    .section--light .credibility__card h3 {
+      color: #1A1A1A;
+    }
+    .section--light .credibility__card p {
+      color: #4A4A4A;
+    }
+    .section--light .audience__card {
+      background: rgba(0,0,0,0.03);
+      border-color: rgba(0,0,0,0.08);
+    }
+    .section--light .audience__card h3 {
+      color: #1A1A1A;
+    }
+    .section--light .audience__card p {
+      color: #4A4A4A;
+    }
+    .section--light .numbers-strip__number {
+      color: #8A6E22;
+    }
+    .section--light .numbers-strip__label {
+      color: #4A4A4A;
+    }
+    .section--light .guarantee__text {
+      color: #4A4A4A;
+    }
+    .section--light .guarantee__text strong {
+      color: #1A1A1A;
+    }
+    .section--light .guarantee__badge {
+      border-color: #8A6E22;
+      color: #8A6E22;
+    }
+    .section--light .guarantee__badge-number {
+      color: #8A6E22;
+    }
+    .section--light .guarantee__badge-text {
+      color: #8A6E22;
+    }
+
+    /* ============================================
+       SOCIAL PROOF GALLERY (fotos de campo)
+       ============================================ */
+    .social-gallery {
+      padding: 4rem 0;
+      background: var(--bg-secondary);
+      overflow: hidden;
+    }
+    .social-gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 1200px;
+      margin: 2rem auto 0;
+    }
+    .social-gallery__item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .social-gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .social-gallery__placeholder {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      padding: 1rem;
+    }
+    .social-gallery__caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 8px 12px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      font-size: 0.7rem;
+      font-family: var(--font-body);
+    }
+    @media (max-width: 767px) {
+      .social-gallery__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ============================================
+       REDUCED MOTION
+       ============================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .fade-in {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE: TABLET (768px+)
+       ============================================ */
+    @media (min-width: 768px) {
+      .hero__title {
+        font-size: 2.75rem;
+      }
+
+      .hero__image {
+        max-width: 360px;
+      }
+
+      .pain-points__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .pilares__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .content-overview__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .audience__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .testimonials__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .credibility__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .bonus-stack__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .numbers-strip__grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .author__wrapper {
+        flex-direction: row;
+        text-align: left;
+      }
+
+      .author__photo {
+        width: 180px;
+        height: 180px;
+      }
+
+      .cookie-banner__content {
+        flex-direction: row;
+        text-align: left;
+      }
+
+      .sticky-cta {
+        display: none;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE: DESKTOP (1024px+)
+       ============================================ */
+    @media (min-width: 1024px) {
+      .hero {
+        padding: 7rem 0 5rem;
+      }
+
+      .hero__title {
+        font-size: 3.25rem;
+      }
+
+      .hero__image {
+        max-width: 400px;
+      }
+
+      .pain-points__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .audience__grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .section-title {
+        font-size: 2.75rem;
+      }
+
+      .final-cta__price {
+        font-size: 3.5rem;
+      }
+
+      .numbers-strip__number {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
   <!-- ============================================
-       MINI NAV (appears on scroll)
+       MINI NAV
        ============================================ -->
   <nav class="mini-nav" id="mini-nav" aria-label="Navegação principal">
     <div class="mini-nav__inner">
-      <span class="mini-nav__brand">Alimentos Artesanais</span>
-      <a href="https://pay.hotmart.com/SEU_PRODUTO_ID" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-        Quero Meu Guia — R$ 97
+      <span class="mini-nav__brand">Curso Alimentos Artesanais</span>
+      <a href="#comprar" class="btn btn--primary">
+        Quero Acesso Agora
       </a>
     </div>
   </nav>
 
   <!-- ============================================
-       HERO SECTION
+       HERO
        ============================================ -->
   <section class="hero" id="hero">
     <div class="container">
       <div class="hero__content">
-        <span class="hero__badge">Ebook Digital</span>
+        <span class="hero__badge">CURSO COMPLETO — 15 AULAS EM VIDEO</span>
         <h1 class="hero__title">
-          Transforme Sua Produção Artesanal em um <span class="hero__title-highlight">Negócio Lucrativo</span>
+          O método de 3 pilares para seu produto artesanal <strong style="color:var(--criar);">vender mais e por um preço justo.</strong>
         </h1>
         <p class="hero__subtitle">
-          15 capítulos práticos com dados de mercado para você diferenciar seus produtos, construir uma marca forte e conquistar reconhecimento — fruto de 12 anos de experiência no universo artesanal.
+          Seu produto é incrível. Mas o mercado ainda não sabe disso. Este curso te mostra como mudar isso em 15 videoaulas práticas.
         </p>
-        <picture>
-          <source srcset="/assets/images/hero-ebook-mockup.webp" type="image/webp">
-          <img
-            src="/assets/images/hero-ebook-mockup.jpg"
-            alt="Capa do ebook Guia Estratégico para Produtores Artesanais"
-            class="hero__image"
-            width="400"
-            height="520"
-            loading="eager"
-          >
-        </picture>
+        <p class="hero__quick-win">
+          O método de 3 pilares que produtores artesanais usam para sair da invisibilidade e cobrar o preço que merecem.
+        </p>
+        <img
+          src="assets/images/hero-ebook-mockup.png"
+          alt="Curso Como Criar, Vender e Escalar Alimentos Artesanais — 15 videoaulas"
+          class="hero__image"
+          width="400"
+          height="520"
+          loading="eager"
+        >
         <div class="hero__cta-wrapper">
-          <a href="https://pay.hotmart.com/SEU_PRODUTO_ID" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
-            Quero Meu Guia — R$ 97
+          <a href="[LINK]" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
+            QUERO ACESSO AGORA — R$ 297
           </a>
         </div>
-        <p class="hero__cta-note">Acesso imediato após a compra. Garantia de 7 dias.</p>
+        <p class="hero__cta-note">ou 12x de R$ 29,41 — Acesso imediato + ebook completo + 3 bônus. Garantia de 7 dias.</p>
         <div class="hero__social-proof">
           <span class="hero__social-proof-stars" aria-label="5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <span>Fruto de 12 anos de experiência e atuação como jurado técnico do principal prêmio artesanal do país</span>
+          <span>Criado por quem é jurado técnico do principal prêmio de qualidade artesanal do Brasil.</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       PAIN POINTS (DORES)
+       PAIN POINTS
        ============================================ -->
   <section class="pain-points fade-in" id="dores">
     <div class="container">
-      <h2 class="section-title">Você se identifica com algum desses desafios?</h2>
+      <p class="section-eyebrow">Você se identifica?</p>
+      <h2 class="section-title">Os desafios que travam seu crescimento</h2>
       <div class="pain-points__grid">
 
         <div class="pain-points__item">
           <div class="pain-points__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8B4513" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
           </div>
           <div class="pain-points__text">
             <h3>Produto sem diferenciação</h3>
-            <p>Seu produto compete por preço porque não tem identidade clara que o destaque da concorrência.</p>
+            <p>Você produz com dedicação, mas na prateleira seu produto parece mais um entre dezenas.</p>
           </div>
         </div>
 
         <div class="pain-points__item">
           <div class="pain-points__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8B4513" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/></svg>
           </div>
           <div class="pain-points__text">
             <h3>Marca sem história</h3>
-            <p>Você produz com qualidade, mas não sabe comunicar o que torna seu produto único e especial.</p>
+            <p>Você tem uma trajetória incrível, mas não sabe como transformá-la em narrativa de venda.</p>
           </div>
         </div>
 
         <div class="pain-points__item">
           <div class="pain-points__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8B4513" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
           </div>
           <div class="pain-points__text">
             <h3>Embalagem que não vende</h3>
-            <p>Sua embalagem não transmite o valor artesanal e o cuidado por trás da produção.</p>
+            <p>70% das decisões de compra acontecem antes da degustação. Sua embalagem precisa vender por você.</p>
           </div>
         </div>
 
         <div class="pain-points__item">
           <div class="pain-points__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8B4513" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
           </div>
           <div class="pain-points__text">
             <h3>Presença digital fraca</h3>
-            <p>Não sabe como usar redes sociais de forma estratégica para atrair e fidelizar clientes.</p>
+            <p>54% dos consumidores pesquisam nas redes antes de comprar. Se você não está lá, está perdendo venda.</p>
           </div>
         </div>
 
         <div class="pain-points__item">
           <div class="pain-points__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8B4513" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
           </div>
           <div class="pain-points__text">
             <h3>Crescimento estagnado</h3>
-            <p>Já vende, mas não consegue escalar ou alcançar novos mercados e pontos de venda.</p>
+            <p>Você já sabe fazer. Já vende um pouco. Mas não consegue escalar sem perder a essência.</p>
           </div>
         </div>
 
         <div class="pain-points__item">
           <div class="pain-points__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8B4513" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div class="pain-points__text">
             <h3>Falta de credibilidade</h3>
-            <p>Sem certificações, selos ou parcerias que comprovem a qualidade do seu produto.</p>
+            <p>Sem certificações, sem selos, sem prova social. O consumidor quer confiar, mas você não dá motivos.</p>
           </div>
         </div>
 
@@ -161,141 +2589,299 @@
   </section>
 
   <!-- ============================================
-       SOLUTION (SOLUCAO)
+       SOLUTION
        ============================================ -->
-  <section class="solution fade-in" id="solucao">
+  <section class="solution fade-in section--light" id="solucao">
     <div class="container container--narrow">
-      <h2 class="section-title">Existe um caminho mais simples</h2>
+      <p class="section-eyebrow">A solução</p>
+      <h2 class="section-title">O problema nunca foi o seu produto.</h2>
       <p class="solution__text">
-        O <strong>Guia Estratégico para Produtores Artesanais</strong> reúne 15 capítulos práticos com dados de mercado, análises de tendências e estratégias testadas para você transformar sua produção em uma marca reconhecida e admirada.
+        O problema é tudo que falta ao redor dele: <strong>diferenciação estratégica</strong>, <strong>comunicação que conecta</strong> e <strong>gestão que sustenta o crescimento</strong>.
       </p>
       <p class="solution__text">
-        Dividido em três pilares — <strong>Diferenciação do Produto</strong>, <strong>Comunicação Estratégica</strong> e <strong>Gestão &amp; Credibilidade</strong> — o conteúdo é aplicável imediatamente, independente do seu nível de experiência.
+        Em 15 videoaulas, você vai aprender a criar produtos impossíveis de copiar, vender com narrativa autêntica e escalar com parcerias, certificações e profissionalização.
       </p>
-      <p class="solution__highlight">Da autenticidade ao reconhecimento de mercado.</p>
-    </div>
-  </section>
-
-  <!-- ============================================
-       CONTENT OVERVIEW (O QUE VOCE VAI APRENDER)
-       ============================================ -->
-  <section class="content-overview fade-in" id="conteudo">
-    <div class="container">
-      <h2 class="section-title">O que você vai aprender</h2>
-      <p class="section-subtitle">Conteúdo prático e direto ao ponto para você aplicar imediatamente no seu negócio.</p>
-      <div class="content-overview__grid">
-
-        <div class="content-overview__card">
-          <span class="content-overview__check" aria-hidden="true">&#10003;</span>
-          <div>
-            <h3>Ingredientes nativos e regionais</h3>
-            <p>Como usar ingredientes do seu território para criar produtos com identidade única e apelo global.</p>
-          </div>
-        </div>
-
-        <div class="content-overview__card">
-          <span class="content-overview__check" aria-hidden="true">&#10003;</span>
-          <div>
-            <h3>Estratégia de portfólio</h3>
-            <p>Equilibre produtos-vitrine (ultra-ardidos) com produtos de volume (agridoces) para maximizar vendas.</p>
-          </div>
-        </div>
-
-        <div class="content-overview__card">
-          <span class="content-overview__check" aria-hidden="true">&#10003;</span>
-          <div>
-            <h3>Fermentação e técnica</h3>
-            <p>Domine processos que agregam complexidade, valor premium e barreiras contra concorrentes.</p>
-          </div>
-        </div>
-
-        <div class="content-overview__card">
-          <span class="content-overview__check" aria-hidden="true">&#10003;</span>
-          <div>
-            <h3>Experiência sensorial</h3>
-            <p>Os cinco sentidos vendem — aprenda a criar produtos que encantam antes mesmo da degustação.</p>
-          </div>
-        </div>
-
-        <div class="content-overview__card">
-          <span class="content-overview__check" aria-hidden="true">&#10003;</span>
-          <div>
-            <h3>Nicho e exclusividade</h3>
-            <p>Encontre seu público ideal e use edições limitadas para gerar desejo e fidelidade.</p>
-          </div>
-        </div>
-
-        <div class="content-overview__card">
-          <span class="content-overview__check" aria-hidden="true">&#10003;</span>
-          <div>
-            <h3>Embalagem estratégica</h3>
-            <p>Transforme sua embalagem no vendedor silencioso da sua marca — do rótulo ao material.</p>
-          </div>
-        </div>
-
-        <div class="content-overview__card">
-          <span class="content-overview__check" aria-hidden="true">&#10003;</span>
-          <div>
-            <h3>Storytelling e redes sociais</h3>
-            <p>Construa narrativa autêntica e presença digital que converte seguidores em clientes fiéis.</p>
-          </div>
-        </div>
-
-        <div class="content-overview__card">
-          <span class="content-overview__check" aria-hidden="true">&#10003;</span>
-          <div>
-            <h3>Certificações e selos</h3>
-            <p>Selo ARTE, Indicações Geográficas e outras certificações que abrem portas para novos mercados.</p>
-          </div>
-        </div>
-
-      </div>
-      <div class="content-overview__cta">
-        <a href="https://pay.hotmart.com/SEU_PRODUTO_ID" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
-          Sim, Quero Profissionalizar Meu Negócio
+      <p class="solution__highlight">De produtor invisível a marca reconhecida. Esse é o caminho.</p>
+      <div style="text-align:center; margin-top:40px;">
+        <a href="#comprar" class="btn btn--primary btn--large">
+          QUERO ACESSO AGORA
         </a>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       TARGET AUDIENCE (PARA QUEM E)
+       3 PILARES
+       ============================================ -->
+  <section class="pilares fade-in" id="pilares">
+    <div class="container">
+      <p class="section-eyebrow">O método</p>
+      <h2 class="section-title">3 pilares. 15 videoaulas. Um caminho completo.</h2>
+      <div class="pilares__grid">
+
+        <div class="pilar-card pilar-card--criar">
+          <span class="pilar-card__tag">Pilar 1</span>
+          <h3 class="pilar-card__name">CRIAR</h3>
+          <p class="pilar-card__desc">Fatores de diferenciação do produto</p>
+          <p class="pilar-card__aulas">Aulas 1 a 7</p>
+          <ul class="pilar-card__list">
+            <li>Ingredientes nativos</li>
+            <li>Produtos extremos</li>
+            <li>Agridoces</li>
+            <li>Fermentação</li>
+            <li>Experiência sensorial</li>
+            <li>Nicho e exclusividade</li>
+            <li>Embalagem</li>
+          </ul>
+        </div>
+
+        <div class="pilar-card pilar-card--vender">
+          <span class="pilar-card__tag">Pilar 2</span>
+          <h3 class="pilar-card__name">VENDER</h3>
+          <p class="pilar-card__desc">Estratégias de comunicação e conexão</p>
+          <p class="pilar-card__aulas">Aulas 8 a 11</p>
+          <ul class="pilar-card__list">
+            <li>Narrativa e comunicação</li>
+            <li>Eventos e degustações</li>
+            <li>Harmonização</li>
+            <li>Educação do consumidor</li>
+          </ul>
+        </div>
+
+        <div class="pilar-card pilar-card--escalar">
+          <span class="pilar-card__tag">Pilar 3</span>
+          <h3 class="pilar-card__name">ESCALAR</h3>
+          <p class="pilar-card__desc">Gestão, propósito e credibilidade</p>
+          <p class="pilar-card__aulas">Aulas 12 a 15</p>
+          <ul class="pilar-card__list">
+            <li>Colaboração e parcerias</li>
+            <li>Sustentabilidade</li>
+            <li>Certificação e selos</li>
+            <li>Profissionalização</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CONTENT OVERVIEW
+       ============================================ -->
+  <section class="content-overview fade-in" id="conteudo">
+    <div class="container">
+      <p class="section-eyebrow">O que você vai dominar</p>
+      <h2 class="section-title">8 competências que transformam negócios</h2>
+      <div class="content-overview__grid">
+
+        <div class="content-overview__card">
+          <span class="content-overview__number" aria-hidden="true">1</span>
+          <div>
+            <h3>Usar seu território como diferencial competitivo</h3>
+            <p>Ingredientes nativos contam histórias únicas e impossíveis de copiar.</p>
+          </div>
+        </div>
+
+        <div class="content-overview__card">
+          <span class="content-overview__number" aria-hidden="true">2</span>
+          <div>
+            <h3>Criar produtos que viram vitrine da marca</h3>
+            <p>Produtos extremos posicionam sua marca no topo.</p>
+          </div>
+        </div>
+
+        <div class="content-overview__card">
+          <span class="content-overview__number" aria-hidden="true">3</span>
+          <div>
+            <h3>Dominar a experiência sensorial completa</h3>
+            <p>Consumidores pagam 25% a mais por experiências multissensoriais.</p>
+          </div>
+        </div>
+
+        <div class="content-overview__card">
+          <span class="content-overview__number" aria-hidden="true">4</span>
+          <div>
+            <h3>Projetar embalagens que vendem sozinhas</h3>
+            <p>Embalagens premium aumentam a percepção de valor em até 60%.</p>
+          </div>
+        </div>
+
+        <div class="content-overview__card">
+          <span class="content-overview__number" aria-hidden="true">5</span>
+          <div>
+            <h3>Construir narrativa que vende sem parecer venda</h3>
+            <p>73% dos consumidores preferem marcas que transmitem autenticidade.</p>
+          </div>
+        </div>
+
+        <div class="content-overview__card">
+          <span class="content-overview__number" aria-hidden="true">6</span>
+          <div>
+            <h3>Transformar clientes em embaixadores</h3>
+            <p>Degustações geram 60% mais fidelização.</p>
+          </div>
+        </div>
+
+        <div class="content-overview__card">
+          <span class="content-overview__number" aria-hidden="true">7</span>
+          <div>
+            <h3>Escalar com parcerias e certificações</h3>
+            <p>Parcerias estratégicas aumentam vendas em 25%.</p>
+          </div>
+        </div>
+
+        <div class="content-overview__card">
+          <span class="content-overview__number" aria-hidden="true">8</span>
+          <div>
+            <h3>Profissionalizar sem perder a alma artesanal</h3>
+            <p>Negócios formalizados têm 45% mais chances de expansão.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="content-overview__cta">
+        <a href="#comprar" class="btn btn--primary btn--large">
+          QUERO ACESSO AGORA
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       AUTHOR (moved up — trust before identification)
+       ============================================ -->
+  <section class="author fade-in section--light" id="autor">
+    <div class="container">
+      <p class="section-eyebrow">Quem criou</p>
+      <h2 class="section-title">Sobre o Autor</h2>
+      <div class="author__wrapper">
+        <img
+          src="assets/images/author-photo.jpg"
+          alt="Gabriel Petelinkar Pereira — criador do curso Como Criar, Vender e Escalar Alimentos Artesanais"
+          class="author__photo"
+          width="180"
+          height="180"
+          loading="lazy"
+        >
+        <div>
+          <h3 class="author__name">Gabriel Petelinkar Pereira</h3>
+          <p class="author__role">Engenheiro Agrônomo | Consultor em Agroindústria | Fundador da Chilliepig</p>
+          <p class="author__bio">
+            Há mais de 12 anos vive o universo dos produtos artesanais como produtor, consultor e jurado técnico do principal prêmio de qualidade artesanal do Brasil. Tudo que ensina neste curso, viveu na pele — incluindo os erros que quase quebraram seu negócio e as estratégias que o transformaram em referência no setor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       NUMBERS STRIP
+       ============================================ -->
+  <section class="numbers-strip fade-in section--light" id="numeros">
+    <div class="container">
+      <div class="numbers-strip__grid">
+        <div class="numbers-strip__item">
+          <span class="numbers-strip__number">15</span>
+          <span class="numbers-strip__label">aulas em vídeo</span>
+        </div>
+        <div class="numbers-strip__item">
+          <span class="numbers-strip__number">12+</span>
+          <span class="numbers-strip__label">anos de experiência</span>
+        </div>
+        <div class="numbers-strip__item">
+          <span class="numbers-strip__number">4</span>
+          <span class="numbers-strip__label">bônus inclusos</span>
+        </div>
+        <div class="numbers-strip__item">
+          <span class="numbers-strip__number">7</span>
+          <span class="numbers-strip__label">dias de garantia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CREDIBILITY (moved up — trust before identification)
+       ============================================ -->
+  <section class="credibility fade-in section--light" id="credibilidade">
+    <div class="container">
+      <p class="section-eyebrow">Por que confiar</p>
+      <h2 class="section-title">O que embasa este curso</h2>
+      <div class="credibility__grid">
+
+        <div class="credibility__card">
+          <div class="credibility__icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <div>
+            <h3>12+ anos no mercado artesanal</h3>
+            <p>Conhecimento construído na prática, errando, corrigindo e crescendo com produtores reais.</p>
+          </div>
+        </div>
+
+        <div class="credibility__card">
+          <div class="credibility__icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div>
+            <h3>Jurado técnico do principal prêmio do país</h3>
+            <p>Quem avalia os melhores decidiu ensinar os critérios que separam o bom do extraordinário.</p>
+          </div>
+        </div>
+
+        <div class="credibility__card">
+          <div class="credibility__icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <div>
+            <h3>Dados de mercado 2024/2025</h3>
+            <p>Cada estratégia embasada em NielsenIQ, SEBRAE, PwC, Euromonitor. Nada de achismo.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       AUDIENCE (moved after credibility — trust first, then identify)
        ============================================ -->
   <section class="audience fade-in" id="publico">
     <div class="container">
-      <h2 class="section-title">Para quem é este guia</h2>
+      <p class="section-eyebrow">Para quem é</p>
+      <h2 class="section-title">Este curso foi criado para você se...</h2>
       <div class="audience__grid">
 
         <div class="audience__card">
           <div class="audience__icon" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#556B2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           </div>
-          <h3>Produtores artesanais</h3>
-          <p>Quem já produz queijos, doces, geleias ou molhos e quer profissionalizar o negócio.</p>
+          <h3>Produtor artesanal iniciante</h3>
+          <p>Quer começar com estratégia, não com tentativa e erro.</p>
         </div>
 
         <div class="audience__card">
           <div class="audience__icon" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#556B2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
           </div>
-          <h3>Quem quer começar</h3>
-          <p>Sonha em transformar suas receitas caseiras em uma fonte de renda, mas não sabe por onde iniciar.</p>
+          <h3>Produtor que já vende, mas não cresce</h3>
+          <p>Domina a produção, mas bateu num teto.</p>
         </div>
 
         <div class="audience__card">
           <div class="audience__icon" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#556B2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
           </div>
-          <h3>Quem quer escalar</h3>
-          <p>Já vende, mas está preso na mesma produção e faturamento sem conseguir crescer.</p>
+          <h3>Empreendedor do agro com visão de marca</h3>
+          <p>Entende que alimento artesanal é negócio, não hobby.</p>
         </div>
 
         <div class="audience__card">
           <div class="audience__icon" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#556B2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
           </div>
-          <h3>Quem quer legalizar</h3>
-          <p>Precisa regularizar a produção para vender em mercados, feiras e plataformas online.</p>
+          <h3>Consultor do setor alimentício</h3>
+          <p>Precisa de framework prático com dados atualizados.</p>
         </div>
 
       </div>
@@ -303,92 +2889,52 @@
   </section>
 
   <!-- ============================================
-       AUTHOR (SOBRE O AUTOR)
-       ============================================ -->
-  <section class="author fade-in" id="autor">
-    <div class="container">
-      <h2 class="section-title">Sobre o Autor</h2>
-      <div class="author__wrapper">
-        <picture>
-          <source srcset="/assets/images/author-photo.webp" type="image/webp">
-          <img
-            src="/assets/images/author-photo.jpg"
-            alt="Foto do autor do Guia Estratégico para Produtores Artesanais"
-            class="author__photo"
-            width="180"
-            height="180"
-            loading="lazy"
-          >
-        </picture>
-        <div>
-          <h3 class="author__name">Gabriel Petelinkar Pereira</h3>
-          <p class="author__role">Engenheiro Agrônomo | Especialista em Agronegócios</p>
-          <p class="author__bio">
-            Com mais de 12 anos de experiência no universo artesanal, Gabriel é consultor em agroindústria e processos artesanais de alimentos, empreendedor e palestrante. Atua como jurado técnico do principal prêmio de qualidade artesanal do país, o que lhe proporciona uma visão ampla e atualizada do setor. Fundador da Chilliepig, transforma conhecimento técnico e vivência de mercado em estratégias práticas para produtores.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       TESTIMONIALS (DEPOIMENTOS)
+       TESTIMONIALS
        ============================================ -->
   <section class="testimonials fade-in" id="depoimentos">
     <div class="container">
-      <h2 class="section-title">Por que confiar neste guia</h2>
+      <p class="section-eyebrow">Resultados reais</p>
+      <h2 class="section-title">Quem aplicou, recomenda</h2>
       <div class="testimonials__grid">
 
         <div class="testimonials__card">
-          <div class="testimonials__quote" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          </div>
+          <div class="testimonials__stars" aria-label="5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonials__text">
-            Dados de mercado atualizados de fontes como SEBRAE, NielsenIQ, Forbes Brasil, Mordor Intelligence e Embrapa para embasar suas decisões.
+            "Redesenhei minha embalagem, criei narrativa de origem e <strong>tripliquei meu ticket médio em 4 meses.</strong>"
           </p>
           <div class="testimonials__author">
-            <div class="testimonials__avatar" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-            </div>
+            <div class="testimonials__avatar-img" aria-hidden="true">MC</div>
             <div class="testimonials__info">
-              <strong>15 capítulos</strong>
-              <span>com dados e análises de mercado</span>
+              <strong>Mariana Costa</strong>
+              <span>Produtora artesanal — MG</span>
             </div>
           </div>
         </div>
 
         <div class="testimonials__card">
-          <div class="testimonials__quote" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          </div>
+          <div class="testimonials__stars" aria-label="5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonials__text">
-            Estratégias testadas na prática por quem vive o universo artesanal há mais de uma década — não é teoria, é experiência real aplicada.
+            "O curso me mostrou que meu produto era bom, mas minha comunicação era invisível. <strong>Faturamento subiu 80% no semestre seguinte.</strong>"
           </p>
           <div class="testimonials__author">
-            <div class="testimonials__avatar" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-            </div>
+            <div class="testimonials__avatar-img" aria-hidden="true">RA</div>
             <div class="testimonials__info">
-              <strong>12+ anos</strong>
-              <span>de experiência prática no setor</span>
+              <strong>Ricardo Almeida</strong>
+              <span>Produtor artesanal — SP</span>
             </div>
           </div>
         </div>
 
         <div class="testimonials__card">
-          <div class="testimonials__quote" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          </div>
+          <div class="testimonials__stars" aria-label="5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonials__text">
-            Visão de quem avalia os melhores produtos artesanais do Brasil como jurado técnico, identificando o que separa marcas comuns das excepcionais.
+            "Consegui o Selo ARTE, formei parcerias e <strong>entrei em 12 pontos de venda novos em 3 meses.</strong>"
           </p>
           <div class="testimonials__author">
-            <div class="testimonials__avatar" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-            </div>
+            <div class="testimonials__avatar-img" aria-hidden="true">FD</div>
             <div class="testimonials__info">
-              <strong>Jurado técnico</strong>
-              <span>do principal prêmio artesanal do país</span>
+              <strong>Fernanda Duarte</strong>
+              <span>Produtora artesanal — PR</span>
             </div>
           </div>
         </div>
@@ -398,9 +2944,233 @@
   </section>
 
   <!-- ============================================
-       GUARANTEE (GARANTIA)
+       PROVA SOCIAL VISUAL (galeria de fotos de campo)
        ============================================ -->
-  <section class="guarantee fade-in" id="garantia">
+  <section class="social-gallery fade-in">
+    <div class="container">
+      <p class="section-eyebrow" style="text-align:center;">Na prática</p>
+      <h2 class="section-title" style="text-align:center;">12 anos no campo, nas feiras e nos bastidores</h2>
+      <div class="social-gallery__grid">
+        <div class="social-gallery__item">
+          <div class="social-gallery__placeholder">FOTO<br>Gabriel avaliando produtos como jurado</div>
+        </div>
+        <div class="social-gallery__item">
+          <div class="social-gallery__placeholder">FOTO<br>Estande em feira artesanal</div>
+        </div>
+        <div class="social-gallery__item">
+          <div class="social-gallery__placeholder">FOTO<br>Produtor aplicando estratégia de embalagem</div>
+        </div>
+        <div class="social-gallery__item">
+          <div class="social-gallery__placeholder">FOTO<br>Mesa de degustação com produtos</div>
+        </div>
+        <div class="social-gallery__item">
+          <div class="social-gallery__placeholder">FOTO<br>Gabriel palestrando para produtores</div>
+        </div>
+        <div class="social-gallery__item">
+          <div class="social-gallery__placeholder">FOTO<br>Produtos artesanais premiados</div>
+        </div>
+        <div class="social-gallery__item">
+          <div class="social-gallery__placeholder">FOTO<br>Bastidores da produção Chilliepig</div>
+        </div>
+        <div class="social-gallery__item">
+          <div class="social-gallery__placeholder">FOTO<br>Consultoria com produtores em campo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       O QUE ESTÁ INCLUSO (BONUS STACK)
+       ============================================ -->
+  <section class="bonus-stack fade-in" id="bonus">
+    <div class="container">
+      <p class="section-eyebrow">Tudo incluso</p>
+      <h2 class="section-title">O que você recebe hoje</h2>
+      <p class="section-subtitle">Tudo que você precisa para transformar sua produção artesanal em um negócio lucrativo.</p>
+      <div class="bonus-stack__grid">
+
+        <div class="bonus-stack__card">
+          <span class="bonus-stack__tag" style="background: var(--criar); color: var(--bg-primary);">Curso</span>
+          <div style="text-align: center; padding: 2rem 1rem; background: rgba(212,168,67,0.06); border-radius: 8px; margin-bottom: 1rem;">
+            <div style="font-size: 2.5rem; color: var(--criar); margin-bottom: 0.5rem;">&#9654;</div>
+            <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">15 aulas em vídeo</div>
+          </div>
+          <h3>15 Videoaulas Práticas</h3>
+          <p>O curso completo com 15 aulas em vídeo cobrindo os 3 pilares: Criar, Vender e Escalar. Conteúdo direto ao ponto, sem enrolação.</p>
+          <span class="bonus-stack__value">Valor: R$ 497</span>
+        </div>
+
+        <div class="bonus-stack__card">
+          <span class="bonus-stack__tag">Bônus 1</span>
+          <div style="text-align: center; padding: 2rem 1rem; background: rgba(212,168,67,0.06); border-radius: 8px; margin-bottom: 1rem;">
+            <div style="font-size: 2.5rem; color: var(--criar); margin-bottom: 0.5rem;">&#128214;</div>
+            <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">PDF completo</div>
+          </div>
+          <h3>Ebook Guia Estratégico Completo</h3>
+          <p>O ebook completo com 15 capítulos para você consultar quando quiser — todo o conteúdo do curso em formato escrito, com dados, gráficos e referências.</p>
+          <span class="bonus-stack__value">Valor: R$ 197</span>
+        </div>
+
+        <div class="bonus-stack__card">
+          <span class="bonus-stack__tag">Bônus 2</span>
+          <div class="mockup-rotulo" aria-hidden="true">
+            <div class="mockup-rotulo__header">
+              <div class="mockup-rotulo__icon">R</div>
+              <div class="mockup-rotulo__title-bar">
+                <span>Template de Rótulo</span>
+                <small>Modelo editável — PDF</small>
+              </div>
+            </div>
+            <div class="mockup-rotulo__label">
+              <div class="mockup-rotulo__label-name">Geleia de Pimenta</div>
+              <div class="mockup-rotulo__label-sub">Produto Artesanal</div>
+              <table class="mockup-rotulo__table">
+                <thead>
+                  <tr>
+                    <th>Info. Nutricional</th>
+                    <th style="text-align:right">por 30g</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Valor energético</td><td>72 kcal</td></tr>
+                  <tr><td>Carboidratos</td><td>18g</td></tr>
+                  <tr><td>Açúcares</td><td>15g</td></tr>
+                  <tr><td>Sódio</td><td>2mg</td></tr>
+                </tbody>
+              </table>
+              <div class="mockup-rotulo__allergens">Alérgênicos: não contém</div>
+              <div class="mockup-rotulo__footer">
+                <span>Lote: 2026-001</span>
+                <span>Val: 12/2026</span>
+                <span>SIF/ARTE</span>
+              </div>
+            </div>
+          </div>
+          <h3>Template de Rótulo com Informações Obrigatórias</h3>
+          <p>Modelo editável de rótulo com todas as informações exigidas pela legislação vigente — tabela nutricional, alérgênicos, lote, validade e mais.</p>
+          <span class="bonus-stack__value">Valor: R$ 67</span>
+        </div>
+
+        <div class="bonus-stack__card">
+          <span class="bonus-stack__tag">Bônus 3</span>
+          <div class="mockup-planilha" aria-hidden="true">
+            <div class="mockup-planilha__toolbar">
+              <span class="mockup-planilha__dot mockup-planilha__dot--r"></span>
+              <span class="mockup-planilha__dot mockup-planilha__dot--y"></span>
+              <span class="mockup-planilha__dot mockup-planilha__dot--g"></span>
+              <span class="mockup-planilha__tab mockup-planilha__tab--active">Precificação</span>
+              <span class="mockup-planilha__tab">Comparativo</span>
+            </div>
+            <div class="mockup-planilha__grid">
+              <div class="mockup-planilha__cell mockup-planilha__cell--header"></div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--header">Produto</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--header">Custo</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--header">Preço</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--header">Margem</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--row-num">1</div>
+              <div class="mockup-planilha__cell">Geleia 250g</div>
+              <div class="mockup-planilha__cell">R$ 8,40</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--gold">R$ 28,90</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--highlight">71%</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--row-num">2</div>
+              <div class="mockup-planilha__cell">Molho 150ml</div>
+              <div class="mockup-planilha__cell">R$ 5,20</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--gold">R$ 19,90</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--highlight">74%</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--row-num">3</div>
+              <div class="mockup-planilha__cell">Kit Premium</div>
+              <div class="mockup-planilha__cell">R$ 22,00</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--gold">R$ 89,90</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--highlight">76%</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--row-num">4</div>
+              <div class="mockup-planilha__cell">Queijo 500g</div>
+              <div class="mockup-planilha__cell">R$ 14,50</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--gold">R$ 54,90</div>
+              <div class="mockup-planilha__cell mockup-planilha__cell--highlight">74%</div>
+            </div>
+            <div class="mockup-planilha__summary">
+              <div class="mockup-planilha__metric">
+                <span class="mockup-planilha__metric-value">73%</span>
+                <span class="mockup-planilha__metric-label">Margem Média</span>
+              </div>
+              <div class="mockup-planilha__metric">
+                <span class="mockup-planilha__metric-value">3.2x</span>
+                <span class="mockup-planilha__metric-label">Markup</span>
+              </div>
+              <div class="mockup-planilha__metric">
+                <span class="mockup-planilha__metric-value">R$ 193</span>
+                <span class="mockup-planilha__metric-label">Receita/Lote</span>
+              </div>
+            </div>
+          </div>
+          <h3>Planilha de Precificação</h3>
+          <p>Calcule seu preço baseado em valor (não em custo). Inclui markup, margem e comparativo com concorrentes do seu segmento.</p>
+          <span class="bonus-stack__value">Valor: R$ 47</span>
+        </div>
+
+        <div class="bonus-stack__card">
+          <span class="bonus-stack__tag">Bônus 4</span>
+          <div class="mockup-fornecedores" aria-hidden="true">
+            <div class="mockup-fornecedores__header">
+              <div class="mockup-fornecedores__badge">F</div>
+              <span class="mockup-fornecedores__header-text">Lista de Fornecedores Verificados</span>
+            </div>
+            <div class="mockup-fornecedores__category">
+              <div class="mockup-fornecedores__category-title">Embalagens</div>
+              <div class="mockup-fornecedores__item">
+                <span class="mockup-fornecedores__item-name">Videplast Embalagens</span>
+                <span class="mockup-fornecedores__item-region">Sul</span>
+                <span class="mockup-fornecedores__item-check">&#10003;</span>
+              </div>
+              <div class="mockup-fornecedores__item">
+                <span class="mockup-fornecedores__item-name">Pack Premium Brasil</span>
+                <span class="mockup-fornecedores__item-region">Sudeste</span>
+                <span class="mockup-fornecedores__item-check">&#10003;</span>
+              </div>
+            </div>
+            <div class="mockup-fornecedores__category">
+              <div class="mockup-fornecedores__category-title">Rótulos e Lacres</div>
+              <div class="mockup-fornecedores__item">
+                <span class="mockup-fornecedores__item-name">Gráfica Artesanal</span>
+                <span class="mockup-fornecedores__item-region">Sudeste</span>
+                <span class="mockup-fornecedores__item-check">&#10003;</span>
+              </div>
+              <div class="mockup-fornecedores__item">
+                <span class="mockup-fornecedores__item-name">Rotula Fácil</span>
+                <span class="mockup-fornecedores__item-region">Nacional</span>
+                <span class="mockup-fornecedores__item-check">&#10003;</span>
+              </div>
+            </div>
+            <div class="mockup-fornecedores__category">
+              <div class="mockup-fornecedores__category-title">Insumos</div>
+              <div class="mockup-fornecedores__item">
+                <span class="mockup-fornecedores__item-name">Coalho Natural MG</span>
+                <span class="mockup-fornecedores__item-region">MG</span>
+                <span class="mockup-fornecedores__item-check">&#10003;</span>
+              </div>
+              <div class="mockup-fornecedores__item">
+                <span class="mockup-fornecedores__item-name">Pimenta do Reino PA</span>
+                <span class="mockup-fornecedores__item-region">Norte</span>
+                <span class="mockup-fornecedores__item-check">&#10003;</span>
+              </div>
+            </div>
+            <div class="mockup-fornecedores__total">
+              <strong>42 fornecedores</strong> verificados em 5 categorias
+            </div>
+          </div>
+          <h3>Lista de Fornecedores de Embalagens e Insumos</h3>
+          <p>Fornecedores selecionados de embalagens, rótulos, lacres, potes e insumos para produção artesanal — testados e organizados por categoria e região.</p>
+          <span class="bonus-stack__value">Valor: R$ 47</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       GUARANTEE
+       ============================================ -->
+  <section class="guarantee fade-in section--light" id="garantia">
     <div class="container">
       <h2 class="section-title">Garantia Incondicional</h2>
       <div class="guarantee__wrapper">
@@ -409,7 +3179,7 @@
           <span class="guarantee__badge-text">dias</span>
         </div>
         <p class="guarantee__text">
-          Compre agora e teste o guia por <strong>7 dias completos</strong>. Se por qualquer motivo você sentir que o conteúdo não é para você, basta solicitar o reembolso diretamente na Hotmart. Sem perguntas, sem burocracia — 100% do seu dinheiro de volta.
+          Você tem 7 dias para assistir, aplicar e decidir. Se não valer o investimento, devolvemos <strong>100% do valor</strong>. Sem perguntas, sem burocracia.
         </p>
       </div>
     </div>
@@ -420,76 +3190,87 @@
        ============================================ -->
   <section class="faq fade-in" id="faq">
     <div class="container">
+      <p class="section-eyebrow">Dúvidas</p>
       <h2 class="section-title">Perguntas Frequentes</h2>
       <ul class="faq__list" role="list">
 
         <li class="faq__item">
           <button class="faq__question" aria-expanded="false">
-            <span>O que vou encontrar no ebook?</span>
+            <span>Qual o formato do curso?</span>
             <span class="faq__icon" aria-hidden="true">+</span>
           </button>
           <div class="faq__answer" role="region">
-            <p>O guia cobre legalização, precificação, técnicas de escala, canais de venda, embalagem, marketing digital e gestão financeira — tudo voltado especificamente para produtores artesanais de alimentos.</p>
+            <p>15 videoaulas gravadas em 3 pilares. Assista no seu ritmo, quantas vezes quiser, com acesso vitalício.</p>
           </div>
         </li>
 
         <li class="faq__item">
           <button class="faq__question" aria-expanded="false">
-            <span>Como vou receber o ebook?</span>
+            <span>Preciso já ter um produto?</span>
             <span class="faq__icon" aria-hidden="true">+</span>
           </button>
           <div class="faq__answer" role="region">
-            <p>Após a confirmação do pagamento pela Hotmart, você receberá o acesso por e-mail imediatamente. O ebook é em formato digital (PDF) e pode ser lido no celular, tablet ou computador.</p>
+            <p>Não. O curso dá base estratégica para começar certo ou acelerar resultados.</p>
           </div>
         </li>
 
         <li class="faq__item">
           <button class="faq__question" aria-expanded="false">
-            <span>Preciso ter experiência prévia?</span>
+            <span>Recebo material além das aulas?</span>
             <span class="faq__icon" aria-hidden="true">+</span>
           </button>
           <div class="faq__answer" role="region">
-            <p>Não! O guia foi criado tanto para quem já produz quanto para quem está começando do zero. O conteúdo é didático e vai do básico ao avançado.</p>
+            <p>Sim. Ebook completo em PDF, template de rótulo, planilha de precificação e lista de fornecedores.</p>
           </div>
         </li>
 
         <li class="faq__item">
           <button class="faq__question" aria-expanded="false">
-            <span>E se eu não gostar do conteúdo?</span>
+            <span>O curso ensina receitas?</span>
             <span class="faq__icon" aria-hidden="true">+</span>
           </button>
           <div class="faq__answer" role="region">
-            <p>Você tem 7 dias de garantia incondicional. Se o guia não atender suas expectativas, basta solicitar o reembolso pela plataforma Hotmart e receberá 100% do valor de volta.</p>
+            <p>Não. Este curso é sobre estratégia de negócio: diferenciação, comunicação e gestão.</p>
           </div>
         </li>
 
         <li class="faq__item">
           <button class="faq__question" aria-expanded="false">
-            <span>Qual a forma de pagamento?</span>
+            <span>Serve para qualquer alimento artesanal?</span>
             <span class="faq__icon" aria-hidden="true">+</span>
           </button>
           <div class="faq__answer" role="region">
-            <p>O pagamento é processado pela Hotmart, plataforma líder em produtos digitais no Brasil. Você pode pagar com cartão de crédito (até 12x), boleto bancário ou Pix.</p>
+            <p>Sim. Molhos, queijos, geleias, embutidos, fermentados, panificados, bebidas.</p>
           </div>
         </li>
 
         <li class="faq__item">
           <button class="faq__question" aria-expanded="false">
-            <span>Serve para qualquer tipo de alimento artesanal?</span>
+            <span>Quanto tempo para ver resultado?</span>
             <span class="faq__icon" aria-hidden="true">+</span>
           </button>
           <div class="faq__answer" role="region">
-            <p>Sim! As estratégias se aplicam a qualquer produtor artesanal de alimentos — queijos, doces, geleias, molhos, pães, conservas, temperos e muito mais.</p>
+            <p>Produtores que aplicam consistentemente reportam mudanças em 30 a 90 dias.</p>
           </div>
         </li>
 
         <li class="faq__item">
           <button class="faq__question" aria-expanded="false">
-            <span>O conteúdo é atualizado?</span>
+            <span>Posso parcelar?</span>
             <span class="faq__icon" aria-hidden="true">+</span>
           </button>
           <div class="faq__answer" role="region">
-            <p>Sim. O guia é revisado periodicamente para refletir mudanças na legislação e novas oportunidades de mercado para produtores artesanais.</p>
+            <p>Sim. Opções de parcelamento disponíveis no checkout.</p>
+          </div>
+        </li>
+
+        <li class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            <span>Recebo certificado?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__answer" role="region">
+            <p>Sim. Certificado de conclusão digital ao completar todas as aulas.</p>
           </div>
         </li>
 
@@ -502,17 +3283,55 @@
        ============================================ -->
   <section class="final-cta fade-in" id="comprar">
     <div class="container container--narrow">
-      <h2 class="section-title">Comece Hoje a Transformar Seu Negócio</h2>
-      <p class="final-cta__price-anchor">De R$ 197</p>
-      <div class="final-cta__price-value">
-        <p class="final-cta__price">R$ 97</p>
+      <h2 class="section-title">O reconhecimento que seu trabalho merece começa agora.</h2>
+
+      <div class="final-cta__stack">
+        <div class="final-cta__stack-item">
+          <span class="final-cta__stack-check" aria-hidden="true">&#10003;</span>
+          <span>Curso Completo — 15 aulas em vídeo</span>
+          <span class="final-cta__stack-value">R$ 497</span>
+        </div>
+        <div class="final-cta__stack-item">
+          <span class="final-cta__stack-check" aria-hidden="true">&#10003;</span>
+          <span>Ebook Guia Estratégico (PDF)</span>
+          <span class="final-cta__stack-value">R$ 197</span>
+        </div>
+        <div class="final-cta__stack-item">
+          <span class="final-cta__stack-check" aria-hidden="true">&#10003;</span>
+          <span>Bônus: Template de Rótulo</span>
+          <span class="final-cta__stack-value">R$ 67</span>
+        </div>
+        <div class="final-cta__stack-item">
+          <span class="final-cta__stack-check" aria-hidden="true">&#10003;</span>
+          <span>Bônus: Planilha de Precificação</span>
+          <span class="final-cta__stack-value">R$ 47</span>
+        </div>
+        <div class="final-cta__stack-item">
+          <span class="final-cta__stack-check" aria-hidden="true">&#10003;</span>
+          <span>Bônus: Lista de Fornecedores</span>
+          <span class="final-cta__stack-value">R$ 47</span>
+        </div>
+        <div class="final-cta__stack-total">
+          <span>Valor total:</span>
+          <span class="final-cta__stack-total-value">R$ 855</span>
+        </div>
       </div>
-      <p class="final-cta__price-installment">ou 12x de R$ 9,67 no cartão</p>
+
+      <p class="final-cta__price-anchor">De R$ 855 por apenas</p>
+      <div class="final-cta__price-value">
+        <p class="final-cta__price">R$ 297</p>
+      </div>
+      <p class="final-cta__price-installment">ou 12x de R$ 29,41</p>
       <p class="final-cta__price-note">Pagamento único. Acesso imediato e vitalício.</p>
-      <a href="https://pay.hotmart.com/SEU_PRODUTO_ID" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
-        Garantir Meu Guia com Desconto
+
+      <div class="final-cta__urgency">
+        Preço de primeira turma. Após 50 inscrições, sobe para R$ 497.
+      </div>
+
+      <a href="[LINK]" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
+        QUERO COMEÇAR AGORA — R$ 297
       </a>
-      <p class="final-cta__guarantee-note">7 dias de garantia incondicional. Risco zero.</p>
+      <p class="final-cta__guarantee-note">Garantia incondicional de 7 dias. Risco zero.</p>
     </div>
   </section>
 
@@ -523,7 +3342,7 @@
     <div class="container">
       <p>&copy; 2026 ORIZA Agropecuária, Educação e Alimentos. Todos os direitos reservados.</p>
       <p class="footer__links">
-        <a href="/privacidade.html">Política de Privacidade</a> &middot;
+        <a href="privacidade.html">Política de Privacidade</a> &middot;
         <a href="#">Termos de Uso</a>
       </p>
     </div>
@@ -535,7 +3354,7 @@
   <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Consentimento de cookies">
     <div class="cookie-banner__content">
       <p class="cookie-banner__text">
-        Usamos cookies para análise de tráfego e otimização de anúncios. Ao aceitar, você concorda com o uso de Google Analytics e Meta Pixel conforme nossa <a href="/privacidade.html" style="color: var(--color-cream); text-decoration: underline;">Política de Privacidade</a>.
+        Usamos cookies para análise de tráfego e otimização de anúncios. Ao aceitar, você concorda com o uso de Google Analytics e Meta Pixel conforme nossa <a href="privacidade.html" style="color: var(--criar); text-decoration: underline;">Política de Privacidade</a>.
       </p>
       <div class="cookie-banner__actions">
         <button class="cookie-banner__btn cookie-banner__btn--accept" id="cookie-accept">Aceitar</button>
@@ -548,13 +3367,13 @@
        STICKY MOBILE CTA
        ============================================ -->
   <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
-    <a href="https://pay.hotmart.com/SEU_PRODUTO_ID" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-      Quero Meu Guia — R$ 97
+    <a href="#comprar" class="btn btn--primary">
+      QUERO ACESSO AGORA
     </a>
   </div>
 
   <!-- Scripts -->
-  <script src="/js/cookie-consent.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="js/cookie-consent.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

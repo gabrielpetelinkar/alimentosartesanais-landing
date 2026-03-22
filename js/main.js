@@ -32,7 +32,7 @@ function initAccordion() {
 }
 
 /* ------------------------------------------
-   Scroll Fade-In Animations
+   Enhanced: Cinematic Scroll Reveals
    ------------------------------------------ */
 function initScrollAnimations() {
   var fadeElements = document.querySelectorAll('.fade-in');
@@ -49,7 +49,7 @@ function initScrollAnimations() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.12 }
     );
 
     fadeElements.forEach(function (el) {
@@ -61,6 +61,21 @@ function initScrollAnimations() {
       el.classList.add('fade-in--visible');
     });
   }
+}
+
+/* ------------------------------------------
+   Enhanced: Scroll Progress Bar
+   ------------------------------------------ */
+function initScrollProgress() {
+  var progressBar = document.querySelector('.scroll-progress');
+  if (!progressBar) return;
+
+  window.addEventListener('scroll', function () {
+    var scrollTop = window.scrollY;
+    var docHeight = document.body.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }, { passive: true });
 }
 
 /* ------------------------------------------
@@ -134,6 +149,7 @@ function initScrollUI() {
 document.addEventListener('DOMContentLoaded', function () {
   initAccordion();
   initScrollAnimations();
+  initScrollProgress();
   initCtaTracking();
   initScrollUI();
 });
