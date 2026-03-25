@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Compartilhamento — Giovana Petelinkar</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN SYSTEM — Mesmo do Portfólio
+   ============================================================ */
+@page {
+  size: A4;
+  margin: 60px 56px 72px 56px;
+  @bottom-center {
+    content: counter(page);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #6B6B6B;
+  }
+}
+
+:root {
+  --onyx: #1A1A1A;
+  --onyx-90: #333333;
+  --marfim: #F7F5F0;
+  --marfim-dark: #EFEADE;
+  --terracota: #C4785B;
+  --terracota-10: rgba(196,120,91,0.10);
+  --sage: #8B9E7E;
+  --sage-light: #E8EDE5;
+  --grafite: #6B6B6B;
+  --white: #FFFFFF;
+  --divider: rgba(26,26,26,0.08);
+
+  --font-heading: 'DM Sans', system-ui, sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'DM Mono', 'Courier New', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 11pt;
+  color: var(--onyx);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  color: var(--onyx);
+  page-break-after: avoid;
+}
+
+h1 { font-size: 28pt; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; }
+h2 { font-size: 18pt; font-weight: 700; line-height: 1.2; letter-spacing: -0.015em; margin-top: 40px; margin-bottom: 16px; }
+h3 { font-size: 13pt; font-weight: 600; line-height: 1.3; margin-top: 28px; margin-bottom: 10px; }
+h4 { font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--terracota); margin-top: 20px; margin-bottom: 8px; }
+
+p { margin-bottom: 10px; max-width: 100%; }
+p + p { margin-top: 0; }
+
+.mono { font-family: var(--font-mono); font-size: 9pt; color: var(--grafite); }
+
+/* --- Cover Page --- */
+.cover {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+  page-break-after: always;
+  position: relative;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 100%;
+  background: var(--terracota);
+  opacity: 0.08;
+}
+
+.cover .tag-line {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  color: var(--terracota);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+}
+
+.cover h1 { font-size: 36pt; margin-bottom: 16px; }
+
+.cover .subtitle {
+  font-family: var(--font-body);
+  font-size: 13pt;
+  color: var(--grafite);
+  font-style: italic;
+  max-width: 420px;
+  line-height: 1.6;
+  margin-bottom: 48px;
+}
+
+.cover .meta {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  color: var(--grafite);
+  line-height: 2;
+}
+
+.cover .meta strong { color: var(--onyx); font-weight: 500; }
+
+/* --- Section Divider --- */
+.section-divider {
+  width: 40px;
+  height: 3px;
+  background: var(--terracota);
+  margin-bottom: 24px;
+}
+
+/* --- Quote Block --- */
+.quote {
+  border-left: 3px solid var(--terracota);
+  padding: 12px 20px;
+  margin: 20px 0;
+  background: var(--terracota-10);
+  border-radius: 0 8px 8px 0;
+}
+.quote p {
+  font-style: italic;
+  color: var(--onyx-90);
+  margin: 0;
+  font-size: 11pt;
+}
+.quote .attribution {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  color: var(--grafite);
+  margin-top: 8px;
+  font-style: normal;
+}
+
+/* --- Rule Card --- */
+.rule-card {
+  background: var(--marfim);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  page-break-inside: avoid;
+}
+.rule-card .rule-number {
+  font-family: var(--font-heading);
+  font-size: 32pt;
+  font-weight: 700;
+  color: var(--terracota);
+  opacity: 0.2;
+  float: right;
+  margin-top: -8px;
+  margin-right: -4px;
+}
+.rule-card h3 {
+  margin-top: 0;
+  font-size: 12pt;
+  color: var(--onyx);
+}
+.rule-card p {
+  font-size: 10pt;
+  color: var(--onyx-90);
+}
+.rule-card .aplicacao {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--divider);
+}
+.rule-card .aplicacao-label {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sage);
+  margin-bottom: 4px;
+}
+
+/* --- Table --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 10pt;
+  page-break-inside: avoid;
+}
+th {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--marfim);
+  border-bottom: 2px solid var(--divider);
+  color: var(--onyx);
+}
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--divider);
+  vertical-align: top;
+  color: var(--onyx-90);
+}
+td:first-child { font-weight: 500; color: var(--onyx); }
+
+/* --- Calendar Grid --- */
+.calendar {
+  display: grid;
+  grid-template-columns: 48px 80px 1fr 1fr 100px;
+  gap: 0;
+  font-size: 9pt;
+  margin: 16px 0;
+  border: 1px solid var(--divider);
+  border-radius: 8px;
+  overflow: hidden;
+  page-break-inside: avoid;
+}
+.calendar .cal-header {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 10px 10px;
+  background: var(--onyx);
+  color: var(--white);
+}
+.calendar .cal-cell {
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--divider);
+  border-right: 1px solid var(--divider);
+}
+.calendar .cal-cell:last-child { border-right: none; }
+.calendar .cal-day {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--terracota);
+}
+.calendar .cal-platform {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  color: var(--sage);
+}
+.calendar .cal-rule {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  color: var(--grafite);
+}
+
+/* --- Proportion Bar --- */
+.proportion-bar {
+  display: flex;
+  height: 28px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 16px 0;
+  font-family: var(--font-heading);
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--white);
+}
+.proportion-bar .bar-valor { background: var(--sage); flex: 7; display: flex; align-items: center; padding-left: 12px; }
+.proportion-bar .bar-historia { background: var(--terracota); flex: 2; display: flex; align-items: center; padding-left: 8px; }
+.proportion-bar .bar-pedido { background: var(--onyx); flex: 1; display: flex; align-items: center; padding-left: 8px; font-size: 8pt; }
+
+/* --- Checklist --- */
+.checklist {
+  list-style: none;
+  margin: 12px 0;
+}
+.checklist li {
+  padding: 6px 0 6px 28px;
+  position: relative;
+  font-size: 10pt;
+  border-bottom: 1px solid var(--divider);
+}
+.checklist li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  font-size: 14pt;
+  color: var(--terracota);
+  top: 4px;
+}
+
+/* --- Metric Card --- */
+.metric-row {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+.metric-card {
+  background: var(--marfim);
+  border-radius: 8px;
+  padding: 16px 20px;
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+.metric-card .value {
+  font-family: var(--font-heading);
+  font-size: 20pt;
+  font-weight: 700;
+  color: var(--terracota);
+}
+.metric-card .label {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  color: var(--grafite);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+/* --- Tip Box --- */
+.tip-box {
+  background: var(--sage-light);
+  border-left: 3px solid var(--sage);
+  padding: 14px 20px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+  page-break-inside: avoid;
+}
+.tip-box .tip-label {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sage);
+  margin-bottom: 4px;
+}
+.tip-box p { font-size: 10pt; margin: 0; color: var(--onyx-90); }
+
+/* --- Page Break --- */
+.page-break { page-break-before: always; }
+
+/* --- Footer Note --- */
+.footer-note {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--divider);
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  color: var(--grafite);
+  text-align: center;
+}
+
+/* --- TOC --- */
+.toc { margin: 20px 0; }
+.toc-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dotted var(--divider);
+  font-size: 11pt;
+}
+.toc-item .toc-number {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--terracota);
+  width: 32px;
+}
+.toc-item .toc-title { flex: 1; font-weight: 500; }
+.toc-item .toc-page {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  color: var(--grafite);
+  width: 24px;
+  text-align: right;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     CAPA
+     ============================================================ -->
+<div class="cover">
+  <div class="tag-line">Manual de Implementação</div>
+  <h1>Estratégia de<br>Compartilhamento</h1>
+  <p class="subtitle">Um guia prático para tornar seu portfólio visível, construir autoridade e atrair os clientes certos — sem virar spam.</p>
+  <div class="meta">
+    <strong>Preparado para:</strong> Giovana Petelinkar<br>
+    <strong>Baseado em:</strong> Show Your Work! — Austin Kleon<br>
+    <strong>Metodologia:</strong> 10 Regras + Stock & Flow<br>
+    <strong>Data:</strong> Março 2026
+  </div>
+</div>
+
+<!-- ============================================================
+     SUMÁRIO
+     ============================================================ -->
+<div class="section-divider"></div>
+<h2>Sumário</h2>
+<div class="toc">
+  <div class="toc-item"><span class="toc-number">01</span><span class="toc-title">Filosofia: Por que compartilhar?</span><span class="toc-page">3</span></div>
+  <div class="toc-item"><span class="toc-number">02</span><span class="toc-title">As 10 Regras de Compartilhamento</span><span class="toc-page">4</span></div>
+  <div class="toc-item"><span class="toc-number">03</span><span class="toc-title">Canais Recomendados</span><span class="toc-page">8</span></div>
+  <div class="toc-item"><span class="toc-number">04</span><span class="toc-title">Calendário: Primeiros 30 Dias</span><span class="toc-page">9</span></div>
+  <div class="toc-item"><span class="toc-number">05</span><span class="toc-title">Remix: De 1 Case para 10+ Conteúdos</span><span class="toc-page">12</span></div>
+  <div class="toc-item"><span class="toc-number">06</span><span class="toc-title">Proporção Anti-Spam</span><span class="toc-page">13</span></div>
+  <div class="toc-item"><span class="toc-number">07</span><span class="toc-title">Métricas que Importam</span><span class="toc-page">14</span></div>
+  <div class="toc-item"><span class="toc-number">08</span><span class="toc-title">Bios & Perfis</span><span class="toc-page">15</span></div>
+  <div class="toc-item"><span class="toc-number">09</span><span class="toc-title">Dias de Baixa Energia</span><span class="toc-page">16</span></div>
+  <div class="toc-item"><span class="toc-number">10</span><span class="toc-title">Checklist de Lançamento</span><span class="toc-page">17</span></div>
+</div>
+
+<!-- ============================================================
+     01 — FILOSOFIA
+     ============================================================ -->
+<div class="page-break"></div>
+<div class="section-divider"></div>
+<h2>01 — Filosofia: Por que compartilhar?</h2>
+
+<quote class="quote">
+  <p>"Você não precisa ser um gênio. Você só precisa mostrar seu trabalho. Compartilhe algo pequeno todo dia e deixe acumular."</p>
+  <div class="attribution">— Austin Kleon, Show Your Work!</div>
+</quote>
+
+<p>Este manual não é sobre marketing agressivo ou hackear algoritmos. É sobre construir um <strong>hábito sustentável de compartilhamento</strong> que torna o seu trabalho visível para as pessoas certas.</p>
+
+<p>A estratégia é simples:</p>
+<ul style="margin: 12px 0 12px 20px; font-size: 10pt;">
+  <li style="margin-bottom: 6px;">Compartilhe <strong>processo</strong>, não apenas resultados polidos</li>
+  <li style="margin-bottom: 6px;">Ensine o que você sabe — generosidade constrói autoridade</li>
+  <li style="margin-bottom: 6px;">Seja uma pessoa, não uma marca — humanos conectam com humanos</li>
+  <li style="margin-bottom: 6px;">Consistência vence intensidade — 1 post por dia bate 10 posts numa semana</li>
+  <li>O jogo longo sempre vence</li>
+</ul>
+
+<div class="tip-box">
+  <div class="tip-label">Princípio central</div>
+  <p>Você não precisa de um portfólio perfeito para começar a compartilhar. O ato de compartilhar É parte da construção do portfólio. Comece antes de estar pronta.</p>
+</div>
+
+<!-- ============================================================
+     02 — AS 10 REGRAS
+     ============================================================ -->
+<div class="page-break"></div>
+<div class="section-divider"></div>
+<h2>02 — As 10 Regras de Compartilhamento</h2>
+<p style="color: var(--grafite); font-style: italic; margin-bottom: 24px;">Baseadas em "Show Your Work!" de Austin Kleon — adaptadas para o contexto de comunicação e marketing digital.</p>
+
+<div class="rule-card">
+  <span class="rule-number">01</span>
+  <h3>Você não precisa ser um gênio</h3>
+  <p>Abrace o conceito de "scenius" — a genialidade coletiva. Você não precisa ser a melhor profissional do mercado. Precisa contribuir para a comunidade.</p>
+  <div class="aplicacao">
+    <div class="aplicacao-label">Como aplicar</div>
+    <p>Posicione-se como membro ativo da comunidade de comunicação digital. Destaque colaborações. Compartilhe créditos. Comece antes de se sentir pronta.</p>
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">02</span>
+  <h3>Pense processo, não produto</h3>
+  <p>As pessoas são fascinadas por como as coisas são feitas. Compartilhe bastidores: rascunhos, moodboards, decisões, erros. Isso é mais interessante que o resultado final sozinho.</p>
+  <div class="aplicacao">
+    <div class="aplicacao-label">Como aplicar</div>
+    <p>Para cada projeto do portfólio, extraia 3-5 momentos de "bastidores". Fotos de brainstorm, wireframes, direções rejeitadas, insights que mudaram o rumo.</p>
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">03</span>
+  <h3>Compartilhe algo pequeno todo dia</h3>
+  <p>Compartilhamento diário constrói um corpo de trabalho ao longo do tempo. Uma foto, um pensamento, um link, um aprendizado — cada post é um tijolo.</p>
+  <div class="aplicacao">
+    <div class="aplicacao-label">Como aplicar</div>
+    <p>Crie o hábito do "despacho diário": 1 post por dia no LinkedIn ou Instagram. Cada case study do portfólio rende 10-15 posts. Use o modelo Stock & Flow.</p>
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">04</span>
+  <h3>Abra seu gabinete de curiosidades</h3>
+  <p>Compartilhe o que te inspira, não apenas o que você faz. Suas referências, leituras, ferramentas e interesses dizem quem você é como criativa. Curadoria é um ato criativo.</p>
+  <div class="aplicacao">
+    <div class="aplicacao-label">Como aplicar</div>
+    <p>Compartilhe referências que inspiraram cada projeto. Crie conteúdo de curadoria: ferramentas da semana, artigos que marcaram, profissionais que admira.</p>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="rule-card">
+  <span class="rule-number">05</span>
+  <h3>Conte boas histórias</h3>
+  <p>Estruture seus posts como narrativas. Havia um problema, tentei algo, aconteceu isso. Histórias grudam; listas de tópicos não.</p>
+  <div class="aplicacao">
+    <div class="aplicacao-label">Como aplicar</div>
+    <p>Use a estrutura: Contexto → Desafio → Processo → Resultado → Lição. Cada case study do portfólio já segue esse arco — adapte para posts curtos.</p>
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">06</span>
+  <h3>Ensine o que você sabe</h3>
+  <p>Compartilhar conhecimento de graça constrói autoridade mais rápido que qualquer autopromoção. Tutoriais, dicas e insights estabelecem você como especialista generosa.</p>
+  <div class="aplicacao">
+    <div class="aplicacao-label">Como aplicar</div>
+    <p>De cada projeto, extraia 2-3 lições ensináveis. Crie posts "como eu fiz isso" para técnicas específicas. Compartilhe ferramentas e workflows abertamente.</p>
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">07</span>
+  <h3>Não vire spam humano</h3>
+  <p>Seja uma pessoa, não uma marca. Compartilhe coisas genuinamente interessantes. Engaje com o trabalho dos outros. Pergunte. Seja curiosa. A fase de "calar e ouvir" é tão importante quanto a de "mostrar seu trabalho".</p>
+  <div class="aplicacao">
+    <div class="aplicacao-label">Como aplicar</div>
+    <p>Siga a regra 70/30: 70% conteúdo de valor (ensino, curadoria, processo), 30% autopromoção. Comente e celebre o trabalho de outros profissionais regularmente.</p>
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">08</span>
+  <h3>Aprenda a levar um soco</h3>
+  <p>Colocar seu trabalho no mundo significa receber feedback — alguns úteis, outros não. Desenvolva pele grossa. Nem todo mundo vai gostar, e está tudo bem.</p>
+  <div class="aplicacao">
+    <div class="aplicacao-label">Como aplicar</div>
+    <p>Diferencie feedback construtivo (ouro) de trollagem (ignorar). Use críticas para iterar a apresentação do portfólio. Não deixe o medo de julgamento impedir o compartilhamento.</p>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="rule-card">
+  <span class="rule-number">09</span>
+  <h3>Venda de forma ética</h3>
+  <p>Não há nada errado em ser contratada pelo seu trabalho criativo. Mantenha um caminho claro para "me contrate" em todos os canais. Facilite as oportunidades chegarem até você.</p>
+  <div class="aplicacao">
+    <div class="aplicacao-label">Como aplicar</div>
+    <p>Cada canal deve ter um CTA claro mas sutil: "Quer trabalhar junto? Veja como." na bio. Deixe o trabalho demonstrar suas capacidades — portfólio como prova.</p>
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">10</span>
+  <h3>Persista</h3>
+  <p>As pessoas que têm sucesso são as que não desistem. Consistência e persistência vencem talento e sorte. Continue aparecendo, compartilhando, criando. O jogo longo sempre vence.</p>
+  <div class="aplicacao">
+    <div class="aplicacao-label">Como aplicar</div>
+    <p>Desenhe hábitos sustentáveis para 12+ meses, não campanhas de 1 semana. Tenha um estoque de conteúdo para períodos de baixa energia. Celebre pequenas conquistas.</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     03 — CANAIS RECOMENDADOS
+     ============================================================ -->
+<div class="page-break"></div>
+<div class="section-divider"></div>
+<h2>03 — Canais Recomendados</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Canal</th>
+      <th>Tipo</th>
+      <th>Cadência</th>
+      <th>Função</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>LinkedIn</strong></td>
+      <td>Flow (principal)</td>
+      <td>3-4x/semana</td>
+      <td>Conteúdo profissional, processo, lições aprendidas</td>
+    </tr>
+    <tr>
+      <td><strong>Instagram</strong></td>
+      <td>Flow (visual)</td>
+      <td>3-5x/sem + stories diários</td>
+      <td>Bastidores, visual, carrosséis</td>
+    </tr>
+    <tr>
+      <td><strong>Behance</strong></td>
+      <td>Stock</td>
+      <td>1-2 projetos/mês</td>
+      <td>Cases completos, portfólio visual</td>
+    </tr>
+    <tr>
+      <td><strong>Site pessoal</strong></td>
+      <td>Stock (base)</td>
+      <td>Permanente + update mensal</td>
+      <td>Portfólio HTML completo</td>
+    </tr>
+    <tr>
+      <td><strong>Newsletter</strong></td>
+      <td>Stock + Flow</td>
+      <td>Quinzenal</td>
+      <td>Curadoria + reflexões para leads qualificados</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="tip-box">
+  <div class="tip-label">Stock & Flow — Modelo de Compartilhamento</div>
+  <p><strong>Flow</strong> = posts diários que mantêm visibilidade (Instagram, LinkedIn). <strong>Stock</strong> = conteúdo permanente que acumula valor (site, Behance, artigos). O flow alimenta o stock — posts diários viram material para cases futuros.</p>
+</div>
+
+<h3>Plataforma primária: LinkedIn</h3>
+<p>É onde gestores de marketing, diretores criativos e donos de empresa buscam profissionais de comunicação. A Giovana precisa estar lá com voz ativa — não apenas com perfil atualizado, mas com conteúdo regular que demonstre como pensa.</p>
+
+<!-- ============================================================
+     04 — CALENDÁRIO 30 DIAS
+     ============================================================ -->
+<div class="page-break"></div>
+<div class="section-divider"></div>
+<h2>04 — Calendário: Primeiros 30 Dias</h2>
+<p style="color: var(--grafite); font-style: italic; margin-bottom: 20px;">Plano detalhado semana a semana. Cada post tem tipo, conteúdo e regra aplicada.</p>
+
+<h3>Semana 1 — Lançamento Silencioso</h3>
+<table>
+  <thead>
+    <tr><th>Dia</th><th>Plataforma</th><th>Conteúdo</th><th>Regra</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Seg</td><td>LinkedIn</td><td>"O que aprendi atendendo 12 marcas em 7 anos de comunicação digital" — post reflexivo com 3-5 lições</td><td>R6: Ensine</td></tr>
+    <tr><td>Ter</td><td>Instagram</td><td>Carrossel: Before/After Renata Dias Atelier (3-5 slides)</td><td>R2: Processo</td></tr>
+    <tr><td>Qua</td><td>LinkedIn</td><td>"O erro que mais vejo em marcas: conteúdo bonito sem estratégia" — post provocativo</td><td>R5: Histórias</td></tr>
+    <tr><td>Qui</td><td>IG Stories</td><td>Bastidores: como monto um planejamento de comunicação</td><td>R2: Processo</td></tr>
+    <tr><td>Sex</td><td>LinkedIn</td><td>Compartilhar artigo/referência que inspirou + comentário pessoal</td><td>R4: Gabinete</td></tr>
+  </tbody>
+</table>
+
+<h3>Semana 2 — Aprofundamento</h3>
+<table>
+  <thead>
+    <tr><th>Dia</th><th>Plataforma</th><th>Conteúdo</th><th>Regra</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Seg</td><td>LinkedIn</td><td>"Como transformei um condomínio em estilo de vida" — mini case Reserva da Pipa</td><td>R5: Histórias</td></tr>
+    <tr><td>Ter</td><td>Instagram</td><td>3 fotos: processo de criação da identidade Lumos Decor</td><td>R2: Processo</td></tr>
+    <tr><td>Qua</td><td>LinkedIn</td><td>"3 perguntas que faço antes de criar qualquer conteúdo para uma marca"</td><td>R6: Ensine</td></tr>
+    <tr><td>Qui</td><td>Instagram</td><td>Repost do portfólio de profissional que admira + marcação</td><td>R4 + R7</td></tr>
+    <tr><td>Sex</td><td>LinkedIn</td><td>Reflexão: transição de agência para consultora independente</td><td>R1: Scenius</td></tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<h3>Semana 3 — Ensino</h3>
+<table>
+  <thead>
+    <tr><th>Dia</th><th>Plataforma</th><th>Conteúdo</th><th>Regra</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Seg</td><td>LinkedIn</td><td>"Copywriting para imobiliário de luxo: como escrevi o site da Bauten" — breakdown</td><td>R6: Ensine</td></tr>
+    <tr><td>Ter</td><td>Instagram</td><td>Carrossel: "5 sinais de que sua comunicação digital está te custando clientes"</td><td>R5 + R9</td></tr>
+    <tr><td>Qua</td><td>LinkedIn</td><td>Ferramenta da semana: uma ferramenta que uso no dia a dia + como + por quê</td><td>R4: Gabinete</td></tr>
+    <tr><td>Qui</td><td>IG Stories</td><td>Trecho do roteiro criado para mentora digital (cenário, abertura, CTA)</td><td>R2: Processo</td></tr>
+    <tr><td>Sex</td><td>Behance</td><td>Publicar case completo: Renata Dias Atelier (Star Moment)</td><td>Stock</td></tr>
+  </tbody>
+</table>
+
+<h3>Semana 4 — Consolidação</h3>
+<table>
+  <thead>
+    <tr><th>Dia</th><th>Plataforma</th><th>Conteúdo</th><th>Regra</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Seg</td><td>LinkedIn</td><td>"A pergunta que todo profissional de comunicação deveria fazer antes de aceitar um projeto"</td><td>R5 + R8</td></tr>
+    <tr><td>Ter</td><td>Instagram</td><td>Compilação: 4 projetos, 4 setores, 1 frase de impacto por projeto</td><td>R5: Histórias</td></tr>
+    <tr><td>Qua</td><td>LinkedIn</td><td>Responder publicamente a dúvida de comentário das semanas anteriores</td><td>R7: Engaje</td></tr>
+    <tr><td>Qui</td><td>Instagram</td><td>"Minha mesa de trabalho hoje" — foto real com contexto humano</td><td>R1: Humano</td></tr>
+    <tr><td>Sex</td><td>LinkedIn</td><td>Post com CTA suave: "Nos últimos 30 dias compartilhei processo e lições. Se você precisa de comunicação estratégica..." + link portfólio</td><td>R9: Venda ética</td></tr>
+  </tbody>
+</table>
+
+<!-- ============================================================
+     05 — REMIX
+     ============================================================ -->
+<div class="page-break"></div>
+<div class="section-divider"></div>
+<h2>05 — Remix: De 1 Case para 10+ Conteúdos</h2>
+<p>Cada case study do portfólio pode ser "remixado" em múltiplos formatos. Isso significa que seus 5 cases geram 50+ conteúdos — o suficiente para 2-3 meses de compartilhamento.</p>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Tipo de Conteúdo</th><th>Formato</th><th>Plataforma</th><th>Regra</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Mini case (3 parágrafos)</td><td>Texto</td><td>LinkedIn</td><td>R5</td></tr>
+    <tr><td>2</td><td>Carrossel Before/After</td><td>5-7 slides</td><td>Instagram</td><td>R2</td></tr>
+    <tr><td>3</td><td>Lição aprendida</td><td>Texto curto</td><td>LinkedIn</td><td>R6</td></tr>
+    <tr><td>4</td><td>Ferramenta/técnica usada</td><td>Post + screenshot</td><td>LinkedIn/IG</td><td>R4</td></tr>
+    <tr><td>5</td><td>Bastidores (rascunho, moodboard)</td><td>Foto + legenda</td><td>IG Stories</td><td>R2</td></tr>
+    <tr><td>6</td><td>Citação do cliente</td><td>Card visual</td><td>Instagram</td><td>R9</td></tr>
+    <tr><td>7</td><td>"O que eu faria diferente"</td><td>Texto reflexivo</td><td>LinkedIn</td><td>R8</td></tr>
+    <tr><td>8</td><td>Referência que inspirou o projeto</td><td>Link + comentário</td><td>LinkedIn</td><td>R4</td></tr>
+    <tr><td>9</td><td>Dica prática extraída do projeto</td><td>Post lista</td><td>LinkedIn/IG</td><td>R6</td></tr>
+    <tr><td>10</td><td>Case completo</td><td>Projeto publicado</td><td>Behance</td><td>Stock</td></tr>
+  </tbody>
+</table>
+
+<div class="metric-row">
+  <div class="metric-card"><span class="value">5</span><span class="label">Case studies</span></div>
+  <div class="metric-card"><span class="value">×10</span><span class="label">Remixes por case</span></div>
+  <div class="metric-card"><span class="value">=50+</span><span class="label">Conteúdos</span></div>
+  <div class="metric-card"><span class="value">~3</span><span class="label">Meses de conteúdo</span></div>
+</div>
+
+<!-- ============================================================
+     06 — PROPORÇÃO ANTI-SPAM
+     ============================================================ -->
+<div class="page-break"></div>
+<div class="section-divider"></div>
+<h2>06 — Proporção Anti-Spam</h2>
+
+<div class="proportion-bar">
+  <div class="bar-valor">70% Valor</div>
+  <div class="bar-historia">20% História</div>
+  <div class="bar-pedido">10%</div>
+</div>
+
+<table>
+  <thead>
+    <tr><th>Categoria</th><th>%</th><th>Exemplos</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Valor</strong></td><td>70%</td><td>Ensino, curadoria, processo, dicas, ferramentas, tutoriais, referências</td></tr>
+    <tr><td><strong>História</strong></td><td>20%</td><td>Bastidores, jornada pessoal, aprendizados, reflexões, "minha mesa hoje"</td></tr>
+    <tr><td><strong>Pedido</strong></td><td>10%</td><td>CTA, portfólio, "vamos trabalhar juntos", promoção direta</td></tr>
+  </tbody>
+</table>
+
+<div class="quote">
+  <p>Nunca mais de 1 CTA direto por semana. O portfólio fala por si. O compartilhamento constrói confiança. Quando a confiança existe, o pedido é natural.</p>
+</div>
+
+<!-- ============================================================
+     07 — MÉTRICAS
+     ============================================================ -->
+<div class="section-divider" style="margin-top: 40px;"></div>
+<h2>07 — Métricas que Importam</h2>
+
+<table>
+  <thead>
+    <tr><th style="background: var(--sage-light); color: var(--sage);">✓ Importa</th><th style="background: #FCE8E8; color: #C44;">✗ Não Importa</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Conversas reais nos comentários</td><td>Número de curtidas</td></tr>
+    <tr><td>Mensagens pedindo orçamento</td><td>Alcance do post</td></tr>
+    <tr><td>Salvamentos (indica valor real)</td><td>Número de seguidores</td></tr>
+    <tr><td>Pessoas marcando em posts</td><td>Taxa de engajamento</td></tr>
+    <tr><td>Convites para projetos vindos do conteúdo</td><td>Impressões</td></tr>
+  </tbody>
+</table>
+
+<div class="tip-box">
+  <div class="tip-label">A métrica real</div>
+  <p>"Nos últimos 30 dias, quantas pessoas me procuraram por causa de algo que viram nas minhas redes?"<br>Se o número está crescendo, a estratégia está funcionando.</p>
+</div>
+
+<!-- ============================================================
+     08 — BIOS
+     ============================================================ -->
+<div class="page-break"></div>
+<div class="section-divider"></div>
+<h2>08 — Bios & Perfis</h2>
+<p style="color: var(--grafite); font-style: italic;">Copie e cole. Atualize todos os perfis antes de começar a compartilhar.</p>
+
+<h4>LinkedIn</h4>
+<div class="rule-card">
+  <p>Estrategista de Comunicação & Marketing Digital | Ajudo marcas a contar sua história no digital — do conteúdo ao resultado | 7+ anos | 12+ marcas | Moda, imobiliário, tech, ONG<br>↓ Veja meu portfólio: <em>[link]</em></p>
+</div>
+
+<h4>Instagram</h4>
+<div class="rule-card">
+  <p>Comunicação estratégica para marcas que merecem ser vistas.<br>Conteúdo | Vídeo | Copy | Branding<br>Portfólio ↓</p>
+</div>
+
+<h4>Behance</h4>
+<div class="rule-card">
+  <p>Produtora de Conteúdo & Estrategista Digital com 7+ anos de experiência em marcas de moda, imobiliário, lifestyle e desenvolvimento pessoal.</p>
+</div>
+
+<!-- ============================================================
+     09 — BAIXA ENERGIA
+     ============================================================ -->
+<div class="section-divider" style="margin-top: 40px;"></div>
+<h2>09 — Dias de Baixa Energia</h2>
+<p>Nem todo dia você vai ter energia para criar conteúdo original. Nesses dias, use estas alternativas rápidas (menos de 5 minutos):</p>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Alternativa</th><th>Tempo</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Reshare</strong> — compartilhe algo que já publicou com um novo comentário</td><td>2 min</td></tr>
+    <tr><td>2</td><td><strong>Curadoria</strong> — compartilhe o trabalho de alguém que admira</td><td>3 min</td></tr>
+    <tr><td>3</td><td><strong>Pergunta</strong> — faça uma pergunta genuína para sua audiência</td><td>1 min</td></tr>
+    <tr><td>4</td><td><strong>Foto simples</strong> — sua mesa, seu café, seu caderno + uma linha de contexto</td><td>2 min</td></tr>
+    <tr><td>5</td><td><strong>Citação</strong> — frase de referência profissional que te inspira</td><td>1 min</td></tr>
+  </tbody>
+</table>
+
+<div class="quote">
+  <p>O objetivo não é perfeição. É presença. Mostrar que você está lá. Que está trabalhando. Que está pensando.</p>
+</div>
+
+<!-- ============================================================
+     10 — CHECKLIST DE LANÇAMENTO
+     ============================================================ -->
+<div class="page-break"></div>
+<div class="section-divider"></div>
+<h2>10 — Checklist de Lançamento</h2>
+<p style="color: var(--grafite); font-style: italic; margin-bottom: 20px;">Ações prioritárias para colocar a estratégia em prática. Marque cada item conforme completar.</p>
+
+<h4>Antes de começar (Dia 0)</h4>
+<ul class="checklist">
+  <li>Atualizar bio do LinkedIn com novo posicionamento</li>
+  <li>Atualizar bio do Instagram com novo posicionamento</li>
+  <li>Confirmar portfólio no ar (site pessoal ou Vercel)</li>
+  <li>Substituir placeholders do portfólio por imagens reais</li>
+  <li>Definir foto profissional para hero section e seção Sobre</li>
+</ul>
+
+<h4>Semana 1</h4>
+<ul class="checklist">
+  <li>Publicar primeiro post no LinkedIn (lições de 7 anos)</li>
+  <li>Publicar primeiro carrossel no Instagram (Before/After)</li>
+  <li>Compartilhar uma referência que inspira + comentário</li>
+  <li>Engajar com 5 posts de outros profissionais (comentários reais)</li>
+</ul>
+
+<h4>Semana 2-3</h4>
+<ul class="checklist">
+  <li>Publicar mini case no LinkedIn (Reserva da Pipa ou Lumos)</li>
+  <li>Criar e publicar primeiro conteúdo de ensino (dica/tutorial)</li>
+  <li>Publicar primeiro case completo no Behance (Renata Dias)</li>
+  <li>Compartilhar bastidores no Instagram Stories</li>
+</ul>
+
+<h4>Semana 4</h4>
+<ul class="checklist">
+  <li>Publicar post com CTA suave (link do portfólio)</li>
+  <li>Avaliar: quantas conversas/mensagens vieram do conteúdo?</li>
+  <li>Planejar conteúdo do mês seguinte usando tabela de Remix</li>
+  <li>Celebrar — 30 dias de consistência é uma conquista real</li>
+</ul>
+
+<h4>Contínuo (Mensal)</h4>
+<ul class="checklist">
+  <li>Publicar 1-2 novos projetos no Behance</li>
+  <li>Atualizar portfólio com novos cases quando houver</li>
+  <li>Revisar proporção anti-spam (70/20/10)</li>
+  <li>Anotar quantas oportunidades vieram do compartilhamento</li>
+</ul>
+
+<!-- ============================================================
+     FECHAMENTO
+     ============================================================ -->
+<div class="footer-note" style="margin-top: 64px;">
+  <p style="font-size: 10pt; font-family: var(--font-body); color: var(--onyx-90); font-style: italic; max-width: 400px; margin: 0 auto 12px;">
+    "Mostre seu trabalho. Compartilhe algo pequeno todo dia. O jogo longo sempre vence."
+  </p>
+  <p>Manual preparado para Giovana Petelinkar — Março 2026</p>
+  <p>Baseado na metodologia "Show Your Work!" de Austin Kleon</p>
+  <p>Portfólio: portfolio-giovana-sepia.vercel.app</p>
+</div>
+
+</body>
+</html>

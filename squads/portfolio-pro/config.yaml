@@ -1,0 +1,119 @@
+pack:
+  name: portfolio-pro
+  version: 1.0.0
+  short-title: Portfolio Pro Squad
+  description: >-
+    Squad especializado na criacao, adaptacao, formatacao e design de portfolios
+    profissionais. Combina 8 elite minds em personal branding, storytelling,
+    design visual, case studies e estrategia de compartilhamento para criar
+    portfolios de alto impacto.
+  author: Synkra AIOS
+  icon: "📋"
+  slashPrefix: portfolioPro
+  target_client: "Giovana Petelinkar - Comunicacao e Marketing Digital"
+
+# Pattern Library
+pattern_library:
+  prefix: PP
+  naming_convention:
+    format: "{PREFIX}-{CATEGORY}-{NUMBER}"
+    example: "PP-TP-001"
+  categories:
+    - id: TP
+      name: "Task Patterns"
+      description: "Patterns for portfolio creation tasks"
+    - id: EP
+      name: "Executor Patterns"
+      description: "Patterns for executor types and selection"
+    - id: PP
+      name: "Process Patterns"
+      description: "Patterns for portfolio workflow processes"
+    - id: DP
+      name: "Documentation Patterns"
+      description: "Patterns for portfolio documentation structure"
+  patterns: []
+
+# Task Standards
+task_standards:
+  enforce_anatomy: true
+  validator: "PP-TP-001"
+  required_fields:
+    - task_name
+    - status
+    - responsible_executor
+    - execution_type
+    - input
+    - output
+    - action_items
+    - acceptance_criteria
+
+# Executor Types
+executor_types:
+  human:
+    id: "PP-EP-001"
+    name: "Human Executor"
+    use_for:
+      - "Brand positioning decisions"
+      - "Visual identity approval"
+      - "Content review and approval"
+  agent:
+    id: "PP-EP-002"
+    name: "Agent Executor (AI)"
+    use_for:
+      - "Copy generation"
+      - "Case study drafting"
+      - "Design system creation"
+  hybrid:
+    id: "PP-EP-003"
+    name: "Hybrid Executor"
+    use_for:
+      - "Brand diagnosis"
+      - "Narrative structure"
+      - "Portfolio review"
+  worker:
+    id: "PP-EP-004"
+    name: "Worker Executor"
+    use_for:
+      - "File formatting"
+      - "Template generation"
+      - "Export operations"
+
+# Workflow Configuration
+workflow_config:
+  checkpoint_policy: always_active
+  fail_fast: true
+  allow_manual_override: false
+
+# Tier Structure
+tier_structure:
+  orchestrator: "portfolio-pro-chief"
+  tier_0:
+    - dorie-clark
+    - william-arruda
+  tier_1:
+    - donald-miller
+    - chris-do
+    - sarah-doody
+  tier_2:
+    - nancy-duarte
+    - ellen-lupton
+    - austin-kleon
+
+# Pipeline
+pipeline:
+  phases:
+    - name: "Brand Diagnosis"
+      agents: ["dorie-clark", "william-arruda"]
+      output: "brand-positioning-report"
+    - name: "Narrative Architecture"
+      agents: ["donald-miller"]
+      output: "professional-narrative"
+    - name: "Portfolio Design"
+      agents: ["chris-do", "nancy-duarte", "ellen-lupton"]
+      output: "portfolio-design-system"
+    - name: "Case Studies"
+      agents: ["sarah-doody"]
+      output: "case-study-collection"
+    - name: "Sharing Strategy"
+      agents: ["austin-kleon"]
+      output: "sharing-plan"

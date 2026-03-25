@@ -1,0 +1,473 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# WORKFLOW: Portfolio Creation Pipeline
+# Version: 1.0.0
+# Purpose: End-to-end professional portfolio creation through 5 phases
+# ═══════════════════════════════════════════════════════════════════════════════
+
+workflow-id: wf-portfolio-pipeline
+name: Portfolio Creation Pipeline
+version: 1.0.0
+estimated-time: 4-8 hours
+complexity: high
+
+description: |
+  Complete pipeline for creating a professional portfolio.
+  Orchestrates 8 elite minds across 5 sequential phases:
+  Brand Diagnosis → Narrative → Design → Case Studies → Sharing Strategy
+
+orchestrator: "@portfolio-pro-chief"
+mode: incremental  # Human checkpoints between phases
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# INPUTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+inputs:
+  - name: client_name
+    type: string
+    required: true
+    description: "Full name of the portfolio owner"
+
+  - name: client_profile
+    type: text
+    required: true
+    description: "Professional background, experience, skills, achievements"
+
+  - name: target_audience
+    type: string
+    required: true
+    description: "Who will view this portfolio (recruiters, clients, partners)"
+
+  - name: portfolio_format
+    type: enum
+    required: true
+    options: ["web", "pdf", "slides", "hybrid"]
+    description: "Primary format for the portfolio"
+
+  - name: projects
+    type: array
+    required: true
+    description: "List of projects/cases to include (3-6 recommended)"
+
+  - name: visual_references
+    type: array
+    required: false
+    description: "Visual references, mood boards, or style preferences"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# OUTPUTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+outputs:
+  primary:
+    - name: "brand-positioning-report"
+      format: "markdown"
+      path: "outputs/portfolio/{client_slug}/01-brand-positioning.md"
+
+    - name: "professional-narrative"
+      format: "markdown"
+      path: "outputs/portfolio/{client_slug}/02-narrative.md"
+
+    - name: "design-system"
+      format: "markdown + assets"
+      path: "outputs/portfolio/{client_slug}/03-design-system.md"
+
+    - name: "case-studies"
+      format: "markdown"
+      path: "outputs/portfolio/{client_slug}/04-case-studies.md"
+
+    - name: "sharing-strategy"
+      format: "markdown"
+      path: "outputs/portfolio/{client_slug}/05-sharing-strategy.md"
+
+    - name: "portfolio-final"
+      format: "html/pdf/slides"
+      path: "outputs/portfolio/{client_slug}/portfolio-final.*"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phases:
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-1
+    name: "Brand Diagnosis"
+    agents: ["dorie-clark", "william-arruda"]
+    duration: "45-90 min"
+    mandatory: true
+
+    description: |
+      Diagnose the client's current brand positioning, identify gaps,
+      and define the desired brand narrative direction.
+
+    steps:
+      - id: "1.1"
+        name: "Brand Self-Assessment"
+        agent: "dorie-clark"
+        command: "*diagnose-brand"
+        inputs:
+          - "client_profile"
+          - "target_audience"
+        output: "current-brand-perception"
+        description: |
+          Apply Dorie Clark's Reinvention Framework:
+          1. How do others currently perceive the client?
+          2. What does the client WANT to be known for?
+          3. What are the points of difference?
+
+      - id: "1.2"
+        name: "360 Brand Audit"
+        agent: "william-arruda"
+        command: "*assess-brand"
+        inputs:
+          - "current-brand-perception"
+          - "client_profile"
+        output: "brand-audit-report"
+        description: |
+          Apply William Arruda's 3 C's framework:
+          1. Clarity: Define the unique promise of value
+          2. Consistency: Assess current channel consistency
+          3. Constancy: Evaluate visibility and presence
+
+      - id: "1.3"
+        name: "Positioning Synthesis"
+        agent: "dorie-clark"
+        command: "*stand-out"
+        inputs:
+          - "brand-audit-report"
+        output: "brand-positioning-report"
+        description: |
+          Synthesize diagnosis into actionable positioning:
+          - Core brand statement
+          - 3 differentiators
+          - Target audience alignment
+          - Portfolio positioning strategy
+
+    checkpoint:
+      id: "CP-1"
+      name: "Brand Diagnosis Complete"
+      blocking: true
+      criteria:
+        - "Core brand statement defined"
+        - "3 differentiators identified"
+        - "Target audience clearly mapped"
+        - "Positioning direction approved by client"
+      human_review: true
+      message: |
+        Phase 1 complete. Review the brand positioning report.
+        Does this accurately represent how you want to be perceived?
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-2
+    name: "Narrative Architecture"
+    agents: ["donald-miller"]
+    duration: "30-60 min"
+    mandatory: true
+
+    description: |
+      Build the professional narrative using StoryBrand SB7 framework.
+      The portfolio viewer is the hero; the client is the guide.
+
+    steps:
+      - id: "2.1"
+        name: "BrandScript Creation"
+        agent: "donald-miller"
+        command: "*brandscript"
+        inputs:
+          - "brand-positioning-report"
+          - "client_profile"
+          - "target_audience"
+        output: "brandscript"
+        description: |
+          Apply SB7 Framework to portfolio narrative:
+          1. CHARACTER: The viewer (recruiter/client) who needs [X]
+          2. PROBLEM: External (finding talent), Internal (uncertainty), Philosophical (deserve the best)
+          3. GUIDE: Client as guide with empathy + authority
+          4. PLAN: Portfolio structure as the clear plan
+          5. CALL TO ACTION: Contact, hire, collaborate
+          6. AVOID FAILURE: Missing out on top talent
+          7. SUCCESS: Finding the perfect professional
+
+      - id: "2.2"
+        name: "One-Liner & Headlines"
+        agent: "donald-miller"
+        command: "*one-liner"
+        inputs:
+          - "brandscript"
+        output: "narrative-elements"
+        description: |
+          Create key narrative elements:
+          - Portfolio tagline (one-liner)
+          - Section headlines
+          - Bio narrative (short + long versions)
+          - About section copy
+          - CTA copy variations
+
+      - id: "2.3"
+        name: "Portfolio Wireframe"
+        agent: "donald-miller"
+        command: "*website-wireframe"
+        inputs:
+          - "brandscript"
+          - "narrative-elements"
+        output: "professional-narrative"
+        description: |
+          Apply StoryBrand website wireframe to portfolio:
+          - Hero section (header + tagline + CTA)
+          - Stakes section (what's at risk)
+          - Value proposition section
+          - Guide section (credentials + empathy)
+          - Plan section (how to work together)
+          - Case studies section
+          - Call to action (junk drawer)
+
+    checkpoint:
+      id: "CP-2"
+      name: "Narrative Approved"
+      blocking: true
+      criteria:
+        - "BrandScript complete with all 7 elements"
+        - "One-liner resonates with target audience"
+        - "Wireframe structure covers all sections"
+        - "Narrative tone matches brand positioning"
+      human_review: true
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-3
+    name: "Portfolio Design"
+    agents: ["chris-do", "nancy-duarte", "ellen-lupton"]
+    duration: "60-120 min"
+    mandatory: true
+
+    description: |
+      Design the visual system, layout, and presentation format
+      for the portfolio. Three agents collaborate on different aspects.
+
+    steps:
+      - id: "3.1"
+        name: "Design Direction"
+        agent: "chris-do"
+        command: "*design-direction"
+        inputs:
+          - "brand-positioning-report"
+          - "professional-narrative"
+          - "visual_references"
+        output: "design-direction"
+        description: |
+          Define the overall design direction:
+          - Visual mood and tone
+          - Color palette rationale
+          - Photography/imagery style
+          - Level of formality
+          - Premium positioning cues
+
+      - id: "3.2"
+        name: "Typography & Layout System"
+        agent: "ellen-lupton"
+        command: "*type-system"
+        inputs:
+          - "design-direction"
+          - "portfolio_format"
+        output: "type-layout-system"
+        description: |
+          Apply Thinking with Type methodology:
+          - Typeface selection (heading + body + accent)
+          - Type scale and hierarchy
+          - Grid system (columns, margins, gutters)
+          - Spacing system (vertical rhythm)
+          - Responsive considerations
+
+      - id: "3.3"
+        name: "Visual Storytelling System"
+        agent: "nancy-duarte"
+        command: "*visual-story"
+        inputs:
+          - "professional-narrative"
+          - "design-direction"
+          - "type-layout-system"
+        output: "visual-story-system"
+        description: |
+          Apply VisualStory methodology:
+          - Before/After visual structure per case study
+          - Sparkline for emotional progression through portfolio
+          - Data visualization guidelines
+          - Slide/page master layouts
+          - Transition patterns between sections
+
+      - id: "3.4"
+        name: "Design System Compilation"
+        agent: "chris-do"
+        command: "*portfolio-layout"
+        inputs:
+          - "type-layout-system"
+          - "visual-story-system"
+        output: "design-system"
+        description: |
+          Compile everything into a cohesive design system:
+          - Component library specifications
+          - Page templates
+          - Do's and Don'ts
+          - Asset requirements list
+
+    checkpoint:
+      id: "CP-3"
+      name: "Design System Approved"
+      blocking: true
+      criteria:
+        - "Color palette defined with rationale"
+        - "Typography system complete (heading, body, accent)"
+        - "Grid/layout system specified"
+        - "Visual storytelling approach defined"
+        - "At least 3 page/slide templates created"
+      human_review: true
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-4
+    name: "Case Studies"
+    agents: ["sarah-doody"]
+    duration: "60-120 min"
+    mandatory: true
+
+    description: |
+      Write and structure case studies for each project using
+      Sarah Doody's 5-Step methodology.
+
+    steps:
+      - id: "4.1"
+        name: "Project Selection & Prioritization"
+        agent: "sarah-doody"
+        command: "*portfolio-structure"
+        inputs:
+          - "projects"
+          - "brand-positioning-report"
+          - "target_audience"
+        output: "project-selection"
+        description: |
+          Select and prioritize projects:
+          - Match projects to brand positioning
+          - Ensure diversity of skills demonstrated
+          - Order by impact/relevance to target audience
+          - Identify strongest 3-5 projects
+
+      - id: "4.2"
+        name: "Case Study Writing"
+        agent: "sarah-doody"
+        command: "*write-case-study"
+        inputs:
+          - "project-selection"
+          - "design-system"
+        output: "case-studies-draft"
+        description: |
+          For each selected project, apply 5-Step method:
+          1. Context (client, role, timeline, team)
+          2. Problem/Challenge (what needed solving)
+          3. Process (your approach and thinking)
+          4. Solution (what you delivered, with visuals)
+          5. Results (quantified impact, metrics, testimonials)
+
+      - id: "4.3"
+        name: "Impact Statements"
+        agent: "sarah-doody"
+        command: "*review-cases"
+        inputs:
+          - "case-studies-draft"
+        output: "case-studies"
+        description: |
+          Polish and validate each case study:
+          - Lead with impact/results (1-2 min scannable)
+          - Ensure clear metrics where possible
+          - Add "What I Learned" sections
+          - Create thumbnail summaries for overview page
+
+    checkpoint:
+      id: "CP-4"
+      name: "Case Studies Complete"
+      blocking: true
+      criteria:
+        - "3-5 case studies written"
+        - "Each follows 5-step structure"
+        - "Impact metrics included where available"
+        - "Scannable in under 2 minutes each"
+      human_review: true
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-5
+    name: "Sharing Strategy"
+    agents: ["austin-kleon"]
+    duration: "30-45 min"
+    mandatory: true
+
+    description: |
+      Create a strategy for sharing and distributing the portfolio
+      using Austin Kleon's Show Your Work methodology.
+
+    steps:
+      - id: "5.1"
+        name: "Channel Strategy"
+        agent: "austin-kleon"
+        command: "*channel-plan"
+        inputs:
+          - "brand-positioning-report"
+          - "target_audience"
+          - "portfolio_format"
+        output: "channel-strategy"
+        description: |
+          Define where and how to share:
+          - Primary channels (LinkedIn, Behance, personal site)
+          - Content adaptation per channel
+          - Portfolio URL strategy
+          - SEO considerations
+
+      - id: "5.2"
+        name: "Sharing Plan"
+        agent: "austin-kleon"
+        command: "*sharing-strategy"
+        inputs:
+          - "case-studies"
+          - "channel-strategy"
+        output: "sharing-strategy"
+        description: |
+          Apply Show Your Work 10 rules:
+          - Daily sharing cadence plan
+          - Process content (behind-the-scenes)
+          - Teaching content (share expertise)
+          - Remix strategy (repurpose portfolio pieces)
+          - Community engagement approach
+          - Anti-spam guidelines
+
+    checkpoint:
+      id: "CP-5"
+      name: "Sharing Strategy Complete"
+      blocking: false
+      criteria:
+        - "Channel plan with at least 3 platforms"
+        - "Content calendar for first 30 days"
+        - "Remix ideas for each case study"
+      human_review: true
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# EXECUTION RULES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+execution_rules:
+  always:
+    - "Complete each phase before moving to next"
+    - "Get human approval at each checkpoint"
+    - "Save outputs incrementally"
+    - "Reference brand positioning throughout all phases"
+
+  never:
+    - "Skip Phase 1 (brand diagnosis is foundation)"
+    - "Design before narrative is defined"
+    - "Write case studies without design system context"
+    - "Share without a strategy"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# METADATA
+# ═══════════════════════════════════════════════════════════════════════════════
+
+metadata:
+  version: "1.0.0"
+  created: "2026-03-25"
+  author: "Squad Architect"

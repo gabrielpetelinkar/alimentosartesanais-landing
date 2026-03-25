@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giovana Petelinkar — Estrategista de Comunicacao & Marketing Digital</title>
+<meta name="description" content="Portfolio profissional de Giovana Petelinkar. Estrategia de comunicacao e marketing digital para marcas que merecem ser vistas.">
+
+<!-- Fonts: DM Sans + Source Serif 4 + DM Mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN SYSTEM — Ellen Lupton Refinement
+   Foundation: Chris Do Direction
+   Palette: Onyx, Marfim, Terracota, Sage, Grafite
+   Type: DM Sans (headings) + Source Serif 4 (body) + DM Mono (captions)
+   Scale: 1.333 (Perfect Fourth) — modular, perceptible hierarchy
+   Grid: 12-col, 24px gutter, 80px margin
+   Baseline: 8px unit for vertical rhythm
+   ============================================================ */
+
+:root {
+  /* --- Color Tokens --- */
+  --onyx: #1A1A1A;
+  --onyx-90: #333333;
+  --marfim: #F7F5F0;
+  --marfim-dark: #EFEADE;
+  --terracota: #C4785B;
+  --terracota-hover: #B0684D;
+  --terracota-10: rgba(196,120,91,0.10);
+  --sage: #8B9E7E;
+  --sage-light: #E8EDE5;
+  --grafite: #6B6B6B;
+  --white: #FFFFFF;
+  --divider: rgba(26,26,26,0.08);
+
+  /* --- Typography Tokens --- */
+  --font-heading: 'DM Sans', system-ui, sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'DM Mono', 'Courier New', monospace;
+
+  /* --- Modular Scale: 1.333 (Perfect Fourth) --- */
+  --scale-ratio: 1.333;
+  --text-xs: 0.75rem;    /* 12px — micro, tags */
+  --text-sm: 0.875rem;   /* 14px — small, captions */
+  --text-base: 1rem;     /* 16px — body base */
+  --text-md: 1.125rem;   /* 18px — body reading */
+  --text-lg: 1.333rem;   /* ~21px — H3 */
+  --text-xl: 1.777rem;   /* ~28px — H2 */
+  --text-2xl: 2.369rem;  /* ~38px — H1 */
+  --text-3xl: 3.157rem;  /* ~50px — Display */
+
+  /* --- Spatial Tokens (8px baseline unit) --- */
+  --space-unit: 8px;
+  --space-xs: 8px;       /* 1 unit */
+  --space-sm: 16px;      /* 2 units */
+  --space-md: 24px;      /* 3 units */
+  --space-lg: 32px;      /* 4 units */
+  --space-xl: 48px;      /* 6 units */
+  --space-2xl: 64px;     /* 8 units */
+  --space-3xl: 96px;     /* 12 units */
+  --space-4xl: 120px;    /* 15 units */
+
+  /* --- Layout Tokens --- */
+  --max-width: 1200px;
+  --gutter: 24px;
+  --margin: 80px;
+  --section-gap: var(--space-4xl);
+  --measure: 65ch;       /* optimal line length */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: var(--onyx);
+  background: var(--marfim);
+  line-height: 1.6;
+}
+
+/* --- Typography: Modular Scale Hierarchy ---
+   Ratio 1.333 ensures each level is perceptibly distinct.
+   Line heights tighten as sizes increase (display reads differently than body).
+   Letter-spacing compensates for optical weight at large sizes.
+   --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--onyx);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(var(--text-2xl), 5vw, var(--text-3xl));
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-md);
+}
+
+h2 {
+  font-size: clamp(var(--text-xl), 3.5vw, var(--text-2xl));
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--space-sm);
+}
+
+h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-xs);
+}
+
+h4 {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+p {
+  font-size: var(--text-md);
+  max-width: var(--measure);
+  line-height: 1.6;
+}
+
+/* Paragraph rhythm: consistent vertical spacing */
+p + p { margin-top: var(--space-sm); }
+
+.caption {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--grafite);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--sage);
+  background: var(--sage-light);
+  padding: 4px 12px;
+  border-radius: 4px;
+  display: inline-block;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* --- Selection highlight --- */
+::selection {
+  background: var(--terracota-10);
+  color: var(--onyx);
+}
+
+/* --- Focus accessibility --- */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--terracota);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* --- Layout: Spatial System ---
+   All spacing derives from 8px baseline unit.
+   Sections use var(--section-gap) = 120px (15 units).
+   Components use var(--space-xl) = 48px (6 units).
+   Elements use var(--space-md) = 24px (3 units).
+   --- */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--margin); }
+section { padding: var(--section-gap) 0; }
+
+/* --- Responsive: Graceful Degradation --- */
+@media (max-width: 1024px) {
+  :root { --margin: 48px; --section-gap: var(--space-3xl); }
+}
+
+@media (max-width: 768px) {
+  :root { --margin: 24px; --section-gap: var(--space-2xl); }
+  h1 { font-size: var(--text-2xl); }
+  h2 { font-size: var(--text-xl); }
+}
+
+@media (max-width: 480px) {
+  :root { --margin: 20px; --section-gap: var(--space-xl); }
+}
+
+/* --- Buttons --- */
+.btn-primary {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--terracota);
+  border: none;
+  padding: 16px 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn-primary:hover { background: var(--terracota-hover); transform: translateY(-2px); }
+
+.btn-secondary {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--terracota);
+  background: transparent;
+  border: 2px solid var(--terracota);
+  padding: 12px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover { background: var(--terracota); color: var(--white); }
+
+/* ============================================================
+   SECTION 1: HERO (SB7 — Character + Guide)
+   Grunt Test: O que faz? Como melhora minha vida? O que faco agora?
+   ============================================================ */
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-content h1 { margin-bottom: 24px; }
+.hero-content .subtitle {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  color: var(--grafite);
+  margin-bottom: 40px;
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+.hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+
+.hero-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image .photo-frame {
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #D4C5B9 0%, #A89888 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image .photo-frame::after {
+  content: 'Foto profissional da Giovana';
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--white);
+  opacity: 0.7;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-image .photo-accent {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  background: var(--terracota);
+  opacity: 0.15;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero-cta-group { justify-content: center; }
+  .hero-image { order: -1; }
+  .hero-image .photo-frame { max-width: 300px; }
+  .hero-content .subtitle { margin-left: auto; margin-right: auto; }
+}
+
+/* ============================================================
+   SECTION 2: STAKES (SB7 — Problem + Failure)
+   ============================================================ */
+
+.stakes {
+  background: var(--white);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.stakes h2 { margin-bottom: var(--space-xl); }
+
+.stakes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+.stake-card {
+  padding: var(--space-lg);
+  border-left: 3px solid var(--terracota);
+  background: var(--marfim);
+  border-radius: 0 8px 8px 0;
+  transition: transform 0.2s ease;
+}
+.stake-card:hover { transform: translateX(4px); }
+
+.stake-card p {
+  font-size: 1rem;
+  color: var(--onyx);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SECTION 3: VALUE (SB7 — Guide + Plan)
+   ============================================================ */
+
+.value .empathy-text {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--grafite);
+  margin-bottom: var(--space-xl);
+  max-width: var(--measure);
+  line-height: 1.65;
+  border-left: 3px solid var(--terracota-10);
+  padding-left: var(--space-md);
+}
+
+.authority-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+  align-items: center;
+}
+
+.authority-stat {
+  text-align: center;
+}
+
+.authority-stat .number {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--terracota);
+  display: block;
+}
+
+.authority-stat .label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--grafite);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Plan Steps */
+.plan-title {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sage);
+  margin-bottom: 32px;
+}
+
+.plan-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.plan-step {
+  padding: 40px 32px;
+  background: var(--white);
+  border-radius: 12px;
+  position: relative;
+}
+
+.plan-step .step-number {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--terracota);
+  opacity: 0.2;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+}
+
+.plan-step h3 { margin-bottom: 12px; }
+.plan-step p { font-size: 1rem; color: var(--grafite); }
+
+.value .cta-center { text-align: center; margin-top: 48px; }
+
+/* ============================================================
+   SECTION 4: COMPETENCIAS (Tags visuais)
+   ============================================================ */
+
+.competencias {
+  background: var(--white);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.competencias h2 { margin-bottom: 40px; }
+
+.comp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.comp-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.comp-item:hover { background: var(--marfim); }
+
+.comp-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--sage-light);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+}
+
+.comp-item h3 { font-size: 1rem; margin-bottom: 4px; }
+.comp-item p { font-size: 0.875rem; color: var(--grafite); max-width: 100%; }
+
+/* ============================================================
+   SECTION 5: CASES (SB7 — Success / Proof)
+   ============================================================ */
+
+.cases h2 { margin-bottom: 16px; }
+.cases .section-subtitle {
+  color: var(--grafite);
+  margin-bottom: 64px;
+  font-size: 1.125rem;
+}
+
+.case-study {
+  margin-bottom: var(--section-gap);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--divider);
+}
+.case-study:last-child { border-bottom: none; }
+
+.case-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.case-header h3 { font-size: 1.75rem; }
+.case-meta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.case-hero-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #D4C5B9 0%, #B8A898 100%);
+  border-radius: 12px;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.case-hero-image .placeholder {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.case-narrative {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--divider);
+}
+.case-narrative:last-of-type { border-bottom: none; }
+
+.case-narrative .label {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--terracota);
+  padding-top: 5px;
+  position: relative;
+}
+.case-narrative .label::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--terracota-10);
+  margin-top: var(--space-xs);
+}
+
+.case-narrative .content p {
+  margin-bottom: 16px;
+  color: var(--onyx);
+}
+
+.case-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.case-gallery-item {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #E0D8D0 0%, #C8BEB4 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-gallery-item .placeholder {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(0,0,0,0.3);
+}
+
+.case-results {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.case-result-item { text-align: center; min-width: 140px; }
+.case-result-item .metric {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--terracota);
+}
+.case-result-item .metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--grafite);
+  margin-top: 4px;
+}
+
+.deliveries-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .case-narrative { grid-template-columns: 1fr; gap: 16px; }
+  .case-header { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   SECTION 6: SOBRE (SB7 — Guide backstory)
+   ============================================================ */
+
+.sobre {
+  background: var(--white);
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.sobre-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #3A3A3A 0%, #1A1A1A 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sobre-photo .placeholder {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.sobre-content h2 { margin-bottom: 24px; }
+.sobre-content p { margin-bottom: 16px; color: var(--onyx); }
+
+.sobre-content .highlight-box {
+  background: var(--marfim);
+  border-left: 3px solid var(--terracota);
+  padding: 24px 32px;
+  margin: 32px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.sobre-content .highlight-box p {
+  font-style: italic;
+  color: var(--grafite);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ============================================================
+   SECTION 7: CTA FINAL (SB7 — Call to Action)
+   ============================================================ */
+
+.cta-final {
+  background: var(--onyx);
+  color: var(--white);
+  text-align: center;
+  padding: 100px 0;
+}
+
+.cta-final h2 { color: var(--white); margin-bottom: 16px; }
+.cta-final .cta-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 48px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-final .btn-primary { font-size: 1.125rem; padding: 20px 48px; }
+
+.contact-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.contact-item a { color: var(--terracota); text-decoration: none; }
+.contact-item a:hover { text-decoration: underline; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(247,245,240,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 16px 0;
+  transition: transform 0.3s ease;
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--margin);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--onyx);
+  text-decoration: none;
+}
+
+.nav-logo span { color: var(--terracota); }
+
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--grafite);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--onyx); }
+.nav-links .btn-primary { padding: 10px 24px; font-size: 0.8125rem; }
+
+@media (max-width: 768px) {
+  .nav-links a:not(.btn-primary) { display: none; }
+}
+
+/* --- Divider --- */
+.section-divider {
+  width: 48px;
+  height: 3px;
+  background: var(--terracota);
+  margin-bottom: 32px;
+}
+
+/* --- Utils --- */
+.mt-1 { margin-top: var(--space-xs); }
+.mt-2 { margin-top: var(--space-sm); }
+.mt-4 { margin-top: var(--space-lg); }
+.mb-2 { margin-bottom: var(--space-sm); }
+.text-center { text-align: center; }
+
+/* ============================================================
+   NANCY DUARTE — Visual Storytelling Layer
+   Sparkline emotional arc, narrative transitions,
+   Star Moment treatment, Before/After visual construct
+   ============================================================ */
+
+/* --- Narrative Transitions: visual bridges between sections --- */
+.narrative-bridge {
+  text-align: center;
+  padding: var(--space-xl) 0;
+  position: relative;
+}
+.narrative-bridge::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--terracota));
+  margin: 0 auto var(--space-md);
+}
+.narrative-bridge p {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-style: italic;
+  color: var(--grafite);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* --- Star Moment: signature case study gets premium treatment --- */
+.case-study.star-moment {
+  position: relative;
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.case-study.star-moment::before {
+  content: 'PROJETO DESTAQUE';
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--terracota);
+  position: absolute;
+  top: calc(-1 * var(--space-sm));
+  left: var(--space-xl);
+  background: var(--marfim);
+  padding: 4px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--terracota-10);
+}
+
+/* --- Before/After Visual Construct --- */
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 0;
+  align-items: stretch;
+  margin: var(--space-xl) 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.before-after .before,
+.before-after .after {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.before-after .before {
+  background: #E8E4DF;
+  border-right: none;
+}
+.before-after .after {
+  background: var(--white);
+  border-left: none;
+}
+.before-after .arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #E8E4DF, var(--white));
+  font-size: 1.5rem;
+  color: var(--terracota);
+}
+.before-after h4 {
+  font-size: var(--text-xs);
+  color: var(--terracota);
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.before-after p {
+  font-size: var(--text-sm);
+  color: var(--onyx-90);
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .before-after { grid-template-columns: 1fr; }
+  .before-after .arrow {
+    height: 40px;
+    background: linear-gradient(to bottom, #E8E4DF, var(--white));
+    transform: rotate(90deg);
+  }
+}
+
+/* --- Sparkline Indicator: emotional intensity per case --- */
+.sparkline-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-xs);
+}
+.sparkline-indicator .bar {
+  height: 3px;
+  border-radius: 2px;
+  background: var(--terracota);
+  transition: width 0.3s ease;
+}
+.sparkline-indicator .bar.low { width: 24px; opacity: 0.3; }
+.sparkline-indicator .bar.med { width: 36px; opacity: 0.6; }
+.sparkline-indicator .bar.high { width: 48px; opacity: 0.85; }
+.sparkline-indicator .bar.peak { width: 64px; opacity: 1; }
+.sparkline-indicator .intensity-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grafite);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Case Context Bar: role, duration, tools --- */
+.case-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  padding: var(--space-md) 0;
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--divider);
+}
+.case-context-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.case-context-item .ctx-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--grafite);
+}
+.case-context-item .ctx-value {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--onyx);
+}
+
+/* --- Case Results: impact metrics --- */
+.case-results {
+  background: var(--white);
+  border-radius: 12px;
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+.case-results h4 {
+  color: var(--terracota);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-xs);
+}
+.case-results-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+}
+.case-result-item { text-align: center; min-width: 140px; }
+.case-result-item .metric {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--terracota);
+  line-height: 1.2;
+}
+.case-result-item .metric-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--grafite);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* --- Case Insight: "o que aprendi" --- */
+.case-insight {
+  background: var(--marfim-dark);
+  border-left: 3px solid var(--sage);
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-lg) 0;
+  border-radius: 0 8px 8px 0;
+}
+.case-insight .insight-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sage);
+  margin-bottom: var(--space-xs);
+}
+.case-insight p {
+  font-style: italic;
+  color: var(--onyx-90);
+  font-size: var(--text-base);
+  max-width: 100%;
+}
+
+/* --- Case TL;DR: summary at top --- */
+.case-tldr {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--grafite);
+  font-style: italic;
+  padding: var(--space-sm) 0;
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--divider);
+  max-width: var(--measure);
+}
+
+/* --- Case Transition: narrative connector between cases --- */
+.case-transition {
+  text-align: center;
+  padding: var(--space-lg) 0;
+  color: var(--grafite);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* --- Print Optimization --- */
+@media print {
+  nav { display: none; }
+  .btn-primary, .btn-secondary { border: 1px solid var(--onyx); color: var(--onyx); background: none; }
+  section { break-inside: avoid; }
+  .case-study { break-inside: avoid; }
+  body { font-size: 11pt; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Giovana <span>Petelinkar</span></a>
+    <div class="nav-links">
+      <a href="#cases">Cases</a>
+      <a href="#competencias">Servicos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato" class="btn-primary">Vamos Conversar</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     SECTION 1: HERO (SB7 — Character + Guide)
+     ============================================================ -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h4 style="color: var(--sage); margin-bottom: 16px; font-size: 0.8125rem;">Estrategia de Comunicacao & Marketing Digital</h4>
+        <h1>Sua marca merece ser vista como realmente e</h1>
+        <p class="subtitle">Comunicacao estrategica e marketing digital para empresas que querem conectar com o publico certo e crescer com proposito.</p>
+        <div class="hero-cta-group">
+          <a href="#contato" class="btn-primary">Agende uma Conversa Estrategica</a>
+          <a href="#cases" class="btn-secondary">Ver Cases</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="photo-accent"></div>
+        <div class="photo-frame">
+          <!-- Substituir por: <img src="giovana-hero.jpg" alt="Giovana Petelinkar"> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 2: STAKES (SB7 — Problem + Failure)
+     ============================================================ -->
+<section class="stakes" id="problemas">
+  <div class="container">
+    <h2>Voce reconhece alguma dessas situacoes?</h2>
+    <div class="stakes-grid">
+      <div class="stake-card">
+        <p>Sua marca e incrivel, mas a <strong>comunicacao digital nao reflete</strong> a qualidade do que voce entrega.</p>
+      </div>
+      <div class="stake-card">
+        <p>Ja contratou profissionais que entregaram <strong>conteudo bonito mas sem resultado</strong> mensuravel.</p>
+      </div>
+      <div class="stake-card">
+        <p>Sente que esta investindo em marketing mas <strong>nao sabe se esta funcionando</strong> de verdade.</p>
+      </div>
+      <div class="stake-card">
+        <p>Concorrentes com menos qualidade estao <strong>ganhando mais visibilidade</strong> que voce.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3: VALUE (SB7 — Guide + Plan)
+     ============================================================ -->
+<section class="value" id="como-funciona">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2>Comunicacao estrategica, nao conteudo generico</h2>
+    <p class="empathy-text">"Eu sei como e ver uma marca incrivel ser subestimada porque a comunicacao nao acompanha a qualidade do produto. O problema nunca foi o negocio. Era a forma como a historia estava sendo contada."</p>
+
+    <div class="authority-row">
+      <div class="authority-stat">
+        <span class="number">7+</span>
+        <span class="label">Anos de experiencia</span>
+      </div>
+      <div class="authority-stat">
+        <span class="number">12+</span>
+        <span class="label">Marcas atendidas</span>
+      </div>
+      <div class="authority-stat">
+        <span class="number">5</span>
+        <span class="label">Setores diferentes</span>
+      </div>
+      <div class="authority-stat">
+        <span class="number">360&deg;</span>
+        <span class="label">Visao do ecossistema digital</span>
+      </div>
+    </div>
+
+    <p class="plan-title">Como trabalhamos juntos</p>
+    <div class="plan-steps">
+      <div class="plan-step">
+        <span class="step-number">01</span>
+        <h3>Conversa Estrategica</h3>
+        <p>Entendo seu negocio, publico e objetivos em uma reuniao focada. Sem compromisso.</p>
+      </div>
+      <div class="plan-step">
+        <span class="step-number">02</span>
+        <h3>Plano Sob Medida</h3>
+        <p>Crio uma estrategia personalizada com canais, conteudo e cronograma — feita pro seu mercado.</p>
+      </div>
+      <div class="plan-step">
+        <span class="step-number">03</span>
+        <h3>Execucao e Resultado</h3>
+        <p>Implemento, acompanho metricas e ajusto ate funcionar. Voce acompanha cada etapa.</p>
+      </div>
+    </div>
+
+    <div class="cta-center">
+      <a href="#contato" class="btn-primary">Agende sua Conversa Estrategica</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4: COMPETENCIAS
+     ============================================================ -->
+<section class="competencias" id="competencias">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2>O que eu faco</h2>
+    <div class="comp-grid">
+      <div class="comp-item">
+        <div class="comp-icon">&#x1F4CB;</div>
+        <div>
+          <h3>Estrategia de Conteudo</h3>
+          <p>Planejamento editorial, calendarios, pautas e direcionamento criativo para redes sociais, blogs e canais digitais.</p>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-icon">&#x1F3AF;</div>
+        <div>
+          <h3>Gestao de Redes Sociais</h3>
+          <p>Gerenciamento completo de Instagram, LinkedIn e canais digitais — do planejamento a analise de resultados.</p>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-icon">&#x270D;&#xFE0F;</div>
+        <div>
+          <h3>Copywriting & UX Writing</h3>
+          <p>Redacao orientada a experiencia do usuario, engajamento e conversao — emails, landing pages, sites e legendas.</p>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-icon">&#x1F3AC;</div>
+        <div>
+          <h3>Roteiro & Producao de Video</h3>
+          <p>Roteiros para Reels, videos institucionais e comerciais. Direcao de estilo, captacao e edicao de videos curtos.</p>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-icon">&#x1F3A8;</div>
+        <div>
+          <h3>Identidade Visual & Branding</h3>
+          <p>Concepcao de identidade visual, direcao de design e criacao de linguagem grafica coerente para marcas.</p>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-icon">&#x1F4CA;</div>
+        <div>
+          <h3>Campanhas Digitais</h3>
+          <p>Concepcao e analise de campanhas — da definicao de pautas ate a avaliacao de resultados e otimizacao.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Narrative Bridge: What Is → What Could Be -->
+<div class="narrative-bridge">
+  <p>Agora que voce conhece o que eu faco, deixa eu te mostrar como isso se traduz em resultados reais.</p>
+</div>
+
+<!-- ============================================================
+     SECTION 5: CASES (SB7 — Success / Proof)
+     ============================================================ -->
+<section class="cases" id="cases">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2>Historias de marcas que encontraram sua voz</h2>
+    <p class="section-subtitle">Cada projeto comeca com um desafio e termina com uma transformacao. Estes sao alguns dos que mais me orgulho.</p>
+
+    <!-- CASE 1: Renata Dias Atelier — STAR MOMENT -->
+    <article class="case-study star-moment">
+      <div class="case-header">
+        <div>
+          <h3>Renata Dias Atelier</h3>
+          <p class="caption">Moda Noiva & Festa | Construcao de marca completa</p>
+          <div class="sparkline-indicator"><div class="bar peak"></div><span class="intensity-label">Projeto mais completo</span></div>
+        </div>
+        <div class="case-meta">
+          <span class="tag">Branding</span>
+          <span class="tag">Video</span>
+          <span class="tag">Social Media</span>
+          <span class="tag">Identidade Visual</span>
+        </div>
+      </div>
+      <p class="case-tldr">Como transformei uma marca artesanal fragmentada em uma presenca digital coerente — da identidade visual ao lancamento de colecao.</p>
+
+      <div class="case-context">
+        <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Assessora de Marketing e Midias</span></div>
+        <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Moda Noiva & Festa</span></div>
+        <div class="case-context-item"><span class="ctx-label">Escopo</span><span class="ctx-value">Full-stack: marca a conteudo</span></div>
+        <div class="case-context-item"><span class="ctx-label">Ferramentas</span><span class="ctx-value">Canva, CapCut, Instagram</span></div>
+      </div>
+
+      <div class="case-hero-image">
+        <span class="placeholder">Imagem hero — Renata Dias Atelier (colecao Essence ou vestido de noiva)</span>
+      </div>
+
+      <div class="case-narrative">
+        <div class="label">Desafio</div>
+        <div class="content">
+          <p>O Renata Dias Atelier e um atelie de vestidos de noiva e festa sob medida com 10 anos de trajetoria. Apesar da qualidade excepcional do trabalho artesanal, a marca da estilista e do atelie existiam de forma desconectada — sem identidade visual unificada, sem estrategia de conteudo, e sem presenca digital que traduzisse a exclusividade do atendimento personalizado.</p>
+          <p>O risco: continuar invisivel no digital enquanto concorrentes com menos qualidade dominavam as redes sociais do segmento.</p>
+        </div>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Processo</div>
+        <div class="content">
+          <p>Assumi a responsabilidade completa pela presenca digital — do planejamento estrategico a execucao. O primeiro passo foi mapear o posicionamento: entender o que tornava o atelie unico (design autoral, exclusividade, atendimento personalizado) e traduzir isso em linguagem visual e verbal para o digital.</p>
+          <p>Desenvolvi o planejamento e gerenciamento das redes sociais, produzi conteudo visual e audiovisual (fotos, videos curtos, captacao e edicao), criei roteiros e direcao de estilo para videos institucionais, e escrevi todas as legendas com tom alinhado a marca.</p>
+          <p>O ponto alto foi a colecao "Essence" — criei o conceito completo do zero: naming, identidade grafica da colecao, producao visual (imagens e textos), e toda a comunicacao de lancamento. O tema "deixe fluir o que importa" conectava a essencia da marca com as emocoes das noivas.</p>
+        </div>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Entregas</div>
+        <div class="content">
+          <div class="deliveries-row">
+            <span class="tag">Redes sociais</span>
+            <span class="tag">Captacao de video</span>
+            <span class="tag">Edicao de video</span>
+            <span class="tag">Roteiro</span>
+            <span class="tag">Direcao de estilo</span>
+            <span class="tag">Identidade visual</span>
+            <span class="tag">Conceito de colecao</span>
+            <span class="tag">Legendas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Before/After: Resonate Construct -->
+      <div class="before-after">
+        <div class="before">
+          <h4>Antes</h4>
+          <p>Marca da estilista e do atelie desconectadas. Presenca digital fragmentada, sem identidade visual. Conteudo publicado sem direcao estrategica. Colecoes lancadas sem conceito visual.</p>
+        </div>
+        <div class="arrow">&#x2192;</div>
+        <div class="after">
+          <h4>Depois</h4>
+          <p>Marca integrada com identidade visual coerente em todos os canais. Colecao "Essence" lancada com conceito, naming e identidade proprios. Videos institucionais com roteiro e direcao profissional. Narrativa de marca alinhada do feed ao stories.</p>
+        </div>
+      </div>
+
+      <div class="case-results">
+        <h4>Resultados</h4>
+        <div class="case-results-grid">
+          <div class="case-result-item"><span class="metric">100%</span><span class="metric-label">Identidade visual unificada</span></div>
+          <div class="case-result-item"><span class="metric">1</span><span class="metric-label">Colecao lancada com conceito completo</span></div>
+          <div class="case-result-item"><span class="metric">8</span><span class="metric-label">Tipos de entrega diferentes</span></div>
+          <div class="case-result-item"><span class="metric">10 anos</span><span class="metric-label">De marca reposicionada no digital</span></div>
+        </div>
+      </div>
+
+      <div class="case-gallery">
+        <div class="case-gallery-item"><span class="placeholder">Grid redes sociais RD Atelier</span></div>
+        <div class="case-gallery-item"><span class="placeholder">Colecao Essence — identidade</span></div>
+        <div class="case-gallery-item"><span class="placeholder">Video institucional — frame</span></div>
+      </div>
+
+      <div class="case-insight">
+        <div class="insight-label">O que aprendi</div>
+        <p>Marcas artesanais precisam de comunicacao que respeite a essencia do trabalho manual. A tentacao e "modernizar" demais — mas o diferencial esta justamente na autenticidade. O papel do marketing e amplificar o que ja e real, nao inventar uma imagem.</p>
+      </div>
+    </article>
+
+    <div class="case-transition">caso seguinte</div>
+
+    <!-- CASE 2: Lumos Decor -->
+    <article class="case-study">
+      <div class="case-header">
+        <div>
+          <h3>Lumos Decor</h3>
+          <p class="caption">Arquitetura & Decoracao | Planejamento estrategico + identidade</p>
+          <div class="sparkline-indicator"><div class="bar high"></div><span class="intensity-label">Pensamento estrategico</span></div>
+        </div>
+        <div class="case-meta">
+          <span class="tag">Estrategia</span>
+          <span class="tag">Branding</span>
+          <span class="tag">Identidade Visual</span>
+        </div>
+      </div>
+      <p class="case-tldr">Planejamento estrategico de comunicacao e criacao de identidade para uma loja de decoracao que queria se posicionar como referencia em design e lifestyle.</p>
+
+      <div class="case-context">
+        <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Estrategista de Comunicacao</span></div>
+        <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Arquitetura e Decoracao</span></div>
+        <div class="case-context-item"><span class="ctx-label">Periodo</span><span class="ctx-value">Planejamento trimestral</span></div>
+      </div>
+
+      <div class="case-hero-image">
+        <span class="placeholder">Imagem hero — Lumos Decor (moodboard + stories)</span>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Desafio</div>
+        <div class="content">
+          <p>A Lumos Decor, loja de arquitetura e decoracao em desenvolvimento, precisava se posicionar como referencia em design e lifestyle em um mercado onde marcas estabelecidas ja dominavam. Sem uma estrategia de comunicacao definida, o risco era ser percebida como "mais uma loja de moveis" em vez de uma curadoria premium de design.</p>
+        </div>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Processo</div>
+        <div class="content">
+          <p>Comecei pelo que a maioria pula: defini o objetivo de comunicacao antes de criar qualquer conteudo. Para os primeiros tres meses, estruturei uma estrategia em quatro pilares: transmitir qualidade e exclusividade em cada detalhe, incorporar tendencias de mercado por meio de curadoria unica, construir conexao com o publico gerando sentimento de pertencimento, e ir alem do varejo — consolidar a marca como referencia em lifestyle.</p>
+          <p>Criei o moodboard completo conectando estetica, tendencias e experiencias do universo Lumos. Cada post, story e peca foi pensado para reforcar o posicionamento — coesao visual como expressao da marca, nao como padrao estetico.</p>
+        </div>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Entregas</div>
+        <div class="content">
+          <div class="deliveries-row">
+            <span class="tag">Planejamento estrategico</span>
+            <span class="tag">Objetivo de comunicacao</span>
+            <span class="tag">Identidade visual</span>
+            <span class="tag">Moodboard</span>
+            <span class="tag">Conteudo redes sociais</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-results">
+        <h4>Resultados</h4>
+        <div class="case-results-grid">
+          <div class="case-result-item"><span class="metric">4</span><span class="metric-label">Pilares estrategicos definidos</span></div>
+          <div class="case-result-item"><span class="metric">3 meses</span><span class="metric-label">Roadmap de comunicacao</span></div>
+          <div class="case-result-item"><span class="metric">100%</span><span class="metric-label">Coesao visual implementada</span></div>
+        </div>
+      </div>
+      <div class="case-gallery">
+        <div class="case-gallery-item"><span class="placeholder">Objetivo de comunicacao Lumos</span></div>
+        <div class="case-gallery-item"><span class="placeholder">Moodboard + referencias</span></div>
+        <div class="case-gallery-item"><span class="placeholder">Stories — exemplo pratico</span></div>
+      </div>
+    </article>
+
+    <div class="case-transition">caso seguinte</div>
+
+    <!-- CASE 3: Reserva da Pipa -->
+    <article class="case-study">
+      <div class="case-header">
+        <div>
+          <h3>Reserva da Pipa</h3>
+          <p class="caption">Condominio Resort | Campanha multi-canal</p>
+          <div class="sparkline-indicator"><div class="bar high"></div><span class="intensity-label">Multi-canal</span></div>
+        </div>
+        <div class="case-meta">
+          <span class="tag">Social Media</span>
+          <span class="tag">Email Marketing</span>
+          <span class="tag">Landing Pages</span>
+          <span class="tag">Copywriting</span>
+        </div>
+      </div>
+      <p class="case-tldr">Estrategia multi-canal que transformou um condominio em um estilo de vida — integrando redes sociais, email marketing e landing pages com storytelling de destino.</p>
+
+      <div class="case-context">
+        <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Gestora de Comunicacao Digital</span></div>
+        <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Imobiliario / Turismo</span></div>
+        <div class="case-context-item"><span class="ctx-label">Localizacao</span><span class="ctx-value">Pipa, Tibau do Sul — RN</span></div>
+        <div class="case-context-item"><span class="ctx-label">Canais</span><span class="ctx-value">Instagram, Email, Landing Pages</span></div>
+      </div>
+
+      <div class="case-hero-image">
+        <span class="placeholder">Imagem hero — Reserva da Pipa (grid verde + praia)</span>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Desafio</div>
+        <div class="content">
+          <p>O Condominio Reserva da Pipa nao queria vender lotes — queria vender um estilo de vida. Localizado em um dos destinos mais desejados do Brasil, o condominio precisava ir alem do imovel e comunicar a experiencia completa: praias, gastronomia, natureza, comunidade. O desafio era criar uma presenca digital que fizesse o publico desejar o LUGAR, nao apenas a propriedade.</p>
+        </div>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Processo</div>
+        <div class="content">
+          <p>Desenhei uma estrategia multi-canal que integrou tres frentes: nas redes sociais, criei conteudo que misturava o condominio com os atrativos de Pipa — praias, restaurantes, eventos, experiencias. A estrategia-chave foi usar prova social do TripAdvisor (avaliacoes reais de turistas) como validacao da regiao, transformando opinioes de terceiros em conteudo para carroseis.</p>
+          <p>No email marketing, desenvolvi copy de venda com CTAs claros para eventos de lancamento e entrega de lotes — incluindo campanhas de indicacao ("indique um amigo e ganhe um final de semana"). Nas landing pages, alinhei o tom aspiracional com informacoes praticas de localizacao, infraestrutura e investimento.</p>
+        </div>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Entregas</div>
+        <div class="content">
+          <div class="deliveries-row">
+            <span class="tag">Redes sociais</span>
+            <span class="tag">Email marketing</span>
+            <span class="tag">Landing pages</span>
+            <span class="tag">Copywriting</span>
+            <span class="tag">Direcao de design</span>
+            <span class="tag">Prova social (TripAdvisor)</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-results">
+        <h4>Resultados</h4>
+        <div class="case-results-grid">
+          <div class="case-result-item"><span class="metric">3</span><span class="metric-label">Canais integrados</span></div>
+          <div class="case-result-item"><span class="metric">5+</span><span class="metric-label">Campanhas de email</span></div>
+          <div class="case-result-item"><span class="metric">Lifestyle</span><span class="metric-label">Posicionamento alcancado</span></div>
+        </div>
+      </div>
+      <div class="case-gallery">
+        <div class="case-gallery-item"><span class="placeholder">Grid redes sociais Reserva da Pipa</span></div>
+        <div class="case-gallery-item"><span class="placeholder">Carousel TripAdvisor</span></div>
+        <div class="case-gallery-item"><span class="placeholder">Email marketing — convite evento</span></div>
+      </div>
+    </article>
+
+    <div class="case-transition">caso seguinte</div>
+
+    <!-- CASE 4: Bauten -->
+    <article class="case-study">
+      <div class="case-header">
+        <div>
+          <h3>Bauten Desenvolvimento Imobiliario</h3>
+          <p class="caption">Incorporadora de Luxo | Website + narrativa de marca</p>
+          <div class="sparkline-indicator"><div class="bar med"></div><span class="intensity-label">Copywriting premium</span></div>
+        </div>
+        <div class="case-meta">
+          <span class="tag">Website</span>
+          <span class="tag">Copywriting</span>
+          <span class="tag">UX Writing</span>
+          <span class="tag">Narrativa de Marca</span>
+        </div>
+      </div>
+      <p class="case-tldr">Redacao completa de website institucional e emails para uma incorporadora de luxo — traduzindo proposito e sustentabilidade em narrativa premium.</p>
+
+      <div class="case-context">
+        <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Redatora / UX Writer</span></div>
+        <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Imobiliario de Luxo</span></div>
+        <div class="case-context-item"><span class="ctx-label">Foco</span><span class="ctx-value">Design + Sustentabilidade</span></div>
+      </div>
+
+      <div class="case-hero-image">
+        <span class="placeholder">Imagem hero — Bauten website (3 telas: Historia, Conceito, Quem Faz)</span>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Desafio</div>
+        <div class="content">
+          <p>A Bauten e uma construtora e incorporadora que alia design de alto padrao com sustentabilidade. O site institucional precisava transmitir esse posicionamento premium com clareza — mas a empresa nao tinha redacao profissional. O briefing trazia uma frase ambiciosa: "Construimos narrativas que dao sentido a vida." Meu trabalho era transformar essa visao em copy que funcionasse em cada pagina do site.</p>
+        </div>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Processo</div>
+        <div class="content">
+          <p>Comecei pelo proposito, missao e visao — nao como exercicio teorico, mas como base para cada decisao de texto. A pagina "Nossa Historia" precisava contar a origem da empresa sem ser generica. "Nosso Conceito" precisava traduzir sustentabilidade em linguagem emocional. "Quem Faz" precisava humanizar os fundadores sem perder o tom institucional.</p>
+          <p>Cada pagina foi escrita separadamente, testada por legibilidade, e revisada para garantir que o tom premium fosse consistente do header ao footer. Os emails seguiram a mesma linguagem — aspiracional, com CTAs claros e tom de conversa sofisticada.</p>
+        </div>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Entregas</div>
+        <div class="content">
+          <div class="deliveries-row">
+            <span class="tag">Copy de website (3 paginas)</span>
+            <span class="tag">UX Writing</span>
+            <span class="tag">Email marketing</span>
+            <span class="tag">Narrativa institucional</span>
+            <span class="tag">Proposito / Missao / Visao</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-results">
+        <h4>Resultados</h4>
+        <div class="case-results-grid">
+          <div class="case-result-item"><span class="metric">3</span><span class="metric-label">Paginas de site escritas</span></div>
+          <div class="case-result-item"><span class="metric">Premium</span><span class="metric-label">Tom de voz consistente</span></div>
+          <div class="case-result-item"><span class="metric">Video</span><span class="metric-label">Institucional baseado na copy</span></div>
+        </div>
+      </div>
+      <div class="case-gallery">
+        <div class="case-gallery-item"><span class="placeholder">Website Bauten — Historia</span></div>
+        <div class="case-gallery-item"><span class="placeholder">Website Bauten — Conceito</span></div>
+        <div class="case-gallery-item"><span class="placeholder">Copy de email</span></div>
+      </div>
+    </article>
+
+    <div class="case-transition">caso seguinte</div>
+
+    <!-- CASE 5: Mentoria + Coach -->
+    <article class="case-study">
+      <div class="case-header">
+        <div>
+          <h3>Direcionamento Estrategico de Conteudo</h3>
+          <p class="caption">Mentora Digital + Coach Autora | Roteiro e estrategia de conteudo</p>
+          <div class="sparkline-indicator"><div class="bar med"></div><span class="intensity-label">Roteiro e narrativa</span></div>
+        </div>
+        <div class="case-meta">
+          <span class="tag">Roteiro</span>
+          <span class="tag">Estrategia de Conteudo</span>
+          <span class="tag">Direcionamento Criativo</span>
+        </div>
+      </div>
+      <p class="case-tldr">Direcionamento estrategico de conteudo para duas profissionais — roteiros de Reels, cards e legendas que transformam expertise em conteudo que engaja e converte.</p>
+
+      <div class="case-context">
+        <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Estrategista de Conteudo</span></div>
+        <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Mentoria Digital + Desenvolvimento Pessoal</span></div>
+        <div class="case-context-item"><span class="ctx-label">Formato</span><span class="ctx-value">Reels, Cards, Legendas</span></div>
+      </div>
+
+      <div class="case-hero-image">
+        <span class="placeholder">Imagem hero — Roteiro de Reels (texto direcionamento ou montagem)</span>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Desafio</div>
+        <div class="content">
+          <p>Duas profissionais com expertise profunda mas dificuldade em traduzir conhecimento em conteudo digital. A mentora do mercado digital precisava se posicionar como voz contra as "formulas magicas" do marketing. A coach autora precisava lancar seu livro nas redes sem parecer vendedora — mantendo a autenticidade da sua historia pessoal de superacao.</p>
+        </div>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Processo</div>
+        <div class="content">
+          <p>Para a mentora, desenvolvi roteiro completo de Reels: tema ("Mercado digital e o pensamento fora da caixa"), cenario (armario/espelho, metafora de trocar de roupa = trocar de mentalidade), abertura com gancho provocativo, desenvolvimento com conteudo estrategico, e CTA claro para a incubadora. O roteiro desafiava as "verdades absolutas" do marketing digital — posicionamento contrario que gera engajamento.</p>
+          <p>Para a coach autora, criei estrategia de pre-lancamento do livro: Reels mostrando bastidores (escrevendo, na livraria, em reuniao com assessoria), cards com citacoes do livro usando linguagem visual emocional, e legendas que conectassem cada post a jornada pessoal da autora. O tema central era identidade e liberdade — o grito de liberdade como metafora.</p>
+        </div>
+      </div>
+      <div class="case-narrative">
+        <div class="label">Entregas</div>
+        <div class="content">
+          <div class="deliveries-row">
+            <span class="tag">Roteiros de Reels</span>
+            <span class="tag">Direcionamento criativo</span>
+            <span class="tag">Legendas</span>
+            <span class="tag">Cards de citacao</span>
+            <span class="tag">Estrategia de lancamento</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-results">
+        <h4>Resultados</h4>
+        <div class="case-results-grid">
+          <div class="case-result-item"><span class="metric">2</span><span class="metric-label">Estrategias personalizadas</span></div>
+          <div class="case-result-item"><span class="metric">Roteiros</span><span class="metric-label">Completos prontos para gravacao</span></div>
+          <div class="case-result-item"><span class="metric">Lancamento</span><span class="metric-label">Livro com estrategia de conteudo</span></div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 6: SOBRE (SB7 — Guide backstory)
+     ============================================================ -->
+<section class="sobre" id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-photo">
+        <span class="placeholder">Foto P&B da Giovana (usar a da pag 27)</span>
+      </div>
+      <div class="sobre-content">
+        <div class="section-divider"></div>
+        <h2>Oi, eu sou a Giovana</h2>
+        <p>Profissional de Comunicacao e Marketing Digital com mais de 7 anos de experiencia. Atuei em agencias, empresas e como consultora independente, adquirindo uma visao completa do ecossistema digital e suas demandas.</p>
+
+        <div class="highlight-box">
+          <p>"O problema nunca foi o negocio. Era a forma como a historia estava sendo contada."</p>
+        </div>
+
+        <p>Meu trabalho vai alem de criar conteudo — eu construo estrategias de comunicacao que conectam marcas com seu publico de forma autentica e mensuravel. Da estrategia de conteudo a gestao de redes sociais, do roteiro de video ao copywriting, da identidade visual a analise de resultados.</p>
+
+        <p>Acredito que toda marca tem uma historia incrivel pra contar. Meu papel e garantir que ela seja contada da forma certa, no canal certo, para as pessoas certas.</p>
+
+        <div class="mt-4">
+          <a href="#contato" class="btn-primary">Vamos Conversar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 7: CTA FINAL (SB7 — Call to Action)
+     ============================================================ -->
+<section class="cta-final" id="contato">
+  <div class="container">
+    <h2>Cada projeto e uma nova historia</h2>
+    <p class="cta-subtitle">Eu adoraria escrever a proxima com voce.</p>
+    <a href="mailto:gipetelinkar@gmail.com" class="btn-primary">Agende uma Conversa Estrategica</a>
+    <div class="contact-row">
+      <div class="contact-item"><a href="tel:+5583991263458">(83) 99126-3458</a></div>
+      <div class="contact-item"><a href="mailto:gipetelinkar@gmail.com">gipetelinkar@gmail.com</a></div>
+      <div class="contact-item"><a href="https://instagram.com/gipetelinkar" target="_blank" rel="noopener">@gipetelinkar</a></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
