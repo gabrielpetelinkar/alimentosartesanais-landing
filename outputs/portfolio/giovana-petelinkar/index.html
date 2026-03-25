@@ -2,8 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22 font-family=%22DM Sans%22 fill=%22%23C4785B%22>G</text></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Giovana Petelinkar — Estrategista de Comunicação & Marketing Digital</title>
+<title>Giovana Petelinkar | Estrategista de Comunicação & Marketing Digital</title>
 <meta name="description" content="Portfólio profissional de Giovana Petelinkar. Estratégia de comunicação e marketing digital para marcas que merecem ser vistas.">
 
 <!-- Fonts: DM Sans + Source Serif 4 + DM Mono -->
@@ -197,6 +198,9 @@ section { padding: var(--section-gap) 0; }
 
 @media (max-width: 480px) {
   :root { --margin: 20px; --section-gap: var(--space-xl); }
+  .hero-image .photo-frame { max-width: 240px; }
+  .hero-content .subtitle { font-size: 1rem; margin-bottom: 28px; }
+  h1 { font-size: 2rem; }
 }
 
 /* --- Buttons --- */
@@ -306,7 +310,8 @@ section { padding: var(--section-gap) 0; }
 }
 
 @media (max-width: 768px) {
-  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero { min-height: unset; padding: 48px 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
   .hero-cta-group { justify-content: center; }
   .hero-image { order: -1; }
   .hero-image .photo-frame { max-width: 300px; }
@@ -665,7 +670,12 @@ section { padding: var(--section-gap) 0; }
 }
 
 @media (max-width: 768px) {
-  .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
+  .sobre-grid { grid-template-columns: 1fr; gap: 32px; }
+  .sobre-photo { max-width: 280px; margin: 0 auto; }
+  .plan-step { padding: 24px 20px; }
+  .case-results { padding: 24px 16px; gap: 24px; }
+  .case-result-item { min-width: 80px; }
+  .contact-row { gap: 24px; }
 }
 
 /* ============================================================
@@ -759,6 +769,8 @@ nav {
 
 @media (max-width: 768px) {
   .nav-links a:not(.btn-primary) { display: none; }
+  .cta-final { padding: 64px 0; }
+  .cta-final .btn-primary { font-size: 1rem; padding: 16px 32px; }
 }
 
 /* --- Divider --- */
@@ -1260,11 +1272,178 @@ nav {
 .case-transition { display: none !important; }
 .narrative-bridge { display: none !important; }
 
+
+/* ============================================================
+   PREMIUM ENHANCED TIER — Paleta original preservada
+   Técnicas: scroll reveals, progress bar, grain, hover lift,
+   smooth scroll, favicon inline, foto fullbleed
+   ============================================================ */
+
+/* Smooth scroll global */
+html { scroll-behavior: smooth; }
+
+/* Scroll Progress Bar — Terracota */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--terracota), var(--sage));
+  transition: width 0.1s linear;
+}
+
+/* Cinematic Scroll Reveals */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  filter: blur(3px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+
+/* Grain Texture — sutil sobre Marfim */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+  animation: grain-shift 0.5s steps(4) infinite;
+}
+@keyframes grain-shift {
+  0% { background-position: 0 0; }
+  25% { background-position: -80px 40px; }
+  50% { background-position: 40px -60px; }
+  75% { background-position: -40px 80px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grain { animation: none; }
+  .reveal { transition: none; opacity: 1; transform: none; filter: none; }
+}
+
+/* Card Hover Lift — carrossel */
+.case-slide {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.case-slide:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 48px rgba(26,26,26,0.12) !important;
+}
+
+/* Plan Step Cards — hover */
+.plan-step {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.plan-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(26,26,26,0.08);
+}
+
+/* Comp Items — hover */
+.comp-item {
+  transition: background 0.3s ease, transform 0.3s ease;
+  border-radius: 12px;
+}
+.comp-item:hover {
+  background: var(--white);
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(26,26,26,0.06);
+}
+
+/* Authority Stats — counter style */
+.authority-stat .number {
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.3s ease;
+}
+.authority-stat:hover .number {
+  transform: scale(1.08);
+}
+
+/* Hero photo — fullbleed no frame */
+.photo-frame {
+  overflow: hidden !important;
+}
+.photo-frame img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.photo-frame:hover img {
+  transform: scale(1.03);
+}
+
+/* Nav — subtle shadow on scroll */
+nav {
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+nav.scrolled {
+  box-shadow: 0 2px 20px rgba(26,26,26,0.06);
+}
+
+/* Section dividers — gradient fade */
+.section-divider {
+  background: linear-gradient(90deg, var(--terracota), var(--sage)) !important;
+  opacity: 0.7;
+}
+
+/* CTA buttons — refined hover */
+.btn-primary {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(196, 120, 91, 0.3) !important;
+}
+
+/* Sobre photo — subtle zoom */
+.sobre-photo img {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sobre-photo:hover img {
+  transform: scale(1.02);
+}
+
+/* Carousel dots — active pulse */
+.carousel-dot.active {
+  animation: dot-pulse 2s ease infinite;
+}
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Carousel arrows — refined */
+.carousel-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.carousel-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(196, 120, 91, 0.15);
+}
+
+
 </style>
 </head>
 <body>
 
 <!-- NAV -->
+<div class="scroll-progress"></div>
+<div class="grain"></div>
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">Giovana <span>Petelinkar</span></a>
@@ -1292,7 +1471,7 @@ nav {
 </nav>
 
 <!-- ============================================================
-     SECTION 1: HERO (SB7 — Character + Guide)
+     SECTION 1: HERO (SB7. Character + Guide)
      ============================================================ -->
 <section class="hero" id="inicio">
   <div class="container">
@@ -1300,7 +1479,7 @@ nav {
       <div class="hero-content">
         <h4 style="color: var(--sage); margin-bottom: 16px; font-size: 0.8125rem;">Estratégia de Comunicação &amp; Marketing Digital</h4>
         <h1>Sua marca merece ser vista como realmente e</h1>
-        <p class="subtitle">Comunicação estratégica e marketing digital para empresas que querem conectar com o público certo e crescer com propósito.</p>
+        <p class="subtitle">Transformo a comunicação digital de marcas que merecem mais visibilidade em estratégia que conecta, engaja e converte. Do conteúdo ao resultado.</p>
         <div class="hero-cta-group">
           <a href="https://wa.me/5583991263458?text=Ol%C3%A1%20Giovana%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" class="btn-primary">Agende uma Conversa Estratégica</a>
           <a href="#cases" class="btn-secondary">Ver Cases</a>
@@ -1317,7 +1496,7 @@ nav {
 </section>
 
 <!-- ============================================================
-     SECTION 2: STAKES (SB7 — Problem + Failure)
+     SECTION 2: STAKES (SB7. Problem + Failure)
      ============================================================ -->
 <section class="stakes" id="problemas">
   <div class="container">
@@ -1340,7 +1519,7 @@ nav {
 </section>
 
 <!-- ============================================================
-     SECTION 3: VALUE (SB7 — Guide + Plan)
+     SECTION 3: VALUE (SB7. Guide + Plan)
      ============================================================ -->
 <section class="value" id="como-funciona">
   <div class="container">
@@ -1377,7 +1556,7 @@ nav {
       <div class="plan-step">
         <span class="step-number">02</span>
         <h3>Plano Sob Medida</h3>
-        <p>Crio uma estratégia personalizada com canais, conteúdo e cronograma — feita pro seu mercado.</p>
+        <p>Crio uma estratégia personalizada com canais, conteúdo e cronograma. Feita pro seu mercado.</p>
       </div>
       <div class="plan-step">
         <span class="step-number">03</span>
@@ -1398,34 +1577,34 @@ nav {
 <section class="competencias" id="competencias">
   <div class="container">
     <div class="section-divider"></div>
-    <h2>O que eu faço</h2>
+    <h2>Como eu transformo sua comunicação</h2>
     <div class="comp-grid">
       <div class="comp-item">
         <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14h6"/><path d="M9 18h6"/><path d="M9 10h6"/></svg></div>
         <div>
           <h3>Estratégia de Conteúdo</h3>
-          <p>Planejamento editorial, calendários, pautas e direcionamento criativo para redes sociais, blogs e canais digitais.</p>
+          <p>Seu conteúdo deixa de ser postagem avulsa e vira sistema estratégico. Com planejamento, direção criativa e propósito em cada publicação.</p>
         </div>
       </div>
       <div class="comp-item">
         <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
         <div>
           <h3>Gestão de Redes Sociais</h3>
-          <p>Gerenciamento completo de Instagram, LinkedIn e canais digitais — do planejamento à análise de resultados.</p>
+          <p>Suas redes deixam de ser vitrine parada e passam a gerar engajamento real. Gestão completa do planejamento à análise de resultados.</p>
         </div>
       </div>
       <div class="comp-item">
         <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
         <div>
           <h3>Copywriting &amp; UX Writing</h3>
-          <p>Redação orientada a experiência do usuário, engajamento e conversão — e‑mails, landing pages, sites e legendas.</p>
+          <p>Redação orientada a experiência do usuário, engajamento e conversão. E‑mails, landing pages, sites e legendas.</p>
         </div>
       </div>
       <div class="comp-item">
         <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
         <div>
           <h3>Roteiro &amp; Produção de Vídeo</h3>
-          <p>Roteiros para Reels, vídeos institucionais e comerciais. Direção de estilo, captação e edição de vídeos curtos.</p>
+          <p>Seus vídeos deixam de ser "conteúdo bonito" e passam a contar histórias que conectam. Do roteiro à edição final.</p>
         </div>
       </div>
       <div class="comp-item">
@@ -1439,7 +1618,7 @@ nav {
         <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
         <div>
           <h3>Campanhas Digitais</h3>
-          <p>Concepção e análise de campanhas — da definição de pautas até a avaliação de resultados e otimização.</p>
+          <p>Suas campanhas passam a ter estratégia de ponta a ponta. Da concepção à análise de resultados, otimizando cada real investido.</p>
         </div>
       </div>
     </div>
@@ -1452,7 +1631,7 @@ nav {
 </div>
 
 <!-- ============================================================
-     SECTION 5: CASES (SB7 — Success / Proof)
+     SECTION 5: CASES (SB7. Success / Proof)
      ============================================================ -->
 <section class="cases" style="display:none !important;" id="cases">
   <div class="container">
@@ -1475,7 +1654,7 @@ nav {
           <span class="tag">Identidade Visual</span>
         </div>
       </div>
-      <p class="case-tldr">Como transformei uma marca artesanal fragmentada em uma presença digital coerente — da identidade visual ao lançamento de coleção.</p>
+      <p class="case-tldr">Como transformei uma marca artesanal fragmentada em uma presença digital coerente. Da identidade visual ao lançamento de coleção.</p>
 
       <div class="case-context">
         <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Assessora de Marketing e Mídias</span></div>
@@ -1491,16 +1670,16 @@ nav {
       <div class="case-narrative">
         <div class="label">Desafio</div>
         <div class="content">
-          <p>O Renata Dias Atelier é um ateliê de vestidos de noiva e festa sob medida com 10 anos de trajetória. Apesar da qualidade excepcional do trabalho artesanal, a marca da estilista e do ateliê existiam de forma desconectada — sem identidade visual unificada, sem estratégia de conteúdo, e sem presença digital que traduzisse a exclusividade do atendimento personalizado.</p>
+          <p>O Renata Dias Atelier é um ateliê de vestidos de noiva e festa sob medida com 10 anos de trajetória. Apesar da qualidade excepcional do trabalho artesanal, a marca da estilista e do ateliê existiam de forma desconectada. Sem identidade visual unificada, sem estratégia de conteúdo, e sem presença digital que traduzisse a exclusividade do atendimento personalizado.</p>
           <p>O risco: continuar invisível no digital enquanto concorrentes com menos qualidade dominavam as redes sociais do segmento.</p>
         </div>
       </div>
       <div class="case-narrative">
         <div class="label">Processo</div>
         <div class="content">
-          <p>Assumi a responsabilidade completa pela presença digital — do planejamento estratégico à execução. O primeiro passo foi mapear o posicionamento: entender o que tornava o ateliê único (design autoral, exclusividade, atendimento personalizado) e traduzir isso em linguagem visual e verbal para o digital.</p>
+          <p>Assumi a responsabilidade completa pela presença digital. Do planejamento estratégico à execução. O primeiro passo foi mapear o posicionamento: entender o que tornava o ateliê único (design autoral, exclusividade, atendimento personalizado) e traduzir isso em linguagem visual e verbal para o digital.</p>
           <p>Desenvolvi o planejamento e gerenciamento das redes sociais, produzi conteúdo visual e audiovisual (fotos, videos curtos, captação e edição), criei roteiros e direção de estilo para vídeos institucionais, e escrevi todas as legendas com tom alinhado à marca.</p>
-          <p>O ponto alto foi a coleção "Essence" — criei o conceito completo do zero: naming, identidade gráfica da coleção, produção visual (imagens e textos), e toda a comunicação de lançamento. O tema "deixe fluir o que importa" conectava a essência da marca com as emoções das noivas.</p>
+          <p>O ponto alto foi a coleção "Essence". Criei o conceito completo do zero: naming, identidade gráfica da coleção, produção visual (imagens e textos), e toda a comunicação de lançamento. O tema "deixe fluir o que importa" conectava a essência da marca com as emoções das noivas.</p>
         </div>
       </div>
       <div class="case-narrative">
@@ -1550,7 +1729,7 @@ nav {
 
       <div class="case-insight">
         <div class="insight-label">O que aprendi</div>
-        <p>Marcas artesanais precisam de comunicação que respeite a essência do trabalho manual. A tentação é "modernizar" demais — mas o diferencial está justamente na autenticidade. O papel do marketing é amplificar o que já é real, não inventar uma imagem.</p>
+        <p>Marcas artesanais precisam de comunicação que respeite a essência do trabalho manual. A tentação é "modernizar" demais. Mas o diferencial está justamente na autenticidade. O papel do marketing é amplificar o que já é real, não inventar uma imagem.</p>
       </div>
     </article>
 
@@ -1590,8 +1769,8 @@ nav {
       <div class="case-narrative">
         <div class="label">Processo</div>
         <div class="content">
-          <p>Comecei pelo que a maioria pula: defini o objetivo de comunicação antes de criar qualquer conteúdo. Para os primeiros três meses, estruturei uma estratégia em quatro pilares: transmitir qualidade e exclusividade em cada detalhe, incorporar tendências de mercado por meio de curadoria única, construir conexão com o público gerando sentimento de pertencimento, e ir além do varejo — consolidar a marca como referência em lifestyle.</p>
-          <p>Criei o moodboard completo conectando estética, tendências e experiências do universo Lumos. Cada post, story e peça foi pensado para reforçar o posicionamento — coesão visual como expressão da marca, não como padrão estético.</p>
+          <p>Comecei pelo que a maioria pula: defini o objetivo de comunicação antes de criar qualquer conteúdo. Para os primeiros três meses, estruturei uma estratégia em quatro pilares: transmitir qualidade e exclusividade em cada detalhe, incorporar tendências de mercado por meio de curadoria única, construir conexão com o público gerando sentimento de pertencimento, e ir além do varejo. Consolidar a marca como referência em lifestyle.</p>
+          <p>Criei o moodboard completo conectando estética, tendências e experiências do universo Lumos. Cada post, story e peça foi pensado para reforçar o posicionamento. Coesão visual como expressão da marca, não como padrão estético.</p>
         </div>
       </div>
       <div class="case-narrative">
@@ -1638,12 +1817,12 @@ nav {
           <span class="tag">Copywriting</span>
         </div>
       </div>
-      <p class="case-tldr">Estratégia multicanal que transformou um condomínio em um estilo de vida — integrando redes sociais, e‑mail marketing e landing pages com storytelling de destino.</p>
+      <p class="case-tldr">Estratégia multicanal que transformou um condomínio em um estilo de vida. Integrando redes sociais, e‑mail marketing e landing pages com storytelling de destino.</p>
 
       <div class="case-context">
         <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Gestora de Comunicação Digital</span></div>
         <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Imobiliário / Turismo</span></div>
-        <div class="case-context-item"><span class="ctx-label">Localização</span><span class="ctx-value">Pipa, Tibau do Sul — RN</span></div>
+        <div class="case-context-item"><span class="ctx-label">Localização</span><span class="ctx-value">Pipa, Tibau do Sul. RN</span></div>
         <div class="case-context-item"><span class="ctx-label">Canais</span><span class="ctx-value">Instagram, Email, Landing Pages</span></div>
       </div>
 
@@ -1653,14 +1832,14 @@ nav {
       <div class="case-narrative">
         <div class="label">Desafio</div>
         <div class="content">
-          <p>O Condomínio Reserva da Pipa não queria vender lotes — queria vender um estilo de vida. Localizado em um dos destinos mais desejados do Brasil, o condomínio precisava ir além do imóvel e comunicar a experiência completa: praias, gastronomia, natureza, comunidade. O desafio era criar uma presença digital que fizesse o público desejar o LUGAR, não apenas a propriedade.</p>
+          <p>O Condomínio Reserva da Pipa não queria vender lotes. Queria vender um estilo de vida. Localizado em um dos destinos mais desejados do Brasil, o condomínio precisava ir além do imóvel e comunicar a experiência completa: praias, gastronomia, natureza, comunidade. O desafio era criar uma presença digital que fizesse o público desejar o LUGAR, não apenas a propriedade.</p>
         </div>
       </div>
       <div class="case-narrative">
         <div class="label">Processo</div>
         <div class="content">
-          <p>Desenhei uma estratégia multicanal que integrou três frentes: nas redes sociais, criei conteúdo que misturava o condomínio com os atrativos de Pipa — praias, restaurantes, eventos, experiências. A estratégia-chave foi usar prova social do TripAdvisor (avaliações reais de turistas) como validação da região, transformando opiniões de terceiros em conteúdo para carrosséis.</p>
-          <p>No email marketing, desenvolvi copy de venda com CTAs claros para eventos de lançamento e entrega de lotes — incluindo campanhas de indicação ("indique um amigo e ganhe um final de semana"). Nas landing pages, alinhei o tom aspiracional com informações práticas de localização, infraestrutura e investimento.</p>
+          <p>Desenhei uma estratégia multicanal que integrou três frentes: nas redes sociais, criei conteúdo que misturava o condomínio com os atrativos de Pipa: praias, restaurantes, eventos, experiências. A estratégia chave foi usar prova social do TripAdvisor (avaliações reais de turistas) como validação da região, transformando opiniões de terceiros em conteúdo para carrosséis.</p>
+          <p>No email marketing, desenvolvi copy de venda com CTAs claros para eventos de lançamento e entrega de lotes. Incluindo campanhas de indicação ("indique um amigo e ganhe um final de semana"). Nas landing pages, alinhei o tom aspiracional com informações práticas de localização, infraestrutura e investimento.</p>
         </div>
       </div>
       <div class="case-narrative">
@@ -1708,7 +1887,7 @@ nav {
           <span class="tag">Narrativa de Marca</span>
         </div>
       </div>
-      <p class="case-tldr">Redação completa de website institucional e emails para uma incorporadora de luxo — traduzindo propósito e sustentabilidade em narrativa premium.</p>
+      <p class="case-tldr">Redação completa de website institucional e emails para uma incorporadora de luxo. Traduzindo propósito e sustentabilidade em narrativa premium.</p>
 
       <div class="case-context">
         <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Redatora / UX Writer</span></div>
@@ -1722,14 +1901,14 @@ nav {
       <div class="case-narrative">
         <div class="label">Desafio</div>
         <div class="content">
-          <p>A Bauten e uma construtora e incorporadora que alia design de alto padrão com sustentabilidade. O site institucional precisava transmitir esse posicionamento premium com clareza — mas a empresa não tinha redação profissional. O briefing trazia uma frase ambiciosa: "Construímos narrativas que dão sentido à vida." Meu trabalho era transformar essa visão em copy que funcionasse em cada página do site.</p>
+          <p>A Bauten e uma construtora e incorporadora que alia design de alto padrão com sustentabilidade. O site institucional precisava transmitir esse posicionamento premium com clareza. Mas a empresa não tinha redação profissional. O briefing trazia uma frase ambiciosa: "Construímos narrativas que dão sentido à vida." Meu trabalho era transformar essa visão em copy que funcionasse em cada página do site.</p>
         </div>
       </div>
       <div class="case-narrative">
         <div class="label">Processo</div>
         <div class="content">
-          <p>Comecei pelo propósito, missão e visão — não como exercício teórico, mas como base para cada decisão de texto. A página "Nossa História" precisava contar a origem da empresa sem ser genérica. "Nosso Conceito" precisava traduzir sustentabilidade em linguagem emocional. "Quem Faz" precisava humanizar os fundadores sem perder o tom institucional.</p>
-          <p>Cada página foi escrita separadamente, testada por legibilidade, e revisada para garantir que o tom premium fosse consistente do header ao footer. Os emails seguiram a mesma linguagem — aspiracional, com CTAs claros e tom de conversa sofisticada.</p>
+          <p>Comecei pelo propósito, missão e visão. Não como exercício teórico, mas como base para cada decisão de texto. A página "Nossa História" precisava contar a origem da empresa sem ser genérica. "Nosso Conceito" precisava traduzir sustentabilidade em linguagem emocional. "Quem Faz" precisava humanizar os fundadores sem perder o tom institucional.</p>
+          <p>Cada página foi escrita separadamente, testada por legibilidade, e revisada para garantir que o tom premium fosse consistente do header ao footer. Os emails seguiram a mesma linguagem. Aspiracional, com CTAs claros e tom de conversa sofisticada.</p>
         </div>
       </div>
       <div class="case-narrative">
@@ -1775,7 +1954,7 @@ nav {
           <span class="tag">Direcionamento Criativo</span>
         </div>
       </div>
-      <p class="case-tldr">Direcionamento estratégico de conteúdo para duas profissionais — roteiros de Reels, cards e legendas que transformam expertise em conteúdo que engaja e converte.</p>
+      <p class="case-tldr">Direcionamento estratégico de conteúdo para duas profissionais. Roteiros de Reels, cards e legendas que transformam expertise em conteúdo que engaja e converte.</p>
 
       <div class="case-context">
         <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Estrategista de Conteúdo</span></div>
@@ -1784,19 +1963,19 @@ nav {
       </div>
 
       <div class="case-hero-image">
-        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,var(--marfim-dark),var(--sage-light));border-radius:12px;"><span style="font-family:var(--font-mono);font-size:0.8rem;color:var(--grafite);padding:20px;text-align:center;">Roteiros e direcionamento estratégico — conteúdo textual</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,var(--marfim-dark),var(--sage-light));border-radius:12px;"><span style="font-family:var(--font-mono);font-size:0.8rem;color:var(--grafite);padding:20px;text-align:center;">Roteiros e direcionamento estratégico. conteúdo textual</span></div>
       </div>
       <div class="case-narrative">
         <div class="label">Desafio</div>
         <div class="content">
-          <p>Duas profissionais com expertise profunda mas dificuldade em traduzir conhecimento em conteúdo digital. A mentora do mercado digital precisava se posicionar como voz contra as "fórmulas mágicas" do marketing. A coach autora precisava lançar seu livro nas redes sem parecer vendedora — mantendo a autenticidade da sua história pessoal de superação.</p>
+          <p>Duas profissionais com expertise profunda mas dificuldade em traduzir conhecimento em conteúdo digital. A mentora do mercado digital precisava se posicionar como voz contra as "fórmulas mágicas" do marketing. A coach autora precisava lançar seu livro nas redes sem parecer vendedora. Mantendo a autenticidade da sua história pessoal de superação.</p>
         </div>
       </div>
       <div class="case-narrative">
         <div class="label">Processo</div>
         <div class="content">
-          <p>Para a mentora, desenvolvi roteiro completo de Reels: tema ("Mercado digital e o pensamento fora da caixa"), cenário (armário/espelho, metáfora de trocar de roupa = trocar de mentalidade), abertura com gancho provocativo, desenvolvimento com conteúdo estratégico, e CTA claro para a incubadora. O roteiro desafiava as "verdades absolutas" do marketing digital — posicionamento contrário que gera engajamento.</p>
-          <p>Para a coach autora, criei estratégia de pré‑lançamento do livro: Reels mostrando bastidores (escrevendo, na livraria, em reunião com assessoria), cards com citações do livro usando linguagem visual emocional, e legendas que conectassem cada post a jornada pessoal da autora. O tema central era identidade e liberdade — o grito de liberdade como metáfora.</p>
+          <p>Para a mentora, desenvolvi roteiro completo de Reels: tema ("Mercado digital e o pensamento fora da caixa"), cenário (armário/espelho, metáfora de trocar de roupa = trocar de mentalidade), abertura com gancho provocativo, desenvolvimento com conteúdo estratégico, e CTA claro para a incubadora. O roteiro desafiava as "verdades absolutas" do marketing digital. Posicionamento contrário que gera engajamento.</p>
+          <p>Para a coach autora, criei estratégia de pré‑lançamento do livro: Reels mostrando bastidores (escrevendo, na livraria, em reunião com assessoria), cards com citações do livro usando linguagem visual emocional, e legendas que conectassem cada post a jornada pessoal da autora. O tema central era identidade e liberdade. o grito de liberdade como metáfora.</p>
         </div>
       </div>
       <div class="case-narrative">
@@ -1850,7 +2029,7 @@ nav {
           <div class="case-slide-body">
             <h3>Renata Dias Atelier</h3>
             <div class="case-subtitle">Moda Noiva &amp; Festa | Construção de marca completa</div>
-            <p class="case-desc">O ateliê de vestidos sob medida com 10 anos de trajetória precisava integrar a marca da estilista e do ateliê em uma presença digital coerente. Assumi toda a comunicação: do planejamento estratégico à identidade visual, passando por vídeos institucionais, redes sociais e o lançamento da coleção "Essence" — criando conceito, naming e toda a produção visual do zero.</p>
+            <p class="case-desc">O ateliê de vestidos sob medida com 10 anos de trajetória precisava integrar a marca da estilista e do ateliê em uma presença digital coerente. Assumi toda a comunicação: do planejamento estratégico à identidade visual, passando por vídeos institucionais, redes sociais e o lançamento da coleção "Essence". criando conceito, naming e toda a produção visual do zero.</p>
             <div class="case-slide-tags">
               <span class="tag">Branding</span>
               <span class="tag">Vídeo</span>
@@ -1860,9 +2039,9 @@ nav {
             </div>
           </div>
           <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">100%</span><span class="lbl">Identidade unificada</span></div>
-            <div class="mini-metric"><span class="val">8</span><span class="lbl">Tipos de entrega</span></div>
-            <div class="mini-metric"><span class="val">1</span><span class="lbl">Coleção lançada</span></div>
+            <div class="mini-metric"><span class="val">360°</span><span class="lbl">Presença digital completa</span></div>
+            <div class="mini-metric"><span class="val">Essence</span><span class="lbl">Coleção criada do zero</span></div>
+            <div class="mini-metric"><span class="val">10 anos</span><span class="lbl">De marca reposicionada</span></div>
           </div>
         </div>
 
@@ -1883,8 +2062,8 @@ nav {
             </div>
           </div>
           <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">4</span><span class="lbl">Pilares estratégicos</span></div>
-            <div class="mini-metric"><span class="val">3 meses</span><span class="lbl">Roadmap</span></div>
+            <div class="mini-metric"><span class="val">Do zero</span><span class="lbl">Identidade construída</span></div>
+            <div class="mini-metric"><span class="val">3 meses</span><span class="lbl">Plano executável</span></div>
           </div>
         </div>
 
@@ -1896,7 +2075,7 @@ nav {
           <div class="case-slide-body">
             <h3>Reserva da Pipa</h3>
             <div class="case-subtitle">Condomínio Resort | Campanha multicanal</div>
-            <p class="case-desc">O condomínio não queria vender lotes — queria vender um estilo de vida. Criei estratégia multicanal integrando redes sociais, e‑mail marketing e landing pages. Usei prova social do TripAdvisor como validação da região, e campanhas de indicação com CTAs claros para eventos e lançamentos.</p>
+            <p class="case-desc">O condomínio não queria vender lotes. Queria vender um estilo de vida. Criei estratégia multicanal integrando redes sociais, e‑mail marketing e landing pages. Usei prova social do TripAdvisor como validação da região, e campanhas de indicação com CTAs claros para eventos e lançamentos.</p>
             <div class="case-slide-tags">
               <span class="tag">Social Media</span>
               <span class="tag">E‑mail Marketing</span>
@@ -1905,9 +2084,8 @@ nav {
             </div>
           </div>
           <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">3</span><span class="lbl">Canais integrados</span></div>
-            <div class="mini-metric"><span class="val">5+</span><span class="lbl">Campanhas</span></div>
-            <div class="mini-metric"><span class="val">Lifestyle</span><span class="lbl">Posicionamento</span></div>
+            <div class="mini-metric"><span class="val">3 canais</span><span class="lbl">Integrados em 1 estratégia</span></div>
+            <div class="mini-metric"><span class="val">Lifestyle</span><span class="lbl">De lotes a estilo de vida</span></div>
           </div>
         </div>
 
@@ -1919,7 +2097,7 @@ nav {
           <div class="case-slide-body">
             <h3>Bauten</h3>
             <div class="case-subtitle">Incorporadora de Luxo | Website + narrativa de marca</div>
-            <p class="case-desc">Incorporadora que alia design e sustentabilidade precisava de redação profissional para o site. Desenvolvi toda a copy — da "Nossa História" ao "Nosso Conceito" e "Quem Faz" — traduzindo propósito, missão e visão em linguagem que conecta emocionalmente com o público de luxo.</p>
+            <p class="case-desc">Incorporadora que alia design e sustentabilidade precisava de redação profissional para o site. Desenvolvi toda a copy. da "Nossa História" ao "Nosso Conceito" e "Quem Faz". traduzindo propósito, missão e visão em linguagem que conecta emocionalmente com o público de luxo.</p>
             <div class="case-slide-tags">
               <span class="tag">Website</span>
               <span class="tag">Copywriting</span>
@@ -1928,8 +2106,8 @@ nav {
             </div>
           </div>
           <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">3</span><span class="lbl">Páginas escritas</span></div>
-            <div class="mini-metric"><span class="val">Premium</span><span class="lbl">Tom de voz</span></div>
+            <div class="mini-metric"><span class="val">Site completo</span><span class="lbl">Copy institucional</span></div>
+            <div class="mini-metric"><span class="val">Luxo</span><span class="lbl">Tom premium consolidado</span></div>
           </div>
         </div>
 
@@ -1949,8 +2127,8 @@ nav {
             </div>
           </div>
           <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">2</span><span class="lbl">Estratégias</span></div>
-            <div class="mini-metric"><span class="val">Roteiros</span><span class="lbl">Prontos para gravação</span></div>
+            <div class="mini-metric"><span class="val">2 clientes</span><span class="lbl">Estratégias personalizadas</span></div>
+            <div class="mini-metric"><span class="val">Pronto</span><span class="lbl">Conteúdo executável</span></div>
           </div>
         </div>
 
@@ -1994,8 +2172,8 @@ nav {
             </div>
           </div>
           <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">45 anos</span><span class="lbl">Marca celebrada</span></div>
-            <div class="mini-metric"><span class="val">6+</span><span class="lbl">Empreendimentos</span></div>
+            <div class="mini-metric"><span class="val">45 anos</span><span class="lbl">De história comunicados</span></div>
+            <div class="mini-metric"><span class="val">Vídeo</span><span class="lbl">Institucional + redes</span></div>
           </div>
         </div>
 
@@ -2016,8 +2194,8 @@ nav {
             </div>
           </div>
           <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">B2B</span><span class="lbl">Público especializado</span></div>
-            <div class="mini-metric"><span class="val">Slow</span><span class="lbl">Content estratégico</span></div>
+            <div class="mini-metric"><span class="val">B2B</span><span class="lbl">Comunicação para corretores</span></div>
+            <div class="mini-metric"><span class="val">Autoridade</span><span class="lbl">Posicionamento construído</span></div>
           </div>
         </div>
 
@@ -2037,8 +2215,8 @@ nav {
             </div>
           </div>
           <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">Site</span><span class="lbl">Institucional completo</span></div>
-            <div class="mini-metric"><span class="val">ONG</span><span class="lbl">Impacto social</span></div>
+            <div class="mini-metric"><span class="val">Site</span><span class="lbl">Presença digital da ONG</span></div>
+            <div class="mini-metric"><span class="val">Social</span><span class="lbl">Comunicação com propósito</span></div>
           </div>
         </div>
 
@@ -2059,8 +2237,8 @@ nav {
             </div>
           </div>
           <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">4</span><span class="lbl">Livros editados</span></div>
-            <div class="mini-metric"><span class="val">1</span><span class="lbl">E-book revisado</span></div>
+            <div class="mini-metric"><span class="val">5</span><span class="lbl">Publicações revisadas</span></div>
+            <div class="mini-metric"><span class="val">Editorial</span><span class="lbl">Estrutura + qualidade textual</span></div>
           </div>
         </div>
 
@@ -2084,7 +2262,7 @@ nav {
 </section>
 
 <!-- ============================================================
-     SECTION 6: SOBRE (SB7 — Guide backstory)
+     SECTION 6: SOBRE (SB7. Guide backstory)
      ============================================================ -->
 <section class="sobre" id="sobre">
   <div class="container">
@@ -2101,7 +2279,7 @@ nav {
           <p>"O problema nunca foi o negócio. Era a forma como a história estava sendo contada."</p>
         </div>
 
-        <p>Meu trabalho vai além de criar conteúdo — eu construo estratégias de comunicação que conectam marcas com seu público de forma autêntica e mensurável. Da estratégia de conteúdo a gestão de redes sociais, do roteiro de vídeo ao copywriting, da identidade visual à análise de resultados.</p>
+        <p>Meu trabalho vai além de criar conteúdo. eu construo estratégias de comunicação que conectam marcas com seu público de forma autêntica e mensurável. Da estratégia de conteúdo à gestão de redes sociais, do roteiro de vídeo ao copywriting, da identidade visual à análise de resultados.</p>
 
         <p>Acredito que toda marca tem uma história incrível pra contar. Meu papel é garantir que ela seja contada da forma certa, no canal certo, para as pessoas certas.</p>
 
@@ -2114,7 +2292,7 @@ nav {
 </section>
 
 <!-- ============================================================
-     SECTION 7: CTA FINAL (SB7 — Call to Action)
+     SECTION 7: CTA FINAL (SB7. Call to Action)
      ============================================================ -->
 <section class="cta-final" id="contato">
   <div class="container">
@@ -2125,6 +2303,7 @@ nav {
       <div class="contact-item"><a (83) 99126-3458>(83) 99126-3458</a></div>
       <div class="contact-item"><a href="mailto:gipetelinkar@gmail.com">gipetelinkar@gmail.com</a></div>
       <div class="contact-item"><a href="https://instagram.com/gipetelinkar" target="_blank" rel="noopener">@gipetelinkar</a></div>
+      <div class="contact-item"><a href="https://linkedin.com/in/giovanapetelinkar" target="_blank" rel="noopener">LinkedIn</a></div>
     </div>
   </div>
 </section>
@@ -2149,6 +2328,51 @@ document.querySelectorAll('.nav-dropdown-menu a').forEach(link => {
   });
 });
 </script>
+
+<script>
+// === ENHANCED TIER JS ===
+
+// 1. Scroll Progress Bar
+window.addEventListener('scroll', () => {
+  const bar = document.querySelector('.scroll-progress');
+  if (bar) {
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    bar.style.width = pct + '%';
+  }
+});
+
+// 2. Cinematic Scroll Reveals
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// 3. Nav shadow on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (nav) {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  }
+});
+
+// 4. Auto-add reveal classes to sections
+document.querySelectorAll('section > .container > *').forEach((el, i) => {
+  if (!el.classList.contains('reveal')) {
+    el.classList.add('reveal');
+    const delay = Math.min(i % 4, 3);
+    if (delay > 0) el.classList.add('reveal-d' + delay);
+  }
+});
+
+// Re-observe after adding classes
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+
 </body>
 </html>
 <script>
