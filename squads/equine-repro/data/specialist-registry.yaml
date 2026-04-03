@@ -1,0 +1,337 @@
+# Specialist Registry — Equine Reproduction Research Squad
+# Indexed capabilities, cross-references, and routing metadata
+# Referenced by equine-repro-chief.md command_loader
+
+version: "1.0.0"
+updated: "2026-04-03"
+
+# ═══════════════════════════════════════════════════════════════
+# AGENT INDEX
+# ═══════════════════════════════════════════════════════════════
+
+agents:
+  # ─── ORCHESTRATOR ───
+  equine-repro-chief:
+    tier: orchestrator
+    version: "1.0.0"
+    role: "Roteamento e coordenação multi-área"
+    domains: [all]
+    commands: [consult, roundtable, article-ideas, gap-analysis, methodology, list-specialists]
+
+  # ─── TIER 0: FOUNDATION ───
+  edward-squires:
+    tier: 0
+    version: "1.0.0"
+    clone_mind: false
+    role: "Reprodução equina ampla, ICSI pioneiro, criopreservação"
+    institution: "Colorado State University / Kentucky"
+    domains: [stallion_andrology, ivf_icsi, extenders_cryopreservation]
+    keywords: [BSE, ICSI pioneer, cryopreservation, semen evaluation, broad review]
+    synergies: [katrin-hinrichs, fernando-pena, marco-alvarenga]
+
+  # ─── TIER 1: MASTERS ───
+  fernando-pena:
+    tier: 1
+    version: "2.0.0"
+    clone_mind: true
+    fidelity: "85%"
+    role: "Regulação redox, estresse oxidativo, metabolismo espermático"
+    institution: "University of Extremadura, Cáceres, Espanha"
+    orcid: "0000-0002-1311-2947"
+    citations: "4800+"
+    domains: [stallion_andrology, oxidative_stress]
+    keywords: [redox deregulation, ROS, mitochondria, 4-HNE, SOD1, AKR1B1, proteomics, SLC7A11, methylglyoxal, AGEs, spermptosis, flow cytometry]
+    publications_count: "200+"
+    synergies: [zamira-gibb, bart-leemans, regina-turner, harald-sieme]
+
+  katrin-hinrichs:
+    tier: 1
+    version: "2.0.0"
+    clone_mind: true
+    fidelity: "85%"
+    role: "FIV convencional equina, ICSI, biologia de oócitos"
+    institution: "University of Pennsylvania, PEARL Lab"
+    orcid: "0000-0001-8080-0675"
+    domains: [ivf_icsi]
+    keywords: [conventional IVF, ICSI, PHE medium, overnight capacitation, oocyte maturation, OPU, cloning, Paris Texas, blastocyst culture]
+    awards: [ICAR Simmet Prize 2016, Texas A&M Regents Professor 2017]
+    synergies: [matheus-felix, bart-leemans, elaine-carnevale, cesare-galli]
+
+  mats-troedsson:
+    tier: 1
+    version: "1.0.0"
+    clone_mind: false
+    role: "Endometrite pós-cobertura, imunologia reprodutiva da égua"
+    institution: "Gluck Equine Research Center, University of Kentucky"
+    domains: [mare_reproduction]
+    keywords: [PBIE, endometritis, uterine clearance, susceptible mare, immune response, PMN, seminal plasma interaction]
+    synergies: [terttu-katila, christine-aurich, elaine-carnevale]
+
+  bart-leemans:
+    tier: 1
+    version: "2.0.0"
+    clone_mind: true
+    fidelity: "85%"
+    role: "Capacitação espermática equina, biologia ovidutal"
+    institution: "Ghent University / Utrecht University"
+    domains: [sperm_capacitation]
+    keywords: [capacitation-like changes, cholesterol efflux, sAC/cAMP, oviductal factors, pH-dependent activation, procaine, oviduct-on-chip, zona pellucida penetration, species comparison]
+    synergies: [paula-maitan, tom-stout, fernando-pena, katrin-hinrichs]
+
+  # ─── TIER 1 EXTERNAL ───
+  frederico-papa:
+    tier: 1
+    version: "external"
+    external_squad: "squads/frederico-papa/"
+    activation: "@frederico-papa:frederico-papa"
+    role: "Diluentes, criopreservação, antioxidantes"
+    institution: "UNESP Botucatu, Brasil"
+    domains: [extenders_cryopreservation, stallion_andrology]
+    keywords: [Botu-Semen, Botu-Crio, extenders, lecithin, antioxidants, cryoprotectants, DMFA, glycerol]
+    note: "Squad próprio — ativar via @frederico-papa:frederico-papa"
+
+  # ─── TIER 2: SPECIALISTS ───
+  elaine-carnevale:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "Envelhecimento oocitário, ICSI em éguas idosas"
+    institution: "Colorado State University"
+    domains: [ivf_icsi, mare_reproduction]
+    keywords: [oocyte aging, old mare, oocyte quality, ICSI, follicular dynamics, assisted reproduction aging]
+    synergies: [katrin-hinrichs, cesare-galli]
+
+  regina-turner:
+    tier: 2
+    version: "2.0.0"
+    clone_mind: true
+    fidelity: "85%"
+    role: "Degeneração testicular, motilidade espermática"
+    institution: "University of Pennsylvania, Penn Vet"
+    domains: [stallion_andrology]
+    keywords: [testicular degeneration, aging stallion, Ca2+/CaM/CaMKII, xenograft, inflammaging, BSE modernization, motility regulation]
+    synergies: [fernando-pena, katrin-hinrichs, edward-squires]
+
+  zamira-gibb:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "ROS, armazenamento líquido 7 dias"
+    institution: "University of Newcastle, Austrália"
+    domains: [oxidative_stress, stallion_andrology]
+    keywords: [ROS, liquid storage, 7-day storage, oxidative damage, antioxidant supplementation]
+    synergies: [fernando-pena, harald-sieme]
+
+  jane-morrell:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "Seleção espermática por SLC, microbioma"
+    institution: "Swedish University of Agricultural Sciences (SLU)"
+    domains: [stallion_andrology]
+    keywords: [SLC, Single Layer Centrifugation, sperm selection, sperm quality, microbiome]
+    synergies: [harald-sieme, fernando-pena]
+
+  harald-sieme:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "Criopreservação, plasma seminal"
+    institution: "TiHo Hannover, Alemanha"
+    domains: [extenders_cryopreservation, stallion_andrology]
+    keywords: [cryopreservation, seminal plasma, European protocols, freezing extenders, sperm selection]
+    synergies: [marco-alvarenga, dell-aqua-jr, fernando-pena]
+
+  marco-alvarenga:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "Criopreservação, IA equina"
+    institution: "UNESP, Brasil"
+    domains: [extenders_cryopreservation]
+    keywords: [AI, cryopreservation, Brazilian protocols, equine insemination, donkey reproduction]
+    synergies: [dell-aqua-jr, harald-sieme]
+
+  dell-aqua-jr:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "Diluentes, bad coolers"
+    institution: "UNESP, Brasil"
+    domains: [extenders_cryopreservation, stallion_andrology]
+    keywords: [bad coolers, cooling curves, cold shock, extender formulation, stallion variability]
+    synergies: [marco-alvarenga, harald-sieme]
+
+  terttu-katila:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "Diagnóstico de endometrite"
+    institution: "University of Helsinki, Finlândia"
+    domains: [mare_reproduction]
+    keywords: [endometritis diagnosis, uterine cytology, Kenney-Doig classification, uterine biopsy, PMN]
+    synergies: [mats-troedsson, christine-aurich]
+
+  christine-aurich:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "IA com sêmen refrigerado"
+    institution: "Vetmeduni Vienna, Áustria"
+    domains: [extenders_cryopreservation, mare_reproduction]
+    keywords: [refrigerated semen, AI, European protocols, reproductive physiology, cooled transport]
+    synergies: [harald-sieme, terttu-katila]
+
+  tom-stout:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "Transferência de embrião, hub capacitação"
+    institution: "Utrecht University, Países Baixos"
+    domains: [sperm_capacitation, ivf_icsi]
+    keywords: [embryo transfer, capacitation hub, oviduct biology, sperm-oviduct interaction]
+    synergies: [bart-leemans, paula-maitan]
+
+  cesare-galli:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "OPU-ICSI escala clínica"
+    institution: "Avantea, Cremona, Itália"
+    domains: [ivf_icsi]
+    keywords: [OPU-ICSI, clinical scale, 515 sessions, commercial embryo production, cloning]
+    synergies: [katrin-hinrichs, elaine-carnevale]
+
+  paula-maitan:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "Capacitação espermática (brasileira)"
+    institution: "Brasil / Utrecht University"
+    domains: [sperm_capacitation]
+    keywords: [sperm capacitation, Brazilian perspective, molecular mechanisms, in vivo capacitation]
+    synergies: [bart-leemans, tom-stout]
+
+  matheus-felix:
+    tier: 2
+    version: "1.0.0"
+    clone_mind: false
+    role: "FIV com sêmen congelado"
+    institution: "Penn Vet PEARL Lab / Brasil"
+    domains: [ivf_icsi]
+    keywords: [IVF frozen semen, PHE medium, sperm separation, conventional IVF, overnight capacitation]
+    synergies: [katrin-hinrichs, bart-leemans]
+
+# ═══════════════════════════════════════════════════════════════
+# DOMAIN INDEX — Lookup rápido por área
+# ═══════════════════════════════════════════════════════════════
+
+domain_index:
+  stallion_andrology:
+    primary: [fernando-pena]
+    secondary: [zamira-gibb, regina-turner, harald-sieme, jane-morrell, dell-aqua-jr]
+    external: [frederico-papa]
+
+  mare_reproduction:
+    primary: [mats-troedsson]
+    secondary: [terttu-katila, christine-aurich, elaine-carnevale]
+
+  ivf_icsi:
+    primary: [katrin-hinrichs]
+    secondary: [cesare-galli, elaine-carnevale, matheus-felix]
+    foundation: [edward-squires]
+
+  sperm_capacitation:
+    primary: [bart-leemans]
+    secondary: [paula-maitan, tom-stout]
+
+  extenders_cryopreservation:
+    primary: []
+    external: [frederico-papa]
+    secondary: [marco-alvarenga, dell-aqua-jr, harald-sieme, christine-aurich]
+    foundation: [edward-squires]
+
+  oxidative_stress:
+    primary: [fernando-pena]
+    secondary: [zamira-gibb]
+
+# ═══════════════════════════════════════════════════════════════
+# KEYWORD INDEX — Para busca semântica rápida
+# ═══════════════════════════════════════════════════════════════
+
+keyword_routing:
+  # Estresse oxidativo
+  ROS: fernando-pena
+  redox: fernando-pena
+  mitocondria: fernando-pena
+  antioxidante: fernando-pena
+  TBARS: fernando-pena
+  4-HNE: fernando-pena
+  SOD1: fernando-pena
+  peroxidacao: fernando-pena
+  proteomics: fernando-pena
+  methylglyoxal: fernando-pena
+
+  # Capacitação
+  capacitacao: bart-leemans
+  capacitation: bart-leemans
+  zona_pelucida: bart-leemans
+  oviduto: bart-leemans
+  colesterol_efluxo: bart-leemans
+  cAMP: bart-leemans
+  procaina: bart-leemans
+
+  # FIV/ICSI
+  FIV: katrin-hinrichs
+  IVF: katrin-hinrichs
+  ICSI: katrin-hinrichs
+  blastocisto: katrin-hinrichs
+  OPU: katrin-hinrichs
+  PHE: katrin-hinrichs
+  oocito: katrin-hinrichs
+  clonagem: katrin-hinrichs
+
+  # Égua
+  endometrite: mats-troedsson
+  PBIE: mats-troedsson
+  clearance: mats-troedsson
+  utero: mats-troedsson
+  citologia: terttu-katila
+  biopsia: terttu-katila
+
+  # Criopreservação
+  diluente: frederico-papa
+  extensor: frederico-papa
+  criopreservacao: harald-sieme
+  congelacao: harald-sieme
+  bad_cooler: dell-aqua-jr
+  refrigeracao: christine-aurich
+  plasma_seminal: harald-sieme
+
+  # Testicular
+  degeneracao: regina-turner
+  testicular: regina-turner
+  senescencia: regina-turner
+
+  # Outros
+  SLC: jane-morrell
+  selecao: jane-morrell
+  envelhecimento_oocitario: elaine-carnevale
+  egua_idosa: elaine-carnevale
+  transferencia_embriao: tom-stout
+  Avantea: cesare-galli
+  OPU_ICSI_escala: cesare-galli
+
+# ═══════════════════════════════════════════════════════════════
+# METADATA
+# ═══════════════════════════════════════════════════════════════
+
+stats:
+  total_agents: 20
+  orchestrator: 1
+  tier_0: 1
+  tier_1: 5  # 4 internos + 1 externo
+  tier_2: 14
+  clone_mind_enriched: 4
+  external_squads: 1
+  domains_covered: 6

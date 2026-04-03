@@ -1,0 +1,143 @@
+pack:
+  name: equine-repro
+  version: 1.0.0
+  short-title: Equine Reproduction Research Squad
+  description: >-
+    Squad de consultoria especializada em reprodução equina baseado em elite minds
+    reais — pesquisadores com frameworks documentados e skin in the game. Cobre
+    andrologia, ginecologia, biotecnologia do sêmen, FIV/ICSI, capacitação espermática,
+    diluentes e criopreservação. Cada agente é um clone funcional de um pesquisador
+    real, respondendo com a perspectiva, metodologias e frameworks daquela mente.
+  author: Iara Petelinkar
+  icon: "🐴"
+  slashPrefix: equineRepro
+
+# Pattern Library
+pattern_library:
+  prefix: ER
+  naming_convention:
+    format: "{PREFIX}-{CATEGORY}-{NUMBER}"
+    example: "ER-TP-001"
+  categories:
+    - id: TP
+      name: "Task Patterns"
+      description: "Patterns for research consultation tasks"
+    - id: EP
+      name: "Executor Patterns"
+      description: "Patterns for executor selection"
+    - id: PP
+      name: "Process Patterns"
+      description: "Patterns for research workflows"
+    - id: RP
+      name: "Research Patterns"
+      description: "Patterns for article ideation and gap analysis"
+  patterns: []
+
+# Task Standards
+task_standards:
+  enforce_anatomy: true
+  validator: "ER-TP-001"
+  required_fields:
+    - task_name
+    - status
+    - responsible_executor
+    - execution_type
+    - input
+    - output
+    - action_items
+    - acceptance_criteria
+
+# Executor Types
+executor_types:
+  agent:
+    id: "ER-EP-002"
+    name: "Agent Executor (AI)"
+    use_for:
+      - "Research consultation"
+      - "Article ideation"
+      - "Literature gap analysis"
+      - "Methodology recommendation"
+  hybrid:
+    id: "ER-EP-003"
+    name: "Hybrid Executor"
+    use_for:
+      - "Protocol design review"
+      - "Statistical analysis guidance"
+      - "Experimental design validation"
+
+# Workflow Configuration
+workflow_config:
+  checkpoint_policy: advisory
+  fail_fast: false
+  allow_manual_override: true
+
+# Tier Structure
+tier_structure:
+  orchestrator:
+    agent: equine-repro-chief
+    role: "Route requests to correct specialist by sub-area"
+
+  tier_0:
+    name: "Foundation — Broad Expertise"
+    agents:
+      - edward-squires
+
+  tier_1:
+    name: "Masters — Sub-area Leaders"
+    agents:
+      - fernando-pena        # Stallion: oxidative stress, redox
+      # frederico-papa → squad próprio (squads/frederico-papa/)
+      - katrin-hinrichs       # FIV/ICSI pioneer
+      - mats-troedsson        # Mare: endometritis, immunology
+      - bart-leemans          # Sperm capacitation
+
+  tier_2:
+    name: "Specialists — Niche Experts"
+    agents:
+      - elaine-carnevale      # Oocyte aging, mare ICSI
+      - regina-turner         # Testicular degeneration, motility
+      - zamira-gibb           # ROS, liquid storage 7 days
+      - jane-morrell          # SLC, sperm quality
+      - harald-sieme          # Cryopreservation, seminal plasma
+      - marco-alvarenga       # Cryopreservation, AI
+      - dell-aqua-jr          # Extenders, bad coolers
+      - terttu-katila         # Endometritis diagnosis
+      - christine-aurich      # AI, refrigerated semen
+      - tom-stout             # Embryo transfer, capacitation hub
+      - cesare-galli          # OPU-ICSI clinical scale
+      - paula-maitan          # Sperm capacitation (Brazilian)
+      - matheus-felix         # IVF with frozen semen
+
+# Sub-areas
+domain_areas:
+  stallion_andrology:
+    description: "Andrologia, seminologia, biotecnologia do sêmen"
+    primary: [fernando-pena]
+    external: [frederico-papa → squads/frederico-papa/]
+    secondary: [zamira-gibb, regina-turner, harald-sieme, jane-morrell]
+
+  mare_reproduction:
+    description: "Endometrite, ciclo estral, placentação, imunologia"
+    primary: [mats-troedsson]
+    secondary: [terttu-katila, christine-aurich, elaine-carnevale]
+
+  ivf_icsi:
+    description: "Fertilização in vitro, ICSI, OPU"
+    primary: [katrin-hinrichs]
+    secondary: [cesare-galli, elaine-carnevale, matheus-felix]
+
+  sperm_capacitation:
+    description: "Capacitação espermática, reação acrossômica"
+    primary: [bart-leemans]
+    secondary: [paula-maitan, tom-stout]
+
+  extenders_cryopreservation:
+    description: "Diluentes, criopreservação, refrigeração"
+    primary: []
+    external: [frederico-papa → squads/frederico-papa/]
+    secondary: [marco-alvarenga, dell-aqua-jr, harald-sieme, christine-aurich]
+
+  oxidative_stress:
+    description: "Estresse oxidativo, ROS, regulação redox"
+    primary: [fernando-pena]
+    secondary: [zamira-gibb]
