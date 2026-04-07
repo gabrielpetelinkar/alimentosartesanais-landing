@@ -1,0 +1,42 @@
+{
+  "product": "Guia Estratégico: Como Criar, Vender e Escalar Alimentos Artesanais",
+  "offer": "De R$97 por R$27",
+  "tone": "authority, trust, warmth, artisanal mastery, premium quality, bold energy",
+  "context": "course",
+  "palette": "warm",
+  "subject_description": "a Brazilian man in his early 30s with: (1) short dark brown wavy hair, (2) clean-shaven face with no beard, (3) fair olive skin tone, (4) brown eyes behind rectangular dark-framed glasses, (5) medium build, (6) wearing a white button-down dress shirt with sleeves slightly rolled, (7) dark watch on left wrist, (8) expressive playful smile showing teeth, biting a red pepper, (9) holding multiple bright red peppers in both hands near his chest",
+  "symbols": [
+    {
+      "object": "artisanal glass jars with colorful hot sauces and pepper preserves",
+      "meaning": "artisanal food craftsmanship",
+      "style": "large, warm-lit, semi-transparent, positioned behind subject on wooden shelves"
+    },
+    {
+      "object": "rustic wooden crates with fresh herbs and spices",
+      "meaning": "premium natural ingredients",
+      "style": "faint, lower background, warm tones"
+    },
+    {
+      "object": "subtle copper pots and kitchen utensils",
+      "meaning": "craft and mastery",
+      "style": "very faint, far background, decorative only"
+    }
+  ],
+  "layers": {
+    "background": "warm dark artisanal kitchen studio (#0A0A0A base) with soft amber backlighting, rustic wooden shelves with jars barely visible, warm smoke wisps rising",
+    "midground": "auto",
+    "foreground": "warm golden rim light on right edge of subject, subtle amber fill light from left, slight warm haze"
+  },
+  "seed": 42,
+  "model": "gemini-3.1-flash-image-preview",
+  "api_params": {
+    "seed": 42
+  },
+  "targets": {
+    "desktop": {
+      "aspect_ratio": "16:9",
+      "prompt": "IDENTITY LOCK — CRITICAL, HIGHEST PRIORITY: The subject is a Brazilian man in his early 30s with: (1) short dark brown wavy hair, (2) clean-shaven face with no beard, (3) fair olive skin tone, (4) brown eyes behind rectangular dark-framed glasses, (5) medium build, (6) wearing a white button-down dress shirt with sleeves slightly rolled, (7) dark watch on left wrist, (8) expressive playful smile showing teeth, biting a red pepper, (9) holding multiple bright red peppers in both hands near his chest. You MUST preserve the subject's EXACT facial features, bone structure, beard pattern, hair texture, skin tone, body proportions, and clothing from the reference photo. DO NOT alter, improve, idealize, or stylize any facial feature. Camera: medium shot (waist-up), 85mm f/1.8 equivalent, subject looking directly at camera with a confident, approachable expression. Sharp focus on face and eyes.\n\nCOMPOSITION LAYERS: BACKGROUND — warm dark artisanal kitchen studio (#0A0A0A base) with soft amber backlighting, rustic wooden shelves with jars barely visible, warm smoke wisps rising. MIDGROUND — a large artisanal glass jars with colorful hot sauces and pepper preserves (large, warm-lit, semi-transparent, positioned behind subject on wooden shelves) as the dominant midground element, a smaller rustic wooden crates with fresh herbs and spices (faint, lower background, warm tones) as secondary element, a subtle hint of subtle copper pots and kitchen utensils (very faint, far background, decorative only). FOREGROUND — warm golden rim light on right edge of subject, subtle amber fill light from left, slight warm haze.\n\nLAYOUT: The person is positioned on the RIGHT side of the frame, occupying approximately 40-45% of the image width. The LEFT 50-55% of the image MUST be a clean, visually rich but TEXT-FRIENDLY area — use a subtle gradient from #2c1810 to #4a2c17 with conceptual elements that create depth WITHOUT competing with text overlays.\n\nThis is a hero image for a sales page selling: Guia Estratégico: Como Criar, Vender e Escalar Alimentos Artesanais. Offer: De R$97 por R$27. The mood and tone must convey: authority, trust, warmth, artisanal mastery, premium quality, bold energy. STYLE: High-end advertising photography, cinematic color grading, shallow depth of field on background elements. Dramatic rim lighting separating the person from the background. Color accents in #f4a261. Ultra-sharp, magazine-quality resolution. The image should look like it was produced by a top-tier graphic design agency. ABSOLUTELY NO text, NO logos, NO watermarks, NO typography anywhere in the image.",
+      "negative_prompt": "blurry, low quality, distorted face, extra limbs, deformed hands, text, watermark, logo, signature, overexposed, underexposed, flat lighting, stock photo look, clipart, cartoon, illustration, painting, centered composition, symmetrical layout, wrong facial features, altered beard, different clothing than described, changed hair style, modified body proportions, added accessories not described"
+    }
+  }
+}
