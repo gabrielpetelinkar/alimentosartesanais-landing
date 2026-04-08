@@ -1,0 +1,303 @@
+# WF-1: Create Presentation
+# Duration: 30-90 minutes (depending on complexity)
+# Best for: Creating a complete presentation from scratch
+# Key Agents: All slide-master agents orchestrated by Maestro
+
+workflow:
+  id: wf-create-presentation
+  name: "Create Presentation"
+  version: "1.0.0"
+  duration: "30-90 minutes"
+  squad: slide-master
+  description: |
+    Full production pipeline for creating a magnificent presentation from scratch.
+    Follows the film production metaphor: brief → narrative → design → review.
+
+    This workflow produces:
+    - Presentation brief document
+    - Narrative architecture (Sparkline + 4 Story Moments)
+    - Visual design specifications per slide
+    - Data slide designs (if applicable)
+    - Quality review scorecard
+
+  best_for:
+    - "New presentations starting from scratch"
+    - "Rebuilding an existing deck from the ground up"
+    - "High-stakes presentations (investor pitch, keynote, launch)"
+    - "Educational/training content requiring slide support"
+
+  not_for:
+    - "Quick fixes to existing slides (use *diagnose + specialist)"
+    - "Data-only presentations (use *data-slide directly)"
+    - "Single slide design (use *design directly)"
+
+# ============================================================================
+# DECISION MATRIX
+# ============================================================================
+
+decision_matrix:
+  simple_presentation:
+    signals: ["< 15 slides", "single topic", "internal audience"]
+    skip_phases: ["PHASE-1"]  # Skip diagnostic, go straight to narrative
+    estimated_time: "30 minutes"
+
+  standard_presentation:
+    signals: ["15-40 slides", "multiple topics", "external audience"]
+    skip_phases: []
+    estimated_time: "60 minutes"
+
+  complex_presentation:
+    signals: ["> 40 slides", "data-heavy", "keynote/investor"]
+    skip_phases: []
+    additional: "Run PHASE-3B for all data slides"
+    estimated_time: "90 minutes"
+
+# ============================================================================
+# PHASES
+# ============================================================================
+
+phases:
+
+  PHASE-0:
+    id: PHASE-0
+    name: "Brief & Context"
+    tier: 0
+    agent: "@slide-master:slide-master-chief"
+    description: |
+      Gather all presentation context before any creative work begins.
+      The brief is the foundation — everything flows from it.
+    tasks:
+      - action: "Elicit presentation context from user"
+        questions:
+          - "What is the purpose of this presentation?"
+          - "Who is the audience? (size, expertise level, expectations)"
+          - "How much time do you have?"
+          - "What is the ONE thing the audience should remember?"
+          - "Do you have existing slides or are we starting from zero?"
+          - "Are there brand/template constraints?"
+          - "What data will be included (if any)?"
+      - action: "Document the brief"
+        output: "Presentation brief with purpose, audience, duration, key message, constraints"
+      - action: "Classify complexity"
+        reference: "decision_matrix"
+    checkpoint:
+      criteria:
+        - "Brief has purpose, audience, duration, and key message"
+        - "Complexity classified (simple/standard/complex)"
+        - "Constraints documented"
+      human_review: false
+      veto_conditions:
+        - "No key message identified → BLOCK until user provides one"
+        - "No audience defined → BLOCK until user clarifies"
+
+  PHASE-1:
+    id: PHASE-1
+    name: "Diagnostic Scan"
+    tier: 0
+    agents:
+      - "@slide-master:edward-tufte"
+      - "@slide-master:richard-mayer"
+    description: |
+      If existing slides are provided, run diagnostic scan before any design work.
+      Tufte checks data integrity. Mayer checks cognitive load.
+    skip_if: "No existing slides provided"
+    tasks:
+      - task_ref: "tasks/diagnose-slides.md"
+        context: "Apply to provided slides with brief context"
+    checkpoint:
+      criteria:
+        - "All data visualizations analyzed"
+        - "Cognitive load assessed"
+        - "Issues categorized by severity"
+      human_review: false
+      veto_conditions:
+        - "CRITICAL Lie Factor detected → must be flagged before proceeding"
+
+  PHASE-2:
+    id: PHASE-2
+    name: "Narrative Architecture"
+    tier: 1
+    agent: "@slide-master:nancy-duarte"
+    description: |
+      Build the story structure using Sparkline + Conquer 4 Story Moments.
+      This is the most critical phase — narrative before visual, always.
+    tasks:
+      - task_ref: "tasks/structure-narrative.md"
+        inputs:
+          topic: "from brief"
+          audience: "from brief"
+          duration: "from brief"
+          key_message: "from brief"
+          diagnostic_report: "from PHASE-1 (if available)"
+    checkpoint:
+      criteria:
+        - "Big Idea is a single clear statement"
+        - "Sparkline has minimum 4 oscillations"
+        - "All 4 Story Moments mapped"
+        - "S.T.A.R. Moment identified"
+        - "Slide-by-slide story beats complete"
+      human_review: true
+      review_prompt: "Does this narrative arc capture your presentation's story?"
+      veto_conditions:
+        - "No Villain/problem in the opening → BLOCK"
+        - "No call to action at the end → BLOCK"
+        - "More than 30% data slides without story → BLOCK"
+
+  PHASE-3:
+    id: PHASE-3
+    name: "Visual Design"
+    tier: 1
+    agent: "@slide-master:garr-reynolds"
+    description: |
+      Create the visual language and per-slide design specs.
+      Style DNA is enforced on every design decision.
+    tasks:
+      - task_ref: "tasks/design-slides.md"
+        inputs:
+          narrative: "from PHASE-2"
+          brand_constraints: "from brief"
+    checkpoint:
+      criteria:
+        - "Color palette with hex codes defined"
+        - "Typography system established"
+        - "Every slide has visual direction"
+        - "Style DNA compliance verified"
+        - "Zero bullet points in any design"
+      human_review: false
+      veto_conditions:
+        - "Light/white backgrounds as default → BLOCK"
+        - "Bullet point layouts present → BLOCK"
+        - "No accent color strategy → BLOCK"
+
+  PHASE-3B:
+    id: PHASE-3B
+    name: "Data Slide Design"
+    tier: 1
+    agent: "@slide-master:cole-nussbaumer-knaflic"
+    description: |
+      Apply SWD 6-Step Framework to all data-heavy slides.
+      Only runs if the presentation contains charts, graphs, or data.
+    skip_if: "No data slides in the narrative"
+    tasks:
+      - task_ref: "tasks/design-data-slide.md"
+        inputs:
+          data: "from narrative data slides"
+          key_message: "per slide from narrative"
+    checkpoint:
+      criteria:
+        - "Chart type matches data relationship"
+        - "Clutter eliminated"
+        - "Action titles on all data slides"
+        - "Preattentive attributes applied"
+      human_review: false
+      veto_conditions:
+        - "Pie charts used → BLOCK and replace with horizontal bars"
+        - "3D charts used → BLOCK"
+
+  PHASE-4:
+    id: PHASE-4
+    name: "Quality Review"
+    tier: 2
+    agent: "@slide-master:slide-master-chief"
+    description: |
+      Full quality review against all 7 frameworks and Style DNA.
+      Produces the final scorecard and verdict.
+    tasks:
+      - task_ref: "tasks/review-presentation.md"
+        inputs:
+          presentation: "compiled from PHASE-2 + PHASE-3 + PHASE-3B"
+          narrative_doc: "from PHASE-2"
+    checkpoint:
+      criteria:
+        - "All 6 review dimensions scored"
+        - "Final weighted score calculated"
+        - "Verdict issued"
+        - "Fix recommendations provided for any issues"
+      human_review: true
+      review_prompt: "Review the scorecard. Should we fix the flagged issues or proceed?"
+      veto_conditions:
+        - "Score < 5.0 → REBUILD required, return to PHASE-2"
+        - "Bullet points detected → FAIL, fix before proceeding"
+
+# ============================================================================
+# COMPLETION SIGNALS
+# ============================================================================
+
+completion_signals:
+  - "Quality review verdict is MAGNIFICENT (9-10) or STRONG (7-8.9)"
+  - "All CRITICAL and HIGH issues resolved"
+  - "User approves the final output"
+  - "Style DNA compliance verified across all slides"
+
+# ============================================================================
+# OUTPUTS
+# ============================================================================
+
+outputs:
+  - name: "Presentation Brief"
+    phase: PHASE-0
+    format: "Structured text"
+
+  - name: "Narrative Architecture"
+    phase: PHASE-2
+    format: "Sparkline arc + story beats + slide sequence"
+
+  - name: "Visual Design Spec"
+    phase: PHASE-3
+    format: "Color palette, typography, per-slide visual direction"
+
+  - name: "Data Slide Designs"
+    phase: PHASE-3B
+    format: "SWD-compliant chart specifications"
+    conditional: "Only if data slides exist"
+
+  - name: "Quality Review Scorecard"
+    phase: PHASE-4
+    format: "6-dimension scorecard with verdict"
+
+# ============================================================================
+# AGENTS BY PHASE
+# ============================================================================
+
+agents_by_phase:
+  PHASE-0: ["slide-master-chief"]
+  PHASE-1: ["edward-tufte", "richard-mayer"]
+  PHASE-2: ["nancy-duarte"]
+  PHASE-3: ["garr-reynolds"]
+  PHASE-3B: ["cole-nussbaumer-knaflic"]
+  PHASE-4: ["slide-master-chief"]
+
+  specialist_on_demand:
+    - agent: "dan-roam"
+      trigger: "Abstract concept needs visualization in any phase"
+    - agent: "cliff-atkinson"
+      trigger: "Bullet-heavy content detected in PHASE-1 diagnostic"
+
+# ============================================================================
+# QUALITY CHECKLIST
+# ============================================================================
+
+quality_checklist:
+  reference: "checklists/slide-quality-checklist.md"
+  gate: "checklists/presentation-quality-gate.md"
+  minimum_score: 7.0
+  verdict_thresholds:
+    magnificent: 9.0
+    strong: 7.0
+    needs_work: 5.0
+    rebuild: 0.0
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  created: "2026-03-20"
+  author: "Squad Architect"
+  squad: "slide-master"
+  version: "1.0.0"
+  style_dna_ref: "data/style-dna.md"
+  philosophy: |
+    Every presentation is a film. This workflow is the production pipeline.
+    Brief → Narrative → Design → Review. No shortcuts.
+    60% planning, 40% executing. Story before software. Always.

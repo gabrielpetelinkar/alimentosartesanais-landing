@@ -1,0 +1,338 @@
+{
+  "storyId": "SPEC-carousel-saas",
+  "researchedAt": "2026-03-01T02:00:00.000Z",
+  "researchedBy": "@analyst",
+  "complexity": "COMPLEX",
+
+  "dependencies": [
+    {
+      "name": "satori",
+      "type": "library",
+      "version": "^0.12.x",
+      "verified": true,
+      "source": "exa",
+      "existing": { "installed": false },
+      "documentation": {
+        "url": "https://github.com/vercel/satori",
+        "relevantSections": ["CSS Support", "Font Handling", "Image Embedding"]
+      },
+      "patterns": [
+        {
+          "name": "JSX to SVG",
+          "description": "Renderiza JSX com subset de CSS (Flexbox) para SVG",
+          "codeExample": "const svg = await satori(<Component />, { width: 1080, height: 1080, fonts: [{ name: 'Inter', data: fontBuffer }] })"
+        }
+      ],
+      "compatibility": {
+        "preferred": true,
+        "alternatives": ["puppeteer (headless browser)", "sharp (image composition)", "@napi-rs/canvas"],
+        "conflicts": ["WOFF2 fonts not supported", "No CSS Grid", "No z-index", "No CSS selectors (inline only)"]
+      },
+      "riskAssessment": {
+        "level": "high",
+        "reason": "POC obrigatoria para validar qualidade visual com tipografia serif bold e overlays complexos",
+        "mitigation": "Puppeteer como fallback se qualidade insuficiente"
+      }
+    },
+    {
+      "name": "@resvg/resvg-js",
+      "type": "library",
+      "version": "^2.6.x",
+      "verified": true,
+      "source": "exa",
+      "existing": { "installed": false },
+      "documentation": {
+        "url": "https://github.com/nicolo-ribaudo/resvg-js",
+        "relevantSections": ["SVG to PNG conversion"]
+      },
+      "patterns": [
+        {
+          "name": "SVG to PNG",
+          "description": "Converte SVG output do Satori para PNG buffer",
+          "codeExample": "const resvg = new Resvg(svg, { fitTo: { mode: 'width', value: 1080 } }); const png = resvg.render().asPng();"
+        }
+      ],
+      "compatibility": {
+        "preferred": true,
+        "alternatives": ["sharp (svg to png)"],
+        "conflicts": []
+      }
+    },
+    {
+      "name": "inngest",
+      "type": "service",
+      "version": "^3.x",
+      "verified": true,
+      "source": "exa",
+      "existing": { "installed": false },
+      "documentation": {
+        "url": "https://www.inngest.com/docs",
+        "relevantSections": ["Step Functions", "Vercel Integration", "Retry Logic"]
+      },
+      "patterns": [
+        {
+          "name": "Step Function Pipeline",
+          "description": "Pipeline multi-step com retry por step para geracao assincrona",
+          "codeExample": "inngest.createFunction({ id: 'generate-carousel' }, { event: 'carousel/generate' }, async ({ step }) => { const copy = await step.run('generate-copy', () => callClaude(briefing)); ... })"
+        }
+      ],
+      "compatibility": {
+        "preferred": true,
+        "alternatives": ["trigger.dev", "vercel-cron + vercel-kv"],
+        "conflicts": []
+      },
+      "pricing": {
+        "freeTier": "100K executions/month",
+        "paid": "Based on volume beyond free tier"
+      }
+    },
+    {
+      "name": "@anthropic-ai/sdk",
+      "type": "api",
+      "version": "latest",
+      "verified": true,
+      "source": "exa",
+      "existing": { "installed": false },
+      "documentation": {
+        "url": "https://docs.anthropic.com",
+        "relevantSections": ["Messages API", "Streaming", "System Prompts"]
+      },
+      "patterns": [
+        {
+          "name": "Structured Output",
+          "description": "Gerar copy estruturada (slides + legenda) via system prompt",
+          "codeExample": "const message = await anthropic.messages.create({ model: 'claude-haiku-4-5-20251001', system: carouselSystemPrompt, messages: [{ role: 'user', content: briefing }] })"
+        }
+      ],
+      "compatibility": {
+        "preferred": true,
+        "alternatives": [],
+        "conflicts": []
+      },
+      "pricing": {
+        "recommended": "claude-haiku-4-5 ($1/$5 per MTok)",
+        "upgrade": "claude-sonnet-4-5 ($3/$15 per MTok) if quality insufficient",
+        "batchDiscount": "50% off via Batch API (async compatible)"
+      }
+    },
+    {
+      "name": "unsplash-js",
+      "type": "api",
+      "version": "^7.x",
+      "verified": true,
+      "source": "exa",
+      "existing": { "installed": false },
+      "documentation": {
+        "url": "https://unsplash.com/documentation",
+        "relevantSections": ["Search Photos", "Rate Limits", "Guidelines"]
+      },
+      "compatibility": {
+        "preferred": true,
+        "alternatives": ["pexels (complementary)"],
+        "conflicts": ["Attribution required on all images"]
+      },
+      "pricing": {
+        "freeTier": "50 req/hour (demo), 5000 req/hour (production - apply)",
+        "requiresApproval": true
+      }
+    },
+    {
+      "name": "pexels",
+      "type": "api",
+      "version": "^1.x",
+      "verified": true,
+      "source": "exa",
+      "existing": { "installed": false },
+      "documentation": {
+        "url": "https://www.pexels.com/api/documentation/",
+        "relevantSections": ["Search Photos", "Rate Limits"]
+      },
+      "compatibility": {
+        "preferred": true,
+        "alternatives": [],
+        "conflicts": ["Attribution recommended"]
+      },
+      "pricing": {
+        "freeTier": "200 req/hour, 20K req/month (can request more for free)",
+        "requiresApproval": false
+      }
+    },
+    {
+      "name": "openai (DALL-E 3)",
+      "type": "api",
+      "version": "^4.x",
+      "verified": true,
+      "source": "exa",
+      "existing": { "installed": false },
+      "documentation": {
+        "url": "https://platform.openai.com/docs/guides/images",
+        "relevantSections": ["Image Generation", "Pricing"]
+      },
+      "compatibility": {
+        "preferred": true,
+        "alternatives": ["GPT Image 1 (newer, consider evaluating)"],
+        "conflicts": []
+      },
+      "pricing": {
+        "standard_1024": "$0.04/image",
+        "standard_1792": "$0.08/image",
+        "hd_1024": "$0.08/image",
+        "hd_1792": "$0.12/image"
+      }
+    },
+    {
+      "name": "@vercel/blob",
+      "type": "service",
+      "version": "latest",
+      "verified": true,
+      "source": "exa",
+      "existing": { "installed": false },
+      "documentation": {
+        "url": "https://vercel.com/docs/vercel-blob",
+        "relevantSections": ["Usage and Pricing", "Upload API"]
+      },
+      "compatibility": {
+        "preferred": true,
+        "alternatives": ["cloudflare-r2 (native TTL)", "aws-s3 (lifecycle rules)"],
+        "conflicts": ["TTL nativo nao confirmado — pode precisar de cron cleanup"]
+      },
+      "pricing": {
+        "storage": "$0.023/GB-month",
+        "transfer": "$0.05/GB",
+        "freeTier": "Included in Vercel plan allocation"
+      }
+    },
+    {
+      "name": "next",
+      "type": "library",
+      "version": "^15.x",
+      "verified": true,
+      "source": "exa",
+      "existing": { "installed": false },
+      "documentation": {
+        "url": "https://nextjs.org/docs",
+        "relevantSections": ["App Router", "API Routes", "Server Components"]
+      },
+      "compatibility": {
+        "preferred": true,
+        "alternatives": [],
+        "conflicts": []
+      }
+    }
+  ],
+
+  "unverifiedClaims": [
+    {
+      "claim": "Satori renderiza tipografia serif bold com qualidade profissional equivalente ao browser",
+      "reason": "Satori usa subset de CSS e yoga-layout. Qualidade visual para tipografia complexa nao confirmada sem POC",
+      "action": "needs_validation"
+    },
+    {
+      "claim": "Unsplash/Pexels possuem imagens suficientes para nichos artesanais brasileiros",
+      "reason": "APIs tem conteudo predominantemente internacional. Nicho 'artisan food brazil' pode ter pool limitado",
+      "action": "acceptable_risk"
+    },
+    {
+      "claim": "Vercel Blob suporta TTL nativo para auto-cleanup de arquivos temporarios",
+      "reason": "Documentacao nao confirma TTL automatico. Pode precisar de cron job para cleanup",
+      "action": "acceptable_risk"
+    },
+    {
+      "claim": "Vercel Hobby plan e suficiente para MVP",
+      "reason": "Hobby plan e limitado a uso nao-comercial. SaaS exige Vercel Pro ($20/mes)",
+      "action": "needs_validation"
+    }
+  ],
+
+  "recommendations": [
+    {
+      "type": "prefer",
+      "subject": "Claude Haiku 4.5 para geracao de copy",
+      "rationale": "Melhor custo-beneficio ($0.017/geracao). Upgrade para Sonnet apenas se qualidade insuficiente em PT-BR"
+    },
+    {
+      "type": "prefer",
+      "subject": "Inngest para background jobs",
+      "rationale": "100K exec/mes gratis, integracao nativa Vercel, step functions com retry. Melhor opcao confirmada"
+    },
+    {
+      "type": "consider",
+      "subject": "GPT Image 1 como alternativa ao DALL-E 3",
+      "rationale": "Modelo mais recente da OpenAI. Avaliar qualidade e pricing antes de commitar com DALL-E 3"
+    },
+    {
+      "type": "consider",
+      "subject": "Cloudflare R2 como alternativa ao Vercel Blob",
+      "rationale": "TTL nativo confirmado, pricing competitivo ($0.015/GB-mes). Vercel Blob pode nao ter auto-cleanup"
+    },
+    {
+      "type": "avoid",
+      "subject": "Vercel Hobby plan para MVP de SaaS",
+      "rationale": "Hobby e restrito a uso nao-comercial. Usar Vercel Pro ($20/mes) desde o inicio"
+    },
+    {
+      "type": "prefer",
+      "subject": "Busca em Unsplash + Pexels simultanea",
+      "rationale": "Duplica pool de imagens disponiveis. Ambas gratis com atribuicao. Pexels como complemento a Unsplash"
+    },
+    {
+      "type": "consider",
+      "subject": "Puppeteer como render engine alternativa",
+      "rationale": "Se Satori POC falhar em qualidade, Puppeteer headless renderiza CSS completo. Trade-off: mais lento, requer mais recursos"
+    }
+  ],
+
+  "competitiveAnalysis": {
+    "mainCompetitors": [
+      {
+        "name": "Predis.ai",
+        "pricing": "$32-59/month",
+        "users": "1M+",
+        "strengths": "AI completo, scheduling, analytics",
+        "weaknesses": "Generico, sem foco em narrativa/storytelling, sem nicho"
+      },
+      {
+        "name": "PostNitro",
+        "pricing": "Freemium",
+        "strengths": "Foco em carrosseis, multi-plataforma, rapido",
+        "weaknesses": "Copy generica, templates basicos"
+      },
+      {
+        "name": "aiCarousels.com",
+        "pricing": "Gratis",
+        "strengths": "Sem sign-up, rapido, zero friccao",
+        "weaknesses": "Qualidade basica, sem customizacao avancada"
+      },
+      {
+        "name": "Canva",
+        "pricing": "$13/month (Pro)",
+        "strengths": "Editor completo, biblioteca massiva, brand kits",
+        "weaknesses": "Nao e focado em AI narrative generation"
+      }
+    ],
+    "ourDifferentiator": "Nenhum concorrente foca em arco narrativo/storytelling como core. CarouselForge gera narrativa profissional com copy de alta qualidade via Claude, focado em nicho artesanal com templates especializados por vertical.",
+    "pricingBenchmark": "Mercado cobra $13-59/mes. Nosso custo de operacao ($40-70/mes para 1000 geracoes) permite pricing competitivo quando monetizado"
+  },
+
+  "costAnalysis": {
+    "perGeneration": {
+      "stockOnly_haiku": "$0.02",
+      "stockOnly_sonnet": "$0.05",
+      "withDallE_standard": "$0.22",
+      "withDallE_hd": "$0.42"
+    },
+    "monthlyAt1000Generations": {
+      "stockOnly": "$40-70",
+      "with50pctDallE": "$140-170"
+    },
+    "infrastructure": {
+      "vercelPro": "$20/month",
+      "inngest": "Free (100K exec/month)",
+      "vercelBlob": "< $5/month at MVP scale",
+      "total": "~$25-30/month fixed"
+    },
+    "verdict": "Viavel para MVP sem monetizacao. Custo total estimado $65-100/mes para 1000 geracoes stock-only"
+  },
+
+  "researchNotes": "Pesquisa conduzida via WebSearch em 2026-03-01. Dados de pricing verificados contra documentacao oficial. Satori e o maior risco tecnico — POC de 2-3 dias obrigatoria antes de spec formal. Vercel Hobby plan NAO e adequado para SaaS comercial — upgrade para Pro necessario. Inngest confirmado como melhor opcao de background jobs para Vercel. Concorrentes nao atacam narrativa/storytelling como diferencial, validando posicionamento unico do CarouselForge."
+}

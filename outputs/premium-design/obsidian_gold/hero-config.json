@@ -1,0 +1,34 @@
+{
+  "product": "Guia Estratégico: Como Criar, Vender e Escalar Alimentos Artesanais",
+  "offer": "De R$97 por R$27",
+  "tone": "authority, trust, warmth, artisanal mastery, premium quality",
+  "subject_photo": "/Users/gabrielpetelinkar/AIOSORIZA/3G9A2199 2.jpg",
+  "subject_description": "a Brazilian man in his mid-30s with: (1) short dark brown wavy hair, (2) clean-shaven face with no beard or stubble, (3) fair olive skin tone, (4) brown eyes, (5) medium build, (6) wearing a black Ralph Lauren button-down polo shirt with small green logo on chest, (7) blue jeans, (8) silver dive watch on left wrist, (9) warm confident smile showing teeth, (10) sitting relaxed on a stool",
+  "symbols": [
+    {
+      "object": "artisanal glass jars with golden preserves and jams",
+      "meaning": "artisanal food craftsmanship",
+      "style": "large, warm-lit, semi-transparent, positioned behind subject"
+    },
+    {
+      "object": "wooden cutting board with aged cheese and herbs",
+      "meaning": "premium quality ingredients",
+      "style": "faint, lower background, barely visible"
+    },
+    {
+      "object": "subtle golden wheat stalks",
+      "meaning": "natural, organic origins",
+      "style": "very faint, far background, decorative only"
+    }
+  ],
+  "layers": {
+    "background": "warm dark rustic kitchen environment (#1A0F0A base) with soft terracotta-toned backlighting (#B5563A glow), aged wooden textures barely visible, warm smoke wisps with burnt sienna tint",
+    "midground": "auto",
+    "foreground": "warm terracotta rim light (#B5563A) on right edge of subject, subtle burnt umber fill light from left"
+  },
+  "context": "course",
+  "palette": "obsidian_gold",
+  "seed": 42,
+  "sizes": ["desktop"],
+  "output_dir": "/Users/gabrielpetelinkar/AIOSORIZA/outputs/premium-design/obsidian_gold/hero-output"
+}

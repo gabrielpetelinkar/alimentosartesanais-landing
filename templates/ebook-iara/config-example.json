@@ -1,0 +1,39 @@
+{
+  "product_id": "guia-campo-reproducao-equina",
+  "title": "Guia de Campo",
+  "title_line2": "Reprodução Equina &amp; Hormonioterapia",
+  "description": "Protocolos prontos, fichas técnicas e ferramentas de consulta rápida para o veterinário de campo.",
+  "cover_icon": "#i-horse",
+  "badge_text": "Consulta Rápida no Campo",
+  "author_name": "M.V. Dra. Iara Petelinkar",
+  "author_instagram": "iaranmacedo",
+  "buy_link": "https://hotmart.com",
+  "version": "v2.0 — 2026",
+  "storage_prefix": "guia",
+  "theme": {
+    "primary": "green",
+    "comment": "Para mudar tema, substitua --green-* por outra paleta no CSS tokens"
+  },
+  "supabase": {
+    "url": "https://qfkzjhuuoudecxjfsigt.supabase.co",
+    "anon_key": "IARA_SUPABASE_ANON_KEY do .env"
+  },
+  "deploy": {
+    "platform": "vercel",
+    "project_name": "guia-campo-reproducao-equina"
+  },
+  "nav": [
+    { "id": "cap1", "label": "Intro" },
+    { "id": "cap2", "label": "Hormônios" },
+    { "id": "cap3", "label": "Ovulação" }
+  ],
+  "chapters": [
+    {
+      "id": "cap1",
+      "icon": "#i-syringe",
+      "number": 1,
+      "title": "Introdução à Hormonioterapia Estratégica",
+      "subtitle": "Fundamentos, fisiologia e princípios"
+    }
+  ]
+}

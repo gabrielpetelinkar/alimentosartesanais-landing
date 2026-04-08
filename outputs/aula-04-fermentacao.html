@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 04 — Fermentação: O Sabor que Nasce do Tempo</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #1A1A1A;
+  --bg-elevated: #222222;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --text-muted: #7A7A7A;
+  --text-warm: #FAF5EB;
+  --accent: #D4A843;
+  --accent-glow: rgba(212,168,67,0.15);
+  --accent-dark: #A08338;
+  --terracotta: #C45B3A;
+  --green: #5B8C3E;
+  --neutral-border: rgba(255,255,255,0.08);
+  --font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter', 'SF Pro Text', system-ui, sans-serif;
+  --font-editorial: 'Playfair Display', 'Georgia', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow: hidden; }
+body {
+    width: 100vw; height: 100vh; overflow: hidden; margin: 0; background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  html { scroll-snap-type: none; }
+  .slide {   width: 100vw; height: 100vh; }
+  .slide:last-child { page-break-after: avoid; }
+  .nav-hint, .speaker-notes { display: none !important; }
+}
+
+.slide {
+  width: 100vw; height: 100vh;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 60px 80px;
+  position: relative; overflow: hidden;
+  scroll-snap-align: start;
+}
+.slide-inner { max-width: 1120px; width: 100%; position: relative; z-index: 2; }
+
+/* Aula label */
+.aula-label {
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 24px;
+}
+
+/* Progress bar */
+.progress {
+  position: absolute; top: 40px; right: 80px; display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; z-index: 10;
+}
+.progress span { color: var(--text-muted); }
+.progress span.active { font-weight: 700; color: var(--accent); }
+.progress .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+.progress .dot.active { background: var(--text-primary); }
+.progress .line { width: 24px; height: 1px; background: rgba(255,255,255,0.12); }
+
+/* Slide counter */
+.slide-number {
+  position: absolute; bottom: 24px; right: 40px;
+  font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.2); z-index: 10;
+}
+.course-tag {
+  position: absolute; bottom: 24px; left: 40px;
+  font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.15);
+  letter-spacing: 1px; z-index: 10;
+}
+
+/* Typography */
+.title-hero {
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 7vw, 72px);
+  line-height: 1.05; letter-spacing: -2px;
+}
+.title-huge {
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(100px, 14vw, 180px);
+  line-height: 1; letter-spacing: -4px; color: var(--accent);
+}
+.title-xl {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15; letter-spacing: -1px;
+}
+.title-lg {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 3.2vw, 40px);
+  line-height: 1.2;
+}
+.title-md {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 32px);
+  line-height: 1.3;
+}
+.subtitle {
+  font-family: var(--font-display); font-weight: 400; font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.4; color: var(--text-secondary);
+}
+.body-text {
+  font-family: var(--font-body); font-weight: 400; font-size: 20px;
+  line-height: 1.5; color: var(--text-secondary);
+}
+.caption {
+  font-family: var(--font-body); font-weight: 400; font-size: 14px;
+  line-height: 1.4; color: var(--text-muted);
+}
+.hero-number {
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 8vw, 96px);
+  line-height: 1; letter-spacing: -2px;
+}
+.stat-number {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+}
+.quote-text {
+  font-family: var(--font-editorial); font-weight: 400; font-style: italic;
+  font-size: clamp(22px, 2.5vw, 32px); line-height: 1.4;
+}
+
+/* Colors */
+.gold { color: var(--accent); }
+.white { color: var(--text-primary); }
+.muted { color: var(--text-muted); }
+
+/* Decorative */
+.gold-line { width: 80px; height: 3px; background: var(--accent); margin: 20px 0; border: none; }
+.gold-line-wide { width: 160px; height: 3px; background: var(--accent); margin: 24px auto; }
+.gold-line-center { width: 80px; height: 3px; background: var(--accent); margin: 20px auto; }
+
+/* Glow backgrounds */
+.glow-bg {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at 50% 60%, rgba(212,168,67,0.18) 0%, transparent 65%);
+}
+
+/* Chapter badge */
+.ch-badge {
+  position: absolute; top: -20px; left: -20px;
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(100px, 14vw, 180px); line-height: 1;
+  opacity: 0.06; z-index: 0; pointer-events: none; color: var(--accent);
+}
+
+/* Stat cards */
+.stat-card {
+  background: var(--bg-secondary); border: 1px solid var(--neutral-border);
+  border-radius: 12px; padding: 32px; text-align: center;
+  border-top: 3px solid var(--accent);
+}
+.stats-row { display: flex; gap: 24px; margin-top: 32px; }
+.stats-row .stat-card { flex: 1; }
+
+/* Split layout */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.split-text { display: flex; flex-direction: column; gap: 16px; }
+
+/* Photo placeholders */
+.photo-area {
+  width: 100%; height: 100%; min-height: 300px;
+  display: flex; justify-content: center; align-items: center;
+  border-radius: 12px; position: relative;
+  font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
+  letter-spacing: 1px; text-transform: uppercase; text-align: center; padding: 20px;
+}
+.photo-area.food { background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 50%, #1a1510 100%); }
+.photo-area.landscape { background: linear-gradient(180deg, #1a2010 0%, #15200a 50%, #0a1505 100%); }
+.photo-area.rural { background: linear-gradient(160deg, #201a0a 0%, #2a1f10 50%, #1a1510 100%); }
+.photo-area.product { background: linear-gradient(135deg, #151015 0%, #201520 50%, #0D0D0D 100%); }
+.photo-area.market { background: linear-gradient(145deg, #1a1015 0%, #201520 50%, #151020 100%); }
+
+.photo-full {
+  position: absolute; inset: 0;
+  display: flex; justify-content: center; align-items: center;
+  font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
+  letter-spacing: 1px; text-transform: uppercase; text-align: center;
+}
+.photo-full.food { background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 30%, #1a1510 60%, #0D0D0D 100%); }
+.photo-full.landscape { background: linear-gradient(180deg, #1a2010 0%, #15200a 30%, #0a1505 60%, #0D0D0D 100%); }
+.photo-full.rural { background: linear-gradient(160deg, #201a0a 0%, #2a1f10 40%, #1a1510 70%, #0D0D0D 100%); }
+
+.overlay-dark {
+  position: absolute; inset: 0;
+  background: rgba(13, 13, 13, 0.65); z-index: 1;
+}
+.content-over {
+  position: relative; z-index: 2; max-width: 1120px; width: 100%;
+}
+.content-over-center {
+  position: relative; z-index: 2; max-width: 1120px; width: 100%;
+  text-align: center; display: flex; flex-direction: column; align-items: center;
+}
+
+/* Comparison */
+.comparison {
+  display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%;
+}
+.comp-side {
+  display: flex; flex-direction: column; justify-content: center; padding: 60px;
+}
+.comp-side.before { background: var(--bg-secondary); border-right: 2px solid #2a2a2a; }
+.comp-side.after { background: var(--bg-primary); }
+.comp-label {
+  font-family: var(--font-display); font-weight: 800; font-size: 18px;
+  letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px;
+}
+.comp-content {
+  font-family: var(--font-display); font-weight: 600; font-size: 28px;
+  line-height: 1.4; margin-bottom: 20px;
+}
+.comp-detail {
+  font-family: var(--font-body); font-size: 17px; color: var(--text-muted); line-height: 1.5;
+}
+
+/* Action items */
+.action-item { margin-bottom: 28px; }
+.action-item .arrow { color: var(--accent); font-size: 20px; margin-right: 12px; font-weight: 700; }
+.action-item .action-text {
+  font-family: var(--font-display); font-weight: 600; font-size: 22px; color: var(--text-primary); line-height: 1.4;
+}
+.action-item .action-detail {
+  font-family: var(--font-body); font-size: 17px; color: var(--text-secondary);
+  margin-top: 4px; padding-left: 32px;
+}
+
+/* List items */
+.list-item { margin-bottom: 24px; }
+.list-item .marker { color: var(--accent); font-size: 16px; margin-right: 10px; }
+.list-item .item-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--text-primary);
+}
+.list-item .item-desc {
+  font-family: var(--font-body); font-size: 17px; color: var(--text-secondary);
+  margin-top: 4px; padding-left: 26px;
+}
+
+/* Exercise box */
+.exercise-box {
+  border: 2px solid var(--accent); border-radius: 12px;
+  padding: 40px 48px; max-width: 800px; text-align: center;
+}
+
+/* Case bar */
+.case-bar {
+  background: var(--accent-glow); border-left: 4px solid var(--accent);
+  border-radius: 0 12px 12px 0; padding: 24px 32px; margin-top: 20px;
+}
+
+/* Next class teaser */
+.next-class {
+  margin-top: 32px; padding-top: 20px;
+  border-top: 1px solid rgba(212, 168, 67, 0.3);
+}
+
+/* Speaker notes */
+.speaker-notes {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.95); color: var(--text-secondary);
+  padding: 16px 80px; font-size: 14px; line-height: 1.5;
+  font-family: var(--font-body); z-index: 100; border-top: 1px solid var(--neutral-border);
+}
+body.show-notes .speaker-notes { display: block; }
+
+/* Navigation hint */
+.nav-hint {
+  position: fixed; bottom: 20px; right: 30px; z-index: 50;
+  font-family: var(--font-body); font-size: 12px; color: var(--text-muted); opacity: 0.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slide { padding: 30px 24px; }
+  .split { grid-template-columns: 1fr; gap: 24px; }
+  .stats-row { flex-direction: column; }
+  .comparison { grid-template-columns: 1fr; }
+  .progress { display: none; }
+}
+
+.slide-counter {
+  position: fixed; bottom: 20px; left: 30px; z-index: 50;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7A7A7A; opacity: 0.5; letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: HOOK — Foto full + headline impactante              -->
+<!-- ============================================================ -->
+<section class="slide" id="s1">
+  <div style="background:url('../assets/aulas/aula04-potes-fermentacao-ia.png') center/cover no-repeat !important;" class="photo-full food">
+    
+  </div>
+  <div class="overlay-dark"></div>
+  <div class="content-over" style="padding: 60px 80px; display:flex; flex-direction:column; justify-content:flex-end; height:100%; position:absolute; inset:0; z-index:2;">
+    <div style="margin-bottom: 80px;">
+      <p class="aula-label">AULA 04 · CRIAR</p>
+      <h1 class="title-xl" style="max-width:800px;">Adicione duas palavras ao seu rótulo — <span class="gold">"fermentação natural"</span> — e a percepção de qualidade muda instantaneamente.</h1>
+    </div>
+  </div>
+  <div class="slide-number">01 / 26</div>
+  <div class="speaker-notes">Começamos com uma verdade simples mas poderosa: a palavra "fermentação" no rótulo muda completamente a forma como o consumidor enxerga o seu produto. É uma das estratégias de posicionamento mais eficazes que existe.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: TÍTULO DA AULA                                       -->
+<!-- ============================================================ -->
+<section class="slide" id="s2">
+  <div class="glow-bg"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <p class="title-huge" style="margin-bottom:24px;">04</p>
+    <h2 class="title-lg" style="margin-bottom:12px;">FERMENTAÇÃO</h2>
+    <p class="subtitle">O sabor que nasce do tempo.</p>
+    <div class="gold-line-center" style="margin-top:28px;"></div>
+  </div>
+  <div class="slide-number">02 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: CONCEITO CENTRAL                                     -->
+<!-- ============================================================ -->
+<section class="slide" id="s3">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <h2 class="title-lg" style="margin-bottom:24px;">A fermentação materializa a <span class="gold">valorização</span> que o consumidor tem dado aos processos <span class="gold">minuciosos</span> de preparo.</h2>
+    <div class="gold-line-center"></div>
+    <p class="body-text" style="margin-top:24px;">Na pimenta, transforma sabor, suaviza ardência, aumenta complexidade e adiciona assinatura única ao produto.</p>
+  </div>
+  <div class="slide-number">03 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">A fermentação é o processo que mais comunica cuidado e tempo ao consumidor. Em produtos de pimenta, ela suaviza a ardência e cria camadas de sabor que não existem no produto fresco.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: FOTO + INSIGHT — Fermentação em tudo                -->
+<!-- ============================================================ -->
+<section class="slide" id="s4">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <div class="split">
+      <div class="photo-area food" style="background:url('../assets/aulas/aula02-queijo-maturado.jpg') center/cover no-repeat !important; min-height:400px; border-radius:12px;">
+        
+      </div>
+      <div class="split-text">
+        <h2 class="title-lg">Os produtos mais <span class="gold">valorizados do mundo</span> passam por fermentação.</h2>
+        <hr class="gold-line">
+        <p class="body-text">Massas, queijos, cervejas, vinhos de frutas, picles, iogurtes, kefirs, kombuchas, cachaças e doces. A adição de "Fermentação Natural" ao lado de "Pão" eleva significativamente a percepção de qualidade.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04 / 26</div>
+  <div class="speaker-notes">Pense nos produtos mais caros e desejados do mundo alimentar: queijos maturados, cervejas artesanais, vinhos. Todos passam por fermentação. Quando você adiciona esse processo ao seu produto, você entra num patamar diferente de percepção.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: CONCEITO — Narrativa de paciência                   -->
+<!-- ============================================================ -->
+<section class="slide" id="s5">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="body-text" style="font-size:24px; margin-bottom:20px;">Fermentação não é apenas uma técnica.</p>
+    <h2 class="title-xl gold" style="line-height:1.25;">É UMA NARRATIVA<br>DE PACIÊNCIA, DOMÍNIO<br>E DIFERENCIAÇÃO REAL.</h2>
+    <div class="gold-line-center" style="margin-top:32px;"></div>
+  </div>
+  <div class="slide-number">05 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Fermentação é uma das poucas técnicas que comunica automaticamente: domínio técnico, paciência, cuidado. Isso cria diferenciação que a concorrência não pode copiar facilmente.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: LISTA VISUAL — Produtos fermentados                 -->
+<!-- ============================================================ -->
+<section class="slide" id="s6">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <p class="aula-label" style="margin-bottom:32px;">FERMENTAÇÃO QUE AGREGA VALOR</p>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Queijos artesanais maturados</span></div>
+      <div class="item-desc">Minas, Canastra, Serra da Estrela — tempo é sinônimo de sabor e exclusividade.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Cervejas de fermentação selvagem</span></div>
+      <div class="item-desc">Lambics, sours, wild ales — complexidade que a indústria não replica.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Molhos fermentados artesanais</span></div>
+      <div class="item-desc">Sriracha, tabasco, pimentas lactofermentadas — meses de espera, sabor incomparável.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Kombuchas, kefirs e vinhos de frutas</span></div>
+      <div class="item-desc">Bebidas probióticas que unem saúde, sabor e tendência de consumo consciente.</div>
+    </div>
+  </div>
+  <div class="slide-number">06 / 26</div>
+  <div class="speaker-notes">A fermentação está presente em praticamente todas as categorias de alimentos premium. Notem como cada um desses exemplos carrega consigo uma narrativa de tempo e cuidado que o consumidor reconhece e valoriza.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: CASE — Fermentação selvagem com frutas nativas      -->
+<!-- ============================================================ -->
+<section class="slide" id="s7">
+  <div style="background:url('../assets/aulas/kombucha-e-kefir.jpg') center/cover no-repeat !important;" class="photo-full food">
+    
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.2) 100%);"></div>
+  <div class="content-over" style="padding: 60px 80px; display:flex; flex-direction:column; justify-content:flex-end; height:100%; position:absolute; inset:0; z-index:2;">
+    <p class="aula-label" style="font-size:13px;">CASE</p>
+    <h2 class="title-xl white" style="margin-bottom:16px;">FERMENTAÇÃO SELVAGEM COM FRUTAS NATIVAS</h2>
+    <p class="body-text" style="max-width:700px;">Cervejarias artesanais brasileiras usam fermentação selvagem com frutas como jabuticaba, umbu e cajá para criar rótulos únicos que conquistam prêmios internacionais e justificam preço premium.</p>
+  </div>
+  <div class="slide-number">07 / 26</div>
+  <div class="speaker-notes">Este é um exemplo perfeito de como a fermentação cria valor. Cervejarias que usam fermentação selvagem com frutas nativas do Brasil estão conquistando prêmios internacionais e vendendo a preços que seriam impensáveis para uma cerveja industrial.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: TRANSIÇÃO — MERCADO                                 -->
+<!-- ============================================================ -->
+<section class="slide" id="s8">
+  <div class="glow-bg"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <h2 class="title-xl white">O MERCADO DA<br>FERMENTAÇÃO</h2>
+    <div class="gold-line-center" style="margin-top:28px;"></div>
+  </div>
+  <div class="slide-number">08 / 26</div>
+  <div class="speaker-notes">Agora vamos olhar para os números. O mercado de fermentados está em plena expansão global, impulsionado pela consciência sobre saúde intestinal, probióticos e benefícios digestivos.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: NÚMERO DESTAQUE — US$ 702,72 BI                     -->
+<!-- ============================================================ -->
+<section class="slide" id="s9">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center;">
+    <p class="hero-number gold">US$ 702,72</p>
+    <p class="title-xl gold" style="margin-top:4px;">BILHÕES</p>
+    <p class="body-text" style="max-width:600px; margin:24px auto 0; text-align:center;">é o mercado global de alimentos e bebidas fermentados em 2023.</p>
+    <div style="margin-top:16px; display:flex; gap:24px; justify-content:center; align-items:center;">
+      <div style="background:rgba(91,140,62,0.2); border:1px solid var(--green); border-radius:4px; padding:8px 16px;">
+        <span style="font-family:var(--font-display); font-weight:700; font-size:18px; color:var(--green);">CAGR 7,5% até 2030</span>
+      </div>
+    </div>
+    <p class="caption" style="margin-top:20px;">— Grand View Research, 2024</p>
+  </div>
+  <div class="slide-number">09 / 26</div>
+  <div class="speaker-notes">Mais de 700 bilhões de dólares em 2023. O mercado de fermentados não é nicho — é uma megatendência global com crescimento expressivo de 7,5% ao ano. É impulsionado pela consciência sobre saúde intestinal e benefícios digestivos.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: NÚMERO DESTAQUE — US$ 383 BI                       -->
+<!-- ============================================================ -->
+<section class="slide" id="s10">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center;">
+    <p class="hero-number gold">US$ 383</p>
+    <p class="title-xl gold" style="margin-top:4px;">BILHÕES</p>
+    <p class="body-text" style="max-width:600px; margin:24px auto 0; text-align:center;">é a projeção do mercado global de <span class="gold">ingredientes fermentados</span> até 2033.</p>
+    <div style="margin-top:16px; display:flex; gap:24px; justify-content:center; align-items:center;">
+      <div style="background:rgba(91,140,62,0.2); border:1px solid var(--green); border-radius:4px; padding:8px 16px;">
+        <span style="font-family:var(--font-display); font-weight:700; font-size:18px; color:var(--green);">CAGR 4,8%</span>
+      </div>
+    </div>
+    <p class="caption" style="margin-top:20px;">— IMARC Group, 2025</p>
+  </div>
+  <div class="slide-number">10 / 26</div>
+  <div class="speaker-notes">Olhando especificamente para ingredientes fermentados — que é onde os produtores artesanais de pimenta se encaixam — o mercado deve atingir 383 bilhões de dólares até 2033, com crescimento estável de 4,8% ao ano.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: NÚMEROS DE MERCADO — Stat cards                    -->
+<!-- ============================================================ -->
+<section class="slide" id="s11">
+  <div class="slide-inner">
+    <p class="aula-label">NÚMEROS QUE IMPORTAM</p>
+    <div class="stats-row">
+      <div class="stat-card">
+        <p class="stat-number gold">US$ 383 bi</p>
+        <p class="caption" style="margin-top:8px;">mercado global de ingredientes fermentados até 2033 (CAGR 4,8%)</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-number gold">57%</p>
+        <p class="caption" style="margin-top:8px;">dos consumidores priorizam produtos naturais e funcionais</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-number gold">US$ 80 bi</p>
+        <p class="caption" style="margin-top:8px;">mercado de probióticos até 2033</p>
+      </div>
+    </div>
+    <p class="caption" style="margin-top:16px; text-align:center;">IMARC Group, 2025 · WHO, 2024 · Verified Market Reports, 2025</p>
+  </div>
+  <div class="slide-number">11 / 26</div>
+  <div class="speaker-notes">Esses três números contam uma história clara: o mercado de fermentados cresce, o consumidor busca produtos naturais e funcionais, e os probióticos — diretamente ligados à fermentação — representam um mercado de 80 bilhões de dólares.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: FOTO + INSIGHT — Culinária internacional           -->
+<!-- ============================================================ -->
+<section class="slide" id="s12">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <div class="split">
+      <div class="photo-area food" style="background:url('../assets/aulas/kombucha-artesanal.jpg') center/cover no-repeat !important; min-height:400px; border-radius:12px;">
+        
+      </div>
+      <div class="split-text">
+        <p class="body-text" style="font-size:22px;">Produtos fermentados ganharam destaque com a aproximação da</p>
+        <h2 class="title-lg gold">CULINÁRIA<br>INTERNACIONAL.</h2>
+        <hr class="gold-line">
+        <p class="body-text">Especialmente a oriental. O interesse é motivado por curiosidade gastronômica e valor agregado percebido.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12 / 26</div>
+  <div class="speaker-notes">A globalização trouxe ingredientes fermentados orientais ao Brasil — kimchi, missô, sriracha. Isso educou o consumidor e abriu espaço para que produtores artesanais brasileiros criem suas próprias versões fermentadas.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: TRANSIÇÃO — O QUE APRENDER                         -->
+<!-- ============================================================ -->
+<section class="slide" id="s13">
+  <div class="glow-bg"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <h2 class="title-xl white">O QUE VOCÊ PODE<br>APRENDER COM ISSO</h2>
+    <div class="gold-line-center" style="margin-top:28px;"></div>
+  </div>
+  <div class="slide-number">13 / 26</div>
+  <div class="speaker-notes">Vamos traduzir esses dados de mercado em lições práticas que você pode aplicar imediatamente ao seu negócio.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: LEARNING 1 — Narrativa poderosa                    -->
+<!-- ============================================================ -->
+<section class="slide" id="s14">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <h2 class="title-lg" style="margin-bottom:24px;">Fermentação é <span class="gold">narrativa poderosa.</span></h2>
+    <div class="gold-line-center"></div>
+    <p class="body-text" style="margin-top:24px; font-size:22px;">Domínio técnico, paciência e diferenciação real. É uma história que se conta com o tempo — e o consumidor reconhece e paga por isso.</p>
+  </div>
+  <div class="slide-number">14 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Quando você diz que seu molho é fermentado por 90 dias, você está contando uma história de dedicação. O consumidor entende que aquilo não pode ser feito com atalhos — e essa percepção é o que justifica o preço premium.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: LEARNING 2 — Durabilidade natural                  -->
+<!-- ============================================================ -->
+<section class="slide" id="s15">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <h2 class="title-lg" style="margin-bottom:24px;">Fermentação aumenta <span class="gold">durabilidade natural</span> e reduz a dependência de <span class="gold">conservantes artificiais.</span></h2>
+    <div class="gold-line-center"></div>
+    <p class="body-text" style="margin-top:24px;">Clean label e shelf life estendida. O melhor dos dois mundos para o produtor e para o consumidor.</p>
+  </div>
+  <div class="slide-number">15 / 26</div>
+  <div class="speaker-notes">Um benefício prático que muitos produtores não percebem: a fermentação naturalmente conserva o alimento. Menos conservantes no rótulo, mais tempo de prateleira, e um apelo "clean label" que o mercado valoriza cada vez mais.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: FOTO + INSIGHT — Complexidade única                -->
+<!-- ============================================================ -->
+<section class="slide" id="s16">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <div class="split">
+      <div class="photo-area food" style="background:url('../assets/aulas/cer_800x.jpg') center/cover no-repeat !important; min-height:400px; border-radius:12px;">
+        
+      </div>
+      <div class="split-text">
+        <h2 class="title-lg">Produtos fermentados criam <span class="gold">complexidade única</span> que não se replica.</h2>
+        <hr class="gold-line">
+        <p class="body-text">Cada lote é diferente. Cada lote é especial. Essa variação natural é a assinatura do artesanal e a barreira que a indústria não consegue transpor.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">16 / 26</div>
+  <div class="speaker-notes">A complexidade de sabor que a fermentação cria é impossível de replicar industrialmente. Cada lote tem suas características únicas — e isso, que poderia ser visto como defeito, é na verdade o maior diferencial do produtor artesanal.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: LEARNING 3 — Benefícios funcionais                 -->
+<!-- ============================================================ -->
+<section class="slide" id="s17">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <h2 class="title-lg" style="margin-bottom:24px;">Benefícios <span class="gold">funcionais</span> justificam preço <span class="gold">premium.</span></h2>
+    <div class="gold-line-center"></div>
+    <p class="body-text" style="margin-top:24px; font-size:22px;">Probióticos, digestibilidade melhorada, biodisponibilidade de nutrientes. Saúde + sabor = argumento de venda imbatível.</p>
+  </div>
+  <div class="slide-number">17 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">57% dos consumidores priorizam produtos naturais e funcionais. Quando você comunica que seu produto fermentado contém probióticos e melhora a digestão, você ativa dois gatilhos: saúde e qualidade. Isso justifica um preço significativamente maior.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: TRANSIÇÃO — AÇÃO                                   -->
+<!-- ============================================================ -->
+<section class="slide" id="s18">
+  <div class="glow-bg"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <h2 class="title-xl gold">TRANSFORME ISSO EM<br>VANTAGEM COMPETITIVA</h2>
+    <div class="gold-line-center" style="margin-top:28px;"></div>
+  </div>
+  <div class="slide-number">18 / 26</div>
+  <div class="speaker-notes">Agora vamos para a parte prática: como transformar o conhecimento sobre fermentação em vantagem competitiva real para o seu negócio.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: AÇÕES 1-3                                          -->
+<!-- ============================================================ -->
+<section class="slide" id="s19">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Conte histórias únicas de cada etapa da fermentação</span></div>
+      <div class="action-detail">Mostre a fermentação acontecendo: o tempo, o cuidado, a transformação do sabor — cada dia é uma história</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Eduque o consumidor sobre benefícios funcionais</span></div>
+      <div class="action-detail">Probióticos, digestibilidade, sabor complexo — conhecimento gera percepção de valor e fidelidade</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Construa linhas de edição limitada</span></div>
+      <div class="action-detail">Fermentados exclusivos com tempos diferentes geram desejo, urgência de compra e colecionismo</div>
+    </div>
+  </div>
+  <div class="slide-number">19 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Três ações que podem ser implementadas imediatamente. Primeiro, documente e mostre o processo. Segundo, eduque sobre os benefícios de saúde. Terceiro, crie escassez real com edições limitadas baseadas em tempos de fermentação diferentes.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: AÇÕES 4-5                                          -->
+<!-- ============================================================ -->
+<section class="slide" id="s20">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Explore harmonizações e versatilidade</span></div>
+      <div class="action-detail">Mostre como o produto fermentado combina com pratos, bebidas e momentos diferentes — amplie as ocasiões de consumo</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Use a diferenciação técnica como barreira de entrada</span></div>
+      <div class="action-detail">Quem domina o processo de fermentação controlada tem vantagem que não se copia facilmente — isso protege seu negócio</div>
+    </div>
+  </div>
+  <div class="slide-number">20 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">A harmonização expande o uso do produto e a fermentação controlada é uma barreira técnica real. Seu concorrente pode copiar o rótulo, mas não pode copiar o processo que levou meses para desenvolver e aperfeiçoar.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: ANTES / DEPOIS                                     -->
+<!-- ============================================================ -->
+<section class="slide" id="s21" style="padding:0;">
+  <div class="comparison">
+    <div class="comp-side before">
+      <p class="comp-label" style="color:var(--terracotta);">ANTES &#10007;</p>
+      <p class="comp-content" style="color:#888;">"Molho de pimenta"</p>
+      <p class="comp-detail">Genérico, sem processo,<br>sem diferenciação, commodity.<br><br>Compete por preço.</p>
+    </div>
+    <div class="comp-side after">
+      <p class="comp-label" style="color:var(--green);">DEPOIS &#10003;</p>
+      <p class="comp-content white">"Molho fermentado<br>artesanalmente<br>por 90 dias"</p>
+      <p class="comp-detail" style="color:var(--text-secondary);">Processo, tempo, complexidade,<br>narrativa artesanal.<br><br>Compete por <span class="gold">valor.</span></p>
+    </div>
+  </div>
+  <div class="slide-number">21 / 26</div>
+  <div class="speaker-notes">A diferença entre esses dois posicionamentos é abismal. "Molho de pimenta" compete por preço. "Molho fermentado artesanalmente por 90 dias" compete por experiência e valor percebido. A mudança custa zero — é pura estratégia de comunicação.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: CASE 2 — Percepção premium                        -->
+<!-- ============================================================ -->
+<section class="slide" id="s22">
+  <div style="background:url('../assets/aulas/8ccb10b8-5e42-46ac-a807-e85cc25f6020.webp') center/cover no-repeat !important;" class="photo-full rural">
+    
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.15) 100%);"></div>
+  <div class="content-over" style="padding: 60px 80px; display:flex; flex-direction:column; justify-content:flex-end; height:100%; position:absolute; inset:0; z-index:2;">
+    <p class="aula-label" style="font-size:13px;">REFLEXÃO</p>
+    <h2 class="title-xl white" style="margin-bottom:16px;">A indústria pode acelerar processos.</h2>
+    <p class="body-text" style="max-width:700px; font-size:24px;">Mas não pode <span class="gold" style="font-weight:700;">replicar</span> o sabor que só o tempo cria. Essa é a sua vantagem competitiva definitiva.</p>
+  </div>
+  <div class="slide-number">22 / 26</div>
+  <div class="speaker-notes">Grandes indústrias podem criar atalhos, usar enzimas e aceleradores. Mas o resultado nunca terá a complexidade e a autenticidade de um produto fermentado naturalmente pelo tempo. Essa é a sua maior fortaleza como produtor artesanal.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: NÚMERO DESTAQUE — 7,5%                             -->
+<!-- ============================================================ -->
+<section class="slide" id="s23">
+  <div class="ch-badge">04</div>
+  <div class="slide-inner" style="text-align:center;">
+    <p class="title-huge" style="font-size:clamp(80px, 12vw, 160px);">7,5%</p>
+    <p class="body-text" style="max-width:600px; margin:24px auto 0; font-size:22px; text-align:center;">é o crescimento anual do mercado de alimentos e bebidas <span class="gold">fermentados</span> até 2030.</p>
+    <p class="caption" style="margin-top:24px;">— Grand View Research, 2024</p>
+  </div>
+  <div class="slide-number">23 / 26</div>
+  <div class="speaker-notes">7,5% de crescimento anual. Em um mercado de mais de 700 bilhões de dólares, isso significa dezenas de bilhões a mais todos os anos. E o produtor artesanal está posicionado no segmento de maior valor agregado dentro desse universo.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: EXERCÍCIO                                          -->
+<!-- ============================================================ -->
+<section class="slide" id="s24">
+  <div class="glow-bg"></div>
+  <div class="slide-inner" style="text-align:center; display:flex; flex-direction:column; align-items:center;">
+    <p class="aula-label" style="margin-bottom:32px;">EXERCÍCIO PRA AGORA</p>
+    <div class="exercise-box">
+      <h2 class="title-md white" style="margin-bottom:24px; line-height:1.3;">Identifique um produto seu que pode ganhar uma <span class="gold">versão fermentada.</span></h2>
+      <div class="gold-line-center"></div>
+      <p class="body-text" style="margin-top:20px;">Qual seria o tempo ideal de fermentação e como você comunicaria isso ao consumidor?</p>
+    </div>
+  </div>
+  <div class="slide-number">24 / 26</div>
+  <div class="speaker-notes">Este exercício é fundamental. Pensem em um produto que vocês já produzem e imaginem uma versão fermentada. Quanto tempo levaria? Como vocês contariam essa história no rótulo, nas redes sociais, na feira? Anotem as respostas — elas podem virar o próximo lançamento.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: RESUMO                                             -->
+<!-- ============================================================ -->
+<section class="slide" id="s25">
+  <div class="ch-badge">04</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <p class="aula-label" style="margin-bottom:32px;">O QUE LEVAR DESTA AULA</p>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Fermentação = narrativa + técnica + diferenciação</span></div>
+      <div class="item-desc">Domínio do processo é barreira de entrada real contra a concorrência.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Benefícios funcionais justificam preço premium</span></div>
+      <div class="item-desc">Probióticos, durabilidade natural e sabor complexo — tudo em um só produto.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Tempo é o seu ingrediente mais valioso</span></div>
+      <div class="item-desc">Cada dia de fermentação adiciona valor que a indústria não consegue replicar.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Edições limitadas e harmonizações ampliam valor</span></div>
+      <div class="item-desc">Crie escassez real e eduque o consumidor sobre as possibilidades de uso.</div>
+    </div>
+  </div>
+  <div class="slide-number">25 / 26</div>
+  <div class="speaker-notes">Quatro pontos para levar desta aula: fermentação é narrativa poderosa, os benefícios funcionais justificam preço premium, o tempo é seu maior diferencial e edições limitadas criam desejo. Apliquem isso ao portfólio de vocês.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: FECHAMENTO — Quote + Próxima aula + Encerramento   -->
+<!-- ============================================================ -->
+<section class="slide" id="s26">
+  <div style="background:url('../assets/aulas/aula04-prateleira-ia.png') center/cover no-repeat !important;" class="photo-full landscape">
+    
+  </div>
+  <div class="overlay-dark" style="background: rgba(13,13,13,0.6);"></div>
+  <div class="content-over-center" style="padding:60px 80px; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100%; position:absolute; inset:0; z-index:2;">
+    <p class="quote-text" style="max-width:750px; margin-bottom:32px;">"Adicione duas palavras ao seu rótulo — 'fermentação natural' — e a percepção de qualidade muda instantaneamente."</p>
+    <div class="gold-line-center"></div>
+    <div class="next-class" style="margin-top:32px;">
+      <p class="aula-label" style="font-size:13px; margin-bottom:8px;">PRÓXIMA AULA</p>
+      <p class="title-md white">Experiência Sensorial.</p>
+      <p class="body-text" style="font-size:16px; margin-top:4px;">Os cinco sentidos vendem.</p>
+    </div>
+    <div style="margin-top:40px; display:flex; gap:40px; justify-content:center;">
+      <p class="body-text" style="font-size:16px; color:var(--accent);">@gabrielpetelinkar</p>
+      <p class="body-text" style="font-size:16px; color:var(--accent);">oriza.agro</p>
+    </div>
+  </div>
+  <div class="slide-number">26 / 26</div>
+  <div class="speaker-notes">Encerramento com a frase-chave da aula. Na próxima aula, vamos falar sobre experiência sensorial — como os cinco sentidos do consumidor podem vender seu produto antes mesmo da primeira mordida. Obrigado e até lá.</div>
+</section>
+
+<div class="slide-counter" id="slideCounter">1 / ?</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.slide');
+  var current = 0;
+  var lastNav = 0;
+  var DEBOUNCE = 300;
+  var counter = document.getElementById('slideCounter');
+
+  function showSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = i === index ? 'flex' : 'none';
+    }
+    current = index;
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function next() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current < slides.length - 1) showSlide(current + 1);
+  }
+
+  function prev() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current > 0) showSlide(current - 1);
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); next();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); prev();
+    } else if (e.key === 'n' || e.key === 'N') {
+      document.body.classList.toggle('show-notes');
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(slides.length - 1);
+    }
+  });
+
+  document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    if (e.deltaY > 0) next(); else prev();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

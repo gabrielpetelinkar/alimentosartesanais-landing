@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content OS — Stories 10x | Alimentos Artesanais</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #FFF9F0;
+    --bg2: #F5EDE0;
+    --bg3: #EDE5D5;
+    --accent: #B5563A;
+    --accent-dark: #9A4528;
+    --accent-deep: #7A3A20;
+    --text: #3D2B1F;
+    --text2: #6B5744;
+    --text3: #8A7A68;
+    --success: #4a8c5c;
+    --success-bg: #e8f5e8;
+    --warn: #c4942a;
+    --warn-bg: #fef8e8;
+    --glass-bg: rgba(181,86,58,0.05);
+    --glass-border: rgba(181,86,58,0.12);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-xs: 6px;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #E8DDD0;
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    background: var(--bg);
+    padding: 50px 60px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark), var(--accent-deep));
+  }
+
+  /* --- TYPOGRAPHY --- */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--glass-border);
+  }
+  h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-dark);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+  h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--text2);
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  /* --- BADGES --- */
+  .badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .badge-accent {
+    background: var(--accent);
+    color: #fff;
+  }
+  .badge-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+  }
+  .badge-success {
+    background: var(--success);
+    color: #fff;
+  }
+  .badge-soft {
+    background: var(--glass-bg);
+    color: var(--accent-dark);
+    border: 1px solid var(--glass-border);
+  }
+  .badge-warn {
+    background: var(--warn-bg);
+    color: var(--warn);
+    border: 1px solid rgba(196,148,42,0.2);
+  }
+  .badge-hard {
+    background: #dc503c;
+    color: #fff;
+  }
+
+  /* --- CARDS --- */
+  .card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .card-solid {
+    background: var(--bg2);
+    border: 1px solid var(--bg3);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .card-accent {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    border: none;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .card-accent h3,
+  .card-accent h4 { color: rgba(255,255,255,0.85); }
+  .card-accent p, .card-accent li { color: rgba(255,255,255,0.9); }
+
+  /* --- TABLES --- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+  th {
+    background: var(--bg2);
+    color: var(--accent-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 8.5px;
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 2px solid var(--glass-border);
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--bg3);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tr:nth-child(even) td { background: var(--bg2); }
+  tr:last-child td { border-bottom: none; }
+
+  /* --- GRID --- */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .grid-7 { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+
+  /* --- PILLAR COLORS --- */
+  .pillar-1 { border-left: 3px solid #C4784A; }
+  .pillar-2 { border-left: 3px solid #8B6914; }
+  .pillar-3 { border-left: 3px solid #4A7C5C; }
+  .pillar-4 { border-left: 3px solid #5C6B8A; }
+  .pillar-5 { border-left: 3px solid #B5563A; }
+
+  .dot-1 { color: #C4784A; }
+  .dot-2 { color: #8B6914; }
+  .dot-3 { color: #4A7C5C; }
+  .dot-4 { color: #5C6B8A; }
+  .dot-5 { color: #B5563A; }
+
+  /* --- FLOW --- */
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .flow-num {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  /* --- CALENDAR --- */
+  .cal-day {
+    background: var(--bg2);
+    border: 1px solid var(--bg3);
+    border-radius: var(--radius-xs);
+    padding: 8px;
+    font-size: 9px;
+    min-height: 70px;
+  }
+  .cal-day.highlight {
+    background: linear-gradient(135deg, rgba(181,86,58,0.08), rgba(181,86,58,0.15));
+    border-color: var(--accent);
+  }
+  .cal-day-num {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent-dark);
+    margin-bottom: 4px;
+  }
+  .cal-day-label {
+    font-size: 7.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text3);
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+  .cal-format {
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--text2);
+  }
+  .cal-hook {
+    font-size: 8px;
+    color: var(--text3);
+    font-style: italic;
+    margin-top: 3px;
+    line-height: 1.3;
+  }
+
+  /* --- FLYWHEEL --- */
+  .flywheel {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .fw-step {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+  .fw-icon {
+    width: 44px;
+    min-width: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .fw-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    z-index: 1;
+  }
+  .fw-line {
+    width: 2px;
+    flex: 1;
+    background: var(--glass-border);
+  }
+  .fw-content {
+    flex: 1;
+    padding: 4px 0 16px 12px;
+  }
+  .fw-content h4 { margin-bottom: 3px; }
+  .fw-content p { font-size: 10px; color: var(--text2); }
+
+  /* --- MISC --- */
+  .separator {
+    height: 1px;
+    background: var(--glass-border);
+    margin: 16px 0;
+  }
+  .quote-box {
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    background: var(--glass-bg);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
+    color: var(--text2);
+    font-size: 11px;
+    margin: 12px 0;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 8px;
+    font-weight: 600;
+  }
+  .tag-soft { background: #e0f0e8; color: #3a7a50; }
+  .tag-medium { background: #fef3d4; color: #9a7a20; }
+  .tag-hard { background: #fde0dc; color: #c0453a; }
+
+  .metric-box {
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--bg2);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--bg3);
+  }
+  .metric-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .metric-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text3);
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  .check { color: var(--success); font-weight: 700; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; }
+
+  .footer {
+    position: absolute;
+    bottom: 30px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8px;
+    color: var(--text3);
+    letter-spacing: 0.5px;
+  }
+  .footer-page {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 9px;
+  }
+
+  ul { list-style: none; padding: 0; }
+  ul li { padding-left: 16px; position: relative; margin-bottom: 4px; }
+  ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:80px 70px;">
+  <div style="margin-bottom:40px;">
+    <span class="badge badge-accent" style="font-size:10px; padding:6px 20px;">STORIES 10x</span>
+  </div>
+
+  <h1 style="font-size:44px; line-height:1.1; max-width:400px; margin-bottom:20px;">
+    Content<br>Operating<br>System
+  </h1>
+
+  <div style="width:60px; height:3px; background:var(--accent); border-radius:2px; margin:20px auto;"></div>
+
+  <p style="font-size:14px; color:var(--text2); max-width:360px; line-height:1.6; margin-bottom:40px;">
+    Guia completo para transformar suas histórias em<br>
+    uma máquina de conteúdo e vendas — do zero ao<br>
+    primeiro R$1.000 vendendo alimentos artesanais.
+  </p>
+
+  <div class="grid-3" style="max-width:420px; width:100%; margin-bottom:50px;">
+    <div class="metric-box">
+      <div class="metric-num">12</div>
+      <div class="metric-label">Histórias</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num">56</div>
+      <div class="metric-label">Hooks</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num">30</div>
+      <div class="metric-label">Dias Mapeados</div>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin-bottom:50px;">
+    <div style="display:flex; align-items:center; gap:6px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#C4784A;"></div>
+      <span style="font-size:9px; color:var(--text3);">Embalagem</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#8B6914;"></div>
+      <span style="font-size:9px; color:var(--text3);">Precificação</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#4A7C5C;"></div>
+      <span style="font-size:9px; color:var(--text3);">Canais</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#5C6B8A;"></div>
+      <span style="font-size:9px; color:var(--text3);">Bastidores</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#B5563A;"></div>
+      <span style="font-size:9px; color:var(--text3);">Oferta</span>
+    </div>
+  </div>
+
+  <p style="font-size:10px; color:var(--text3); letter-spacing:1px;">
+    EBOOK: COMO CRIAR, VENDER E ESCALAR ALIMENTOS ARTESANAIS
+  </p>
+
+  <div class="footer">
+    <span>Stories 10x — Content OS</span>
+    <span>Alimentos Artesanais</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: JORNADA + PILARES ==================== -->
+<div class="page">
+  <span class="badge badge-outline" style="margin-bottom:16px;">VISÃO GERAL</span>
+  <h2 style="margin-top:10px;">Sua Jornada Stories 10x</h2>
+  <p class="subtitle" style="margin-bottom:20px;">6 fases completas executadas — do descobrimento de histórias à monetização.</p>
+
+  <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin-bottom:24px;">
+    <div class="card" style="text-align:center; padding:14px 8px;">
+      <div style="font-size:20px; margin-bottom:6px;">🔍</div>
+      <div style="font-size:8px; font-weight:700; color:var(--accent-dark); text-transform:uppercase; letter-spacing:0.5px;">Fase 0</div>
+      <div style="font-size:9.5px; font-weight:600; margin-top:2px;">Discover</div>
+      <div style="font-size:8px; color:var(--text3); margin-top:2px;">12 histórias</div>
+      <span class="check" style="font-size:10px;">✓</span>
+    </div>
+    <div class="card" style="text-align:center; padding:14px 8px;">
+      <div style="font-size:20px; margin-bottom:6px;">🏗️</div>
+      <div style="font-size:8px; font-weight:700; color:var(--accent-dark); text-transform:uppercase; letter-spacing:0.5px;">Fase 1</div>
+      <div style="font-size:9.5px; font-weight:600; margin-top:2px;">Architect</div>
+      <div style="font-size:8px; color:var(--text3); margin-top:2px;">5 narrativas SB7</div>
+      <span class="check" style="font-size:10px;">✓</span>
+    </div>
+    <div class="card" style="text-align:center; padding:14px 8px;">
+      <div style="font-size:20px; margin-bottom:6px;">🎣</div>
+      <div style="font-size:8px; font-weight:700; color:var(--accent-dark); text-transform:uppercase; letter-spacing:0.5px;">Fase 3</div>
+      <div style="font-size:9.5px; font-weight:600; margin-top:2px;">Hooks</div>
+      <div style="font-size:8px; color:var(--text3); margin-top:2px;">56 hooks</div>
+      <span class="check" style="font-size:10px;">✓</span>
+    </div>
+    <div class="card" style="text-align:center; padding:14px 8px;">
+      <div style="font-size:20px; margin-bottom:6px;">🔄</div>
+      <div style="font-size:8px; font-weight:700; color:var(--accent-dark); text-transform:uppercase; letter-spacing:0.5px;">Fase 2</div>
+      <div style="font-size:9.5px; font-weight:600; margin-top:2px;">Multiply</div>
+      <div style="font-size:8px; color:var(--text3); margin-top:2px;">54 peças</div>
+      <span class="check" style="font-size:10px;">✓</span>
+    </div>
+    <div class="card" style="text-align:center; padding:14px 8px;">
+      <div style="font-size:20px; margin-bottom:6px;">⚙️</div>
+      <div style="font-size:8px; font-weight:700; color:var(--accent-dark); text-transform:uppercase; letter-spacing:0.5px;">Fase 4</div>
+      <div style="font-size:9.5px; font-weight:600; margin-top:2px;">Systemize</div>
+      <div style="font-size:8px; color:var(--text3); margin-top:2px;">Content OS</div>
+      <span class="check" style="font-size:10px;">✓</span>
+    </div>
+    <div class="card" style="text-align:center; padding:14px 8px;">
+      <div style="font-size:20px; margin-bottom:6px;">💰</div>
+      <div style="font-size:8px; font-weight:700; color:var(--accent-dark); text-transform:uppercase; letter-spacing:0.5px;">Fase 5</div>
+      <div style="font-size:9.5px; font-weight:600; margin-top:2px;">Monetize</div>
+      <div style="font-size:8px; color:var(--text3); margin-top:2px;">Flywheel</div>
+      <span class="check" style="font-size:10px;">✓</span>
+    </div>
+  </div>
+
+  <h2>5 Pilares de Conteúdo</h2>
+
+  <div class="grid-2" style="margin-bottom:16px;">
+    <div class="card pillar-1" style="padding:14px 16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <h4 style="margin:0;">1. Embalagem & Apresentação</h4>
+        <span class="badge badge-soft" style="font-size:7px;">25%</span>
+      </div>
+      <p style="font-size:9.5px; color:var(--text2);">Mostrar que apresentação vende mais que sabor. Rótulo profissional, fotos, identidade visual.</p>
+      <div style="margin-top:6px;"><span class="mono" style="color:var(--text3);">#EmbalagemQueVende</span></div>
+    </div>
+    <div class="card pillar-2" style="padding:14px 16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <h4 style="margin:0;">2. Precificação & Valor</h4>
+        <span class="badge badge-soft" style="font-size:7px;">20%</span>
+      </div>
+      <p style="font-size:9.5px; color:var(--text2);">Ensinar produtor a cobrar o justo e lucrar. Custos, markup, psicologia de preço.</p>
+      <div style="margin-top:6px;"><span class="mono" style="color:var(--text3);">#PrecoJusto</span></div>
+    </div>
+    <div class="card pillar-3" style="padding:14px 16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <h4 style="margin:0;">3. Canais de Venda</h4>
+        <span class="badge badge-soft" style="font-size:7px;">20%</span>
+      </div>
+      <p style="font-size:9.5px; color:var(--text2);">Abrir a mente para vendas além da feira. Hotéis, cafeterias, e-commerce, assinaturas.</p>
+      <div style="margin-top:6px;"><span class="mono" style="color:var(--text3);">#VendaMaisArtesanal</span></div>
+    </div>
+    <div class="card pillar-4" style="padding:14px 16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <h4 style="margin:0;">4. Bastidores & Pessoal</h4>
+        <span class="badge badge-soft" style="font-size:7px;">20%</span>
+      </div>
+      <p style="font-size:9.5px; color:var(--text2);">Gerar conexão humana e confiança. Rotina, erros, aprendizados, dia de produção.</p>
+      <div style="margin-top:6px;"><span class="mono" style="color:var(--text3);">#ProdutorReal</span></div>
+    </div>
+  </div>
+  <div class="card pillar-5" style="padding:14px 16px; max-width:calc(50% - 6px);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+      <h4 style="margin:0;">5. Produto & Oferta</h4>
+      <span class="badge badge-accent" style="font-size:7px;">15%</span>
+    </div>
+    <p style="font-size:9.5px; color:var(--text2);">Promover o ebook diretamente. Right Hook — venda clara e objetiva.</p>
+    <div style="margin-top:6px;"><span class="mono" style="color:var(--text3);">#AlimentosArtesanais</span></div>
+  </div>
+
+  <div class="quote-box" style="margin-top:18px;">
+    <strong>Regra 5:1</strong> — A cada 5 posts de valor (Pilares 1-4), apenas 1 post de oferta (Pilar 5). Confiança primeiro, venda depois.
+  </div>
+
+  <div class="footer">
+    <span>Stories 10x — Content OS</span>
+    <div class="footer-page">2</div>
+    <span>Alimentos Artesanais</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 3: 10 TEMPLATES ==================== -->
+<div class="page">
+  <span class="badge badge-outline" style="margin-bottom:16px;">TEMPLATES</span>
+  <h2 style="margin-top:10px;">10 Templates Replicáveis</h2>
+  <p class="subtitle" style="margin-bottom:16px;">Cada template tem hook, corpo, CTA e formato definidos. Basta preencher e publicar.</p>
+
+  <div class="grid-2">
+    <div class="card-solid" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+        <span style="font-size:10px; font-weight:700; color:var(--accent);">T1 — Antes x Depois</span>
+        <span class="tag tag-soft">SOFT</span>
+      </div>
+      <div style="font-size:9px; color:var(--text3); margin-bottom:4px;">PILAR: Embalagem · FORMATO: Carrossel 2sl ou Reels</div>
+      <div style="font-size:9.5px; color:var(--text2);">
+        <strong>Hook:</strong> Frase de contraste visual<br>
+        <strong>Corpo:</strong> Transformação do produto (embalagem simples → pro)<br>
+        <strong>CTA:</strong> "Qual desses você compraria? Comenta 1 ou 2"
+      </div>
+    </div>
+
+    <div class="card-solid" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+        <span style="font-size:10px; font-weight:700; color:var(--accent);">T2 — Conta Rápida</span>
+        <span class="tag tag-medium">MEDIUM</span>
+      </div>
+      <div style="font-size:9px; color:var(--text3); margin-bottom:4px;">PILAR: Precificação · FORMATO: Reels ou Carrossel 4-5sl</div>
+      <div style="font-size:9.5px; color:var(--text2);">
+        <strong>Hook:</strong> Número chocante sobre custos<br>
+        <strong>Corpo:</strong> Breakdown de custos em 3-4 linhas<br>
+        <strong>CTA:</strong> "Baixe a planilha gratuita no link da bio"
+      </div>
+    </div>
+
+    <div class="card-solid" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+        <span style="font-size:10px; font-weight:700; color:var(--accent);">T3 — Canal Secreto</span>
+        <span class="tag tag-soft">SOFT</span>
+      </div>
+      <div style="font-size:9px; color:var(--text3); margin-bottom:4px;">PILAR: Canais · FORMATO: Reels ou Carrossel educativo</div>
+      <div style="font-size:9.5px; color:var(--text2);">
+        <strong>Hook:</strong> Revelação de canal não óbvio<br>
+        <strong>Corpo:</strong> 1 canal novo (hotel, assinatura, corporate)<br>
+        <strong>CTA:</strong> "Salva pra testar essa semana"
+      </div>
+    </div>
+
+    <div class="card-solid" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+        <span style="font-size:10px; font-weight:700; color:var(--accent);">T4 — Dia de Produção</span>
+        <span class="tag tag-soft">SOFT</span>
+      </div>
+      <div style="font-size:9px; color:var(--text3); margin-bottom:4px;">PILAR: Bastidores · FORMATO: Reels vlog 30-60s</div>
+      <div style="font-size:9.5px; color:var(--text2);">
+        <strong>Hook:</strong> Cena real do dia a dia<br>
+        <strong>Corpo:</strong> Bastidores reais (processo, volume, desafios)<br>
+        <strong>CTA:</strong> "Marca quem entende essa rotina"
+      </div>
+    </div>
+
+    <div class="card-solid" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+        <span style="font-size:10px; font-weight:700; color:var(--accent);">T5 — Mito vs Verdade</span>
+        <span class="tag tag-soft">SOFT</span>
+      </div>
+      <div style="font-size:9px; color:var(--text3); margin-bottom:4px;">PILAR: Rotativo · FORMATO: Reels ou Static bold</div>
+      <div style="font-size:9.5px; color:var(--text2);">
+        <strong>Hook:</strong> Afirmação polêmica que gera debate<br>
+        <strong>Corpo:</strong> Desmistificar crença com dado real<br>
+        <strong>CTA:</strong> "Concorda ou discorda? Comenta aí"
+      </div>
+    </div>
+
+    <div class="card-solid" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+        <span style="font-size:10px; font-weight:700; color:var(--accent);">T6 — Lista Prática</span>
+        <span class="tag tag-soft">SOFT</span>
+      </div>
+      <div style="font-size:9px; color:var(--text3); margin-bottom:4px;">PILAR: Rotativo · FORMATO: Carrossel 6-7sl</div>
+      <div style="font-size:9.5px; color:var(--text2);">
+        <strong>Hook:</strong> Número + promessa clara<br>
+        <strong>Corpo:</strong> Lista enumerada, 1 frase/item<br>
+        <strong>CTA:</strong> "Qual dessas você já faz? Comenta o número"
+      </div>
+    </div>
+
+    <div class="card-solid" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+        <span style="font-size:10px; font-weight:700; color:var(--accent);">T7 — Erro Que Eu Cometi</span>
+        <span class="tag tag-soft">SOFT</span>
+      </div>
+      <div style="font-size:9px; color:var(--text3); margin-bottom:4px;">PILAR: Bastidores · FORMATO: Reels storytelling 45-90s</div>
+      <div style="font-size:9.5px; color:var(--text2);">
+        <strong>Hook:</strong> Vulnerabilidade + valor em R$<br>
+        <strong>Corpo:</strong> Erro real → consequência → aprendizado<br>
+        <strong>CTA:</strong> "Já passou por isso? Me conta"
+      </div>
+    </div>
+
+    <div class="card-solid" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+        <span style="font-size:10px; font-weight:700; color:var(--accent);">T8 — Prova Social</span>
+        <span class="tag tag-hard">HARD</span>
+      </div>
+      <div style="font-size:9px; color:var(--text3); margin-bottom:4px;">PILAR: Oferta · FORMATO: Reels ou Carrossel com números</div>
+      <div style="font-size:9.5px; color:var(--text2);">
+        <strong>Hook:</strong> Resultado concreto em R$<br>
+        <strong>Corpo:</strong> Mini-caso de transformação<br>
+        <strong>CTA:</strong> "Link na bio pra começar o seu"
+      </div>
+    </div>
+
+    <div class="card-solid" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+        <span style="font-size:10px; font-weight:700; color:var(--accent);">T9 — Dica Relâmpago</span>
+        <span class="tag tag-soft">SOFT</span>
+      </div>
+      <div style="font-size:9px; color:var(--text3); margin-bottom:4px;">PILAR: Rotativo · FORMATO: Reels <30s ou Story</div>
+      <div style="font-size:9.5px; color:var(--text2);">
+        <strong>Hook:</strong> "DICA:" direto ao ponto<br>
+        <strong>Corpo:</strong> 1 dica ultra-específica em 15-30s<br>
+        <strong>CTA:</strong> "Salva esse vídeo antes que suma"
+      </div>
+    </div>
+
+    <div class="card-solid" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+        <span style="font-size:10px; font-weight:700; color:var(--accent);">T10 — Oferta Direta</span>
+        <span class="tag tag-hard">HARD</span>
+      </div>
+      <div style="font-size:9px; color:var(--text3); margin-bottom:4px;">PILAR: Oferta · FORMATO: Reels ou Story com link</div>
+      <div style="font-size:9.5px; color:var(--text2);">
+        <strong>Hook:</strong> Urgência ou escassez<br>
+        <strong>Corpo:</strong> 3 bullets do ebook + preço + garantia<br>
+        <strong>CTA:</strong> "R$27 — link na bio. Garantia 7 dias."
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Stories 10x — Content OS</span>
+    <div class="footer-page">3</div>
+    <span>Alimentos Artesanais</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 4: SPRINT SEMANAL + ESTRATEGIA CTA ==================== -->
+<div class="page">
+  <span class="badge badge-outline" style="margin-bottom:16px;">SISTEMA</span>
+  <h2 style="margin-top:10px;">Sprint Semanal + Estratégia de CTAs</h2>
+
+  <h3>Dia de Batch — Segunda-Feira (2-3h)</h3>
+  <div class="card" style="margin-bottom:16px;">
+    <table>
+      <tr><th style="width:100px;">Horário</th><th style="width:80px;">Duração</th><th>Ação</th></tr>
+      <tr><td class="mono">09:00</td><td>30 min</td><td>Revisar métricas da semana anterior (alcance, saves, link clicks)</td></tr>
+      <tr><td class="mono">09:30</td><td>30 min</td><td>Selecionar 7-8 peças do calendário, atribuir hooks do banco</td></tr>
+      <tr><td class="mono">10:00</td><td>60 min</td><td>Gravar 3-4 Reels em sequência (mesmo setup, troca de roupa)</td></tr>
+      <tr><td class="mono">11:00</td><td>30 min</td><td>Montar 2-3 carrosséis (textos + layout no Canva)</td></tr>
+      <tr><td class="mono">11:30</td><td>30 min</td><td>Escrever captions + agendar no Meta Business Suite</td></tr>
+    </table>
+  </div>
+
+  <h3>Hábitos Diários (15 min/dia)</h3>
+  <div class="grid-2" style="margin-bottom:20px;">
+    <div class="card-solid" style="padding:12px 14px; display:flex; align-items:center; gap:10px;">
+      <span class="mono" style="font-size:11px; font-weight:600; color:var(--accent);">08h</span>
+      <span style="font-size:10px;">Publicar conteúdo agendado (confirmar post)</span>
+    </div>
+    <div class="card-solid" style="padding:12px 14px; display:flex; align-items:center; gap:10px;">
+      <span class="mono" style="font-size:11px; font-weight:600; color:var(--accent);">12h</span>
+      <span style="font-size:10px;">Responder comentários + DMs (5 min)</span>
+    </div>
+    <div class="card-solid" style="padding:12px 14px; display:flex; align-items:center; gap:10px;">
+      <span class="mono" style="font-size:11px; font-weight:600; color:var(--accent);">18h</span>
+      <span style="font-size:10px;">1 Story espontâneo (bastidor, enquete, pergunta)</span>
+    </div>
+    <div class="card-solid" style="padding:12px 14px; display:flex; align-items:center; gap:10px;">
+      <span class="mono" style="font-size:11px; font-weight:600; color:var(--accent);">21h</span>
+      <span style="font-size:10px;">Capturar 1 ideia no Banco de Ideias</span>
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  <h3>Estratégia de CTAs — Regra 80/15/5</h3>
+  <p class="subtitle" style="margin-bottom:14px;">Distribuição natural para vender sem parecer vendedor.</p>
+
+  <div class="grid-3" style="margin-bottom:16px;">
+    <div class="card" style="border-left:3px solid #4a8c5c; padding:14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span class="tag tag-soft" style="font-size:8px;">SOFT — 80%</span>
+        <span style="font-size:18px; font-weight:700; color:#4a8c5c;">80%</span>
+      </div>
+      <ul style="font-size:9px;">
+        <li>"Salva pra usar depois"</li>
+        <li>"Comenta sua experiência"</li>
+        <li>"Marca um produtor"</li>
+        <li>"Segue pra mais dicas"</li>
+        <li>"Qual você prefere? A ou B?"</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid #c4942a; padding:14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span class="tag tag-medium" style="font-size:8px;">MEDIUM — 15%</span>
+        <span style="font-size:18px; font-weight:700; color:#c4942a;">15%</span>
+      </div>
+      <ul style="font-size:9px;">
+        <li>"Planilha grátis — link na bio"</li>
+        <li>"Checklist gratuito — link na bio"</li>
+        <li>"Me manda PLANILHA no DM"</li>
+        <li>"Template grátis no link"</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid #dc503c; padding:14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span class="tag tag-hard" style="font-size:8px;">HARD — 5%</span>
+        <span style="font-size:18px; font-weight:700; color:#dc503c;">5%</span>
+      </div>
+      <ul style="font-size:9px;">
+        <li>"Guia completo R$27 — link na bio"</li>
+        <li>"R$27, garantia 7 dias"</li>
+        <li>"Custa menos que um delivery"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Frases-Ponte (Valor → Oferta)</h3>
+  <div class="card-solid" style="padding:14px 16px;">
+    <div style="display:grid; grid-template-columns:30px 1fr; gap:6px 10px; font-size:9.5px;">
+      <span style="color:#dc503c; font-weight:700;">✗</span><span>"Compre meu ebook!" — agressivo, sem contexto</span>
+      <span style="color:#4a8c5c; font-weight:700;">✓</span><span>"Compilei tudo que aprendi em 3 anos num guia de R$27..."</span>
+      <span style="color:#4a8c5c; font-weight:700;">✓</span><span>"Se isso foi útil, imagina o guia completo com 20 aulas..."</span>
+      <span style="color:#4a8c5c; font-weight:700;">✓</span><span>"Essa é UMA das 20 estratégias que ensino no guia..."</span>
+      <span style="color:#4a8c5c; font-weight:700;">✓</span><span>"Tem produtor que gasta R$200 em consultor pra saber isso. Tá tudo por R$27..."</span>
+      <span style="color:#4a8c5c; font-weight:700;">✓</span><span>"Montei isso porque ficava cansado de responder a mesma pergunta..."</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Stories 10x — Content OS</span>
+    <div class="footer-page">4</div>
+    <span>Alimentos Artesanais</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 5: FLYWHEEL + ESTEIRA ==================== -->
+<div class="page">
+  <span class="badge badge-outline" style="margin-bottom:16px;">MONETIZAÇÃO</span>
+  <h2 style="margin-top:10px;">Flywheel de Monetização</h2>
+
+  <div class="grid-2" style="margin-bottom:20px;">
+    <!-- LEFT: Flywheel -->
+    <div>
+      <div class="flywheel">
+        <div class="fw-step">
+          <div class="fw-icon"><div class="fw-circle">1</div><div class="fw-line"></div></div>
+          <div class="fw-content">
+            <h4>Criar Conteúdo</h4>
+            <p>7 posts/semana · 5 pilares · 10 templates</p>
+          </div>
+        </div>
+        <div class="fw-step">
+          <div class="fw-icon"><div class="fw-circle">2</div><div class="fw-line"></div></div>
+          <div class="fw-content">
+            <h4>Atrair Audiência</h4>
+            <p>56 hooks param o scroll · Reels + Carrosséis</p>
+          </div>
+        </div>
+        <div class="fw-step">
+          <div class="fw-icon"><div class="fw-circle">3</div><div class="fw-line"></div></div>
+          <div class="fw-content">
+            <h4>Capturar Leads</h4>
+            <p>Planilha grátis · Template Rótulo · Checklist</p>
+          </div>
+        </div>
+        <div class="fw-step">
+          <div class="fw-icon"><div class="fw-circle">4</div><div class="fw-line"></div></div>
+          <div class="fw-content">
+            <h4>Nutrir com Valor</h4>
+            <p>Sequência DM/WhatsApp · 80% conteúdo valor</p>
+          </div>
+        </div>
+        <div class="fw-step">
+          <div class="fw-icon"><div class="fw-circle">5</div><div class="fw-line"></div></div>
+          <div class="fw-content">
+            <h4>Converter em Receita</h4>
+            <p>Ebook R$27 · CTA natural 1x/semana</p>
+          </div>
+        </div>
+        <div class="fw-step">
+          <div class="fw-icon"><div class="fw-circle" style="background:var(--accent-deep);">↺</div></div>
+          <div class="fw-content">
+            <h4>Reinvestir</h4>
+            <p>Revenue → melhor conteúdo → mais audiência</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Esteira -->
+    <div>
+      <h3>Esteira de Produtos</h3>
+      <div class="card" style="padding:12px 14px; margin-bottom:8px; border-left:3px solid #4a8c5c;">
+        <div style="font-size:8px; font-weight:600; color:#4a8c5c; text-transform:uppercase; letter-spacing:1px;">Gratuito — Leads</div>
+        <div style="font-size:10px; margin-top:3px;">
+          Planilha Precificação · Template Rótulo · Checklist 7 Ajustes
+        </div>
+      </div>
+      <div class="card" style="padding:12px 14px; margin-bottom:8px; border-left:3px solid var(--accent);">
+        <div style="font-size:8px; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:1px;">R$27 — Compradores <span class="badge badge-accent" style="font-size:6px; padding:2px 6px; vertical-align:middle;">ATUAL</span></div>
+        <div style="font-size:10px; margin-top:3px;">
+          Ebook Completo — primeira compra, barreira psicológica mínima
+        </div>
+      </div>
+      <div class="card" style="padding:12px 14px; margin-bottom:8px; border-left:3px solid var(--text3); opacity:0.7;">
+        <div style="font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:1px;">R$97-497 — Alunos (futuro Q2-Q3)</div>
+        <div style="font-size:10px; margin-top:3px;">
+          Mini-curso vídeo · Comunidade produtores R$47/mês
+        </div>
+      </div>
+      <div class="card" style="padding:12px 14px; margin-bottom:8px; border-left:3px solid var(--text3); opacity:0.5;">
+        <div style="font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:1px;">R$997+ — Premium (futuro Q4)</div>
+        <div style="font-size:10px; margin-top:3px;">
+          Mentoria individual · Done-for-you (rótulo+marca)
+        </div>
+      </div>
+
+      <div class="separator" style="margin:14px 0;"></div>
+
+      <h3>Projeção de Receita</h3>
+      <table>
+        <tr><th>Período</th><th>Conservador</th><th>Otimista</th></tr>
+        <tr><td>Mês 1</td><td>R$135 - R$405</td><td>R$405 - R$702</td></tr>
+        <tr><td>Mês 3</td><td>R$540</td><td>R$1.080</td></tr>
+        <tr><td>Mês 6</td><td>R$1.350</td><td>R$2.700</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  <h3>Matriz Conteúdo → Produto</h3>
+  <table>
+    <tr>
+      <th>Pilar</th>
+      <th>Produto Vinculado</th>
+      <th>CTA</th>
+      <th>Freq.</th>
+      <th>Frase-Ponte</th>
+    </tr>
+    <tr>
+      <td><span class="dot-1" style="font-weight:700;">●</span> Embalagem</td>
+      <td>Ebook + Template Rótulo grátis</td>
+      <td><span class="tag tag-medium">Medium</span></td>
+      <td>2x/mês</td>
+      <td style="font-style:italic; font-size:9px;">"Tem template editável gratuito pra isso"</td>
+    </tr>
+    <tr>
+      <td><span class="dot-2" style="font-weight:700;">●</span> Precificação</td>
+      <td>Ebook + Planilha grátis</td>
+      <td><span class="tag tag-medium">Medium</span></td>
+      <td>2x/mês</td>
+      <td style="font-style:italic; font-size:9px;">"Criei uma planilha que faz essa conta"</td>
+    </tr>
+    <tr>
+      <td><span class="dot-3" style="font-weight:700;">●</span> Canais</td>
+      <td>Ebook (cap. vendas)</td>
+      <td><span class="tag tag-soft">Soft</span></td>
+      <td>Ongoing</td>
+      <td style="font-style:italic; font-size:9px;">"Ensino 6 canais no guia, esse é só 1"</td>
+    </tr>
+    <tr>
+      <td><span class="dot-4" style="font-weight:700;">●</span> Bastidores</td>
+      <td>Nenhum (brand trust)</td>
+      <td><span class="tag tag-soft">Soft</span></td>
+      <td>Ongoing</td>
+      <td style="font-style:italic; font-size:9px;">Nunca vender aqui — só conexão</td>
+    </tr>
+    <tr>
+      <td><span class="dot-5" style="font-weight:700;">●</span> Oferta</td>
+      <td>Ebook diretamente</td>
+      <td><span class="tag tag-hard">Hard</span></td>
+      <td>1x/sem</td>
+      <td style="font-style:italic; font-size:9px;">"R$27, garantia 7 dias, link na bio"</td>
+    </tr>
+  </table>
+
+  <div class="footer">
+    <span>Stories 10x — Content OS</span>
+    <div class="footer-page">5</div>
+    <span>Alimentos Artesanais</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 6: CALENDÁRIO SEMANA 1 e 2 ==================== -->
+<div class="page">
+  <span class="badge badge-outline" style="margin-bottom:16px;">CALENDÁRIO 30 DIAS</span>
+  <h2 style="margin-top:10px;">Semana 1 — Autoridade & Apresentação</h2>
+
+  <div class="grid-7" style="margin-bottom:6px;">
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Seg</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Ter</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Qua</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Qui</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Sex</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Sáb</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Dom</div>
+  </div>
+
+  <div class="grid-7" style="margin-bottom:20px;">
+    <div class="cal-day pillar-4">
+      <div class="cal-day-num">1</div>
+      <div class="cal-format">Reels 45s</div>
+      <div class="cal-day-label">T4 · Bastidores</div>
+      <div class="cal-hook">"4h da manhã e a cozinha já tá quente"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-1">
+      <div class="cal-day-num">2</div>
+      <div class="cal-format">Carrossel 5sl</div>
+      <div class="cal-day-label">T1 · Embalagem</div>
+      <div class="cal-hook">"Esse pote custava R$8. Agora custa R$28"</div>
+      <div style="margin-top:4px;"><span class="tag tag-medium" style="font-size:6px;">MEDIUM</span></div>
+    </div>
+    <div class="cal-day pillar-2">
+      <div class="cal-day-num">3</div>
+      <div class="cal-format">Reels 30s</div>
+      <div class="cal-day-label">T9 · Precificação</div>
+      <div class="cal-hook">"NUNCA coloque preço redondo no rótulo"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-3">
+      <div class="cal-day-num">4</div>
+      <div class="cal-format">Carrossel 6sl</div>
+      <div class="cal-day-label">T6 · Canais</div>
+      <div class="cal-hook">"5 formas de vender geleia sem sair de casa"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-4">
+      <div class="cal-day-num">5</div>
+      <div class="cal-format">Reels 60s</div>
+      <div class="cal-day-label">T7 · Bastidores</div>
+      <div class="cal-hook">"Perdi R$2.000 por causa DESSE erro"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-1">
+      <div class="cal-day-num">6</div>
+      <div class="cal-format">Story+Enquete</div>
+      <div class="cal-day-label">Embalagem</div>
+      <div class="cal-hook">"Qual rótulo vende mais? A ou B?"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day highlight pillar-5">
+      <div class="cal-day-num">7</div>
+      <div class="cal-format">Reels 30s</div>
+      <div class="cal-day-label">T8 · OFERTA</div>
+      <div class="cal-hook">"De R$800/mês pra R$4.200 vendendo geleia"</div>
+      <div style="margin-top:4px;"><span class="tag tag-hard" style="font-size:6px;">HARD</span></div>
+    </div>
+  </div>
+
+  <h2>Semana 2 — Precificação & Leads</h2>
+
+  <div class="grid-7" style="margin-bottom:6px;">
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Seg</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Ter</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Qua</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Qui</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Sex</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Sáb</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Dom</div>
+  </div>
+
+  <div class="grid-7" style="margin-bottom:20px;">
+    <div class="cal-day pillar-2">
+      <div class="cal-day-num">8</div>
+      <div class="cal-format">Reels 45s</div>
+      <div class="cal-day-label">T2 · Precificação</div>
+      <div class="cal-hook">"Você está PAGANDO pra trabalhar"</div>
+      <div style="margin-top:4px;"><span class="tag tag-medium" style="font-size:6px;">MEDIUM</span></div>
+    </div>
+    <div class="cal-day pillar-1">
+      <div class="cal-day-num">9</div>
+      <div class="cal-format">Carrossel 4sl</div>
+      <div class="cal-day-label">T5 · Embalagem</div>
+      <div class="cal-hook">"Rótulo artesanal NÃO precisa ser feio"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-3">
+      <div class="cal-day-num">10</div>
+      <div class="cal-format">Reels 30s</div>
+      <div class="cal-day-label">T3 · Canais</div>
+      <div class="cal-hook">"O canal de vendas que ninguém te conta"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-4">
+      <div class="cal-day-num">11</div>
+      <div class="cal-format">Reels 60s</div>
+      <div class="cal-day-label">T4 · Bastidores</div>
+      <div class="cal-hook">"200 potes em 6 horas"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-2">
+      <div class="cal-day-num">12</div>
+      <div class="cal-format">Carrossel 7sl</div>
+      <div class="cal-day-label">T6 · Precificação</div>
+      <div class="cal-hook">"7 custos invisíveis que comem seu lucro"</div>
+      <div style="margin-top:4px;"><span class="tag tag-medium" style="font-size:6px;">MEDIUM</span></div>
+    </div>
+    <div class="cal-day pillar-4">
+      <div class="cal-day-num">13</div>
+      <div class="cal-format">Story+CTA</div>
+      <div class="cal-day-label">Bastidores</div>
+      <div class="cal-hook">"Quer ver como calculo meu preço?"</div>
+      <div style="margin-top:4px;"><span class="tag tag-medium" style="font-size:6px;">MEDIUM</span></div>
+    </div>
+    <div class="cal-day highlight pillar-5">
+      <div class="cal-day-num">14</div>
+      <div class="cal-format">Reels 45s</div>
+      <div class="cal-day-label">T10 · OFERTA</div>
+      <div class="cal-hook">"Se vende artesanal e não tem esse guia..."</div>
+      <div style="margin-top:4px;"><span class="tag tag-hard" style="font-size:6px;">HARD</span></div>
+    </div>
+  </div>
+
+  <h2>Semana 3 — Canais & Escala</h2>
+  <div class="grid-7" style="margin-bottom:6px;">
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Seg</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Ter</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Qua</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Qui</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Sex</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Sáb</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Dom</div>
+  </div>
+  <div class="grid-7">
+    <div class="cal-day pillar-3">
+      <div class="cal-day-num">15</div>
+      <div class="cal-format">Reels 60s</div>
+      <div class="cal-day-label">T3 · Canais</div>
+      <div class="cal-hook">"Hotel boutique me ligou pedindo 50 potes"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-1">
+      <div class="cal-day-num">16</div>
+      <div class="cal-format">Carrossel 5sl</div>
+      <div class="cal-day-label">T1 · Embalagem</div>
+      <div class="cal-hook">"A mesma geleia. Dois preços diferentes."</div>
+      <div style="margin-top:4px;"><span class="tag tag-medium" style="font-size:6px;">MEDIUM</span></div>
+    </div>
+    <div class="cal-day pillar-3">
+      <div class="cal-day-num">17</div>
+      <div class="cal-format">Reels 30s</div>
+      <div class="cal-day-label">T9 · Canais</div>
+      <div class="cal-hook">"DICA: Cafeterias compram toda segunda"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-4">
+      <div class="cal-day-num">18</div>
+      <div class="cal-format">Reels 45s</div>
+      <div class="cal-day-label">T7 · Bastidores</div>
+      <div class="cal-hook">"Dei meu produto de graça e quase quebrei"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-2">
+      <div class="cal-day-num">19</div>
+      <div class="cal-format">Carrossel 6sl</div>
+      <div class="cal-day-label">T2 · Precificação</div>
+      <div class="cal-hook">"Seu preço tá errado. Faz essa conta comigo"</div>
+      <div style="margin-top:4px;"><span class="tag tag-medium" style="font-size:6px;">MEDIUM</span></div>
+    </div>
+    <div class="cal-day pillar-3">
+      <div class="cal-day-num">20</div>
+      <div class="cal-format">Story+Enquete</div>
+      <div class="cal-day-label">Canais</div>
+      <div class="cal-hook">"Onde você vende? Feira/Loja/Online"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day highlight pillar-5">
+      <div class="cal-day-num">21</div>
+      <div class="cal-format">Reels 45s</div>
+      <div class="cal-day-label">T8 · OFERTA</div>
+      <div class="cal-hook">"Largou o emprego vendendo artesanal"</div>
+      <div style="margin-top:4px;"><span class="tag tag-hard" style="font-size:6px;">HARD</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Stories 10x — Content OS</span>
+    <div class="footer-page">6</div>
+    <span>Alimentos Artesanais</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 7: CALENDÁRIO SEMANA 4 + RECICLAGEM + KPIs ==================== -->
+<div class="page">
+  <h2>Semana 4 — Consolidação & Conversão</h2>
+
+  <div class="grid-7" style="margin-bottom:6px;">
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Seg</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Ter</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Qua</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Qui</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Sex</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Sáb</div>
+    <div style="text-align:center; font-size:8px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px;">Dom</div>
+  </div>
+
+  <div class="grid-7" style="margin-bottom:20px;">
+    <div class="cal-day pillar-4">
+      <div class="cal-day-num">22</div>
+      <div class="cal-format">Reels 60s</div>
+      <div class="cal-day-label">T4 · Bastidores</div>
+      <div class="cal-hook">"Semana mais pesada do mês"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-2">
+      <div class="cal-day-num">23</div>
+      <div class="cal-format">Carrossel 5sl</div>
+      <div class="cal-day-label">T5 · Precificação</div>
+      <div class="cal-hook">"Barato NÃO vende mais. Vende MENOS."</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-3">
+      <div class="cal-day-num">24</div>
+      <div class="cal-format">Reels 30s</div>
+      <div class="cal-day-label">T3 · Canais</div>
+      <div class="cal-hook">"Marketplace: onde os clientes já estão"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-1">
+      <div class="cal-day-num">25</div>
+      <div class="cal-format">Carrossel 7sl</div>
+      <div class="cal-day-label">T6 · Embalagem</div>
+      <div class="cal-hook">"7 elementos que todo rótulo precisa"</div>
+      <div style="margin-top:4px;"><span class="tag tag-medium" style="font-size:6px;">MEDIUM</span></div>
+    </div>
+    <div class="cal-day pillar-4">
+      <div class="cal-day-num">26</div>
+      <div class="cal-format">Reels 45s</div>
+      <div class="cal-day-label">T7 · Bastidores</div>
+      <div class="cal-hook">"Quase desisti no terceiro mês"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day pillar-2">
+      <div class="cal-day-num">27</div>
+      <div class="cal-format">Story+Pergunta</div>
+      <div class="cal-day-label">Precificação</div>
+      <div class="cal-hook">"Maior dificuldade com preço?"</div>
+      <div style="margin-top:4px;"><span class="tag tag-soft" style="font-size:6px;">SOFT</span></div>
+    </div>
+    <div class="cal-day highlight pillar-5">
+      <div class="cal-day-num">28</div>
+      <div class="cal-format">Reels 60s</div>
+      <div class="cal-day-label">T10 · OFERTA</div>
+      <div class="cal-hook">"R$27 pra nunca mais errar no preço"</div>
+      <div style="margin-top:4px;"><span class="tag tag-hard" style="font-size:6px;">HARD</span></div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:8px;">
+    <div class="card-solid" style="padding:12px; text-align:center;">
+      <div class="cal-day-num" style="font-size:18px;">29</div>
+      <div style="font-size:9px; color:var(--text2);">Reciclar Top Performer #1 (maior saves)</div>
+      <span class="tag tag-soft" style="font-size:7px; margin-top:4px;">RECICLAGEM</span>
+    </div>
+    <div class="card-solid" style="padding:12px; text-align:center;">
+      <div class="cal-day-num" style="font-size:18px;">30</div>
+      <div style="font-size:9px; color:var(--text2);">Reciclar Top Performer #2 (maior views)</div>
+      <span class="tag tag-soft" style="font-size:7px; margin-top:4px;">RECICLAGEM</span>
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  <h3>Motor de Reciclagem</h3>
+  <table style="margin-bottom:16px;">
+    <tr><th>Regra</th><th>Critério</th><th>Ação</th></tr>
+    <tr><td>Top Performer</td><td>Reels com &gt;2x média views</td><td>Regravar com hook diferente em 21 dias</td></tr>
+    <tr><td>Evergreen</td><td>Carrossel com &gt;100 saves</td><td>Repostar com novo hook após 30 dias</td></tr>
+    <tr><td>Cross-Platform</td><td>Reels &gt;5K views no IG</td><td>Adaptar para TikTok na semana seguinte</td></tr>
+    <tr><td>Formato Flip</td><td>Carrossel alto engajamento</td><td>Transformar em Reels narrado</td></tr>
+    <tr><td>Story → Feed</td><td>Story &gt;50% completions</td><td>Expandir para Reels ou Carrossel</td></tr>
+  </table>
+
+  <h3>KPIs Semanais</h3>
+  <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:8px;">
+    <div class="metric-box">
+      <div class="metric-num" style="font-size:18px;">5-7</div>
+      <div class="metric-label">Posts/sem</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num" style="font-size:18px;">500</div>
+      <div class="metric-label">Views (média)</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num" style="font-size:18px;">20+</div>
+      <div class="metric-label">Saves/sem</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num" style="font-size:18px;">10+</div>
+      <div class="metric-label">Link clicks</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num" style="font-size:18px;">3+</div>
+      <div class="metric-label">DMs/sem</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num" style="font-size:18px;">1+</div>
+      <div class="metric-label">Vendas/sem</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Stories 10x — Content OS</span>
+    <div class="footer-page">7</div>
+    <span>Alimentos Artesanais</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 8: BANCO DE HOOKS ==================== -->
+<div class="page">
+  <span class="badge badge-outline" style="margin-bottom:16px;">BANCO DE HOOKS</span>
+  <h2 style="margin-top:10px;">56 Hooks Prontos para Usar</h2>
+  <p class="subtitle" style="margin-bottom:16px;">Organizados por categoria. Escolha 1 hook por post — nunca publique sem hook.</p>
+
+  <div class="grid-2">
+    <div>
+      <div class="card" style="padding:12px 14px; margin-bottom:10px;">
+        <h4 style="color:var(--accent); font-size:10px; margin-bottom:6px;">1. PERGUNTAS PROVOCATIVAS (8)</h4>
+        <ul style="font-size:9px; line-height:1.7;">
+          <li>"Você está PAGANDO pra trabalhar e não sabe?"</li>
+          <li>"Por que sua geleia custa R$8 e a do concorrente R$35?"</li>
+          <li>"Quantos potes você precisa vender pra pagar as contas?"</li>
+          <li>"Seu rótulo está AFASTANDO clientes?"</li>
+          <li>"Você sabe qual é o seu custo REAL por unidade?"</li>
+          <li>"Feira é o ÚNICO lugar pra vender artesanal?"</li>
+          <li>"Sua embalagem diz CASEIRO ou PREMIUM?"</li>
+          <li>"Por que ninguém compra seu produto mais de uma vez?"</li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:12px 14px; margin-bottom:10px;">
+        <h4 style="color:var(--accent); font-size:10px; margin-bottom:6px;">2. NÚMEROS CHOCANTES (7)</h4>
+        <ul style="font-size:9px; line-height:1.7;">
+          <li>"93% dos produtores artesanais cobram MENOS do que deveriam"</li>
+          <li>"De R$800/mês pra R$4.200 vendendo a MESMA geleia"</li>
+          <li>"7 custos invisíveis que comem seu lucro sem você perceber"</li>
+          <li>"1 mudança no rótulo = 240% mais vendas"</li>
+          <li>"R$2.000 perdidos em 30 dias por UM erro de precificação"</li>
+          <li>"200 potes em 6 horas: o segredo da produção em escala"</li>
+          <li>"5 canais de venda que pagam 3x mais que a feira"</li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:12px 14px; margin-bottom:10px;">
+        <h4 style="color:var(--accent); font-size:10px; margin-bottom:6px;">3. CONTROVÉRSIA / MITO (7)</h4>
+        <ul style="font-size:9px; line-height:1.7;">
+          <li>"Rótulo artesanal NÃO precisa ser feio"</li>
+          <li>"Barato NÃO vende mais. Vende MENOS."</li>
+          <li>"Produto artesanal NÃO é pra pobre"</li>
+          <li>"Feira NÃO é o melhor canal de vendas"</li>
+          <li>"Embalagem simples NÃO é charme, é prejuízo"</li>
+          <li>"Vender mais barato que o concorrente é SUICÍDIO financeiro"</li>
+          <li>"Você NÃO precisa de CNPJ pra começar a vender legalmente"</li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:12px 14px;">
+        <h4 style="color:var(--accent); font-size:10px; margin-bottom:6px;">4. REVELAÇÃO / SEGREDO (7)</h4>
+        <ul style="font-size:9px; line-height:1.7;">
+          <li>"O canal de vendas que ninguém te conta"</li>
+          <li>"O que hotéis boutique REALMENTE querem dos produtores"</li>
+          <li>"DICA: Cafeterias compram toda segunda-feira"</li>
+          <li>"O ÚNICO número que importa na precificação"</li>
+          <li>"A fórmula que todo produtor de sucesso usa"</li>
+          <li>"Marketplace de artesanal: onde os clientes já estão"</li>
+          <li>"O ingrediente secreto não é no produto, é no RÓTULO"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="padding:12px 14px; margin-bottom:10px;">
+        <h4 style="color:var(--accent); font-size:10px; margin-bottom:6px;">5. HISTÓRIA PESSOAL (7)</h4>
+        <ul style="font-size:9px; line-height:1.7;">
+          <li>"4h da manhã e a cozinha já tá quente"</li>
+          <li>"Perdi R$2.000 por causa DESSE erro de precificação"</li>
+          <li>"Quase desisti no terceiro mês"</li>
+          <li>"Dei meu produto de graça e quase quebrei"</li>
+          <li>"O dia que um chef me ligou pedindo 100 potes"</li>
+          <li>"Minha mãe disse que eu tava louco"</li>
+          <li>"A semana mais pesada — 200 potes em 6 horas"</li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:12px 14px; margin-bottom:10px;">
+        <h4 style="color:var(--accent); font-size:10px; margin-bottom:6px;">6. LISTA / TUTORIAL (7)</h4>
+        <ul style="font-size:9px; line-height:1.7;">
+          <li>"5 formas de vender geleia sem sair de casa"</li>
+          <li>"7 elementos que todo rótulo profissional precisa"</li>
+          <li>"3 erros de precificação que todo iniciante comete"</li>
+          <li>"Como calcular seu preço em 60 segundos"</li>
+          <li>"Checklist: 7 ajustes rápidos pra vender mais HOJE"</li>
+          <li>"O passo a passo pra criar um rótulo profissional"</li>
+          <li>"4 formas de embalar que triplicam o valor percebido"</li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:12px 14px; margin-bottom:10px;">
+        <h4 style="color:var(--accent); font-size:10px; margin-bottom:6px;">7. ANTES X DEPOIS (6)</h4>
+        <ul style="font-size:9px; line-height:1.7;">
+          <li>"Esse pote custava R$8. Agora custa R$28."</li>
+          <li>"A mesma geleia. Dois preços COMPLETAMENTE diferentes."</li>
+          <li>"Antes: feira todo sábado. Depois: encomendas toda semana."</li>
+          <li>"Ela saiu de R$800/mês pra R$4.200 vendendo geleia"</li>
+          <li>"Mesmo produto, embalagem diferente, 3x o preço"</li>
+          <li>"De 50 seguidores a 5.000 clientes em 6 meses"</li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:12px 14px;">
+        <h4 style="color:var(--accent); font-size:10px; margin-bottom:6px;">8. URGÊNCIA / ESCASSEZ (7)</h4>
+        <ul style="font-size:9px; line-height:1.7;">
+          <li>"Se você vende artesanal e não tem esse guia..."</li>
+          <li>"R$27 pra nunca mais errar no preço do seu produto"</li>
+          <li>"Custa menos que um delivery"</li>
+          <li>"Enquanto você hesita, seu concorrente já aplicou"</li>
+          <li>"Garantia de 7 dias — risco ZERO pra você"</li>
+          <li>"O preço errado custa R$2.000/mês. O guia custa R$27."</li>
+          <li>"Cada dia com preço errado é dinheiro que você perde"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Stories 10x — Content OS</span>
+    <div class="footer-page">8</div>
+    <span>Alimentos Artesanais</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 9: AUTOMAÇÕES + CAPTURA + REVISÃO ==================== -->
+<div class="page">
+  <span class="badge badge-outline" style="margin-bottom:16px;">EXECUÇÃO</span>
+  <h2 style="margin-top:10px;">Automações, Captura & Revisão</h2>
+
+  <h3>Automação de DM (ManyChat / ChatPro)</h3>
+  <div class="grid-2" style="margin-bottom:16px;">
+    <div class="card" style="padding:14px 16px;">
+      <h4 style="margin-bottom:8px;">Trigger: Comentário "PLANILHA"</h4>
+      <div style="background:var(--bg2); border-radius:var(--radius-sm); padding:10px 12px; font-size:9.5px; line-height:1.6;">
+        "Opa! Aqui tá a planilha gratuita:<br>
+        <span class="mono" style="color:var(--accent);">[link planilha]</span><br><br>
+        Se quiser o guia completo de precificação + embalagem + vendas, tá R$27:<br>
+        <span class="mono" style="color:var(--accent);">[link hotmart]</span>"
+      </div>
+    </div>
+    <div class="card" style="padding:14px 16px;">
+      <h4 style="margin-bottom:8px;">Trigger: Comentário "EBOOK"</h4>
+      <div style="background:var(--bg2); border-radius:var(--radius-sm); padding:10px 12px; font-size:9.5px; line-height:1.6;">
+        "Show! Aqui o link direto:<br>
+        <span class="mono" style="color:var(--accent);">[link hotmart]</span><br><br>
+        R$27 com garantia de 7 dias.<br>
+        Qualquer dúvida é só chamar aqui!"
+      </div>
+    </div>
+  </div>
+
+  <h3>Sequência Pós-Lead-Magnet (WhatsApp/Email)</h3>
+  <div class="card" style="margin-bottom:20px;">
+    <div style="display:grid; grid-template-columns:60px 1fr; gap:4px 12px; font-size:9.5px;">
+      <span class="mono" style="font-weight:600; color:var(--accent);">Dia 0</span>
+      <span>Entrega lead magnet + "Se precisar de ajuda, chama aqui"</span>
+      <span class="mono" style="font-weight:600; color:var(--accent);">Dia 2</span>
+      <span>"Já testou a planilha? Qual foi seu custo por unidade?"</span>
+      <span class="mono" style="font-weight:600; color:var(--accent);">Dia 5</span>
+      <span>Dica de valor (1 insight do ebook) + "Tem mais no guia completo"</span>
+      <span class="mono" style="font-weight:600; color:var(--accent);">Dia 7</span>
+      <span>Oferta direta: "R$27, garantia 7 dias" + link Hotmart</span>
+      <span class="mono" style="font-weight:600; color:var(--accent);">Dia 14</span>
+      <span>"Última chance por esse preço" (se não comprou)</span>
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  <h3>Sistema de Captura de Ideias</h3>
+  <p class="subtitle" style="margin-bottom:12px;">Meta: mínimo 5 ideias/semana. Use as Notas do celular com esta estrutura:</p>
+
+  <div class="card-solid" style="padding:14px 16px; margin-bottom:14px; font-family:'JetBrains Mono', monospace; font-size:9.5px; line-height:1.8;">
+    Data: ___<br>
+    Ideia: [frase curta descrevendo o conteúdo]<br>
+    Pilar: [1-Embalagem | 2-Preço | 3-Canais | 4-Bastidores | 5-Oferta]<br>
+    Template: [T1-T10]<br>
+    Hook possível: [frase de abertura]<br>
+    Fonte: [DM | comentário | feira | pessoal | concorrente]
+  </div>
+
+  <h3>6 Fontes de Ideias (Checar Semanalmente)</h3>
+  <table style="margin-bottom:20px;">
+    <tr><th>Fonte</th><th>Onde Olhar</th><th>O Que Capturar</th></tr>
+    <tr><td>DMs e Comentários</td><td>Instagram</td><td>Dúvidas recorrentes = conteúdo</td></tr>
+    <tr><td>Grupos de Produtores</td><td>WhatsApp / Facebook</td><td>Problemas compartilhados</td></tr>
+    <tr><td>Feiras e Eventos</td><td>Presencial</td><td>Reações de clientes, perguntas</td></tr>
+    <tr><td>Concorrentes</td><td>IG dos top 5 do nicho</td><td>Posts com alto engajamento = temas quentes</td></tr>
+    <tr><td>Google Trends</td><td>trends.google.com</td><td>"alimentos artesanais" sazonalidade</td></tr>
+    <tr><td>Experiência Pessoal</td><td>Diário</td><td>Erros, vitórias, reflexões do dia</td></tr>
+  </table>
+
+  <div class="separator"></div>
+
+  <h3>Revisão Mensal (Último Domingo do Mês)</h3>
+  <div class="card-accent">
+    <div style="display:grid; grid-template-columns:28px 1fr; gap:6px 10px; font-size:10px;">
+      <span style="font-weight:700; opacity:0.7;">1.</span><span>Top 3 conteúdos por <strong>saves</strong> → marcar para reciclagem</span>
+      <span style="font-weight:700; opacity:0.7;">2.</span><span>Top 3 conteúdos por <strong>views</strong> → analisar hooks usados</span>
+      <span style="font-weight:700; opacity:0.7;">3.</span><span>Pilar com menor performance → ajustar proporção ou hooks</span>
+      <span style="font-weight:700; opacity:0.7;">4.</span><span>Conteúdos com &gt;50 saves → adicionar à "Biblioteca Evergreen"</span>
+      <span style="font-weight:700; opacity:0.7;">5.</span><span>Calcular: <strong>vendas ÷ posts = taxa de conversão</strong> por conteúdo</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Stories 10x — Content OS</span>
+    <div class="footer-page">9</div>
+    <span>Alimentos Artesanais</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 10: RESUMO FINAL ==================== -->
+<div class="page" style="display:flex; flex-direction:column; justify-content:center; padding:60px 70px;">
+  <span class="badge badge-accent" style="margin-bottom:20px; align-self:flex-start;">RESUMO EXECUTIVO</span>
+  <h1 style="font-size:30px; margin-bottom:24px;">Tudo Que Você Precisa<br>Para Começar</h1>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card" style="padding:16px;">
+      <h4 style="margin-bottom:10px;">Seus Ativos</h4>
+      <div style="font-size:10px; line-height:1.8;">
+        <span class="check">✓</span> 12 histórias mineradas<br>
+        <span class="check">✓</span> 5 narrativas SB7 estruturadas<br>
+        <span class="check">✓</span> 56 hooks em 8 categorias<br>
+        <span class="check">✓</span> 10 templates replicáveis<br>
+        <span class="check">✓</span> 30 dias de calendário mapeado<br>
+        <span class="check">✓</span> Flywheel de monetização<br>
+        <span class="check">✓</span> Estratégia de CTA 80/15/5<br>
+        <span class="check">✓</span> Motor de reciclagem (5 regras)
+      </div>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h4 style="margin-bottom:10px;">Seus Produtos</h4>
+      <div style="font-size:10px; line-height:1.8;">
+        <span class="check">✓</span> Ebook Completo — <strong>R$27</strong><br>
+        <span style="font-size:9px; color:var(--text3); padding-left:16px;">pay.hotmart.com/D105263783H</span><br>
+        <span class="check">✓</span> Planilha Precificação — <strong>Grátis</strong><br>
+        <span style="font-size:9px; color:var(--text3); padding-left:16px;">planilha-precificacao-artesanal.vercel.app</span><br>
+        <span class="check">✓</span> Template de Rótulo — <strong>Grátis</strong><br>
+        <span class="check">✓</span> Checklist 7 Ajustes — <strong>Grátis</strong><br>
+        <span class="check">✓</span> LP de Vendas — <strong>Live</strong><br>
+        <span style="font-size:9px; color:var(--text3); padding-left:16px;">alimentosartesanais.com.br</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-accent" style="margin-bottom:24px;">
+    <h4 style="margin-bottom:8px;">Sua Primeira Semana — Checklist</h4>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 20px; font-size:10px;">
+      <span>☐ Configurar perfil IG (bio + link)</span>
+      <span>☐ Gravar Reels dias 1, 3, 5 (batch segunda)</span>
+      <span>☐ Criar Canva templates (T1, T6)</span>
+      <span>☐ Montar carrosséis dias 2, 4 (batch segunda)</span>
+      <span>☐ Agendar semana no Meta Business Suite</span>
+      <span>☐ Configurar DM automática (ManyChat)</span>
+      <span>☐ Publicar 1 Story/dia espontâneo</span>
+      <span>☐ Domingo: publicar primeiro Right Hook</span>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:24px;">
+    <div class="metric-box">
+      <div class="metric-num" style="font-size:20px;">7</div>
+      <div class="metric-label">Posts/semana</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num" style="font-size:20px;">15</div>
+      <div class="metric-label">Min/dia</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num" style="font-size:20px;">2-3h</div>
+      <div class="metric-label">Batch segunda</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num" style="font-size:20px;">R$27</div>
+      <div class="metric-label">Por venda</div>
+    </div>
+  </div>
+
+  <div class="quote-box" style="font-size:13px; font-style:normal;">
+    <span style="font-family:'Playfair Display',serif; font-size:15px; font-weight:600; color:var(--text);">"Você não precisa de mais ideias.<br>Você precisa de um sistema."</span>
+    <div style="margin-top:6px; font-size:9px; color:var(--text3); font-style:italic;">— Justin Welsh, Content Operating System</div>
+  </div>
+
+  <div style="text-align:center; margin-top:30px;">
+    <div style="font-size:9px; color:var(--text3); letter-spacing:2px; text-transform:uppercase;">Gerado por</div>
+    <div style="font-size:12px; font-weight:600; color:var(--accent); margin-top:4px; letter-spacing:1px;">STORIES 10x — Content Multiplication Engine</div>
+  </div>
+
+  <div class="footer">
+    <span>Stories 10x — Content OS</span>
+    <div class="footer-page">10</div>
+    <span>Alimentos Artesanais</span>
+  </div>
+</div>
+
+</body>
+</html>

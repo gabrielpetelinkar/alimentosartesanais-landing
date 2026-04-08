@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Fornecedores de Embalagens e Insumos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     EMPÓRIO KRAFT/TERRACOTA — PDF THEME
+     ============================================ */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-primary: #FFF9F0;
+    --bg-secondary: #F5EDE0;
+    --bg-tertiary: #EDE5D5;
+    --accent: #B5563A;
+    --accent-secondary: #9A4528;
+    --accent-soft: #7A3A20;
+    --text: #3D2B1F;
+    --text-secondary: #6B5744;
+    --text-muted: #8A7A68;
+    --glass-bg: rgba(181, 86, 58, 0.05);
+    --glass-border: rgba(181, 86, 58, 0.12);
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg-primary);
+    font-size: 11px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================
+     COVER PAGE
+     ============================================ */
+  .cover {
+    height: 297mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 80px;
+    background: var(--bg-primary);
+    background-image: radial-gradient(ellipse at 50% 30%, rgba(181, 86, 58, 0.10) 0%, transparent 70%);
+    page-break-after: always;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .cover__badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--glass-border);
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+  }
+
+  .cover__title {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 16px;
+    max-width: 550px;
+  }
+
+  .cover__title span {
+    color: #B5563A;
+  }
+
+  .cover__subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 460px;
+    margin-bottom: 50px;
+    line-height: 1.7;
+  }
+
+  .cover__divider {
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 30px;
+  }
+
+  .cover__stat-row {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+
+  .cover__stat {
+    text-align: center;
+  }
+
+  .cover__stat-number {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    color: #B5563A;
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .cover__stat-label {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .cover__author {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .cover__author strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  .cover__brand {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  .cover__footer {
+    position: absolute;
+    bottom: 40px;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  /* ============================================
+     PAGE STRUCTURE
+     ============================================ */
+  .page {
+    padding: 50px 60px 80px 60px;
+    background: var(--bg-primary);
+    page-break-after: always;
+    position: relative;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+  }
+
+  .page__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 32px;
+  }
+
+  .page__header-brand {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .page__header-section {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: var(--accent-soft);
+  }
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  h1 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 28px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 22px;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+
+  p {
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  .section-number {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .section-intro {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+    line-height: 1.7;
+  }
+
+  /* ============================================
+     CARDS & BOXES
+     ============================================ */
+  .card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+
+  .card--accent {
+    border-left: 3px solid var(--accent);
+  }
+
+  .card--dark {
+    background: var(--bg-tertiary);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .tip {
+    background: rgba(181, 86, 58, 0.08);
+    border: 1px solid rgba(181, 86, 58, 0.20);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 10.5px;
+    color: var(--text-secondary);
+  }
+
+  .tip::before {
+    content: 'DICA';
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .warning {
+    background: rgba(220, 80, 60, 0.08);
+    border: 1px solid rgba(220, 80, 60, 0.20);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 10.5px;
+    color: var(--text-secondary);
+  }
+
+  .warning::before {
+    content: 'IMPORTANTE';
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    color: #dc503c;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* ============================================
+     SUPPLIER CARDS
+     ============================================ */
+  .supplier-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    page-break-inside: avoid;
+  }
+
+  .supplier-card__name {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    color: #B5563A;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .supplier-card__detail {
+    font-size: 10px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2px;
+  }
+
+  .supplier-card__detail strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .supplier-card__site {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--accent-soft);
+  }
+
+  .supplier-card__diff {
+    font-size: 9.5px;
+    color: var(--accent-secondary);
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(181, 86, 58, 0.08);
+    font-style: italic;
+  }
+
+  /* Two-column supplier grid */
+  .supplier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  /* ============================================
+     CATEGORY HEADER
+     ============================================ */
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--glass-border);
+  }
+
+  .category-header__number {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 700;
+    color: #B5563A;
+    min-width: 30px;
+  }
+
+  .category-header__title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .category-header__count {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  /* ============================================
+     TABLES
+     ============================================ */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 10px;
+  }
+
+  thead th {
+    background: var(--bg-tertiary);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--glass-border);
+  }
+
+  tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    color: var(--text-secondary);
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  tbody tr:hover { background: rgba(181, 86, 58, 0.03); }
+
+  /* ============================================
+     LISTS
+     ============================================ */
+  ul, ol {
+    margin: 8px 0 12px 18px;
+    color: var(--text-secondary);
+    font-size: 10.5px;
+    line-height: 1.7;
+  }
+
+  li { margin-bottom: 4px; }
+  li strong { color: var(--text); }
+
+  /* ============================================
+     NUMBERED LIST (negotiation tips)
+     ============================================ */
+  .numbered-tips {
+    list-style: none;
+    margin-left: 0;
+    padding: 0;
+    counter-reset: tip-counter;
+  }
+
+  .numbered-tips li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    font-size: 10.5px;
+    color: var(--text-secondary);
+    counter-increment: tip-counter;
+  }
+
+  .numbered-tips li::before {
+    content: counter(tip-counter);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: #B5563A;
+    min-width: 20px;
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+
+  /* ============================================
+     SECTION DIVIDERS
+     ============================================ */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    margin: 24px 0;
+  }
+
+  .divider--gold {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 30px 0;
+  }
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+  .page__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    margin-top: 40px;
+    border-top: 1px solid var(--glass-border);
+  }
+
+  .page__footer-brand {
+    font-family: var(--font-mono);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .page__footer-page {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--text-muted);
+  }
+
+  /* ============================================
+     PRINT UTILITIES
+     ============================================ */
+  .no-break { page-break-inside: avoid; }
+  .page-break { page-break-before: always; }
+  .mt-0 { margin-top: 0; }
+</style>
+</head>
+<body>
+
+<!-- ================================================
+     COVER PAGE
+     ================================================ -->
+<div class="cover">
+  <div class="cover__badge">BONUS EXCLUSIVO</div>
+  <h1 class="cover__title">
+    Lista de Fornecedores de<br>
+    <span>Embalagens e Insumos</span>
+  </h1>
+  <p class="cover__subtitle">
+    42+ fornecedores verificados de potes, garrafas, rotulos, tampas, caixas, insumos e equipamentos para produtores artesanais de alimentos.
+  </p>
+  <div class="cover__stat-row">
+    <div class="cover__stat">
+      <span class="cover__stat-number">42+</span>
+      <span class="cover__stat-label">Fornecedores</span>
+    </div>
+    <div class="cover__stat">
+      <span class="cover__stat-number">7</span>
+      <span class="cover__stat-label">Categorias</span>
+    </div>
+    <div class="cover__stat">
+      <span class="cover__stat-number">100%</span>
+      <span class="cover__stat-label">Verificados</span>
+    </div>
+  </div>
+  <div class="cover__divider"></div>
+  <p class="cover__author">
+    <strong>Gabriel Petelinkar Pereira</strong><br>
+    Gabriel Petelinkar · alimentosartesanais.com.br
+  </p>
+  <p class="cover__brand">www.alimentosartesanais.com.br</p>
+  <div class="cover__footer">
+    Material complementar do Guia Estrategico para Produtores Artesanais
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 2 — COMO USAR + CATEGORIA 1 (primeiros 6)
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Lista de Fornecedores</span>
+    <span class="page__header-section">Como Usar</span>
+  </div>
+
+  <h2 class="mt-0">Como Usar Esta Lista</h2>
+  <p>Todos os fornecedores listados aqui foram pesquisados e verificados. A lista esta organizada por <strong>7 categorias</strong> para facilitar a busca. Cada fornecedor inclui o que vende, regiao de atendimento, site para contato e diferencial para produtores artesanais.</p>
+
+  <div class="tip">
+    Sempre solicite amostras antes de fazer pedidos grandes. Compare preco <strong>POR UNIDADE</strong> (muitos oferecem desconto progressivo por quantidade).
+  </div>
+
+  <div class="divider--gold"></div>
+
+  <!-- CATEGORY 1 — Vidro -->
+  <div class="category-header">
+    <span class="category-header__number">1</span>
+    <span class="category-header__title">Potes e Garrafas de Vidro</span>
+    <span class="category-header__count">12 FORNECEDORES</span>
+  </div>
+
+  <div class="supplier-grid">
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">PodEmbalar</div>
+      <div class="supplier-card__site">www.podembalar.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Potes de vidro para geleias, doces, mel, molhos, pimentas, conservas. Grande variedade de formatos e tamanhos.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> CD em Sao Paulo/SP. Entrega para todo o Brasil.</div>
+      <div class="supplier-card__diff">Fundada por ex-produtores artesanais. Trabalha com lotes menores.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Cia dos Potes</div>
+      <div class="supplier-card__site">www.ciadospotes.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Potes de vidro para conservas, temperos; tampas e lacres como acessorios. Linha variada de tamanhos.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Loja online com entrega para todo o Brasil.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Embavale</div>
+      <div class="supplier-card__site">www.embavalesul.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Potes de vidro para conserva, garrafas de cerveja, vinho, sucos e destilados. Atacado e varejo.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Sede em Indaial/SC. Entrega para todo o Brasil.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Garrafaria Campinas</div>
+      <div class="supplier-card__site">www.garrafariacampinas.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Potes de vidro (sextavado, Andino, Belem, conserva) em 3 faixas (P: 40-170ml, M: 200-400ml, G: 600-810ml), garrafas, tampas, lacres e rolhas.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Campinas/SP. Entrega rapida Sudeste.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Garrafaria Cardoso</div>
+      <div class="supplier-card__site">garrafariacardoso.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Embalagens de vidro: potes, garrafas, frascos, tampas e rolhas. Atacado e varejo.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Campinas/SP.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Embalagem Sao Paulo</div>
+      <div class="supplier-card__site">www.embalagemsaopaulo.com</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Potes de vidro, garrafas de vidro, garrafas PET, tampas metalicas, tampas plasticas, rolhas e lacres.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Sao Paulo/SP. Loja online com entrega nacional.</div>
+    </div>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">02</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 3 — CATEGORIA 1 (continuacao: ultimos 6)
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Lista de Fornecedores</span>
+    <span class="page__header-section">1. Potes e Garrafas de Vidro (cont.)</span>
+  </div>
+
+  <div class="supplier-grid">
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Acqua Embalagens</div>
+      <div class="supplier-card__site">acquaembalagens.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Garrafas e potes de vidro para geleias, azeitonas, condimentos, pates, doces, vinhos, cervejas, cachacas, oleos. Tampas metalicas e plasticas.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Sede em BH/MG, galp. em SP e Caxias do Sul/RS. Logistica nacional.</div>
+      <div class="supplier-card__diff">18+ anos de mercado. Cobertura em 3 estados com galpoes proprios.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Embalagem BR</div>
+      <div class="supplier-card__site">www.embalagembr.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Potes, garrafas e tampas de vidro. Envio rapido.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento online para todo o Brasil.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Garrafaria Serra Negra</div>
+      <div class="supplier-card__site">garrafariaserranegra.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Potes, garrafas e vidros padrao gastronomico. Linha voltada para alimentos artesanais.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Serra Negra/SP. Entrega para todo o Brasil.</div>
+      <div class="supplier-card__diff">Excelente opcao para pequenos e medios volumes.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Garrafaria Online</div>
+      <div class="supplier-card__site">garrafariaonline.commercesuite.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Frascos e garrafas de vidro em diversos formatos e tamanhos.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Loja online com entrega nacional.</div>
+      <div class="supplier-card__diff">Boa opcao complementar quando o fornecedor principal estiver sem estoque.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Wheaton Brasil</div>
+      <div class="supplier-card__site">www.wheaton.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Vidros premium para alimentos, bebidas, farmaceutico e cosmetico. Linha profissional.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+      <div class="supplier-card__diff">Fabricante de vidro com linha premium. Para escala e posicionamento profissional.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Cisper</div>
+      <div class="supplier-card__site">www.cisper.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Garrafas e potes de vidro. Ampla linha de embalagens de vidro para diversos segmentos alimenticios.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+    </div>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">03</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 4 — CATEGORIA 2 (PET) + CATEGORIA 3 (Rotulos)
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Lista de Fornecedores</span>
+    <span class="page__header-section">2. Embalagens PET</span>
+  </div>
+
+  <!-- CATEGORY 2 — PET -->
+  <div class="category-header mt-0">
+    <span class="category-header__number">2</span>
+    <span class="category-header__title">Embalagens PET</span>
+    <span class="category-header__count">4 FORNECEDORES</span>
+  </div>
+
+  <div class="supplier-grid">
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">VidroPET</div>
+      <div class="supplier-card__site">vidropet.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Frascos e embalagens PET para alimentos. Linha para molhos, sucos e produtos pasteurizados.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">TetraPET</div>
+      <div class="supplier-card__site">tetrapet.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Embalagens PET para alimentos e bebidas. Opcoes padrao artesanal.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">MacPET</div>
+      <div class="supplier-card__site">macpet.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Embalagens PET em diversos modelos para alimentos e bebidas.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">GelPET</div>
+      <div class="supplier-card__site">gelpet.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Potes e frascos PET para alimentos. Opcoes para geleias, doces e conservas em PET.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    Embalagens PET sao ideais para molhos, produtos pasteurizados e liquidos leves. Sao mais leves que vidro e reduzem custo de frete. Porem, vidro transmite percepcao premium maior — avalie conforme seu posicionamento de marca.
+  </div>
+
+  <div class="divider--gold"></div>
+
+  <!-- CATEGORY 3 — Rotulos -->
+  <div class="category-header">
+    <span class="category-header__number">3</span>
+    <span class="category-header__title">Rotulos e Etiquetas</span>
+    <span class="category-header__count">8 FORNECEDORES</span>
+  </div>
+
+  <div class="supplier-grid">
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Grif Rotulos</div>
+      <div class="supplier-card__site">www.grifrotulos.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Rotulos adesivos para alimentos, cosmeticos, farmaceuticos, lacres de seguranca, selos promocionais.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Guarulhos/SP. Atende todo o Brasil.</div>
+      <div class="supplier-card__diff">30+ anos de experiencia. Area fabril de 11.000 m2.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Rotulos Brasil</div>
+      <div class="supplier-card__site">rotulos.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Rotulos adesivos e etiquetas impressas para alimentos, bebidas (cervejas, vinhos, sucos). Personalizacao e diferentes acabamentos.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Sao Paulo/SP. Atende todo o Brasil.</div>
+      <div class="supplier-card__diff">Fundada ha 4 decadas. Referencia no setor.</div>
+    </div>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">04</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 5 — CATEGORIA 3 (cont.) + CATEGORIA 4
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Lista de Fornecedores</span>
+    <span class="page__header-section">3. Rotulos e Etiquetas (cont.)</span>
+  </div>
+
+  <div class="supplier-grid">
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Promtec</div>
+      <div class="supplier-card__site">www.promtec.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Etiquetas adesivas, rotulos personalizados em papel, BOPP, Poliester, PE flexivel. Impressao digital e flexografia.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Campinas/SP.</div>
+      <div class="supplier-card__diff">Aceita pedidos em quantidades pequenas. Linha especial para cervejas artesanais. 30+ anos.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Apiflex</div>
+      <div class="supplier-card__site">www.apiflex.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Selos, rotulos e etiquetas para alimentos, bebidas e limpeza. Rotulos em bobina e pre-cortados. Embalagens flexiveis.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Sao Paulo/SP.</div>
+      <div class="supplier-card__diff">Recomenda materiais especificos para artesanais: papel kraft, adesivos transparentes, acabamento fosco.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Etiquetas Brasil</div>
+      <div class="supplier-card__site">www.etiquetasbrasil.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Etiquetas para alimentos, confeccao, cosmeticos e outros segmentos. Impressao online.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atende todo o Brasil.</div>
+      <div class="supplier-card__diff">Fabricante desde 1980 (41+ anos de mercado).</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Printi</div>
+      <div class="supplier-card__site">www.printi.com.br/rotulos-etiquetas</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Rotulos e etiquetas personalizados. Plataforma de grafica online.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Entrega para todo o Brasil.</div>
+      <div class="supplier-card__diff">Aceita pedidos unitarios ou pequenas quantidades via plataforma online. Ideal para quem esta comecando.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Grafix</div>
+      <div class="supplier-card__site">grafix.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Rotulos adesivos personalizados para alimentos e bebidas.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">FuturaIM</div>
+      <div class="supplier-card__site">www.futuraim.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Rotulos e etiquetas adesivas impressas. Impressao digital e flexografica.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+    </div>
+  </div>
+
+  <div class="divider--gold"></div>
+
+  <!-- CATEGORY 4 — Tampas -->
+  <div class="category-header">
+    <span class="category-header__number">4</span>
+    <span class="category-header__title">Tampas, Lacres e Acessorios</span>
+    <span class="category-header__count">3 FORNECEDORES</span>
+  </div>
+
+  <div class="supplier-grid">
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Direcao Embalagens</div>
+      <div class="supplier-card__site">www.direcaoembalagens.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Frascos e garrafas de vidro, tampas metalicas, tampas plasticas, lacres e acessorios para alimentos, bebidas e cosmeticos.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Curitiba/PR. Envio para todo o Brasil.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Embavidro Embalagens</div>
+      <div class="supplier-card__site">Guia ABRE (abre.org.br/fornecedores)</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Tampas e acessorios, lacres para alimentos, bebidas, farmaceutico e cosmeticos.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Sao Paulo/SP.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Embagel</div>
+      <div class="supplier-card__site">www.embagel.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Valvulas pumps, potes, frascos, embalagens, saches, tampas, bisnagas e lacres.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    A maioria dos fornecedores de potes de vidro da secao 1 (PodEmbalar, Garrafaria Campinas, Embalagem Sao Paulo, Acqua Embalagens, Garrafaria Serra Negra) tambem vendem tampas e lacres. Comprar pote + tampa do mesmo fornecedor garante compatibilidade e reduz frete.
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">05</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 6 — CATEGORIA 5 (Caixas)
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Lista de Fornecedores</span>
+    <span class="page__header-section">5. Caixas e Embalagens Externas</span>
+  </div>
+
+  <div class="category-header mt-0">
+    <span class="category-header__number">5</span>
+    <span class="category-header__title">Caixas e Embalagens Externas</span>
+    <span class="category-header__count">4 FORNECEDORES</span>
+  </div>
+
+  <div class="supplier-grid">
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">MultiCaixasNet</div>
+      <div class="supplier-card__site">www.multicaixasnet.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Maior e-commerce de embalagens do Brasil. 2.000+ produtos entre genericos e personalizados. Caixas para doces, brigadeiros, bolos, salgados, tortas, brownies, cupcakes, trufas.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Sede em Atibaia/SP. Lojas fisicas em SP (Mooca, Santos, Sao Jose dos Campos, Santo Amaro, Campinas) e RJ (Barra da Tijuca). Entrega nacional.</div>
+      <div class="supplier-card__diff">Caixas desenvolvidas especialmente para confeiteiros artesanais e cake designers.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">LD Embalagem</div>
+      <div class="supplier-card__site">www.ldembalagem.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Caixas e embalagens de papel cartao, papelao e acetato. Fabricacao propria. Embalagens para confeitaria, doces, salgados, presentes. Caixas kraft.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Loja online com entrega nacional. Tambem vende via Shopee e Mercado Livre.</div>
+      <div class="supplier-card__diff">Fabricacao propria = precos acessiveis. Embalagens kraft com visual artesanal — perfeito para posicionamento premium.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Rizzo Embalagens</div>
+      <div class="supplier-card__site">www.rizzoembalagens.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Ampla variedade incluindo potes e garrafas de vidro, caixas, sacolas. Tradicional loja da regiao da 25 de Marco.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Sao Paulo/SP (25 de Marco). Atacado e varejo. Entrega nacional.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Fraspaper Embalagens</div>
+      <div class="supplier-card__site">www.fraspaperpack.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Caixas e embalagens personalizadas. Materiais 100% eco-friendly, reciclaveis, de projetos de reflorestamento.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+      <div class="supplier-card__diff">Foco em sustentabilidade — diferencial competitivo para marcas artesanais que valorizam apelo ecologico.</div>
+    </div>
+  </div>
+
+  <div class="divider--gold"></div>
+
+  <!-- CATEGORY 6 start — Insumos intro + first 4 -->
+  <div class="category-header">
+    <span class="category-header__number">6</span>
+    <span class="category-header__title">Insumos para Producao Artesanal</span>
+    <span class="category-header__count">10 FORNECEDORES</span>
+  </div>
+
+  <div class="supplier-grid">
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Fermentech</div>
+      <div class="supplier-card__site">fermentech.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Fermentos e culturas lacticas (marca CHOOZIT), coalho/quimosina, fibras, fumaca liquida, goma guar, hidrocoloides, probioticos. Insumos completos para queijos e iogurtes.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+      <div class="supplier-card__diff">Referencia em insumos para laticinios artesanais. Conteudo educativo no site.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Queijos no Brasil</div>
+      <div class="supplier-card__site">queijosnobrasil.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Kits completos para fabricacao caseira de queijos (mussarela, Minas Frescal, coalho, ricota, requeijao), coagulantes, fermentos lacticos, aromas, corantes, moldes, utensilios e equipamentos.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Loja virtual com entrega nacional.</div>
+      <div class="supplier-card__diff">Kits a partir de 10 litros de leite — ideal para quem esta testando receitas.</div>
+    </div>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">06</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 7 — CATEGORIA 6 (cont.)
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Lista de Fornecedores</span>
+    <span class="page__header-section">6. Insumos (cont.)</span>
+  </div>
+
+  <div class="supplier-grid">
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Rica Nata</div>
+      <div class="supplier-card__site">www.ricanata.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Fermentos lacticos fracionados para queijos e iogurtes (mesofilicos, termofilicos, para mussarela, iogurte natural, coalhada). Ingredientes, equipamentos, cursos e suporte tecnico.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Entrega para todo o Brasil.</div>
+      <div class="supplier-card__diff">Fermentos fracionados para producao de 10 a 1.000 litros — ideal para pequena escala artesanal.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Etiel</div>
+      <div class="supplier-card__site">www.etiel.net</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Fermentos lacticos comerciais para queijos e iogurtes. Culturas de Streptococcus thermophilus e Lactobacillus bulgaricus. Orientacao tecnica por tipo de queijo.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Quimisul SC</div>
+      <div class="supplier-card__site">quimisulsc.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Pectina citrica (100g-1kg), acido citrico anidro (100g-25kg), acido citrico P.A. e outros insumos quimicos para alimentos.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Santa Catarina. Loja online com entrega nacional.</div>
+      <div class="supplier-card__diff">Vende em embalagens pequenas (a partir de 100g) — perfeito para artesanais. Pectina para geleias, compotas, sorvetes, recheios.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">SAUCE Aditivos e Ingredientes</div>
+      <div class="supplier-card__site">www.saucealimentos.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Conservantes (sorbato de potassio, benzoato de sodio, acido sorbico, acido latico), antioxidantes, espessantes, temperos, condimentos, reguladores de acidez, sementes e cereais. Kits de conservantes para molhos.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Loja online com entrega nacional.</div>
+      <div class="supplier-card__diff">Kits montados ideais para pequenos fabricantes e produtores artesanais.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Adicel</div>
+      <div class="supplier-card__site">adicel.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Aditivos e ingredientes para alimentos. Espessantes, conservantes, acidulantes e corantes para producao artesanal e industrial.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Ingredientes Online</div>
+      <div class="supplier-card__site">ingredientesonline.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Ingredientes e insumos para alimentos. Amplo catalogo de aditivos, especiarias e materias-primas.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Loja online com entrega nacional.</div>
+    </div>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">07</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 8 — CATEGORIA 6 (final) + CATEGORIA 7
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Lista de Fornecedores</span>
+    <span class="page__header-section">6. Insumos (cont.) + 7. Equipamentos</span>
+  </div>
+
+  <div class="supplier-grid">
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Casa dos Quimicos</div>
+      <div class="supplier-card__site">casadosquimicos.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Insumos quimicos para alimentos: acido citrico, sorbato de potassio, pectina, goma xantana, corantes naturais e outros aditivos alimenticios.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Loja online com entrega nacional.</div>
+    </div>
+
+    <div class="supplier-card no-break">
+      <div class="supplier-card__name">Bombay Herbs & Spices</div>
+      <div class="supplier-card__site">www.bombayherbs.com.br</div>
+      <div class="supplier-card__detail"><strong>Produtos:</strong> Especiarias, ervas, temperos e condimentos. Linha premium de ingredientes para producao artesanal de molhos, conservas e embutidos.</div>
+      <div class="supplier-card__detail"><strong>Regiao:</strong> Atendimento nacional.</div>
+      <div class="supplier-card__diff">Especiarias de qualidade premium — diferencial para molhos, temperos artesanais e embutidos.</div>
+    </div>
+  </div>
+
+  <div class="divider--gold"></div>
+
+  <!-- CATEGORY 7 — Equipamentos -->
+  <div class="category-header">
+    <span class="category-header__number">7</span>
+    <span class="category-header__title">Equipamentos</span>
+    <span class="category-header__count">1 FORNECEDOR</span>
+  </div>
+
+  <div class="supplier-card no-break" style="max-width: 50%;">
+    <div class="supplier-card__name">Skymsen</div>
+    <div class="supplier-card__site">loja.skymsen.com</div>
+    <div class="supplier-card__detail"><strong>Produtos:</strong> Equipamentos profissionais para cozinha e producao de alimentos: processadores, moedores, cortadores, balancas, seladores e maquinas para envase.</div>
+    <div class="supplier-card__detail"><strong>Regiao:</strong> Loja online com entrega para todo o Brasil.</div>
+    <div class="supplier-card__diff">Marca referencia em equipamentos industriais e semi-industriais. Linha adequada para artesanais que estao profissionalizando a producao.</div>
+  </div>
+
+  <div class="divider--gold"></div>
+
+  <!-- SUMMARY TABLE -->
+  <h2>Resumo Rapido por Categoria</h2>
+
+  <table class="no-break">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th style="text-align: center;">Qtd</th>
+        <th>Destaque</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Potes e garrafas de vidro</strong></td>
+        <td style="text-align: center;">12</td>
+        <td>PodEmbalar (feito por ex-artesanais)</td>
+      </tr>
+      <tr>
+        <td><strong>Embalagens PET</strong></td>
+        <td style="text-align: center;">4</td>
+        <td>Ideal para molhos e pasteurizados</td>
+      </tr>
+      <tr>
+        <td><strong>Rotulos e etiquetas</strong></td>
+        <td style="text-align: center;">8</td>
+        <td>Promtec (aceita pequenas quantidades)</td>
+      </tr>
+      <tr>
+        <td><strong>Tampas e lacres</strong></td>
+        <td style="text-align: center;">3+</td>
+        <td>Direcao Embalagens (Curitiba/PR)</td>
+      </tr>
+      <tr>
+        <td><strong>Caixas e embalagens</strong></td>
+        <td style="text-align: center;">4</td>
+        <td>LD Embalagem (kraft artesanal)</td>
+      </tr>
+      <tr>
+        <td><strong>Insumos para producao</strong></td>
+        <td style="text-align: center;">10</td>
+        <td>Quimisul SC (pectina a partir de 100g)</td>
+      </tr>
+      <tr>
+        <td><strong>Equipamentos</strong></td>
+        <td style="text-align: center;">1</td>
+        <td>Skymsen (referencia no mercado)</td>
+      </tr>
+      <tr style="border-top: 2px solid var(--glass-border);">
+        <td><strong style="color: var(--accent);">TOTAL</strong></td>
+        <td style="text-align: center;"><strong style="color: var(--accent);">42+</strong></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">08</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 9 — DICAS DE NEGOCIACAO + ENCERRAMENTO
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Lista de Fornecedores</span>
+    <span class="page__header-section">Dicas de Negociacao</span>
+  </div>
+
+  <h2 class="mt-0">Dicas Para Negociar com Fornecedores</h2>
+  <p>Aplique estas estrategias para conseguir melhores condicoes de compra e construir parcerias duradouras com seus fornecedores.</p>
+
+  <div class="card card--accent no-break">
+    <ol class="numbered-tips">
+      <li><strong>Peca amostras</strong> antes de fechar pedido grande — a maioria envia gratuitamente ou cobra apenas o frete</li>
+      <li><strong>Compare preco por unidade</strong>, nao preco total — fornecedores menores podem ser mais caros por unidade mas ter frete menor</li>
+      <li><strong>Negocie frete</strong> — em pedidos acima de R$ 500, muitos oferecem frete gratis ou subsidiado</li>
+      <li><strong>Compre tampas e potes juntos</strong> — garante compatibilidade e reduz custo de frete</li>
+      <li><strong>Forme grupo com outros produtores</strong> — compras conjuntas destravam precos de atacado</li>
+      <li><strong>Planeje compras trimestrais</strong> — evita emergencias e permite negociar melhor</li>
+      <li><strong>Mantenha 2-3 fornecedores por categoria</strong> — nunca dependa de um unico fornecedor</li>
+    </ol>
+  </div>
+
+  <div class="warning">
+    Nunca compre grandes quantidades de um fornecedor novo sem antes testar com um lote pequeno. Verifique a compatibilidade das tampas com seus potes, a aderencia dos rotulos e a qualidade dos insumos em receita de teste.
+  </div>
+
+  <div class="divider--gold"></div>
+
+  <div class="card" style="text-align: center; margin-top: 20px;">
+    <p style="font-size: 9px; color: var(--text-muted); margin-bottom: 6px;">
+      Esta lista e atualizada periodicamente. Sempre confirme disponibilidade e precos diretamente com os fornecedores antes de realizar pedidos.
+    </p>
+    <p style="font-size: 9px; color: var(--text-muted); margin-bottom: 12px;">
+      Este material e educativo e nao substitui a pesquisa propria de cada produtor.
+    </p>
+    <div class="divider" style="margin: 16px auto; max-width: 200px;"></div>
+    <p style="font-size: 11px; color: var(--accent); font-weight: 600; margin-bottom: 2px;">
+      Gabriel Petelinkar · alimentosartesanais.com.br
+    </p>
+    <p style="font-size: 9px; color: var(--text-muted);">
+      www.alimentosartesanais.com.br
+    </p>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">09</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview — Empório (Terracota + Kraft)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-base: #F5EDE0;
+    --bg-alt: #FFF9F0;
+    --text-1: #3D2B1F;
+    --text-2: #6B5744;
+    --text-3: #8A7A68;
+    --accent: #B5563A;
+    --accent-dark: #8B3A2A;
+    --border: #D4C4A8;
+    --heading-font: 'Playfair Display', Georgia, serif;
+    --body-font: 'DM Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--body-font);
+    background: var(--bg-base);
+    color: var(--text-1);
+    line-height: 1.6;
+  }
+
+  /* Texture */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+  }
+
+  .badge {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .badge strong { color: #FFE0D0; }
+
+  /* HERO */
+  .hero {
+    margin-top: 44px;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background: var(--bg-alt);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; right: 0; top: 0; bottom: 0; width: 45%;
+    background: url('obsidian_gold/hero-desktop.jpg') center center / cover no-repeat;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; right: 0; top: 0; bottom: 0; width: 45%;
+    background: linear-gradient(90deg, var(--bg-alt) 0%, transparent 40%);
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 580px;
+    padding: 80px 60px;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 48px; height: 3px;
+    background: var(--accent);
+    margin-top: 12px;
+    border-radius: 2px;
+  }
+  .hero h1 {
+    font-family: var(--heading-font);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text-1);
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--text-2);
+    margin-bottom: 28px;
+    max-width: 480px;
+  }
+  .hero p strong { color: var(--text-1); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent);
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    border: none; cursor: pointer;
+  }
+  .btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .btn svg { width: 18px; height: 18px; }
+  .tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 24px;
+  }
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    background: rgba(181, 86, 58, 0.06);
+  }
+
+  /* SECTION */
+  .section {
+    padding: 80px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section--alt { background: var(--bg-alt); max-width: 100%; }
+  .section--alt .inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .section h2 {
+    font-family: var(--heading-font);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--text-1);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .section h2 em { font-style: normal; color: var(--accent); }
+  .section .subtitle {
+    font-size: 1rem;
+    color: var(--text-2);
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .card {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+  .card-icon {
+    width: 40px; height: 40px;
+    background: rgba(181,86,58,0.1);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    color: var(--accent);
+    font-size: 1.2rem;
+  }
+  .card h3 {
+    font-family: var(--heading-font);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-1);
+    margin-bottom: 8px;
+  }
+  .card p {
+    font-size: 0.9rem;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+
+  /* CTA */
+  .cta {
+    background: var(--text-1);
+    padding: 72px 60px;
+    text-align: center;
+    color: var(--bg-base);
+  }
+  .cta h2 {
+    font-family: var(--heading-font);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--bg-alt);
+    margin-bottom: 8px;
+  }
+  .cta .price {
+    font-size: 0.95rem;
+    color: var(--border);
+    margin-bottom: 24px;
+  }
+  .cta .price s { opacity: 0.6; }
+  .cta .price strong { color: var(--accent); font-size: 1.3rem; }
+  .cta .btn { background: var(--accent); font-size: 1.05rem; padding: 18px 36px; }
+
+  .palette-label {
+    position: fixed; bottom: 20px; right: 20px;
+    background: var(--text-1);
+    color: var(--bg-base);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    z-index: 200;
+    font-family: var(--body-font);
+  }
+
+  @media (max-width: 768px) {
+    .hero::after, .hero::before { display: none; }
+    .hero-content { padding: 60px 24px; }
+    .section { padding: 60px 24px; }
+    .cards { grid-template-columns: 1fr; }
+    .cta { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="badge">De <s>R$148</s> por apenas <strong>R$27</strong> . Oferta de lancamento</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Guia Estrategico</div>
+    <h1>Seu produto ja e bom.<br><em>O preco nao mostra isso.</em></h1>
+    <p>Descubra o que produtores artesanais estao fazendo para <strong>cobrar 2x a 3x mais</strong>, pelo mesmo produto, usando a embalagem, a historia e o canal de venda certos.</p>
+    <a href="#" class="btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Quero Cobrar o Que Meu Produto Vale
+    </a>
+    <div class="tags">
+      <span class="tag">Geleias</span>
+      <span class="tag">Molhos de Pimenta</span>
+      <span class="tag">Queijos</span>
+      <span class="tag">Cafes Gourmet</span>
+      <span class="tag">Doces</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">O problema</div>
+  <h2>Voce produz com <em>qualidade</em>. Mas vende como <em>commoditie</em>.</h2>
+  <p class="subtitle">A maioria dos produtores artesanais comete esses 3 erros sem perceber.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">1</div>
+      <h3>Embalagem invisivel</h3>
+      <p>Rotulo generico, sem identidade. O cliente nao consegue diferenciar do produto ao lado na prateleira.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">2</div>
+      <h3>Preco por custo</h3>
+      <p>Calcula quanto gastou e coloca uma margem. Esquece que percepcao de valor e construida, nao calculada.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">3</div>
+      <h3>Canal errado</h3>
+      <p>Vende na feira competindo por preco com quem produz em escala. O canal define o teto do seu preco.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Comece a cobrar o que seu produto vale</h2>
+  <p class="price"><s>R$148</s> por apenas <strong>R$27</strong></p>
+  <a href="#" class="btn">Quero Meu Guia</a>
+</section>
+
+<div class="palette-label">Opcao 1: Emporio</div>
+
+</body>
+</html>

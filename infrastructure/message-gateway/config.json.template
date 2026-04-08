@@ -1,0 +1,25 @@
+{
+  "agent_name": "aiox-master",
+  "enabled": true,
+  "startup_delay": 0,
+  "max_session_seconds": 255600,
+  "working_directory": "${SINKRA_HUB_PATH}",
+  "model": "claude-opus-4-6",
+  "channels": [
+    {"type": "telegram", "enabled": true},
+    {"type": "web", "enabled": false, "port": 8080},
+    {"type": "discord", "enabled": false, "channel_id": "", "token_env": "DISCORD_TOKEN"}
+  ],
+  "crons": [
+    {
+      "name": "daily-status-report",
+      "interval": "24h",
+      "prompt": "Generate a daily status report and send it to Telegram. Include: number of sessions today (check sessions.db), skill lifecycle status (run: python3 infrastructure/message-gateway/skill-lifecycle.py status), and any drift alerts from activity.log. Format as a concise Telegram message and send via send-telegram.sh."
+    },
+    {
+      "name": "weekly-skill-cleanup",
+      "interval": "168h",
+      "prompt": "Run skill lifecycle sweep: python3 infrastructure/message-gateway/skill-lifecycle.py promote. Then run python3 infrastructure/message-gateway/skill-lifecycle.py scan. Report results to Telegram. Also clean up sessions older than 30 days from sessions.db."
+    }
+  ]
+}

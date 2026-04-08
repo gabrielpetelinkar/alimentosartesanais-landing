@@ -1,0 +1,128 @@
+# AIOS Standard Config Fields
+name: slide-master
+version: 1.0.0
+description: >-
+  Squad de elite para criacao de slides magnificos para apresentacoes e aulas.
+  Combina 7 elite minds com metodologias documentadas + Style DNA inspirado na
+  Escola Conquer e Perestroika. Cobre narrativa, design visual, data storytelling,
+  ciencia cognitiva, e pensamento visual.
+entry_agent: slide-master-chief
+
+pack:
+  name: slide-master
+  version: 1.0.0
+  short-title: Slide Master Squad
+  description: >-
+    Squad de elite para criacao de slides magnificos para apresentacoes e aulas.
+    Combina 7 elite minds com metodologias documentadas + Style DNA inspirado na
+    Escola Conquer e Perestroika. Cobre narrativa, design visual, data storytelling,
+    ciencia cognitiva, e pensamento visual.
+  author: AIOS Squad Creator
+  icon: "\U0001F3AC"
+  slashPrefix: slide-master
+
+# Pattern Library
+pattern_library:
+  prefix: SM
+  naming_convention:
+    format: "{PREFIX}-{CATEGORY}-{NUMBER}"
+    example: "SM-TP-001"
+  categories:
+    - id: TP
+      name: "Task Patterns"
+      description: "Patterns for presentation creation tasks"
+    - id: EP
+      name: "Executor Patterns"
+      description: "Patterns for executor types and selection"
+    - id: PP
+      name: "Process Patterns"
+      description: "Patterns for presentation workflows"
+    - id: DP
+      name: "Design Patterns"
+      description: "Patterns for visual slide design"
+    - id: NP
+      name: "Narrative Patterns"
+      description: "Patterns for storytelling structure"
+  patterns: []
+
+# Task Standards
+task_standards:
+  enforce_anatomy: true
+  validator: "SM-TP-001"
+  required_fields:
+    - task_name
+    - status
+    - responsible_executor
+    - execution_type
+    - input
+    - output
+    - action_items
+    - acceptance_criteria
+  optional_fields:
+    - estimated_time
+    - dependencies
+    - templates
+    - quality_gate
+    - handoff
+
+# Executor Types
+executor_types:
+  human:
+    id: "SM-EP-001"
+    name: "Human Executor"
+    use_for:
+      - "Final aesthetic judgment"
+      - "Brand alignment decisions"
+      - "Audience-specific customization"
+  agent:
+    id: "SM-EP-002"
+    name: "Agent Executor (AI)"
+    use_for:
+      - "Slide structure generation"
+      - "Content organization"
+      - "Design principle application"
+      - "Data visualization recommendations"
+  hybrid:
+    id: "SM-EP-003"
+    name: "Hybrid Executor"
+    use_for:
+      - "Slide review and optimization"
+      - "Narrative structure validation"
+      - "Visual hierarchy assessment"
+  worker:
+    id: "SM-EP-004"
+    name: "Worker Executor"
+    use_for:
+      - "Template application"
+      - "Color palette generation"
+      - "Font pairing suggestions"
+
+# Workflow Configuration
+workflow_config:
+  checkpoint_policy: always_active
+  fail_fast: true
+  allow_manual_override: false
+
+# Agent Registry
+agents:
+  orchestrator:
+    - slide-master-chief
+  tier_0:
+    - edward-tufte
+    - richard-mayer
+  tier_1:
+    - nancy-duarte
+    - garr-reynolds
+    - cole-nussbaumer-knaflic
+  tier_2:
+    - dan-roam
+    - cliff-atkinson
+
+# Style DNA Reference
+style_dna:
+  sources:
+    - "Escola Conquer (3x4 Methodology)"
+    - "Perestroika (Chora PPT / Experience Learning)"
+    - "Pinho Fornari (Storytelling + Slide Design)"
+  file: "data/style-dna.md"
+  applied_to: "ALL agents in squad"

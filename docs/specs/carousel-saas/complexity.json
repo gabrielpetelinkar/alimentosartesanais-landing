@@ -1,0 +1,97 @@
+{
+  "storyId": "SPEC-carousel-saas",
+  "assessedAt": "2026-03-01T01:00:00.000Z",
+  "assessedBy": "@architect",
+
+  "result": "COMPLEX",
+  "overridden": false,
+
+  "dimensions": {
+    "scope": {
+      "score": 5,
+      "notes": "Greenfield SaaS com 50-66 arquivos estimados. 11 requisitos funcionais cobrindo wizard UI, LLM pipeline, image search, AI generation, render engine, template system, preview/editor, async processing, export. Arquitetura inteira a ser construida."
+    },
+    "integration": {
+      "score": 5,
+      "notes": "6 integracoes externas: Claude API (LLM), Unsplash API, Pexels API, DALL-E 3 API, Inngest (queue), Vercel Blob (storage). Pipeline sequencial orquestrando multiplos sistemas com fallbacks."
+    },
+    "infrastructure": {
+      "score": 5,
+      "notes": "Novo projeto Next.js + Vercel. Background job processing (Inngest). Temporary file storage (Vercel Blob). Render engine server-side (Satori + resvg). Font loading pipeline. 4+ API keys management."
+    },
+    "knowledge": {
+      "score": 4,
+      "notes": "Next.js e Claude API sao conhecidos. Satori render engine e NOVA tecnologia com risco de qualidade (POC obrigatoria). Background jobs no Vercel com Inngest requer aprendizado. DALL-E 3 API e template engine design sao novos."
+    },
+    "risk": {
+      "score": 4,
+      "notes": "Riscos criticos: Satori pode nao atingir qualidade visual profissional (spike necessario); Vercel timeout para pipeline longo (mitigado com Inngest). Riscos altos: copy generica (prompt engineering), imagens de nicho BR escassas (fallback). Produto inteiro depende de validacoes tecnicas pre-implementacao."
+    }
+  },
+
+  "totalScore": 23,
+
+  "pipelinePhases": [
+    "gather",
+    "assess",
+    "research",
+    "spec",
+    "critique_1",
+    "revise",
+    "critique_2",
+    "plan"
+  ],
+
+  "flags": [
+    "SPIKE OBRIGATORIO: POC de render Satori com 3 templates antes de Phase 4 (Spec)",
+    "QUEBRAR EM EPICS: Projeto tem escopo de 3+ epics (Core Pipeline, Editor/Preview, Templates)",
+    "PESQUISA NECESSARIA: @analyst deve avaliar custos por geracao e concorrentes antes de spec",
+    "RISCO DE ESCOPO: Editor 'tudo editavel' (FR-7) e o feature mais complexo — considerar escopo progressivo"
+  ],
+
+  "openQuestionsResolved": {
+    "OQ-1": {
+      "question": "Queue/background jobs service",
+      "decision": "Inngest",
+      "rationale": "Melhor integracao Vercel, step functions com retry, free tier 25k events/mes"
+    },
+    "OQ-2": {
+      "question": "Render engine capability",
+      "decision": "Satori primary + Puppeteer fallback. POC obrigatoria.",
+      "rationale": "Satori renderiza JSX->SVG->PNG. Limitacoes CSS conhecidas. Spike 2-3 dias antes de spec."
+    },
+    "OQ-3": {
+      "question": "State persistence sem auth",
+      "decision": "UUID per carousel + localStorage + URL state",
+      "rationale": "Cada carrossel tem UUID, estado em localStorage, URL /carousel/{uuid}/edit. Aceitavel para MVP sem auth."
+    },
+    "OQ-4": {
+      "question": "Temporary PNG storage",
+      "decision": "Vercel Blob",
+      "rationale": "Zero config, TTL nativo, free tier 1GB. Suficiente para MVP."
+    }
+  },
+
+  "estimatedEffort": "4-6 semanas (3+ epics com stories parallelizaveis)",
+
+  "epicBreakdownSuggestion": [
+    {
+      "epic": "Epic 1: Core Pipeline",
+      "scope": "Briefing wizard + Claude API generation + text-only render + basic export",
+      "effort": "2 semanas",
+      "dependencies": "Satori POC (spike)"
+    },
+    {
+      "epic": "Epic 2: Image Integration",
+      "scope": "Unsplash/Pexels search + DALL-E generation + image-based render",
+      "effort": "1-2 semanas",
+      "dependencies": "Epic 1"
+    },
+    {
+      "epic": "Epic 3: Editor & Templates",
+      "scope": "Inline editor + template library (nicho + formato) + semi-customization",
+      "effort": "1-2 semanas",
+      "dependencies": "Epic 1"
+    }
+  ]
+}

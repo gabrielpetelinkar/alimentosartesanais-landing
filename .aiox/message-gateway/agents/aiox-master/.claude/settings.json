@@ -1,0 +1,97 @@
+{
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "matcher": "ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CRM_TEMPLATE_ROOT}/core/bus/hook-planmode-telegram.sh\"",
+            "timeout": 1860
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CRM_TEMPLATE_ROOT}/core/bus/hook-permission-telegram.sh\"",
+            "timeout": 1860
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CRM_TEMPLATE_ROOT}/core/bus/hook-ask-telegram.sh\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$TOOL_INPUT\" | grep -qEi '(git\\s+push|gh\\s+pr\\s+(create|merge)|git\\s+push\\s+--force|git\\s+push\\s+-f)'; then echo 'BLOCKED: Agent Authority violation — git push/PR operations require @devops via terminal. Use Link (@devops) to push.' >&2; exit 2; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "REPO=$(git rev-parse --show-toplevel 2>/dev/null) && HOOK_EVENT=PreToolUse bash \"$REPO/infrastructure/message-gateway/artifact-tracker.sh\" || true",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "REPO=$(git rev-parse --show-toplevel 2>/dev/null) && HOOK_EVENT=PostToolUse bash \"$REPO/infrastructure/message-gateway/artifact-tracker.sh\" || true",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CRM_TEMPLATE_ROOT}/core/scripts/crash-alert.sh\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "REPO=$(git rev-parse --show-toplevel 2>/dev/null) && bash \"$REPO/infrastructure/message-gateway/session-persist.sh\" || true",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "REPO=$(git rev-parse --show-toplevel 2>/dev/null) && bash \"$REPO/infrastructure/message-gateway/skill-candidate-detect.sh\" || true",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "hotmart": {
+      "command": "npx",
+      "args": ["-y", "@theyahia/hotmart-mcp"],
+      "env": {
+        "HOTMART_CLIENT_ID": "02c9b9f6-ce60-46aa-b41f-f4fd434f7bb5",
+        "HOTMART_CLIENT_SECRET": "ef865002-44d1-4a6e-b29d-9f70a7669010",
+        "HOTMART_BASIC": "Basic MDJjOWI5ZjYtY2U2MC00NmFhLWI0MWYtZjRmZDQzNGY3YmI1OmVmODY1MDAyLTQ0ZDEtNGE2ZS1iMjlkLTlmNzBhNzY2OTAxMA=="
+      }
+    }
+  }
+}

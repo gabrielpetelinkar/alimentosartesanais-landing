@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Template de Rótulo com Informações Obrigatórias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     EMPÓRIO KRAFT/TERRACOTA — PDF THEME
+     ============================================ */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-primary: #FFF9F0;
+    --bg-secondary: #F5EDE0;
+    --bg-tertiary: #EDE5D5;
+    --accent: #B5563A;
+    --accent-secondary: #9A4528;
+    --accent-soft: #7A3A20;
+    --text: #3D2B1F;
+    --text-secondary: #6B5744;
+    --text-muted: #8A7A68;
+    --glass-bg: rgba(181, 86, 58, 0.05);
+    --glass-border: rgba(181, 86, 58, 0.12);
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg-primary);
+    font-size: 11px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================
+     COVER PAGE
+     ============================================ */
+  .cover {
+    height: 297mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 80px;
+    background: var(--bg-primary);
+    background-image: radial-gradient(ellipse at 50% 30%, rgba(181, 86, 58, 0.10) 0%, transparent 70%);
+    page-break-after: always;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .cover__badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--glass-border);
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+  }
+
+  .cover__title {
+    font-family: var(--font-heading);
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 16px;
+    max-width: 550px;
+  }
+
+  .cover__title span {
+    color: #B5563A;
+  }
+
+  .cover__subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 460px;
+    margin-bottom: 50px;
+    line-height: 1.7;
+  }
+
+  .cover__divider {
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 30px;
+  }
+
+  .cover__author {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .cover__author strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  .cover__brand {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  .cover__footer {
+    position: absolute;
+    bottom: 40px;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  /* ============================================
+     PAGE STRUCTURE
+     ============================================ */
+  .page {
+    padding: 50px 60px 80px 60px;
+    background: var(--bg-primary);
+    page-break-after: always;
+    position: relative;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+  }
+
+  .page__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 32px;
+  }
+
+  .page__header-brand {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .page__header-section {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: var(--accent-soft);
+  }
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  h1 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 28px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 22px;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+
+  p {
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  .section-number {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .section-intro {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+    line-height: 1.7;
+  }
+
+  /* ============================================
+     CARDS & BOXES
+     ============================================ */
+  .card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+
+  .card--accent {
+    border-left: 3px solid var(--accent);
+  }
+
+  .card--dark {
+    background: var(--bg-tertiary);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .tip {
+    background: rgba(181, 86, 58, 0.08);
+    border: 1px solid rgba(181, 86, 58, 0.20);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 10.5px;
+    color: var(--text-secondary);
+  }
+
+  .tip::before {
+    content: 'DICA';
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .warning {
+    background: rgba(220, 80, 60, 0.08);
+    border: 1px solid rgba(220, 80, 60, 0.20);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 10.5px;
+    color: var(--text-secondary);
+  }
+
+  .warning::before {
+    content: 'IMPORTANTE';
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    color: #dc503c;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* ============================================
+     LABEL MOCKUP (ASCII → visual)
+     ============================================ */
+  .label-mockup {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px 0;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  .label-mockup__title {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .label-mockup__field {
+    display: flex;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .label-mockup__field:last-child { border-bottom: none; }
+
+  .label-mockup__field-label {
+    min-width: 160px;
+    font-weight: 500;
+    color: var(--accent-soft);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .label-mockup__field-value {
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 10px;
+  }
+
+  .label-mockup__field-value em {
+    color: var(--text-muted);
+    font-style: normal;
+    font-size: 9px;
+  }
+
+  /* ============================================
+     TABLES
+     ============================================ */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 10px;
+  }
+
+  thead th {
+    background: var(--bg-tertiary);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--glass-border);
+  }
+
+  tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    color: var(--text-secondary);
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  tbody tr:hover { background: rgba(181, 86, 58, 0.03); }
+
+  .td-correct { color: #6cbf6c; }
+  .td-incorrect { color: #dc503c; }
+
+  /* ============================================
+     LISTS
+     ============================================ */
+  ul, ol {
+    margin: 8px 0 12px 18px;
+    color: var(--text-secondary);
+    font-size: 10.5px;
+    line-height: 1.7;
+  }
+
+  li { margin-bottom: 4px; }
+  li strong { color: var(--text); }
+
+  /* ============================================
+     CHECKLIST
+     ============================================ */
+  .checklist {
+    list-style: none;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    font-size: 10.5px;
+    color: var(--text-secondary);
+  }
+
+  .checklist li::before {
+    content: '☐';
+    font-size: 14px;
+    color: var(--accent);
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+
+  /* ============================================
+     NUTRITIONAL TABLE MOCKUP
+     ============================================ */
+  .nutri-table {
+    background: #FFFFFF;
+    color: #111111;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 14px 0;
+    max-width: 340px;
+    font-size: 10px;
+    border: 2px solid #111;
+  }
+
+  .nutri-table__header {
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    padding-bottom: 6px;
+    border-bottom: 3px solid #111;
+    margin-bottom: 4px;
+  }
+
+  .nutri-table__portion {
+    font-size: 9px;
+    text-align: center;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #999;
+    margin-bottom: 4px;
+  }
+
+  .nutri-table table {
+    margin: 0;
+    font-size: 9.5px;
+  }
+
+  .nutri-table thead th {
+    background: transparent;
+    color: #111;
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+    padding: 4px 8px;
+    border-bottom: 2px solid #111;
+  }
+
+  .nutri-table tbody td {
+    color: #333;
+    padding: 3px 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 9.5px;
+  }
+
+  .nutri-table tbody td:first-child { font-weight: 500; }
+  .nutri-table .indent { padding-left: 20px; }
+  .nutri-table tfoot td {
+    font-size: 8px;
+    color: #666;
+    padding-top: 6px;
+    border-top: 1px solid #111;
+    border-bottom: none;
+  }
+
+  /* ============================================
+     LUPA FRONTAL MOCKUP
+     ============================================ */
+  .lupa-mockup {
+    background: #FFFFFF;
+    color: #111;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    max-width: 200px;
+    border: 2px solid #111;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .lupa-mockup__header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #111;
+  }
+
+  .lupa-mockup__item {
+    padding: 3px 0;
+    font-size: 9.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .lupa-mockup__check { color: #111; font-size: 12px; }
+
+  /* ============================================
+     SECTION DIVIDERS
+     ============================================ */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    margin: 24px 0;
+  }
+
+  .divider--gold {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 30px 0;
+  }
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+  .page__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    margin-top: 40px;
+    border-top: 1px solid var(--glass-border);
+  }
+
+  .page__footer-brand {
+    font-family: var(--font-mono);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .page__footer-page {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--text-muted);
+  }
+
+  /* ============================================
+     ALLERGEN GRID
+     ============================================ */
+  .allergen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+    margin: 10px 0;
+    font-size: 10px;
+    color: var(--text-secondary);
+  }
+
+  .allergen-grid__item {
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .allergen-grid__number {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--accent);
+    min-width: 18px;
+  }
+
+  /* ============================================
+     SEAL BADGES
+     ============================================ */
+  .seal-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin: 14px 0;
+  }
+
+  .seal-badge {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+
+  .seal-badge__name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .seal-badge__issuer {
+    font-size: 8px;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+
+  .seal-badge__scope {
+    font-size: 8px;
+    color: var(--text-secondary);
+  }
+
+  /* ============================================
+     PRINT UTILITIES
+     ============================================ */
+  .no-break { page-break-inside: avoid; }
+  .page-break { page-break-before: always; }
+  .mt-0 { margin-top: 0; }
+</style>
+</head>
+<body>
+
+<!-- ================================================
+     COVER PAGE
+     ================================================ -->
+<div class="cover">
+  <div class="cover__badge">BONUS EXCLUSIVO</div>
+  <h1 class="cover__title">
+    Template de Rótulo com<br>
+    <span>Informações Obrigatórias</span>
+  </h1>
+  <p class="cover__subtitle">
+    Todas as informações que devem constar no rótulo do seu produto artesanal segundo a legislação brasileira vigente — ANVISA, MAPA e normas complementares.
+  </p>
+  <div class="cover__divider"></div>
+  <p class="cover__author">
+    <strong>Gabriel Petelinkar Pereira</strong><br>
+    Gabriel Petelinkar · alimentosartesanais.com.br
+  </p>
+  <p class="cover__brand">www.alimentosartesanais.com.br</p>
+  <div class="cover__footer">
+    Material complementar do Guia Estratégico para Produtores Artesanais
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 2 — COMO USAR + PAINEL PRINCIPAL
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Template de Rótulo</span>
+    <span class="page__header-section">Como Usar</span>
+  </div>
+
+  <h2 class="mt-0">Como Usar Este Template</h2>
+  <p>Este documento contém <strong>todas as informações obrigatórias</strong> que devem constar no rótulo do seu produto artesanal alimentício, segundo a legislação brasileira vigente (ANVISA, MAPA e normas complementares).</p>
+
+  <div class="tip">
+    Use como checklist e referência visual ao criar ou revisar seus rótulos. Cada campo inclui o que é obrigatório, onde posicionar, exemplo prático e legislação de referência.
+  </div>
+
+  <div class="divider--gold"></div>
+
+  <h2>Estrutura do Rótulo</h2>
+
+  <div class="label-mockup no-break">
+    <div class="label-mockup__title">Painel Principal — Frente da Embalagem</div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Logotipo</span>
+      <span class="label-mockup__field-value">[Sua marca] <em>— opcional, mas recomendado</em></span>
+    </div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Denominação de Venda</span>
+      <span class="label-mockup__field-value">Geleia de Pimenta Biquinho <em>— obrigatório</em></span>
+    </div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Conteúdo Líquido</span>
+      <span class="label-mockup__field-value">Peso Líquido: 250g <em>— obrigatório</em></span>
+    </div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Selo de Inspeção</span>
+      <span class="label-mockup__field-value">SIM / SIE / SIF / SISBI / Selo Arte <em>— obrigatório</em></span>
+    </div>
+  </div>
+
+  <div class="label-mockup no-break">
+    <div class="label-mockup__title">Painel de Informações — Lateral ou Verso</div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Lista de Ingredientes</span>
+      <span class="label-mockup__field-value">Ingredientes: pimenta biquinho (40%), açúcar, vinagre de maçã, sal, especiarias naturais.</span>
+    </div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Alérgenos</span>
+      <span class="label-mockup__field-value"><strong>ALÉRGICOS: CONTÉM MOSTARDA. PODE CONTER TRAÇOS DE SOJA.</strong></span>
+    </div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Tabela Nutricional</span>
+      <span class="label-mockup__field-value">Informação Nutricional completa <em>— ver modelo na pág. seguinte</em></span>
+    </div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Identificação de Origem</span>
+      <span class="label-mockup__field-value">Razão social, CNPJ/CPF, endereço completo, registro sanitário</span>
+    </div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Lote</span>
+      <span class="label-mockup__field-value">L2026-047</span>
+    </div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Validade</span>
+      <span class="label-mockup__field-value">Fabricação: 02/2026 — Validade: 02/2027</span>
+    </div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">Conservação</span>
+      <span class="label-mockup__field-value">Após aberto, manter refrigerado entre 2°C e 8°C. Consumir em até 30 dias.</span>
+    </div>
+    <div class="label-mockup__field">
+      <span class="label-mockup__field-label">País de Origem</span>
+      <span class="label-mockup__field-value">Brasil</span>
+    </div>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">02</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 3 — CAMPOS 1 e 2
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Template de Rótulo</span>
+    <span class="page__header-section">Campos Obrigatórios</span>
+  </div>
+
+  <span class="section-number">Campo 01</span>
+  <h2 class="mt-0">Denominação de Venda</h2>
+  <p>Nome do produto conforme regulamento técnico ou nome consagrado pelo uso. Deve descrever a verdadeira natureza do produto.</p>
+
+  <div class="warning">
+    Não pode ser nome fantasia isolado. "Delícia da Roça" sozinho NÃO serve. Formato correto: "Geleia de Pimenta Biquinho".
+  </div>
+
+  <div class="no-break">
+    <h4>Exemplos por Categoria</h4>
+    <table>
+      <thead>
+        <tr><th>Produto</th><th>Correto</th><th>Incorreto</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Queijo</td><td class="td-correct">Queijo Minas Artesanal</td><td class="td-incorrect">Queijinho do Sítio</td></tr>
+        <tr><td>Geleia</td><td class="td-correct">Geleia de Morango</td><td class="td-incorrect">Doce da Fazenda</td></tr>
+        <tr><td>Molho</td><td class="td-correct">Molho de Pimenta Cumari</td><td class="td-incorrect">Fogo na Boca</td></tr>
+        <tr><td>Conserva</td><td class="td-correct">Conserva de Jiló em Azeite</td><td class="td-incorrect">Delícia do Campo</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tip">Você pode usar o nome fantasia, mas a denominação de venda DEVE aparecer em destaque junto.</div>
+
+  <p style="font-size:9px; color: var(--text-muted);"><strong>Legislação:</strong> RDC nº 727/2022, Art. 13-15</p>
+
+  <div class="divider--gold"></div>
+
+  <span class="section-number">Campo 02</span>
+  <h2 class="mt-0">Lista de Ingredientes</h2>
+  <p>Todos os ingredientes em <strong>ordem decrescente de quantidade</strong> (do maior para o menor em peso/volume).</p>
+
+  <div class="card card--accent no-break">
+    <h4 style="margin-top:0;">Regras</h4>
+    <ul>
+      <li>Título obrigatório: <strong>"Ingredientes:"</strong></li>
+      <li>Aditivos: nome completo + função (ex: "conservador ácido sórbico" ou "INS 200")</li>
+      <li>Água: deve constar se adicionada como ingrediente</li>
+    </ul>
+  </div>
+
+  <div class="card card--dark no-break">
+    <h4 style="margin-top:0; color: var(--accent);">Exemplo</h4>
+    <p style="font-family: var(--font-mono); font-size: 10px; color: var(--text);">
+      Ingredientes: pimenta biquinho (40%), açúcar, vinagre de maçã, sal, ácido cítrico (acidulante).
+    </p>
+  </div>
+
+  <div class="tip">
+    Produtos com ingrediente único (mel de abelha, açúcar cristal) NÃO precisam de lista de ingredientes.
+  </div>
+
+  <p style="font-size:9px; color: var(--text-muted);"><strong>Legislação:</strong> RDC nº 727/2022, Art. 16-23</p>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">03</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 4 — CAMPO 3: ALÉRGENOS
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Template de Rótulo</span>
+    <span class="page__header-section">Campos Obrigatórios</span>
+  </div>
+
+  <span class="section-number">Campo 03</span>
+  <h2 class="mt-0">Declaração de Alérgenos</h2>
+  <p>Declaração obrigatória sobre presença de substâncias alergênicas. <strong>Erro neste campo = multa + recolhimento do produto.</strong></p>
+
+  <h4>Os 18 Grupos de Declaração Obrigatória</h4>
+  <div class="allergen-grid">
+    <div class="allergen-grid__item"><span class="allergen-grid__number">01</span> Trigo, centeio, cevada, aveia</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">02</span> Crustáceos</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">03</span> Ovos</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">04</span> Peixes</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">05</span> Amendoim</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">06</span> Soja</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">07</span> Leites de todas as espécies</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">08</span> Amêndoas</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">09</span> Avelãs</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">10</span> Castanha-de-caju</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">11</span> Castanha-do-brasil</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">12</span> Macadâmias</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">13</span> Nozes</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">14</span> Pecãs</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">15</span> Pistaches</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">16</span> Pinoli</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">17</span> Castanhas (Castanea spp.)</div>
+    <div class="allergen-grid__item"><span class="allergen-grid__number">18</span> Látex natural</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h4>Formato Obrigatório</h4>
+  <table class="no-break">
+    <thead>
+      <tr><th>Situação</th><th>Frase Obrigatória</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Contém como ingrediente</td><td><strong style="color: var(--text);">ALÉRGICOS: CONTÉM [NOME]</strong></td></tr>
+      <tr><td>Risco de contaminação cruzada</td><td><strong style="color: var(--text);">ALÉRGICOS: PODE CONTER [NOME]</strong></td></tr>
+      <tr><td>Não contém</td><td style="color: var(--text-muted);">Não obrigatório declarar</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card card--accent no-break">
+    <h4 style="margin-top:0;">Regras de Formatação</h4>
+    <ul>
+      <li><strong>CAIXA ALTA</strong> ou negrito obrigatório</li>
+      <li>Logo após a lista de ingredientes</li>
+      <li>Mesmo tamanho de fonte da lista de ingredientes (mínimo)</li>
+      <li>Fundo contrastante</li>
+    </ul>
+  </div>
+
+  <div class="card card--dark no-break">
+    <h4 style="margin-top:0; color: var(--accent);">Exemplo Completo</h4>
+    <p style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text); font-weight: 600;">
+      ALÉRGICOS: CONTÉM LEITE E DERIVADOS. PODE CONTER TRAÇOS DE AMENDOIM E SOJA.
+    </p>
+  </div>
+
+  <p style="font-size:9px; color: var(--text-muted);"><strong>Legislação:</strong> RDC nº 727/2022, Art. 24-29</p>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">04</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 5 — CAMPO 4: TABELA NUTRICIONAL
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Template de Rótulo</span>
+    <span class="page__header-section">Campos Obrigatórios</span>
+  </div>
+
+  <span class="section-number">Campo 04</span>
+  <h2 class="mt-0">Tabela Nutricional</h2>
+  <p>Modelo obrigatório com porção de referência, conforme RDC 429/2020.</p>
+
+  <div class="nutri-table no-break">
+    <div class="nutri-table__header">INFORMAÇÃO NUTRICIONAL</div>
+    <div class="nutri-table__portion">Porção de __g (medida caseira: __ colher(es))</div>
+    <table>
+      <thead>
+        <tr><th style="width:60%"></th><th>Porção</th><th>%VD*</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Valor energético</td><td>__ kcal</td><td>__%</td></tr>
+        <tr><td>Carboidratos totais</td><td>__ g</td><td>__%</td></tr>
+        <tr><td class="indent">Açúcares totais</td><td>__ g</td><td>__%</td></tr>
+        <tr><td class="indent">Açúcares adicionados</td><td>__ g</td><td>__%</td></tr>
+        <tr><td>Fibras alimentares</td><td>__ g</td><td>__%</td></tr>
+        <tr><td>Proteínas</td><td>__ g</td><td>__%</td></tr>
+        <tr><td>Gorduras totais</td><td>__ g</td><td>__%</td></tr>
+        <tr><td class="indent">Gorduras saturadas</td><td>__ g</td><td>__%</td></tr>
+        <tr><td class="indent">Gorduras trans</td><td>__ g</td><td>__%</td></tr>
+        <tr><td>Sódio</td><td>__ mg</td><td>__%</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="3">*Percentual de Valores Diários com base em uma dieta de 2.000 kcal.</td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="card card--accent no-break">
+    <h4 style="margin-top:0;">Regras Importantes</h4>
+    <ul>
+      <li><strong>Porção:</strong> usar a porção de referência da RDC 429/2020 para a categoria do produto</li>
+      <li><strong>Medida caseira:</strong> obrigatória (colher de sopa, fatia, unidade, etc.)</li>
+      <li><strong>Açúcares adicionados:</strong> obrigatório desde outubro/2023</li>
+      <li><strong>Nutrientes zerados:</strong> declarar como "0" ou "zero", nunca omitir</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Rotulagem Nutricional Frontal (Lupa)</h3>
+  <p>Obrigatória desde outubro/2024 para produtores artesanais, MEI e agroindústria familiar, quando o produto tiver alto teor de:</p>
+
+  <div style="display: flex; gap: 24px; align-items: flex-start;">
+    <div class="lupa-mockup no-break">
+      <div class="lupa-mockup__header">🔍 ALTO EM</div>
+      <div class="lupa-mockup__item"><span class="lupa-mockup__check">■</span> Açúcar adicionado</div>
+      <div class="lupa-mockup__item"><span class="lupa-mockup__check">■</span> Gordura saturada</div>
+      <div class="lupa-mockup__item"><span class="lupa-mockup__check">■</span> Sódio</div>
+    </div>
+
+    <div class="card" style="flex: 1;">
+      <h4 style="margin-top:0;">Limites para Sólidos</h4>
+      <table>
+        <thead>
+          <tr><th>Nutriente</th><th>Limite/100g</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Açúcar adicionado</td><td><strong>≥ 15g</strong></td></tr>
+          <tr><td>Gordura saturada</td><td><strong>≥ 6g</strong></td></tr>
+          <tr><td>Sódio</td><td><strong>≥ 600mg</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p style="font-size:9px; color: var(--text-muted); margin-top: 14px;"><strong>Legislação:</strong> RDC nº 429/2020, IN nº 75/2020, RDC nº 727/2022</p>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">05</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 6 — CAMPOS 5, 6, 7
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Template de Rótulo</span>
+    <span class="page__header-section">Campos Obrigatórios</span>
+  </div>
+
+  <span class="section-number">Campo 05</span>
+  <h2 class="mt-0">Conteúdo Líquido (Peso/Volume)</h2>
+  <p>Quantidade real do produto na embalagem.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;" class="no-break">
+    <div class="card">
+      <h4 style="margin-top:0;">Por Tipo de Produto</h4>
+      <ul>
+        <li><strong>Sólidos:</strong> gramas (g) ou kg</li>
+        <li><strong>Líquidos:</strong> mililitros (mL) ou L</li>
+        <li><strong>Semilíquidos:</strong> gramas (g)</li>
+        <li><strong>Em líquido de cobertura:</strong> peso líquido total + peso drenado</li>
+      </ul>
+    </div>
+    <div class="card card--dark">
+      <h4 style="margin-top:0; color: var(--accent);">Exemplos</h4>
+      <ul>
+        <li>Geleia: <strong>"Peso Líquido: 250g"</strong></li>
+        <li>Molho: <strong>"Conteúdo Líquido: 150mL"</strong></li>
+        <li>Conserva em azeite: <strong>"Peso Líquido: 300g (Peso Drenado: 180g)"</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>Tamanho Mínimo dos Caracteres</h4>
+  <table class="no-break">
+    <thead><tr><th>Conteúdo</th><th>Altura Mínima</th></tr></thead>
+    <tbody>
+      <tr><td>Até 50g/mL</td><td>2mm</td></tr>
+      <tr><td>50 a 200g/mL</td><td>3mm</td></tr>
+      <tr><td>200 a 1.000g/mL</td><td>4mm</td></tr>
+      <tr><td>Acima de 1.000g/mL</td><td>6mm</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:9px; color: var(--text-muted);"><strong>Legislação:</strong> Portaria INMETRO nº 157/2002, RDC nº 727/2022</p>
+
+  <div class="divider--gold"></div>
+
+  <span class="section-number">Campo 06</span>
+  <h2 class="mt-0">Identificação de Origem</h2>
+  <p>Quem fabricou o produto e como encontrá-lo.</p>
+
+  <div class="card card--accent no-break">
+    <h4 style="margin-top:0;">Informações Obrigatórias</h4>
+    <ul>
+      <li>Razão social ou nome do produtor</li>
+      <li>CNPJ ou CPF (para pessoa física com Selo ARTE)</li>
+      <li>Endereço completo (rua, número, cidade, UF, CEP)</li>
+      <li>Número do registro sanitário (SIM/SIE/SIF/SISBI/SELO ARTE)</li>
+      <li>País de origem: "Brasil" ou "Produto Brasileiro"</li>
+    </ul>
+  </div>
+
+  <div class="card card--dark no-break">
+    <h4 style="margin-top:0; color: var(--accent);">Exemplo</h4>
+    <p style="font-family: var(--font-mono); font-size: 10px; color: var(--text); line-height: 1.8;">
+      Fabricado por: Maria da Silva Alimentos Artesanais<br>
+      CPF: 123.456.789-00<br>
+      Rua das Flores, 123 — Serra do Salitre — MG — CEP 38760-000<br>
+      Registro SIM nº 0047/2025<br>
+      Produto Brasileiro
+    </p>
+  </div>
+
+  <p style="font-size:9px; color: var(--text-muted);"><strong>Legislação:</strong> RDC nº 727/2022, Art. 30-33</p>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">06</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 7 — CAMPOS 7, 8, 9
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Template de Rótulo</span>
+    <span class="page__header-section">Campos Obrigatórios</span>
+  </div>
+
+  <span class="section-number">Campo 07</span>
+  <h2 class="mt-0">Lote</h2>
+  <p>Código que identifica o conjunto de produtos fabricados nas mesmas condições.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;" class="no-break">
+    <div class="card">
+      <h4 style="margin-top:0;">Regras</h4>
+      <ul>
+        <li>Precedido pela letra <strong>"L"</strong> ou pela palavra <strong>"Lote:"</strong></li>
+        <li>Pode ser a data de fabricação se claramente identificada como lote</li>
+      </ul>
+    </div>
+    <div class="card card--dark">
+      <h4 style="margin-top:0; color: var(--accent);">Boas Práticas</h4>
+      <ul>
+        <li><strong>L + ano + sequencial:</strong> L2026-001, L2026-002...</li>
+        <li><strong>L + data:</strong> L220226 (22/fev/2026)</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:9px; color: var(--text-muted);"><strong>Legislação:</strong> RDC nº 727/2022, Art. 34</p>
+
+  <div class="divider--gold"></div>
+
+  <span class="section-number">Campo 08</span>
+  <h2 class="mt-0">Prazo de Validade</h2>
+  <p>Data até a qual o produto mantém suas propriedades.</p>
+
+  <div class="no-break">
+    <h4>Formato Obrigatório</h4>
+    <table>
+      <thead><tr><th>Validade do Produto</th><th>Formato Exigido</th></tr></thead>
+      <tbody>
+        <tr><td>Até 3 meses</td><td><strong>dia/mês</strong> (ou dia/mês/ano)</td></tr>
+        <tr><td>Mais de 3 meses</td><td><strong>mês/ano</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card no-break">
+    <h4 style="margin-top:0;">Frases Aceitas</h4>
+    <ul>
+      <li>"Válido até: MM/AAAA"</li>
+      <li>"Val.: MM/AAAA"</li>
+      <li>"Consumir até: DD/MM/AAAA"</li>
+      <li>"Vence em: DD/MM/AAAA"</li>
+      <li>"Validade: ver [local na embalagem]"</li>
+    </ul>
+  </div>
+  <p style="font-size:9px; color: var(--text-muted);"><strong>Legislação:</strong> RDC nº 727/2022, Art. 35-37</p>
+
+  <div class="divider--gold"></div>
+
+  <span class="section-number">Campo 09</span>
+  <h2 class="mt-0">Modo de Conservação</h2>
+  <p>Instruções de armazenamento <strong>antes e depois de aberto</strong>.</p>
+
+  <table class="no-break">
+    <thead><tr><th>Produto</th><th>Texto de Conservação</th></tr></thead>
+    <tbody>
+      <tr><td>Geleia</td><td>Conservar em local seco e fresco. Após aberto, manter refrigerado (2°C a 8°C) e consumir em até 30 dias.</td></tr>
+      <tr><td>Queijo</td><td>Manter refrigerado entre 4°C e 8°C. Após aberto, envolver em filme plástico e consumir em até 7 dias.</td></tr>
+      <tr><td>Molho de pimenta</td><td>Conservar em local seco, ao abrigo da luz. Após aberto, manter refrigerado e consumir em até 60 dias.</td></tr>
+      <tr><td>Conserva em azeite</td><td>Conservar em local seco e fresco. Após aberto, manter refrigerado e consumir em até 15 dias. Manter o produto coberto pelo azeite.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:9px; color: var(--text-muted);"><strong>Legislação:</strong> RDC nº 727/2022, Art. 38</p>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">07</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 8 — CAMPO 10: SELOS + CHECKLIST
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Template de Rótulo</span>
+    <span class="page__header-section">Selos e Checklist Final</span>
+  </div>
+
+  <span class="section-number">Campo 10</span>
+  <h2 class="mt-0">Selo de Inspeção Sanitária</h2>
+  <p>Tipo do selo conforme o alcance de comercialização do seu produto.</p>
+
+  <div class="seal-grid no-break">
+    <div class="seal-badge">
+      <div class="seal-badge__name">SIM</div>
+      <div class="seal-badge__issuer">Prefeitura</div>
+      <div class="seal-badge__scope">Município</div>
+    </div>
+    <div class="seal-badge">
+      <div class="seal-badge__name">SIE</div>
+      <div class="seal-badge__issuer">Sec. Estadual</div>
+      <div class="seal-badge__scope">Estado</div>
+    </div>
+    <div class="seal-badge">
+      <div class="seal-badge__name">SIF</div>
+      <div class="seal-badge__issuer">MAPA</div>
+      <div class="seal-badge__scope">Nacional + Export.</div>
+    </div>
+    <div class="seal-badge">
+      <div class="seal-badge__name">SISBI</div>
+      <div class="seal-badge__issuer">MAPA (equiv.)</div>
+      <div class="seal-badge__scope">Nacional</div>
+    </div>
+    <div class="seal-badge" style="border-color: var(--accent);">
+      <div class="seal-badge__name">ARTE</div>
+      <div class="seal-badge__issuer">Estadual</div>
+      <div class="seal-badge__scope">Nacional</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Selo ARTE</strong> — Especial para artesanais. Permite venda em todo o Brasil sem exigir inspeção federal (SIF). Aplicável a produtos de origem animal: lácteos, cárneos, pescados, mel e derivados de abelhas. Concedido por órgãos estaduais ou municipais (Lei 13.680/2018, Decreto 11.099/2022).
+  </div>
+
+  <div class="divider--gold"></div>
+
+  <h2>Checklist Final do Rótulo</h2>
+  <p>Use antes de enviar para impressão:</p>
+
+  <div class="card no-break">
+    <ul class="checklist">
+      <li>Denominação de venda clara e visível</li>
+      <li>Lista de ingredientes em ordem decrescente</li>
+      <li>Declaração de alérgenos em DESTAQUE (caixa alta ou negrito)</li>
+      <li>Tabela nutricional com porção e %VD</li>
+      <li>Lupa frontal (se aplicável — alto em açúcar/gordura/sódio)</li>
+      <li>Conteúdo líquido (peso ou volume)</li>
+      <li>Identificação de origem (nome, CNPJ/CPF, endereço)</li>
+      <li>Número do registro sanitário</li>
+      <li>Lote identificado</li>
+      <li>Data de validade no formato correto</li>
+      <li>Modo de conservação (antes e depois de aberto)</li>
+      <li>País de origem</li>
+      <li>Dizeres "CONTÉM GLÚTEN" ou "NÃO CONTÉM GLÚTEN"</li>
+      <li>Texto legível (tamanho mínimo de fonte respeitado)</li>
+      <li>Contraste adequado entre texto e fundo</li>
+    </ul>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">08</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 9 — TAMANHO FONTE + ERROS + LEGISLAÇÃO
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Template de Rótulo</span>
+    <span class="page__header-section">Referência Rápida</span>
+  </div>
+
+  <h2 class="mt-0">Tamanho Mínimo de Fonte</h2>
+  <table class="no-break">
+    <thead><tr><th>Área do Painel Principal</th><th>Altura Mínima das Letras</th></tr></thead>
+    <tbody>
+      <tr><td>Até 40 cm²</td><td>1mm (exceto tabela nutricional)</td></tr>
+      <tr><td>40 a 170 cm²</td><td>1,2mm</td></tr>
+      <tr><td>170 a 650 cm²</td><td>1,5mm</td></tr>
+      <tr><td>Acima de 650 cm²</td><td>2mm</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size: 9.5px; color: var(--text-muted);"><strong>Tabela nutricional:</strong> mínimo 1mm para embalagens pequenas (até 100 cm²).</p>
+
+  <div class="divider--gold"></div>
+
+  <h2>Erros Mais Comuns (e Como Evitar)</h2>
+  <table class="no-break">
+    <thead><tr><th>Erro</th><th>Consequência</th><th>Solução</th></tr></thead>
+    <tbody>
+      <tr><td>Alérgenos em letra pequena</td><td class="td-incorrect">Multa + recolhimento</td><td>Caixa alta ou negrito, mesmo tamanho dos ingredientes</td></tr>
+      <tr><td>Validade sem formato correto</td><td class="td-incorrect">Notificação sanitária</td><td>Seguir formato dia/mês ou mês/ano</td></tr>
+      <tr><td>Ingredientes fora de ordem</td><td class="td-incorrect">Infração leve</td><td>Ordenar por peso decrescente</td></tr>
+      <tr><td>Sem tabela nutricional</td><td class="td-incorrect">Multa</td><td>Obrigatória para todos (exceto isentos)</td></tr>
+      <tr><td>Denominação fantasia isolada</td><td class="td-incorrect">Produto irregular</td><td>Incluir denominação de venda</td></tr>
+      <tr><td>Sem conservação pós-abertura</td><td class="td-incorrect">Risco sanitário</td><td>Incluir "Após aberto..."</td></tr>
+    </tbody>
+  </table>
+
+  <div class="divider--gold"></div>
+
+  <h2>Legislação de Referência</h2>
+  <table class="no-break">
+    <thead><tr><th>Norma</th><th>Assunto</th></tr></thead>
+    <tbody>
+      <tr><td><strong>RDC nº 727/2022</strong></td><td>Rotulagem de alimentos embalados (norma geral)</td></tr>
+      <tr><td><strong>RDC nº 429/2020</strong></td><td>Rotulagem nutricional</td></tr>
+      <tr><td><strong>IN nº 75/2020</strong></td><td>Tabelas de porções e valores diários</td></tr>
+      <tr><td><strong>Lei 10.674/2003</strong></td><td>Declaração de glúten</td></tr>
+      <tr><td><strong>Lei 13.680/2018</strong></td><td>Selo ARTE (artesanais)</td></tr>
+      <tr><td><strong>Portaria INMETRO 157/2002</strong></td><td>Conteúdo líquido</td></tr>
+      <tr><td><strong>Decreto 11.099/2022</strong></td><td>Regulamenta Selo ARTE (substitui Decreto 9.918/2019)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <div class="card" style="text-align: center; margin-top: 16px;">
+    <p style="font-size: 9px; color: var(--text-muted); margin-bottom: 4px;">
+      Este template é um material educativo e não substitui a consulta a um profissional de vigilância sanitária.
+    </p>
+    <p style="font-size: 11px; color: var(--accent); font-weight: 600; margin-bottom: 2px;">
+      Gabriel Petelinkar · alimentosartesanais.com.br
+    </p>
+    <p style="font-size: 9px; color: var(--text-muted);">
+      www.alimentosartesanais.com.br
+    </p>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">09</span>
+  </div>
+</div>
+
+</body>
+</html>

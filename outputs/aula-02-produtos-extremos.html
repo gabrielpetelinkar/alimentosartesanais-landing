@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 02 — Produtos Extremos: Categoria Estratégica no Portfólio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+
+  body {
+    width: 100vw; height: 100vh; overflow: hidden; margin: 0;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    background: #0D0D0D;
+    color: #FFFFFF;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+
+    background: #0D0D0D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide:last-child {
+    page-break-after: avoid;
+  }
+
+  /* ===== COLORS ===== */
+  :root {
+    --bg-primary: #0D0D0D;
+    --bg-secondary: #1A1A1A;
+    --bg-elevated: #222222;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --text-muted: #7A7A7A;
+    --text-warm: #FAF5EB;
+    --accent: #D4A843;
+    --accent-glow: rgba(212,168,67,0.15);
+    --accent-dark: #A08338;
+    --accent-gold: #D4A843;
+    --accent-green: #5B8C3E;
+    --accent-terracotta: #C45B3A;
+    --accent-gold-glow: rgba(212, 168, 67, 0.15);
+    --terracotta: #C45B3A;
+    --green: #5B8C3E;
+    --neutral-border: rgba(255,255,255,0.08);
+    --font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: 'Inter', 'SF Pro Text', system-ui, sans-serif;
+    --font-editorial: 'Playfair Display', 'Georgia', serif;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  .title-huge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 180px;
+    color: #D4A843;
+    line-height: 1;
+    letter-spacing: -4px;
+  }
+
+  .title-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: #FFFFFF;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+
+  .title-lg {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+
+  .title-md {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #B0B0B0;
+    line-height: 1.4;
+  }
+
+  .body-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #B0B0B0;
+    line-height: 1.5;
+  }
+
+  .caption {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #7A7A7A;
+  }
+
+  .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #D4A843;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .gold { color: #D4A843; }
+  .green { color: #5B8C3E; }
+  .terracotta { color: #C45B3A; }
+  .white { color: #FFFFFF; }
+  .muted { color: #B0B0B0; }
+
+  /* ===== DECORATIVE ===== */
+  .gold-line {
+    width: 80px;
+    height: 3px;
+    background: #D4A843;
+    margin: 20px 0;
+  }
+
+  .gold-line-wide {
+    width: 160px;
+    height: 3px;
+    background: #D4A843;
+    margin: 24px auto;
+  }
+
+  .gold-line-center {
+    width: 80px;
+    height: 3px;
+    background: #D4A843;
+    margin: 20px auto;
+  }
+
+  /* ===== LAYOUT HELPERS ===== */
+  .centered {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .left-aligned {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .split-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px 60px 60px;
+  }
+
+  /* ===== PHOTO PLACEHOLDERS ===== */
+  .photo-full {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #7A7A7A;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .photo-full.food {
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 30%, #1a1510 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.landscape {
+    background: linear-gradient(180deg, #1a2010 0%, #15200a 30%, #0a1505 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.rural {
+    background: linear-gradient(160deg, #201a0a 0%, #2a1f10 40%, #1a1510 70%, #0D0D0D 100%);
+  }
+
+  .photo-full.market {
+    background: linear-gradient(145deg, #1a1015 0%, #201520 35%, #151020 65%, #0D0D0D 100%);
+  }
+
+  .photo-half {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #5a5a5a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .photo-half.food {
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 50%, #1a1510 100%);
+  }
+
+  .photo-half.rural {
+    background: linear-gradient(135deg, #201a0a 0%, #2a1f10 50%, #1a1510 100%);
+  }
+
+  .photo-half.product {
+    background: linear-gradient(135deg, #151015 0%, #201520 50%, #0D0D0D 100%);
+  }
+
+  .photo-half.fair {
+    background: linear-gradient(135deg, #1a1510 0%, #20180a 50%, #0D0D0D 100%);
+  }
+
+  .overlay-dark {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(13, 13, 13, 0.65);
+  }
+
+  .content-over {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .content-over-center {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ===== NUMBER HIGHLIGHT ===== */
+  .number-huge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 160px;
+    color: #D4A843;
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+
+  .number-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 120px;
+    color: #D4A843;
+    line-height: 1;
+  }
+
+  /* ===== LIST ITEMS ===== */
+  .list-item {
+    margin-bottom: 28px;
+  }
+
+  .list-item .marker {
+    color: #D4A843;
+    font-size: 18px;
+    margin-right: 12px;
+  }
+
+  .list-item .item-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #FFFFFF;
+  }
+
+  .list-item .item-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #B0B0B0;
+    margin-top: 4px;
+    padding-left: 30px;
+  }
+
+  /* ===== ACTION ITEMS ===== */
+  .action-item {
+    margin-bottom: 32px;
+    padding-left: 0;
+  }
+
+  .action-item .arrow {
+    color: #D4A843;
+    font-size: 22px;
+    margin-right: 14px;
+    font-weight: 700;
+  }
+
+  .action-item .action-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .action-item .action-detail {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #B0B0B0;
+    margin-top: 4px;
+    padding-left: 36px;
+  }
+
+  /* ===== COMPARISON ===== */
+  .comparison {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .comp-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+  }
+
+  .comp-side.before {
+    background: #1A1A1A;
+    border-right: 2px solid #2a2a2a;
+  }
+
+  .comp-side.after {
+    background: #0D0D0D;
+  }
+
+  .comp-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .comp-content {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+
+  .comp-detail {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: #7A7A7A;
+    line-height: 1.5;
+  }
+
+  /* ===== STAT CARDS ===== */
+  .stat-cards {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: rgba(212, 168, 67, 0.08);
+    border: 1px solid rgba(212, 168, 67, 0.2);
+    border-radius: 8px;
+    padding: 32px 36px;
+    text-align: center;
+    min-width: 280px;
+    max-width: 340px;
+  }
+
+  .stat-card .stat-number {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    color: #D4A843;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .stat-card .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #B0B0B0;
+    line-height: 1.4;
+  }
+
+  .stat-card .stat-source {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #5a5a5a;
+    margin-top: 10px;
+  }
+
+  /* ===== SLIDE COUNTER ===== */
+  .slide-number {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #4a4a4a;
+    z-index: 10;
+  }
+
+  .course-tag {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3a3a3a;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar {
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .progress-bar .phase {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4a4a4a;
+  }
+
+  .progress-bar .phase.active {
+    color: #D4A843;
+  }
+
+  .progress-bar .phase-dot {
+    color: #3a3a3a;
+    font-size: 10px;
+  }
+
+  /* ===== CHAPTER BADGE ===== */
+  .chapter-badge {
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 300px;
+    color: rgba(212, 168, 67, 0.04);
+    line-height: 1;
+    letter-spacing: -10px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ===== CASE CARD ===== */
+  .case-bar {
+    background: rgba(212, 168, 67, 0.08);
+    border-left: 4px solid #D4A843;
+    padding: 24px 32px;
+    margin-top: 20px;
+  }
+
+  /* ===== EXERCISE ===== */
+  .exercise-box {
+    border: 2px solid #D4A843;
+    border-radius: 8px;
+    padding: 40px 50px;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  /* ===== NEXT CLASS TEASER ===== */
+  .next-class {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(212, 168, 67, 0.3);
+  }
+
+  /* ===== PHOTO GRID ===== */
+  .photo-grid {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    padding: 0 120px;
+  }
+
+  .photo-grid-item {
+    flex: 1;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .photo-grid-item .photo-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #5a5a5a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .photo-grid-item .photo-caption {
+    padding: 14px 16px;
+    background: #1A1A1A;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #B0B0B0;
+    line-height: 1.4;
+  }
+
+  /* ===== SPEAKER NOTES ===== */
+  .speaker-notes {
+    display: none;
+  }
+
+.slide-counter {
+  position: fixed; bottom: 20px; left: 30px; z-index: 50;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7A7A7A; opacity: 0.5; letter-spacing: 1px;
+}
+
+/* Progress bar */
+.progress {
+  position: absolute; top: 28px; right: 40px; z-index: 10;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: #4a4a4a;
+}
+.progress .active { color: var(--accent); font-weight: 700; }
+.progress .dot { width: 6px; height: 6px; border-radius: 50%; background: #333; }
+.progress .dot.active { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.progress .line { width: 20px; height: 1px; background: #333; }
+
+
+/* Chapter badge */
+.ch-badge {
+  position: absolute; top: 24px; left: 40px; z-index: 10;
+  font-family: var(--font-display); font-weight: 800; font-size: 14px;
+  color: var(--accent); letter-spacing: 2px; opacity: 0.6;
+}
+
+
+/* Aula label */
+.aula-label {
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+
+
+/* Glow background */
+.glow-bg {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%);
+  top: -100px; right: -100px; z-index: 0; pointer-events: none;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: HOOK / ABERTURA                                      -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/aula02-queijo-canastra.png') center/cover no-repeat !important;" class="photo-full food">
+    
+  </div>
+  <div class="overlay-dark"></div>
+  <div class="content-over">
+    <div style="margin-bottom: 60px;">
+      <div class="label" style="margin-bottom: 20px; font-size: 15px;">AULA 02 · CRIAR</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 46px; color: #FFFFFF; line-height: 1.2; max-width: 850px;">
+        O produto que quase ninguém compra pode ser o responsável por fazer <span class="gold">todo mundo</span> conhecer sua marca.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">01 / 24</div>
+  <div class="speaker-notes">Hook stories10x — abrir com provocação sobre o papel dos produtos extremos no portfólio.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: TÍTULO DA AULA                                       -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="glow-bg"></div>
+  <div class="centered">
+    <div class="progress-bar">
+      <span class="phase active">CRIAR</span>
+      <span class="phase-dot">&middot;</span>
+      <span class="phase">VENDER</span>
+      <span class="phase-dot">&middot;</span>
+      <span class="phase">ESCALAR</span>
+    </div>
+    <div class="chapter-badge">02</div>
+    <div class="title-huge" style="margin-bottom: 24px;">02</div>
+    <div class="title-lg" style="margin-bottom: 12px;">PRODUTOS EXTREMOS</div>
+    <div class="subtitle">Categoria estratégica no portfólio.</div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">02 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: CONCEITO CENTRAL                                     -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="chapter-badge">02</div>
+    <div style="max-width: 900px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 38px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        Produtos de nicho extremo não são um problema. São uma <span class="gold">categoria estratégica</span> dentro de um portfólio bem construído.
+      </div>
+      <div class="gold-line-center" style="margin-top: 32px;"></div>
+    </div>
+  </div>
+  <div class="slide-number">03 / 24</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: FOTO + INSIGHT (Definição)                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/jamon-iberico-de-bellota.jpg') center/cover no-repeat !important;" class="photo-half food">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Intensidade elevada acima do padrão — seja em sabor, técnica ou <span class="gold">proposta de uso.</span>
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Chamamos de produtos extremos aqueles com alguma característica elevada acima do padrão tradicional: intensidade sensorial, tempo de produção, complexidade técnica.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: LISTA — Tipos de produtos extremos                   -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">EXEMPLOS DE PRODUTOS EXTREMOS</div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Queijos com maturação muito longa</span></div>
+      <div class="item-desc">Acima de 12, 18 ou 24 meses — complexidade que se constrói com o tempo.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Cachaças ultra envelhecidas</span></div>
+      <div class="item-desc">Barris selecionados, anos de descanso, perfil sensorial único.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Molhos extremamente ardidos</span></div>
+      <div class="item-desc">Pimentas de alto teor, público fiel e apaixonado.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Vinagres muito ácidos ou concentrados</span></div>
+      <div class="item-desc">Fermentação longa, uso gastronômico de alto valor.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Fermentados com sabores intensos</span></div>
+      <div class="item-desc">Complexidade microbiológica e narrativa de processo.</div>
+    </div>
+  </div>
+  <div class="slide-number">05 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: PHOTO GRID — dois produtos lado a lado               -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered" style="padding: 60px 0;">
+    <div class="label" style="margin-bottom: 32px;">EXTREMOS QUE POSICIONAM</div>
+    <div class="photo-grid">
+      <div class="photo-grid-item">
+        <div class="photo-area" style="background:url('../assets/aulas/Canastra de 90 dias (2).png') center/cover no-repeat !important; background:url('../assets/aulas/Canastra de 90 dias (2).png') center/cover no-repeat !important;">
+          
+        </div>
+        <div class="photo-caption">Queijo maturado 24 meses — o produto que ganha prêmios e abre portas.</div>
+      </div>
+      <div class="photo-grid-item">
+        <div class="photo-area" style="background:url('../assets/aulas/aula02-linha-premium.png') center/cover no-repeat !important; background:url('../assets/aulas/aula02-linha-premium.png') center/cover no-repeat !important;">
+          
+        </div>
+        <div class="photo-caption">Molho edição limitada — lote numerado que gera desejo e exclusividade.</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">06 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: CASE (foto bg)                                       -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/Captura de Tela 2026-03-23 às 14.46.28.png') center/cover no-repeat !important;" class="photo-full rural">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.2) 100%);"></div>
+  <div class="content-over">
+    <div class="label" style="margin-bottom: 16px; font-size: 14px;">CASE</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: #FFFFFF; margin-bottom: 16px;">
+      O QUEIJO QUE NINGUÉM COMPRAVA
+    </div>
+    <div class="body-text" style="max-width: 750px;">
+      Um produtor de queijo artesanal criou uma linha de maturação de 24 meses. Vendia pouco — mas foi esse produto que garantiu prêmios, cobertura de imprensa e acesso a restaurantes autorais. Hoje, o queijo extremo responde por 8% do faturamento, mas é responsável por 60% dos novos clientes.
+    </div>
+  </div>
+  <div class="slide-number">07 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: TRANSIÇÃO — O QUE ESTÁ ACONTECENDO NO MERCADO        -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE ESTÁ ACONTECENDO<br>NO MERCADO
+    </div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">08 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: HERO NUMBER — 12%                                    -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="number-huge">12%</div>
+    <div style="max-width: 650px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 20px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        Queijos com maturação acima de 18 meses representam menos de 12% das vendas — mas são responsáveis por <span class="gold">prêmios e reconhecimento técnico.</span>
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 20px;">— Data &amp; Trends European Food and Drink Industry, 2024</div>
+  </div>
+  <div class="slide-number">09 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: FOTO + INSIGHT 2 (Catalisadores)                    -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/queijo_(2).jpg') center/cover no-repeat !important;" class="photo-half fair">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div class="body-text" style="font-size: 22px; margin-bottom: 16px;">Produtos extremos não são campeões de volume. São</div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 40px; color: #D4A843; line-height: 1.2;">
+          CATALISADORES<br>DE POSICIONAMENTO.
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 24px 0;"></div>
+      <div class="body-text" style="font-size: 18px;">
+        Acesso a lojas especializadas, empórios premium, restaurantes autorais, eventos gastronômicos, concursos e premiações.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">10 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: TRANSIÇÃO — O QUE VOCÊ PODE APRENDER                -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE VOCÊ PODE<br>APRENDER COM ISSO
+    </div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">11 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: INSIGHT 1 — Categoria estratégica                   -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="chapter-badge">02</div>
+    <div style="max-width: 900px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 42px; color: #FFFFFF; line-height: 1.25; text-align: center;">
+        Produtos extremos devem existir como <span class="gold">categoria estratégica,</span> não como aposta única.
+      </div>
+      <div class="gold-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px; font-size: 22px;">
+        O faturamento recorrente vem dos produtos equilibrados — versáteis e fáceis de incorporar ao dia a dia.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12 / 24</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: INSIGHT 2 — Ponte para mercados                     -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 850px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 36px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        Funcionam como <span class="gold">ponte</span> para mercados de maior valor percebido e ajudam a construir <span class="gold">autoridade técnica.</span>
+      </div>
+      <div class="gold-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px;">
+        Criam diferenciação real, difícil de copiar — e constroem narrativa de marca.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">13 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: FOTO + INSIGHT 3 (O cliente que conhece a marca)    -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/the-macallan-reach-de-81-anos-o-uisque-mais-antigo-do-mundo-em-2022-1644435542283_v2_900x506.jpg') center/cover no-repeat !important;" class="photo-half product">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Raramente será o campeão de vendas — mas frequentemente será o produto que faz o cliente <span class="gold">conhecer a marca.</span>
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Quem entra pelo extremo deve ser conduzido para os produtos principais. O extremo abre a porta, o portfólio retém.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">14 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: TRANSIÇÃO — TRANSFORME EM VANTAGEM                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #D4A843; text-align: center;">
+      TRANSFORME ISSO EM<br>VANTAGEM COMPETITIVA
+    </div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">15 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: AÇÕES 1-3                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Inclua pelo menos um produto extremo no portfólio</span></div>
+      <div class="action-detail">Ele não precisa vender muito — precisa posicionar sua marca nos canais certos.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Deixe explícito o papel dele: "Este produto não é para todos"</span></div>
+      <div class="action-detail">A exclusividade intencional atrai o público certo e valoriza toda a linha.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Use-o para acessar novos canais</span></div>
+      <div class="action-detail">Lojas especializadas, empórios premium, restaurantes autorais — portas que se abrem pelo extremo.</div>
+    </div>
+  </div>
+  <div class="slide-number">16 / 24</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: AÇÕES 4-5                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Explore edições limitadas, lotes numerados e histórias de processo</span></div>
+      <div class="action-detail">Escassez e narrativa transformam um produto artesanal em objeto de desejo.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Faça a ponte: quem entra pelo extremo deve ser conduzido para os produtos principais</span></div>
+      <div class="action-detail">Kit de degustação, cross-selling, comunicação integrada — o extremo abre a porta, o portfólio fecha a venda.</div>
+    </div>
+  </div>
+  <div class="slide-number">17 / 24</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: ANTES / DEPOIS                                      -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="comparison">
+    <div class="comp-side before">
+      <div class="comp-label terracotta">ANTES ✗</div>
+      <div class="comp-content" style="color: #888;">
+        "Vendo só produtos<br>equilibrados, para todos"
+      </div>
+      <div class="comp-detail">
+        Portfólio genérico, sem diferenciação.<br><br>Invisível em mercados premium.<br>Compete apenas por preço.
+      </div>
+    </div>
+    <div class="comp-side after">
+      <div class="comp-label green">DEPOIS ✓</div>
+      <div class="comp-content white">
+        "Tenho um produto extremo<br>que posiciona a marca inteira"
+      </div>
+      <div class="comp-detail" style="color: #B0B0B0;">
+        Autoridade técnica construída.<br><br>Acesso a canais premium.<br>Compete por <span style="color: #D4A843;">posicionamento.</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">18 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: HERO NUMBER — R$ 85,30                              -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 100px; color: #D4A843; line-height: 1; letter-spacing: -2px;">R$ 85,30</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 20px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        é o ticket médio de compra de condimentos no Brasil — o maior mercado da <span class="gold">América Latina.</span>
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 20px;">— Varejo360/ABIA, 2024</div>
+  </div>
+  <div class="slide-number">19 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: FOTO + REFLEXÃO                                     -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/entretenimento-tacho-de-cobre-1jpeg-1709135549.jpg') center/cover no-repeat !important;" class="photo-half rural">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div class="body-text" style="font-size: 22px; margin-bottom: 16px;">Produtores que só fazem produtos "para todos"</div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 36px; color: #FFFFFF; line-height: 1.2;">
+          ficam <span class="gold">invisíveis.</span>
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 24px 0;"></div>
+      <div class="body-text" style="font-size: 18px;">
+        O extremo constrói a história. O equilibrado sustenta o faturamento. Os dois precisam coexistir.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">20 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: EXERCÍCIO                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 32px;">EXERCÍCIO PRA AGORA</div>
+    <div class="exercise-box">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 30px; color: #FFFFFF; line-height: 1.3; margin-bottom: 24px;">
+        Identifique um produto do seu portfólio (ou crie um) que poderia ser seu <span class="gold">produto extremo.</span>
+      </div>
+      <div class="gold-line-center"></div>
+      <div class="body-text" style="margin-top: 20px; font-size: 20px;">
+        Pense: qual produto pode não vender muito, mas faz todo mundo lembrar da sua marca?
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">21 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: RESUMO                                              -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">O QUE LEVAR DESTA AULA</div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Produtos extremos = categoria estratégica, não aposta única</span></div>
+      <div class="item-desc">Existem para construir posicionamento, não para gerar volume.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">São pontes para mercados de maior valor</span></div>
+      <div class="item-desc">Lojas especializadas, empórios, restaurantes autorais, concursos e premiações.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Constroem autoridade técnica e narrativa de marca</span></div>
+      <div class="item-desc">Diferenciação real, difícil de copiar — o extremo é sua assinatura.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">O extremo abre a porta, o portfólio retém o cliente</span></div>
+      <div class="item-desc">Conduza quem entra pelo extremo para os produtos principais da linha.</div>
+    </div>
+  </div>
+  <div class="slide-number">22 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: FECHAMENTO — Citação + Próxima aula                 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/aula02-produtor-cave-ia.png') center/cover no-repeat !important;" class="photo-full landscape">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: rgba(13,13,13,0.6);"></div>
+  <div class="content-over-center">
+    <div class="quote" style="max-width: 750px; margin-bottom: 32px;">
+      "Produtos extremos não existem para gerar volume — existem para construir posicionamento."
+    </div>
+    <div class="gold-line-center"></div>
+    <div class="next-class" style="margin-top: 32px;">
+      <div class="label" style="font-size: 14px; margin-bottom: 8px;">PRÓXIMA AULA</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF;">Produtos Agridoces.</div>
+      <div class="body-text" style="font-size: 16px; margin-top: 4px;">O equilíbrio que conquista paladares.</div>
+    </div>
+  </div>
+  <div class="slide-number">23 / 24</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: ENCERRAMENTO                                        -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 16px; letter-spacing: 4px;">CURSO ONLINE</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 36px; color: #FFFFFF; line-height: 1.3; margin-bottom: 8px;">
+      GUIA ESTRATÉGICO PARA<br>PRODUTORES ARTESANAIS
+    </div>
+    <div class="subtitle" style="margin-bottom: 32px;">Gabriel Petelinkar.</div>
+    <div class="gold-line-center"></div>
+    <div style="margin-top: 28px; display: flex; gap: 40px;">
+      <div class="body-text" style="font-size: 16px; color: #D4A843;">@gabrielpetelinkar</div>
+      <div class="body-text" style="font-size: 16px; color: #D4A843;">oriza.agro</div>
+    </div>
+  </div>
+  <div class="slide-number">24 / 24</div>
+</div>
+
+<div class="slide-counter" id="slideCounter">1 / ?</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.slide');
+  var current = 0;
+  var lastNav = 0;
+  var DEBOUNCE = 300;
+  var counter = document.getElementById('slideCounter');
+
+  function showSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = i === index ? 'flex' : 'none';
+    }
+    current = index;
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function next() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current < slides.length - 1) showSlide(current + 1);
+  }
+
+  function prev() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current > 0) showSlide(current - 1);
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); next();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); prev();
+    } else if (e.key === 'n' || e.key === 'N') {
+      document.body.classList.toggle('show-notes');
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(slides.length - 1);
+    }
+  });
+
+  document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    if (e.deltaY > 0) next(); else prev();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

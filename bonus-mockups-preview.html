@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview — Mockups dos Bonus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A0A0A;
+      color: #E0E0E0;
+      min-height: 100vh;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #D4A853;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #888;
+      font-size: 0.875rem;
+      margin-bottom: 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ========== BONUS CARD ========== */
+    .bonus-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,168,83,0.15);
+      border-radius: 16px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .bonus-card:hover {
+      border-color: rgba(212,168,83,0.35);
+      box-shadow: 0 0 30px rgba(212,168,83,0.08);
+    }
+
+    .bonus-card__tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #0A0A0A;
+      background: #D4A853;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .bonus-card__title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .bonus-card__desc {
+      font-size: 0.85rem;
+      color: #999;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .bonus-card__value {
+      font-size: 0.8rem;
+      color: #D4A853;
+      font-weight: 600;
+    }
+
+    /* ========== MOCKUP: ROTULO (document/label) ========== */
+    .mockup-rotulo {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .mockup-rotulo__header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mockup-rotulo__icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #D4A853 0%, #B8902E 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #0A0A0A;
+      font-weight: 700;
+    }
+
+    .mockup-rotulo__title-bar {
+      flex: 1;
+    }
+
+    .mockup-rotulo__title-bar span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    .mockup-rotulo__title-bar small {
+      font-size: 0.65rem;
+      color: #666;
+    }
+
+    .mockup-rotulo__label {
+      background: #1A1A1A;
+      border: 1px solid rgba(212,168,83,0.2);
+      border-radius: 8px;
+      padding: 16px;
+      position: relative;
+    }
+
+    .mockup-rotulo__label-name {
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #D4A853;
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .mockup-rotulo__label-sub {
+      text-align: center;
+      font-size: 0.6rem;
+      color: #666;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .mockup-rotulo__table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .mockup-rotulo__table th {
+      text-align: left;
+      color: #D4A853;
+      padding: 3px 6px;
+      border-bottom: 1px solid rgba(212,168,83,0.2);
+      font-weight: 600;
+    }
+
+    .mockup-rotulo__table td {
+      padding: 3px 6px;
+      color: #888;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .mockup-rotulo__table td:last-child {
+      text-align: right;
+      color: #aaa;
+    }
+
+    .mockup-rotulo__footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 0.55rem;
+      color: #555;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .mockup-rotulo__allergens {
+      margin-top: 8px;
+      font-size: 0.55rem;
+      color: #c0392b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    /* ========== MOCKUP: PLANILHA (spreadsheet) ========== */
+    .mockup-planilha {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .mockup-planilha__toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: #181818;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mockup-planilha__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .mockup-planilha__dot--r { background: #e74c3c; }
+    .mockup-planilha__dot--y { background: #f39c12; }
+    .mockup-planilha__dot--g { background: #27ae60; }
+
+    .mockup-planilha__tab {
+      font-size: 0.65rem;
+      color: #888;
+      background: rgba(255,255,255,0.05);
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    .mockup-planilha__tab--active {
+      color: #D4A853;
+      background: rgba(212,168,83,0.1);
+    }
+
+    .mockup-planilha__grid {
+      display: grid;
+      grid-template-columns: 40px repeat(4, 1fr);
+      font-size: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .mockup-planilha__cell {
+      padding: 6px 8px;
+      border-right: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: #888;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .mockup-planilha__cell--header {
+      background: #1A1A1A;
+      color: #D4A853;
+      font-weight: 600;
+      font-size: 0.55rem;
+      text-align: center;
+    }
+
+    .mockup-planilha__cell--row-num {
+      background: #141414;
+      color: #555;
+      text-align: center;
+      font-size: 0.55rem;
+    }
+
+    .mockup-planilha__cell--highlight {
+      color: #27ae60;
+      font-weight: 600;
+    }
+
+    .mockup-planilha__cell--negative {
+      color: #e74c3c;
+    }
+
+    .mockup-planilha__cell--gold {
+      color: #D4A853;
+      font-weight: 600;
+    }
+
+    .mockup-planilha__summary {
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 14px;
+      background: #141414;
+      border-top: 1px solid rgba(212,168,83,0.15);
+    }
+
+    .mockup-planilha__metric {
+      text-align: center;
+    }
+
+    .mockup-planilha__metric-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #D4A853;
+      display: block;
+    }
+
+    .mockup-planilha__metric-label {
+      font-size: 0.55rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ========== MOCKUP: FORNECEDORES (supplier list) ========== */
+    .mockup-fornecedores {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .mockup-fornecedores__header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mockup-fornecedores__badge {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #D4A853 0%, #B8902E 100%);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #0A0A0A;
+    }
+
+    .mockup-fornecedores__header-text {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    .mockup-fornecedores__category {
+      margin-bottom: 12px;
+    }
+
+    .mockup-fornecedores__category-title {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: #D4A853;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mockup-fornecedores__category-title::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: #D4A853;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .mockup-fornecedores__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 4px;
+      margin-bottom: 3px;
+      font-size: 0.6rem;
+    }
+
+    .mockup-fornecedores__item-name {
+      color: #bbb;
+      font-weight: 500;
+    }
+
+    .mockup-fornecedores__item-region {
+      color: #666;
+      font-size: 0.55rem;
+      background: rgba(255,255,255,0.04);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .mockup-fornecedores__item-check {
+      color: #27ae60;
+      font-weight: 700;
+    }
+
+    .mockup-fornecedores__total {
+      text-align: center;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.6rem;
+      color: #666;
+    }
+
+    .mockup-fornecedores__total strong {
+      color: #D4A853;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Preview — Mockups dos Bonus (CSS puro)</h1>
+  <p class="subtitle">Visualizacao de como os bonus podem aparecer na LP sem precisar de imagens externas</p>
+
+  <div class="grid">
+
+    <!-- ======================== BONUS 1: ROTULO ======================== -->
+    <div class="bonus-card">
+      <span class="bonus-card__tag">Bonus 1</span>
+
+      <div class="mockup-rotulo">
+        <div class="mockup-rotulo__header">
+          <div class="mockup-rotulo__icon">R</div>
+          <div class="mockup-rotulo__title-bar">
+            <span>Template de Rotulo</span>
+            <small>Modelo editavel — PDF</small>
+          </div>
+        </div>
+        <div class="mockup-rotulo__label">
+          <div class="mockup-rotulo__label-name">Geleia de Pimenta</div>
+          <div class="mockup-rotulo__label-sub">Produto Artesanal</div>
+          <table class="mockup-rotulo__table">
+            <thead>
+              <tr>
+                <th>Info. Nutricional</th>
+                <th style="text-align:right">por 30g</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Valor energetico</td><td>72 kcal</td></tr>
+              <tr><td>Carboidratos</td><td>18g</td></tr>
+              <tr><td>Acucares</td><td>15g</td></tr>
+              <tr><td>Sodio</td><td>2mg</td></tr>
+            </tbody>
+          </table>
+          <div class="mockup-rotulo__allergens">Alergenicos: nao contem</div>
+          <div class="mockup-rotulo__footer">
+            <span>Lote: 2026-001</span>
+            <span>Val: 12/2026</span>
+            <span>SIF/ARTE</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="bonus-card__title">Template de Rotulo com Informacoes Obrigatorias</h3>
+      <p class="bonus-card__desc">Modelo editavel com tabela nutricional, alergenicos, lote, validade e tudo que a legislacao exige.</p>
+      <span class="bonus-card__value">Valor: R$ 67</span>
+    </div>
+
+    <!-- ======================== BONUS 2: PLANILHA ======================== -->
+    <div class="bonus-card">
+      <span class="bonus-card__tag">Bonus 2</span>
+
+      <div class="mockup-planilha">
+        <div class="mockup-planilha__toolbar">
+          <span class="mockup-planilha__dot mockup-planilha__dot--r"></span>
+          <span class="mockup-planilha__dot mockup-planilha__dot--y"></span>
+          <span class="mockup-planilha__dot mockup-planilha__dot--g"></span>
+          <span class="mockup-planilha__tab mockup-planilha__tab--active">Precificacao</span>
+          <span class="mockup-planilha__tab">Comparativo</span>
+        </div>
+        <div class="mockup-planilha__grid">
+          <!-- Header row -->
+          <div class="mockup-planilha__cell mockup-planilha__cell--header"></div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--header">Produto</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--header">Custo</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--header">Preco</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--header">Margem</div>
+          <!-- Row 1 -->
+          <div class="mockup-planilha__cell mockup-planilha__cell--row-num">1</div>
+          <div class="mockup-planilha__cell">Geleia 250g</div>
+          <div class="mockup-planilha__cell">R$ 8,40</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--gold">R$ 28,90</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--highlight">71%</div>
+          <!-- Row 2 -->
+          <div class="mockup-planilha__cell mockup-planilha__cell--row-num">2</div>
+          <div class="mockup-planilha__cell">Molho 150ml</div>
+          <div class="mockup-planilha__cell">R$ 5,20</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--gold">R$ 19,90</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--highlight">74%</div>
+          <!-- Row 3 -->
+          <div class="mockup-planilha__cell mockup-planilha__cell--row-num">3</div>
+          <div class="mockup-planilha__cell">Kit Premium</div>
+          <div class="mockup-planilha__cell">R$ 22,00</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--gold">R$ 89,90</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--highlight">76%</div>
+          <!-- Row 4 -->
+          <div class="mockup-planilha__cell mockup-planilha__cell--row-num">4</div>
+          <div class="mockup-planilha__cell">Queijo 500g</div>
+          <div class="mockup-planilha__cell">R$ 14,50</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--gold">R$ 54,90</div>
+          <div class="mockup-planilha__cell mockup-planilha__cell--highlight">74%</div>
+        </div>
+        <div class="mockup-planilha__summary">
+          <div class="mockup-planilha__metric">
+            <span class="mockup-planilha__metric-value">73%</span>
+            <span class="mockup-planilha__metric-label">Margem Media</span>
+          </div>
+          <div class="mockup-planilha__metric">
+            <span class="mockup-planilha__metric-value">3.2x</span>
+            <span class="mockup-planilha__metric-label">Markup</span>
+          </div>
+          <div class="mockup-planilha__metric">
+            <span class="mockup-planilha__metric-value">R$ 193</span>
+            <span class="mockup-planilha__metric-label">Receita/Lote</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="bonus-card__title">Planilha de Precificacao</h3>
+      <p class="bonus-card__desc">Calcule preco baseado em valor, com markup, margem e comparativo de concorrentes.</p>
+      <span class="bonus-card__value">Valor: R$ 47</span>
+    </div>
+
+    <!-- ======================== BONUS 3: FORNECEDORES ======================== -->
+    <div class="bonus-card">
+      <span class="bonus-card__tag">Bonus 3</span>
+
+      <div class="mockup-fornecedores">
+        <div class="mockup-fornecedores__header">
+          <div class="mockup-fornecedores__badge">F</div>
+          <span class="mockup-fornecedores__header-text">Lista de Fornecedores Verificados</span>
+        </div>
+
+        <div class="mockup-fornecedores__category">
+          <div class="mockup-fornecedores__category-title">Embalagens</div>
+          <div class="mockup-fornecedores__item">
+            <span class="mockup-fornecedores__item-name">Videplast Embalagens</span>
+            <span class="mockup-fornecedores__item-region">Sul</span>
+            <span class="mockup-fornecedores__item-check">&#10003;</span>
+          </div>
+          <div class="mockup-fornecedores__item">
+            <span class="mockup-fornecedores__item-name">Pack Premium Brasil</span>
+            <span class="mockup-fornecedores__item-region">Sudeste</span>
+            <span class="mockup-fornecedores__item-check">&#10003;</span>
+          </div>
+        </div>
+
+        <div class="mockup-fornecedores__category">
+          <div class="mockup-fornecedores__category-title">Rotulos e Lacres</div>
+          <div class="mockup-fornecedores__item">
+            <span class="mockup-fornecedores__item-name">Grafica Artesanal</span>
+            <span class="mockup-fornecedores__item-region">Sudeste</span>
+            <span class="mockup-fornecedores__item-check">&#10003;</span>
+          </div>
+          <div class="mockup-fornecedores__item">
+            <span class="mockup-fornecedores__item-name">Rotula Facil</span>
+            <span class="mockup-fornecedores__item-region">Nacional</span>
+            <span class="mockup-fornecedores__item-check">&#10003;</span>
+          </div>
+        </div>
+
+        <div class="mockup-fornecedores__category">
+          <div class="mockup-fornecedores__category-title">Insumos</div>
+          <div class="mockup-fornecedores__item">
+            <span class="mockup-fornecedores__item-name">Coalho Natural MG</span>
+            <span class="mockup-fornecedores__item-region">MG</span>
+            <span class="mockup-fornecedores__item-check">&#10003;</span>
+          </div>
+          <div class="mockup-fornecedores__item">
+            <span class="mockup-fornecedores__item-name">Pimenta do Reino PA</span>
+            <span class="mockup-fornecedores__item-region">Norte</span>
+            <span class="mockup-fornecedores__item-check">&#10003;</span>
+          </div>
+        </div>
+
+        <div class="mockup-fornecedores__total">
+          <strong>42 fornecedores</strong> verificados em 5 categorias
+        </div>
+      </div>
+
+      <h3 class="bonus-card__title">Lista de Fornecedores de Embalagens e Insumos</h3>
+      <p class="bonus-card__desc">Fornecedores testados, organizados por categoria e regiao.</p>
+      <span class="bonus-card__value">Valor: R$ 47</span>
+    </div>
+
+  </div>
+
+</body>
+</html>

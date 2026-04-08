@@ -26,15 +26,14 @@
   --font-editorial: 'Playfair Display', 'Georgia', serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
-body { background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+html { overflow: hidden; }
+body { background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; width: 100vw; height: 100vh; overflow: hidden; margin: 0; }
 
-@page { size: 1280px 720px; margin: 0; }
+@page { size: 1920px 1080px; margin: 0; }
 @media print {
-  html { scroll-snap-type: none; }
-  .slide { page-break-after: always; page-break-inside: avoid; width: 1280px; height: 720px; }
+  .slide { page-break-after: always; page-break-inside: avoid; width: 1920px; height: 1080px; }
   .slide:last-child { page-break-after: avoid; }
-  .nav-hint, .speaker-notes { display: none !important; }
+  .nav-hint, .speaker-notes, .slide-counter { display: none !important; }
 }
 
 .slide {
@@ -42,7 +41,6 @@ body { background: var(--bg-primary); color: var(--text-primary); font-family: v
   display: flex; flex-direction: column; justify-content: center; align-items: center;
   padding: 60px 80px;
   position: relative; overflow: hidden;
-  scroll-snap-align: start;
 }
 .slide-inner { max-width: 1120px; width: 100%; position: relative; z-index: 2; }
 
@@ -161,6 +159,11 @@ body.show-notes .speaker-notes { display: block; }
   font-family: var(--font-body); font-size: 12px; color: var(--text-muted);
   opacity: 0.4;
 }
+.slide-counter {
+  position: fixed; bottom: 20px; left: 30px; z-index: 50;
+  font-family: var(--font-display); font-size: 13px; font-weight: 600;
+  color: var(--text-muted); opacity: 0.5; letter-spacing: 1px;
+}
 
 /* Background images on slides */
 .slide-bg-img {
@@ -195,11 +198,11 @@ body.show-notes .speaker-notes { display: block; }
 /* Topic list */
 .topic-list {
   list-style: none; padding: 0; margin: 0;
-  display: flex; flex-direction: column; gap: 12px;
+  display: flex; flex-direction: column; gap: 6px;
 }
 .topic-list li {
-  font-family: var(--font-body); font-size: 18px; color: var(--text-secondary);
-  padding: 12px 20px; border-left: 3px solid; border-radius: 0 8px 8px 0;
+  font-family: var(--font-body); font-size: 16px; color: var(--text-secondary);
+  padding: 8px 16px; border-left: 3px solid; border-radius: 0 8px 8px 0;
   background: var(--bg-secondary);
 }
 .topic-list li strong {
@@ -249,7 +252,7 @@ body.show-notes .speaker-notes { display: block; }
     <p class="caption" style="letter-spacing:4px; text-transform:uppercase; margin-bottom:40px; color:var(--criar-primary);">CURSO COMPLETO - COMO CRIAR, VENDER E ESCALAR ALIMENTOS ARTESANAIS</p>
     <h1 class="title-hero" style="margin-bottom:24px;">Você produz algo <span class="gold">incrível</span>.<br>Mas o mercado sabe disso?</h1>
     <hr class="gold-line criar" style="margin:24px auto;">
-    <p class="body-text" style="max-width:700px; margin:0 auto;">Nos próximos 15 capítulos, você vai descobrir como transformar seu produto artesanal em uma marca reconhecida, desejada e sustentável.</p>
+    <p class="body-text" style="max-width:700px; margin:0 auto;">Você vai descobrir como transformar seu produto artesanal em uma marca reconhecida, desejada e sustentável.</p>
   </div>
   <div class="speaker-notes">Vou começar com uma verdade que incomoda. O Brasil tem milhares de produtores artesanais fazendo produtos extraordinários. Mas a maioria deles é invisível. Produto bom que ninguém conhece não vende, não cresce, não sobrevive. Este curso existe para mudar isso.</div>
 </section>
@@ -322,7 +325,7 @@ body.show-notes .speaker-notes { display: block; }
   <div class="glow-bg glow-mixed"></div>
   <div class="slide-inner" style="text-align:center;">
     <p class="caption" style="letter-spacing:3px; text-transform:uppercase; margin-bottom:16px;">O MÉTODO</p>
-    <h2 class="title-xl" style="margin-bottom:40px;">3 pilares. 15 capítulos.<br>Um caminho completo.</h2>
+    <h2 class="title-xl" style="margin-bottom:40px;">3 pilares. Um caminho<br><span class="gold">completo</span>.</h2>
     <div style="display:flex; gap:24px;">
       <div class="pillar-card" style="border-top:3px solid var(--criar-primary);">
         <p class="pillar-name gold">CRIAR</p>
@@ -341,7 +344,7 @@ body.show-notes .speaker-notes { display: block; }
       </div>
     </div>
   </div>
-  <div class="speaker-notes">O curso é dividido em 3 pilares: CRIAR — como diferenciar seu produto. VENDER — como contar sua história e se conectar com o consumidor. ESCALAR — como crescer com gestão, propósito e credibilidade. São 15 capítulos práticos, diretos e aplicáveis.</div>
+  <div class="speaker-notes">O curso é dividido em 3 pilares: CRIAR — como diferenciar seu produto. VENDER — como contar sua história e se conectar com o consumidor. ESCALAR — como crescer com gestão, propósito e credibilidade. Capítulos práticos, diretos e aplicáveis.</div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
@@ -352,10 +355,10 @@ body.show-notes .speaker-notes { display: block; }
   <div class="glow-bg glow-criar"></div>
   <div class="slide-inner">
     <p class="group-label criar">PILAR 1</p>
-    <h2 class="title-hero gold" style="margin-bottom:16px;">CRIAR</h2>
-    <p class="subtitle" style="margin-bottom:32px;">O que faz um produto artesanal se destacar em sabor, qualidade e autenticidade.</p>
-    <hr class="gold-line criar">
-    <ul class="topic-list" style="margin-top:24px;">
+    <h2 class="title-xl gold" style="margin-bottom:8px;">CRIAR</h2>
+    <p class="subtitle" style="margin-bottom:16px; font-size:18px;">O que faz um produto artesanal se destacar em sabor, qualidade e autenticidade.</p>
+    <hr class="gold-line criar" style="margin:12px 0;">
+    <ul class="topic-list" style="margin-top:12px;">
       <li style="border-color:var(--criar-primary);"><strong class="gold">1.</strong> Ingredientes nativos — seu território conta uma história única</li>
       <li style="border-color:var(--criar-primary);"><strong class="gold">2.</strong> Produtos extremos — sua vitrine estratégica</li>
       <li style="border-color:var(--criar-primary);"><strong class="gold">3.</strong> Agridoces — o equilíbrio que conquista paladares</li>
@@ -448,7 +451,7 @@ body.show-notes .speaker-notes { display: block; }
       </div>
     </div>
   </div>
-  <div class="speaker-notes">Esta é a jornada completa. Primeiro você diferencia seu produto. Depois encontra seu nicho. Então conta sua história e se conecta ao consumidor. Por fim, escala com propósito, parcerias e certificações. 15 capítulos que te levam de produtor a marca reconhecida.</div>
+  <div class="speaker-notes">Esta é a jornada completa. Primeiro você diferencia seu produto. Depois encontra seu nicho. Então conta sua história e se conecta ao consumidor. Por fim, escala com propósito, parcerias e certificações. Uma jornada que te leva de produtor a marca reconhecida.</div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
@@ -522,9 +525,9 @@ body.show-notes .speaker-notes { display: block; }
     </div>
     <hr class="gold-line criar" style="width:160px; margin:32px auto;">
     <p class="subtitle" style="max-width:600px; margin:0 auto; margin-bottom:32px;">O reconhecimento que seu trabalho merece começa agora.</p>
-    <p class="body-text" style="color:var(--text-muted);">15 capítulos. 3 pilares. 1 verdade:<br>O artesanal do futuro começa com quem decide fazer diferente <span class="gold">hoje</span>.</p>
+    <p class="body-text" style="color:var(--text-muted);">3 pilares. 1 verdade:<br>O artesanal do futuro começa com quem decide fazer diferente <span class="gold">hoje</span>.</p>
   </div>
-  <div class="speaker-notes">Aplique. Experimente. Evolua. São 15 capítulos, 3 pilares e uma verdade que eu vivo todos os dias: o artesanal do futuro começa com quem decide fazer diferente hoje. Vamos começar. O primeiro capítulo te espera.</div>
+  <div class="speaker-notes">Aplique. Experimente. Evolua. 3 pilares e uma verdade que eu vivo todos os dias: o artesanal do futuro começa com quem decide fazer diferente hoje. Vamos começar. O primeiro capítulo te espera.</div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
@@ -554,27 +557,60 @@ body.show-notes .speaker-notes { display: block; }
   <div class="speaker-notes">Se você quer ir além do curso e precisa de acompanhamento personalizado, estou aqui. Mentoria, consultoria, palestras e treinamento para equipes. Agora, vamos ao primeiro capítulo. Te encontro lá.</div>
 </section>
 
-<div class="nav-hint">Scroll ou setas para navegar | N para speaker notes</div>
+<div class="nav-hint">Setas para navegar | N para speaker notes</div>
+<div class="slide-counter" id="slideCounter">1 / ?</div>
 
 <script>
-document.addEventListener('keydown', (e) => {
+(function() {
   const slides = document.querySelectorAll('.slide');
-  const currentY = window.scrollY;
-  const vh = window.innerHeight;
-  const currentSlide = Math.round(currentY / vh);
+  let current = 0;
+  let lastNav = 0;
+  const DEBOUNCE = 300;
+  const counter = document.getElementById('slideCounter');
 
-  if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
-    e.preventDefault();
-    const next = Math.min(currentSlide + 1, slides.length - 1);
-    slides[next].scrollIntoView({ behavior: 'smooth' });
-  } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-    e.preventDefault();
-    const prev = Math.max(currentSlide - 1, 0);
-    slides[prev].scrollIntoView({ behavior: 'smooth' });
-  } else if (e.key === 'n' || e.key === 'N') {
-    document.body.classList.toggle('show-notes');
+  function showSlide(index) {
+    slides.forEach((s, i) => {
+      s.style.display = i === index ? 'flex' : 'none';
+    });
+    current = index;
+    counter.textContent = (current + 1) + ' / ' + slides.length;
   }
-});
+
+  function next() {
+    const now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current < slides.length - 1) showSlide(current + 1);
+  }
+
+  function prev() {
+    const now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current > 0) showSlide(current - 1);
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); next();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); prev();
+    } else if (e.key === 'n' || e.key === 'N') {
+      document.body.classList.toggle('show-notes');
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(slides.length - 1);
+    }
+  });
+
+  document.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    if (e.deltaY > 0) next(); else prev();
+  }, { passive: false });
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+{
+  "product": "Guia Estratégico: Como Criar, Vender e Escalar Alimentos Artesanais",
+  "offer": "De R$97 por R$27",
+  "tone": "authority, trust, warmth, artisanal mastery, premium quality",
+  "subject_photo": "assets/images/author-photo.jpg",
+  "subject_description": "a Brazilian man in his mid-30s with: (1) short dark brown wavy hair, (2) clean-shaven face with no beard or stubble, (3) fair olive skin tone, (4) brown eyes, (5) medium build, (6) wearing a black Ralph Lauren button-down polo shirt with small green logo on chest, (7) blue jeans, (8) silver dive watch on left wrist, (9) warm confident smile showing teeth, (10) sitting relaxed on a stool",
+  "symbols": [
+    {"object": "artisanal glass jars with golden preserves and jams", "meaning": "artisanal food craftsmanship", "style": "large, warm-lit, semi-transparent, positioned behind subject"},
+    {"object": "wooden cutting board with aged cheese and herbs", "meaning": "premium quality ingredients", "style": "faint, lower background, barely visible"},
+    {"object": "subtle golden wheat stalks", "meaning": "natural, organic origins", "style": "very faint, far background, decorative only"}
+  ],
+  "layers": {
+    "background": "warm dark kitchen studio environment (#0A0A0A base) with soft amber backlighting, rustic wooden textures barely visible, warm smoke wisps",
+    "midground": "auto",
+    "foreground": "warm golden rim light on right edge of subject, subtle amber fill light from left"
+  },
+  "context": "course",
+  "palette": "warm",
+  "seed": 42,
+  "sizes": ["desktop"],
+  "output_dir": "./outputs/premium-design/obsidian_gold/hero-output"
+}

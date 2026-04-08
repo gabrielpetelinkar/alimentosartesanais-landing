@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✈️ Cheap Flights Squad</title>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --border: #1e2d45;
+    --accent: #3b82f6;
+    --accent2: #6366f1;
+    --green: #10b981;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --text3: #64748b;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .header-logo span { font-size: 22px; }
+  .header-subtitle {
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 400;
+  }
+  .api-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    padding: 7px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+  }
+  .api-btn:hover { border-color: var(--accent); color: var(--text); }
+  .api-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+  .api-dot.connected { background: var(--green); }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ── AGENT TABS ── */
+  .agents-bar {
+    display: flex;
+    gap: 8px;
+    padding: 16px 0 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-wrap: wrap;
+  }
+  .agents-bar::-webkit-scrollbar { display: none; }
+  .agent-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text2);
+    cursor: pointer;
+    font-size: 12.5px;
+    white-space: nowrap;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .agent-pill:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    background: var(--surface2);
+  }
+  .agent-pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+  .agent-pill .pill-icon { font-size: 14px; }
+  .agent-pill .pill-tier {
+    font-size: 10px;
+    opacity: 0.7;
+    background: rgba(255,255,255,0.15);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+
+  /* ── CHAT AREA ── */
+  .chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-bottom: 20px;
+    min-height: 300px;
+  }
+
+  /* ── WELCOME ── */
+  .welcome {
+    padding: 28px 0 16px;
+    animation: fadeIn 0.4s ease;
+  }
+  .welcome-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .welcome-sub {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+    max-width: 560px;
+  }
+
+  /* ── QUICK BUTTONS ── */
+  .quick-btns {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+    margin: 20px 0 24px;
+  }
+  .quick-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .quick-btn:hover {
+    border-color: var(--accent);
+    background: var(--surface2);
+    transform: translateY(-1px);
+  }
+  .quick-btn .qb-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .quick-btn .qb-sub {
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  /* ── MESSAGES ── */
+  .message {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s ease;
+  }
+  .message.user { align-items: flex-end; }
+  .message.assistant { align-items: flex-start; }
+
+  .msg-meta {
+    font-size: 11px;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 4px;
+  }
+  .msg-meta .agent-badge {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: var(--text2);
+    font-weight: 500;
+  }
+
+  .msg-bubble {
+    max-width: 85%;
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .message.user .msg-bubble {
+    background: var(--accent);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .message.assistant .msg-bubble {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-bottom-left-radius: 4px;
+  }
+
+  /* Markdown dentro das mensagens */
+  .msg-bubble h1, .msg-bubble h2, .msg-bubble h3 {
+    margin: 14px 0 6px;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .msg-bubble h1:first-child, .msg-bubble h2:first-child, .msg-bubble h3:first-child {
+    margin-top: 0;
+  }
+  .msg-bubble p { margin-bottom: 8px; }
+  .msg-bubble p:last-child { margin-bottom: 0; }
+  .msg-bubble ul, .msg-bubble ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+  .msg-bubble li { margin-bottom: 4px; }
+  .msg-bubble strong { color: #fff; font-weight: 600; }
+  .msg-bubble em { color: var(--text2); }
+  .msg-bubble code {
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Monaco', monospace;
+    font-size: 12.5px;
+    color: #93c5fd;
+  }
+  .msg-bubble pre {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    overflow-x: auto;
+    margin: 10px 0;
+  }
+  .msg-bubble pre code {
+    background: none;
+    padding: 0;
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .msg-bubble table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  .msg-bubble th {
+    background: var(--surface2);
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .msg-bubble td {
+    padding: 7px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+  }
+  .msg-bubble tr:last-child td { border-bottom: none; }
+  .msg-bubble blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 14px;
+    margin: 10px 0;
+    color: var(--text2);
+    font-style: italic;
+  }
+
+  /* ── LOADING ── */
+  .thinking {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    border-bottom-left-radius: 4px;
+    color: var(--text3);
+    font-size: 13px;
+    animation: fadeIn 0.2s ease;
+    max-width: 200px;
+  }
+  .dot-pulse {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .dot-pulse span {
+    width: 6px; height: 6px;
+    background: var(--text3);
+    border-radius: 50%;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  .dot-pulse span:nth-child(2) { animation-delay: 0.2s; }
+  .dot-pulse span:nth-child(3) { animation-delay: 0.4s; }
+
+  /* ── INPUT AREA ── */
+  .input-container {
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(to top, var(--bg) 70%, transparent);
+    padding: 16px 0 20px;
+  }
+  .input-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 4px 4px 4px 18px;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    transition: border-color 0.2s;
+  }
+  .input-box:focus-within { border-color: var(--accent); }
+  .input-box textarea {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-size: 14.5px;
+    line-height: 1.6;
+    resize: none;
+    max-height: 140px;
+    min-height: 42px;
+    padding: 10px 0;
+    font-family: inherit;
+  }
+  .input-box textarea::placeholder { color: var(--text3); }
+  .send-btn {
+    background: var(--accent);
+    border: none;
+    border-radius: 12px;
+    width: 42px; height: 42px;
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-bottom: 4px;
+  }
+  .send-btn:hover { background: #2563eb; transform: scale(1.05); }
+  .send-btn:disabled { background: var(--border); cursor: not-allowed; transform: none; }
+  .send-btn svg { width: 18px; height: 18px; fill: none; stroke: white; stroke-width: 2; }
+  .input-hint {
+    font-size: 11px;
+    color: var(--text3);
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .modal-overlay.hidden { display: none; }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    max-width: 460px;
+    width: 100%;
+    animation: slideUp 0.3s ease;
+  }
+  .modal h2 { font-size: 20px; margin-bottom: 8px; }
+  .modal p { color: var(--text2); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+  .modal label { font-size: 13px; color: var(--text2); display: block; margin-bottom: 6px; }
+  .modal input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 14px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .modal input:focus { border-color: var(--accent); }
+  .modal-actions { display: flex; gap: 10px; }
+  .btn-primary {
+    flex: 1;
+    background: var(--accent);
+    border: none;
+    border-radius: 10px;
+    padding: 11px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #2563eb; }
+  .btn-ghost {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 18px;
+    color: var(--text2);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--text2); color: var(--text); }
+  .modal-link {
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 14px;
+    text-align: center;
+  }
+  .modal-link a { color: var(--accent); text-decoration: none; }
+  .modal-link a:hover { text-decoration: underline; }
+
+  /* ── MODE TOGGLE ── */
+  .mode-toggle {
+    display: flex;
+    gap: 6px;
+    padding: 12px 0 4px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+  .mode-btn {
+    padding: 7px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text2);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mode-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+  .mode-btn:not(.active):hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  /* ── SEARCH FORM ── */
+  .search-panel {
+    display: none;
+    padding: 20px 0 10px;
+    animation: fadeIn 0.3s ease;
+  }
+  .search-panel.visible { display: block; }
+  .search-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .search-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .search-field.full { grid-column: 1 / -1; }
+  .search-field label {
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .search-field input, .search-field select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+  .search-field input:focus, .search-field select:focus {
+    border-color: var(--accent);
+  }
+  .search-field input::placeholder { color: var(--text3); }
+  .search-field select option { background: var(--surface2); }
+  .search-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .search-row .search-field { flex: 1; }
+  .search-miles {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .search-miles-title {
+    font-size: 12px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .miles-programs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .miles-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text2);
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .miles-tag.selected {
+    background: rgba(59,130,246,0.2);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .miles-tag input[type=checkbox] { display: none; }
+  .miles-amount {
+    margin-top: 10px;
+    display: none;
+  }
+  .miles-amount.visible { display: block; }
+  .search-go {
+    width: 100%;
+    background: var(--accent);
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .search-go:hover { background: #2563eb; transform: translateY(-1px); }
+  .search-go:disabled { background: var(--border); cursor: not-allowed; transform: none; }
+  .search-note {
+    font-size: 11.5px;
+    color: var(--text3);
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .quick-btns { grid-template-columns: 1fr 1fr; }
+    .msg-bubble { max-width: 95%; font-size: 13.5px; }
+    .welcome-title { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="header">
+  <div class="header-logo">
+    <span>✈️</span>
+    <div>
+      Cheap Flights Squad
+      <div class="header-subtitle">6 especialistas · milhas · tarifas de erro · plataformas ocultas</div>
+    </div>
+  </div>
+  <button class="api-btn" onclick="openModal()">
+    <span class="api-dot" id="apiDot"></span>
+    <span id="apiLabel">Configurar API</span>
+  </button>
+</header>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- MODE TOGGLE -->
+  <div class="mode-toggle">
+    <button class="mode-btn active" id="modeChat" onclick="switchMode('chat')">💬 Estratégia</button>
+    <button class="mode-btn" id="modeSearch" onclick="switchMode('search')">🔍 Buscar Passagem</button>
+  </div>
+
+  <!-- SEARCH PANEL -->
+  <div class="search-panel" id="searchPanel">
+    <div class="search-grid">
+      <div class="search-field">
+        <label>Origem</label>
+        <input type="text" id="sfOrigin" placeholder="Ex: São Paulo (GRU)">
+      </div>
+      <div class="search-field">
+        <label>Destino</label>
+        <input type="text" id="sfDest" placeholder="Ex: Lisboa (LIS)">
+      </div>
+      <div class="search-field">
+        <label>Data de ida</label>
+        <input type="date" id="sfDateGo">
+      </div>
+      <div class="search-field">
+        <label>Data de volta <span style="color:var(--text3)">(opcional)</span></label>
+        <input type="date" id="sfDateBack">
+      </div>
+    </div>
+    <div class="search-row">
+      <div class="search-field">
+        <label>Passageiros</label>
+        <select id="sfPax">
+          <option value="1">1 adulto</option>
+          <option value="2">2 adultos</option>
+          <option value="3">3 adultos</option>
+          <option value="4">4 adultos</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Classe</label>
+        <select id="sfClass">
+          <option value="economy">Economy</option>
+          <option value="business">Business</option>
+          <option value="first">First Class</option>
+        </select>
+      </div>
+    </div>
+    <div class="search-miles">
+      <div class="search-miles-title">Tenho milhas disponíveis em</div>
+      <div class="miles-programs">
+        <label class="miles-tag" id="tagSmiles"><input type="checkbox" value="SMILES"> SMILES (Gol)</label>
+        <label class="miles-tag" id="tagLatam"><input type="checkbox" value="LATAM Pass"> LATAM Pass</label>
+        <label class="miles-tag" id="tagAzul"><input type="checkbox" value="TudoAzul"> TudoAzul (Azul)</label>
+        <label class="miles-tag" id="tagUnited"><input type="checkbox" value="United MileagePlus"> United</label>
+        <label class="miles-tag" id="tagAlaska"><input type="checkbox" value="Alaska Mileage Plan"> Alaska</label>
+        <label class="miles-tag" id="tagVirgin"><input type="checkbox" value="Virgin Atlantic"> Virgin Atlantic</label>
+      </div>
+      <div class="miles-amount" id="milesAmountBox">
+        <input type="number" id="sfMiles" placeholder="Quantidade de milhas disponíveis" style="width:100%;margin-top:8px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;outline:none;">
+      </div>
+    </div>
+    <button class="search-go" id="searchGoBtn" onclick="searchFlights()">
+      🔍 Buscar passagens reais agora
+    </button>
+    <div class="search-note">
+      Navega Google Flights, Kiwi.com e Momondo em background (sem abrir janelas). Resultados reais em ~1-2 min.
+    </div>
+  </div>
+
+  <!-- AGENT TABS -->
+  <div class="agents-bar" id="agentsBar">
+    <div class="agent-pill active" data-agent="auto" onclick="selectAgent(this)">
+      <span class="pill-icon">🤖</span> Auto-roteamento
+    </div>
+    <div class="agent-pill" data-agent="scott-keyes" onclick="selectAgent(this)">
+      <span class="pill-icon">🎯</span> Scott Keyes
+      <span class="pill-tier">T0</span>
+    </div>
+    <div class="agent-pill" data-agent="paulo-mafra" onclick="selectAgent(this)">
+      <span class="pill-icon">🇧🇷</span> Paulo Mafra
+      <span class="pill-tier">T0</span>
+    </div>
+    <div class="agent-pill" data-agent="gary-leff" onclick="selectAgent(this)">
+      <span class="pill-icon">🏆</span> Gary Leff
+      <span class="pill-tier">T1</span>
+    </div>
+    <div class="agent-pill" data-agent="ben-schlappig" onclick="selectAgent(this)">
+      <span class="pill-icon">💎</span> Ben Schlappig
+      <span class="pill-tier">T1</span>
+    </div>
+    <div class="agent-pill" data-agent="brian-kelly" onclick="selectAgent(this)">
+      <span class="pill-icon">💳</span> Brian Kelly
+      <span class="pill-tier">T2</span>
+    </div>
+    <div class="agent-pill" data-agent="chris-guillebeau" onclick="selectAgent(this)">
+      <span class="pill-icon">🔓</span> Chris Guillebeau
+      <span class="pill-tier">T2</span>
+    </div>
+  </div>
+
+  <!-- CHAT AREA -->
+  <div class="chat-area" id="chatArea">
+
+    <!-- WELCOME -->
+    <div class="welcome" id="welcome">
+      <div class="welcome-title">Encontre passagens que o público geral não vê</div>
+      <div class="welcome-sub">
+        Squad com 6 especialistas em tarifas de erro, milhas brasileiras e internacionais,
+        plataformas ocultas e travel hacking. Descreva o que você precisa em linguagem natural.
+      </div>
+
+      <div class="quick-btns" id="quickBtns">
+        <button class="quick-btn" onclick="quickSend('Encontrei uma passagem GRU-LHR por R$890 ida e volta na LATAM. É real ou tarifa de erro?')">
+          <div class="qb-title">🎯 Analisar tarifa suspeita</div>
+          <div class="qb-sub">Verificar se é erro de precificação</div>
+        </button>
+        <button class="quick-btn" onclick="quickSend('Tenho 80.000 milhas SMILES. Qual o melhor uso para viajar à Europa?')">
+          <div class="qb-title">🇧🇷 Usar milhas SMILES</div>
+          <div class="qb-sub">SMILES, LATAM Pass, TudoAzul</div>
+        </button>
+        <button class="quick-btn" onclick="quickSend('Quero voar em Business Class para Tóquio usando milhas. Tenho Chase UR e United MileagePlus.')">
+          <div class="qb-title">💎 Business/First com milhas</div>
+          <div class="qb-sub">Aspirational redemptions premium</div>
+        </button>
+        <button class="quick-btn" onclick="quickSend('Quero ir à Europa visitar França, Espanha e Itália com orçamento de R$4.000. Qual a melhor estratégia?')">
+          <div class="qb-title">🔓 Multi-destino Europa</div>
+          <div class="qb-sub">Open-jaw, consolidadores, brechas</div>
+        </button>
+        <button class="quick-btn" onclick="quickSend('Quero começar a acumular milhas via cartão de crédito para viajar em 2 anos. Por onde começo?')">
+          <div class="qb-title">💳 Começar a acumular milhas</div>
+          <div class="qb-sub">Estratégia de cartões e pontos</div>
+        </button>
+        <button class="quick-btn" onclick="quickSend('Busquei GRU-Bangkok no Google Flights por R$4.800. Tem opção mais barata em plataformas alternativas?')">
+          <div class="qb-title">🔍 Plataformas alternativas</div>
+          <div class="qb-sub">OTAs ocultas e consolidadores</div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INPUT -->
+  <div class="input-container" id="inputContainer">
+    <div class="input-box">
+      <textarea
+        id="userInput"
+        placeholder="Descreva sua rota, orçamento, milhas disponíveis... ou faça qualquer pergunta sobre passagens baratas."
+        rows="1"
+        onkeydown="handleKey(event)"
+        oninput="autoResize(this)"
+      ></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()" disabled>
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+    <div class="input-hint">
+      Selecione um especialista acima para resposta direcionada, ou use Auto-roteamento para diagnóstico automático.
+    </div>
+  </div>
+
+</div>
+
+<!-- ── MODAL API KEY ── -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h2>🔑 Configurar API Key</h2>
+    <p>
+      Esta ferramenta usa a API da Anthropic (Claude) para consultar os especialistas do squad.
+      Sua chave é salva apenas no seu navegador (localStorage).
+    </p>
+    <label>Anthropic API Key</label>
+    <input
+      type="password"
+      id="apiKeyInput"
+      placeholder="sk-ant-api03-..."
+      autocomplete="off"
+    >
+    <div class="modal-actions">
+      <button class="btn-ghost" onclick="closeModal()">Cancelar</button>
+      <button class="btn-primary" onclick="saveApiKey()">Salvar e Conectar</button>
+    </div>
+    <div class="modal-link">
+      Não tem uma chave? <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════
+let apiKey = localStorage.getItem('cf_api_key') || '';
+let selectedAgent = 'auto';
+let isLoading = false;
+let messages = [];
+
+// ════════════════════════════════════════════════════
+// AGENT SYSTEM PROMPTS
+// ════════════════════════════════════════════════════
+const AGENTS = {
+  'auto': {
+    name: 'Auto-roteamento',
+    icon: '🤖',
+    system: `Você é o Cheap Flights Chief — orquestrador de um squad de 6 especialistas em passagens aéreas baratas. Responda SEMPRE em português do Brasil.
+
+Seu squad:
+- 🎯 Scott Keyes (Tier 0): Tarifas de erro, timing de compra, destino flexível. Sinais de tarifa de erro: preço 40-90% abaixo histórico, disponível em pouquíssimas datas, surgiu recentemente. Protocolo: comprar imediatamente, janela de 2-4 horas.
+- 🇧🇷 Paulo Mafra (Tier 0): Especialista em SMILES (Gol), LATAM Pass, TudoAzul (Azul), Azul Fidelidade. Regra: nunca transferir pontos sem disponibilidade confirmada. Hack de taxas: emissão via VCP/BSB reduz taxas em 60-80% vs GRU.
+- 🏆 Gary Leff (Tier 1): Award booking avançado. CPM mínimo: 1.5 cpp economy, 3.0 cpp business. Verificar sempre parceiras antes de concluir "não disponível". ExpertFlyer para alertas. Janela dos 330 dias.
+- 💎 Ben Schlappig (Tier 1): Aspirational redemptions. Singapore Suites via Virgin Atlantic (~110k milhas). Emirates First via Alaska Mileage Plan (50k OW). VPN trick para preços por mercado. Kiwi.com para self-transfer.
+- 💳 Brian Kelly (Tier 2): Cartões de crédito e pontos. Livelo como hub central BR. Welcome bonus = maior acelerador. Transferir apenas com disponibilidade confirmada.
+- 🔓 Chris Guillebeau (Tier 2): Travel hacking. Open-jaw (2 destinos por preço de roundtrip). Hidden city (risco real — sem bagagem, viola ToS). RTW para 4+ países em continentes diferentes. Consolidadores: Airtreks, Vayama, SkyBird.
+
+REGRAS DE RESPOSTA:
+1. Identifique qual especialista se aplica e mencione ao responder
+2. Seja direto e prático — o usuário quer ação, não teoria
+3. Sempre cite ferramentas específicas (Google Flights, Seats.aero, ExpertFlyer, MaxMilhas, etc.)
+4. Em tarifas de erro: crie URGÊNCIA — janela de 2-4 horas
+5. Em milhas: sempre calcule custo total (milhas + taxas)
+6. Use formatação markdown com tabelas, bullet points e cabeçalhos
+7. Sempre inclua "Próxima ação" concreta ao final`
+  },
+  'scott-keyes': {
+    name: 'Scott Keyes',
+    icon: '🎯',
+    system: `Você é Scott Keyes, fundador do Going.com (ex-Scott's Cheap Flights). Responda SEMPRE em português do Brasil.
+
+IDENTIDADE: Caçador de tarifas de erro e especialista em timing de compra. Passei mais de uma década analisando bilhões de preços de passagens.
+
+METODOLOGIA CENTRAL:
+**Sistema de Três Variáveis:** destino (fixo/flexível), data (fixo/janela), limite de preço.
+Flexibilidade multiplica opções: 1 variável flexível = 3x; 2 variáveis = 10x; 3 = ilimitado.
+
+**Anatomia de Tarifa de Erro** (qualquer 2 = investigar, 3+ = agir AGORA):
+- Preço 40-90% abaixo histórico
+- Disponível em apenas 1-3 datas
+- Publicada por 1 companhia, concorrentes com preço normal
+- Surgiu nas últimas 2-4 horas
+- Classe inconsistente com preço
+
+**Protocolo de Tarifa de Erro:** COMPRE IMEDIATAMENTE → use 24h cancellation como proteção → 70-80% são honradas.
+
+**Janela de Compra (Goldilocks Zone):**
+- Doméstico BR: 1-3 meses antes
+- Internacional: 2-8 meses antes
+- Tarifa de erro: AGORA
+
+**Ferramentas:** Google Flights (Explorar), Going.com, Momondo, Kiwi.com, Skiplagged (hidden city — cuidado).
+
+**Heurísticas chave:**
+- SK_001: Tarifa de erro → age em até 2 horas
+- SK_002: Aeroporto alternativo a 150km — sempre verificar
+- SK_003: ±3 dias muda até 40% do preço
+- SK_004: Terça/quarta/sábado são historicamente mais baratos
+
+ESTILO: Entusiasmado com boas tarifas, direto, cria urgência quando necessário.
+Use emojis com moderação. Formato: seções claras, tabelas quando útil, sempre termine com "Ação imediata: [X]"`
+  },
+  'paulo-mafra': {
+    name: 'Paulo Mafra',
+    icon: '🇧🇷',
+    system: `Você é Paulo Mafra, fundador da Passagens Imperdíveis. Responda SEMPRE em português do Brasil.
+
+IDENTIDADE: Maior especialista do Brasil em programas de fidelidade nacionais. Acompanho SMILES, LATAM Pass, TudoAzul e Azul Fidelidade diariamente.
+
+PROGRAMAS BR — PERFIL TÉCNICO:
+
+**SMILES (Gol):**
+- Melhor para: doméstico + parceiras internacionais (Delta, Air France)
+- Transfere de: Livelo, Itaú, Bradesco, Santander, Amex BR
+- Hack das taxas: emita via VCP ou BSB (NÃO GRU) — economiza 60-80% em taxas
+- Promoções: janelas de 30/60 dias com desconto de milhas
+
+**LATAM Pass:**
+- Melhor para: voos LATAM internacionais (SUL América → Europa/EUA)
+- Transfere de: Esfera (Bradesco), Livelo, Itaú Multiviagem
+- Promoções de resgate: desconto de até 40% em milhas
+- Sweet spot: Santiago, Lima, Bogotá
+
+**TudoAzul (Azul):**
+- Melhor para: rotas exclusivas Azul (cidades menores BR)
+- Transfere de: Bradesco, Santander, Itaú, Livelo
+- Sweet spot: Orlando/Fort Lauderdale, regionais exclusivos
+
+**Regras de ouro:**
+- PM_001: NUNCA transfira sem emissão confirmada — simule PRIMEIRO
+- PM_002: GRU com taxa alta → tente VCP, BSB, CGH
+- PM_003: Promoção SMILES → emita nos próximos 3 dias
+- PM_006: Bônus de transferência ≥ 80% → momento de transferir e emitir
+
+**Ferramentas BR:** MaxMilhas (comprar milhas), Hotmilhas, Passagens Imperdíveis, grupos Telegram das companhias
+
+ESTILO: Entusiasmado, acessível, muito específico sobre BR. Sempre mencionar que deve simular ANTES de transferir.
+Termine com "Simule agora em: [URL]" e "Próximo passo: [ação concreta]"`
+  },
+  'gary-leff': {
+    name: 'Gary Leff',
+    icon: '🏆',
+    system: `Você é Gary Leff, autor do View from the Wing (viewfromthewing.com) — 20+ anos de award booking. Responda SEMPRE em português do Brasil.
+
+IDENTIDADE: Expert técnico em award booking avançado. Especialista em disponibilidade via parceiras e sweet spots.
+
+METODOLOGIA CENTRAL:
+
+**CPM Mínimo aceitável:**
+- Economy: 1.5 centavos/milha (USD)
+- Business: 3.0-5.0 centavos/milha
+- First Class: 5.0-10.0 centavos/milha
+Fórmula: CPM = valor_cash_USD / número_milhas
+
+**Sweet Spots Históricos:**
+- United → ANA Business: ~88k milhas roundtrip
+- Air Canada Aeroplan → Lufthansa Business: ~105k, taxas menores
+- Virgin Atlantic → Singapore Airlines: ~110k (Suites) ou ~55k (Business)
+- Alaska → Emirates First: ~50k OW (melhor deal em milhas)
+- Turkish Miles&Smiles: Star Alliance mais barato
+
+**Metodologia de Parceiras:**
+SE programa principal diz "não disponível":
+1. Identificar TODAS as parceiras do programa
+2. Verificar disponibilidade no programa A para voo da parceira B
+3. Usar Seats.aero para ver disponibilidade cross-programa em tempo real
+
+**Janela de Disponibilidade:**
+- 330-355 dias antes: quando o inventário abre
+- 21-14 dias antes: liberação de última hora
+- Configure alerta ExpertFlyer para o período
+
+**Positioning Flights:**
+SE award direto de GRU é limitado → calcule GRU→Miami (cash) + Miami→destino (award)
+SE economia > 30% → vale a pena
+
+**Regras importantes:**
+- GL_001: Sempre verificar parceiras antes de desistir
+- GL_005: NUNCA emita Avios em voos BA com fuel surcharge → use em Iberia/Alaska/American
+
+**Ferramentas:** ExpertFlyer.com, Seats.aero, AwardHacker.com, ITA Matrix
+
+ESTILO: Técnico mas acessível, cético com marketing das companhias, focado em valor real.
+Sempre inclua CPM calculado nas recomendações. Use tabelas para comparar opções.`
+  },
+  'ben-schlappig': {
+    name: 'Ben Schlappig',
+    icon: '💎',
+    system: `Você é Ben Schlappig, autor do One Mile at a Time (onemileatatime.com). Responda SEMPRE em português do Brasil.
+
+IDENTIDADE: Expert em aspirational redemptions (voar Business/First por preço de Economy em milhas) e descobridor de plataformas alternativas.
+
+MELHORES ASPIRATIONAL REDEMPTIONS:
+
+**Singapore Airlines Suites/Business:**
+- Programa: Virgin Atlantic Flying Club
+- Custo: ~110k milhas (Suites OW) ou ~55k (Business OW)
+- Transfere para Virgin Atlantic: Chase UR, Amex MR, Marriott Bonvoy
+- CPM: ~9-12 cents/mile (excepcional)
+
+**Emirates First Class A380:**
+- Programa: Alaska Mileage Plan
+- Custo: ~50k milhas (EUA→Europa, OW)
+- CPM: ~8-10 cents/mile
+- Disponibilidade melhorou em 2023
+
+**ANA Suite (The Room):**
+- Programa: Virgin Atlantic ou United MileagePlus
+- Custo: ~75-88k milhas roundtrip
+- Use Seats.aero para monitorar
+
+**PLATAFORMAS ALTERNATIVAS:**
+
+Cash mais barato:
+- Kiwi.com: self-transfer (ATENÇÃO: conexão mínima 3h, sem bagagem despachada em misconnect)
+- Momondo: frequentemente 10-20% abaixo do Google Flights
+- JetRadar: agrega OTAs regionais
+- Hopper: algoritmo preditivo de timing
+- Priceline Express Deals: opaco, 30-40% abaixo
+
+OTAs locais por região:
+- Índia: MakeMyTrip, Cleartrip
+- China: Trip.com (ex-Ctrip)
+- Europa: eDreams, BudgetAir
+- América Latina: Almundo
+
+Consolidadores:
+- Airtreks.com: RTW e multi-destino
+- SkyBird Travel: tarifas étnicas
+- Vayama: tarifas consolidadas internacionais
+
+**VPN Trick:**
+SE destino tem OTA local forte → verifique preço com VPN para IP do país de destino
+Economias de 15-35% são comuns
+
+**CPM para Premium:**
+- CPM < 3.0 → não vale usar milhas em Business
+- CPM < 5.0 → não vale usar milhas em First
+- CPM > 7.0 → excelente deal
+
+ESTILO: Entusiasta do premium, detalhista sobre produtos de cabine, sempre menciona riscos.
+Use tabela comparativa quando houver múltiplas opções. Termine com recomendação clara.`
+  },
+  'brian-kelly': {
+    name: 'Brian Kelly',
+    icon: '💳',
+    system: `Você é Brian Kelly, fundador do The Points Guy. Responda SEMPRE em português do Brasil.
+
+IDENTIDADE: Estrategista de acúmulo de pontos e milhas via cartões de crédito. Especialista em maximizar earn rate e transferências.
+
+HIERARQUIA DE MOEDAS DE PONTOS:
+
+**Tier Ouro (máxima flexibilidade):**
+- Chase Ultimate Rewards (14 programas aéreos)
+- Amex Membership Rewards (18 programas)
+- Capital One Miles (15 programas)
+
+**Contexto BR:**
+- Livelo: hub central BR → transfere para SMILES, LATAM Pass, TudoAzul
+- Esfera (Bradesco): melhor ratio para LATAM Pass
+- Membership Rewards Amex BR: acesso a programas internacionais
+
+**Seleção de Cartão (earn rate efetivo):**
+- Calcule: pontos/real × valor/ponto = earn rate efetivo
+- Mínimo aceitável: 1.5 pontos/real (considerando valor do ponto)
+- Prefira flexibilidade > earn rate ligeiramente maior em programa único
+
+**Welcome Bonus (maior acelerador):**
+- Mínimo que vale a pena: 50.000 pontos
+- Excelente: 100.000+ pontos
+- Welcome bonus = 12-24 meses de gasto orgânico comprimido
+- Concentre gastos no primeiro mês para atingir mínimo
+
+**Regras de Transferência:**
+- BK_001: Earn rate < 1.5 → cartão não justifica
+- BK_002: Bônus de transferência ≥ 80% → transfira
+- BK_003: Flexibilidade > earn rate ligeiramente maior
+- BK_004: Se benefícios < anuidade → cancele ou faça downgrade
+- BK_005: Precisa de milhas rápido → welcome bonus de novo cartão
+
+**Ferramentas:** ThePointsGuy.com (valuation mensal), Livelo, Esfera, CardPointers (app)
+
+ESTILO: Educativo, empolgante, focado em valor prático. Sempre calcule o "earn rate efetivo".
+Mostre o caminho passo a passo. Inclua "Plano de ação:" ao final com etapas numeradas.`
+  },
+  'chris-guillebeau': {
+    name: 'Chris Guillebeau',
+    icon: '🔓',
+    system: `Você é Chris Guillebeau, autor do Travel Hacking Cartel e The Art of Non-Conformity. Responda SEMPRE em português do Brasil.
+
+IDENTIDADE: Arquiteto de travel hacking sistêmico. Visitei todos os 193 países. Especialista em brechas táticas LEGAIS no sistema de precificação aérea.
+
+TÉCNICAS PRINCIPAIS:
+
+**OPEN-JAW (sem riscos, aceito por todos):**
+- Ir para cidade A, voltar de cidade B
+- Exemplo: GRU→Paris, Roma→GRU (viagem terrestre no meio)
+- Economia: equivale a 2 destinos pelo preço de 1 roundtrip
+- Como buscar: Google Flights → datas diferentes para ida e volta → aeroportos diferentes
+- CG_003: Europa multi-destino → SEMPRE avalie open-jaw primeiro
+
+**HIDDEN CITY (risco real — disclosure obrigatório):**
+- O que é: comprar voo para C (parada em B) quando quer ir a B
+- Ferramenta: Skiplagged.com
+- Economia possível: 20-50%
+- RISCOS REAIS: viola ToS das companhias; conta fidelidade pode ser cancelada; retorno automático cancelado; NÃO funciona com bagagem despachada; sem proteção de misconnect
+- Use APENAS: ida simples + bagagem de mão + conta fidelidade que pode perder
+
+**ROUND-THE-WORLD:**
+- Oneworld Explorer: ~$3.200 para 3 continentes (até 16 segmentos)
+- Star Alliance RTW: preço por milhas (~29k milhas = ~$3.800)
+- Quando vale: 4+ países em 3+ continentes
+- Ferramenta: Airtreks.com para calcular roteiro
+- Economia: 40-60% vs comprar individualmente
+
+**PRICING POR MERCADO:**
+- SE destino tem OTA/companhia local forte → verifique com VPN para IP do país
+- Economias de 15-35% comuns para Ásia, Oriente Médio, Índia
+- CG_004: diferença > R$300 → vale verificar
+
+**CONSOLIDADORES:**
+- Airtreks.com: multi-destino e RTW
+- Vayama: tarifas não-GDS para internacional
+- SkyBird Travel: tarifas étnicas (diásporas)
+- Almundo: América Latina
+- ITA Matrix: tarifas técnicas que GDSs simplificam
+
+**REGRAS:**
+- CG_001: Entenda o sistema de precificação antes de buscar
+- CG_006: Long-haul + 6 meses antecedência → consulte consolidadores
+
+ESTILO: Filosófico mas prático, empoderador, sempre inclui riscos e alternativas mais seguras.
+NUNCA apresente hidden city sem disclosure completo. Sempre ofereça open-jaw como alternativa.`
+  }
+};
+
+// ════════════════════════════════════════════════════
+// UI INIT
+// ════════════════════════════════════════════════════
+window.onload = () => {
+  if (USE_LOCAL_SERVER) {
+    // Modo servidor local — sem API key
+    document.getElementById('sendBtn').disabled = false;
+  } else {
+    // Modo arquivo direto — precisa de API key
+    updateApiStatus();
+    if (!apiKey) setTimeout(openModal, 600);
+  }
+  // Habilitar/desabilitar send conforme texto
+  document.getElementById('userInput').addEventListener('input', () => {
+    const hasText = document.getElementById('userInput').value.trim().length > 0;
+    const needsKey = !USE_LOCAL_SERVER && !apiKey;
+    document.getElementById('sendBtn').disabled = !hasText || needsKey || isLoading;
+  });
+};
+
+function updateApiStatus() {
+  const dot = document.getElementById('apiDot');
+  const label = document.getElementById('apiLabel');
+  if (apiKey) {
+    dot.classList.add('connected');
+    label.textContent = 'API conectada';
+  } else {
+    dot.classList.remove('connected');
+    label.textContent = 'Configurar API';
+  }
+}
+
+// ════════════════════════════════════════════════════
+// AGENT SELECTION
+// ════════════════════════════════════════════════════
+function selectAgent(el) {
+  document.querySelectorAll('.agent-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  selectedAgent = el.dataset.agent;
+  const agent = AGENTS[selectedAgent];
+  document.getElementById('userInput').placeholder =
+    selectedAgent === 'auto'
+      ? 'Descreva sua rota, orçamento, milhas disponíveis...'
+      : `Pergunta para ${agent.icon} ${agent.name}...`;
+}
+
+// ════════════════════════════════════════════════════
+// MODAL
+// ════════════════════════════════════════════════════
+function openModal() {
+  document.getElementById('modalOverlay').classList.remove('hidden');
+  const input = document.getElementById('apiKeyInput');
+  if (apiKey) input.value = apiKey;
+  setTimeout(() => input.focus(), 100);
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.add('hidden');
+}
+function saveApiKey() {
+  const key = document.getElementById('apiKeyInput').value.trim();
+  if (!key.startsWith('sk-ant-')) {
+    alert('Chave inválida. Deve começar com "sk-ant-"');
+    return;
+  }
+  apiKey = key;
+  localStorage.setItem('cf_api_key', key);
+  updateApiStatus();
+  closeModal();
+  const hasText = document.getElementById('userInput').value.trim().length > 0;
+  document.getElementById('sendBtn').disabled = !hasText;
+}
+
+// ════════════════════════════════════════════════════
+// QUICK SEND
+// ════════════════════════════════════════════════════
+function quickSend(text) {
+  if (!apiKey && !USE_LOCAL_SERVER) { openModal(); return; }
+  document.getElementById('userInput').value = text;
+  autoResize(document.getElementById('userInput'));
+  sendMessage();
+}
+
+// ════════════════════════════════════════════════════
+// KEYBOARD
+// ════════════════════════════════════════════════════
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    if (!document.getElementById('sendBtn').disabled) sendMessage();
+  }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+  const hasText = el.value.trim().length > 0;
+  document.getElementById('sendBtn').disabled = !hasText || (!apiKey && !USE_LOCAL_SERVER) || isLoading;
+}
+
+// ════════════════════════════════════════════════════
+// SEND MESSAGE
+// ════════════════════════════════════════════════════
+async function sendMessage() {
+  if (!apiKey && !USE_LOCAL_SERVER) { openModal(); return; }
+  const input = document.getElementById('userInput');
+  const text = input.value.trim();
+  if (!text || isLoading) return;
+
+  // Hide welcome on first message
+  const welcome = document.getElementById('welcome');
+  if (welcome) welcome.style.display = 'none';
+
+  // Add user message
+  addMessage('user', text);
+  messages.push({ role: 'user', content: text });
+
+  // Clear input
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('sendBtn').disabled = true;
+
+  // Show loading
+  const loadingEl = addLoading();
+  isLoading = true;
+
+  try {
+    const agent = AGENTS[selectedAgent];
+    const response = await callClaude(agent.system, messages);
+
+    // Remove loading
+    loadingEl.remove();
+    isLoading = false;
+
+    // Add assistant message
+    addMessage('assistant', response, agent);
+    messages.push({ role: 'assistant', content: response });
+
+    // Re-enable send
+    const hasText = document.getElementById('userInput').value.trim().length > 0;
+    document.getElementById('sendBtn').disabled = !hasText;
+    document.getElementById('userInput').focus();
+
+  } catch (err) {
+    loadingEl.remove();
+    isLoading = false;
+    let errMsg = err.message || 'Erro desconhecido';
+    if (errMsg.includes('401')) errMsg = 'API Key inválida ou expirada. Verifique sua chave.';
+    else if (errMsg.includes('429')) errMsg = 'Limite de rate atingido. Aguarde alguns segundos.';
+    else if (errMsg.includes('500')) errMsg = 'Erro no servidor da Anthropic. Tente novamente.';
+    addMessage('assistant', `⚠️ **Erro:** ${errMsg}`, AGENTS['auto']);
+    document.getElementById('sendBtn').disabled = false;
+  }
+}
+
+// ════════════════════════════════════════════════════
+// CLAUDE API — via servidor local (OAuth) ou API key direta
+// ════════════════════════════════════════════════════
+const USE_LOCAL_SERVER = window.__LOCAL_SERVER__ || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+async function callClaude(systemPrompt, msgs) {
+  // Se rodando via servidor local (node server.js), usa OAuth do Claude Code
+  if (USE_LOCAL_SERVER) {
+    const lastMsg = msgs[msgs.length - 1];
+    const history = msgs.slice(0, -1);
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        agent: selectedAgent,
+        message: lastMsg.content,
+        history: history
+      })
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || `HTTP ${res.status}`);
+    }
+    const data = await res.json();
+    return data.text;
+  }
+
+  // Fallback: API key direta (quando aberto como arquivo)
+  if (!apiKey) throw new Error('API Key não configurada. Clique em "Configurar API" ou rode via servidor local.');
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 2048,
+      system: systemPrompt,
+      messages: msgs.slice(-10)
+    })
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error?.message || `HTTP ${res.status}`);
+  }
+  const data = await res.json();
+  return data.content[0].text;
+}
+
+// ════════════════════════════════════════════════════
+// DOM HELPERS
+// ════════════════════════════════════════════════════
+function addMessage(role, text, agent) {
+  const chatArea = document.getElementById('chatArea');
+  const div = document.createElement('div');
+  div.className = `message ${role}`;
+
+  if (role === 'assistant' && agent) {
+    div.innerHTML = `
+      <div class="msg-meta">
+        <span class="agent-badge">${agent.icon} ${agent.name}</span>
+      </div>
+      <div class="msg-bubble">${renderMarkdown(text)}</div>
+    `;
+  } else if (role === 'user') {
+    div.innerHTML = `<div class="msg-bubble">${escapeHtml(text)}</div>`;
+  }
+
+  chatArea.appendChild(div);
+  scrollToBottom();
+  return div;
+}
+
+function addLoading() {
+  const chatArea = document.getElementById('chatArea');
+  const div = document.createElement('div');
+  div.className = 'message assistant';
+  div.innerHTML = `
+    <div class="thinking">
+      <div class="dot-pulse">
+        <span></span><span></span><span></span>
+      </div>
+      Consultando especialista...
+    </div>
+  `;
+  chatArea.appendChild(div);
+  scrollToBottom();
+  return div;
+}
+
+function scrollToBottom() {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+// ════════════════════════════════════════════════════
+// MARKDOWN RENDERER (lite)
+// ════════════════════════════════════════════════════
+function renderMarkdown(text) {
+  let html = escapeHtml(text);
+
+  // Code blocks
+  html = html.replace(/```[\s\S]*?```/g, m => {
+    const code = m.slice(3, -3).replace(/^\w+\n/, '');
+    return `<pre><code>${code}</code></pre>`;
+  });
+
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+  // Headers
+  html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+  html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+
+  // Bold/Italic
+  html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+  // Tables
+  html = renderTables(html);
+
+  // Blockquotes
+  html = html.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
+
+  // Horizontal rule
+  html = html.replace(/^---$/gm, '<hr style="border:none;border-top:1px solid var(--border);margin:12px 0">');
+
+  // Unordered lists
+  html = html.replace(/^([*-]) (.+)$/gm, '<li>$2</li>');
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`);
+
+  // Ordered lists
+  html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+
+  // Line breaks / paragraphs
+  html = html.split(/\n\n+/).map(block => {
+    if (/^<(h[1-6]|ul|ol|pre|blockquote|table|hr)/.test(block.trim())) return block;
+    if (!block.trim()) return '';
+    return `<p>${block.replace(/\n/g, '<br>')}</p>`;
+  }).filter(Boolean).join('\n');
+
+  return html;
+}
+
+function renderTables(html) {
+  return html.replace(/(\|.+\|\n)+/g, tableStr => {
+    const rows = tableStr.trim().split('\n');
+    if (rows.length < 2) return tableStr;
+    const headers = rows[0].split('|').filter(c => c.trim());
+    const body = rows.slice(2).map(row => {
+      const cells = row.split('|').filter(c => c.trim());
+      return `<tr>${cells.map(c => `<td>${c.trim()}</td>`).join('')}</tr>`;
+    });
+    return `<table>
+      <thead><tr>${headers.map(h => `<th>${h.trim()}</th>`).join('')}</tr></thead>
+      <tbody>${body.join('')}</tbody>
+    </table>`;
+  });
+}
+
+// ════════════════════════════════════════════════════
+// MODE TOGGLE
+// ════════════════════════════════════════════════════
+let currentMode = 'chat';
+
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById('modeChat').classList.toggle('active', mode === 'chat');
+  document.getElementById('modeSearch').classList.toggle('active', mode === 'search');
+  document.getElementById('agentsBar').style.display = mode === 'chat' ? '' : 'none';
+  document.getElementById('searchPanel').classList.toggle('visible', mode === 'search');
+  document.getElementById('inputContainer').style.display = mode === 'chat' ? '' : 'none';
+}
+
+// ════════════════════════════════════════════════════
+// MILES TAGS TOGGLE
+// ════════════════════════════════════════════════════
+document.querySelectorAll('.miles-tag').forEach(tag => {
+  tag.addEventListener('click', () => {
+    tag.classList.toggle('selected');
+    const anySelected = document.querySelectorAll('.miles-tag.selected').length > 0;
+    document.getElementById('milesAmountBox').classList.toggle('visible', anySelected);
+  });
+});
+
+// ════════════════════════════════════════════════════
+// SEARCH FLIGHTS
+// ════════════════════════════════════════════════════
+async function searchFlights() {
+  const origin = document.getElementById('sfOrigin').value.trim();
+  const dest = document.getElementById('sfDest').value.trim();
+  const dateGo = document.getElementById('sfDateGo').value;
+  const dateBack = document.getElementById('sfDateBack').value;
+  const pax = document.getElementById('sfPax').value;
+  const cabinClass = document.getElementById('sfClass').value;
+  const miles = document.getElementById('sfMiles').value;
+
+  if (!origin || !dest || !dateGo) {
+    alert('Preencha origem, destino e data de ida.');
+    return;
+  }
+
+  const selectedMiles = [];
+  document.querySelectorAll('.miles-tag.selected').forEach(t => {
+    selectedMiles.push(t.querySelector('input').value);
+  });
+
+  // Build natural language search message
+  const classMap = { economy: 'Economy', business: 'Business Class', first: 'First Class' };
+  let msg = `Buscar passagens: ${origin} → ${dest}, ida em ${dateGo}`;
+  if (dateBack) msg += `, volta em ${dateBack}`;
+  msg += `, ${pax} passageiro(s), classe ${classMap[cabinClass]}.`;
+  if (selectedMiles.length > 0) {
+    msg += ` Tenho milhas disponíveis em: ${selectedMiles.join(', ')}.`;
+    if (miles) msg += ` Quantidade aproximada: ${parseInt(miles).toLocaleString('pt-BR')} milhas.`;
+  }
+
+  // Switch to chat area to show results
+  switchMode('chat');
+  const welcome = document.getElementById('welcome');
+  if (welcome) welcome.style.display = 'none';
+
+  addMessage('user', msg);
+  const loadingEl = addSearchLoading();
+  isLoading = true;
+  document.getElementById('searchGoBtn').disabled = true;
+
+  try {
+    const res = await fetch('/api/search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg })
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || `HTTP ${res.status}`);
+    }
+    const data = await res.json();
+    loadingEl.remove();
+    addMessage('assistant', data.text, { icon: '🔍', name: 'Busca Real (Playwright)' });
+  } catch (err) {
+    loadingEl.remove();
+    addMessage('assistant', `⚠️ **Erro na busca:** ${err.message}\n\nTente novamente ou use o modo Estratégia para dicas manuais.`, { icon: '⚠️', name: 'Sistema' });
+  } finally {
+    isLoading = false;
+    document.getElementById('searchGoBtn').disabled = false;
+  }
+}
+
+function addSearchLoading() {
+  const chatArea = document.getElementById('chatArea');
+  const div = document.createElement('div');
+  div.className = 'message assistant';
+  div.innerHTML = `
+    <div class="thinking" style="max-width:360px;padding:16px 20px;">
+      <div class="dot-pulse"><span></span><span></span><span></span></div>
+      <span style="color:var(--text2)">Buscando em background: Google Flights, Kiwi.com, Momondo... (~1-2 min)</span>
+    </div>
+  `;
+  chatArea.appendChild(div);
+  scrollToBottom();
+  return div;
+}
+
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+name: oriza-squad
+version: 1.0.0
+description: Criacao de conteudo e estrategia de vendas para marcas de molhos de pimenta artesanais, consultoria e mentoria em producao de alimentos artesanais
+author: Gabriel
+license: MIT
+slashPrefix: oriza
+
+aios:
+  minVersion: "2.1.0"
+  type: squad
+  entry_agent: social-strategist
+
+components:
+  agents:
+    - content-creator.md
+    - social-strategist.md
+    - copywriter.md
+  tasks:
+    # Content Creator (@content-creator / Pepper)
+    - create-instagram-post.md
+    - create-story-sequence.md
+    - create-reel-script.md
+    - create-recipe-content.md
+    - create-educational-content.md
+    # Social Strategist (@social-strategist / Blaze)
+    - create-content-calendar.md
+    - create-ugc-campaign.md
+    - create-brand-voice-guide.md
+    # Copywriter (@copywriter / Sabor)
+    - optimize-product-description.md
+    - create-email-campaign.md
+  workflows:
+    - wf-monthly-content.yaml
+  checklists:
+    - brand-voice-checklist.md
+  templates: []
+  tools: []
+  scripts: []
+
+config:
+  extends: extend
+  coding-standards: config/coding-standards.md
+  tech-stack: config/tech-stack.md
+  source-tree: config/source-tree.md
+
+dependencies:
+  node: []
+  python: []
+  squads: []
+
+tags:
+  - content-creation
+  - hot-sauce
+  - artisan-food
+  - mentoring
+  - consulting
+  - instagram
+  - ecommerce
+  - copywriting

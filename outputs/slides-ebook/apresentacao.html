@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Estrategico para Produtores Artesanais — Gabriel Petelinkar</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #1A1A1A;
+  --bg-elevated: #222222;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --text-muted: #7A7A7A;
+  --text-warm: #FAF5EB;
+  --criar-primary: #D4A843;
+  --criar-glow: rgba(212,168,67,0.15);
+  --vender-primary: #C45B3A;
+  --vender-glow: rgba(196,91,58,0.15);
+  --escalar-primary: #5B8C3E;
+  --escalar-glow: rgba(91,140,62,0.15);
+  --neutral-border: rgba(255,255,255,0.08);
+  --font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter', 'SF Pro Text', system-ui, sans-serif;
+  --font-editorial: 'Playfair Display', 'Georgia', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+body { background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); }
+
+.slide {
+  width: 100vw; height: 100vh;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 60px 80px;
+  position: relative; overflow: hidden;
+  scroll-snap-align: start;
+}
+.slide-inner { max-width: 1120px; width: 100%; position: relative; z-index: 2; }
+
+/* Group label */
+.group-label {
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px;
+}
+.group-label.criar { color: var(--criar-primary); }
+.group-label.vender { color: var(--vender-primary); }
+.group-label.escalar { color: var(--escalar-primary); }
+
+/* Progress bar */
+.progress {
+  position: absolute; top: 40px; right: 80px; display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; z-index: 10;
+}
+.progress span { color: var(--text-muted); }
+.progress span.active { font-weight: 700; }
+.progress span.active.criar { color: var(--criar-primary); }
+.progress span.active.vender { color: var(--vender-primary); }
+.progress span.active.escalar { color: var(--escalar-primary); }
+.progress .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+.progress .dot.active { background: var(--text-primary); }
+.progress .line { width: 24px; height: 1px; background: rgba(255,255,255,0.12); }
+
+/* Typography */
+.title-hero {
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 7vw, 72px);
+  line-height: 1.05; letter-spacing: -2px;
+}
+.title-xl {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15; letter-spacing: -1px;
+}
+.title-lg {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 3.2vw, 40px);
+  line-height: 1.2;
+}
+.subtitle {
+  font-family: var(--font-display); font-weight: 400; font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.4; color: var(--text-secondary);
+}
+.body-text {
+  font-family: var(--font-body); font-weight: 400; font-size: 20px;
+  line-height: 1.5; color: var(--text-secondary);
+}
+.caption {
+  font-family: var(--font-body); font-weight: 400; font-size: 14px;
+  line-height: 1.4; color: var(--text-muted);
+}
+.hero-number {
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 8vw, 96px);
+  line-height: 1; letter-spacing: -2px;
+}
+.stat-number {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+}
+.quote-text {
+  font-family: var(--font-editorial); font-weight: 400; font-style: italic;
+  font-size: clamp(22px, 2.5vw, 32px); line-height: 1.4;
+}
+
+/* Colors */
+.gold { color: var(--criar-primary); }
+.terracotta { color: var(--vender-primary); }
+.green { color: var(--escalar-primary); }
+.white { color: var(--text-primary); }
+.muted { color: var(--text-muted); }
+
+/* Gold line */
+.gold-line {
+  width: 80px; height: 3px; margin: 20px 0; border: none;
+}
+.gold-line.criar { background: var(--criar-primary); }
+.gold-line.vender { background: var(--vender-primary); }
+.gold-line.escalar { background: var(--escalar-primary); }
+.gold-line.white { background: rgba(255,255,255,0.2); }
+
+/* Section divider glow */
+.glow-criar { background: radial-gradient(ellipse at 50% 60%, rgba(212,168,67,0.18) 0%, transparent 65%); }
+.glow-vender { background: radial-gradient(ellipse at 50% 60%, rgba(196,91,58,0.18) 0%, transparent 65%); }
+.glow-escalar { background: radial-gradient(ellipse at 50% 60%, rgba(91,140,62,0.18) 0%, transparent 65%); }
+.glow-bg { position: absolute; inset: 0; z-index: 1; }
+
+/* Stat callout */
+.stat-card {
+  background: var(--bg-secondary); border: 1px solid var(--neutral-border);
+  border-radius: 12px; padding: 32px; text-align: center;
+}
+.stat-card.criar { border-top: 3px solid var(--criar-primary); }
+.stat-card.vender { border-top: 3px solid var(--vender-primary); }
+.stat-card.escalar { border-top: 3px solid var(--escalar-primary); }
+
+/* Stats row */
+.stats-row { display: flex; gap: 24px; margin-top: 32px; }
+.stats-row .stat-card { flex: 1; }
+
+/* Split layout */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.split-text { display: flex; flex-direction: column; gap: 16px; }
+
+/* Chapter badge */
+.ch-badge {
+  position: absolute; top: -20px; left: -20px;
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(100px, 14vw, 180px); line-height: 1;
+  opacity: 0.06; z-index: 0; pointer-events: none;
+}
+
+/* Speaker notes (hidden by default, toggle with 'N' key) */
+.speaker-notes {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.95); color: var(--text-secondary);
+  padding: 16px 80px; font-size: 14px; line-height: 1.5;
+  font-family: var(--font-body); z-index: 100; border-top: 1px solid var(--neutral-border);
+}
+body.show-notes .speaker-notes { display: block; }
+
+/* Navigation hint */
+.nav-hint {
+  position: fixed; bottom: 20px; right: 30px; z-index: 50;
+  font-family: var(--font-body); font-size: 12px; color: var(--text-muted);
+  opacity: 0.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slide { padding: 30px 24px; }
+  .split { grid-template-columns: 1fr; gap: 24px; }
+  .stats-row { flex-direction: column; }
+  .progress { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Hook -->
+<section class="slide" id="s1">
+  <div class="ch-badge" style="color: var(--criar-primary);">?</div>
+  <div class="slide-inner" style="text-align:center; max-width: 900px;">
+    <p class="subtitle" style="margin-bottom:32px; color:var(--text-muted);">Guia Estrategico para Produtores Artesanais — 2a Edicao</p>
+    <h1 class="title-xl" style="margin-bottom:24px;">Voce produz algo <span class="gold">incrivel</span>.<br>Mas o mercado ainda nao sabe disso.</h1>
+    <hr class="gold-line criar" style="margin:24px auto;">
+    <p class="body-text" style="max-width:700px; margin:0 auto;">Nos proximos minutos, descubra por que produtores artesanais com menos recursos estao superando marcas industriais — e o que separa quem sobrevive de quem vira referencia.</p>
+  </div>
+  <div class="speaker-notes">Vou comecar com uma verdade que incomoda. O Brasil tem milhares de produtores artesanais fazendo produtos extraordinarios. Mas a maioria deles e invisivel. Produto bom que ninguem conhece nao vende, nao cresce, nao sobrevive.</div>
+</section>
+
+<!-- SLIDE 2: Credibilidade -->
+<section class="slide" id="s2">
+  <div class="slide-inner">
+    <div class="split">
+      <div style="background:var(--bg-secondary); border-radius:12px; height:400px; display:flex; align-items:center; justify-content:center;">
+        <p style="color:var(--text-muted); font-size:48px;">GP</p>
+      </div>
+      <div class="split-text">
+        <p class="gold" style="font-family:var(--font-display); font-weight:800; font-size:64px; line-height:1;">12</p>
+        <h2 class="title-lg">anos transformando produtos artesanais em marcas reconhecidas.</h2>
+        <hr class="gold-line criar">
+        <p class="body-text">Gabriel Petelinkar Pereira</p>
+        <p class="caption gold">Engenheiro Agronomo | Consultor | Jurado Tecnico do principal premio de qualidade artesanal do pais</p>
+      </div>
+    </div>
+  </div>
+  <div class="speaker-notes">Sou Gabriel Petelinkar, engenheiro agronomo e empreendedor. Ha mais de 12 anos vivo o universo dos produtos artesanais — como produtor, consultor e jurado tecnico do principal premio de qualidade artesanal do Brasil. Este guia nasceu da pratica, nao da teoria.</div>
+</section>
+
+<!-- SLIDE 3: Divisor CRIAR -->
+<section class="slide" id="s3">
+  <div class="glow-bg glow-criar"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <p class="caption" style="letter-spacing:3px; text-transform:uppercase; margin-bottom:24px;">PARTE 1 DE 3</p>
+    <h1 class="title-hero gold" style="margin-bottom:24px;">CRIAR</h1>
+    <hr class="gold-line criar" style="width:160px; margin:24px auto;">
+    <p class="subtitle">Fatores de Diferenciacao do Produto</p>
+    <p class="caption" style="margin-top:8px;">Capitulos 1 a 7</p>
+  </div>
+  <div class="speaker-notes">Vamos comecar pelo alicerce: o produto. Nos proximos minutos, vou mostrar os 7 fatores que fazem um produto artesanal se destacar em sabor, qualidade e autenticidade.</div>
+</section>
+
+<!-- SLIDE 4: Cap 1 — Ingredientes Nativos -->
+<section class="slide" id="s4">
+  <div class="ch-badge gold">01</div>
+  <div class="progress"><span class="active criar">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <p class="group-label criar">CRIAR</p>
+    <h2 class="title-xl" style="margin-bottom:8px;">Seu territorio conta uma historia que <span class="gold">ninguem mais</span> pode contar.</h2>
+    <hr class="gold-line criar">
+    <p class="body-text" style="margin-bottom:32px;">Ingredientes regionais nao vendem apenas sabor — vendem historia, exclusividade e conexao emocional impossiveis de replicar em escala industrial.</p>
+    <div class="stat-card criar" style="display:inline-block; padding:24px 48px;">
+      <p class="stat-number gold">US$ 297 bi</p>
+      <p class="caption" style="margin-top:8px;">Mercado global de superalimentos ate 2029 — Mordor Intelligence, 2024</p>
+    </div>
+  </div>
+  <div class="speaker-notes">O mercado global de superalimentos vai atingir quase 300 bilhoes de dolares ate 2029. E o Brasil e um dos paises mais ricos em ingredientes nativos do planeta. Use o seu territorio como pilar de marketing e narrativa.</div>
+</section>
+
+<!-- SLIDE 5: Cap 2 — Produtos Extremos -->
+<section class="slide" id="s5">
+  <div class="ch-badge gold">02</div>
+  <div class="progress"><span class="active criar">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="group-label criar">CRIAR</p>
+    <h2 class="title-lg" style="margin-bottom:32px;">O produto que nao e para todos e o que faz o cliente conhecer sua <span class="gold">marca</span>.</h2>
+    <p class="hero-number gold" style="margin-bottom:16px;">12%</p>
+    <p class="body-text" style="max-width:600px; margin:0 auto;">das vendas vem de produtos extremos — mas sao os responsaveis pelo reconhecimento tecnico e acesso a mercados premium.</p>
+    <p class="caption" style="margin-top:16px;">Data & Trends of the European Food and Drink Industry, 2024</p>
+  </div>
+  <div class="speaker-notes">Queijos com maturacao de 24 meses. Cachacas ultra-envelhecidas. Molhos extremamente ardidos. Representam menos de 12% das vendas — mas sao os que fazem o cliente conhecer a marca. Sao a sua vitrine estrategica.</div>
+</section>
+
+<!-- SLIDE 6: Cap 3 — Agridoces -->
+<section class="slide" id="s6">
+  <div class="ch-badge gold">03</div>
+  <div class="progress"><span class="active criar">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <p class="group-label criar">CRIAR</p>
+    <h2 class="title-xl" style="margin-bottom:16px;">O equilibrio entre doce e acido <span class="gold">conquista paladares</span> e multiplica ocasioes de consumo.</h2>
+    <hr class="gold-line criar">
+    <div class="stats-row">
+      <div class="stat-card criar"><p class="stat-number gold">52%</p><p class="caption" style="margin-top:8px;">Crescimento geleia morango + pimenta</p></div>
+      <div class="stat-card criar"><p class="stat-number gold">89%</p><p class="caption" style="margin-top:8px;">Crescimento abacaxi + pimenta</p></div>
+      <div class="stat-card criar"><p class="stat-number gold">4,1%</p><p class="caption" style="margin-top:8px;">CAGR mercado global geleias e chutneys</p></div>
+    </div>
+    <p class="caption" style="margin-top:16px;">Bom Principio Alimentos, 2025 | IMARC Group, 2025</p>
+  </div>
+  <div class="speaker-notes">Geleia de morango com pimenta cresceu 52%. Abacaxi com pimenta, 89%. O agridoce nao e moda — e evolucao do paladar. Use frutas nativas da sua regiao e busque o equilibrio real.</div>
+</section>
+
+<!-- SLIDE 7: Cap 4 — Fermentacao -->
+<section class="slide" id="s7">
+  <div class="ch-badge gold">04</div>
+  <div class="progress"><span class="active criar">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="group-label criar">CRIAR</p>
+    <h2 class="title-lg" style="margin-bottom:32px;">O sabor que nasce do <span class="gold">tempo</span> nao pode ser copiado por nenhuma industria.</h2>
+    <p class="hero-number gold" style="margin-bottom:16px;">US$ 383 bi</p>
+    <p class="body-text">Projecao do mercado global de fermentados ate 2033</p>
+    <p class="caption" style="margin-top:8px;">IMARC Group, 2025 | 57% dos consumidores priorizam produtos naturais e funcionais — WHO, 2024</p>
+  </div>
+  <div class="speaker-notes">O mercado global de fermentados vai passar de 383 bilhoes de dolares. Fermentacao e uma narrativa poderosa — mostra dominio tecnico, paciencia e cria produtos com complexidade unica. Conte a historia do tempo.</div>
+</section>
+
+<!-- SLIDE 8: Cap 5 — Experiencia Sensorial -->
+<section class="slide" id="s8">
+  <div class="ch-badge gold">05</div>
+  <div class="progress"><span class="active criar">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="group-label criar">CRIAR</p>
+    <p class="hero-number gold" style="margin-bottom:16px;">70%</p>
+    <h2 class="title-lg" style="margin-bottom:24px;">das decisoes de compra acontecem <span class="gold">antes da primeira mordida</span>.</h2>
+    <hr class="gold-line criar" style="margin:24px auto;">
+    <p class="body-text" style="max-width:700px; margin:0 auto;">Cor, textura, aroma, som — tudo comunica antes do sabor. Seu produto precisa convencer os olhos antes de conquistar o paladar.</p>
+    <p class="caption" style="margin-top:16px;">NielsenIQ, 2024 | Consumidores pagam 25% a mais por experiencias multissensoriais — HBR, 2024</p>
+  </div>
+  <div class="speaker-notes">Eu aprendi isso da pior forma. No inicio da minha trajetoria com molhos de pimenta, nao dei atencao a cor. O sabor era otimo, mas o liquido opaco e amarelado afastava os clientes. Precisei recolher um lote inteiro.</div>
+</section>
+
+<!-- SLIDE 9: Cap 6 — Nicho e Exclusividade -->
+<section class="slide" id="s9">
+  <div class="ch-badge gold">06</div>
+  <div class="progress"><span class="active criar">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="group-label criar">CRIAR</p>
+    <h2 class="title-xl" style="margin-bottom:32px;">Vender para todos e a forma mais cara de nao vender para <span class="gold">ninguem</span>.</h2>
+    <div class="stats-row" style="justify-content:center;">
+      <div class="stat-card criar"><p class="stat-number gold">75%</p><p class="caption" style="margin-top:8px;">pagam mais por artesanal personalizado</p></div>
+      <div class="stat-card criar"><p class="stat-number gold">US$ 109 bi</p><p class="caption" style="margin-top:8px;">mercado global de nicho ate 2033</p></div>
+    </div>
+    <p class="caption" style="margin-top:16px;">SEBRAE, 2024 | Verified Market Reports, 2024</p>
+  </div>
+  <div class="speaker-notes">75% dos consumidores pagam mais por produtos personalizados. Nao tente agradar todo mundo — encontre seu publico, sirva ele extraordinariamente, e deixe a exclusividade trabalhar a seu favor.</div>
+</section>
+
+<!-- SLIDE 10: Cap 7 — Embalagem -->
+<section class="slide" id="s10">
+  <div class="ch-badge gold">07</div>
+  <div class="progress"><span class="active criar">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <p class="group-label criar">CRIAR</p>
+    <h2 class="title-xl" style="margin-bottom:16px;">Sua embalagem e o primeiro <span class="gold">vendedor</span> que o cliente encontra.</h2>
+    <hr class="gold-line criar">
+    <p class="body-text" style="margin-bottom:32px;">A embalagem e a extensao do cuidado que comeca na producao e termina nas maos do cliente. Ela comunica antes da degustacao.</p>
+    <div class="stats-row">
+      <div class="stat-card criar"><p class="stat-number gold">60%</p><p class="caption" style="margin-top:8px;">aumento na percepcao de valor com embalagem premium</p></div>
+      <div class="stat-card criar"><p class="stat-number gold">67%</p><p class="caption" style="margin-top:8px;">preferem embalagens sustentaveis</p></div>
+      <div class="stat-card criar"><p class="stat-number gold">US$ 380 bi</p><p class="caption" style="margin-top:8px;">mercado global de embalagens alimenticias</p></div>
+    </div>
+  </div>
+  <div class="speaker-notes">Embalagens premium aumentam a percepcao de valor em ate 60%. E 67% dos consumidores preferem embalagens sustentaveis. Invista no material, no design, na coerencia com a sua identidade.</div>
+</section>
+
+<!-- SLIDE 11: Divisor VENDER -->
+<section class="slide" id="s11">
+  <div class="glow-bg glow-vender"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <p class="caption" style="letter-spacing:3px; text-transform:uppercase; margin-bottom:24px;">PARTE 2 DE 3</p>
+    <h1 class="title-hero terracotta" style="margin-bottom:24px;">VENDER</h1>
+    <hr class="gold-line vender" style="width:160px; margin:24px auto;">
+    <p class="subtitle">Estrategias de Comunicacao</p>
+    <p class="caption" style="margin-top:8px;">Capitulos 8 a 11</p>
+  </div>
+  <div class="speaker-notes">Produto incrivel sem comunicacao e como uma obra de arte trancada num deposito. Agora vamos falar sobre como contar sua historia e transformar clientes em embaixadores.</div>
+</section>
+
+<!-- SLIDE 12: Cap 8 — Narrativa -->
+<section class="slide" id="s12">
+  <div class="ch-badge terracotta">08</div>
+  <div class="progress"><span>CRIAR</span><span class="dot"></span><span class="line"></span><span class="active vender">VENDER</span><span class="dot active"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="group-label vender">VENDER</p>
+    <h2 class="title-xl" style="margin-bottom:32px;">Sua historia e a unica coisa que nenhum concorrente pode <span class="terracotta">copiar</span>.</h2>
+    <div class="stats-row" style="justify-content:center;">
+      <div class="stat-card vender"><p class="stat-number terracotta">62%</p><p class="caption" style="margin-top:8px;">mais leads com conteudo frequente</p></div>
+      <div class="stat-card vender"><p class="stat-number terracotta">3x</p><p class="caption" style="margin-top:8px;">mais retencao respondendo feedback</p></div>
+      <div class="stat-card vender"><p class="stat-number terracotta">9h</p><p class="caption" style="margin-top:8px;">por dia nas redes sociais (Brasil)</p></div>
+    </div>
+    <p class="caption" style="margin-top:16px;">Content Marketing Institute, 2024 | Microsoft, 2024</p>
+  </div>
+  <div class="speaker-notes">O brasileiro passa 9 horas por dia nas redes sociais. Sua historia e sua maior arma. Mostre o processo, os bastidores, as pessoas. Conte sua origem. Nao venda produto — venda significado.</div>
+</section>
+
+<!-- SLIDE 13: Cap 9 — Eventos -->
+<section class="slide" id="s13">
+  <div class="ch-badge terracotta">09</div>
+  <div class="progress"><span>CRIAR</span><span class="dot"></span><span class="line"></span><span class="active vender">VENDER</span><span class="dot active"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <p class="group-label vender">VENDER</p>
+    <h2 class="title-xl" style="margin-bottom:16px;">Quem prova, defende. Quem defende, <span class="terracotta">multiplica</span>.</h2>
+    <hr class="gold-line vender">
+    <div class="split" style="margin-top:32px;">
+      <div>
+        <p class="hero-number terracotta" style="margin-bottom:16px;">5x</p>
+        <p class="body-text">taxa de conversao de degustacoes presenciais vs. acoes digitais isoladas</p>
+        <p class="caption" style="margin-top:8px;">HubSpot Research, 2024</p>
+      </div>
+      <div class="stat-card vender">
+        <p class="stat-number terracotta" style="margin-bottom:8px;">R$ 355 bi</p>
+        <p class="body-text">movimentados pelo setor de eventos no Brasil em 2024</p>
+        <p class="caption" style="margin-top:8px;">ABEOC Brasil, 2025</p>
+      </div>
+    </div>
+  </div>
+  <div class="speaker-notes">Degustacoes presenciais convertem ate 5 vezes mais que acoes digitais isoladas. Alguns dos meus marcos empresariais aconteceram em eventos e feiras. Cada evento e investimento em visibilidade e conexao.</div>
+</section>
+
+<!-- SLIDE 14: Cap 10 — Harmonizacao -->
+<section class="slide" id="s14">
+  <div class="ch-badge terracotta">10</div>
+  <div class="progress"><span>CRIAR</span><span class="dot"></span><span class="line"></span><span class="active vender">VENDER</span><span class="dot active"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="group-label vender">VENDER</p>
+    <h2 class="title-lg" style="margin-bottom:32px;">Quando o cliente descobre <span class="terracotta">5 formas</span> de usar seu produto, ele nunca mais esquece.</h2>
+    <div class="stats-row" style="justify-content:center;">
+      <div class="stat-card vender"><p class="stat-number terracotta">68%</p><p class="caption" style="margin-top:8px;">preferem produtos versateis</p></div>
+      <div class="stat-card vender"><p class="stat-number terracotta">35%</p><p class="caption" style="margin-top:8px;">mais recompra com harmonizacao</p></div>
+    </div>
+    <p class="caption" style="margin-top:16px;">NielsenIQ, 2024 | Euromonitor International, 2025</p>
+  </div>
+  <div class="speaker-notes">68% dos consumidores preferem produtos versateis. 35% mais recompra com sugestoes de harmonizacao. Crie conteudo mostrando diferentes usos. Transforme um simples ingrediente em peca central da refeicao.</div>
+</section>
+
+<!-- SLIDE 15: Cap 11 — Educacao -->
+<section class="slide" id="s15">
+  <div class="ch-badge terracotta">11</div>
+  <div class="progress"><span>CRIAR</span><span class="dot"></span><span class="line"></span><span class="active vender">VENDER</span><span class="dot active"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="group-label vender">VENDER</p>
+    <p class="hero-number terracotta" style="margin-bottom:16px;">80%</p>
+    <h2 class="title-lg" style="margin-bottom:24px;">dos consumidores dizem que transparencia aumenta confianca e disposicao de pagar ate <span class="terracotta">25% a mais</span>.</h2>
+    <hr class="gold-line vender" style="margin:24px auto;">
+    <p class="body-text" style="max-width:700px; margin:0 auto;">Cliente educado nao reclama do preco — ele explica o <span class="terracotta">valor</span> para os amigos.</p>
+    <p class="caption" style="margin-top:16px;">PwC Consumer Insights, 2024 | Marketing Experiential Study, 2024</p>
+  </div>
+  <div class="speaker-notes">80% dos consumidores dizem que transparencia aumenta a confianca. Participantes de workshops tem 60% mais probabilidade de se tornarem clientes fieis. Educar e a estrategia de fidelizacao mais barata que existe.</div>
+</section>
+
+<!-- SLIDE 16: Divisor ESCALAR -->
+<section class="slide" id="s16">
+  <div class="glow-bg glow-escalar"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <p class="caption" style="letter-spacing:3px; text-transform:uppercase; margin-bottom:24px;">PARTE 3 DE 3</p>
+    <h1 class="title-hero green" style="margin-bottom:24px;">ESCALAR</h1>
+    <hr class="gold-line escalar" style="width:160px; margin:24px auto;">
+    <p class="subtitle">Gestao, Proposito e Credibilidade</p>
+    <p class="caption" style="margin-top:8px;">Capitulos 12 a 15</p>
+  </div>
+  <div class="speaker-notes">Produto forte e comunicacao eficaz nao sao suficientes se nao existir gestao por tras. Agora vamos falar sobre os alicerces que sustentam negocios artesanais de longo prazo.</div>
+</section>
+
+<!-- SLIDE 17: Cap 12 — Colaboracao (S.T.A.R.) -->
+<section class="slide" id="s17">
+  <div class="ch-badge green">12</div>
+  <div class="progress"><span>CRIAR</span><span class="dot"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span class="active escalar">ESCALAR</span><span class="dot active"></span></div>
+  <div class="slide-inner">
+    <p class="group-label escalar">ESCALAR</p>
+    <h2 class="title-xl" style="margin-bottom:24px;">Sozinho voce vai rapido. Junto, voce cria algo que nenhum dos dois faria <span class="green">sozinho</span>.</h2>
+    <div style="background:var(--bg-secondary); border:1px solid var(--neutral-border); border-left:4px solid var(--escalar-primary); border-radius:12px; padding:24px 32px; margin:24px 0;">
+      <p class="body-text" style="color:var(--text-warm);"><strong style="color:var(--escalar-primary);">Historia real:</strong> Na Chilliepig, criamos um produto em colaboracao com uma empresa de mel selvagem. Hoje e um dos mais vendidos do portfolio. Nao nasceu de um plano de marketing — nasceu de uma conversa entre dois produtores que acreditavam na mesma coisa.</p>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card escalar"><p class="stat-number green">25%</p><p class="caption" style="margin-top:8px;">mais vendas em collabs</p></div>
+      <div class="stat-card escalar"><p class="stat-number green">50%</p><p class="caption" style="margin-top:8px;">mais alcance</p></div>
+      <div class="stat-card escalar"><p class="stat-number green">35%</p><p class="caption" style="margin-top:8px;">menos custo de aquisicao</p></div>
+    </div>
+  </div>
+  <div class="speaker-notes">Nos, na Chilliepig, criamos um produto em colaboracao com uma empresa de mel selvagem. Hoje e um dos mais vendidos do nosso portfolio. Parcerias aumentam vendas em 25%, ampliam alcance em 50% e reduzem custo de aquisicao em 35%.</div>
+</section>
+
+<!-- SLIDE 18: Cap 13 — Sustentabilidade -->
+<section class="slide" id="s18">
+  <div class="ch-badge green">13</div>
+  <div class="progress"><span>CRIAR</span><span class="dot"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span class="active escalar">ESCALAR</span><span class="dot active"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="group-label escalar">ESCALAR</p>
+    <p class="hero-number green" style="margin-bottom:16px;">80%</p>
+    <h2 class="title-lg" style="margin-bottom:24px;">dos consumidores pagam em media <span class="green">9,7% a mais</span> por produtos sustentaveis.</h2>
+    <hr class="gold-line escalar" style="margin:24px auto;">
+    <p class="body-text" style="max-width:700px; margin:0 auto;">Sustentabilidade nao e marketing. E o minimo que o consumidor <span class="green">espera</span> de voce.</p>
+    <p class="caption" style="margin-top:16px;">PwC Voice of the Consumer, 2024 | 67% preferem embalagens sustentaveis — Nielsen, 2024</p>
+  </div>
+  <div class="speaker-notes">80% dos consumidores estao dispostos a pagar quase 10% a mais por produtos sustentaveis. 67% preferem embalagens ecologicas. Sustentabilidade genuina nao e campanha — e postura.</div>
+</section>
+
+<!-- SLIDE 19: Cap 14 — Certificacao -->
+<section class="slide" id="s19">
+  <div class="ch-badge green">14</div>
+  <div class="progress"><span>CRIAR</span><span class="dot"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span class="active escalar">ESCALAR</span><span class="dot active"></span></div>
+  <div class="slide-inner">
+    <p class="group-label escalar">ESCALAR</p>
+    <h2 class="title-xl" style="margin-bottom:16px;">Um selo nao e apenas um simbolo — e uma <span class="green">porta</span> que abre mercados inteiros.</h2>
+    <hr class="gold-line escalar">
+    <div class="stats-row" style="margin-top:24px;">
+      <div class="stat-card escalar"><p class="stat-number green">280</p><p class="caption" style="margin-top:8px;">produtos com Selo ARTE em 2025</p></div>
+      <div class="stat-card escalar"><p class="stat-number green">122</p><p class="caption" style="margin-top:8px;">Indicacoes Geograficas no Brasil</p></div>
+      <div class="stat-card escalar"><p class="stat-number green">129</p><p class="caption" style="margin-top:8px;">estabelecimentos com Selo Agro SP</p></div>
+    </div>
+    <p class="caption" style="margin-top:16px;">CIDASC/MAPA, 2025 | INPI, 2024 | Secretaria de Agricultura SP, 2024</p>
+  </div>
+  <div class="speaker-notes">O Brasil ja tem 122 indicacoes geograficas registradas e mais de 280 produtos com Selo ARTE. Um selo comunica profissionalismo, abre portas para distribuidores, e justifica preco.</div>
+</section>
+
+<!-- SLIDE 20: Cap 15 — Profissionalizacao -->
+<section class="slide" id="s20">
+  <div class="ch-badge green">15</div>
+  <div class="progress"><span>CRIAR</span><span class="dot"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span class="active escalar">ESCALAR</span><span class="dot active"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="group-label escalar">ESCALAR</p>
+    <h2 class="title-lg" style="margin-bottom:32px;">Profissionalizacao nao mata a <span class="green">criatividade</span> — ela da espaco seguro para a criatividade florescer.</h2>
+    <div class="stats-row" style="justify-content:center;">
+      <div class="stat-card escalar"><p class="stat-number green">45%</p><p class="caption" style="margin-top:8px;">mais chances de expansao com formalizacao</p></div>
+      <div class="stat-card escalar"><p class="stat-number green">32%</p><p class="caption" style="margin-top:8px;">mais faturamento com certificacao sanitaria</p></div>
+      <div class="stat-card escalar"><p class="stat-number green">21%</p><p class="caption" style="margin-top:8px;">crescimento no registro de artesaos</p></div>
+    </div>
+    <p class="caption" style="margin-top:16px;">SEBRAE, 2024 | MAPA/Embrapa, 2025</p>
+  </div>
+  <div class="speaker-notes">Negocios formalizados tem 45% mais chances de expansao. Produtores com certificacao sanitaria aumentam o faturamento em 32%. Organize seus processos, padronize a qualidade, crie identidade de marca solida.</div>
+</section>
+
+<!-- SLIDE 21: CTA -->
+<section class="slide" id="s21">
+  <div class="slide-inner" style="text-align:center; max-width:800px;">
+    <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:32px;">
+      <p class="title-hero white">Aplique.</p>
+      <p class="title-hero white">Experimente.</p>
+      <p class="title-hero gold">Evolua.</p>
+    </div>
+    <hr class="gold-line criar" style="width:160px; margin:32px auto;">
+    <p class="subtitle" style="max-width:600px; margin:0 auto;">O reconhecimento que seu trabalho merece comeca agora.</p>
+    <p class="body-text" style="margin-top:32px; color:var(--text-muted);">15 capitulos. 3 pilares. 1 verdade:<br>O artesanal do futuro comeca com quem decide fazer diferente <span class="gold">hoje</span>.</p>
+  </div>
+  <div class="speaker-notes">Chegamos ao final do guia, mas o verdadeiro comeco esta nas suas maos. Identifique seu diferencial. Defina seu publico. Conte sua historia. O artesanal do futuro comeca com quem decide fazer diferente hoje.</div>
+</section>
+
+<!-- SLIDE 22: Contato -->
+<section class="slide" id="s22">
+  <div class="slide-inner">
+    <div class="split">
+      <div style="display:flex; flex-direction:column; justify-content:center;">
+        <p class="quote-text" style="margin-bottom:24px;">"Transformar o agro e desenvolver pessoas e negocios que carregam a essencia de quem os cria."</p>
+        <hr class="gold-line criar">
+        <p class="body-text" style="margin-top:16px; color:var(--text-warm);">Gabriel Petelinkar Pereira</p>
+        <p class="caption">Engenheiro Agronomo | Consultor | Palestrante</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <p class="title-lg" style="margin-bottom:16px;">Vamos <span class="gold">conversar</span>?</p>
+        <div style="background:var(--bg-secondary); border-radius:12px; padding:24px; display:flex; flex-direction:column; gap:12px;">
+          <p class="body-text"><span class="gold">Email:</span> orizabrasil@gmail.com</p>
+          <p class="body-text"><span class="gold">WhatsApp:</span> 83 9650-8668</p>
+          <p class="body-text"><span class="gold">LinkedIn:</span> gabrielpetelinkar</p>
+          <p class="body-text"><span class="gold">Instagram:</span> @gabrielpetelinkar</p>
+        </div>
+        <p class="caption" style="margin-top:8px;">Mentoria | Consultoria | Palestras | Treinamento</p>
+      </div>
+    </div>
+  </div>
+  <div class="speaker-notes">Se voce quer transformar seu negocio artesanal em uma marca reconhecida e sustentavel, vamos conversar. Me procure no Instagram, no LinkedIn, ou mande um WhatsApp. O artesanal do futuro comeca com quem decide fazer diferente hoje.</div>
+</section>
+
+<div class="nav-hint">Scroll ou setas para navegar | N para speaker notes</div>
+
+<script>
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  const slides = document.querySelectorAll('.slide');
+  const currentY = window.scrollY;
+  const vh = window.innerHeight;
+  const currentSlide = Math.round(currentY / vh);
+
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+    e.preventDefault();
+    const next = Math.min(currentSlide + 1, slides.length - 1);
+    slides[next].scrollIntoView({ behavior: 'smooth' });
+  }
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    const prev = Math.max(currentSlide - 1, 0);
+    slides[prev].scrollIntoView({ behavior: 'smooth' });
+  }
+  if (e.key === 'n' || e.key === 'N') {
+    document.body.classList.toggle('show-notes');
+  }
+});
+</script>
+</body>
+</html>

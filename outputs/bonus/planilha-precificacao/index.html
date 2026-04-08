@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planilha de Precificação — Produtor Artesanal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-primary: #FFF9F0;
+    --bg-secondary: #F5EDE0;
+    --bg-tertiary: #EDE5D5;
+    --accent: #B5563A;
+    --accent-secondary: #9A4528;
+    --accent-soft: #7A3A20;
+    --green: #5A7A42;
+    --green-bg: rgba(90, 122, 66, 0.08);
+    --text: #3D2B1F;
+    --text-secondary: #6B5744;
+    --text-muted: #8A7A68;
+    --glass-bg: rgba(181, 86, 58, 0.05);
+    --glass-border: rgba(181, 86, 58, 0.12);
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================
+     LAYOUT
+     ============================================ */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .header {
+    text-align: center;
+    padding: 48px 24px 32px;
+    background: var(--bg-primary);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    border: 1px solid var(--glass-border);
+  }
+
+  .header__badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--glass-border);
+    padding: 5px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .header__title {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .header__title span { color: var(--accent); }
+
+  .header__subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* SECTIONS */
+  .section {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    border: 1px solid var(--glass-border);
+  }
+
+  .section__label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .section__title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .section__desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  /* PRODUCT HEADER */
+  .product-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .product-header__field {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .product-header__field label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  /* INPUTS */
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text);
+    transition: border-color 0.2s;
+  }
+
+  input[type="text"]:focus,
+  input[type="number"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(181, 86, 58, 0.1);
+  }
+
+  input[type="number"] {
+    font-family: var(--font-mono);
+    text-align: right;
+  }
+
+  input::placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: var(--accent);
+    color: #FFF9F0;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  thead th:first-child { border-radius: 8px 0 0 0; }
+  thead th:last-child { border-radius: 0 8px 0 0; }
+
+  tbody td {
+    padding: 6px 12px;
+    border-bottom: 1px solid var(--glass-border);
+    vertical-align: middle;
+  }
+
+  tbody tr:nth-child(even) {
+    background: var(--glass-bg);
+  }
+
+  tbody tr:hover {
+    background: rgba(181, 86, 58, 0.06);
+  }
+
+  .cat-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .item-name {
+    color: var(--text-secondary);
+  }
+
+  .item-name input[type="text"] {
+    border: none;
+    background: transparent;
+    padding: 4px 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .item-name input[type="text"]:focus {
+    box-shadow: none;
+    border-bottom: 1px solid var(--accent);
+    border-radius: 0;
+  }
+
+  td input[type="number"] {
+    border: 1px dashed var(--glass-border);
+    background: rgba(181, 86, 58, 0.04);
+    padding: 6px 10px;
+    border-radius: 6px;
+    width: 100px;
+    font-size: 13px;
+  }
+
+  td input[type="number"]:focus {
+    border-style: solid;
+  }
+
+  .calc-cell {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-secondary);
+    font-weight: 500;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .total-row td {
+    font-weight: 700;
+    background: var(--bg-tertiary) !important;
+    border-top: 2px solid var(--accent);
+    color: var(--text);
+    padding: 10px 12px;
+  }
+
+  .total-value {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* METHOD CARDS */
+  .method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .method-card {
+    background: var(--bg-primary);
+    border: 1.5px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .method-card--best {
+    border-color: var(--green);
+    background: var(--green-bg);
+  }
+
+  .method-card--best::before {
+    content: 'MELHOR';
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: white;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 10px;
+    border-radius: 10px;
+  }
+
+  .method-card__num {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .method-card__title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .method-card__formula {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .method-card__input-group {
+    margin-bottom: 12px;
+  }
+
+  .method-card__input-group label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .method-card__input-group input {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .method-card__result {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--glass-border);
+  }
+
+  .method-card__result-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+
+  .method-card__result-value {
+    font-family: var(--font-mono);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .method-card__margin {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  /* RECOMMENDATION */
+  .recommendation {
+    background: var(--glass-bg);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+  }
+
+  .recommendation strong { color: var(--text); }
+
+  /* SCENARIO TABLE */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .scenario-card {
+    background: var(--bg-primary);
+    border: 1.5px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .scenario-card__title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .scenario-card__input label {
+    display: block;
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .scenario-card__input input {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .scenario-card__results {
+    border-top: 1px solid var(--glass-border);
+    padding-top: 12px;
+  }
+
+  .scenario-card__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    padding: 4px 0;
+    color: var(--text-secondary);
+  }
+
+  .scenario-card__row span:last-child {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .scenario-card__highlight {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--green);
+    margin-top: 8px;
+  }
+
+  .scenario-card__highlight-label {
+    font-size: 9px;
+    color: var(--green);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* COMPETITOR TABLE */
+  .competitor-table td input[type="text"] {
+    width: 100%;
+    min-width: 60px;
+  }
+
+  .competitor-table td input[type="number"] {
+    width: 80px;
+  }
+
+  .competitor-table .your-row td {
+    background: rgba(181, 86, 58, 0.08) !important;
+    font-weight: 600;
+  }
+
+  /* MARKUP REFERENCE */
+  .markup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .markup-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .markup-item__category {
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .markup-item__values {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-secondary);
+  }
+
+  .markup-item__note {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* TIPS */
+  .tips-list {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .tips-list li {
+    padding: 10px 0 10px 32px;
+    position: relative;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .tips-list li:last-child { border-bottom: none; }
+
+  .tips-list li::before {
+    content: attr(data-num);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 22px;
+    height: 22px;
+    background: var(--accent);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tips-list li strong { color: var(--text); }
+
+  /* FOOTER */
+  .page-footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .page-footer strong {
+    color: var(--accent);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .container { padding: 12px; }
+    .section { padding: 20px; }
+    .method-grid, .scenario-grid { grid-template-columns: 1fr; }
+    .markup-grid { grid-template-columns: 1fr; }
+    .product-header { flex-direction: column; }
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .container { max-width: 100%; padding: 0; }
+    .section { border: none; box-shadow: none; page-break-inside: avoid; }
+    input { border: 1px solid #ccc !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header__badge">Bônus Exclusivo</div>
+    <div class="header__title">Planilha de <span>Precificação</span></div>
+    <div class="header__subtitle">
+      Preencha os campos e veja os resultados calculados automaticamente. Descubra o preço ideal para seus produtos artesanais.
+    </div>
+  </div>
+
+  <!-- ============================================
+       ABA 1: CUSTO DE PRODUÇÃO
+       ============================================ -->
+  <div class="section">
+    <div class="section__label">Aba 1</div>
+    <div class="section__title">Custo de Produção</div>
+    <div class="section__desc">Preencha os custos do seu lote. O custo por unidade é calculado automaticamente.</div>
+
+    <div class="product-header">
+      <div class="product-header__field">
+        <label>Nome do Produto</label>
+        <input type="text" id="product-name" placeholder="Ex: Geleia de Pimenta Biquinho">
+      </div>
+      <div class="product-header__field" style="max-width: 200px;">
+        <label>Unidades por Lote</label>
+        <input type="number" id="lote-qty" placeholder="Ex: 30" min="1" value="">
+      </div>
+    </div>
+
+    <table id="cost-table">
+      <thead>
+        <tr>
+          <th style="width: 120px;">Categoria</th>
+          <th>Item</th>
+          <th style="width: 120px; text-align: right;">Custo do Lote (R$)</th>
+          <th style="width: 120px; text-align: right;">Custo/Unidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat-label">Matéria-prima</td><td class="item-name"><input type="text" value="Ingrediente principal" data-default="Ingrediente principal"></td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Matéria-prima</td><td class="item-name"><input type="text" value="Ingrediente 2" data-default="Ingrediente 2"></td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Matéria-prima</td><td class="item-name"><input type="text" value="Ingrediente 3" data-default="Ingrediente 3"></td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Matéria-prima</td><td class="item-name"><input type="text" value="Ingrediente 4" data-default="Ingrediente 4"></td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Matéria-prima</td><td class="item-name"><input type="text" value="Ingrediente 5" data-default="Ingrediente 5"></td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Embalagem</td><td class="item-name">Pote / vidro / frasco</td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Embalagem</td><td class="item-name">Rótulo / etiqueta</td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Embalagem</td><td class="item-name">Tampa / lacre</td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Embalagem</td><td class="item-name">Caixa / embalagem externa</td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Energia</td><td class="item-name">Gás (proporcional ao lote)</td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Energia</td><td class="item-name">Energia elétrica</td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Mão de obra</td><td class="item-name">Horas × valor/hora</td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Outros</td><td class="item-name">Transporte / frete</td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr><td class="cat-label">Outros</td><td class="item-name">Perdas estimadas (5–10%)</td><td style="text-align:right;"><input type="number" class="cost-input" step="0.01" min="0" placeholder="0,00"></td><td class="calc-cell" data-unit>—</td></tr>
+        <tr class="total-row">
+          <td colspan="2" style="text-align: right;">TOTAL</td>
+          <td style="text-align: right;"><span class="total-value" id="total-lote">R$ 0,00</span></td>
+          <td style="text-align: right;"><span class="total-value" id="total-unit">R$ 0,00</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================
+       ABA 2: FORMAÇÃO DE PREÇO — 3 MÉTODOS
+       ============================================ -->
+  <div class="section">
+    <div class="section__label">Aba 2</div>
+    <div class="section__title">Formação de Preço</div>
+    <div class="section__desc">Seu custo por unidade: <strong><span id="cpu-display">R$ 0,00</span></strong> — agora defina o preço ideal com 3 métodos.</div>
+
+    <div class="method-grid">
+      <!-- MARKUP -->
+      <div class="method-card" id="card-markup">
+        <div class="method-card__num">MÉTODO 01</div>
+        <div class="method-card__title">Markup</div>
+        <div class="method-card__formula">Custo × Multiplicador</div>
+        <div class="method-card__input-group">
+          <label>Multiplicador</label>
+          <input type="number" id="markup-val" step="0.1" min="1" value="2.5" placeholder="2.5">
+        </div>
+        <div class="method-card__result">
+          <div class="method-card__result-label">Preço</div>
+          <div class="method-card__result-value" id="markup-price">R$ 0,00</div>
+          <div class="method-card__margin" id="markup-margin">Margem: 0%</div>
+        </div>
+      </div>
+
+      <!-- MARGEM -->
+      <div class="method-card" id="card-margem">
+        <div class="method-card__num">MÉTODO 02</div>
+        <div class="method-card__title">Margem</div>
+        <div class="method-card__formula">Custo ÷ (1 – margem%)</div>
+        <div class="method-card__input-group">
+          <label>Margem Desejada (%)</label>
+          <input type="number" id="margem-val" step="1" min="1" max="99" value="60" placeholder="60">
+        </div>
+        <div class="method-card__result">
+          <div class="method-card__result-label">Preço</div>
+          <div class="method-card__result-value" id="margem-price">R$ 0,00</div>
+          <div class="method-card__margin" id="margem-margin">Margem: 0%</div>
+        </div>
+      </div>
+
+      <!-- VALOR -->
+      <div class="method-card" id="card-valor">
+        <div class="method-card__num">MÉTODO 03</div>
+        <div class="method-card__title">Valor</div>
+        <div class="method-card__formula">Baseado na percepção</div>
+        <div class="method-card__input-group">
+          <label>Preço que o mercado paga</label>
+          <input type="number" id="valor-val" step="0.01" min="0" placeholder="Ex: 25.00">
+        </div>
+        <div class="method-card__result">
+          <div class="method-card__result-label">Preço</div>
+          <div class="method-card__result-value" id="valor-price">R$ 0,00</div>
+          <div class="method-card__margin" id="valor-margin">Margem: 0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommendation" id="recommendation">
+      <strong>Recomendação:</strong> Preencha os 3 métodos. O melhor preço será destacado automaticamente.
+    </div>
+  </div>
+
+  <!-- ============================================
+       ABA 3: SIMULADOR DE FATURAMENTO
+       ============================================ -->
+  <div class="section">
+    <div class="section__label">Aba 3</div>
+    <div class="section__title">Simulador de Faturamento</div>
+    <div class="section__desc">Quantas unidades você consegue vender por mês? Simule 3 cenários.</div>
+
+    <div class="scenario-grid">
+      <div class="scenario-card">
+        <div class="scenario-card__title">Conservador</div>
+        <div class="scenario-card__input">
+          <label>Unidades / mês</label>
+          <input type="number" class="scenario-qty" id="scenario-1" min="0" placeholder="Ex: 50">
+        </div>
+        <div class="scenario-card__results" id="scenario-1-results">
+          <div class="scenario-card__row"><span>Faturamento</span><span id="s1-fat">—</span></div>
+          <div class="scenario-card__row"><span>Custo total</span><span id="s1-custo">—</span></div>
+          <div class="scenario-card__highlight-label">Lucro Bruto</div>
+          <div class="scenario-card__highlight" id="s1-lucro">—</div>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-card__title">Realista</div>
+        <div class="scenario-card__input">
+          <label>Unidades / mês</label>
+          <input type="number" class="scenario-qty" id="scenario-2" min="0" placeholder="Ex: 120">
+        </div>
+        <div class="scenario-card__results" id="scenario-2-results">
+          <div class="scenario-card__row"><span>Faturamento</span><span id="s2-fat">—</span></div>
+          <div class="scenario-card__row"><span>Custo total</span><span id="s2-custo">—</span></div>
+          <div class="scenario-card__highlight-label">Lucro Bruto</div>
+          <div class="scenario-card__highlight" id="s2-lucro">—</div>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-card__title">Otimista</div>
+        <div class="scenario-card__input">
+          <label>Unidades / mês</label>
+          <input type="number" class="scenario-qty" id="scenario-3" min="0" placeholder="Ex: 250">
+        </div>
+        <div class="scenario-card__results" id="scenario-3-results">
+          <div class="scenario-card__row"><span>Faturamento</span><span id="s3-fat">—</span></div>
+          <div class="scenario-card__row"><span>Custo total</span><span id="s3-custo">—</span></div>
+          <div class="scenario-card__highlight-label">Lucro Bruto</div>
+          <div class="scenario-card__highlight" id="s3-lucro">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       ABA 4: COMPARATIVO
+       ============================================ -->
+  <div class="section">
+    <div class="section__label">Aba 4</div>
+    <div class="section__title">Comparativo de Concorrentes</div>
+    <div class="section__desc">Pesquise os concorrentes para validar seu posicionamento.</div>
+
+    <table class="competitor-table">
+      <thead>
+        <tr>
+          <th>Concorrente</th>
+          <th>Produto</th>
+          <th style="text-align:right;">Peso (g)</th>
+          <th style="text-align:right;">Preço (R$)</th>
+          <th style="text-align:right;">R$/100g</th>
+          <th>Diferencial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" placeholder="Nome"></td>
+          <td><input type="text" placeholder="Produto"></td>
+          <td style="text-align:right;"><input type="number" class="comp-peso" step="1" min="0" placeholder="0"></td>
+          <td style="text-align:right;"><input type="number" class="comp-preco" step="0.01" min="0" placeholder="0,00"></td>
+          <td class="calc-cell comp-100g">—</td>
+          <td><input type="text" placeholder="Ex: orgânico"></td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="Nome"></td>
+          <td><input type="text" placeholder="Produto"></td>
+          <td style="text-align:right;"><input type="number" class="comp-peso" step="1" min="0" placeholder="0"></td>
+          <td style="text-align:right;"><input type="number" class="comp-preco" step="0.01" min="0" placeholder="0,00"></td>
+          <td class="calc-cell comp-100g">—</td>
+          <td><input type="text" placeholder="Ex: industrial"></td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="Nome"></td>
+          <td><input type="text" placeholder="Produto"></td>
+          <td style="text-align:right;"><input type="number" class="comp-peso" step="1" min="0" placeholder="0"></td>
+          <td style="text-align:right;"><input type="number" class="comp-preco" step="0.01" min="0" placeholder="0,00"></td>
+          <td class="calc-cell comp-100g">—</td>
+          <td><input type="text" placeholder="Ex: marca local"></td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="Nome"></td>
+          <td><input type="text" placeholder="Produto"></td>
+          <td style="text-align:right;"><input type="number" class="comp-peso" step="1" min="0" placeholder="0"></td>
+          <td style="text-align:right;"><input type="number" class="comp-preco" step="0.01" min="0" placeholder="0,00"></td>
+          <td class="calc-cell comp-100g">—</td>
+          <td><input type="text" placeholder="—"></td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="Nome"></td>
+          <td><input type="text" placeholder="Produto"></td>
+          <td style="text-align:right;"><input type="number" class="comp-peso" step="1" min="0" placeholder="0"></td>
+          <td style="text-align:right;"><input type="number" class="comp-preco" step="0.01" min="0" placeholder="0,00"></td>
+          <td class="calc-cell comp-100g">—</td>
+          <td><input type="text" placeholder="—"></td>
+        </tr>
+        <tr class="your-row">
+          <td><strong>SEU PRODUTO</strong></td>
+          <td><span id="comp-your-name">—</span></td>
+          <td style="text-align:right;"><input type="number" id="comp-your-peso" class="comp-peso" step="1" min="0" placeholder="0"></td>
+          <td style="text-align:right;"><span id="comp-your-preco" class="calc-cell">—</span></td>
+          <td class="calc-cell" id="comp-your-100g">—</td>
+          <td>Artesanal</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================
+       REFERÊNCIA DE MARKUP
+       ============================================ -->
+  <div class="section">
+    <div class="section__label">Referência</div>
+    <div class="section__title">Markup por Categoria</div>
+    <div class="section__desc">Use como guia para calibrar o multiplicador do Método 1.</div>
+
+    <div class="markup-grid">
+      <div class="markup-item">
+        <div class="markup-item__category">Geleias e Doces</div>
+        <div class="markup-item__values">Mín: 2,0 · Rec: 2,5 · Premium: 3,5</div>
+        <div class="markup-item__note">Ingredientes raros ou orgânicos: premium</div>
+      </div>
+      <div class="markup-item">
+        <div class="markup-item__category">Queijos Artesanais</div>
+        <div class="markup-item__values">Mín: 2,0 · Rec: 3,0 · Premium: 4,0</div>
+        <div class="markup-item__note">Maturados e com IG: markup maior</div>
+      </div>
+      <div class="markup-item">
+        <div class="markup-item__category">Molhos e Temperos</div>
+        <div class="markup-item__values">Mín: 2,5 · Rec: 3,0 · Premium: 4,0</div>
+        <div class="markup-item__note">Pimentas especiais: markup alto</div>
+      </div>
+      <div class="markup-item">
+        <div class="markup-item__category">Conservas</div>
+        <div class="markup-item__values">Mín: 2,0 · Rec: 2,5 · Premium: 3,0</div>
+        <div class="markup-item__note">Em azeite premium: markup maior</div>
+      </div>
+      <div class="markup-item">
+        <div class="markup-item__category">Pães e Fermentados</div>
+        <div class="markup-item__values">Mín: 1,8 · Rec: 2,5 · Premium: 3,0</div>
+        <div class="markup-item__note">Massa madre / longa fermentação</div>
+      </div>
+      <div class="markup-item">
+        <div class="markup-item__category">Mel e Derivados</div>
+        <div class="markup-item__values">Mín: 2,0 · Rec: 2,5 · Premium: 3,5</div>
+        <div class="markup-item__note">Mel com IG ou orgânico: premium</div>
+      </div>
+      <div class="markup-item">
+        <div class="markup-item__category">Embutidos</div>
+        <div class="markup-item__values">Mín: 2,0 · Rec: 2,5 · Premium: 3,5</div>
+        <div class="markup-item__note">Curados e defumados: markup maior</div>
+      </div>
+      <div class="markup-item">
+        <div class="markup-item__category">Cafés Gourmet</div>
+        <div class="markup-item__values">Mín: 2,5 · Rec: 3,0 · Premium: 4,5</div>
+        <div class="markup-item__note">Microlotes e torras especiais</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       DICAS
+       ============================================ -->
+  <div class="section">
+    <div class="section__label">Estratégia</div>
+    <div class="section__title">7 Regras de Precificação</div>
+
+    <ul class="tips-list">
+      <li data-num="1"><strong>NUNCA precifique apenas pelo custo.</strong> O cliente paga pelo valor percebido, não pelo seu custo.</li>
+      <li data-num="2"><strong>Produto artesanal NÃO compete por preço.</strong> Preço baixo demais desvaloriza a percepção de qualidade.</li>
+      <li data-num="3"><strong>Teste preços: aumente 20% e meça.</strong> Muitas vezes a demanda não cai — e o lucro sobe mais que 20%.</li>
+      <li data-num="4"><strong>Embalagem premium permite preço premium.</strong> Rótulos e materiais têm o melhor ROI da cadeia.</li>
+      <li data-num="5"><strong>Edições limitadas: markup de 3× a 5×.</strong> Escassez real justifica preço alto e cria desejo pela linha regular.</li>
+      <li data-num="6"><strong>A história do produto justifica preço maior.</strong> Terroir, processo, ingrediente raro — cada elemento narrativo agrega valor.</li>
+      <li data-num="7"><strong>Feiras permitem 10–30% acima do online.</strong> Experiência presencial aumenta a disposição de pagar.</li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer">
+    <strong>Gabriel Petelinkar</strong> · alimentosartesanais.com.br<br>
+    <span style="font-size: 10px;">Complemento do guia "Como Criar, Vender e Escalar Alimentos Artesanais"</span>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  const fmt = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const fmtPct = (v) => v.toFixed(1) + '%';
+
+  function getCPU() {
+    const lote = parseFloat(document.getElementById('lote-qty').value) || 0;
+    const inputs = document.querySelectorAll('.cost-input');
+    let total = 0;
+    inputs.forEach((inp, i) => {
+      const val = parseFloat(inp.value) || 0;
+      total += val;
+      const unitCell = inp.closest('tr').querySelector('[data-unit]');
+      if (unitCell) {
+        unitCell.textContent = lote > 0 ? fmt(val / lote) : '—';
+      }
+    });
+
+    document.getElementById('total-lote').textContent = fmt(total);
+    const cpu = lote > 0 ? total / lote : 0;
+    document.getElementById('total-unit').textContent = fmt(cpu);
+    document.getElementById('cpu-display').textContent = fmt(cpu);
+    return cpu;
+  }
+
+  function calcPricing() {
+    const cpu = getCPU();
+
+    // Markup
+    const markupVal = parseFloat(document.getElementById('markup-val').value) || 0;
+    const markupPrice = cpu * markupVal;
+    document.getElementById('markup-price').textContent = fmt(markupPrice);
+    const markupMargin = markupPrice > 0 ? ((markupPrice - cpu) / markupPrice) * 100 : 0;
+    document.getElementById('markup-margin').textContent = 'Margem: ' + fmtPct(markupMargin);
+
+    // Margem
+    const margemVal = parseFloat(document.getElementById('margem-val').value) || 0;
+    const margemPrice = margemVal < 100 ? cpu / (1 - margemVal / 100) : 0;
+    document.getElementById('margem-price').textContent = fmt(margemPrice);
+    document.getElementById('margem-margin').textContent = 'Margem: ' + fmtPct(margemVal);
+
+    // Valor
+    const valorVal = parseFloat(document.getElementById('valor-val').value) || 0;
+    document.getElementById('valor-price').textContent = fmt(valorVal);
+    const valorMargin = valorVal > 0 ? ((valorVal - cpu) / valorVal) * 100 : 0;
+    document.getElementById('valor-margin').textContent = 'Margem: ' + fmtPct(valorMargin);
+
+    // Highlight best
+    const prices = [
+      { id: 'card-markup', price: markupPrice },
+      { id: 'card-margem', price: margemPrice },
+      { id: 'card-valor', price: valorVal }
+    ];
+
+    document.querySelectorAll('.method-card').forEach(c => c.classList.remove('method-card--best'));
+
+    const validPrices = prices.filter(p => p.price > 0 && p.price > cpu);
+    if (validPrices.length > 0) {
+      const best = validPrices.reduce((a, b) => a.price > b.price ? a : b);
+      document.getElementById(best.id).classList.add('method-card--best');
+
+      const bestName = best.id === 'card-markup' ? 'Markup' : best.id === 'card-margem' ? 'Margem' : 'Valor';
+      document.getElementById('recommendation').innerHTML =
+        '<strong>Recomendação:</strong> O método <strong>' + bestName + '</strong> (' + fmt(best.price) + ') gera o melhor preço. ' +
+        (best.id === 'card-valor'
+          ? 'Ótimo — o mercado sustenta um preço acima do custo calculado.'
+          : 'Considere revisar sua proposta de valor para sustentar esse preço.');
+    }
+
+    // Best price for scenarios
+    const bestPrice = validPrices.length > 0
+      ? validPrices.reduce((a, b) => a.price > b.price ? a : b).price
+      : 0;
+
+    // Scenarios
+    [1, 2, 3].forEach(i => {
+      const qty = parseFloat(document.getElementById('scenario-' + i).value) || 0;
+      const price = bestPrice;
+      const fat = qty * price;
+      const custo = qty * cpu;
+      const lucro = fat - custo;
+      document.getElementById('s' + i + '-fat').textContent = fat > 0 ? fmt(fat) : '—';
+      document.getElementById('s' + i + '-custo').textContent = custo > 0 ? fmt(custo) : '—';
+      document.getElementById('s' + i + '-lucro').textContent = lucro > 0 ? fmt(lucro) : '—';
+    });
+
+    // Your product in competitor table
+    const productName = document.getElementById('product-name').value || '—';
+    document.getElementById('comp-your-name').textContent = productName;
+    document.getElementById('comp-your-preco').textContent = bestPrice > 0 ? fmt(bestPrice) : '—';
+    const yourPeso = parseFloat(document.getElementById('comp-your-peso').value) || 0;
+    document.getElementById('comp-your-100g').textContent = (yourPeso > 0 && bestPrice > 0)
+      ? fmt(bestPrice / (yourPeso / 100))
+      : '—';
+  }
+
+  function calcCompetitors() {
+    const rows = document.querySelectorAll('.competitor-table tbody tr:not(.your-row)');
+    rows.forEach(row => {
+      const peso = parseFloat(row.querySelector('.comp-peso')?.value) || 0;
+      const preco = parseFloat(row.querySelector('.comp-preco')?.value) || 0;
+      const cell100g = row.querySelector('.comp-100g');
+      if (cell100g) {
+        cell100g.textContent = (peso > 0 && preco > 0) ? fmt(preco / (peso / 100)) : '—';
+      }
+    });
+    calcPricing();
+  }
+
+  // Bind events
+  document.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('input', () => {
+      calcCompetitors();
+    });
+  });
+
+  // Initial calc
+  calcPricing();
+})();
+</script>
+
+</body>
+</html>

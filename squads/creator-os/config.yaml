@@ -1,0 +1,174 @@
+pack:
+  name: creator-os
+  version: 1.0.0
+  short-title: Creator OS
+  description: >-
+    Squad de elite para transformar conhecimento em produtos digitais escaláveis.
+    7 agentes baseados em elite minds reais com frameworks documentados, cobrindo
+    todo o ciclo: organização do conhecimento, criação de cursos, arquitetura de oferta,
+    lançamento, escrita digital, vendas perpétuas e receita recorrente.
+  author: Squad Architect
+  icon: "🚀"
+  slashPrefix: creatorOS
+
+# Pattern Library
+pattern_library:
+  prefix: CO
+  naming_convention:
+    format: "{PREFIX}-{CATEGORY}-{NUMBER}"
+    example: "CO-TP-001"
+  categories:
+    - id: TP
+      name: "Task Patterns"
+      description: "Patterns for creator task structure"
+    - id: EP
+      name: "Executor Patterns"
+      description: "Patterns for executor selection"
+    - id: PP
+      name: "Process Patterns"
+      description: "Patterns for creator workflows"
+    - id: IP
+      name: "Integration Patterns"
+      description: "Patterns for tool/platform integrations"
+    - id: AP
+      name: "Automation Patterns"
+      description: "Patterns for automated sequences"
+    - id: DP
+      name: "Documentation Patterns"
+      description: "Patterns for content/documentation"
+  patterns: []
+
+# Task Standards
+task_standards:
+  enforce_anatomy: true
+  validator: "CO-TP-001"
+  required_fields:
+    - task_name
+    - status
+    - responsible_executor
+    - execution_type
+    - input
+    - output
+    - action_items
+    - acceptance_criteria
+  optional_fields:
+    - estimated_time
+    - dependencies
+    - templates
+    - quality_gate
+    - handoff
+
+# Executor Types
+executor_types:
+  human:
+    id: "CO-EP-001"
+    name: "Human Executor"
+    use_for:
+      - "Content decisions based on personal expertise"
+      - "Brand voice validation"
+      - "Offer pricing strategy"
+  agent:
+    id: "CO-EP-002"
+    name: "Agent Executor (AI)"
+    use_for:
+      - "Course outline generation"
+      - "Sales copy drafting"
+      - "Content repurposing"
+  hybrid:
+    id: "CO-EP-003"
+    name: "Hybrid Executor"
+    use_for:
+      - "Launch sequence creation (AI draft + human review)"
+      - "Webinar script writing"
+      - "Membership content planning"
+  worker:
+    id: "CO-EP-004"
+    name: "Worker Executor"
+    use_for:
+      - "Email sequence scheduling"
+      - "Funnel page duplication"
+      - "Analytics reporting"
+
+  executor_selection:
+    requires_creativity: human
+    requires_judgment: [human, hybrid]
+    requires_speed: [agent, worker]
+    requires_consistency: worker
+    requires_validation: hybrid
+    requires_learning: agent
+
+# Workflow Configuration
+workflow_config:
+  checkpoint_policy: always_active
+  checkpoint_modes:
+    always_active: "Every checkpoint MUST pass"
+    skip_on_override: "Can skip with manual approval"
+    advisory: "Only alerts, doesn't block"
+  fail_fast: true
+  allow_manual_override: false
+
+# Agents
+agents:
+  - id: creator-os-chief
+    name: Creator OS Orchestrator
+    icon: "🚀"
+    tier: orchestrator
+    role: "Squad orchestration and creator journey guidance"
+
+  - id: tiago-forte
+    name: Tiago Forte
+    icon: "🧠"
+    tier: 0
+    role: "Knowledge organization and second brain systems"
+
+  - id: jeff-walker
+    name: Jeff Walker
+    icon: "🎯"
+    tier: 1
+    role: "Product launch systems and pre-launch sequences"
+
+  - id: russell-brunson
+    name: Russell Brunson
+    icon: "🔥"
+    tier: 1
+    role: "Offer architecture, funnels, and story-selling"
+
+  - id: amy-porterfield
+    name: Amy Porterfield
+    icon: "🎓"
+    tier: 1
+    role: "Digital course creation and validation"
+
+  - id: nicolas-cole
+    name: Nicolas Cole
+    icon: "✍️"
+    tier: 2
+    role: "Digital writing systems and audience building"
+
+  - id: leandro-ladeira
+    name: Leandro Ladeira
+    icon: "💰"
+    tier: 2
+    role: "Perpetual sales, Stories 10x, and funnel systems (BR)"
+
+  - id: stu-mclaren
+    name: Stu McLaren
+    icon: "🔄"
+    tier: 2
+    role: "Membership sites and recurring revenue systems"
+
+# Creator Journey Flow
+journey_flow: |
+  Tiago Forte (Tier 0) → Organize knowledge
+       ↓
+  Amy Porterfield (Tier 1) → Create course/product
+       ↓
+  Russell Brunson (Tier 1) → Design irresistible offer
+       ↓
+  Jeff Walker (Tier 1) → Launch with PLF
+       ↓
+  Nicolas Cole (Tier 2) → Write content, build audience
+       ↓
+  Leandro Ladeira (Tier 2) → Sell every day (perpetual)
+       ↓
+  Stu McLaren (Tier 2) → Convert to membership (recurring)

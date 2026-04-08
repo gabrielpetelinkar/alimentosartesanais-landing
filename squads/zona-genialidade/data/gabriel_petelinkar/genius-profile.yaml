@@ -1,0 +1,597 @@
+genius_profile:
+  metadata:
+    aluno_nome: "Gabriel Petelinkar Pereira"
+    aluno_slug: "gabriel_petelinkar"
+    data_analise: "2026-02-21T00:00:00Z"
+    versao: "1.0.0"
+    assessment_source: "run-assessment task (43/43 perguntas, 100%)"
+    frameworks_aplicados: 7
+    confianca_geral: 0.78
+    assessments_anteriores: "Nenhum resultado formal disponível (fez testes mas não lembra)"
+
+  # ═══════════════════════════════════════════════════════════════════════
+  # ANÁLISE 1: GAY HENDRICKS — ZONA DE GENIALIDADE (Tier 0)
+  # ═══════════════════════════════════════════════════════════════════════
+  analyses:
+    hendricks:
+      zona_atual: "Excelência (com momentos de Genialidade não-monetizados)"
+
+      zone_distribution:
+        incompetencia: "5%"
+        competencia: "25%"
+        excelencia: "50%"
+        genialidade: "20%"
+        total: "100%"
+
+      evidencias_por_zona:
+        incompetencia:
+          atividades: []
+          nota: "Gabriel não reportou atividades que faz mal. A supervisão técnica e a fábrica indicam competência mínima em tudo que faz."
+
+        competencia:
+          atividades:
+            - "Tarefas administrativas e burocráticas (drena energia, faz por necessidade)"
+            - "Gestão financeira de projetos (faz BEM mas não gosta — ele mesmo reconheceu)"
+          nota: "Zona onde Gabriel gasta ~25% do tempo em tarefas que poderia delegar."
+
+        excelencia:
+          atividades:
+            - "Supervisão de equipe técnica (faz muito bem, 5-10 anos de experiência, reconhecido)"
+            - "Gestão da fábrica de molhos (opera com competência, mas não é onde entra em flow)"
+            - "Consultoria para agroindústrias (domina o assunto, cobra pouco ou nada)"
+          nota: |
+            ARMADILHA CLÁSSICA: Gabriel está preso na Zona de Excelência.
+            Ele é muito bom no que faz — e isso é o problema.
+            Outros valorizam, pagam, e ele fica. Mas não é onde perde noção do tempo.
+
+        genialidade:
+          atividades:
+            - "Ensinar e mentorar pessoas (flow state, energiza, feedback positivo recorrente)"
+            - "Explicar o complexo de forma simples (outros agradecem especificamente por isso)"
+            - "Falar em público e apresentar ideias (talento natural, facilidade)"
+            - "Inspirar e liderar movimentos de transformação (contribuição que escolheu para o mundo)"
+            - "Criar coisas novas do zero (maior satisfação reportada)"
+          nota: |
+            ZONA DE GENIALIDADE CLARA: Gabriel é um Comunicador-Educador-Criador.
+            Quando está ensinando, criando ou inspirando, o tempo para.
+            Evidência tripla: flow em mentoria + outros agradecem por simplificar + faria de graça.
+
+      upper_limit_problem:
+        tipo_primario: "tipo_1_sentir_se_falho"
+        descricao: "Dificuldade em cobrar pelo conhecimento — dá consultoria mas não monetiza"
+        evidencias:
+          - "Tem dificuldade em cobrar caro (resposta direta do assessment)"
+          - "Dá consultoria para agroindústrias mas bloqueio é 'estratégia para começar a cobrar'"
+          - "Faria de graça: ensinar pessoas a ganhar dinheiro com alimentos artesanais"
+          - "A genialidade é ensinar — mas não se autoriza a COBRAR por isso"
+        tipo_secundario: "tipo_2_deslealdade"
+        descricao_secundario: "Possível crença de que cobrar por conhecimento que 'deveria ser acessível' é desleal com a comunidade agro"
+        confianca: 0.80
+
+        caminho_para_genialidade:
+          - passo: "1. Reconhecer que gestão financeira é Zona de Excelência — delegar AGORA"
+            prazo: "Imediato (semana 1)"
+          - passo: "2. Cobrar pelos primeiros 3 clientes de consultoria — preço mínimo viável para quebrar o bloqueio"
+            prazo: "30 dias"
+          - passo: "3. Mover 50%+ do tempo para ensinar/criar/inspirar"
+            prazo: "60 dias"
+          - passo: "4. Criar produto escalável de conhecimento (curso/programa sobre alimentos artesanais)"
+            prazo: "90 dias"
+          - passo: "5. Construir equipe para operar fábrica e supervisão, liberando tempo para genialidade"
+            prazo: "6 meses"
+
+    # ═══════════════════════════════════════════════════════════════════════
+    # ANÁLISE 2: DON CLIFTON — TALENTOS E FORÇAS (Tier 1)
+    # ═══════════════════════════════════════════════════════════════════════
+    clifton:
+      top_5_provaveis:
+        - rank: 1
+          tema: "Communication"
+          dominio: "Influencing"
+          evidencia: "Falar em público com facilidade, explicar o complexo de forma simples, estilo inspirador e entusiasmado, flow em ensinar"
+          confianca: 0.90
+
+        - rank: 2
+          tema: "Activator"
+          dominio: "Influencing"
+          evidencia: "Começa a executar logo, age rápido com a melhor opção, entrega rápido e itera, pioneiro em mercados novos"
+          confianca: 0.85
+
+        - rank: 3
+          tema: "Ideation"
+          dominio: "Strategic Thinking"
+          evidencia: "Maior satisfação em criar do zero, criador no Wealth Dynamics, energiza-se criando coisas novas"
+          confianca: 0.82
+
+        - rank: 4
+          tema: "Command"
+          dominio: "Influencing"
+          evidencia: "Líder e influenciador natural, carismático, questiona feedback, frustrado com microgerenciamento (quer comandar)"
+          confianca: 0.78
+
+        - rank: 5
+          tema: "Developer"
+          dominio: "Relationship Building"
+          evidencia: "Flow em mentoria, ensinaria jovens, energiza com desenvolvimento de outros, faria de graça"
+          confianca: 0.80
+
+      dominio_dominante: "Influencing"
+      dominio_secundario: "Strategic Thinking"
+      peso_influencing: 0.55
+      peso_strategic: 0.25
+      peso_relationship: 0.15
+      peso_executing: 0.05
+
+      talentos_sombra:
+        - tema: "Woo (Winning Others Over)"
+          evidencia: "Extrovertido, carismático, inspirador — mas não se posiciona ativamente para conquistar clientes/audiência"
+          motivo_sombra: "ULP tipo 1 — não se autoriza a 'vender' a si mesmo"
+          potencial_se_ativado: "Altíssimo para vendas de consultoria e construção de marca pessoal"
+
+        - tema: "Maximizer"
+          evidencia: "Quer escalar molhos para 50k/mês, quer atingir MUITAS pessoas com produto escalável — busca excelência em escala"
+          motivo_sombra: "Tempo fragmentado entre 3 atividades, não consegue maximizar nenhuma"
+          potencial_se_ativado: "Foco em uma coisa = resultados exponenciais"
+
+      recomendacoes:
+        - "Communication + Developer = Seu superpoder é ensinar. Monetize isso."
+        - "Activator + Ideation = Você inicia rápido e tem muitas ideias. Precisa de um Follow Thru alto no time para sistematizar."
+        - "Command está subaproveitado — você deveria liderar publicamente, não só internamente."
+
+    # ═══════════════════════════════════════════════════════════════════════
+    # ANÁLISE 3: DAN SULLIVAN — HABILIDADE ÚNICA (Tier 1)
+    # ═══════════════════════════════════════════════════════════════════════
+    sullivan:
+      unique_ability:
+        declaracao: |
+          Minha habilidade única é TRADUZIR conhecimento técnico complexo do agronegócio
+          em linguagem acessível e inspiradora, PARA profissionais e empreendedores
+          que querem construir negócios de alimentos artesanais,
+          transformando EXPERIÊNCIA PRÁTICA DE CAMPO em CLAREZA E AÇÃO IMEDIATA,
+          de uma forma que ENERGIZA e EMPODERA ao invés de intimidar,
+          gerando NEGÓCIOS REAIS que alimentam famílias e comunidades.
+        versao_curta: "Transformo experiência no agro em negócios artesanais lucrativos — ensinando com clareza e paixão."
+        confianca: 0.82
+
+      zonas_sullivan:
+        unique_ability:
+          atividades:
+            - atividade: "Ensinar e mentorar sobre alimentos artesanais e agronegócio"
+              score_paixao: 10
+              score_talento: 9
+              score_valor_mercado: 8
+            - atividade: "Criar conteúdo e programas educacionais do zero"
+              score_paixao: 9
+              score_talento: 8
+              score_valor_mercado: 8
+            - atividade: "Falar em público e inspirar audiências"
+              score_paixao: 9
+              score_talento: 9
+              score_valor_mercado: 7
+
+        excellent:
+          atividades:
+            - atividade: "Supervisão de equipe técnica"
+              evidencia: "5-10 anos de experiência, competente, mas não é flow"
+              recomendacao: "Manter com delegação progressiva"
+            - atividade: "Operação da fábrica de molhos"
+              evidencia: "Sabe fazer, gera receita, mas preferia estar ensinando"
+              recomendacao: "Contratar gestor operacional"
+
+        competent:
+          atividades:
+            - atividade: "Gestão financeira"
+              evidencia: "Faz bem mas preferia não cuidar do dinheiro — reconheceu explicitamente"
+              recomendacao: "Delegar IMEDIATAMENTE — contratar financeiro ou usar ferramenta"
+            - atividade: "Tarefas administrativas e burocráticas"
+              recomendacao: "Delegar para assistente"
+
+        incompetent:
+          atividades: []
+          nota: "Gabriel não reportou atividades de incompetência — perfil de alta competência geral"
+
+      time_distribution:
+        atual:
+          unique_ability: "20%"
+          excellent: "50%"
+          competent: "25%"
+          incompetent: "5%"
+        ideal:
+          unique_ability: "60%"
+          excellent: "25%"
+          competent: "10%"
+          incompetent: "0%"
+        gap: "Precisa mover 40% do tempo para Unique Ability — triplicar o tempo ensinando/criando"
+
+      who_not_how:
+        readiness: "Alta (já delega com instruções claras e confia)"
+        delegation_candidates:
+          prioridade_alta:
+            - atividade: "Gestão financeira"
+              horas_semanais: 5
+              tipo_ideal: "Contador/financeiro (pessoa ou ferramenta)"
+            - atividade: "Tarefas administrativas"
+              horas_semanais: 4
+              tipo_ideal: "Assistente virtual ou administrativo"
+          prioridade_media:
+            - atividade: "Operação diária da fábrica"
+              horas_semanais: 8
+              tipo_ideal: "Gerente de produção"
+          total_horas_recuperaveis: 17
+
+    # ═══════════════════════════════════════════════════════════════════════
+    # ANÁLISE 4: ROGER HAMILTON — PERFIL DE RIQUEZA (Tier 1)
+    # ═══════════════════════════════════════════════════════════════════════
+    hamilton:
+      wealth_dynamics:
+        perfil_primario: "Creator"
+        perfil_secundario: "Star"
+        confianca_primario: 0.88
+        confianca_secundario: 0.82
+
+        scores:
+          creator: 0.88
+          star: 0.82
+          supporter: 0.45
+          deal_maker: 0.30
+          trader: 0.15
+          accumulator: 0.20
+          lord: 0.15
+          mechanic: 0.25
+
+        evidencias:
+          creator:
+            - "Auto-identificou como Criador no assessment"
+            - "Maior satisfação em criar do zero"
+            - "Quer ser o PRIMEIRO em algo novo"
+            - "Mais intuitivo que analítico"
+            - "Começa a executar logo"
+            - "Entrega rápido e itera"
+          star:
+            - "Carismático e inspirador (como outros o descrevem)"
+            - "Falar em público com facilidade (talento natural)"
+            - "Comunicação inspiradora e entusiasmada"
+            - "Quer inspirar e liderar movimentos de transformação"
+            - "Mais extrovertido que introvertido"
+
+      wealth_spectrum:
+        nivel_atual: "Yellow (Jogador)"
+        evidencia_nivel: "Tem negócio próprio (fábrica), renda variável, buscando escalar para 50k/mês"
+        nivel_alvo: "Green (Empreendedor)"
+        caminho: "Sistematizar fábrica para funcionar sem ele + monetizar conhecimento como segunda receita"
+
+      path_of_least_resistance:
+        caminho: |
+          Como Creator-Star no agro:
+          1. USE o carisma e comunicação para se posicionar como autoridade em alimentos artesanais
+          2. CRIE o conteúdo (cursos, mentorias, frameworks) — é onde sua energia Dynamo flui
+          3. APAREÇA na frente — você é Star, não bastidor. Palestras, lives, vídeos.
+          4. NÃO tente otimizar processos você mesmo — contrate um Mechanic/Lord para operação
+          5. NÃO tente ser Trader (timing de mercado) — seu timing é de CRIAÇÃO, não de compra/venda
+        erros_comuns:
+          - "Creator que tenta ser Lord (controlar tudo financeiramente) — você já disse que não gosta de finanças"
+          - "Star que se esconde nos bastidores — seu ULP tipo 1 te puxa para se esconder"
+          - "Dynamo que tenta ser Tempo (processos lentos e metódicos) — vai te matar de tédio"
+
+    # ═══════════════════════════════════════════════════════════════════════
+    # ANÁLISE 5: ALEX HORMOZI — EQUAÇÃO DE VALOR E MONETIZAÇÃO (Tier 1)
+    # ═══════════════════════════════════════════════════════════════════════
+    hormozi:
+      value_equation:
+        formula: "Valor = (Dream Outcome x Perceived Likelihood) / (Time Delay x Effort & Sacrifice)"
+
+        dream_outcome:
+          score: 8
+          descricao: "Alto — ensinar pessoas a construir negócios de alimentos artesanais lucrativos é um sonho real e tangível"
+          evidencia: "Pessoas QUEREM isso — o mercado de alimentos artesanais está em alta, margens boas, baixo capital inicial"
+
+        perceived_likelihood:
+          score: 5
+          descricao: "Médio — Gabriel tem credibilidade (fábrica própria, 5-10 anos no agro) mas não tem prova social visível"
+          melhoria: "Criar cases com seus primeiros clientes, mostrar a própria fábrica como prova viva"
+
+        time_delay:
+          score: 6
+          descricao: "Médio-alto — montar uma agroindústria artesanal leva meses, não é resultado overnight"
+          melhoria: "Criar quick wins no programa: 'primeiro lote vendido em 30 dias' como marco inicial"
+
+        effort_sacrifice:
+          score: 5
+          descricao: "Médio — montar uma agroindústria exige documentação, vigilância sanitária, investimento"
+          melhoria: "Simplificar o caminho: templates prontos, checklist de licenças, passo-a-passo testado"
+
+        score_atual: 2.67
+        score_ideal: 8.0
+        gap_principal: "Perceived Likelihood — falta prova social e posicionamento como autoridade"
+
+      monetization_gaps:
+        gap_1:
+          area: "Pricing"
+          atual: "Dá consultoria sem cobrar ou cobrando pouco (bloqueio declarado)"
+          oportunidade: "Cobrar R$2.000-5.000 por consultoria de implantação de agroindústria artesanal"
+          impacto: "5 clientes x R$3k = R$15k/mês só de consultoria"
+          dificuldade: "Psicológica (ULP), não técnica"
+
+        gap_2:
+          area: "Oferta"
+          atual: "Consultoria genérica sem estrutura definida"
+          oportunidade: "Grand Slam Offer: Programa completo 'Da receita à prateleira em 90 dias'"
+          impacto: "3-10x na conversão com oferta estruturada"
+          dificuldade: "Média — precisa empacotar o que já sabe"
+
+        gap_3:
+          area: "Distribuição (molhos)"
+          atual: "Venda direta, sem equipe comercial, sem canais"
+          oportunidade: "Contratar vendedor comissionado + entrar em marketplaces de alimentos artesanais"
+          impacto: "Destravar o gargalo de 50k/mês"
+          dificuldade: "Média — é investimento, não competência"
+
+      grand_slam_offer_draft:
+        nome: "Da Receita à Prateleira — Programa Completo de Agroindústria Artesanal"
+        headline: "Monte seu negócio de alimentos artesanais do zero à primeira venda em 90 dias, com quem já fez isso."
+        dream_outcome: "Negócio de alimentos artesanais funcionando, legalizado e vendendo"
+        garantia: "Se não vender seu primeiro lote em 90 dias, mentoria extra gratuita até vender"
+        bonus_stack:
+          - bonus: "Template completo de documentação para vigilância sanitária"
+            valor_percebido: "R$2.000"
+          - bonus: "Planilha de precificação e margem para alimentos artesanais"
+            valor_percebido: "R$500"
+          - bonus: "Acesso a 3 fornecedores validados de embalagens artesanais"
+            valor_percebido: "R$1.000"
+          - bonus: "1 sessão de mentoria individual sobre canais de venda"
+            valor_percebido: "R$1.500"
+        preco_sugerido: "R$2.997 a R$4.997"
+        confianca: 0.70
+        nota: "Draft inicial — precisa validar com 3-5 conversas com potenciais clientes antes de lançar"
+
+    # ═══════════════════════════════════════════════════════════════════════
+    # ANÁLISE 6: KATHY KOLBE — ESTILO DE EXECUÇÃO CONATIVA (Tier 2)
+    # ═══════════════════════════════════════════════════════════════════════
+    kolbe:
+      kolbe_estimate:
+        fact_finder:
+          score: 3
+          descricao: "Simplificador — mais intuitivo que analítico, entrega rápido sem esperar dados perfeitos"
+          evidencia: "Mais intuitivo que analítico, entrega rápido e itera, age rápido com a melhor opção"
+
+        follow_thru:
+          score: 3
+          descricao: "Adaptável — prefere flexibilidade, resiste a processos rígidos"
+          evidencia: "Mais flexibilidade, frustrado com microgerenciamento, alterna entre projetos conforme necessidade"
+
+        quick_start:
+          score: 8
+          descricao: "Inovador — começa rápido, age primeiro, criador nato"
+          evidencia: "Começa a executar logo, age rápido, criar do zero é maior satisfação, pioneiro em mercados novos"
+
+        implementor:
+          score: 6
+          descricao: "Equilibrado com tendência tangível — fábrica de molhos + campo, mas também opera no conceitual"
+          evidencia: "Mais tangível, fábrica de molhos, equipe de campo, mas também ensina e cria conteúdo"
+
+        confianca_geral: 0.75
+        perfil_resumido: "FF:3 FT:3 QS:8 IM:6"
+        nota: "Estimativa baseada em comportamento reportado. Kolbe A Index oficial recomendado para confirmação."
+
+      execution_style:
+        tipo_primario: "Initiating Quick Start"
+        descricao: "Lidera pela ação rápida, experimentação e criação. Energia Dynamo pura."
+        forca: "Velocidade de início, adaptação, criatividade sob pressão, não paralisa por análise"
+        fraqueza: "Pode iniciar muitas coisas e não sistematizar. 3 negócios paralelos é sintoma clássico."
+        ambiente_ideal: "Criação de novos produtos, lançamentos, mentorias ao vivo, eventos"
+        ambiente_toxico: "Planilhas financeiras, relatórios detalhados, processos repetitivos"
+
+      conative_conflicts:
+        - conflito: "Quick Start 8 + 3 negócios paralelos = energia dispersa"
+          solucao: "Escolher 1 cavalo principal (consultoria/educação) e sistematizar os outros 2 com equipe"
+          impacto_se_ignorado: "Nenhum dos 3 negócios atinge escala. Ciclo de iniciar-abandonar-iniciar."
+
+        - conflito: "Follow Thru 3 + meta de 50k/mês em molhos = precisa de processos que não gosta de criar"
+          solucao: "Contratar gerente de operações com Follow Thru 7+ para sistematizar a fábrica"
+          impacto_se_ignorado: "Fábrica depende dele pessoalmente, não escala, vira gargalo."
+
+        - conflito: "Fact Finder 3 + precificação de consultoria = não pesquisa mercado, não sabe quanto cobrar"
+          solucao: "Pegar 3 referências de preço no mercado (pesquisa mínima) e AGIR com o Quick Start"
+          impacto_se_ignorado: "Continua sem cobrar. O bloqueio parece psicológico mas é também informacional."
+
+    # ═══════════════════════════════════════════════════════════════════════
+    # ANÁLISE 7: SALLY HOGSHEAD — MARCA PESSOAL E POSICIONAMENTO (Tier 2)
+    # ═══════════════════════════════════════════════════════════════════════
+    hogshead:
+      fascination_advantages:
+        innovation:
+          score: 0.85
+          indicadores: ["Criar do zero", "Pioneiro", "Muitas ideias", "Criador WD"]
+        passion:
+          score: 0.90
+          indicadores: ["Carismático", "Inspirador", "Entusiasmado", "Usa histórias e emoção", "Extrovertido"]
+        power:
+          score: 0.70
+          indicadores: ["Lidera e influencia", "Questiona feedback", "Frustrado com microgerenciamento"]
+        prestige:
+          score: 0.35
+          indicadores: ["Dificuldade em cobrar caro (anti-Prestige)", "Não se posiciona como premium"]
+        trust:
+          score: 0.50
+          indicadores: ["Delega e confia", "Consistência na equipe técnica"]
+        mystique:
+          score: 0.20
+          indicadores: ["Extrovertido, aberto, não reservado — baixo Mystique"]
+        alert:
+          score: 0.25
+          indicadores: ["Entrega rápido e itera (anti-Alert)", "Não detalhista"]
+
+        vantagem_primaria: "Passion"
+        vantagem_secundaria: "Innovation"
+        confianca: 0.82
+
+      archetype:
+        nome: "The Rockstar"
+        combinacao: "Passion + Innovation"
+        descricao: "Lidera com energia contagiante e ideias audaciosas. Inspira outros com visão E emoção. As pessoas não compram só o que ele sabe — compram como ele faz sentir."
+        valor_diferencial: "Capacidade única de transformar conhecimento técnico árido (agro, alimentos artesanais) em algo excitante e acessível"
+        como_outros_veem: "Inspirador, energético, visionário, autêntico, às vezes intenso demais"
+        confianca: 0.80
+
+      brand_positioning:
+        anthem: "O educador apaixonado que transforma o agro artesanal em negócio real"
+        formato: "Inspirador + Criativo que ENSINA com PAIXÃO e CRIA negócios do ZERO"
+        tom_de_comunicacao: "Entusiasmado, direto, com histórias reais do campo, sem jargão corporativo"
+        plataformas_ideais:
+          - "YouTube (vídeos mostrando o dia a dia da fábrica + ensino)"
+          - "Instagram (stories do campo, bastidores, dicas rápidas)"
+          - "Eventos presenciais e lives (seu superpoder é ao vivo)"
+        conteudo_ideal:
+          - "Bastidores da fábrica de molhos (autenticidade)"
+          - "Mini-aulas sobre agroindústria artesanal (educação)"
+          - "Cases de alunos que montaram seus negócios (prova social)"
+          - "Histórias do campo — o lado humano do agro (conexão)"
+
+  # ═══════════════════════════════════════════════════════════════════════
+  # SÍNTESE MULTI-FRAMEWORK CRUZADA
+  # ═══════════════════════════════════════════════════════════════════════
+  synthesis:
+    convergence_points:
+      - insight: "GABRIEL É UM EDUCADOR-CRIADOR NATO — Ensinar é sua Zona de Genialidade"
+        frameworks_concordantes:
+          - framework: "Gay Hendricks"
+            evidencia: "Flow state em ensinar/mentorar, faria de graça, energiza"
+          - framework: "Don Clifton"
+            evidencia: "Communication #1, Developer #5, domínio Influencing"
+          - framework: "Dan Sullivan"
+            evidencia: "Unique Ability = traduzir conhecimento técnico em ação acessível"
+          - framework: "Sally Hogshead"
+            evidencia: "Rockstar (Passion + Innovation) = inspira ensinando"
+        forca: "Muito forte — 4 frameworks convergem"
+        confianca: 0.92
+
+      - insight: "BLOQUEIO DE MONETIZAÇÃO É O UPPER LIMIT PROBLEM CENTRAL"
+        frameworks_concordantes:
+          - framework: "Gay Hendricks"
+            evidencia: "ULP tipo 1 — não se autoriza a cobrar pela genialidade"
+          - framework: "Alex Hormozi"
+            evidencia: "Perceived Likelihood baixo + dificuldade de pricing"
+          - framework: "Kathy Kolbe"
+            evidencia: "Fact Finder 3 + QS 8 = age sem pesquisar preços, fica sem referência"
+        forca: "Forte — 3 frameworks convergem"
+        confianca: 0.85
+
+      - insight: "CREATOR-STAR DYNAMO COM QUICK START ALTO = PRECISA DE EQUIPE OPERACIONAL"
+        frameworks_concordantes:
+          - framework: "Roger Hamilton"
+            evidencia: "Creator-Star, Dynamo, não é Lord/Mechanic"
+          - framework: "Kathy Kolbe"
+            evidencia: "QS 8, FT 3 — inicia mas não sistematiza"
+          - framework: "Dan Sullivan"
+            evidencia: "Who Not How ready, já delega, precisa delegar mais"
+        forca: "Forte — 3 frameworks convergem"
+        confianca: 0.83
+
+      - insight: "DISPERSÃO EM 3 NEGÓCIOS ESTÁ IMPEDINDO ESCALA EM QUALQUER UM"
+        frameworks_concordantes:
+          - framework: "Kathy Kolbe"
+            evidencia: "QS 8 com 3 negócios = energia dispersa"
+          - framework: "Don Clifton"
+            evidencia: "Maximizer na sombra — quer escalar mas não foca"
+          - framework: "Alex Hormozi"
+            evidencia: "10-20h/semana divididas por 3 = 6h cada = insuficiente para escalar"
+        forca: "Forte — 3 frameworks convergem"
+        confianca: 0.80
+
+      - insight: "COMUNICAÇÃO E CARISMA SÃO O DIFERENCIAL COMPETITIVO #1"
+        frameworks_concordantes:
+          - framework: "Don Clifton"
+            evidencia: "Communication #1, Command #4"
+          - framework: "Sally Hogshead"
+            evidencia: "Passion primária, Power terciária"
+          - framework: "Roger Hamilton"
+            evidencia: "Star secundário — brilha no palco"
+        forca: "Forte — 3 frameworks convergem"
+        confianca: 0.88
+
+      total_convergencias: 5
+
+    unique_insights:
+      - insight: "A dificuldade de cobrar pode estar conectada à identidade de SERVIR no agro"
+        framework: "Gay Hendricks"
+        explicacao: "No agro, cultura de ajudar o vizinho. Cobrar por conhecimento pode gerar culpa cultural, não só pessoal."
+        valor: "Resolver isso não é só mindset — é reposicionar o VALOR do conhecimento na comunidade"
+
+      - insight: "Kolbe FF:3 explica por que não pesquisa preços de mercado para consultoria"
+        framework: "Kathy Kolbe"
+        explicacao: "Não é preguiça ou medo — é que pesquisar profundamente vai contra seu instinto conativo. Ele precisa de alguém que faça essa pesquisa POR ele."
+        valor: "Solução não é 'pesquise mais' — é ter um advisor que traga os dados prontos"
+
+      - insight: "O Implementor 6 explica o amor pela fábrica de molhos"
+        framework: "Kathy Kolbe"
+        explicacao: "Tangível o suficiente para gostar de produzir, mas não tão alto que seja APENAS hands-on. Equilíbrio entre criar (abstrato) e produzir (tangível)."
+        valor: "A fábrica não é distração — é expressão tangível da criatividade. O erro é OPERAR ao invés de CRIAR dentro dela."
+
+    contradictions:
+      - contradicao: "Quer escala (muitas pessoas, produto escalável) MAS lidera time pequeno e gosta de proximidade"
+        framework_a:
+          nome: "Assessment direto"
+          posicao: "Quer atingir MUITAS pessoas com produto escalável"
+        framework_b:
+          nome: "Assessment direto"
+          posicao: "Funciona melhor liderando time pequeno de 3-5"
+        resolucao: |
+          Não é contradição — é escala com intimidade.
+          Modelo ideal: programa online escalável (muitos alunos) + time pequeno de operação (3-5 pessoas).
+          Gabriel não quer ATENDER muitas pessoas 1:1. Quer IMPACTAR muitas pessoas com PRODUTO, gerenciado por time pequeno.
+
+      - contradicao: "Creator (ideias, novo) mas meta é CONSTÂNCIA em vendas de molhos (operação, repetição)"
+        framework_a:
+          nome: "Roger Hamilton"
+          posicao: "Creator Dynamo — energia para criar, não para operar"
+        framework_b:
+          nome: "Meta declarada"
+          posicao: "50k/mês constante em molhos exige operação estável"
+        resolucao: |
+          A fábrica precisa de um Mechanic/Lord no comando operacional.
+          Gabriel deve ser o CRIADOR de novos sabores, receitas e marca — não o operador diário.
+          Contratar gerente de produção é urgente.
+
+    meta_insights:
+      - insight: "Gabriel é o próximo referência em agroindústria artesanal no Brasil — se parar de se esconder"
+        frameworks: ["Hendricks", "Clifton", "Hamilton", "Hogshead"]
+        explicacao: |
+          Creator-Star (Hamilton) + Communication + Developer (Clifton) + Rockstar (Hogshead) + Zona de Genialidade em ensinar (Hendricks)
+          = Perfil perfeito para se tornar A REFERÊNCIA em agroindústria artesanal.
+          O mercado está crescendo, poucos têm credibilidade real (ele tem fábrica).
+          O único impedimento é o ULP: não se autorizar a ser a estrela.
+
+      - insight: "A fábrica de molhos não é o negócio — é a PROVA SOCIAL do negócio real (educação)"
+        frameworks: ["Hormozi", "Hamilton", "Sullivan"]
+        explicacao: |
+          Hormozi: Perceived Likelihood sobe MUITO quando o professor tem negócio próprio funcionando.
+          Hamilton: Creator-Star monetiza através de influência, não de operação.
+          Sullivan: Unique Ability é ensinar, não produzir molhos.
+          A fábrica é o case, não o core business. 50k/mês em molhos é bom, mas 50k/mês em educação é escalável com margem de 80%+.
+
+      - insight: "Quick Start 8 + dificuldade de cobrar = vai precisar de um MECANISMO EXTERNO de pricing"
+        frameworks: ["Kolbe", "Hormozi", "Hendricks"]
+        explicacao: |
+          Kolbe QS 8: age rápido, mas sem referência de preço.
+          Hormozi: pricing gap é o maior gargalo.
+          Hendricks: ULP impede cobrar o que vale.
+          Solução: criar uma tabela de preços FIXA e SEGUIR sem negociar.
+          Ou: ter um sócio/advisor que defina e defenda os preços.
+
+  # ═══════════════════════════════════════════════════════════════════════
+  # RESUMO EXECUTIVO
+  # ═══════════════════════════════════════════════════════════════════════
+  summary:
+    zona_atual: "Excelência (preso — faz bem, reconhecido, mas não monetiza a genialidade)"
+    zona_genialidade: "Ensinar, comunicar e inspirar pessoas a construir negócios de alimentos artesanais"
+    perfil_dominante: "Creator-Star (Dynamo)"
+    top_3_talentos: ["Communication", "Activator", "Ideation"]
+    dominio_clifton: "Influencing"
+    unique_ability: "Traduzir conhecimento técnico do agro em negócios artesanais lucrativos — ensinando com clareza e paixão"
+    estilo_execucao: "Quick Start dominante (FF:3 FT:3 QS:8 IM:6)"
+    arquetipo_marca: "The Rockstar (Passion + Innovation)"
+    upper_limit_problem: "Tipo 1 — Não se autoriza a cobrar pela genialidade (potencializado por cultura agro de servir)"
+    value_equation_score: 2.67
+    wealth_spectrum: "Yellow → Green"
+    convergencia_principal: "Educador-Criador nato bloqueado por ULP de monetização"
+    acao_mais_urgente: "Cobrar os primeiros 3 clientes de consultoria ESTA SEMANA"

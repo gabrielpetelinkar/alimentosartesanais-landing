@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 13 — Sustentabilidade e Responsabilidade: O Futuro É Consciente</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+
+  html { overflow: hidden; }
+
+  body {
+    width: 100vw; height: 100vh; overflow: hidden; margin: 0;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    background: #0D0D0D;
+    color: #FFFFFF;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    
+    
+    background: #0D0D0D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .slide:last-child {
+    page-break-after: avoid;
+  }
+
+  /* ===== COLORS ===== */
+  :root {
+    --bg-primary: #0D0D0D;
+    --bg-secondary: #1A1A1A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --text-muted: #7A7A7A;
+    --accent-gold: #D4A843;
+    --accent-green: #5B8C3E;
+    --accent-terracotta: #C45B3A;
+    --accent-gold-glow: rgba(212, 168, 67, 0.15);
+    --accent-green-glow: rgba(91, 140, 62, 0.15);
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  .title-huge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 180px;
+    color: #5B8C3E;
+    line-height: 1;
+    letter-spacing: -4px;
+  }
+
+  .title-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: #FFFFFF;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+
+  .title-lg {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+
+  .title-md {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #B0B0B0;
+    line-height: 1.4;
+  }
+
+  .body-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #B0B0B0;
+    line-height: 1.5;
+  }
+
+  .caption {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #7A7A7A;
+  }
+
+  .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #5B8C3E;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .gold { color: #D4A843; }
+  .green { color: #5B8C3E; }
+  .terracotta { color: #C45B3A; }
+  .white { color: #FFFFFF; }
+  .muted { color: #B0B0B0; }
+
+  /* ===== DECORATIVE ===== */
+  .green-line {
+    width: 80px;
+    height: 3px;
+    background: #5B8C3E;
+    margin: 20px 0;
+  }
+
+  .green-line-wide {
+    width: 160px;
+    height: 3px;
+    background: #5B8C3E;
+    margin: 24px auto;
+  }
+
+  .green-line-center {
+    width: 80px;
+    height: 3px;
+    background: #5B8C3E;
+    margin: 20px auto;
+  }
+
+  /* ===== LAYOUT HELPERS ===== */
+  .centered {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .left-aligned {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .split-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px 60px 60px;
+  }
+
+  /* ===== PHOTO PLACEHOLDERS ===== */
+  .photo-full {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #7A7A7A;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .photo-full.nature {
+    background: linear-gradient(180deg, #0a1a0f 0%, #15281a 30%, #0a1505 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.landscape {
+    background: linear-gradient(180deg, #1a2010 0%, #15200a 30%, #0a1505 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.rural {
+    background: linear-gradient(160deg, #201a0a 0%, #2a1f10 40%, #1a1510 70%, #0D0D0D 100%);
+  }
+
+  .photo-full.sustainable {
+    background: linear-gradient(145deg, #0f1a0a 0%, #1a2810 35%, #102015 65%, #0D0D0D 100%);
+  }
+
+  .photo-half {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #5a5a5a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .photo-half.nature {
+    background: linear-gradient(135deg, #0a1a0f 0%, #15281a 50%, #0a1505 100%);
+  }
+
+  .photo-half.packaging {
+    background: linear-gradient(135deg, #1a1f0a 0%, #20280f 50%, #151a0a 100%);
+  }
+
+  .photo-half.community {
+    background: linear-gradient(135deg, #151015 0%, #1a2015 50%, #0D0D0D 100%);
+  }
+
+  .photo-half.production {
+    background: linear-gradient(135deg, #0f1a10 0%, #1a2510 50%, #0a150a 100%);
+  }
+
+  .overlay-dark {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(13, 13, 13, 0.65);
+  }
+
+  .content-over {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .content-over-center {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ===== NUMBER HIGHLIGHT ===== */
+  .number-huge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 160px;
+    color: #5B8C3E;
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+
+  .number-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 120px;
+    color: #5B8C3E;
+    line-height: 1;
+  }
+
+  /* ===== LIST ITEMS ===== */
+  .list-item {
+    margin-bottom: 28px;
+  }
+
+  .list-item .marker {
+    color: #5B8C3E;
+    font-size: 18px;
+    margin-right: 12px;
+  }
+
+  .list-item .item-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #FFFFFF;
+  }
+
+  .list-item .item-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #B0B0B0;
+    margin-top: 4px;
+    padding-left: 30px;
+  }
+
+  /* ===== ACTION ITEMS ===== */
+  .action-item {
+    margin-bottom: 32px;
+    padding-left: 0;
+  }
+
+  .action-item .arrow {
+    color: #5B8C3E;
+    font-size: 22px;
+    margin-right: 14px;
+    font-weight: 700;
+  }
+
+  .action-item .action-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .action-item .action-detail {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #B0B0B0;
+    margin-top: 4px;
+    padding-left: 36px;
+  }
+
+  /* ===== COMPARISON ===== */
+  .comparison {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .comp-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+  }
+
+  .comp-side.before {
+    background: #1A1A1A;
+    border-right: 2px solid #2a2a2a;
+  }
+
+  .comp-side.after {
+    background: #0D0D0D;
+  }
+
+  .comp-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .comp-content {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+
+  .comp-detail {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: #7A7A7A;
+    line-height: 1.5;
+  }
+
+  /* ===== STAT CARDS ===== */
+  .stat-cards {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: rgba(91, 140, 62, 0.08);
+    border: 1px solid rgba(91, 140, 62, 0.25);
+    border-radius: 12px;
+    padding: 32px 28px;
+    text-align: center;
+    width: 240px;
+  }
+
+  .stat-card .stat-number {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    color: #5B8C3E;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .stat-card .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #B0B0B0;
+    line-height: 1.4;
+  }
+
+  .stat-card .stat-source {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: #5a5a5a;
+    margin-top: 10px;
+  }
+
+  /* ===== SLIDE COUNTER ===== */
+  .slide-number {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #4a4a4a;
+    z-index: 10;
+  }
+
+  .course-tag {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3a3a3a;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+
+  /* ===== BADGE ===== */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(91, 140, 62, 0.15);
+    border: 2px solid #5B8C3E;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: #5B8C3E;
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 10;
+  }
+
+  .progress-bar .phase {
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #4a4a4a;
+  }
+
+  .progress-bar .phase.active {
+    background: rgba(91, 140, 62, 0.2);
+    color: #5B8C3E;
+    border: 1px solid rgba(91, 140, 62, 0.4);
+  }
+
+  /* ===== CASE CARD ===== */
+  .case-bar {
+    background: rgba(91, 140, 62, 0.08);
+    border-left: 4px solid #5B8C3E;
+    padding: 24px 32px;
+    margin-top: 20px;
+  }
+
+  /* ===== EXERCISE ===== */
+  .exercise-box {
+    border: 2px solid #5B8C3E;
+    border-radius: 8px;
+    padding: 40px 50px;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  /* ===== NEXT CLASS TEASER ===== */
+  .next-class {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(91, 140, 62, 0.3);
+  }
+
+  /* ===== SPEAKER NOTES (hidden on screen, visible in print/dev) ===== */
+  .speaker-notes {
+    display: none;
+  }
+
+  @media print {
+    .speaker-notes {
+      display: block;
+      page-break-before: avoid;
+      padding: 16px 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #666;
+      background: #f5f5f5;
+      border-top: 2px solid #5B8C3E;
+      width: 1280px;
+    }
+  }
+
+.slide-counter {
+  position: fixed; bottom: 20px; left: 30px; z-index: 50;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7A7A7A; opacity: 0.5; letter-spacing: 1px;
+}
+
+/* Progress bar */
+.progress {
+  position: absolute; top: 28px; right: 40px; z-index: 10;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: #4a4a4a;
+}
+.progress .active { color: var(--accent); font-weight: 700; }
+.progress .dot { width: 6px; height: 6px; border-radius: 50%; background: #333; }
+.progress .dot.active { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.progress .line { width: 20px; height: 1px; background: #333; }
+
+
+/* Aula label */
+.aula-label {
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+
+
+/* Glow background */
+.glow-bg {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(91,140,62,0.08) 0%, transparent 70%);
+  top: -100px; right: -100px; z-index: 0; pointer-events: none;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: HOOK / ABERTURA                                      -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-1">
+  <div style="background:url('../assets/aulas/aula08-mesa-visual-ia.png') center/cover no-repeat !important;" class="photo-full nature">
+    
+  </div>
+  <div class="overlay-dark"></div>
+  <div class="content-over">
+    <div style="margin-bottom: 60px;">
+      <div class="label" style="margin-bottom: 20px; font-size: 15px;">AULA 13 · ESCALAR</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; line-height: 1.2; max-width: 850px;">
+        80% dos consumidores pagam em média 9,7% a mais por produtos <span class="green">sustentáveis.</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">01 / 26</div>
+</div>
+<div class="speaker-notes">Abrir com o dado de impacto da PwC 2024. Deixar o número ecoar. Perguntar: "Vocês estão capturando esse valor?"</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: TÍTULO DA AULA                                       -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-2">
+  <div class="glow-bg"></div>
+  <div class="centered">
+    <div class="badge" style="margin-bottom: 20px;">13</div>
+    <div class="title-huge" style="margin-bottom: 24px;">13</div>
+    <div class="title-lg" style="margin-bottom: 12px;">SUSTENTABILIDADE E RESPONSABILIDADE</div>
+    <div class="subtitle">O futuro é consciente.</div>
+    <div class="green-line-center" style="margin-top: 28px;"></div>
+    <div class="progress-bar" style="position: relative; top: auto; left: auto; transform: none; margin-top: 32px;">
+      <span class="phase">CRIAR</span>
+      <span class="phase">VENDER</span>
+      <span class="phase active">ESCALAR</span>
+    </div>
+  </div>
+  <div class="slide-number">02 / 26</div>
+</div>
+<div class="speaker-notes">Apresentar o tema. Estamos na seção ESCALAR. Sustentabilidade é pilar de crescimento duradouro, não custo.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: CONCEITO — ABERTURA                                  -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-3">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 38px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        Sustentabilidade deixou de ser diferencial opcional e se tornou <span class="green">expectativa</span> do consumidor atual.
+      </div>
+      <div class="green-line-center" style="margin-top: 32px;"></div>
+    </div>
+  </div>
+  <div class="slide-number">03 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+<div class="speaker-notes">Contextualizar a mudança de paradigma: antes era diferencial, agora é expectativa. Quem não se posiciona, perde mercado.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: CONTEXTO — POR QUE IMPORTA                           -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-4">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">POR QUE SUSTENTABILIDADE IMPORTA</div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Clientes valorizam marcas que cuidam do meio ambiente</span></div>
+      <div class="item-desc">No mercado artesanal, a conexão com a terra e a comunidade é parte da identidade.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Fortalece reputação e fideliza clientes</span></div>
+      <div class="item-desc">Consumidores que percebem impacto positivo tornam-se defensores da marca.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Abre portas para novos mercados</span></div>
+      <div class="item-desc">Feiras orgânicas, lojas especializadas e exportação valorizam práticas sustentáveis.</div>
+    </div>
+  </div>
+  <div class="slide-number">04 / 26</div>
+</div>
+<div class="speaker-notes">Três pilares: reputação, fidelização e acesso a mercados. Exemplificar com produtores que já vivem isso.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: FOTO + INSIGHT (Consumidor consciente)               -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-5">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/aula13-consumidor-consciente.jpg') center/cover no-repeat !important;" class="photo-half nature">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Investir em práticas sustentáveis é investir no <span class="green">futuro da sua marca.</span>
+        </div>
+      </div>
+      <div class="green-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Consumidores que percebem impacto positivo tornam-se defensores da marca e geram recomendação espontânea.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">05 / 26</div>
+</div>
+<div class="speaker-notes">Reforçar que sustentabilidade gera advocacy. Clientes se tornam embaixadores gratuitos da marca.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: TRANSIÇÃO — MERCADO                                  -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-6">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE O MERCADO<br>ESTÁ DIZENDO
+    </div>
+    <div class="green-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">06 / 26</div>
+</div>
+<div class="speaker-notes">Transição para dados de mercado. Preparar a audiência para números concretos.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: NÚMERO DESTAQUE — 80%                                -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-7">
+  <div class="centered">
+    <div class="number-huge">80%</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        dos consumidores estão dispostos a pagar <span class="green">9,7% a mais</span> por produtos sustentáveis.
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— PwC Voice of the Consumer, 2024</div>
+  </div>
+  <div class="slide-number">07 / 26</div>
+</div>
+<div class="speaker-notes">Dado principal da aula. 80% é um número esmagador. E não é intenção, é disposição real de pagar mais. Fonte PwC 2024.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: NÚMERO DESTAQUE — 37%                                -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-8">
+  <div class="centered">
+    <div class="number-huge">37%</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        dos brasileiros já pagam mais por produtos <span class="green">ecológicos.</span>
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— Investe SP / Nielsen, 2024</div>
+  </div>
+  <div class="slide-number">08 / 26</div>
+</div>
+<div class="speaker-notes">Dado específico do Brasil. 37% já fazem, não apenas pretendem. Mercado brasileiro está maduro para isso.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: NÚMERO DESTAQUE — 67%                                -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-9">
+  <div class="centered">
+    <div class="number-huge">67%</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        dos consumidores preferem <span class="green">embalagens sustentáveis</span> na hora da compra.
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— Nielsen, 2024</div>
+  </div>
+  <div class="slide-number">09 / 26</div>
+</div>
+<div class="speaker-notes">Embalagem é o primeiro contato visual. 67% já prefere sustentável. Isso muda a percepção de valor inteiro.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: NÚMERO DESTAQUE — 73%                               -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-10">
+  <div class="centered">
+    <div class="number-huge">73%</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        dos consumidores preferem marcas que <span class="green">apoiam comunidades locais.</span>
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— Harvard Business Review, 2024</div>
+  </div>
+  <div class="slide-number">10 / 26</div>
+</div>
+<div class="speaker-notes">Apoiar a comunidade local é sustentabilidade social. 73% preferem marcas com esse posicionamento. HBR 2024.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: STAT CARDS — PANORAMA                               -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-11">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 40px;">PANORAMA EM NÚMEROS</div>
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-number">80%</div>
+        <div class="stat-label">dispostos a pagar 9,7% a mais</div>
+        <div class="stat-source">PwC, 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">37%</div>
+        <div class="stat-label">brasileiros pagam mais por ecológicos</div>
+        <div class="stat-source">Investe SP / Nielsen, 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">67%</div>
+        <div class="stat-label">preferem embalagens sustentáveis</div>
+        <div class="stat-source">Nielsen, 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">73%</div>
+        <div class="stat-label">preferem marcas que apoiam comunidades</div>
+        <div class="stat-source">HBR, 2024</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">11 / 26</div>
+</div>
+<div class="speaker-notes">Consolidar os 4 dados em um único panorama visual. Mostrar que o movimento é global e local ao mesmo tempo.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: FOTO + INSIGHT (Mercado)                            -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-12">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/aula13-mercado-sustentavel.jpg') center/cover no-repeat !important;" class="photo-half packaging">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div class="body-text" style="font-size: 22px; margin-bottom: 16px;">No mercado artesanal:</div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 36px; color: #5B8C3E; line-height: 1.2;">
+          EMBALAGENS<br>ECOLÓGICAS<br>AUMENTAM<br>PERCEPÇÃO<br>DE VALOR.
+        </div>
+      </div>
+      <div class="green-line" style="margin: 24px 0;"></div>
+      <div class="body-text" style="font-size: 18px;">
+        Uso consciente de recursos reforça imagem ética e reconhecimento de marca.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12 / 26</div>
+</div>
+<div class="speaker-notes">Embalagem é tangível, é o que o cliente vê primeiro. Mostrar que embalagem ecológica não é custo, é investimento em percepção de valor.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: LISTA — O QUE O MERCADO RECONHECE                   -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-13">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">O QUE O MERCADO RECONHECE</div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Marcas com práticas sustentáveis recebem recomendação</span></div>
+      <div class="item-desc">Reconhecimento orgânico e boca a boca amplificam o alcance.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Embalagens ecológicas aumentam percepção de valor</span></div>
+      <div class="item-desc">O cliente percebe cuidado e propósito antes mesmo de provar o produto.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Apoio a produtores locais gera impacto social positivo</span></div>
+      <div class="item-desc">A comunidade se fortalece e a marca ganha raízes genuínas.</div>
+    </div>
+  </div>
+  <div class="slide-number">13 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+<div class="speaker-notes">Três pontos de reconhecimento de mercado. Cada um reforçar com exemplo prático de produtor artesanal.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: TRANSIÇÃO — O QUE APRENDER                          -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-14">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE VOCÊ PODE<br>APRENDER COM ISSO
+    </div>
+    <div class="green-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">14 / 26</div>
+</div>
+<div class="speaker-notes">Transição para insights aplicáveis. Sair dos dados e ir para a prática.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: INSIGHT 1 — Postura, não marketing                  -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-15">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 42px; color: #FFFFFF; line-height: 1.25; text-align: center;">
+        Sustentabilidade genuína é<br><span class="green">POSTURA, NÃO MARKETING.</span>
+      </div>
+      <div class="green-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px; font-size: 22px;">
+        O consumidor percebe quando é verdadeiro.<br>Greenwashing destrói confiança.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">15 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+<div class="speaker-notes">Ponto crítico: greenwashing é perigoso. Sustentabilidade precisa ser genuína, incorporada no dia a dia, não só na comunicação.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: INSIGHT 2 — Conexão emocional                       -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-16">
+  <div class="centered">
+    <div style="max-width: 850px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 36px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        Conexão emocional com <span class="green">histórias de produtores locais</span> cria vínculos que preço nenhum quebra.
+      </div>
+      <div class="green-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px;">
+        Conte quem planta, quem colhe, quem transforma.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">16 / 26</div>
+</div>
+<div class="speaker-notes">Storytelling de origem é sustentabilidade narrativa. Mostrar o produtor, o processo, a cadeia. Isso cria vínculo emocional.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: INSIGHT 3 — Pequenas ações                          -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-17">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/aula13-acoes-sustentaveis.jpg') center/cover no-repeat !important;" class="photo-half production">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Pequenas ações geram <span class="green">grande impacto.</span>
+        </div>
+      </div>
+      <div class="green-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Reduzir plástico, usar materiais recicláveis, reaproveitar resíduos. Não precisa mudar tudo de uma vez — comece pelo que está ao seu alcance.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">17 / 26</div>
+</div>
+<div class="speaker-notes">Desmistificar: sustentabilidade não exige investimento enorme. Comece pequeno, com ações acessíveis. Exemplos práticos.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: TRANSIÇÃO — AÇÃO                                    -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-18">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #5B8C3E; text-align: center;">
+      TRANSFORME ISSO EM<br>VANTAGEM COMPETITIVA
+    </div>
+    <div class="green-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">18 / 26</div>
+</div>
+<div class="speaker-notes">Transição para ações concretas. Agora o produtor vai entender o que fazer.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: AÇÕES 1–3                                           -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-19">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Adote embalagens recicláveis ou reutilizáveis</span></div>
+      <div class="action-detail">Substitua plástico convencional por materiais biodegradáveis, vidro retornável ou papel reciclado</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Conte histórias de impacto social</span></div>
+      <div class="action-detail">Mostre quem está por trás do produto: produtores locais, famílias, comunidades beneficiadas</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Valorize fornecedores locais</span></div>
+      <div class="action-detail">Priorize matérias-primas da região, reduzindo pegada de carbono e fortalecendo a economia local</div>
+    </div>
+  </div>
+  <div class="slide-number">19 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+<div class="speaker-notes">Três primeiras ações práticas. Embalagem é o mais rápido de implementar. Histórias são gratuitas. Fornecedores locais reduzem custo logístico.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: AÇÕES 4–5                                           -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-20">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Engaje-se em iniciativas sociais</span></div>
+      <div class="action-detail">Participe de ações comunitárias, apoie projetos ambientais locais e comunique essas iniciativas</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Busque certificações ambientais</span></div>
+      <div class="action-detail">Selos e certificações transformam postura em prova tangível de compromisso com a sustentabilidade</div>
+    </div>
+  </div>
+  <div class="slide-number">20 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+<div class="speaker-notes">Ações 4 e 5. Engajamento social amplifica a narrativa. Certificações serão tema da próxima aula — fazer gancho.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: ANTES / DEPOIS                                      -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-21">
+  <div class="comparison">
+    <div class="comp-side before">
+      <div class="comp-label terracotta">ANTES &#10007;</div>
+      <div class="comp-content" style="color: #888;">
+        "Embalagem convencional, sem posicionamento sustentável"
+      </div>
+      <div class="comp-detail">
+        Plástico descartável, sem rastreabilidade,<br>sem história de origem,<br>sem engajamento social.<br><br>Compete só por preço.
+      </div>
+    </div>
+    <div class="comp-side after">
+      <div class="comp-label green">DEPOIS &#10003;</div>
+      <div class="comp-content white">
+        "Embalagem reciclável<br>com história do<br>produtor local"
+      </div>
+      <div class="comp-detail" style="color: #B0B0B0;">
+        Materiais ecológicos, storytelling de origem,<br>apoio à comunidade local,<br>certificação ambiental.<br><br>Compete por <span style="color: #5B8C3E;">propósito.</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">21 / 26</div>
+</div>
+<div class="speaker-notes">Comparação visual: o antes é genérico, o depois é intencional. Sustentabilidade muda o posicionamento inteiro.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: FOTO + REFLEXÃO                                     -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-22">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/aula13-reflexao-natureza.jpg') center/cover no-repeat !important;" class="photo-half community">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div class="body-text" style="font-size: 22px; margin-bottom: 16px;">Sustentabilidade não é custo.</div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 36px; color: #FFFFFF; line-height: 1.2;">
+          É <span class="green">investimento</span> em longevidade da marca.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">22 / 26</div>
+</div>
+<div class="speaker-notes">Mudar a mentalidade: de custo para investimento. Marcas sustentáveis duram mais, fidelizam mais, vendem mais caro.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: EXERCÍCIO                                           -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-23">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 32px;">EXERCÍCIO PRA AGORA</div>
+    <div class="exercise-box">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 30px; color: #FFFFFF; line-height: 1.3; margin-bottom: 24px;">
+        Liste <span class="green">3 ações sustentáveis</span> que você pode implementar esta semana no seu negócio.
+      </div>
+      <div class="green-line-center"></div>
+      <div class="body-text" style="margin-top: 20px; font-size: 20px;">
+        Pense em embalagem, origem dos ingredientes e comunicação.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">23 / 26</div>
+</div>
+<div class="speaker-notes">Exercício prático e imediato. Dar 2–3 minutos. Pedir para compartilhar no chat. Exemplos: trocar sacola plástica, postar sobre fornecedor local, reduzir desperdício.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: RESUMO                                              -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-24">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">O QUE LEVAR DESTA AULA</div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Sustentabilidade é expectativa, não diferencial</span></div>
+      <div class="item-desc">80% dos consumidores pagam mais por produtos sustentáveis.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Postura genuína, não marketing</span></div>
+      <div class="item-desc">Greenwashing destrói confiança. Autenticidade constrói lealdade.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Pequenas ações, grande impacto</span></div>
+      <div class="item-desc">Embalagens ecológicas, histórias de origem e apoio local transformam percepção de valor.</div>
+    </div>
+  </div>
+  <div class="slide-number">24 / 26</div>
+</div>
+<div class="speaker-notes">Recapitular os três pilares da aula. Reforçar que não precisa ser perfeito, precisa ser genuíno e consistente.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: FECHAMENTO (Moral)                                  -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-25">
+  <div style="background:url('../assets/aulas/Voce-conhece-o-selo-eureciclo-2.png') center/cover no-repeat !important;" class="photo-full landscape">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: rgba(13,13,13,0.6);"></div>
+  <div class="content-over-center">
+    <div class="quote" style="max-width: 750px; margin-bottom: 32px;">
+      "Sustentabilidade genuína é postura, não marketing. O futuro pertence a quem cuida."
+    </div>
+    <div class="green-line-center"></div>
+    <div class="next-class" style="margin-top: 32px;">
+      <div class="label" style="font-size: 14px; margin-bottom: 8px;">PRÓXIMA AULA</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF;">Certificação e Selos de Qualidade.</div>
+      <div class="body-text" style="font-size: 16px; margin-top: 4px;">Credibilidade tangível.</div>
+    </div>
+  </div>
+  <div class="slide-number">25 / 26</div>
+</div>
+<div class="speaker-notes">Fechamento emocional. Conectar com a próxima aula sobre certificações como prova tangível do compromisso sustentável.</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: ENCERRAMENTO                                        -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-26">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 16px; letter-spacing: 4px;">CURSO ONLINE</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 36px; color: #FFFFFF; line-height: 1.3; margin-bottom: 8px;">
+      GUIA ESTRATÉGICO PARA<br>PRODUTORES ARTESANAIS
+    </div>
+    <div class="subtitle" style="margin-bottom: 32px;">Gabriel Petelinkar.</div>
+    <div class="green-line-center"></div>
+    <div style="margin-top: 28px; display: flex; gap: 40px;">
+      <div class="body-text" style="font-size: 16px; color: #5B8C3E;">@gabrielpetelinkar</div>
+      <div class="body-text" style="font-size: 16px; color: #5B8C3E;">oriza.agro</div>
+    </div>
+  </div>
+  <div class="slide-number">26 / 26</div>
+</div>
+<div class="speaker-notes">Slide final. Agradecer, abrir para dúvidas, lembrar das redes sociais.</div>
+
+<!-- ============================================================ -->
+<!-- KEYBOARD NAVIGATION                                           -->
+<!-- ============================================================ -->
+<div class="slide-counter" id="slideCounter">1 / ?</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.slide');
+  var current = 0;
+  var lastNav = 0;
+  var DEBOUNCE = 300;
+  var counter = document.getElementById('slideCounter');
+
+  function showSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = i === index ? 'flex' : 'none';
+    }
+    current = index;
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function next() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current < slides.length - 1) showSlide(current + 1);
+  }
+
+  function prev() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current > 0) showSlide(current - 1);
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); next();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); prev();
+    } else if (e.key === 'n' || e.key === 'N') {
+      document.body.classList.toggle('show-notes');
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(slides.length - 1);
+    }
+  });
+
+  document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    if (e.deltaY > 0) next(); else prev();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 09 — Eventos e Degustações: Criando Defensores da Marca</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+
+  body {
+    width: 100vw; height: 100vh; overflow: hidden; margin: 0;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    background: #0D0D0D;
+    color: #FFFFFF;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    
+    
+    background: #0D0D0D;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide.active {
+    display: flex;
+  }
+
+  .slide:last-child {
+    page-break-after: avoid;
+  }
+
+  /* ===== COLORS ===== */
+  :root {
+    --bg-primary: #0D0D0D;
+    --bg-secondary: #1A1A1A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --text-muted: #7A7A7A;
+    --accent: #C45B3A;
+    --accent-glow: rgba(196, 91, 58, 0.15);
+    --accent-gold: #D4A843;
+    --accent-green: #5B8C3E;
+    --accent-terracotta: #C45B3A;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  .title-huge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 180px;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -4px;
+  }
+
+  .title-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: #FFFFFF;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+
+  .title-lg {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+
+  .title-md {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #B0B0B0;
+    line-height: 1.4;
+  }
+
+  .body-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #B0B0B0;
+    line-height: 1.5;
+  }
+
+  .caption {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #7A7A7A;
+  }
+
+  .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .accent { color: var(--accent); }
+  .green { color: #5B8C3E; }
+  .terracotta { color: #C45B3A; }
+  .white { color: #FFFFFF; }
+  .muted { color: #B0B0B0; }
+
+  /* ===== DECORATIVE ===== */
+  .accent-line {
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    margin: 20px 0;
+  }
+
+  .accent-line-wide {
+    width: 160px;
+    height: 3px;
+    background: var(--accent);
+    margin: 24px auto;
+  }
+
+  .accent-line-center {
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    margin: 20px auto;
+  }
+
+  /* ===== LAYOUT HELPERS ===== */
+  .centered {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .left-aligned {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .split-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px 60px 60px;
+  }
+
+  /* ===== PHOTO PLACEHOLDERS ===== */
+  .photo-full {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #7A7A7A;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .photo-full.food {
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 30%, #1a1510 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.landscape {
+    background: linear-gradient(180deg, #1a2010 0%, #15200a 30%, #0a1505 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.rural {
+    background: linear-gradient(160deg, #201a0a 0%, #2a1f10 40%, #1a1510 70%, #0D0D0D 100%);
+  }
+
+  .photo-full.market {
+    background: linear-gradient(145deg, #1a1015 0%, #201520 35%, #151020 65%, #0D0D0D 100%);
+  }
+
+  .photo-full.event {
+    background: linear-gradient(135deg, #1a1510 0%, #251a0d 30%, #1a120a 60%, #0D0D0D 100%);
+  }
+
+  .photo-half {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #5a5a5a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .photo-half.food {
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 50%, #1a1510 100%);
+  }
+
+  .photo-half.rural {
+    background: linear-gradient(135deg, #201a0a 0%, #2a1f10 50%, #1a1510 100%);
+  }
+
+  .photo-half.product {
+    background: linear-gradient(135deg, #151015 0%, #201520 50%, #0D0D0D 100%);
+  }
+
+  .photo-half.fair {
+    background: linear-gradient(135deg, #1a1510 0%, #20180a 50%, #0D0D0D 100%);
+  }
+
+  .photo-half.event {
+    background: linear-gradient(135deg, #1a120a 0%, #251a0d 50%, #0D0D0D 100%);
+  }
+
+  .overlay-dark {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(13, 13, 13, 0.65);
+  }
+
+  .content-over {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .content-over-center {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ===== NUMBER HIGHLIGHT ===== */
+  .number-huge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 160px;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+
+  .number-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 120px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  /* ===== LIST ITEMS ===== */
+  .list-item {
+    margin-bottom: 28px;
+  }
+
+  .list-item .marker {
+    color: var(--accent);
+    font-size: 18px;
+    margin-right: 12px;
+  }
+
+  .list-item .item-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #FFFFFF;
+  }
+
+  .list-item .item-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #B0B0B0;
+    margin-top: 4px;
+    padding-left: 30px;
+  }
+
+  /* ===== ACTION ITEMS ===== */
+  .action-item {
+    margin-bottom: 32px;
+    padding-left: 0;
+  }
+
+  .action-item .arrow {
+    color: var(--accent);
+    font-size: 22px;
+    margin-right: 14px;
+    font-weight: 700;
+  }
+
+  .action-item .action-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .action-item .action-detail {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #B0B0B0;
+    margin-top: 4px;
+    padding-left: 36px;
+  }
+
+  /* ===== COMPARISON ===== */
+  .comparison {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .comp-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+  }
+
+  .comp-side.before {
+    background: #1A1A1A;
+    border-right: 2px solid #2a2a2a;
+  }
+
+  .comp-side.after {
+    background: #0D0D0D;
+  }
+
+  .comp-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .comp-content {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+
+  .comp-detail {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: #7A7A7A;
+    line-height: 1.5;
+  }
+
+  /* ===== STAT CARDS ===== */
+  .stat-cards {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(196, 91, 58, 0.25);
+    border-radius: 8px;
+    padding: 32px 28px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .stat-card .stat-value {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .stat-card .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #B0B0B0;
+    line-height: 1.3;
+  }
+
+  .stat-card .stat-source {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: #5a5a5a;
+    margin-top: 8px;
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar {
+    position: absolute;
+    top: 24px;
+    right: 40px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .progress-bar .phase {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4a4a4a;
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+
+  .progress-bar .phase.active {
+    color: var(--accent);
+    background: var(--accent-glow);
+    border: 1px solid rgba(196, 91, 58, 0.3);
+  }
+
+  .progress-bar .phase-dot {
+    width: 3px;
+    height: 3px;
+    background: #3a3a3a;
+    border-radius: 50%;
+  }
+
+  /* ===== BADGE ===== */
+  .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 6px 16px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== SLIDE COUNTER ===== */
+  .slide-number {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #4a4a4a;
+    z-index: 10;
+  }
+
+  .course-tag {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3a3a3a;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+
+  /* ===== CASE CARD ===== */
+  .case-bar {
+    background: var(--accent-glow);
+    border-left: 4px solid var(--accent);
+    padding: 24px 32px;
+    margin-top: 20px;
+  }
+
+  /* ===== EXERCISE ===== */
+  .exercise-box {
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 40px 50px;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  /* ===== NEXT CLASS TEASER ===== */
+  .next-class {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(196, 91, 58, 0.3);
+  }
+
+  /* ===== SPEAKER NOTES ===== */
+  .speaker-notes {
+    display: none;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    .slide {
+      display: flex !important;
+    }
+    .progress-bar { display: none; }
+  }
+
+.slide-counter {
+  position: fixed; bottom: 20px; left: 30px; z-index: 50;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7A7A7A; opacity: 0.5; letter-spacing: 1px;
+}
+
+/* Progress bar */
+.progress {
+  position: absolute; top: 28px; right: 40px; z-index: 10;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: #4a4a4a;
+}
+.progress .active { color: var(--accent); font-weight: 700; }
+.progress .dot { width: 6px; height: 6px; border-radius: 50%; background: #333; }
+.progress .dot.active { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.progress .line { width: 20px; height: 1px; background: #333; }
+
+
+/* Aula label */
+.aula-label {
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+
+
+/* Glow background */
+.glow-bg {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,91,58,0.08) 0%, transparent 70%);
+  top: -100px; right: -100px; z-index: 0; pointer-events: none;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: HOOK / ABERTURA                                      -->
+<!-- ============================================================ -->
+<div class="slide active">
+  <div style="background:url('../assets/aulas/3c3243_f9d6bc8091ba4f9a8e92b5e2d112b02c~mv2.avif') center/cover no-repeat !important;" class="photo-full event">
+    
+  </div>
+  <div class="overlay-dark"></div>
+  <div class="content-over">
+    <div style="margin-bottom: 60px;">
+      <div class="label" style="margin-bottom: 20px; font-size: 15px;">AULA 09 · VENDER</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 46px; color: #FFFFFF; line-height: 1.2; max-width: 800px;">
+        Uma degustação presencial converte <span class="accent">5 vezes mais</span> que qualquer campanha digital.
+      </div>
+    </div>
+  </div>
+  <div class="progress-bar">
+    <span class="phase">CRIAR</span>
+    <span class="phase-dot"></span>
+    <span class="phase active">VENDER</span>
+    <span class="phase-dot"></span>
+    <span class="phase">ESCALAR</span>
+  </div>
+  <div class="slide-number">01 / 26</div>
+  <div class="speaker-notes">Abrir com impacto: a conversão presencial é incomparável. Perguntar quem já participou de uma feira.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: TÍTULO DA AULA                                       -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="glow-bg"></div>
+  <div class="centered">
+    <div class="title-huge" style="margin-bottom: 24px;">09</div>
+    <div class="title-lg" style="margin-bottom: 12px;">EVENTOS E DEGUSTAÇÕES</div>
+    <div class="subtitle">Criando defensores da marca.</div>
+    <div class="accent-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="progress-bar">
+    <span class="phase">CRIAR</span>
+    <span class="phase-dot"></span>
+    <span class="phase active">VENDER</span>
+    <span class="phase-dot"></span>
+    <span class="phase">ESCALAR</span>
+  </div>
+  <div class="slide-number">02 / 26</div>
+  <div class="speaker-notes">Apresentar o tema: eventos, feiras e degustações como ferramentas estratégicas de venda e posicionamento.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: CONCEITO — ABERTURA                                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 38px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        Feiras, degustações e eventos são oportunidades únicas de <span class="accent">transformar clientes</span> em defensores da marca.
+      </div>
+      <div class="accent-line-center" style="margin-top: 32px;"></div>
+    </div>
+  </div>
+  <div class="slide-number">03 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Contextualizar: eventos promovem o produto, educam o consumidor, geram engajamento e permitem ouvir feedbacks imediatos.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: FOTO + INSIGHT (Experiência sensorial)               -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/aula09-experiencia-feira.jpg') center/cover no-repeat !important;" class="photo-half fair">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Experimentar vai muito além de <span class="accent">provar.</span>
+        </div>
+      </div>
+      <div class="accent-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        É vivenciar a história, o processo e a autenticidade por trás de cada produto. Para o consumidor, cada degustação é uma experiência completa.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04 / 26</div>
+  <div class="speaker-notes">Reforçar que degustação não é só sabor — é história, conexão e autenticidade vivida no momento.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: CONCEITO — CONEXÃO EMOCIONAL                         -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div class="body-text" style="font-size: 24px; margin-bottom: 20px;">O público sente, literalmente, a diferença entre um produto comum e um artesanal.</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 38px; color: var(--accent); line-height: 1.25; text-align: center;">
+        SABOR, AROMA, TEXTURA,<br>CUIDADO E O CONTATO<br>COM QUEM FAZ.
+      </div>
+      <div class="accent-line-center" style="margin-top: 32px;"></div>
+    </div>
+  </div>
+  <div class="slide-number">05 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Degustações permitem que o público sinta a diferença. Isso gera conexão emocional e fidelidade duradoura.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: LISTA VISUAL — Benefícios dos eventos                -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">POR QUE EVENTOS FUNCIONAM</div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Feedback imediato e real</span></div>
+      <div class="item-desc">Reação, compra ou comentários do público guiam ajustes rápidos no produto.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Networking estratégico</span></div>
+      <div class="item-desc">Grandes oportunidades de parcerias e conexões que abrem portas para novos mercados.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Marketing boca a boca amplificado</span></div>
+      <div class="item-desc">Cada evento vira conteúdo para redes sociais e divulgação espontânea.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Educação do consumidor</span></div>
+      <div class="item-desc">Eventos são o melhor lugar para ensinar sobre sabor, aroma e uso — e justificar o preço.</div>
+    </div>
+  </div>
+  <div class="slide-number">06 / 26</div>
+  <div class="speaker-notes">Listar os 4 benefícios-chave. Pedir exemplos de quem já teve feedback valioso em feira.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: CASE PESSOAL — Gabriel                               -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/WhatsApp Image 2026-03-23 at 14.58.20 (2).jpeg') center/cover no-repeat !important;" class="photo-full rural">
+    
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.2) 100%);"></div>
+  <div class="content-over">
+    <div class="label" style="margin-bottom: 16px; font-size: 14px;">CASE PESSOAL</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: #FFFFFF; margin-bottom: 16px;">
+      MARCOS QUE NASCERAM EM EVENTOS
+    </div>
+    <div class="body-text" style="max-width: 700px;">
+      Alguns dos meus maiores marcos empresariais aconteceram em eventos e feiras — graças às conexões e aos feedbacks que recebi. Aproveitar esses momentos é uma estratégia poderosa.
+    </div>
+  </div>
+  <div class="slide-number">07 / 26</div>
+  <div class="speaker-notes">Compartilhar história pessoal: quais marcos de Gabriel nasceram em eventos. Tornar concreto e autêntico.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: TRANSIÇÃO — MERCADO                                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE ESTÁ ACONTECENDO<br>NO MERCADO
+    </div>
+    <div class="accent-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">08 / 26</div>
+  <div class="speaker-notes">Transição: agora vamos olhar para os números e o cenário do mercado de eventos no Brasil.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: NÚMERO DESTAQUE — R$ 355 bi                          -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 100px; color: var(--accent); line-height: 1; letter-spacing: -2px;">R$ 355</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 48px; color: var(--accent); margin-top: 4px;">BILHÕES</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 20px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        movimentados pelo setor de eventos no Brasil em 2024.
+      </div>
+    </div>
+    <div style="margin-top: 16px; display: flex; gap: 24px; align-items: center;">
+      <div style="background: rgba(91,140,62,0.2); border: 1px solid #5B8C3E; border-radius: 4px; padding: 8px 16px;">
+        <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; color: #5B8C3E;">+10% ao ano</span>
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 20px;">— ABEOC Brasil, 2025</div>
+  </div>
+  <div class="slide-number">09 / 26</div>
+  <div class="speaker-notes">Número de impacto: R$ 355 bilhões no setor. Crescimento ~10% ao ano. Mercado em expansão constante.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: NÚMERO DESTAQUE — 8-12%                             -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 120px; color: var(--accent); line-height: 1; letter-spacing: -2px;">8-12%</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        de crescimento anual na participação de <span class="accent">expositores artesanais</span> em feiras gastronômicas.
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— ABRAPE, 2024</div>
+  </div>
+  <div class="slide-number">10 / 26</div>
+  <div class="speaker-notes">Artesanais crescem mais rápido que a média. Oportunidade real para quem está começando.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: STAT CARDS — Panorama de números                    -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 36px;">PANORAMA EM NÚMEROS</div>
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-value">R$ 355 bi</div>
+        <div class="stat-label">Setor de eventos<br>no Brasil (2024)</div>
+        <div class="stat-source">ABEOC Brasil, 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">8-12%</div>
+        <div class="stat-label">Crescimento anual de<br>expositores artesanais</div>
+        <div class="stat-source">ABRAPE, 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">5x</div>
+        <div class="stat-label">Conversão presencial<br>vs. ações digitais</div>
+        <div class="stat-source">HubSpot Research, 2024</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">11 / 26</div>
+  <div class="speaker-notes">Visão consolidada dos três dados-chave. Reforçar que os números justificam o investimento em eventos.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: FOTO + INSIGHT (Conexão emocional)                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/aula09-conexao-cliente.jpg') center/cover no-repeat !important;" class="photo-half food">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div class="body-text" style="font-size: 22px; margin-bottom: 16px;">Experiências presenciais geram conexão emocional e posicionam a marca como</div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 40px; color: var(--accent); line-height: 1.2;">
+          ALGO<br>PESSOAL.
+        </div>
+      </div>
+      <div class="accent-line" style="margin: 24px 0;"></div>
+      <div class="body-text" style="font-size: 18px;">
+        Fortalecem a fidelidade e transformam cada evento em estratégia de divulgação poderosa.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12 / 26</div>
+  <div class="speaker-notes">A marca deixa de ser abstrata e vira algo pessoal. Degustações criam memória afetiva.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: TRANSIÇÃO — O QUE APRENDER                          -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE VOCÊ PODE<br>APRENDER COM ISSO
+    </div>
+    <div class="accent-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">13 / 26</div>
+  <div class="speaker-notes">Transição para os insights práticos que o aluno pode aplicar imediatamente.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: INSIGHT 1 — Experiências sensoriais                 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 42px; color: #FFFFFF; line-height: 1.25; text-align: center;">
+        Experiências sensoriais criam<br><span class="accent">LEMBRANÇA DE MARCA.</span>
+      </div>
+      <div class="accent-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px; font-size: 22px;">
+        Aumentam significativamente a recompra<br>e transformam clientes em embaixadores.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">14 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Insight 1: o sensorial grava na memória. Quem prova e gosta, lembra — e volta.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: INSIGHT 2 — Educação justifica preço                -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 850px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 36px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        Educação sobre <span class="accent">sabor, aroma e uso</span> ajuda a justificar o preço e reforçar o <span class="accent">valor percebido.</span>
+      </div>
+      <div class="accent-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px;">
+        Eventos são o melhor lugar para ensinar e vender ao mesmo tempo.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">15 / 26</div>
+  <div class="speaker-notes">Insight 2: educar no evento justifica preço premium. O cliente entende o valor quando experimenta com contexto.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: FOTO + INSIGHT (Networking)                         -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/aula09-networking.jpg') center/cover no-repeat !important;" class="photo-half event">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Eventos são <span class="accent">networking valioso.</span>
+        </div>
+      </div>
+      <div class="accent-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Grandes oportunidades de parcerias estratégicas que podem levar o negócio a outro patamar. Cada conversa pode abrir uma porta.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">16 / 26</div>
+  <div class="speaker-notes">Insight 3: networking. Contar sobre parcerias que nasceram em feiras. Eventos são investimento, não custo.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: INSIGHT 4 — Feedback imediato                       -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 850px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 42px; color: #FFFFFF; line-height: 1.25; text-align: center;">
+        Feedback imediato<br><span class="accent">guia ajustes rápidos.</span>
+      </div>
+      <div class="accent-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px; font-size: 22px;">
+        Reação, compra ou comentários do público no evento permitem ajustes assertivos e em tempo real.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">17 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Insight 4: feedback ao vivo. Ajustar receita, embalagem, preço — tudo pode ser validado no evento.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: CASE — Conversão presencial 5x                      -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/campo-largo-1.jpeg') center/cover no-repeat !important;" class="photo-full market">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.15) 100%);"></div>
+  <div class="content-over">
+    <div class="label" style="margin-bottom: 16px; font-size: 14px;">CASE</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: #FFFFFF; margin-bottom: 16px;">
+      DEGUSTAÇÃO QUE CONVERTE 5x MAIS
+    </div>
+    <div class="body-text" style="max-width: 750px;">
+      Degustações presenciais apresentam taxa de conversão até 5 vezes maior que ações digitais isoladas, transformando curiosos em clientes fiéis.
+    </div>
+    <div class="case-bar" style="margin-top: 24px; max-width: 750px;">
+      <div class="body-text" style="font-size: 16px; color: #FFFFFF;">
+        O contato direto cria confiança instantânea. Quem prova com contexto, compra com convicção.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">18 / 26</div>
+  <div class="speaker-notes">Case de conversão: dados do HubSpot Research. Dar exemplo concreto de como uma degustação converteu.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: TRANSIÇÃO — AÇÃO                                    -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: var(--accent); text-align: center;">
+      TRANSFORME ISSO EM<br>VANTAGEM COMPETITIVA
+    </div>
+    <div class="accent-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">19 / 26</div>
+  <div class="speaker-notes">Transição para as ações práticas. Agora vamos ao passo a passo.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: AÇÕES 1-3                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Ofereça degustações estratégicas</span></div>
+      <div class="action-detail">Em feiras, mercados e restaurantes parceiros — leve o sabor até o público.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Crie kits de degustação</span></div>
+      <div class="action-detail">Para venda ou assinatura, levando a experiência até a casa do cliente.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Use eventos para educar</span></div>
+      <div class="action-detail">Conte histórias e ensine sobre ingredientes e processos artesanais.</div>
+    </div>
+  </div>
+  <div class="slide-number">20 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Ações 1-3: degustações em feiras/restaurantes, kits para venda/assinatura, educação no evento.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: AÇÕES 4-6                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Registre tudo: fotos, vídeos e depoimentos</span></div>
+      <div class="action-detail">Cada evento rende excelente conteúdo para redes sociais e divulgação orgânica.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Participe de eventos locais e regionais</span></div>
+      <div class="action-detail">Comece pelos eventos da sua cidade e região — visibilidade começa perto de casa.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Transforme participantes em embaixadores</span></div>
+      <div class="action-detail">Ofereça brindes ou descontos para quem compartilhar a experiência nas redes.</div>
+    </div>
+  </div>
+  <div class="slide-number">21 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Ações 4-6: registrar tudo, começar local, criar programa de embaixadores informais.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: ANTES / DEPOIS                                      -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="comparison">
+    <div class="comp-side before">
+      <div class="comp-label terracotta">ANTES ✗</div>
+      <div class="comp-content" style="color: #888;">
+        "Estande genérico com produtos na mesa"
+      </div>
+      <div class="comp-detail">
+        Sem interação, sem história,<br>sem experiência sensorial.<br><br>O visitante passa direto.
+      </div>
+    </div>
+    <div class="comp-side after">
+      <div class="comp-label green">DEPOIS ✓</div>
+      <div class="comp-content white">
+        "Experiência completa:<br>degustação guiada,<br>história contada,<br>QR code + brinde"
+      </div>
+      <div class="comp-detail" style="color: #B0B0B0;">
+        Interação, conexão emocional,<br>compartilhamento nas redes.<br><br>O visitante vira <span style="color: var(--accent);">defensor.</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">22 / 26</div>
+  <div class="speaker-notes">Comparação visual: estande genérico vs. experiência completa. O que faz a diferença é a intencionalidade.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: NÚMERO DESTAQUE — 5x                                -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="number-huge">5x</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        maior taxa de <span class="accent">conversão</span> em degustações presenciais comparadas a ações digitais isoladas.
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— HubSpot Research, 2024</div>
+  </div>
+  <div class="slide-number">23 / 26</div>
+  <div class="speaker-notes">Reforço do dado mais impactante: 5x de conversão. Vale o investimento de tempo e dinheiro.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: EXERCÍCIO                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 32px;">EXERCÍCIO PRA AGORA</div>
+    <div class="exercise-box">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 30px; color: #FFFFFF; line-height: 1.3; margin-bottom: 24px;">
+        Planeje uma ação presencial para o próximo mês: <span class="accent">onde, para quem</span> e o que você quer que as pessoas sintam.
+      </div>
+      <div class="accent-line-center"></div>
+      <div class="body-text" style="margin-top: 20px; font-size: 20px;">
+        Pense: qual experiência você quer que levem para casa?
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">24 / 26</div>
+  <div class="speaker-notes">Exercício prático: pedir que planejem uma ação presencial concreta. Dar 3 minutos para rascunhar.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: RESUMO                                              -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">O QUE LEVAR DESTA AULA</div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Degustações convertem muito mais que o digital</span></div>
+      <div class="item-desc">O contato presencial cria lembrança, confiança e fidelidade.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Eventos são oportunidades de networking</span></div>
+      <div class="item-desc">Conexões feitas em feiras podem transformar seu negócio.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Cada evento é conteúdo para redes sociais</span></div>
+      <div class="item-desc">Registre tudo e transforme participantes em embaixadores da marca.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Educação sensorial justifica preço premium</span></div>
+      <div class="item-desc">Quem entende o processo, valoriza e paga mais pelo produto artesanal.</div>
+    </div>
+  </div>
+  <div class="slide-number">25 / 26</div>
+  <div class="speaker-notes">Resumo dos 4 pontos-chave. Reforçar a mensagem central: quem prova, defende.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: FECHAMENTO (Hook + Próxima aula)                    -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/degustacaolourencoalimentos.png.jpg') center/cover no-repeat !important;" class="photo-full landscape">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: rgba(13,13,13,0.6);"></div>
+  <div class="content-over-center">
+    <div class="quote" style="max-width: 750px; margin-bottom: 32px;">
+      "Quem prova, defende. Quem defende, multiplica."
+    </div>
+    <div class="accent-line-center"></div>
+    <div class="next-class" style="margin-top: 32px;">
+      <div class="label" style="font-size: 14px; margin-bottom: 8px;">PRÓXIMA AULA</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF;">Harmonização e Versatilidade.</div>
+      <div class="body-text" style="font-size: 16px; margin-top: 4px;">Ampliando ocasiões de consumo.</div>
+    </div>
+  </div>
+  <div class="slide-number">26 / 26</div>
+  <div class="speaker-notes">Fechar com o hook. Antecipar a próxima aula: harmonização e versatilidade. Abrir para dúvidas.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- KEYBOARD NAVIGATION                                           -->
+<!-- ============================================================ -->
+<div class="slide-counter" id="slideCounter">1 / ?</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.slide');
+  var current = 0;
+  var lastNav = 0;
+  var DEBOUNCE = 300;
+  var counter = document.getElementById('slideCounter');
+
+  function showSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = i === index ? 'flex' : 'none';
+    }
+    current = index;
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function next() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current < slides.length - 1) showSlide(current + 1);
+  }
+
+  function prev() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current > 0) showSlide(current - 1);
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); next();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); prev();
+    } else if (e.key === 'n' || e.key === 'N') {
+      document.body.classList.toggle('show-notes');
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(slides.length - 1);
+    }
+  });
+
+  document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    if (e.deltaY > 0) next(); else prev();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

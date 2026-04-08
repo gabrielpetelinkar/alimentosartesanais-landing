@@ -1,0 +1,19 @@
+status:
+  branch: main
+  modifiedFiles:
+    - outputs/portfolio/giovana-petelinkar/index.html
+    - outputs/slides-ebook/apresentacao-intro-curso.html
+    - .agent/
+    - .aios-core/
+    - .aios/
+  modifiedFilesTotalCount: 138
+  recentCommits:
+    - 'fix: corrige layout mobile do portfólio Giovana Petelinkar'
+    - 'feat: add portfolio-pro squad + portfólio profissional Giovana Petelinkar'
+  currentEpic: null
+  currentStory: null
+  lastUpdate: '2026-04-03T20:30:38.406Z'
+  isGitRepo: true
+timestamp: 1775248238417
+ttl: 60
+gitFingerprint: 1771769830167.7603:1774475194591.0176

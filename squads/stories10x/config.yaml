@@ -1,0 +1,189 @@
+pack:
+  name: stories10x
+  version: 1.0.0
+  short-title: Stories 10x
+  description: >-
+    Squad de elite para multiplicacao de conteudo baseado em storytelling autentico.
+    7 agentes baseados em elite minds reais com frameworks documentados, cobrindo
+    todo o ciclo: descoberta de historias, estruturacao narrativa, multiplicacao de
+    conteudo, engenharia de hooks, sistematizacao de producao, monetizacao via conteudo
+    e storytelling visual.
+  author: Squad Architect
+  icon: "📖"
+  slashPrefix: stories10x
+
+# Pattern Library
+pattern_library:
+  prefix: S10
+  naming_convention:
+    format: "{PREFIX}-{CATEGORY}-{NUMBER}"
+    example: "S10-TP-001"
+  categories:
+    - id: TP
+      name: "Task Patterns"
+      description: "Patterns for content multiplication task structure"
+    - id: EP
+      name: "Executor Patterns"
+      description: "Patterns for executor selection"
+    - id: PP
+      name: "Process Patterns"
+      description: "Patterns for storytelling workflows"
+    - id: IP
+      name: "Integration Patterns"
+      description: "Patterns for platform/tool integrations"
+    - id: AP
+      name: "Automation Patterns"
+      description: "Patterns for content scheduling and repurposing"
+    - id: DP
+      name: "Documentation Patterns"
+      description: "Patterns for content/documentation"
+  patterns: []
+
+# Task Standards
+task_standards:
+  enforce_anatomy: true
+  validator: "S10-TP-001"
+  required_fields:
+    - task_name
+    - status
+    - responsible_executor
+    - execution_type
+    - input
+    - output
+    - action_items
+    - acceptance_criteria
+  optional_fields:
+    - estimated_time
+    - dependencies
+    - templates
+    - quality_gate
+    - handoff
+
+# Executor Types
+executor_types:
+  human:
+    id: "S10-EP-001"
+    name: "Human Executor"
+    use_for:
+      - "Personal story selection and validation"
+      - "Authenticity verification"
+      - "Brand voice final approval"
+  agent:
+    id: "S10-EP-002"
+    name: "Agent Executor (AI)"
+    use_for:
+      - "Content multiplication from pillar story"
+      - "Hook generation and variation"
+      - "Calendar and system creation"
+  hybrid:
+    id: "S10-EP-003"
+    name: "Hybrid Executor"
+    use_for:
+      - "Story discovery (AI prompts + human stories)"
+      - "Content calendar creation (AI draft + human review)"
+      - "Monetization mapping (AI analysis + human strategy)"
+  worker:
+    id: "S10-EP-004"
+    name: "Worker Executor"
+    use_for:
+      - "Content scheduling and publishing"
+      - "Analytics collection"
+      - "Cross-platform repurposing"
+
+  executor_selection:
+    requires_creativity: human
+    requires_judgment: [human, hybrid]
+    requires_speed: [agent, worker]
+    requires_consistency: worker
+    requires_validation: hybrid
+    requires_learning: agent
+
+# Workflow Configuration
+workflow_config:
+  checkpoint_policy: always_active
+  checkpoint_modes:
+    always_active: "Every checkpoint MUST pass"
+    skip_on_override: "Can skip with manual approval"
+    advisory: "Only alerts, doesn't block"
+  fail_fast: true
+  allow_manual_override: false
+
+# Agents
+agents:
+  - id: stories10x-chief
+    name: Stories 10x Orchestrator
+    icon: "📖"
+    tier: orchestrator
+    role: "Squad orchestration and stories journey guidance"
+
+  - id: donald-miller
+    name: Donald Miller
+    icon: "📕"
+    tier: 0
+    role: "Story discovery and narrative structure using StoryBrand SB7"
+
+  - id: gary-vaynerchuk
+    name: Gary Vaynerchuk
+    icon: "🔊"
+    tier: 1
+    role: "Content multiplication and platform-native distribution"
+
+  - id: brendan-kane
+    name: Brendan Kane
+    icon: "🪝"
+    tier: 1
+    role: "Hook engineering and attention capture"
+
+  - id: justin-welsh
+    name: Justin Welsh
+    icon: "⚙️"
+    tier: 1
+    role: "Repeatable content system and solopreneur scaling"
+
+  - id: casey-neistat
+    name: Casey Neistat
+    icon: "🎬"
+    tier: 2
+    role: "Authentic visual storytelling and video structure"
+
+  - id: dan-koe
+    name: Dan Koe
+    icon: "💎"
+    tier: 2
+    role: "Content-to-revenue bridge and one-person business"
+
+# Stories Journey Flow
+journey_flow: |
+  Donald Miller (Tier 0) → Discover your stories
+       ↓
+  Donald Miller (Tier 0) → Structure for impact (SB7)
+       ↓
+  Gary Vaynerchuk (Tier 1) → 1 story → 10+ content pieces
+       ↓
+  Brendan Kane (Tier 1) → Engineer hooks for attention
+       ↓
+  Justin Welsh (Tier 1) → Build repeatable content system
+       ↓
+  Dan Koe (Tier 2) → Connect content to revenue
+       *
+  Casey Neistat (Tier 2) → Visual storytelling (cross-cutting phases 1-4)
+
+# Integration with Creator-OS
+integration:
+  receives_from:
+    squad: creator-os
+    data:
+      - "Product/offer details (from @russell-brunson)"
+      - "Epiphany Bridge story (from @russell-brunson)"
+      - "Target audience profile (from @amy-porterfield)"
+      - "Value Ladder positioning (from @russell-brunson)"
+  delivers_to:
+    squad: creator-os
+    data:
+      - "Content pipeline for audience building (to @nicolas-cole)"
+      - "Story-driven leads (to @jeff-walker)"
+      - "Daily content for perpetual sales (to @leandro-ladeira)"
+      - "Performance data and audience insights"
+  ideal_flow: |
+    Creator-OS builds product/offer → Stories10x amplifies with content
+    Stories10x generates audience → Creator-OS converts to revenue

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Editor de Imagens — Aulas</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111; color: #eee; font-family: 'Segoe UI', system-ui, sans-serif; padding: 20px; }
+h1 { color: #D4A843; margin-bottom: 10px; font-size: 22px; }
+.instructions { color: #999; margin-bottom: 20px; font-size: 14px; line-height: 1.6; }
+.instructions strong { color: #D4A843; }
+
+.gallery-toggle { background: #222; border: 1px solid #333; color: #D4A843; padding: 8px 16px; cursor: pointer; border-radius: 6px; margin-bottom: 10px; font-size: 14px; }
+.gallery { display: none; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 16px; margin-bottom: 20px; max-height: 400px; overflow-y: auto; }
+.gallery.open { display: flex; flex-wrap: wrap; gap: 8px; }
+.gallery img { width: 120px; height: 80px; object-fit: cover; border-radius: 4px; cursor: grab; border: 2px solid transparent; transition: border-color 0.2s; }
+.gallery img:hover { border-color: #D4A843; }
+.search { background: #222; border: 1px solid #333; color: #eee; padding: 8px 12px; border-radius: 6px; width: 300px; margin-bottom: 10px; font-size: 13px; }
+
+.aula { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; margin-bottom: 16px; overflow: hidden; }
+.aula-header { background: #222; padding: 12px 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.aula-header h2 { font-size: 16px; color: #D4A843; }
+.aula-header .count { font-size: 12px; color: #666; }
+.aula-body { display: none; padding: 16px; }
+.aula-body.open { display: block; }
+
+.slot { display: flex; gap: 16px; align-items: center; padding: 12px; margin-bottom: 8px; background: #222; border-radius: 6px; border: 2px solid transparent; transition: border-color 0.2s; cursor: pointer; }
+.slot.dragover { border-color: #D4A843; background: #2a2208; }
+.slot-preview { width: 180px; height: 120px; border-radius: 6px; background: #333; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
+.slot-preview img { width: 100%; height: 100%; object-fit: cover; }
+.slot-preview .empty { color: #555; font-size: 11px; text-align: center; padding: 10px; }
+.slot-info { flex: 1; }
+.slot-info .slide-name { font-size: 13px; font-weight: 600; color: #ccc; margin-bottom: 4px; }
+.slot-info .current-file { font-size: 11px; color: #D4A843; margin-top: 4px; font-family: monospace; word-break: break-all; }
+.slot-actions button { background: #333; border: 1px solid #444; color: #e55; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+.slot-actions button:hover { background: #444; }
+
+.picker-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 200; padding: 20px; overflow-y: auto; display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; }
+.picker-overlay .close-btn { position: fixed; top: 10px; right: 20px; background: #D4A843; color: #111; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 700; z-index: 201; font-size: 14px; }
+.picker-overlay .search-picker { position: fixed; top: 10px; left: 20px; background: #222; border: 1px solid #D4A843; color: #eee; padding: 10px 16px; border-radius: 6px; width: 300px; font-size: 14px; z-index: 201; }
+.picker-overlay img { width: 220px; height: 150px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 3px solid transparent; transition: all 0.2s; margin-top: 50px; }
+.picker-overlay img:hover { border-color: #D4A843; transform: scale(1.03); }
+.picker-overlay .img-label { width: 220px; text-align: center; font-size: 10px; color: #888; word-break: break-all; margin-top: -4px; }
+
+.export-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #222; border-top: 2px solid #D4A843; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+.export-bar .changes { color: #999; font-size: 13px; }
+.export-bar .changes strong { color: #D4A843; }
+.export-bar button { background: #D4A843; color: #111; border: none; padding: 10px 24px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 14px; }
+.export-bar button:hover { background: #e5b94d; }
+body { padding-bottom: 70px; }
+</style>
+</head>
+<body>
+
+<h1>Editor de Imagens — Slides das Aulas</h1>
+<div class="instructions">
+  <strong>Clique no slot</strong> para abrir o seletor e escolher a imagem. <strong>✕</strong> remove a imagem.<br>
+  Quando terminar, clique <strong>"Gerar Script"</strong> — baixa um .mjs que aplica as mudanças. Rode com <code>node outputs/apply-image-changes.mjs</code>
+</div>
+
+<button class="gallery-toggle" id="galleryToggle">📁 Galeria rápida (drag & drop)</button>
+<input class="search" type="text" id="gallerySearch" placeholder="Filtrar galeria...">
+<div class="gallery" id="gallery"></div>
+
+<div id="aulas"></div>
+
+<div class="export-bar">
+  <div class="changes">Alterações: <strong id="changeCount">0</strong></div>
+  <button id="exportBtn">Gerar Script de Aplicação</button>
+</div>
+
+<script>
+const ASSETS_PATH = '../assets/aulas';
+const ALL_IMAGES = ["0000434.jpg","04TA688.jpg","1026160-7898605255689-bebida alcoolica mista brutal fruit ruby apple log neck 275ml-brutal fruit-1.webp","15327063965b5b3e5cdb8fa_1532706396_3x2_rt.jpg","1717784084_unico_meio_mobile.png","1ffd07_d5d2fb54006f43b8aa3e95328f4617damv2.jpg","2-5_Selos_governamentais.jpg","241180506_532892907997750_8578524498373824285_n(1)-17263f5370.webp","36694_1.webp","3c3243_f9d6bc8091ba4f9a8e92b5e2d112b02c~mv2.avif","6-linha-de-produtos-mel-batman.webp","8ccb10b8-5e42-46ac-a807-e85cc25f6020.webp","8eaf7d54fb4e47bdb3f871c347480ec1.avif","Agridoce.jpg","Boticario-PacocaAmor_Credito_Divulgacao.jpg","Canastra de 90 dias (2).png","Captura de Tela 2026-03-23 às 14.46.28.png","Captura de Tela 2026-03-23 às 16.12.17.png","Collab-inedita-entre-Odara-e-Nestle-traz-sabores-iconicos-aos-alfajores-min.png","Degustacao-Gabriela-1.jpg","Foto-site-10.png","KOMBUCHA-3.jpeg","Mix-Fruit-Juice-Sour-Chewy-Assorted-Strawberry-Mango-Sweets-Snacks-Wholesale-Confectionery-Lactobacillus-Flavor-Gummy-Candy.jpg_300x300.avif","Voce-conhece-o-selo-eureciclo-2.png","WhatsApp Image 2024-03-11 at 09.46.45.jpeg","WhatsApp Image 2026-03-23 at 14.38.27.jpeg","WhatsApp Image 2026-03-23 at 14.58.20 (1).jpeg","WhatsApp Image 2026-03-23 at 14.58.20 (2).jpeg","WhatsApp Image 2026-03-23 at 14.58.20.jpeg","WhatsApp Image 2026-03-23 at 15.06.22 (1).jpeg","WhatsApp Image 2026-03-23 at 15.06.22.jpeg","X-Burger.jpg","admin-produtos-itens-parent-id-imagens-src-1765565366.png","admin-produtos-itens-parent-id-imagens-src-1769024933.jpg","aula01-cafe-graos.jpg","aula01-destaque-nativos.png","aula01-feira-ia.png","aula01-geleia-acai.jpg","aula01-geleia-tapereba.webp","aula01-paisagem-ia.png","aula01-pimenta-close.jpg","aula01-produtor-colhendo.jpg","aula01-queijo-ervas-ia.png","aula01-tucupi.webp","aula02-cave-barris.jpg","aula02-cliente-rotulo-ia.png","aula02-linha-premium.png","aula02-molho-extremo.png","aula02-produtor-cave-ia.png","aula02-queijo-canastra.png","aula02-queijo-maturado.jpg","aula02-stand-feira-ia.png","aula03-chutney-pote.jpg","aula03-composicao-frutas.jpg","aula03-geleia-queijo-ia.png","aula03-hamburguer.jpg","aula03-maracuja-cesta.jpg","aula03-mel-apimentado.png","aula03-producao-ia.png","aula04-barris-cervejaria.jpg","aula04-composicao-ia.png","aula04-maos-produtor-ia.png","aula04-molho-fermentado.png","aula04-potes-fermentacao-ia.png","aula04-potes-fermentados.jpg","aula04-prateleira-ia.png","aula05-degustacao-ia.png","aula05-embalagem-ia.png","aula05-frasco-ia.png","aula05-ingredientes-ia.png","aula05-molho-servindo.jpg","aula05-molho-vermelho.png","aula05-molhos-vibrantes.png","aula05-pilao-pimentas.jpg","aula06-edicao-limitada.jpg","aula06-exclusivo-ia.png","aula06-feira-interacao.jpg","aula06-limitada-ia.png","aula06-nicho-ia.png","aula06-personalizado-ia.png","aula06-produtor-ia.png","aula06-sazonal-raro.jpg","aula06-serie-ia.png","aula07-maos-caixa.jpg","aula07-maos-madeira.jpg","aula07-mesa-ia.png","aula07-prateleira-gourmet.jpg","aula07-rotulos-ia.png","aula07-vidros-ia.png","aula08-divulgacao.webp","aula08-filmando-smartphone.jpg","aula08-foto-comida.jpg","aula08-gabriel-instagram.jpg","aula08-instagram-ia.png","aula08-mesa-visual-ia.png","aula08-por-do-sol-ia.png","aula08-produtor-camera-ia.png","aula09-cartoes-ia.png","aula09-degustacao-guiada.jpg","aula09-degustacao-ia.png","aula09-estande-feira.jpg","aula09-feira-entardecer-ia.png","aula09-gabriel-extra1.jpg","aula09-gabriel-feira.jpg","aula09-gabriel-feira2.jpg","aula09-produto-vertical.jpg","aula09-workshop-ia.png","aula10-charcuterie.jpg","aula10-gabriel-2025.jpg","aula10-gabriel-extra.jpg","aula10-gabriel-flickr.jpg","aula10-mesa-completa.jpg","aula10-molhos-churrasco.png","aula10-tabua-harmonizacao.jpg","aula11-campo-frasco-ia.png","aula11-explicando-processo.jpg","aula11-grupo-ia.png","aula11-lendo-rotulo.jpg","aula11-rotulo-ia.png","aula12-cocriacao-ia.png","aula12-dois-produtores.jpg","aula12-grupo-celebrando.jpg","aula12-maos-ia.png","aula13-comunidade-rural.jpg","aula13-embalagem-eco.jpg","aula13-sustentavel-ia.png","aula14-analise-ia.png","aula14-queijos-emporio.jpg","aula14-selo-arte-ia.png","aula15-fichas-ia.png","aula15-identidade-visual.jpg","aula15-oficina-organizada.jpg","aula15-uniformes-ia.png","b2c8ed_32f7e83acb2741aa9c4b90d571dab3c7~mv2.avif","banana-chips-agridoce-01-49af123b3f7012640b17629829045678-640-0.webp","cachaca-de-jambu-comercializada-pela-distribuidora-combu-produtos-da-amazonia-1475786708593_300x200.jpg.webp","campo-largo-1.jpeg","cer_800x.jpg","coca-cola-lata-nomes.png","content_selo_de_indicacao_geografica_queijo_minas_artesanal_serro.jpeg","degustacaolourencoalimentos.png.jpg","entretenimento-tacho-de-cobre-1jpeg-1709135549.jpg","fibra_de_tucuma_480x480.webp","images (1).jpeg","images (2).jpeg","images.jpeg","kombucha-artesanal.jpg","kombucha-e-kefir.jpg","mundo-do-marketing-1.png","pote-doce-de-leite-410gr---fundo-branco--1--ypz2ylvadn.webp","produtos-chilli-brothers-131-d7237e51751fd7ed2717734089100487-480-0.webp","queijo_(2).jpg","the-macallan-reach-de-81-anos-o-uisque-mais-antigo-do-mundo-em-2022-1644435542283_v2_900x506.jpg","unnamed.jpg","valor-de-impressao-de-rotulos-de-cerveja-personalizado.png","whatsapp-image-2023-11-10-at-17.48.54.webp"];
+const SLOTS_DATA = {
+  "aula-01-ingredientes-nativos.html": [
+    {
+      "line": 289,
+      "currentImage": "aula01-destaque-nativos.png",
+      "slideName": "SLIDE 1: HOOK — Foto full + headline impactante"
+    },
+    {
+      "line": 341,
+      "currentImage": "aula01-queijo-ervas-ia.png",
+      "slideName": "SLIDE 4: FOTO + INSIGHT — Histórias autênticas"
+    },
+    {
+      "line": 402,
+      "currentImage": "cachaca-de-jambu-comercializada-pela-distribuidora-combu-produtos-da-amazonia-1475786708593_300x200.jpg.webp",
+      "slideName": "SLIDE 7: ESPAÇO PARA FOTOS — Exemplos de produtos"
+    },
+    {
+      "line": 405,
+      "currentImage": "aula01-produtor-colhendo.jpg",
+      "slideName": "SLIDE 7: ESPAÇO PARA FOTOS — Exemplos de produtos"
+    },
+    {
+      "line": 418,
+      "currentImage": "Captura de Tela 2026-03-23 às 16.12.17.png",
+      "slideName": "SLIDE 8: CASE — Geleia de cajá com pimenta"
+    },
+    {
+      "line": 494,
+      "currentImage": "aula02-linha-premium.png",
+      "slideName": "SLIDE 12: FOTO + INSIGHT — Percepção premium"
+    },
+    {
+      "line": 551,
+      "currentImage": "aula01-tucupi.webp",
+      "slideName": "SLIDE 16: FOTO + INSIGHT — Apelo internacional"
+    },
+    {
+      "line": 568,
+      "currentImage": "WhatsApp Image 2026-03-23 at 14.38.27.jpeg",
+      "slideName": "SLIDE 17: CASE 2 — Cafés especiais"
+    },
+    {
+      "line": 706,
+      "currentImage": "aula01-paisagem-ia.png",
+      "slideName": "SLIDE 25: FECHAMENTO — Citação + próxima aula"
+    }
+  ],
+  "aula-02-produtos-extremos.html": [
+    {
+      "line": 629,
+      "currentImage": "aula02-queijo-canastra.png",
+      "slideName": "SLIDE 1: HOOK / ABERTURA"
+    },
+    {
+      "line": 689,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 4: FOTO + INSIGHT (Definição)"
+    },
+    {
+      "line": 746,
+      "currentImage": "Canastra de 90 dias (2).png",
+      "slideName": "SLIDE 6: PHOTO GRID — dois produtos lado a lado"
+    },
+    {
+      "line": 752,
+      "currentImage": "aula02-linha-premium.png",
+      "slideName": "SLIDE 6: PHOTO GRID — dois produtos lado a lado"
+    },
+    {
+      "line": 766,
+      "currentImage": "Captura de Tela 2026-03-23 às 14.46.28.png",
+      "slideName": "SLIDE 7: CASE (foto bg)"
+    },
+    {
+      "line": 844,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 11: FOTO + INSIGHT 2 (Catalisadores)"
+    },
+    {
+      "line": 921,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 15: FOTO + INSIGHT 3 (O cliente que conhece a marca)"
+    },
+    {
+      "line": 1042,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 21: FOTO + REFLEXÃO"
+    },
+    {
+      "line": 1111,
+      "currentImage": "aula02-produtor-cave-ia.png",
+      "slideName": "SLIDE 24: FECHAMENTO — Citação + Próxima aula"
+    }
+  ],
+  "aula-03-produtos-agridoces.html": [
+    {
+      "line": 663,
+      "currentImage": "aula03-composicao-frutas.jpg",
+      "slideName": "SLIDE 1: HOOK / ABERTURA"
+    },
+    {
+      "line": 716,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 4: FOTO + INSIGHT"
+    },
+    {
+      "line": 784,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 7: FOTO + FRUTAS REGIONAIS"
+    },
+    {
+      "line": 879,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 12: FOTO + MERCADO B2B"
+    },
+    {
+      "line": 974,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 17: FOTO + INSIGHT (Território)"
+    },
+    {
+      "line": 997,
+      "currentImage": "whatsapp-image-2023-11-10-at-17.48.54.webp",
+      "slideName": "SLIDE 18: CASE — Bom Princípio"
+    },
+    {
+      "line": 1142,
+      "currentImage": "Boticario-PacocaAmor_Credito_Divulgacao.jpg",
+      "slideName": "SLIDE 25: FECHAMENTO (Moral + Próxima aula)"
+    }
+  ],
+  "aula-04-fermentacao.html": [
+    {
+      "line": 295,
+      "currentImage": "aula04-potes-fermentacao-ia.png",
+      "slideName": "SLIDE 1: HOOK — Foto full + headline impactante"
+    },
+    {
+      "line": 347,
+      "currentImage": "aula02-queijo-maturado.jpg",
+      "slideName": "SLIDE 4: FOTO + INSIGHT — Fermentação em tudo"
+    },
+    {
+      "line": 410,
+      "currentImage": "kombucha-e-kefir.jpg",
+      "slideName": "SLIDE 7: CASE — Fermentação selvagem com frutas nativas"
+    },
+    {
+      "line": 512,
+      "currentImage": "kombucha-artesanal.jpg",
+      "slideName": "SLIDE 12: FOTO + INSIGHT — Culinária internacional"
+    },
+    {
+      "line": 579,
+      "currentImage": "cer_800x.jpg",
+      "slideName": "SLIDE 16: FOTO + INSIGHT — Complexidade única"
+    },
+    {
+      "line": 692,
+      "currentImage": "8ccb10b8-5e42-46ac-a807-e85cc25f6020.webp",
+      "slideName": "SLIDE 22: CASE 2 — Percepção premium"
+    },
+    {
+      "line": 769,
+      "currentImage": "aula04-prateleira-ia.png",
+      "slideName": "SLIDE 26: FECHAMENTO — Quote + Próxima aula + Encerramento"
+    }
+  ],
+  "aula-05-experiencia-sensorial.html": [
+    {
+      "line": 309,
+      "currentImage": "aula03-composicao-frutas.jpg",
+      "slideName": "SLIDE 1: HOOK — Foto full + headline impactante"
+    },
+    {
+      "line": 361,
+      "currentImage": "aula02-molho-extremo.png",
+      "slideName": "SLIDE 4: FOTO + INSIGHT — Cor como decisão de compra"
+    },
+    {
+      "line": 502,
+      "currentImage": "1717784084_unico_meio_mobile.png",
+      "slideName": "SLIDE 11: FOTO + INSIGHT — Embalagem premium"
+    },
+    {
+      "line": 594,
+      "currentImage": "aula05-molho-vermelho.png",
+      "slideName": ""
+    },
+    {
+      "line": 611,
+      "currentImage": "3c3243_f9d6bc8091ba4f9a8e92b5e2d112b02c~mv2.avif",
+      "slideName": "SLIDE 15: OLFATO — Detalhe"
+    },
+    {
+      "line": 671,
+      "currentImage": "04TA688.jpg",
+      "slideName": ""
+    },
+    {
+      "line": 746,
+      "currentImage": "aula05-degustacao-ia.png",
+      "slideName": "SLIDE 21: FOTO + REFLEXÃO — Degustação"
+    },
+    {
+      "line": 854,
+      "currentImage": "KOMBUCHA-3.jpeg",
+      "slideName": "SLIDE 26: FECHAMENTO (Quote + Próxima aula + Encerramento)"
+    }
+  ],
+  "aula-06-nicho-exclusividade.html": [
+    {
+      "line": 312,
+      "currentImage": "aula05-embalagem-ia.png",
+      "slideName": "SLIDE 1: HOOK — Foto full + headline impactante"
+    },
+    {
+      "line": 364,
+      "currentImage": "aula01-geleia-tapereba.webp",
+      "slideName": "SLIDE 4: FOTO + INSIGHT — Exclusividade"
+    },
+    {
+      "line": 425,
+      "currentImage": "WhatsApp Image 2026-03-23 at 14.58.20.jpeg",
+      "slideName": "SLIDE 7: ESPAÇO PARA FOTOS — Exemplos de nicho"
+    },
+    {
+      "line": 428,
+      "currentImage": "aula09-produto-vertical.jpg",
+      "slideName": "SLIDE 7: ESPAÇO PARA FOTOS — Exemplos de nicho"
+    },
+    {
+      "line": 441,
+      "currentImage": "aula09-gabriel-extra1.jpg",
+      "slideName": "SLIDE 8: CASE — Edição limitada sazonal"
+    },
+    {
+      "line": 519,
+      "currentImage": "unnamed.jpg",
+      "slideName": "SLIDE 12: FOTO + INSIGHT — Mercado global"
+    },
+    {
+      "line": 584,
+      "currentImage": "fibra_de_tucuma_480x480.webp",
+      "slideName": "SLIDE 16: INSIGHT 3 — Edições limitadas + case bar"
+    },
+    {
+      "line": 598,
+      "currentImage": "6-linha-de-produtos-mel-batman.webp",
+      "slideName": "SLIDE 17: INSIGHT 4 — Personalização"
+    },
+    {
+      "line": 752,
+      "currentImage": "aula06-produtor-ia.png",
+      "slideName": "SLIDE 25: FECHAMENTO — Citação + próxima aula"
+    }
+  ],
+  "aula-07-embalagem.html": [
+    {
+      "line": 298,
+      "currentImage": "aula07-prateleira-gourmet.jpg",
+      "slideName": "SLIDE 1: HOOK — Foto full + headline impactante"
+    },
+    {
+      "line": 351,
+      "currentImage": "admin-produtos-itens-parent-id-imagens-src-1769024933.jpg",
+      "slideName": "SLIDE 4: FOTO + INSIGHT — Primeira experiência sensorial"
+    },
+    {
+      "line": 519,
+      "currentImage": "aula08-divulgacao.webp",
+      "slideName": "SLIDE 12: FOTO + INSIGHT — Vidro para alimentos"
+    },
+    {
+      "line": 595,
+      "currentImage": "aula10-gabriel-flickr.jpg",
+      "slideName": "SLIDE 17: FOTO + INSIGHT — Cor e acabamento"
+    },
+    {
+      "line": 707,
+      "currentImage": "pote-doce-de-leite-410gr---fundo-branco--1--ypz2ylvadn.webp",
+      "slideName": "SLIDE 23: FOTO + REFLEXÃO"
+    },
+    {
+      "line": 773,
+      "currentImage": "aula07-mesa-ia.png",
+      "slideName": "SLIDE 26: FECHAMENTO — Quote + próxima aula + encerramento"
+    }
+  ],
+  "aula-08-narrativa-comunicacao.html": [
+    {
+      "line": 638,
+      "currentImage": "aula08-filmando-smartphone.jpg",
+      "slideName": "SLIDE 1: HOOK / ABERTURA"
+    },
+    {
+      "line": 720,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 5: FOTO + INSIGHT (Autenticidade)"
+    },
+    {
+      "line": 873,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 12: FOTO + INSIGHT (Redes sociais como vitrine)"
+    },
+    {
+      "line": 898,
+      "currentImage": "aula04-maos-produtor-ia.png",
+      "slideName": "SLIDE 13: CASE — BASTIDORES"
+    },
+    {
+      "line": 975,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 17: FOTO + INSIGHT (Experiências e diálogos)"
+    },
+    {
+      "line": 999,
+      "currentImage": "aula05-molhos-vibrantes.png",
+      "slideName": "SLIDE 18: CASE 2 — Identidade visual"
+    },
+    {
+      "line": 1173,
+      "currentImage": "aula08-instagram-ia.png",
+      "slideName": "SLIDE 26: FECHAMENTO"
+    }
+  ],
+  "aula-09-eventos-degustacoes.html": [
+    {
+      "line": 600,
+      "currentImage": "3c3243_f9d6bc8091ba4f9a8e92b5e2d112b02c~mv2.avif",
+      "slideName": "SLIDE 1: HOOK / ABERTURA"
+    },
+    {
+      "line": 667,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 4: FOTO + INSIGHT (Experiência sensorial)"
+    },
+    {
+      "line": 736,
+      "currentImage": "WhatsApp Image 2026-03-23 at 14.58.20 (2).jpeg",
+      "slideName": "SLIDE 7: CASE PESSOAL — Gabriel"
+    },
+    {
+      "line": 841,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 12: FOTO + INSIGHT (Conexão emocional)"
+    },
+    {
+      "line": 921,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 16: FOTO + INSIGHT (Networking)"
+    },
+    {
+      "line": 965,
+      "currentImage": "campo-largo-1.jpeg",
+      "slideName": "SLIDE 18: CASE — Conversão presencial 5x"
+    },
+    {
+      "line": 1143,
+      "currentImage": "degustacaolourencoalimentos.png.jpg",
+      "slideName": "SLIDE 26: FECHAMENTO (Hook + Próxima aula)"
+    }
+  ],
+  "aula-10-harmonizacao-versatilidade.html": [
+    {
+      "line": 584,
+      "currentImage": "Foto-site-10.png",
+      "slideName": "SLIDE 1: HOOK / ABERTURA"
+    },
+    {
+      "line": 649,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 4: FOTO + INSIGHT (Produto indispensável)"
+    },
+    {
+      "line": 718,
+      "currentImage": "WhatsApp Image 2026-03-23 at 15.06.22 (1).jpeg",
+      "slideName": "SLIDE 7: CASE — Gabriel e os molhos no churrasco"
+    },
+    {
+      "line": 839,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 13: FOTO + INSIGHT (Conteúdo educativo)"
+    },
+    {
+      "line": 919,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 17: FOTO + INSIGHT (Simples para premium)"
+    },
+    {
+      "line": 1091,
+      "currentImage": "aula07-maos-madeira.jpg",
+      "slideName": "SLIDE 25: FECHAMENTO (Moral + próxima aula)"
+    }
+  ],
+  "aula-11-educacao-consumidor.html": [
+    {
+      "line": 605,
+      "currentImage": "aula09-degustacao-ia.png",
+      "slideName": "SLIDE 1: HOOK / ABERTURA"
+    },
+    {
+      "line": 676,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 4: PERFIL DO CONSUMIDOR ARTESANAL"
+    },
+    {
+      "line": 777,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 8: CONTEXTO DE MERCADO"
+    },
+    {
+      "line": 912,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 13: FOTO + CONFIANÇA"
+    },
+    {
+      "line": 1040,
+      "currentImage": "aula11-explicando-processo.jpg",
+      "slideName": "SLIDE 18: CASE — CONTEÚDO QUE VENDE"
+    },
+    {
+      "line": 1177,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 23: FOTO + REFLEXÃO"
+    },
+    {
+      "line": 1263,
+      "currentImage": "aula11-lendo-rotulo.jpg",
+      "slideName": "SLIDE 26: FECHAMENTO + PRÓXIMA AULA"
+    }
+  ],
+  "aula-12-colaboracao-parcerias.html": [
+    {
+      "line": 293,
+      "currentImage": "aula12-maos-ia.png",
+      "slideName": "SLIDE 1: HOOK — Foto full + headline impactante"
+    },
+    {
+      "line": 348,
+      "currentImage": "aula12-dois-produtores.jpg",
+      "slideName": "SLIDE 4: FOTO + INSIGHT — Conexão territorial"
+    },
+    {
+      "line": 426,
+      "currentImage": "aula08-gabriel-instagram.jpg",
+      "slideName": "SLIDE 8: CASE CHILLIEPIG — Foto full + case bar"
+    },
+    {
+      "line": 547,
+      "currentImage": "Collab-inedita-entre-Odara-e-Nestle-traz-sabores-iconicos-aos-alfajores-min.png",
+      "slideName": "SLIDE 14: FOTO + INSIGHT — Produto co"
+    },
+    {
+      "line": 635,
+      "currentImage": "images (1).jpeg",
+      "slideName": "SLIDE 18: INSIGHT 3 — Cadeia produtiva local"
+    },
+    {
+      "line": 781,
+      "currentImage": "aula14-selo-arte-ia.png",
+      "slideName": "SLIDE 25: FECHAMENTO — Moral + próxima aula"
+    }
+  ],
+  "aula-13-sustentabilidade.html": [
+    {
+      "line": 595,
+      "currentImage": "aula08-mesa-visual-ia.png",
+      "slideName": "SLIDE 1: HOOK / ABERTURA"
+    },
+    {
+      "line": 677,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 5: FOTO + INSIGHT (Consumidor consciente)"
+    },
+    {
+      "line": 818,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 12: FOTO + INSIGHT (Mercado)"
+    },
+    {
+      "line": 922,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 17: INSIGHT 3 — Pequenas ações"
+    },
+    {
+      "line": 1032,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 22: FOTO + REFLEXÃO"
+    },
+    {
+      "line": 1096,
+      "currentImage": "Voce-conhece-o-selo-eureciclo-2.png",
+      "slideName": "SLIDE 25: FECHAMENTO (Moral)"
+    }
+  ],
+  "aula-14-certificacao-selos.html": [
+    {
+      "line": 626,
+      "currentImage": "aula11-rotulo-ia.png",
+      "slideName": "SLIDE 1: HOOK / ABERTURA"
+    },
+    {
+      "line": 693,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 4: FOTO + INSIGHT (Confiança)"
+    },
+    {
+      "line": 758,
+      "currentImage": "1ffd07_d5d2fb54006f43b8aa3e95328f4617damv2.jpg",
+      "slideName": "SLIDE 7: CASE — ARROZ VERMELHO DO VALE DO PIANCÓ"
+    },
+    {
+      "line": 905,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 14: FOTO + INSIGHT (Decisão de compra)"
+    },
+    {
+      "line": 985,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 18: FOTO + INSIGHT (Certificações regionais)"
+    },
+    {
+      "line": 1009,
+      "currentImage": "content_selo_de_indicacao_geografica_queijo_minas_artesanal_serro.jpeg",
+      "slideName": "SLIDE 19: CASE — SELO ARTE: DE LOCAL PARA NACIONAL"
+    },
+    {
+      "line": 1161,
+      "currentImage": "aula06-limitada-ia.png",
+      "slideName": "SLIDE 26: FECHAMENTO + PRÓXIMA AULA + ENCERRAMENTO"
+    }
+  ],
+  "aula-15-profissionalizacao-consistencia.html": [
+    {
+      "line": 679,
+      "currentImage": "aula13-sustentavel-ia.png",
+      "slideName": "SLIDE 1: HOOK / ABERTURA"
+    },
+    {
+      "line": 737,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 4: FOTO + INSIGHT (Visão de negócio)"
+    },
+    {
+      "line": 810,
+      "currentImage": "aula02-cave-barris.jpg",
+      "slideName": "SLIDE 7: FOTO + REFLEXÃO (Confiança)"
+    },
+    {
+      "line": 944,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 13: VANTAGEM 1 — ORGANIZE PROCESSOS"
+    },
+    {
+      "line": 1020,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 16: VANTAGEM 4 — IDENTIDADE DE MARCA"
+    },
+    {
+      "line": 1140,
+      "currentImage": "aula15-uniformes-ia.png",
+      "slideName": "SLIDE 20: CASE — PRODUTOR QUE PROFISSIONALIZOU"
+    },
+    {
+      "line": 1165,
+      "currentImage": "EMPTY",
+      "slideName": "SLIDE 21: FOTO + REFLEXÃO — GESTÃO E TERRITÓRIO"
+    },
+    {
+      "line": 1239,
+      "currentImage": "aula15-fichas-ia.png",
+      "slideName": "SLIDE 24: FECHAMENTO — CITAÇÃO FINAL"
+    },
+    {
+      "line": 1343,
+      "currentImage": "aula15-identidade-visual.jpg",
+      "slideName": "SLIDE 28: OBRIGADO"
+    }
+  ]
+};
+
+let changes = {};
+let changeCount = 0;
+
+// --- Render ---
+function renderGallery() {
+  const gallery = document.getElementById('gallery');
+  gallery.innerHTML = '';
+  ALL_IMAGES.forEach((img, idx) => {
+    const el = document.createElement('img');
+    el.src = ASSETS_PATH + '/' + img;
+    el.alt = img;
+    el.title = img;
+    el.draggable = true;
+    el.dataset.idx = idx;
+    el.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', String(idx));
+    });
+    gallery.appendChild(el);
+  });
+}
+
+function renderAulas() {
+  const container = document.getElementById('aulas');
+  container.innerHTML = '';
+
+  for (const [aulaFile, slots] of Object.entries(SLOTS_DATA)) {
+    const aulaDiv = document.createElement('div');
+    aulaDiv.className = 'aula';
+
+    const header = document.createElement('div');
+    header.className = 'aula-header';
+    const aulaName = aulaFile.replace('.html', '').replace('aula-', 'Aula ').replace(/-/g, ' ');
+    header.innerHTML = '<h2>' + aulaName + '</h2><span class="count">' + slots.length + ' fotos</span>';
+    header.addEventListener('click', function() {
+      this.nextElementSibling.classList.toggle('open');
+    });
+    aulaDiv.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = 'aula-body';
+
+    slots.forEach((slot, i) => {
+      const slotDiv = document.createElement('div');
+      slotDiv.className = 'slot';
+      slotDiv.dataset.aula = aulaFile;
+      slotDiv.dataset.idx = i;
+
+      // Drag events
+      slotDiv.addEventListener('dragover', (e) => { e.preventDefault(); slotDiv.classList.add('dragover'); });
+      slotDiv.addEventListener('dragleave', () => slotDiv.classList.remove('dragover'));
+      slotDiv.addEventListener('drop', (e) => {
+        e.preventDefault();
+        slotDiv.classList.remove('dragover');
+        const imgIdx = parseInt(e.dataTransfer.getData('text/plain'));
+        if (!isNaN(imgIdx)) applyImage(aulaFile, i, ALL_IMAGES[imgIdx]);
+      });
+
+      // Click to open picker
+      slotDiv.addEventListener('click', (e) => {
+        if (e.target.closest('.slot-actions')) return;
+        openPicker(aulaFile, i);
+      });
+
+      const hasImg = slot.currentImage && slot.currentImage !== 'EMPTY';
+
+      const preview = document.createElement('div');
+      preview.className = 'slot-preview';
+      preview.id = 'preview-' + aulaFile + '-' + i;
+      if (hasImg) {
+        preview.innerHTML = '<img src="' + ASSETS_PATH + '/' + encodeFilename(slot.currentImage) + '">';
+      } else {
+        preview.innerHTML = '<div class="empty">Clique para<br>selecionar imagem</div>';
+      }
+      slotDiv.appendChild(preview);
+
+      const info = document.createElement('div');
+      info.className = 'slot-info';
+      info.innerHTML = '<div class="slide-name">' + escapeHtml(slot.slideName) + '</div>' +
+        '<div class="current-file" id="file-' + aulaFile + '-' + i + '">' + escapeHtml(hasImg ? slot.currentImage : 'vazio') + '</div>';
+      slotDiv.appendChild(info);
+
+      const actions = document.createElement('div');
+      actions.className = 'slot-actions';
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = '✕';
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        removeImage(aulaFile, i);
+      });
+      actions.appendChild(removeBtn);
+      slotDiv.appendChild(actions);
+
+      body.appendChild(slotDiv);
+    });
+
+    aulaDiv.appendChild(body);
+    container.appendChild(aulaDiv);
+  }
+}
+
+// --- Picker ---
+function openPicker(aulaFile, slotIdx) {
+  const overlay = document.createElement('div');
+  overlay.className = 'picker-overlay';
+
+  const searchInput = document.createElement('input');
+  searchInput.className = 'search-picker';
+  searchInput.placeholder = 'Filtrar imagens...';
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase();
+    overlay.querySelectorAll('.picker-item').forEach(item => {
+      item.style.display = item.dataset.name.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+  overlay.appendChild(searchInput);
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'close-btn';
+  closeBtn.textContent = 'Fechar ✕';
+  closeBtn.addEventListener('click', () => overlay.remove());
+  overlay.appendChild(closeBtn);
+
+  ALL_IMAGES.forEach(img => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'picker-item';
+    wrapper.dataset.name = img;
+    wrapper.style.display = 'inline-block';
+    wrapper.style.textAlign = 'center';
+
+    const imgEl = document.createElement('img');
+    imgEl.src = ASSETS_PATH + '/' + encodeFilename(img);
+    imgEl.title = img;
+    imgEl.addEventListener('click', () => {
+      applyImage(aulaFile, slotIdx, img);
+      overlay.remove();
+    });
+    wrapper.appendChild(imgEl);
+
+    const label = document.createElement('div');
+    label.className = 'img-label';
+    label.textContent = img;
+    wrapper.appendChild(label);
+
+    overlay.appendChild(wrapper);
+  });
+
+  document.body.appendChild(overlay);
+  setTimeout(() => searchInput.focus(), 100);
+}
+
+// --- Actions ---
+function applyImage(aulaFile, slotIdx, imgName) {
+  const preview = document.getElementById('preview-' + aulaFile + '-' + slotIdx);
+  const fileLabel = document.getElementById('file-' + aulaFile + '-' + slotIdx);
+
+  preview.innerHTML = '<img src="' + ASSETS_PATH + '/' + encodeFilename(imgName) + '">';
+  fileLabel.textContent = imgName;
+
+  if (!changes[aulaFile]) changes[aulaFile] = {};
+  changes[aulaFile][slotIdx] = imgName;
+  changeCount++;
+  document.getElementById('changeCount').textContent = changeCount;
+}
+
+function removeImage(aulaFile, slotIdx) {
+  const preview = document.getElementById('preview-' + aulaFile + '-' + slotIdx);
+  const fileLabel = document.getElementById('file-' + aulaFile + '-' + slotIdx);
+
+  preview.innerHTML = '<div class="empty">Clique para<br>selecionar imagem</div>';
+  fileLabel.textContent = 'vazio';
+
+  if (!changes[aulaFile]) changes[aulaFile] = {};
+  changes[aulaFile][slotIdx] = null;
+  changeCount++;
+  document.getElementById('changeCount').textContent = changeCount;
+}
+
+// --- Export ---
+function generateScript() {
+  if (Object.keys(changes).length === 0) {
+    alert('Nenhuma alteração feita.');
+    return;
+  }
+
+  const lines = [];
+  lines.push("import { readFileSync, writeFileSync } from 'fs';");
+  lines.push("");
+  lines.push("const ASSETS_REL = '../assets/aulas';");
+  lines.push("");
+  lines.push("function setImageAtLine(html, targetLine, imgFile) {");
+  lines.push("  const lines = html.split('\\n');");
+  lines.push("  const line = lines[targetLine - 1];");
+  lines.push("  if (!line) return html;");
+  lines.push("  const bgStyle = `background:url('${ASSETS_REL}/${imgFile}') center/cover no-repeat !important;`;");
+  lines.push("  if (line.includes('background:url(') || line.includes('background:')) {");
+  lines.push("    lines[targetLine - 1] = line.replace(/background:[^;]*(?:!important)?;?/g, bgStyle);");
+  lines.push("  } else if (line.includes('style=\"')) {");
+  lines.push("    lines[targetLine - 1] = line.replace('style=\"', 'style=\"' + bgStyle + ' ');");
+  lines.push("  } else if (line.includes('class=\"')) {");
+  lines.push("    lines[targetLine - 1] = line.replace('class=\"', 'style=\"' + bgStyle + '\" class=\"');");
+  lines.push("  }");
+  lines.push("  return lines.join('\\n');");
+  lines.push("}");
+  lines.push("");
+  lines.push("function removeImageAtLine(html, targetLine) {");
+  lines.push("  const lines = html.split('\\n');");
+  lines.push("  const line = lines[targetLine - 1];");
+  lines.push("  if (!line) return html;");
+  lines.push("  lines[targetLine - 1] = line.replace(/background:url\\([^)]+\\)[^;]*!important;?\\s*/g, '');");
+  lines.push("  return lines.join('\\n');");
+  lines.push("}");
+  lines.push("");
+
+  for (const [aulaFile, idxMap] of Object.entries(changes)) {
+    const slots = SLOTS_DATA[aulaFile];
+    lines.push("// " + aulaFile);
+    lines.push("{");
+    lines.push("  let html = readFileSync('/Users/gabrielpetelinkar/AIOSORIZA/outputs/" + aulaFile + "', 'utf-8');");
+
+    const entries = Object.entries(idxMap).sort((a, b) => slots[b[0]].line - slots[a[0]].line);
+    for (const [idx, imgName] of entries) {
+      const slot = slots[idx];
+      if (imgName) {
+        lines.push("  html = setImageAtLine(html, " + slot.line + ", " + JSON.stringify(imgName) + ");");
+      } else {
+        lines.push("  html = removeImageAtLine(html, " + slot.line + ");");
+      }
+    }
+    lines.push("  writeFileSync('/Users/gabrielpetelinkar/AIOSORIZA/outputs/" + aulaFile + "', html);");
+    lines.push("  console.log('✓ " + aulaFile + "');");
+    lines.push("}");
+    lines.push("");
+  }
+
+  const script = lines.join('\n');
+  const blob = new Blob([script], { type: 'text/javascript' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'apply-image-changes.mjs';
+  a.click();
+  URL.revokeObjectURL(url);
+  alert('Script salvo! Execute:\\nnode outputs/apply-image-changes.mjs');
+}
+
+// --- Helpers ---
+function encodeFilename(name) {
+  return name.split('/').map(p => encodeURIComponent(p)).join('/');
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// --- Init ---
+document.getElementById('galleryToggle').addEventListener('click', () => {
+  document.getElementById('gallery').classList.toggle('open');
+});
+document.getElementById('gallerySearch').addEventListener('input', (e) => {
+  const q = e.target.value.toLowerCase();
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.style.display = img.title.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+document.getElementById('exportBtn').addEventListener('click', generateScript);
+
+renderGallery();
+renderAulas();
+</script>
+</body>
+</html>

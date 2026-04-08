@@ -1,0 +1,111 @@
+workflow:
+  name: Monthly Content Campaign
+  id: wf-monthly-content
+  description: Orchestrates a full monthly content campaign from strategy through creation and review
+  squad: oriza-squad
+  trigger: manual
+  frequency: monthly
+
+inputs:
+  - month: Target month (e.g., "Abril 2026")
+  - focus: Monthly focus (lancamento, engajamento, vendas, branding, sazonal)
+  - posts_per_week: Posts per week (3-7)
+  - special_dates: Promotions or special dates
+  - products_highlight: Products to feature this month
+
+phases:
+  - phase: 0
+    name: Strategy
+    agent: social-strategist
+    task: create-content-calendar.md
+    description: Define monthly content calendar, themes, content mix and posting schedule
+    inputs:
+      - month
+      - focus
+      - posts_per_week
+      - special_dates
+    outputs:
+      - content_calendar: Monthly calendar with daily assignments
+      - content_mix: Distribution by content pillar (4-3-2-1 rule)
+      - themes: Weekly themes aligned with focus
+      - hashtag_plan: Hashtag sets per content pillar
+    gate:
+      type: approval
+      criteria: Calendar covers all weeks, mix follows 4-3-2-1, all posts have clear objective
+    handoff_to: phase_1
+
+  - phase: 1
+    name: Copy
+    agent: copywriter
+    tasks:
+      - optimize-product-description.md
+      - create-email-campaign.md
+    description: Write copy for all content pieces defined in the calendar
+    inputs:
+      - content_calendar (from phase 0)
+      - themes (from phase 0)
+      - products_highlight
+    outputs:
+      - post_copies: Captions for all feed posts
+      - story_copies: Text overlays and CTAs for stories
+      - reel_scripts: Scripts with hooks, middle, and CTAs
+      - email_copy: Newsletter/email campaign for the month
+    gate:
+      type: approval
+      criteria: All copies follow brand voice, have clear CTAs, use sensory language
+    handoff_to: phase_2
+
+  - phase: 2
+    name: Creation
+    agent: content-creator
+    tasks:
+      - create-instagram-post.md
+      - create-story-sequence.md
+      - create-reel-script.md
+      - create-recipe-content.md
+      - create-educational-content.md
+    description: Produce visual briefs and complete content packages for all calendar entries
+    inputs:
+      - content_calendar (from phase 0)
+      - post_copies (from phase 1)
+      - reel_scripts (from phase 1)
+    outputs:
+      - visual_briefs: Photo/video direction for each piece
+      - complete_posts: Full post packages (visual + copy + hashtags)
+      - reel_packages: Complete reel packages (script + visual + audio notes)
+      - story_sequences: Story sequences with flow and CTAs
+    gate:
+      type: approval
+      criteria: All content pieces have visual brief, copy, hashtags, and posting notes
+    handoff_to: phase_3
+
+  - phase: 3
+    name: Review
+    agent: social-strategist
+    description: Quality check all content against brand voice, strategy alignment, and content mix
+    inputs:
+      - content_calendar (from phase 0)
+      - complete_posts (from phase 2)
+      - reel_packages (from phase 2)
+      - story_sequences (from phase 2)
+    outputs:
+      - review_report: Pass/fail per content piece with notes
+      - revision_requests: List of pieces needing revision (if any)
+      - final_calendar: Approved calendar ready for scheduling
+    checklist: brand-voice-checklist.md
+    gate:
+      type: verdict
+      verdicts:
+        APPROVED: All content passes brand voice and strategy checks
+        NEEDS_REVISION: Some pieces need copy or visual adjustments — return to phase 1 or 2
+        REJECTED: Major strategic misalignment — return to phase 0
+    max_revision_cycles: 2
+
+completion:
+  output: Monthly content package ready for scheduling and publishing
+  artifacts:
+    - content_calendar (final)
+    - complete_posts (all approved)
+    - reel_packages (all approved)
+    - story_sequences (all approved)
+    - review_report

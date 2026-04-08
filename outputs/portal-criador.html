@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal do Criador — Gabriel Petelinkar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --bg-0: #050505; --bg-1: #0A0A0A; --bg-2: #111111; --bg-3: #1A1A1A; --bg-4: #222222; --bg-5: #2A2A2A;
+  --gold: #D4A843; --gold-l: #E8C96A; --gold-d: #A68A3E; --gold-bg: rgba(212,168,67,0.08);
+  --txt: #F5F5F5; --txt-2: #AAAAAA; --txt-3: #777777; --txt-4: #555555;
+  --bdr: #2A2A2A; --bdr-2: #333333;
+  --ok: #4CAF50; --warn: #FF9800; --err: #F44336; --info: #2196F3;
+  --p1: #D4A843; --p2: #E87040; --p3: #8B5CF6; --p4: #10B981; --p5: #3B82F6;
+  --pillar-c: #F97316; --medium-c: #8B5CF6; --micro-c: #06B6D4;
+  --r: 10px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:var(--bg-1); color:var(--txt); min-height:100vh; }
+a { color:var(--gold); text-decoration:none; }
+::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:var(--bg-2); } ::-webkit-scrollbar-thumb { background:var(--bg-5); border-radius:3px; }
+
+/* ===== TOP BAR ===== */
+.topbar { background:var(--bg-0); border-bottom:2px solid var(--gold); padding:0 24px; display:flex; align-items:center; height:56px; position:sticky; top:0; z-index:100; }
+.topbar .logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:16px; color:var(--gold); white-space:nowrap; }
+.topbar .logo span { color:var(--txt-2); font-weight:600; font-size:13px; margin-left:8px; }
+.nav { display:flex; gap:2px; margin-left:24px; overflow-x:auto; flex:1; }
+.nav-btn { font-family:'Inter',sans-serif; font-size:12px; font-weight:600; padding:8px 14px; background:transparent; border:none; color:var(--txt-3); cursor:pointer; border-bottom:2px solid transparent; transition:all .2s; white-space:nowrap; }
+.nav-btn:hover { color:var(--txt-2); }
+.nav-btn.active { color:var(--gold); border-bottom-color:var(--gold); }
+
+/* ===== LAYOUT ===== */
+.page { display:none; padding:24px; max-width:1400px; margin:0 auto; }
+.page.active { display:block; }
+.section { background:var(--bg-3); border:1px solid var(--bdr); border-radius:var(--r); padding:24px; margin-bottom:20px; }
+.section-title { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; color:var(--gold); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.badge { font-family:'JetBrains Mono',monospace; font-size:10px; background:var(--gold-d); color:#000; padding:2px 7px; border-radius:3px; font-weight:600; }
+
+/* ===== FORMS ===== */
+.field { display:flex; flex-direction:column; gap:5px; margin-bottom:14px; }
+.field label { font-size:11px; font-weight:600; color:var(--txt-2); text-transform:uppercase; letter-spacing:.5px; }
+.field input,.field select,.field textarea { background:var(--bg-2); border:1px solid var(--bdr); border-radius:8px; padding:9px 12px; color:var(--txt); font-family:'Inter',sans-serif; font-size:13px; }
+.field input:focus,.field select:focus,.field textarea:focus { outline:none; border-color:var(--gold); }
+.field textarea { resize:vertical; min-height:80px; }
+.form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+.form-grid .field { margin-bottom:0; }
+
+/* ===== BUTTONS ===== */
+.btn { font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; padding:10px 22px; border:none; border-radius:8px; cursor:pointer; transition:all .2s; text-transform:uppercase; letter-spacing:.5px; }
+.btn-gold { background:linear-gradient(135deg,var(--gold),var(--gold-l)); color:#000; }
+.btn-gold:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(212,168,67,.3); }
+.btn-out { background:transparent; border:1px solid var(--gold); color:var(--gold); }
+.btn-out:hover { background:var(--gold-bg); }
+.btn-sm { padding:6px 12px; font-size:10px; }
+.btn-row { display:flex; gap:10px; flex-wrap:wrap; }
+
+/* ===== CARDS ===== */
+.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px; }
+.card { background:var(--bg-2); border:1px solid var(--bdr); border-radius:var(--r); overflow:hidden; transition:border-color .2s; }
+.card:hover { border-color:var(--txt-4); }
+.card-head { padding:14px 16px 8px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+.card-body { padding:0 16px 14px; }
+
+/* ===== TAGS ===== */
+.tag { font-family:'JetBrains Mono',monospace; font-size:9px; padding:2px 6px; border-radius:3px; font-weight:500; white-space:nowrap; }
+.tag-p1{background:rgba(212,168,67,.15);color:var(--p1)} .tag-p2{background:rgba(232,112,64,.15);color:var(--p2)}
+.tag-p3{background:rgba(139,92,246,.15);color:var(--p3)} .tag-p4{background:rgba(16,185,129,.15);color:var(--p4)}
+.tag-p5{background:rgba(59,130,246,.15);color:var(--p5)} .tag-format{background:rgba(212,168,67,.12);color:var(--gold)}
+.tag-tmpl{background:rgba(139,92,246,.12);color:#A78BFA} .tag-plat{background:rgba(255,255,255,.06);color:var(--txt-3)}
+.tag-soft{background:rgba(76,175,80,.12);color:var(--ok)} .tag-med{background:rgba(255,152,0,.12);color:var(--warn)}
+.tag-hard{background:rgba(244,67,54,.12);color:var(--err)} .tag-jab{background:rgba(33,150,243,.12);color:var(--info)}
+.tag-rh{background:rgba(244,67,54,.15);color:var(--err);font-weight:700}
+.tag-cat{background:rgba(6,182,212,.12);color:var(--micro-c)} .tag-score{background:rgba(212,168,67,.12);color:var(--gold)}
+.tag-pillar-t{background:rgba(249,115,22,.15);color:var(--pillar-c)} .tag-medium-t{background:rgba(139,92,246,.15);color:var(--medium-c)} .tag-micro-t{background:rgba(6,182,212,.15);color:var(--micro-c)}
+
+/* ===== STATS ===== */
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:20px; }
+.stat { background:var(--bg-3); border:1px solid var(--bdr); border-radius:var(--r); padding:14px; text-align:center; }
+.stat-v { font-family:'Montserrat',sans-serif; font-size:22px; font-weight:800; color:var(--gold); }
+.stat-l { font-size:10px; color:var(--txt-2); text-transform:uppercase; letter-spacing:.5px; margin-top:3px; }
+
+/* ===== TABLE ===== */
+.tbl { width:100%; border-collapse:collapse; font-size:13px; }
+.tbl th { text-align:left; font-size:11px; font-weight:600; color:var(--txt-3); text-transform:uppercase; letter-spacing:.5px; padding:8px 12px; border-bottom:1px solid var(--bdr); }
+.tbl td { padding:10px 12px; border-bottom:1px solid var(--bdr); vertical-align:top; }
+.tbl tr:last-child td { border-bottom:none; }
+.tbl tr:hover td { background:var(--bg-4); }
+
+/* ===== WEEK BLOCK ===== */
+.week-block { background:var(--bg-3); border:1px solid var(--bdr); border-radius:var(--r); margin-bottom:16px; overflow:hidden; }
+.week-head { padding:14px 18px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--bdr); background:var(--bg-2); }
+.week-head h3 { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; }
+.ratio-badge { font-family:'JetBrains Mono',monospace; font-size:11px; padding:3px 8px; border-radius:3px; }
+.ratio-good{background:rgba(76,175,80,.15);color:var(--ok)} .ratio-ok{background:rgba(255,152,0,.15);color:var(--warn)} .ratio-bad{background:rgba(244,67,54,.15);color:var(--err)}
+.day-row { display:grid; grid-template-columns:70px 1fr; border-bottom:1px solid var(--bdr); }
+.day-row:last-child { border-bottom:none; }
+.day-lbl { padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--txt-3); background:rgba(0,0,0,.2); border-right:1px solid var(--bdr); display:flex; align-items:center; }
+.day-ct { padding:8px 14px; display:flex; flex-direction:column; gap:6px; }
+.piece { display:flex; align-items:center; gap:8px; padding:7px 10px; background:var(--bg-2); border-radius:7px; border-left:3px solid var(--bdr); font-size:12px; flex-wrap:wrap; }
+.piece.p1{border-left-color:var(--p1)} .piece.p2{border-left-color:var(--p2)} .piece.p3{border-left-color:var(--p3)} .piece.p4{border-left-color:var(--p4)} .piece.p5{border-left-color:var(--p5)}
+.piece-txt { flex:1; min-width:180px; }
+.piece-hook { font-size:11px; color:var(--txt-4); font-style:italic; margin-top:2px; }
+.piece-cta { font-size:10px; color:var(--txt-4); margin-top:1px; }
+
+/* ===== STORY CARD ===== */
+.story-card { background:var(--bg-2); border:1px solid var(--bdr); border-radius:var(--r); padding:20px; margin-bottom:14px; }
+.story-card h3 { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--gold); margin-bottom:8px; }
+.story-meta { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+.story-body { font-size:13px; color:var(--txt-2); line-height:1.7; }
+.story-body strong { color:var(--txt); }
+.sb7-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-top:12px; }
+.sb7-item { background:var(--bg-3); border:1px solid var(--bdr); border-radius:8px; padding:12px; }
+.sb7-item h4 { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gold); text-transform:uppercase; margin-bottom:6px; }
+.sb7-item p { font-size:12px; color:var(--txt-2); line-height:1.5; }
+
+/* ===== HOOK CARD ===== */
+.hook-card { background:var(--bg-2); border:1px solid var(--bdr); border-radius:var(--r); padding:16px; cursor:pointer; transition:all .2s; }
+.hook-card:hover { border-color:var(--gold); }
+.hook-text { font-size:14px; font-weight:500; line-height:1.5; margin-bottom:8px; }
+.hook-meta { display:flex; gap:6px; align-items:center; }
+
+/* ===== TIMER ===== */
+.timer-display { font-family:'JetBrains Mono',monospace; font-size:64px; font-weight:600; color:var(--gold); text-align:center; padding:24px; letter-spacing:2px; }
+.timer-label { text-align:center; font-size:13px; color:var(--txt-2); margin-bottom:16px; }
+.timer-btns { display:flex; gap:10px; justify-content:center; }
+
+/* ===== CHECKLIST ===== */
+.check-item { display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--bg-2); border-radius:8px; margin-bottom:6px; font-size:13px; cursor:pointer; transition:background .2s; }
+.check-item:hover { background:var(--bg-4); }
+.check-item input[type="checkbox"] { accent-color:var(--gold); width:16px; height:16px; }
+.check-item.done { opacity:.5; text-decoration:line-through; }
+
+/* ===== VOICE GUIDE ===== */
+.voice-block { padding:16px; background:var(--bg-2); border-radius:var(--r); border-left:3px solid var(--gold); margin-bottom:12px; }
+.voice-block h4 { font-size:12px; font-weight:700; color:var(--gold); text-transform:uppercase; margin-bottom:6px; }
+.voice-block p,.voice-block li { font-size:13px; color:var(--txt-2); line-height:1.6; }
+.voice-block ul { padding-left:20px; }
+
+/* ===== VALUE LADDER ===== */
+.ladder { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; }
+.ladder-tier { background:var(--bg-2); border:1px solid var(--bdr); border-radius:var(--r); padding:20px; text-align:center; position:relative; overflow:hidden; }
+.ladder-tier::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+.ladder-tier.free::before{background:var(--info)} .ladder-tier.low::before{background:var(--ok)} .ladder-tier.mid::before{background:var(--warn)} .ladder-tier.high::before{background:var(--err)}
+.ladder-name { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; margin-bottom:4px; }
+.ladder-price { font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:600; color:var(--gold); margin-bottom:6px; }
+.ladder-desc { font-size:12px; color:var(--txt-2); }
+
+/* ===== EMAIL SEQ ===== */
+.email-step { display:flex; gap:16px; padding:14px; background:var(--bg-2); border-radius:8px; margin-bottom:8px; align-items:flex-start; }
+.email-day { font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; color:var(--gold); min-width:36px; }
+.email-content h4 { font-size:13px; font-weight:600; margin-bottom:4px; }
+.email-content p { font-size:12px; color:var(--txt-2); }
+
+/* ===== FILTERS ===== */
+.filters { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+.filter-btn { font-family:'Inter',sans-serif; font-size:11px; font-weight:600; padding:6px 12px; border:1px solid var(--bdr); border-radius:20px; background:transparent; color:var(--txt-3); cursor:pointer; transition:all .2s; }
+.filter-btn:hover { border-color:var(--txt-3); color:var(--txt-2); }
+.filter-btn.active { border-color:var(--gold); color:var(--gold); background:var(--gold-bg); }
+
+/* ===== ROTEIRO MODAL ===== */
+.roteiro-overlay { position:fixed; inset:0; background:rgba(0,0,0,.8); z-index:200; display:none; align-items:center; justify-content:center; padding:24px; }
+.roteiro-overlay.open { display:flex; }
+.roteiro-modal { background:var(--bg-1); border:1px solid var(--gold); border-radius:var(--r); width:100%; max-width:720px; max-height:90vh; overflow-y:auto; }
+.roteiro-header { padding:18px 24px; border-bottom:1px solid var(--bdr); display:flex; justify-content:space-between; align-items:center; }
+.roteiro-header h2 { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:800; color:var(--gold); }
+.roteiro-close { background:none; border:none; color:var(--txt-3); font-size:22px; cursor:pointer; padding:4px 8px; }
+.roteiro-close:hover { color:var(--txt); }
+.roteiro-body { padding:24px; }
+.roteiro-output { background:var(--bg-2); border:1px solid var(--bdr); border-radius:8px; padding:20px; margin-top:16px; font-size:13px; color:var(--txt-2); line-height:1.8; white-space:pre-wrap; display:none; }
+.roteiro-output h3 { font-family:'Montserrat',sans-serif; font-size:14px; color:var(--gold); margin-bottom:12px; }
+.roteiro-output .rot-section { margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--bdr); }
+.roteiro-output .rot-section:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.roteiro-output .rot-label { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gold); text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
+.roteiro-output .rot-text { font-size:13px; color:var(--txt); line-height:1.7; }
+.roteiro-output .rot-meta { font-size:11px; color:var(--txt-3); font-style:italic; }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px) {
+  .topbar { flex-wrap:wrap; height:auto; padding:12px; gap:8px; }
+  .nav { margin-left:0; order:2; width:100%; }
+  .page { padding:14px; }
+  .card-grid { grid-template-columns:1fr; }
+  .day-row { grid-template-columns:50px 1fr; }
+  .timer-display { font-size:40px; }
+  .roteiro-modal { max-width:100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo">PORTAL DO CRIADOR <span>Gabriel Petelinkar</span></div>
+  <div class="nav" id="mainNav">
+    <button class="nav-btn active" data-page="dashboard">Dashboard</button>
+    <button class="nav-btn" data-page="calendario">Calendário</button>
+    <button class="nav-btn" data-page="multiplicador">Multiplicador</button>
+    <button class="nav-btn" data-page="historias">Histórias</button>
+    <button class="nav-btn" data-page="hooks">Hooks</button>
+    <button class="nav-btn" data-page="templates">Templates</button>
+    <button class="nav-btn" data-page="monetizacao">Monetização</button>
+    <button class="nav-btn" data-page="brandvoice">Brand Voice</button>
+    <button class="nav-btn" data-page="batchday">Batch Day</button>
+  </div>
+</div>
+
+<!-- ===================== DASHBOARD ===================== -->
+<div class="page active" id="page-dashboard">
+  <div class="stats" id="dashStats"></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div class="section">
+      <div class="section-title">Próximas Ações <span class="badge">PRIORIDADE</span></div>
+      <div id="dashActions"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">One-Liner <span class="badge">SB7</span></div>
+      <p style="font-size:15px;line-height:1.7;color:var(--txt-2);font-style:italic;padding:8px 0;">
+        "A maioria dos produtores artesanais faz produtos incríveis mas não consegue vender nem escalar. Eu ajudo você a transformar sua receita num negócio profissional, lucrativo e reconhecido. Pra que seu produto tenha o espaço que merece — e você viva do que ama fazer."
+      </p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div class="section">
+      <div class="section-title">Sistema Semanal <span class="badge">5.5H/SEM</span></div>
+      <table class="tbl">
+        <tr><th>Bloco</th><th>Quando</th><th>Tempo</th></tr>
+        <tr><td style="color:var(--gold);font-weight:600">Batch Day</td><td>Domingo</td><td>3h</td></tr>
+        <tr><td>Rotina Diária</td><td>Seg-Sáb</td><td>15 min/dia</td></tr>
+        <tr><td>Review Semanal</td><td>Sábado</td><td>15 min</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">Pilares de Conteúdo <span class="badge">5 PILARES</span></div>
+      <div id="dashPilares"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Revenue Flywheel <span class="badge">META 90 DIAS</span></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:10px 0;">
+      <div style="background:var(--bg-2);border:1px solid var(--bdr);border-radius:var(--r);padding:14px 20px;text-align:center;flex:1;min-width:120px;">
+        <div style="font-size:11px;color:var(--txt-3);text-transform:uppercase;">Criar</div>
+        <div style="font-size:13px;color:var(--txt);margin-top:4px;">7-8 posts/sem</div>
+      </div>
+      <div style="color:var(--gold);display:flex;align-items:center;font-size:18px;">→</div>
+      <div style="background:var(--bg-2);border:1px solid var(--bdr);border-radius:var(--r);padding:14px 20px;text-align:center;flex:1;min-width:120px;">
+        <div style="font-size:11px;color:var(--txt-3);text-transform:uppercase;">Atrair</div>
+        <div style="font-size:13px;color:var(--txt);margin-top:4px;">3.262 → 5.000</div>
+      </div>
+      <div style="color:var(--gold);display:flex;align-items:center;font-size:18px;">→</div>
+      <div style="background:var(--bg-2);border:1px solid var(--bdr);border-radius:var(--r);padding:14px 20px;text-align:center;flex:1;min-width:120px;">
+        <div style="font-size:11px;color:var(--txt-3);text-transform:uppercase;">Capturar</div>
+        <div style="font-size:13px;color:var(--txt);margin-top:4px;">20-50 emails/sem</div>
+      </div>
+      <div style="color:var(--gold);display:flex;align-items:center;font-size:18px;">→</div>
+      <div style="background:var(--bg-2);border:1px solid var(--bdr);border-radius:var(--r);padding:14px 20px;text-align:center;flex:1;min-width:120px;">
+        <div style="font-size:11px;color:var(--txt-3);text-transform:uppercase;">Nutrir</div>
+        <div style="font-size:13px;color:var(--txt);margin-top:4px;">Open rate >40%</div>
+      </div>
+      <div style="color:var(--gold);display:flex;align-items:center;font-size:18px;">→</div>
+      <div style="background:var(--bg-2);border:1px solid var(--bdr);border-radius:var(--r);padding:14px 20px;text-align:center;flex:1;min-width:120px;">
+        <div style="font-size:11px;color:var(--txt-3);text-transform:uppercase;">Converter</div>
+        <div style="font-size:13px;color:var(--txt);margin-top:4px;">R$2-7k/mês</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CALENDÁRIO ===================== -->
+<div class="page" id="page-calendario">
+  <div class="section">
+    <div class="section-title">Gerador de Calendário Mensal <span class="badge">SETUP</span></div>
+    <div class="form-grid">
+      <div class="field"><label>Mês / Ano</label><input type="month" id="calMonth" value="2026-04"></div>
+      <div class="field"><label>Ratio J:RH</label><select id="calRatio"><option value="11">11:1</option><option value="7" selected>7:1</option><option value="5">5:1</option></select></div>
+      <div class="field"><label>Peças/semana</label><select id="calPieces"><option value="8">8</option><option value="10">10</option><option value="12" selected>12</option></select></div>
+      <div class="field"><label>Semana reciclagem</label><select id="calRecycle"><option value="3" selected>Semana 3</option><option value="0">Nenhuma</option></select></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">Temas por Semana <span class="badge">CONTEÚDO</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;" id="calWeeksGrid"></div>
+    <div class="btn-row" style="margin-top:16px;justify-content:center;">
+      <button class="btn btn-gold" onclick="calGenerate()">Gerar Calendário</button>
+      <button class="btn btn-out" onclick="calFillExample()">Preencher Exemplo</button>
+    </div>
+  </div>
+  <div id="calOutput" style="display:none;">
+    <div class="stats" id="calStats"></div>
+    <div id="calWeeks"></div>
+    <div class="btn-row" style="justify-content:center;margin-top:16px;">
+      <button class="btn btn-gold" onclick="calExportMD()">Exportar Markdown</button>
+      <button class="btn btn-out" onclick="calCopy()">Copiar Texto</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MULTIPLICADOR ===================== -->
+<div class="page" id="page-multiplicador">
+  <div class="section">
+    <div class="section-title">Pilar de Conteúdo <span class="badge">SELECIONE</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;" id="mulPilarGrid"></div>
+  </div>
+  <div class="section">
+    <div class="section-title">Conteúdo Pillar <span class="badge">INPUT</span></div>
+    <div class="field"><label>Título / Tema</label><input type="text" id="mulTitle" placeholder="Ex: O Isopor do Avô"></div>
+    <div class="field"><label>Texto / Roteiro completo</label><textarea id="mulText" rows="6" placeholder="Cole o texto do Pillar aqui..."></textarea></div>
+    <div class="form-grid">
+      <div class="field"><label>História-fonte</label><select id="mulStory"><option value="isopor">O Isopor do Avô</option><option value="receita">A Receita que Ninguém Tinha</option><option value="frasco">O Frasco que Estourou</option><option value="artesanal">Artesanal Não é Caseiro</option><option value="mochila">A Mochila dos Food Trucks</option><option value="outro">Outra</option></select></div>
+      <div class="field"><label>Formato original</label><select id="mulFormat"><option value="reel90">Reel 90s</option><option value="reel60">Reel 60s</option><option value="carrossel">Carrossel 10</option></select></div>
+      <div class="field"><label>Quantidade</label><select id="mulCount"><option value="compact">Compacto (8-10)</option><option value="standard" selected>Padrão (14-16)</option><option value="full">Completo (18-20)</option></select></div>
+    </div>
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn btn-gold" onclick="mulGenerate()">Multiplicar</button>
+      <button class="btn btn-out" onclick="mulExample()">Preencher Exemplo</button>
+    </div>
+  </div>
+  <div id="mulOutput" style="display:none;">
+    <div class="stats" id="mulStats"></div>
+    <div id="mulCards"></div>
+    <div class="btn-row" style="justify-content:center;margin-top:16px;">
+      <button class="btn btn-gold" onclick="mulExport()">Exportar Markdown</button>
+      <button class="btn btn-out" onclick="mulCopyAll()">Copiar Tudo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HISTÓRIAS ===================== -->
+<div class="page" id="page-historias">
+  <div class="stats">
+    <div class="stat"><div class="stat-v">16</div><div class="stat-l">Histórias</div></div>
+    <div class="stat"><div class="stat-v">5</div><div class="stat-l">Estruturadas SB7</div></div>
+    <div class="stat"><div class="stat-v">5</div><div class="stat-l">Minas</div></div>
+    <div class="stat"><div class="stat-v">4.85</div><div class="stat-l">Pillar Score</div></div>
+  </div>
+  <div class="filters" id="storyFilters"></div>
+  <div id="storyList"></div>
+</div>
+
+<!-- ===================== HOOKS ===================== -->
+<div class="page" id="page-hooks">
+  <div class="stats">
+    <div class="stat"><div class="stat-v">53</div><div class="stat-l">Hooks</div></div>
+    <div class="stat"><div class="stat-v">8</div><div class="stat-l">Categorias</div></div>
+    <div class="stat"><div class="stat-v">6</div><div class="stat-l">Fórmulas</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">Fórmulas de Hook <span class="badge">TEMPLATES</span></div>
+    <table class="tbl">
+      <tr><th>Fórmula</th><th>Template</th></tr>
+      <tr><td style="color:var(--gold)">Contrário Provocativo</td><td>"Se você acha que [crença], você [consequência]."</td></tr>
+      <tr><td style="color:var(--gold)">História com Loop</td><td>"[Personagem] fazia [ação]. [Resultado inesperado]."</td></tr>
+      <tr><td style="color:var(--gold)">Confissão + Lição</td><td>"Eu [erro]. [Consequência]. Nunca mais."</td></tr>
+      <tr><td style="color:var(--gold)">Número + Punch</td><td>"[N] [coisas], [N] [tempo] e [1] lição: [verdade]."</td></tr>
+      <tr><td style="color:var(--gold)">Pergunta Incômoda</td><td>"[Pergunta que expõe]? ([Dado que confirma].)"</td></tr>
+      <tr><td style="color:var(--gold)">Bastidor Chocante</td><td>"[Objeto inesperado]. [Explicação curiosa]."</td></tr>
+    </table>
+  </div>
+  <div class="filters" id="hookFilters"></div>
+  <div class="card-grid" id="hookList"></div>
+</div>
+
+<!-- ===================== TEMPLATES ===================== -->
+<div class="page" id="page-templates">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+    <div class="stats" style="flex:1;margin-bottom:0;">
+      <div class="stat"><div class="stat-v">10</div><div class="stat-l">Templates</div></div>
+      <div class="stat"><div class="stat-v">5</div><div class="stat-l">Pilares</div></div>
+    </div>
+    <button class="btn btn-gold" onclick="openRoteiro()" style="white-space:nowrap;margin-left:16px;">Gerar Roteiro</button>
+  </div>
+  <div id="templateList"></div>
+</div>
+
+<!-- ROTEIRO MODAL -->
+<div class="roteiro-overlay" id="roteiroOverlay" onclick="if(event.target===this)closeRoteiro()">
+  <div class="roteiro-modal">
+    <div class="roteiro-header">
+      <h2>Gerar Roteiro</h2>
+      <button class="roteiro-close" onclick="closeRoteiro()">&times;</button>
+    </div>
+    <div class="roteiro-body">
+      <div class="form-grid">
+        <div class="field">
+          <label>Template</label>
+          <select id="rotTemplate">
+            <option value="">Selecione...</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Formato</label>
+          <select id="rotFormato">
+            <option value="">Selecione o template primeiro</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid" style="margin-top:14px;">
+        <div class="field">
+          <label>História</label>
+          <select id="rotStory">
+            <option value="">Aleatória (do pilar)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Hook</label>
+          <select id="rotHook">
+            <option value="">Aleatório (do pilar)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid" style="margin-top:14px;">
+        <div class="field">
+          <label>Tipo de CTA</label>
+          <select id="rotCta">
+            <option value="soft">Soft (engajamento)</option>
+            <option value="medium">Medium (lead gen)</option>
+            <option value="hard">Hard (venda)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Contexto extra (opcional)</label>
+          <input type="text" id="rotContexto" placeholder="Ex: foco em iniciantes, tom provocativo...">
+        </div>
+      </div>
+      <div class="btn-row" style="justify-content:center;margin-top:18px;">
+        <button class="btn btn-gold" onclick="generateRoteiro()">Gerar</button>
+        <button class="btn btn-out" onclick="randomRoteiro()">Surpresa</button>
+      </div>
+      <div class="roteiro-output" id="roteiroOutput"></div>
+      <div class="btn-row" style="justify-content:center;margin-top:12px;display:none;" id="roteiroActions">
+        <button class="btn btn-gold btn-sm" onclick="copyRoteiro()">Copiar Roteiro</button>
+        <button class="btn btn-out btn-sm" onclick="generateRoteiro()">Gerar Outro</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MONETIZAÇÃO ===================== -->
+<div class="page" id="page-monetizacao">
+  <div class="section">
+    <div class="section-title">Value Ladder <span class="badge">4 TIERS</span></div>
+    <div class="ladder" id="ladderDisplay"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div class="section">
+      <div class="section-title">CTA Strategy <span class="badge">73/21/6</span></div>
+      <div id="ctaStrategy"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Caminhos de Receita <span class="badge">4 PATHS</span></div>
+      <div id="revenuePaths"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Sequência de Email Pós-Captura <span class="badge">7 EMAILS</span></div>
+    <div id="emailSequence"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Frases-Ponte (Conteúdo → Produto) <span class="badge">POR PILAR</span></div>
+    <table class="tbl">
+      <tr><th>Contexto</th><th>Frase</th></tr>
+      <tr><td>Pós-história</td><td>"Isso é o que ajudo a resolver na mentoria"</td></tr>
+      <tr><td>Pós-dica educativa</td><td>"No curso aprofundo com passo a passo"</td></tr>
+      <tr><td>Pós-manifesto</td><td>"Tem muito mais no ebook — link na bio"</td></tr>
+      <tr><td>Pós-bastidores</td><td>"12 anos de erros — newsletter toda semana"</td></tr>
+      <tr><td>Pós-resultado</td><td>"Quer o mesmo caminho? DM com MENTORIA"</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===================== BRAND VOICE ===================== -->
+<div class="page" id="page-brandvoice">
+  <div class="section">
+    <div class="section-title">Manifesto Chilli & Pig <span class="badge">BRAND</span></div>
+    <blockquote style="border-left:3px solid var(--gold);padding:16px 20px;background:var(--bg-2);border-radius:0 8px 8px 0;font-size:15px;line-height:1.8;color:var(--txt-2);font-style:italic;">
+      A gente acredita em comida com gente em volta.<br>
+      Em pimenta como ingrediente, não como desafio.<br>
+      Aqui a ardência existe, sim.<br>
+      Mas ela vem junto com sabor, comida e relação.<br>
+      Porque no fim, o que fica não é o quanto ardeu.<br>
+      <strong style="color:var(--gold);">É com quem você comeu.</strong>
+    </blockquote>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div class="section">
+      <div class="section-title">Personalidade <span class="badge">3 PALAVRAS</span></div>
+      <div class="voice-block"><h4>Acolhedora</h4><p>A mesa é pra todo mundo. Do Dainty suave ao Volcano infernal.</p></div>
+      <div class="voice-block"><h4>Autêntica</h4><p>Sem roteiro, sem fachada. Fala como gente, com sotaque e história.</p></div>
+      <div class="voice-block"><h4>Saborosa</h4><p>Não é sobre ardência. É sobre o que o molho faz pela comida e pelo momento.</p></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Princípio Central</div>
+      <div style="text-align:center;padding:20px;">
+        <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:var(--gold);margin-bottom:8px;">Pimenta é ingrediente. Não é desafio.</div>
+        <p style="font-size:13px;color:var(--txt-2);">Se o texto faz parecer que ardência é o ponto, reescreve. O ponto é sempre: sabor, comida, gente.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div class="section">
+      <div class="section-title">Somos</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+        <li class="voice-block" style="margin:0;border-left-color:var(--ok);">Quem puxa a cadeira e diz "senta aqui, prova isso"</li>
+        <li class="voice-block" style="margin:0;border-left-color:var(--ok);">Informais com substância</li>
+        <li class="voice-block" style="margin:0;border-left-color:var(--ok);">Orgulhosos da Paraíba sem ser panfletário</li>
+        <li class="voice-block" style="margin:0;border-left-color:var(--ok);">Sobre comida e relação, nunca sobre aguentar dor</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Não Somos</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+        <li class="voice-block" style="margin:0;border-left-color:var(--err);">Corporativos ("prezado cliente...")</li>
+        <li class="voice-block" style="margin:0;border-left-color:var(--err);">Desafio de picância ("só pra quem aguenta")</li>
+        <li class="voice-block" style="margin:0;border-left-color:var(--err);">Genéricos ("o melhor molho do mercado")</li>
+        <li class="voice-block" style="margin:0;border-left-color:var(--err);">Distantes da mesa</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Tom por Canal <span class="badge">GUIA</span></div>
+    <table class="tbl">
+      <tr><th>Canal</th><th>Tom</th><th>Exemplo</th></tr>
+      <tr><td style="color:var(--gold)">Feed</td><td>Envolvente + sensorial</td><td style="font-size:12px;color:var(--txt-2)">"Fermentado por semanas com pimentas colhidas à mão..."</td></tr>
+      <tr><td style="color:var(--gold)">Stories</td><td>Leve + próximo</td><td style="font-size:12px;color:var(--txt-2)">"Sexta. Pizza. Qual molho vai?"</td></tr>
+      <tr><td style="color:var(--gold)">Reels</td><td>Curioso + apetitoso</td><td style="font-size:12px;color:var(--txt-2)">"O molho que faz a diferença não é o mais forte."</td></tr>
+      <tr><td style="color:var(--gold)">WhatsApp</td><td>Pessoal + prestativo</td><td style="font-size:12px;color:var(--txt-2)">"Me conta o que você gosta de comer que eu te indico."</td></tr>
+      <tr><td style="color:var(--gold)">E-commerce</td><td>Sensorial + honesto</td><td style="font-size:12px;color:var(--txt-2)">"Habanero Red. Aroma floral, ardência que cresce devagar."</td></tr>
+      <tr><td style="color:var(--gold)">Email</td><td>Íntimo + direto</td><td style="font-size:12px;color:var(--txt-2)">"O Desperado voltou. Cachaça, pimenta e boa companhia."</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Frases-Âncora <span class="badge">CONSISTÊNCIA</span></div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <div class="voice-block" style="flex:1;min-width:200px;text-align:center;"><p style="font-weight:600;color:var(--txt)">"Da Paraíba pra sua mesa."</p></div>
+      <div class="voice-block" style="flex:1;min-width:200px;text-align:center;"><p style="font-weight:600;color:var(--txt)">"Feito à mão. Com tempo. Com gosto."</p></div>
+      <div class="voice-block" style="flex:1;min-width:200px;text-align:center;"><p style="font-weight:600;color:var(--txt)">"O que fica não é o quanto ardeu.<br>É com quem você comeu."</p></div>
+      <div class="voice-block" style="flex:1;min-width:200px;text-align:center;"><p style="font-weight:600;color:var(--txt)">"Pimenta é ingrediente, não desafio."</p></div>
+      <div class="voice-block" style="flex:1;min-width:200px;text-align:center;"><p style="font-weight:600;color:var(--txt)">"Cada molho tem uma história.<br>Qual é a sua?"</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== BATCH DAY ===================== -->
+<div class="page" id="page-batchday">
+  <div class="section" style="text-align:center;">
+    <div class="section-title" style="justify-content:center;">Timer Batch Day <span class="badge">3H</span></div>
+    <div class="timer-label" id="timerPhase">Selecione uma fase para iniciar</div>
+    <div class="timer-display" id="timerDisplay">00:00</div>
+    <div class="timer-btns">
+      <button class="btn btn-out btn-sm" onclick="startTimer(30,'Seleção de Ideias')">Seleção (30m)</button>
+      <button class="btn btn-gold btn-sm" onclick="startTimer(90,'Criação em Batch')">Criação (90m)</button>
+      <button class="btn btn-out btn-sm" onclick="startTimer(30,'Edição + Hooks')">Edição (30m)</button>
+      <button class="btn btn-out btn-sm" onclick="startTimer(15,'Agendar')">Agendar (15m)</button>
+      <button class="btn btn-out btn-sm" onclick="stopTimer()" style="border-color:var(--err);color:var(--err)">Parar</button>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div class="section">
+      <div class="section-title">Workflow Batch Day <span class="badge">DOMINGO 3H</span></div>
+      <div class="voice-block"><h4>Bloco 1 — Seleção (30 min)</h4><p>Abra o calendário. Pegue as 6-7 peças da semana. Não reinvente.</p></div>
+      <div class="voice-block"><h4>Bloco 2 — Criação (90 min)</h4><p>15 min por peça. Timer no celular. NÃO edite enquanto escreve. Use os templates.</p></div>
+      <div class="voice-block"><h4>Bloco 3 — Edição + Hooks (30 min)</h4><p>Releia cada peça. Confirme hook forte. Adicione CTA.</p></div>
+      <div class="voice-block"><h4>Bloco 4 — Agendar (15 min)</h4><p>Meta Business Suite, Later ou Buffer. Programe seg-dom.</p></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Checklist Semanal <span class="badge">IMPRIMA</span></div>
+      <div id="weeklyChecklist"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">O Que NÃO Fazer <span class="badge">REGRAS</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;">
+      <div class="voice-block" style="border-left-color:var(--err)"><p>Não tente IG + LinkedIn ao mesmo tempo. Comece só IG.</p></div>
+      <div class="voice-block" style="border-left-color:var(--err)"><p>Não tente 8 peças/semana. Comece com 5-6.</p></div>
+      <div class="voice-block" style="border-left-color:var(--err)"><p>Não fique relendo os 6 arquivos. Use o Portal.</p></div>
+      <div class="voice-block" style="border-left-color:var(--err)"><p>Não espere perfeito. Publicado > perfeito. Sempre.</p></div>
+      <div class="voice-block" style="border-left-color:var(--err)"><p>Não mude o calendário toda semana. Siga 4 semanas, depois otimize.</p></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===========================
+// DATA STORE
+// ===========================
+const D = {
+  pilares: [
+    {id:'P1',nome:'Manifesto e Posicionamento',cor:'p1',freq:2,hist:'Artesanal Não é Caseiro',hookCats:['contrario','pergunta']},
+    {id:'P2',nome:'Storytelling e Legado',cor:'p2',freq:2,hist:'O Isopor do Avô',hookCats:['historia','confissao']},
+    {id:'P3',nome:'Erros e Lições de Produção',cor:'p3',freq:1.5,hist:'O Frasco que Estourou',hookCats:['numero','confissao','bastidores']},
+    {id:'P4',nome:'Vendas e Go-to-Market',cor:'p4',freq:1,hist:'A Mochila dos Food Trucks',hookCats:['desafio','resultado','numero']},
+    {id:'P5',nome:'Bastidores e Prova Social',cor:'p5',freq:1,hist:'Todas (documentar)',hookCats:['bastidores','historia']},
+  ],
+  templates: [
+    {id:'T1',nome:'Manifesto',desc:'Afirmação provocativa, frases curtas, ritmo de manifesto',pilares:['P1'],formatos:['Carrossel','Reel 30s','Feed']},
+    {id:'T2',nome:'História→Lição',desc:'Loop narrativo, história breve, lição clara',pilares:['P2'],formatos:['Reel 60s','Carrossel','Stories']},
+    {id:'T3',nome:'Erro Real',desc:'Descrição vívida, causa, aprendizado, ação',pilares:['P3'],formatos:['Carrossel','Reel 45s','Stories']},
+    {id:'T4',nome:'Contrário',desc:'Crença comum desafiada com evidência',pilares:['P1'],formatos:['Reel 30s','Feed','Carrossel']},
+    {id:'T5',nome:'Como Eu Fiz',desc:'Resultado + passos práticos',pilares:['P4'],formatos:['Carrossel','Reel 45s']},
+    {id:'T6',nome:'Desafio',desc:'Ação específica + dare direto',pilares:['P4'],formatos:['Reel 30s','Stories','Feed']},
+    {id:'T7',nome:'Número+Verdade',desc:'Lista específica + credibilidade',pilares:['P3','P4'],formatos:['Carrossel','Reel 30s','Feed']},
+    {id:'T8',nome:'Bastidores',desc:'Cena sensorial, processo real',pilares:['P5'],formatos:['Reel 45s','Stories','Reel 30s']},
+    {id:'T9',nome:'Confissão+Virada',desc:'Vulnerabilidade + mudança + lição',pilares:['P2','P3'],formatos:['Reel 60s','Carrossel','Stories']},
+    {id:'T10',nome:'Prova+Oferta',desc:'Resultado + CTA direto (Right Hook)',pilares:['P5'],formatos:['Feed','Carrossel']},
+  ],
+  hooks: {
+    contrario:[
+      {t:"Se você acha que produto artesanal tem que ser barato, você é parte do problema.",s:5},
+      {t:"Produto bom NÃO se vende sozinho. Quem te disse isso te fez mal.",s:5},
+      {t:"Quanto mais ingredientes no rótulo, MENOS vende.",s:4},
+      {t:"O maior inimigo do produtor artesanal não é a indústria. É ele mesmo.",s:5},
+      {t:"Instagram não vende seu produto. Quem vende é você.",s:4},
+      {t:"Artesanal não é caseiro. E se você trata assim, tá matando seu negócio.",s:5},
+      {t:"Receita boa com comunicação ruim = produto invisível. Pra sempre.",s:4},
+      {t:"Você não precisa de mais seguidores. Precisa de coragem pra cobrar o que vale.",s:5},
+    ],
+    pergunta:[
+      {t:"Você sabe o custo REAL do seu produto? (A maioria não sabe.)",s:4},
+      {t:"Quantas receitas de família estão morrendo agora porque ninguém documentou?",s:5},
+      {t:"Qual o preço da sua vergonha? Porque cobrar barato tem custo.",s:5},
+      {t:"Seu produto é bom. Mas seu cliente sabe que você existe?",s:4},
+      {t:"Se eu te dissesse que com 3 mudanças você dobra seu preço — você ouviria?",s:4},
+      {t:"Você produz artesanal e ainda faz 'no olho'? É questão de tempo.",s:5},
+      {t:"O que acontece com sua receita quando você não estiver mais aqui?",s:5},
+      {t:"Você tá construindo uma marca — ou um hobby caro?",s:4},
+    ],
+    numero:[
+      {t:"12 anos, 11 produtos e 1 lição: quem só tira pedido, morre.",s:5},
+      {t:"3 coisas que meço em cada lote. Se você não mede, não controla.",s:4},
+      {t:"5 sinais de que seu produto vai dar problema antes de você perceber.",s:4},
+      {t:"3 erros que quase quebraram meu negócio.",s:4},
+      {t:"1 avô + 1 isopor + 1 molho de pimenta = 12 anos de negócio.",s:5},
+      {t:"De 0 a 5 pontos de venda em 6 meses. O passo que ninguém fala.",s:4},
+      {t:"3 formas de chegar no primeiro cliente — sem gastar 1 real.",s:4},
+    ],
+    historia:[
+      {t:"Meu avô saía todo dia com um isopor no ombro. Compravam o salgado — voltavam pelo molho.",s:5},
+      {t:"Quando meu avô morreu, fui atrás da receita. Ninguém tinha.",s:5},
+      {t:"O cliente mandou foto do molho escorrendo pela parede da cozinha.",s:5},
+      {t:"Eu saía pra comer hambúrguer com uma mochila cheia de molho de pimenta.",s:5},
+      {t:"Chegaram na fábrica de madrugada e levaram tudo.",s:4},
+      {t:"A cor mudou. O frasco fermentou. O lote inteiro foi pro lixo.",s:5},
+      {t:"Eu cobrava metade do que valia. E quase quebrei.",s:5},
+    ],
+    desafio:[
+      {t:"Calcule o custo REAL do seu produto hoje. Eu te desafio.",s:4},
+      {t:"Pare de pedir desculpa pelo seu preço por 7 dias.",s:5},
+      {t:"Ofereça seu produto pra 5 desconhecidos essa semana.",s:4},
+      {t:"Documente sua receita completa hoje. Agora.",s:4},
+      {t:"Me manda foto do seu produto. Feedback honesto.",s:5},
+      {t:"Suba o preço 20% e veja se perde cliente. Spoiler: não vai.",s:5},
+    ],
+    resultado:[
+      {t:"De mochila nos food trucks a e-commerce nacional. 12 anos.",s:4},
+      {t:"Meu fornecedor agora tem compra garantida e renda justa.",s:4},
+      {t:"Comecei dando molho de graça. Hoje sou jurado nacional.",s:5},
+      {t:"Reconstruí a receita do meu avô de memória. Hoje é o mais vendido.",s:4},
+      {t:"1 receita caseira virou 11 produtos. Sem investidor.",s:5},
+      {t:"O molho que meu avô dava de brinde agora vende pra todo o Brasil.",s:5},
+    ],
+    bastidores:[
+      {t:"Tá vendo essa balança? Ela salvou meu negócio.",s:4},
+      {t:"Esse liquidificador queimou pela terceira vez. Acidez destrói tudo.",s:5},
+      {t:"Isso aqui é o que ninguém mostra: 4h da manhã envasando molho.",s:4},
+      {t:"Cada frasco passa por isso. Se não passar, não sai.",s:4},
+      {t:"O cheiro dessa fábrica às 6 da manhã? Pimenta. Muito pimenta.",s:4},
+    ],
+    confissao:[
+      {t:"Eu já vendi produto que sabia que não tava 100%. Nunca mais.",s:5},
+      {t:"A verdade sobre produzir artesanal: é solitário.",s:4},
+      {t:"Eu tinha vergonha de dizer quanto custava meu molho.",s:5},
+      {t:"Meu maior erro não foi o frasco. Foi demorar 3 anos pra padronizar.",s:4},
+      {t:"Ninguém te prepara pro dia em que roubam sua fábrica.",s:5},
+      {t:"Opinião impopular: a maioria deveria parar de produzir e aprender a vender.",s:5},
+    ],
+  },
+  hookToTmpl:{contrario:['T4','T1'],pergunta:['T4','T7'],numero:['T7','T5'],historia:['T2','T9'],desafio:['T6','T5'],resultado:['T5','T10'],bastidores:['T8','T3'],confissao:['T9','T3']},
+  ctas:{
+    soft:["Concorda ou discorda?","Manda pra alguém que precisa","Salva pra consultar","Qual é a sua versão?","Já passou por isso?","Comenta aqui","Marca alguém que precisa ouvir","Se identificou? Salva."],
+    medium:["Aprofundo na newsletter — link na bio","Guia gratuito sobre isso — link na bio","DM com CHECKLIST pro checklist completo","Na mentoria aprofundo isso — DM com MENTORIA","Conto mais na newsletter dessa semana"],
+    hard:["Mentoria — vagas limitadas. Link na bio","Curso com inscrições abertas. Link na bio","DM com MENTORIA pra saber mais"],
+  },
+  bridges:{P1:"Tem muito mais no ebook — link na bio",P2:"12 anos de erros — newsletter toda semana",P3:"No curso aprofundo com passo a passo",P4:"Isso é o que ajudo a resolver na mentoria",P5:""},
+  stories:[
+    {n:1,title:"O Isopor do Avô",type:"Origin",mine:"Origin Stories",score:5,pillar:true,
+     summary:"O avô produtor rural que saía com isopor no ombro vendendo salgados — e o molho de pimenta que era o verdadeiro astro",
+     emotion:"Legado, dignidade, nunca ficar parado",
+     message:"O DNA empreendedor vem de família. O avô com o isopor, o neto com a mochila.",
+     sb7:{char:"Produtor artesanal que tem algo especial mas não sabe transformar num negócio",prob:"Tenho produto que todo mundo elogia, mas não consigo vender de verdade",guide:"Meu avô vivia isso. Produtor rural de sítio pequeno. Se recusou a ficar parado",plan:"1. Descubra sua receita 2. Profissionalize 3. Venda de verdade",success:"Produto na prateleira certa, marca reconhecida, o avô ficaria orgulhoso",failure:"Produto parado, cobrar barato pra sempre, a receita morrer com você"}},
+    {n:2,title:"A Receita que Ninguém Tinha",type:"Origin",mine:"Origin Stories",score:5,
+     summary:"Ninguém na família guardou a receita original do avô. Gabriel recriou o sabor da infância de memória.",
+     emotion:"Perda, reconstrução, identidade",
+     message:"A resposta geralmente está nas suas raízes — mesmo que precise reconstruir de memória.",
+     sb7:{char:"Alguém que carrega memória afetiva ligada a sabor",prob:"Receita perdida, ninguém tinha anotado",guide:"Recriou de memória, nasceu o ORIGINAL",plan:"1. Resgate raízes 2. Recrie com essência 3. Registre e proteja",success:"Produto existe, avô presente em cada frasco",failure:"Receita morre contigo, sabor vira memória que desbota"}},
+    {n:3,title:"A Mochila dos Food Trucks",type:"Origin",mine:"Origin Stories",score:4,
+     summary:"Gabriel saía pra comer com mochila cheia de molhos, dava de graça nos food trucks, deixava o cartão.",
+     emotion:"Hustle, humildade, começo de verdade",message:"Quem só tira pedido morre. O cara que é jurado nacional começou com uma mochila."},
+    {n:4,title:"Do Blog ao Produto Próprio",type:"Origin",mine:"Origin Stories",score:3,
+     summary:"Tinha audiência no Instagram de receitas mas vendia tempero dos outros. Precisava de algo SEU.",
+     emotion:"Busca por identidade",message:"Ter audiência sem produto próprio é construir na terra dos outros."},
+    {n:5,title:"De Casa pra Fábrica",type:"Transformation",mine:"Transformation",score:4,
+     summary:"O momento em que a Chillie Pig saiu da fabricação caseira para uma fábrica própria.",
+     emotion:"Coragem, compromisso",message:"Existe um momento em que o hobby precisa virar negócio."},
+    {n:6,title:"A Rede de Açougues",type:"Transformation",mine:"Transformation",score:3,
+     summary:"5 açougues em João Pessoa trouxeram reconhecimento e expandiram o portfólio.",
+     emotion:"Validação de mercado",message:"Um bom canal de distribuição transforma visibilidade em vendas reais."},
+    {n:7,title:"Renda Justa pro Produtor",type:"Transformation",mine:"Transformation",score:4,
+     summary:"Fornecedores rurais de pimenta têm compra garantida e preço justo.",
+     emotion:"Justiça, legado, cadeia artesanal",message:"Produto artesanal não impacta só quem compra — impacta quem fornece."},
+    {n:8,title:"O Brilho nos Olhos",type:"Transformation",mine:"Transformation",score:4,
+     summary:"O momento em que alguém prova o produto e você vê no rosto que gostou de verdade.",
+     emotion:"Propósito, validação",message:"O maior indicador não é faturamento — é o brilho nos olhos de quem prova."},
+    {n:9,title:"A Fábrica Roubada",type:"Quase Desisti",mine:"Quase Desisti",score:4,
+     summary:"Fábrica foi roubada — equipamentos, insumos, ferramentas. Desânimo real.",
+     emotion:"Vulnerabilidade, resistência",message:"A questão não é SE vai acontecer, mas como você reage."},
+    {n:10,title:"O Frasco que Estourou",type:"Quase Desisti",mine:"Quase Desisti",score:5,
+     summary:"Cor que mudou, fermentação inesperada, lotes recolhidos — a dor de não entregar o padrão.",
+     emotion:"Vergonha produtiva, auto-exigência",message:"A dor do produtor não é só financeira — é saber que falhou com seu próprio padrão.",
+     sb7:{char:"Produtor que se cobra padrão alto e falhou",prob:"Lotes fora de controle, vergonha",guide:"12 anos de padronização",plan:"1. Padronize 2. Teste cada lote 3. Documente/rastreie",success:"Zero recolhimentos, cliente confia",failure:"Frasco estoura no cliente, reputação destruída"}},
+    {n:11,title:"Liquidificadores que Queimam",type:"Quase Desisti",mine:"Quase Desisti",score:3,
+     summary:"Acidez dos ingredientes destrói equipamentos constantemente — custo invisível do artesanal.",
+     emotion:"Realidade nua",message:"O custo real vai muito além dos ingredientes."},
+    {n:12,title:"Fornecedor que Te Deixa na Mão",type:"Quase Desisti",mine:"Quase Desisti",score:3,
+     summary:"Embalagens, rótulos, insumos — falha na cadeia gera efeito dominó até o cliente.",
+     emotion:"Frustração sistêmica",message:"Gestão de cadeia é sobrevivência."},
+    {n:13,title:"Menos é Mais",type:"Lesson",mine:"Lesson-Learned",score:4,
+     summary:"Receitas simples vendem mais — memória afetiva mora na simplicidade.",
+     emotion:"Contra-intuitivo, sabedoria",message:"Artesanal conecta com memórias afetivas, e isso está embalado em simplicidade."},
+    {n:14,title:"Artesanal Não é Caseiro",type:"Lesson",mine:"Lesson-Learned",score:5,
+     summary:"Produto artesanal não é caseiro, e não precisa ser barato. Tem que ser valorizado.",
+     emotion:"Manifesto, provocação, posicionamento premium",message:"O maior erro do produtor artesanal é se desvalorizar.",
+     sb7:{char:"Produtor que cobra pouco por vergonha",prob:"Comparação com industrial, vergonha de cobrar",guide:"Artesanal = premium, sempre",plan:"1. Calcule custo real 2. Posicione como premium 3. Comunique valor",success:"Preço justo, margem saudável, orgulho",failure:"Cobrar barato pra sempre, virar 'aquele que faz em casa'"}},
+    {n:15,title:"Quem Só Tira Pedido Morre",type:"Lesson",mine:"Lesson-Learned",score:4,
+     summary:"Focar demais em produto e esquecer vendas é o erro #1.",
+     emotion:"Lição dura, salvadora",message:"Se não tem caixa, a empresa morre. Vender é tão importante quanto produzir."},
+    {n:16,title:"Bom Produto, Zero Comunicação",type:"Client Profile",mine:"Client Success",score:4,
+     summary:"O perfil universal do produtor artesanal: faz produto excelente mas não sabe vender.",
+     emotion:"Espelho do cliente, empatia total",message:"Produtores artesanais sabem fazer bons alimentos. Não sabem comunicar."},
+  ],
+  emails:[
+    {day:'D0',subject:'Aqui está seu ebook — e a história por trás dele',obj:'Entregar + Isopor do Avô'},
+    {day:'D2',subject:'O erro que quase me quebrou',obj:'Autoridade (Frasco que Estourou)'},
+    {day:'D4',subject:'Artesanal não é caseiro — e esse é o ponto',obj:'Manifesto + valor premium'},
+    {day:'D7',subject:'3 coisas que todo produtor precisa saber',obj:'Valor educativo'},
+    {day:'D10',subject:'Como saí da mochila pro e-commerce nacional',obj:'Prova + resultado'},
+    {day:'D14',subject:'Posso te ajudar com isso',obj:'CTA mentoria/curso'},
+    {day:'D21',subject:'Última chance — turma fechando',obj:'Urgência'},
+  ],
+  ladder:[
+    {tier:'Free',nome:'Ebook gratuito + Newsletter',preco:'R$0',vol:'80-200 leads/mês',rec:'Lead gen',cls:'free'},
+    {tier:'Low',nome:'Ebook pago',preco:'R$29-47',vol:'20-50/mês',rec:'R$580-2.350',cls:'low'},
+    {tier:'Mid',nome:'Curso completo',preco:'R$297-597',vol:'10-20/mês',rec:'R$3.000-12.000',cls:'mid'},
+    {tier:'High',nome:'Mentoria 1:1',preco:'R$2-5k',vol:'2-5/mês',rec:'R$4.000-25.000',cls:'high'},
+  ],
+  paths:[
+    'Conteúdo → Newsletter → Ebook gratuito → Curso (R$297-597)',
+    'Conteúdo → DM → Aplicação → Mentoria (R$2.000-5.000)',
+    'Conteúdo → Link bio → Ebook pago (R$29-47)',
+    'Conteúdo → E-commerce → Chillie Pig (incremental)',
+  ],
+};
+
+const DIAS=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+const MN=['','Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+// ===========================
+// UTILS
+// ===========================
+let rng=42;
+function sr(){rng=(rng*1664525+1013904223)&0x7fffffff;return rng/0x7fffffff;}
+function pk(a){return a[Math.floor(sr()*a.length)];}
+function pku(a,u){let att=0,i;do{i=Math.floor(sr()*a.length);att++}while(u.has(i)&&att<50);u.add(i);return a[i];}
+function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');}
+
+// ===========================
+// NAVIGATION
+// ===========================
+document.querySelectorAll('.nav-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById('page-'+b.dataset.page).classList.add('active');
+  });
+});
+
+// ===========================
+// DASHBOARD
+// ===========================
+function initDashboard(){
+  const totalHooks=Object.values(D.hooks).reduce((s,a)=>s+a.length,0);
+  document.getElementById('dashStats').innerHTML=`
+    <div class="stat"><div class="stat-v">16</div><div class="stat-l">Histórias</div></div>
+    <div class="stat"><div class="stat-v">${totalHooks}</div><div class="stat-l">Hooks</div></div>
+    <div class="stat"><div class="stat-v">10</div><div class="stat-l">Templates</div></div>
+    <div class="stat"><div class="stat-v">81</div><div class="stat-l">Peças Mapeadas</div></div>
+    <div class="stat"><div class="stat-v">5.5h</div><div class="stat-l">Tempo/Semana</div></div>
+    <div class="stat"><div class="stat-v">R$2-7k</div><div class="stat-l">Meta/Mês</div></div>
+  `;
+  const actions=[
+    {t:'Link na bio + ebook gratuito',d:'1.5h'},
+    {t:'Primeiro Batch Day (Semana 1)',d:'3h'},
+    {t:'Gravar os 3 Reels da semana',d:'1h'},
+    {t:'Rotina diária 15 min',d:'15 min/dia'},
+    {t:'Review + segundo Batch Day',d:'3.5h'},
+    {t:'Sequência de email (7 emails)',d:'2h'},
+  ];
+  document.getElementById('dashActions').innerHTML=actions.map((a,i)=>`
+    <div class="check-item" onclick="this.classList.toggle('done');this.querySelector('input').checked=!this.querySelector('input').checked">
+      <input type="checkbox"><span style="flex:1">${a.t}</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--txt-3)">${a.d}</span>
+    </div>
+  `).join('');
+  document.getElementById('dashPilares').innerHTML=D.pilares.map(p=>`
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg-2);border-radius:8px;margin-bottom:6px;border-left:3px solid var(--${p.cor});">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);min-width:24px;">${p.id}</span>
+      <span style="font-size:13px;flex:1">${p.nome}</span>
+      <span style="font-size:11px;color:var(--txt-3)">${p.freq}x/sem</span>
+    </div>
+  `).join('');
+}
+
+// ===========================
+// CALENDAR (simplified from standalone)
+// ===========================
+function calInitWeeks(){
+  const g=document.getElementById('calWeeksGrid');
+  const rc=parseInt(document.getElementById('calRecycle').value);
+  g.innerHTML='';
+  for(let w=1;w<=4;w++){
+    const isR=w===rc;
+    g.innerHTML+=`<div style="background:var(--bg-2);border:1px solid var(--bdr);border-radius:10px;padding:16px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);margin-bottom:10px;display:flex;justify-content:space-between;">Semana ${w} ${isR?'<span style="font-size:10px;background:var(--warn);color:#000;padding:1px 5px;border-radius:3px;">RECICLAGEM</span>':''}</div>
+      <div class="field" style="margin:0"><label>Temas</label><textarea id="calW${w}" rows="2" placeholder="${isR?'Top performers pra reciclar':'Ex: O Isopor do Avô, Erros de produção'}"></textarea></div>
+    </div>`;
+  }
+}
+document.getElementById('calRecycle').addEventListener('change',calInitWeeks);
+
+let calData=null;
+function calGenerate(){
+  rng=Date.now()&0x7fffffff;
+  const ratio=+document.getElementById('calRatio').value,ppw=+document.getElementById('calPieces').value,rcW=+document.getElementById('calRecycle').value;
+  const [y,m]=document.getElementById('calMonth').value.split('-').map(Number);
+  let tJ=0,tRH=0,tS=0,tM=0,tH=0,tP=0;
+  const weeks=[];
+  for(let w=1;w<=4;w++){
+    const isR=w===rcW,themes=document.getElementById(`calW${w}`).value||'';
+    const rhC=Math.max(1,Math.floor(ppw/(ratio+1))),jC=ppw-rhC;
+    const ps=[];const uH=new Set();
+    const slots=[];D.pilares.forEach(p=>{const n=Math.max(1,Math.round((p.freq/7.5)*ppw));for(let i=0;i<n;i++)slots.push(p);});
+    while(slots.length<ppw)slots.push(pk(D.pilares));while(slots.length>ppw)slots.pop();
+    for(let i=slots.length-1;i>0;i--){const j=Math.floor(sr()*(i+1));[slots[i],slots[j]]=[slots[j],slots[i]];}
+    const dpd=new Array(7).fill(0);const wt=[2,2,2,2,2,1,1];const tw=wt.reduce((s,v)=>s+v,0);let as=0;
+    for(let d=0;d<7;d++){dpd[d]=Math.max(1,Math.round((wt[d]/tw)*ppw));as+=dpd[d];}
+    while(as>ppw){const i=Math.floor(sr()*5);if(dpd[i]>1){dpd[i]--;as--;}}
+    while(as<ppw){dpd[Math.floor(sr()*5)]++;as++;}
+    let rhR=rhC,pi=0;
+    for(let d=0;d<7;d++){
+      const dp=[];
+      for(let p=0;p<dpd[d];p++){
+        const isRH=(d===6&&rhR>0);if(isRH)rhR--;
+        const pil=slots[pi%slots.length];pi++;
+        const hCat=pk(pil.hookCats),hook=pku(D.hooks[hCat],uH);
+        const tId=pk(D.hookToTmpl[hCat]),tmpl=D.templates.find(t=>t.id===tId);
+        const isLI=(p>0&&d<5&&sr()>.6);const plat=isLI?'LinkedIn':'IG';
+        const fmt=plat==='LinkedIn'?'Post LinkedIn':d===5?'Stories':pk(tmpl.formatos);
+        let ctT,ct;if(isRH){ctT='hard';ct=pk(D.ctas.hard);tH++;tRH++;}else if(sr()<.15){ctT='medium';ct=pk(D.ctas.medium);tM++;tJ++;}else{ctT='soft';ct=pk(D.ctas.soft);tS++;tJ++;}
+        tP++;dp.push({pilar:pil,tmpl,hook:hook.t,hCat,plat,fmt,ctT,ct,isRH});
+      }
+      ps.push({dia:DIAS[d],pieces:dp});
+    }
+    weeks.push({num:w,isR,themes,days:ps,jC:ps.reduce((s,d)=>s+d.pieces.filter(p=>!p.isRH).length,0),rhC:ps.reduce((s,d)=>s+d.pieces.filter(p=>p.isRH).length,0)});
+  }
+  calData={weeks,tP,tJ,tRH,tS,tM,tH,month:MN[m],year:y};
+  document.getElementById('calStats').innerHTML=`
+    <div class="stat"><div class="stat-v">${tP}</div><div class="stat-l">Peças</div></div>
+    <div class="stat"><div class="stat-v">${tJ}:${tRH}</div><div class="stat-l">J:RH</div></div>
+    <div class="stat"><div class="stat-v">${tS}</div><div class="stat-l">Soft</div></div>
+    <div class="stat"><div class="stat-v">${tM}</div><div class="stat-l">Medium</div></div>
+    <div class="stat"><div class="stat-v">${tH}</div><div class="stat-l">Hard</div></div>
+    <div class="stat"><div class="stat-v">${MN[m]}</div><div class="stat-l">${y}</div></div>
+  `;
+  let h='';
+  weeks.forEach(wk=>{
+    const r=wk.rhC>0?Math.round(wk.jC/wk.rhC):wk.jC;const rc=r>=7?'ratio-good':r>=4?'ratio-ok':'ratio-bad';
+    h+=`<div class="week-block"><div class="week-head"><h3>Semana ${wk.num}${wk.isR?' — RECICLAGEM':''}</h3><span class="ratio-badge ${rc}">${r}:1</span></div>`;
+    wk.days.forEach(day=>{
+      if(!day.pieces.length)return;
+      h+=`<div class="day-row"><div class="day-lbl">${day.dia}</div><div class="day-ct">`;
+      day.pieces.forEach(p=>{
+        const ct=p.ctT==='soft'?'tag-soft':p.ctT==='medium'?'tag-med':'tag-hard';
+        h+=`<div class="piece ${p.pilar.cor}"><span class="tag tag-plat">${p.plat}</span><span class="tag tag-format">${p.fmt}</span><span class="tag tag-tmpl">${p.tmpl.nome}</span><span class="tag ${p.isRH?'tag-rh':'tag-jab'}">${p.isRH?'RH':'JAB'}</span><span class="tag ${ct}">${p.ctT}</span><div class="piece-txt"><div class="piece-hook">"${p.hook}"</div><div class="piece-cta">CTA: ${p.ct}</div></div></div>`;
+      });
+      h+='</div></div>';
+    });
+    h+='</div>';
+  });
+  document.getElementById('calWeeks').innerHTML=h;
+  document.getElementById('calOutput').style.display='block';
+  document.getElementById('calOutput').scrollIntoView({behavior:'smooth'});
+}
+function calFillExample(){
+  document.getElementById('calW1').value='O Isopor do Avô, Artesanal Não é Caseiro';
+  document.getElementById('calW2').value='A Receita que Ninguém Tinha, O Frasco que Estourou';
+  document.getElementById('calW3').value='Top performers Semanas 1-2';
+  document.getElementById('calW4').value='A Mochila dos Food Trucks, Erros de produção';
+}
+function calExportMD(){
+  if(!calData)return;const d=calData;let md=`# Calendário ${d.month} ${d.year}\n\n**Total:** ${d.tP} peças | **Ratio:** ${d.tJ}:${d.tRH} J:RH\n\n---\n\n`;
+  d.weeks.forEach(w=>{md+=`## Semana ${w.num}${w.isR?' — RECICLAGEM':''}\n\n| Dia | Plat | Formato | Template | J/RH | CTA | Hook |\n|-----|------|---------|----------|------|-----|------|\n`;
+    w.days.forEach(day=>{day.pieces.forEach(p=>{md+=`| ${day.dia} | ${p.plat} | ${p.fmt} | ${p.tmpl.nome} | ${p.isRH?'RH':'Jab'} | ${p.ctT} | ${p.hook.substring(0,45)}... |\n`;});});md+='\n';});
+  const b=new Blob([md],{type:'text/markdown'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=`calendario-${d.month.toLowerCase()}-${d.year}.md`;a.click();URL.revokeObjectURL(u);
+}
+function calCopy(){
+  if(!calData)return;const d=calData;let t=`CALENDÁRIO ${d.month.toUpperCase()} ${d.year}\n${d.tP} peças | ${d.tJ}:${d.tRH} J:RH\n\n`;
+  d.weeks.forEach(w=>{t+=`── SEMANA ${w.num}${w.isR?' (RECICLAGEM)':''} ──\n`;w.days.forEach(day=>{day.pieces.forEach(p=>{t+=`${day.dia} | ${p.plat} ${p.fmt} | ${p.tmpl.nome} | ${p.isRH?'RH':'Jab'} | ${p.ctT}\n  Hook: "${p.hook}"\n  CTA: ${p.ct}\n\n`;});});});
+  navigator.clipboard.writeText(t);
+}
+
+// ===========================
+// MULTIPLICADOR (simplified)
+// ===========================
+let mulPilar=null,mulPieces=[];
+function mulInitGrid(){
+  document.getElementById('mulPilarGrid').innerHTML=D.pilares.map(p=>`
+    <div class="pillar-option" style="background:var(--bg-2);border:2px solid var(--bdr);border-radius:10px;padding:12px;cursor:pointer;text-align:center;transition:all .2s" data-p="${p.id}" onclick="mulSelectP('${p.id}')">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold)">${p.id}</div>
+      <div style="font-size:12px;font-weight:600">${p.nome}</div>
+    </div>
+  `).join('');
+}
+function mulSelectP(id){
+  mulPilar=D.pilares.find(p=>p.id===id);
+  document.querySelectorAll('#mulPilarGrid > div').forEach(el=>{el.style.borderColor=el.dataset.p===id?'var(--gold)':'var(--bdr)';el.style.background=el.dataset.p===id?'var(--gold-bg)':'var(--bg-2)';});
+}
+function mulGenerate(){
+  if(!mulPilar){alert('Selecione um pilar.');return;}
+  const title=document.getElementById('mulTitle').value.trim();if(!title){alert('Preencha o título.');return;}
+  const text=document.getElementById('mulText').value.trim();const mode=document.getElementById('mulCount').value;
+  const mC=mode==='compact'?3:mode==='standard'?5:7,miC=mode==='compact'?5:mode==='standard'?9:12;
+  const kp=text?text.split(/[.!?\n]+/).filter(s=>s.trim().length>15).slice(0,8).map(s=>s.trim()):[];
+  const uH=new Set();mulPieces=[];
+  // Pillar
+  const hc0=pk(mulPilar.hookCats),h0=pku(D.hooks[hc0],uH);
+  mulPieces.push({tier:'pillar',title,format:'Pillar',plat:'IG',tmpl:null,hCat:hc0,hook:h0.t,caption:text||h0.t,cta:{type:'soft',text:pk(D.ctas.soft)}});
+  // Medium
+  const mFmts=['Carrossel 8-10','Post LinkedIn','Email/Newsletter','Carrossel educativo','Reel 45s','Carrossel comparativo','Post LinkedIn curto'];
+  for(let i=0;i<mC;i++){
+    const hc=pk(mulPilar.hookCats),h=pku(D.hooks[hc],uH),tId=pk(D.hookToTmpl[hc]),tmpl=D.templates.find(t=>t.id===tId);
+    const ct=Math.random()<.15?'medium':'soft';const phrase=kp.length?pk(kp):'';
+    mulPieces.push({tier:'medium',title:`M${i+1}: ${tmpl.nome} — ${mFmts[i%mFmts.length]}`,format:mFmts[i%mFmts.length],plat:mFmts[i%mFmts.length].includes('LinkedIn')?'LinkedIn':'IG',tmpl:tId,hCat:hc,hook:h.t,caption:`${h.t}\n\n${phrase||'[Conteúdo derivado do Pillar]'}\n\n${pk(D.ctas[ct])}`,cta:{type:ct,text:pk(D.ctas[ct])}});
+  }
+  // Micro
+  const miFmts=['Reel 15s','Stories 5-7','Quote graphic','Enquete','Post feed frase','Reel 30s','Caixa de perguntas','Carrossel mini 5','Post LinkedIn quote','Reel bastidores','Story "Sabia que..."','Repost trending'];
+  for(let i=0;i<miC;i++){
+    const hc=pk(mulPilar.hookCats),h=pku(D.hooks[hc],uH);
+    mulPieces.push({tier:'micro',title:`m${i+1}: ${miFmts[i%miFmts.length]}`,format:miFmts[i%miFmts.length],plat:miFmts[i%miFmts.length].includes('LinkedIn')?'LinkedIn':'IG',tmpl:pk(D.hookToTmpl[hc]),hCat:hc,hook:h.t,caption:h.t,cta:{type:'soft',text:pk(D.ctas.soft)}});
+  }
+  const pil=mulPieces.filter(p=>p.tier==='pillar'),med=mulPieces.filter(p=>p.tier==='medium'),mic=mulPieces.filter(p=>p.tier==='micro');
+  document.getElementById('mulStats').innerHTML=`
+    <div class="stat"><div class="stat-v" style="color:var(--gold)">${mulPieces.length}</div><div class="stat-l">Total</div></div>
+    <div class="stat"><div class="stat-v" style="color:var(--pillar-c)">${pil.length}</div><div class="stat-l">Pillar</div></div>
+    <div class="stat"><div class="stat-v" style="color:var(--medium-c)">${med.length}</div><div class="stat-l">Medium</div></div>
+    <div class="stat"><div class="stat-v" style="color:var(--micro-c)">${mic.length}</div><div class="stat-l">Micro</div></div>
+  `;
+  const renderTier=(t,pcs)=>pcs.map((p,i)=>`
+    <div class="card"><div class="card-head">
+      <span class="tag tag-${t==='pillar'?'pillar':'medium'}-t">${p.tier.toUpperCase()}</span>
+      <span class="tag tag-plat">${p.plat}</span><span class="tag tag-format">${p.format}</span>
+      ${p.tmpl?`<span class="tag tag-tmpl">${D.templates.find(t=>t.id===p.tmpl).nome}</span>`:''}
+      <span class="tag tag-cat">${p.hCat}</span>
+    </div><div class="card-body">
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px">${p.title}</div>
+      <div style="font-size:12px;color:var(--gold-l);font-style:italic;margin-bottom:6px">"${p.hook}"</div>
+      <div style="font-size:11px;color:var(--txt-3)">CTA (${p.cta.type}): ${p.cta.text}</div>
+    </div></div>
+  `).join('');
+  document.getElementById('mulCards').innerHTML=`
+    <div class="section"><div class="section-title">Pillar</div><div class="card-grid">${renderTier('pillar',pil)}</div></div>
+    <div class="section"><div class="section-title">Medium (${med.length})</div><div class="card-grid">${renderTier('medium',med)}</div></div>
+    <div class="section"><div class="section-title">Micro (${mic.length})</div><div class="card-grid">${renderTier('micro',mic)}</div></div>
+  `;
+  document.getElementById('mulOutput').style.display='block';
+  document.getElementById('mulOutput').scrollIntoView({behavior:'smooth'});
+}
+function mulExample(){
+  mulSelectP('P2');
+  document.getElementById('mulTitle').value='O Isopor do Avô';
+  document.getElementById('mulText').value='Meu avô saía todo dia com um isopor no ombro. Dentro: salgado caseiro. Do lado: um potinho de molho de pimenta.\n\nAs pessoas compravam o salgado — e voltavam pelo molho.\n\nQuando ele morreu, fui atrás da receita. Ninguém tinha.\n\nReconstruí de memória. 12 anos depois: 11 produtos, e-commerce nacional, jurado de concursos.\n\nTudo começou com um isopor.';
+}
+function mulExport(){
+  let md=`# Multiplicação: ${document.getElementById('mulTitle').value}\n\n**Pilar:** ${mulPilar.id}\n**Total:** ${mulPieces.length} peças\n\n---\n\n`;
+  mulPieces.forEach(p=>{md+=`### ${p.title}\n- **${p.plat}** | ${p.format} | Hook (${p.hCat}): "${p.hook}"\n- CTA (${p.cta.type}): ${p.cta.text}\n\n`;});
+  const b=new Blob([md],{type:'text/markdown'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='multiplicacao.md';a.click();URL.revokeObjectURL(u);
+}
+function mulCopyAll(){
+  let t=mulPieces.map(p=>`${p.title}\nHook: "${p.hook}"\nCTA: ${p.cta.text}\n`).join('\n---\n\n');
+  navigator.clipboard.writeText(t);
+}
+
+// ===========================
+// STORIES
+// ===========================
+function initStories(){
+  const types=[...new Set(D.stories.map(s=>s.type))];
+  document.getElementById('storyFilters').innerHTML=`<button class="filter-btn active" onclick="filterStories('all',this)">Todas</button>`+types.map(t=>`<button class="filter-btn" onclick="filterStories('${t}',this)">${t}</button>`).join('');
+  renderStories(D.stories);
+}
+function filterStories(type,btn){
+  document.querySelectorAll('#storyFilters .filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  renderStories(type==='all'?D.stories:D.stories.filter(s=>s.type===type));
+}
+function renderStories(list){
+  document.getElementById('storyList').innerHTML=list.map(s=>`
+    <div class="story-card">
+      <h3>#${s.n} — ${s.title} ${s.pillar?'<span class="badge" style="vertical-align:middle">PILLAR</span>':''}</h3>
+      <div class="story-meta">
+        <span class="tag tag-cat">${s.type}</span>
+        <span class="tag tag-plat">${s.mine}</span>
+        <span class="tag tag-score">${'★'.repeat(s.score)}${'☆'.repeat(5-s.score)}</span>
+      </div>
+      <div class="story-body">
+        <p>${s.summary}</p>
+        <p style="margin-top:8px"><strong>Emoção:</strong> ${s.emotion}</p>
+        <p><strong>Mensagem:</strong> ${s.message}</p>
+      </div>
+      ${s.sb7?`<div class="sb7-grid">
+        <div class="sb7-item"><h4>Character</h4><p>${s.sb7.char}</p></div>
+        <div class="sb7-item"><h4>Problem</h4><p>${s.sb7.prob}</p></div>
+        <div class="sb7-item"><h4>Guide</h4><p>${s.sb7.guide}</p></div>
+        <div class="sb7-item"><h4>Plan</h4><p>${s.sb7.plan}</p></div>
+        <div class="sb7-item"><h4>Success</h4><p>${s.sb7.success}</p></div>
+        <div class="sb7-item"><h4>Failure</h4><p>${s.sb7.failure}</p></div>
+      </div>`:''}
+    </div>
+  `).join('');
+}
+
+// ===========================
+// HOOKS
+// ===========================
+function initHooks(){
+  const cats=Object.keys(D.hooks);
+  document.getElementById('hookFilters').innerHTML=`<button class="filter-btn active" onclick="filterHooks('all',this)">Todos (${Object.values(D.hooks).reduce((s,a)=>s+a.length,0)})</button>`+cats.map(c=>`<button class="filter-btn" onclick="filterHooks('${c}',this)">${c} (${D.hooks[c].length})</button>`).join('');
+  renderHooks('all');
+}
+function filterHooks(cat,btn){
+  if(btn){document.querySelectorAll('#hookFilters .filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+  renderHooks(cat);
+}
+function renderHooks(cat){
+  const hooks=cat==='all'?Object.entries(D.hooks).flatMap(([c,hs])=>hs.map(h=>({...h,cat:c}))):D.hooks[cat].map(h=>({...h,cat}));
+  document.getElementById('hookList').innerHTML=hooks.map(h=>`
+    <div class="hook-card" onclick="navigator.clipboard.writeText('${h.t.replace(/'/g,"\\'")}');this.style.borderColor='var(--ok)';setTimeout(()=>this.style.borderColor='var(--bdr)',1000)">
+      <div class="hook-text">${h.t}</div>
+      <div class="hook-meta">
+        <span class="tag tag-cat">${h.cat}</span>
+        <span class="tag tag-score">${'★'.repeat(h.s)}${'☆'.repeat(5-h.s)}</span>
+        <span style="font-size:10px;color:var(--txt-4);margin-left:auto">click = copiar</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===========================
+// TEMPLATES
+// ===========================
+function initTemplates(){
+  document.getElementById('templateList').innerHTML=D.templates.map(t=>`
+    <div class="section" style="border-left:3px solid var(--${D.pilares.find(p=>p.id===t.pilares[0])?.cor||'gold'})">
+      <div class="section-title">${t.id}: ${t.nome} <span class="badge">${t.pilares.join(' + ')}</span></div>
+      <p style="font-size:13px;color:var(--txt-2);margin-bottom:12px">${t.desc}</p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">${t.formatos.map(f=>`<span class="tag tag-format">${f}</span>`).join('')}</div>
+      <div style="background:var(--bg-2);border:1px solid var(--bdr);border-radius:8px;padding:14px;font-size:12px;color:var(--txt-2);line-height:1.7;">
+        <strong style="color:var(--gold)">Estrutura:</strong><br>
+        ${t.id==='T1'?'Hook provocativo → frases curtas → CTA engajamento':
+          t.id==='T2'?'Hook narrativo → história 3-5 frases → lição clara → CTA':
+          t.id==='T3'?'Descrição vívida do erro → causa → aprendizado → ação':
+          t.id==='T4'?'Crença comum → por que está errada → sua visão → evidência':
+          t.id==='T5'?'Resultado → 3-5 passos práticos → CTA':
+          t.id==='T6'?'Ação específica → por que importa → experiência → "aceita?"':
+          t.id==='T7'?'Lista numerada → explicações curtas → "salva"':
+          t.id==='T8'?'Cena específica → o que acontece → o que ninguém sabe':
+          t.id==='T9'?'Admissão → o que mudou → lição':
+          'Resultado → contexto → como → CTA direto'}
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===========================
+// MONETIZATION
+// ===========================
+function initMonetization(){
+  document.getElementById('ladderDisplay').innerHTML=D.ladder.map(l=>`
+    <div class="ladder-tier ${l.cls}">
+      <div class="ladder-name">${l.tier}</div>
+      <div class="ladder-price">${l.preco}</div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:6px">${l.nome}</div>
+      <div class="ladder-desc">${l.vol}<br>${l.rec}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('ctaStrategy').innerHTML=`
+    <div style="display:flex;gap:8px;margin-bottom:14px;">
+      <div style="flex:73;background:var(--ok);height:24px;border-radius:4px 0 0 4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#000">SOFT 73%</div>
+      <div style="flex:21;background:var(--warn);height:24px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#000">MED 21%</div>
+      <div style="flex:6;background:var(--err);height:24px;border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">H</div>
+    </div>
+    <div style="font-size:12px;color:var(--txt-2);line-height:1.7;">
+      <strong style="color:var(--ok)">Soft (~35/mês):</strong> ${D.ctas.soft.slice(0,4).join(' · ')}<br>
+      <strong style="color:var(--warn)">Medium (~10/mês):</strong> ${D.ctas.medium.slice(0,3).join(' · ')}<br>
+      <strong style="color:var(--err)">Hard (~3/mês):</strong> ${D.ctas.hard.join(' · ')}
+    </div>
+  `;
+
+  document.getElementById('revenuePaths').innerHTML=D.paths.map((p,i)=>`
+    <div style="padding:10px 14px;background:var(--bg-2);border-radius:8px;margin-bottom:6px;font-size:13px;border-left:3px solid var(--gold);">
+      <span style="font-family:'JetBrains Mono',monospace;color:var(--gold);margin-right:8px;">#${i+1}</span>${p}
+    </div>
+  `).join('');
+
+  document.getElementById('emailSequence').innerHTML=D.emails.map(e=>`
+    <div class="email-step">
+      <div class="email-day">${e.day}</div>
+      <div class="email-content"><h4>${e.subject}</h4><p>${e.obj}</p></div>
+    </div>
+  `).join('');
+}
+
+// ===========================
+// BATCH DAY TIMER
+// ===========================
+let timerInterval=null,timerEnd=0;
+function startTimer(mins,label){
+  stopTimer();
+  document.getElementById('timerPhase').textContent=label;
+  timerEnd=Date.now()+mins*60000;
+  updateTimer();
+  timerInterval=setInterval(updateTimer,1000);
+}
+function stopTimer(){
+  clearInterval(timerInterval);timerInterval=null;
+  document.getElementById('timerDisplay').textContent='00:00';
+  document.getElementById('timerPhase').textContent='Selecione uma fase';
+}
+function updateTimer(){
+  const rem=Math.max(0,timerEnd-Date.now());
+  if(rem<=0){stopTimer();document.getElementById('timerDisplay').textContent='PRONTO!';document.getElementById('timerDisplay').style.color='var(--ok)';setTimeout(()=>{document.getElementById('timerDisplay').style.color='var(--gold)'},3000);return;}
+  const m=Math.floor(rem/60000),s=Math.floor((rem%60000)/1000);
+  document.getElementById('timerDisplay').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function initBatchDay(){
+  const checks=['Abri o calendário da semana','Escrevi 6 peças (15 min cada)','Editei + confirmei hooks','Adicionei CTAs','Agendei tudo','Gravei Reels','Respondi comentários/DMs','Capturei 1 ideia no Banco','Postei Stories','Chequei métricas (sábado)','Marquei top performers','Ajustei próxima semana'];
+  document.getElementById('weeklyChecklist').innerHTML=checks.map(c=>`
+    <div class="check-item" onclick="this.classList.toggle('done');this.querySelector('input').checked=!this.querySelector('input').checked">
+      <input type="checkbox"><span>${c}</span>
+    </div>
+  `).join('');
+}
+
+// ===========================
+// ROTEIRO GENERATOR
+// ===========================
+function openRoteiro(){
+  const sel=document.getElementById('rotTemplate');
+  sel.innerHTML='<option value="">Selecione...</option>'+D.templates.map(t=>`<option value="${t.id}">${t.id}: ${t.nome} — ${t.desc}</option>`).join('');
+  sel.onchange=()=>{
+    const t=D.templates.find(x=>x.id===sel.value);
+    const fSel=document.getElementById('rotFormato');
+    fSel.innerHTML=t?t.formatos.map(f=>`<option value="${f}">${f}</option>`).join(''):'<option value="">Selecione o template primeiro</option>';
+    updateRoteiroSelects(t);
+  };
+  const sSel=document.getElementById('rotStory');
+  sSel.innerHTML='<option value="">Aleatória (do pilar)</option>'+D.stories.map(s=>`<option value="${s.n}">#${s.n} ${s.title}</option>`).join('');
+  document.getElementById('roteiroOutput').style.display='none';
+  document.getElementById('roteiroActions').style.display='none';
+  document.getElementById('roteiroOverlay').classList.add('open');
+}
+function updateRoteiroSelects(tmpl){
+  const hSel=document.getElementById('rotHook');
+  if(!tmpl){hSel.innerHTML='<option value="">Aleatório (do pilar)</option>';return;}
+  const pilId=tmpl.pilares[0],pil=D.pilares.find(p=>p.id===pilId);
+  const cats=pil?pil.hookCats:Object.keys(D.hooks);
+  let hooks=[];cats.forEach(c=>{if(D.hooks[c])D.hooks[c].forEach((h,i)=>hooks.push({t:h.t,s:h.s,cat:c,idx:i}));});
+  hSel.innerHTML='<option value="">Aleatório (do pilar)</option>'+hooks.map((h,i)=>`<option value="${i}" data-cat="${h.cat}">${h.t.substring(0,60)}${h.t.length>60?'...':''} (${h.cat} ★${h.s})</option>`).join('');
+  hSel._hooks=hooks;
+}
+function closeRoteiro(){document.getElementById('roteiroOverlay').classList.remove('open');}
+
+function getTemplateStructure(id){
+  const structs={
+    T1:['HOOK PROVOCATIVO','Frase curta de impacto #1','Frase curta de impacto #2','Frase curta de impacto #3','Fechamento com posicionamento','CTA'],
+    T2:['HOOK NARRATIVO','Abertura da história (cenário, personagem)','Desenvolvimento (conflito, tensão)','Virada / revelação','Lição clara e direta','CTA'],
+    T3:['HOOK DE ERRO','Descrição vívida do erro (o que aconteceu)','A causa real (por que aconteceu)','O aprendizado (o que mudou)','Ação prática (o que fazer)','CTA'],
+    T4:['HOOK CONTRÁRIO','Crença comum que você vai desafiar','Por que essa crença está errada','Sua visão / experiência','Evidência ou exemplo real','CTA'],
+    T5:['HOOK DE RESULTADO','O resultado que você alcançou','Passo 1','Passo 2','Passo 3','Fechamento + CTA'],
+    T6:['HOOK DE DESAFIO','A ação específica que você propõe','Por que isso importa (dor/consequência)','Sua experiência com isso','O dare: "Aceita o desafio?"','CTA'],
+    T7:['HOOK NUMÉRICO','Item #1 + explicação curta','Item #2 + explicação curta','Item #3 + explicação curta','Fechamento com verdade única','CTA'],
+    T8:['HOOK DE BASTIDORES','Cena sensorial (o que você vê/sente/cheira)','O que está acontecendo no processo','O que ninguém mostra ou sabe','Fechamento humano','CTA'],
+    T9:['HOOK DE CONFISSÃO','A admissão (o que você fez/não fez)','O que mudou por causa disso','A virada (o que você aprendeu)','A lição pra quem está ouvindo','CTA'],
+    T10:['HOOK DE PROVA','O resultado/prova concreta','O contexto (como chegou ali)','Como funciona / o método','CTA DIRETO (Right Hook)'],
+  };
+  return structs[id]||['HOOK','Desenvolvimento','Fechamento','CTA'];
+}
+
+function generateRoteiro(){
+  rng=Date.now()&0x7fffffff;
+  const tSel=document.getElementById('rotTemplate').value;
+  if(!tSel){alert('Selecione um template.');return;}
+  const tmpl=D.templates.find(t=>t.id===tSel);
+  const formato=document.getElementById('rotFormato').value;
+  const pilId=tmpl.pilares[0],pil=D.pilares.find(p=>p.id===pilId);
+
+  // Hook
+  const hSel=document.getElementById('rotHook');
+  let hook;
+  if(hSel.value&&hSel._hooks){hook=hSel._hooks[+hSel.value];}
+  else{const cats=pil?pil.hookCats:Object.keys(D.hooks);const cat=pk(cats);hook={t:pk(D.hooks[cat]).t,cat};}
+
+  // Story
+  const sSel=document.getElementById('rotStory').value;
+  let story;
+  if(sSel){story=D.stories.find(s=>s.n===+sSel);}
+  else{const pilStories=D.stories.filter(s=>s.score>=4);story=pk(pilStories);}
+
+  // CTA
+  const ctaType=document.getElementById('rotCta').value;
+  const cta=pk(D.ctas[ctaType]);
+  const bridge=D.bridges[pilId]||'';
+
+  // Build
+  const struct=getTemplateStructure(tSel);
+  const contexto=document.getElementById('rotContexto').value.trim();
+
+  let storySnippet='';
+  if(story){
+    storySnippet=story.summary;
+    if(story.sb7)storySnippet+=`\n  → Problema: ${story.sb7.prob}\n  → Plano: ${story.sb7.plan}`;
+  }
+
+  const guideLines={
+    T1:[hook.t,'[Primeira afirmação forte sobre '+pil.nome+']','[Segunda afirmação — reforça com dado ou experiência]','[Terceira afirmação — arremata o manifesto]',story?`Referência: "${story.message}"`:'[Fechamento com posicionamento]',cta],
+    T2:[hook.t,story?`"${story.title}" — ${story.summary.split('.')[0]}.`:'[Cenário + personagem]',story?story.emotion||'[Conflito/tensão]':'[Desenvolvimento com tensão]',story?story.message:'[Virada/revelação]','[Lição clara extraída da história]',cta],
+    T3:[hook.t,story?story.summary:'[O que aconteceu — descrição vívida]','[A causa real — por que deu errado]',story?story.message:'[O aprendizado]','[Ação prática que o público pode aplicar]',cta],
+    T4:[hook.t,'[A crença que todo mundo repete sobre '+pil.nome+']','[Por que está errada — sua experiência]',story?`Exemplo: ${story.title} — ${story.message}`:'[Sua visão com evidência]','[Evidência ou dado que comprova]',cta],
+    T5:[hook.t,story?`De "${story.title}" aprendi:`:'[O resultado]','[Passo 1 — ação concreta]','[Passo 2 — ação concreta]','[Passo 3 — ação concreta]',cta],
+    T6:[hook.t,'[A ação que você propõe]','[Por que importa — a dor de não fazer]',story?`Eu fiz isso: ${story.summary.split('.')[0]}.`:'[Sua experiência]',cta],
+    T7:[hook.t,'[#1 — fato/dica + explicação curta]','[#2 — fato/dica + explicação curta]','[#3 — fato/dica + explicação curta]',story?story.message:'[Fechamento com verdade]',cta],
+    T8:[hook.t,'[Cena: o que você vê, sente, cheira nesse momento]','[O que está acontecendo no processo]','[O detalhe que ninguém mostra]',story?`"${story.title}" — ${story.emotion}`:'[Fechamento humano]',cta],
+    T9:[hook.t,story?`"${story.summary.split('.')[0]}."`:'[A admissão]',story?story.emotion:'[O que mudou]',story?story.message:'[A lição]','[O conselho pra quem está passando por isso]',cta],
+    T10:[hook.t,story?story.summary:'[O resultado/prova]','[O contexto]','[Como funciona]',cta],
+  };
+
+  const lines=guideLines[tSel]||struct.map((_,i)=>i===0?hook.t:i===struct.length-1?cta:'[Preencher]');
+
+  let html=`<h3>${tmpl.nome} — ${formato}</h3>`;
+  html+=`<div class="rot-section"><div class="rot-meta">Pilar: ${pil.id} ${pil.nome} · História: #${story?story.n:'?'} ${story?story.title:'Livre'} · Hook: ${hook.cat||'mix'} · CTA: ${ctaType}${contexto?' · Contexto: '+contexto:''}</div></div>`;
+
+  struct.forEach((label,i)=>{
+    const isHook=i===0,isCta=i===struct.length-1;
+    html+=`<div class="rot-section">`;
+    html+=`<div class="rot-label">${isHook?'🎣 ':isCta?'👉 ':''}${label}</div>`;
+    html+=`<div class="rot-text">${esc(lines[i]||'[Preencher]')}</div>`;
+    html+=`</div>`;
+  });
+
+  if(bridge){html+=`<div class="rot-section"><div class="rot-label">🌉 Bridge (monetização)</div><div class="rot-text">${bridge}</div></div>`;}
+
+  document.getElementById('roteiroOutput').innerHTML=html;
+  document.getElementById('roteiroOutput').style.display='block';
+  document.getElementById('roteiroActions').style.display='flex';
+}
+
+function randomRoteiro(){
+  rng=Date.now()&0x7fffffff;
+  const t=pk(D.templates);
+  document.getElementById('rotTemplate').value=t.id;
+  document.getElementById('rotTemplate').onchange();
+  document.getElementById('rotFormato').value=pk(t.formatos);
+  document.getElementById('rotStory').value='';
+  document.getElementById('rotHook').value='';
+  document.getElementById('rotCta').value=pk(['soft','soft','soft','medium']);
+  generateRoteiro();
+}
+
+function copyRoteiro(){
+  const el=document.getElementById('roteiroOutput');
+  const text=el.innerText||el.textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=document.querySelector('#roteiroActions .btn-gold');
+    const orig=btn.textContent;btn.textContent='Copiado!';
+    setTimeout(()=>btn.textContent=orig,1500);
+  });
+}
+
+// ===========================
+// INIT ALL
+// ===========================
+initDashboard();
+calInitWeeks();
+mulInitGrid();
+initStories();
+initHooks();
+initTemplates();
+initMonetization();
+initBatchDay();
+</script>
+</body>
+</html>

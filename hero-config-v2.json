@@ -1,0 +1,22 @@
+{
+  "product": "Guia Estratégico: Como Criar, Vender e Escalar Alimentos Artesanais",
+  "offer": "De R$97 por R$27",
+  "tone": "authority, trust, warmth, artisanal mastery, premium quality, bold energy",
+  "subject_photo": "assets/images/author-photo-pimentas.png",
+  "subject_description": "a Brazilian man in his early 30s with: (1) short dark brown wavy hair, (2) clean-shaven face with no beard, (3) fair olive skin tone, (4) brown eyes behind rectangular dark-framed glasses, (5) medium build, (6) wearing a white button-down dress shirt with sleeves slightly rolled, (7) dark watch on left wrist, (8) expressive playful smile showing teeth, biting a red pepper, (9) holding multiple bright red peppers in both hands near his chest",
+  "symbols": [
+    {"object": "artisanal glass jars with colorful hot sauces and pepper preserves", "meaning": "artisanal food craftsmanship", "style": "large, warm-lit, semi-transparent, positioned behind subject on wooden shelves"},
+    {"object": "rustic wooden crates with fresh herbs and spices", "meaning": "premium natural ingredients", "style": "faint, lower background, warm tones"},
+    {"object": "subtle copper pots and kitchen utensils", "meaning": "craft and mastery", "style": "very faint, far background, decorative only"}
+  ],
+  "layers": {
+    "background": "warm dark artisanal kitchen studio (#0A0A0A base) with soft amber backlighting, rustic wooden shelves with jars barely visible, warm smoke wisps rising",
+    "midground": "auto",
+    "foreground": "warm golden rim light on right edge of subject, subtle amber fill light from left, slight warm haze"
+  },
+  "context": "course",
+  "palette": "warm",
+  "seed": 42,
+  "sizes": ["desktop"],
+  "output_dir": "./outputs/premium-design/obsidian_gold/hero-output-v2"
+}

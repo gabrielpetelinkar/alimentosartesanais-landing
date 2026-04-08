@@ -28,3 +28,12 @@ Thumbs.db
 .claude/settings.local.json
 .aios/install-log.txt
 .vercel
+
+# Word temp files
+~$*
+
+# Playwright MCP
+.playwright-mcp/
+
+# Agent runtime
+.agent/

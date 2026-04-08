@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklist: 7 Ajustes que Valorizam Seu Produto Hoje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     EMPÓRIO KRAFT/TERRACOTA — PDF THEME
+     ============================================ */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-primary: #FFF9F0;
+    --bg-secondary: #F5EDE0;
+    --bg-tertiary: #EDE5D5;
+    --accent: #B5563A;
+    --accent-secondary: #9A4528;
+    --accent-soft: #7A3A20;
+    --text: #3D2B1F;
+    --text-secondary: #6B5744;
+    --text-muted: #8A7A68;
+    --glass-bg: rgba(181, 86, 58, 0.05);
+    --glass-border: rgba(181, 86, 58, 0.12);
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg-primary);
+    font-size: 11px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================
+     COVER PAGE
+     ============================================ */
+  .cover {
+    height: 297mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 80px;
+    background: var(--bg-primary);
+    background-image: radial-gradient(ellipse at 50% 30%, rgba(181, 86, 58, 0.10) 0%, transparent 70%);
+    page-break-after: always;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .cover__badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--glass-border);
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+  }
+
+  .cover__title {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 16px;
+    max-width: 550px;
+  }
+
+  .cover__title span {
+    color: #B5563A;
+  }
+
+  .cover__subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 460px;
+    margin-bottom: 50px;
+    line-height: 1.7;
+  }
+
+  .cover__divider {
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 30px;
+  }
+
+  .cover__author {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .cover__author strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  .cover__brand {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  .cover__footer {
+    position: absolute;
+    bottom: 40px;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  /* ============================================
+     PAGE STRUCTURE
+     ============================================ */
+  .page {
+    padding: 50px 60px 80px 60px;
+    background: var(--bg-primary);
+    page-break-after: always;
+    position: relative;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+  }
+
+  .page__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 32px;
+  }
+
+  .page__header-brand {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .page__header-section {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: var(--accent-soft);
+  }
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  h1 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 28px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  p {
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  .section-intro {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+    line-height: 1.7;
+  }
+
+  /* ============================================
+     CHECKLIST ITEMS
+     ============================================ */
+  .checklist-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    page-break-inside: avoid;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .checklist-item__checkbox {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    margin-top: 2px;
+    background: transparent;
+  }
+
+  .checklist-item__number {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    min-width: 28px;
+    line-height: 1.2;
+  }
+
+  .checklist-item__content {
+    flex: 1;
+  }
+
+  .checklist-item__title {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .checklist-item__desc {
+    font-size: 10.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ============================================
+     SECTION DIVIDERS
+     ============================================ */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    margin: 24px 0;
+  }
+
+  .divider--gold {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 30px 0;
+  }
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+  .page__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    margin-top: 40px;
+    border-top: 1px solid var(--glass-border);
+  }
+
+  .page__footer-brand {
+    font-family: var(--font-mono);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .page__footer-page {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--text-muted);
+  }
+
+  /* ============================================
+     PRINT UTILITIES
+     ============================================ */
+  .no-break { page-break-inside: avoid; }
+  .page-break { page-break-before: always; }
+  .mt-0 { margin-top: 0; }
+</style>
+</head>
+<body>
+
+<!-- ================================================
+     COVER PAGE
+     ================================================ -->
+<div class="cover">
+  <div class="cover__badge">BONUS EXCLUSIVO</div>
+  <h1 class="cover__title">
+    Checklist: 7 Ajustes que<br>
+    <span>Valorizam Seu Produto Hoje</span>
+  </h1>
+  <p class="cover__subtitle">
+    Sem investimento, sem mudar receita. Aplique esta semana.
+  </p>
+  <div class="cover__divider"></div>
+  <p class="cover__author">
+    <strong>Gabriel Petelinkar Pereira</strong><br>
+    Gabriel Petelinkar · alimentosartesanais.com.br
+  </p>
+  <p class="cover__brand">www.alimentosartesanais.com.br</p>
+  <div class="cover__footer">
+    Material complementar do Guia Estratégico para Produtores Artesanais
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 2 — ITENS 1-4
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Checklist 7 Ajustes</span>
+    <span class="page__header-section">Itens 1–4</span>
+  </div>
+
+  <h2 class="mt-0">7 Ajustes que Valorizam Seu Produto</h2>
+  <p class="section-intro">Cada ajuste abaixo pode ser implementado esta semana, sem investimento significativo e sem alterar a receita do seu produto. Marque os que já aplicou e comece pelos que ainda faltam.</p>
+
+  <!-- Item 1 -->
+  <div class="checklist-item no-break">
+    <div class="checklist-item__checkbox"></div>
+    <div class="checklist-item__number">1</div>
+    <div class="checklist-item__content">
+      <div class="checklist-item__title">Rótulo com hierarquia visual</div>
+      <p class="checklist-item__desc">Destaque o nome do produto em primeiro, depois a marca, depois informações obrigatórias. Use no máximo 3 fontes. O olho precisa saber onde pousar primeiro.</p>
+    </div>
+  </div>
+
+  <!-- Item 2 -->
+  <div class="checklist-item no-break">
+    <div class="checklist-item__checkbox"></div>
+    <div class="checklist-item__number">2</div>
+    <div class="checklist-item__content">
+      <div class="checklist-item__title">Foto de produto com cenografia</div>
+      <p class="checklist-item__desc">Tire o produto do fundo branco. Coloque ao lado de ingredientes, numa mesa de madeira, com iluminação lateral. Uma boa foto muda a percepção de preço em segundos.</p>
+    </div>
+  </div>
+
+  <!-- Item 3 -->
+  <div class="checklist-item no-break">
+    <div class="checklist-item__checkbox"></div>
+    <div class="checklist-item__number">3</div>
+    <div class="checklist-item__content">
+      <div class="checklist-item__title">Descrição que conta história</div>
+      <p class="checklist-item__desc">Troque "geleia de morango 250g" por "Geleia artesanal de morango colhido à mão, cozida em tacho de cobre". O mesmo produto. Dobro da percepção de valor.</p>
+    </div>
+  </div>
+
+  <!-- Item 4 -->
+  <div class="checklist-item no-break">
+    <div class="checklist-item__checkbox"></div>
+    <div class="checklist-item__number">4</div>
+    <div class="checklist-item__content">
+      <div class="checklist-item__title">Preço ancorado em valor, não custo</div>
+      <p class="checklist-item__desc">Pare de calcular "custo + margem". Pesquise o preço do concorrente premium e posicione o seu entre 70-90% desse valor. Custo é piso, não teto.</p>
+    </div>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">02</span>
+  </div>
+</div>
+
+<!-- ================================================
+     PAGE 3 — ITENS 5-7
+     ================================================ -->
+<div class="page">
+  <div class="page__header">
+    <span class="page__header-brand">Gabriel Petelinkar — Checklist 7 Ajustes</span>
+    <span class="page__header-section">Itens 5–7</span>
+  </div>
+
+  <!-- Item 5 -->
+  <div class="checklist-item no-break">
+    <div class="checklist-item__checkbox"></div>
+    <div class="checklist-item__number">5</div>
+    <div class="checklist-item__content">
+      <div class="checklist-item__title">Embalagem que justifica a prateleira</div>
+      <p class="checklist-item__desc">Se seu produto compete na gôndola, a embalagem precisa competir também. Papel kraft, lacre de cera, barbante, tag escrita à mão. Detalhes que custam centavos e comunicam reais.</p>
+    </div>
+  </div>
+
+  <!-- Item 6 -->
+  <div class="checklist-item no-break">
+    <div class="checklist-item__checkbox"></div>
+    <div class="checklist-item__number">6</div>
+    <div class="checklist-item__content">
+      <div class="checklist-item__title">Canal de venda alinhado ao posicionamento</div>
+      <p class="checklist-item__desc">Se você quer cobrar premium, pare de vender onde todos competem por preço. Empórios, lojas gourmet, assinaturas, delivery com curadoria. O canal define o teto do seu preço.</p>
+    </div>
+  </div>
+
+  <!-- Item 7 -->
+  <div class="checklist-item no-break">
+    <div class="checklist-item__checkbox"></div>
+    <div class="checklist-item__number">7</div>
+    <div class="checklist-item__content">
+      <div class="checklist-item__title">Presença digital mínima</div>
+      <p class="checklist-item__desc">Um Instagram com 9 fotos boas e bio clara vale mais que 500 posts sem identidade. Mostre: produto, processo, pessoa. Três pilares, nessa ordem.</p>
+    </div>
+  </div>
+
+  <div class="divider--gold"></div>
+
+  <div style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 20px 24px; margin-top: 20px; text-align: center;">
+    <p style="font-size: 13px; color: var(--text); font-weight: 600; margin-bottom: 6px;">Não tente aplicar todos de uma vez.</p>
+    <p style="font-size: 11px; color: var(--text-secondary); margin: 0;">Escolha os 2 ajustes que fazem mais sentido para o momento do seu produto e aplique esta semana. Semana que vem, mais 2. Em um mês, seu produto será outro.</p>
+  </div>
+
+  <div class="page__footer">
+    <span class="page__footer-brand">Gabriel Petelinkar · alimentosartesanais.com.br</span>
+    <span class="page__footer-page">03</span>
+  </div>
+</div>
+
+</body>
+</html>

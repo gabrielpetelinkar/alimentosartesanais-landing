@@ -1,0 +1,93 @@
+assessment_result:
+  metadata:
+    id: "assessment_gabriel_petelinkar_2026-02-21"
+    name: "Gabriel Petelinkar Pereira"
+    date: "2026-02-21T00:00:00.000Z"
+    duration_minutes: ~30
+    version: "1.0.0"
+    completeness_score: "100%"
+    questions_answered: 43
+    questions_total: 43
+    partial: false
+
+  section_1_context:
+    nome: "Gabriel Petelinkar Pereira"
+    area_atuacao: "Gestão / Liderança"
+    tempo_experiencia: "5 a 10 anos"
+    descricao_dia_a_dia: "Sou supervisor de uma equipe técnica de engenheiros agrônomos, veterinários e zootecnistas que atendem fazendas no estado de São Paulo. Paralelo, tenho uma fábrica de molhos de pimenta e dou consultoria para agroindústrias de alimentos artesanais."
+    se_dinheiro_nao_importasse: "Viajaria muito, ensinaria as pessoas a ganhar dinheiro com alimentos artesanais e ajudaria jovens a atingir seu melhor potencial no agro."
+    espectro_introextro: "Mais extrovertido que introvertido"
+    espectro_analitico_intuitivo: "Mais intuitivo que analítico"
+    espectro_estrutura_flex: "Mais flexibilidade"
+    frameworks_fed:
+      - "ALL: identificação básica"
+      - "hamilton: introextro(mais_extro) + analitico(mais_intuitivo) = Dynamo/Blaze axis"
+      - "kolbe: estrutura_flex(mais_flex) = Follow Thru baixo indicator"
+      - "hogshead: introextro(mais_extro) = Power/Passion indicator"
+
+  section_2_activities:
+    atividades_drenam:
+      - "Reuniões longas sem pauta definida"
+      - "Tarefas administrativas e burocráticas"
+    atividades_energizam:
+      - "Ensinar e mentorar pessoas"
+      - "Criar coisas novas"
+    outros_agradecem_por: "Explicar algo complexo de forma simples"
+    perde_tempo_em: "Conversando, ensinando ou fazendo mentoria"
+    como_inicia_projetos: "Começar a executar logo e ajustar no caminho"
+    como_resolve_problemas: "Agir rápido com a melhor opção disponível"
+    manual_vs_conceitual: "Mais tangível"
+    nivel_detalhe: "Entrega rápido e itera"
+    estilo_delegacao: "Delego com instruções claras e confio"
+    ritmo_trabalho: "Começo devagar, acelero até o deadline"
+    inovacao_vs_otimizacao: "Criar algo do ZERO que nunca existiu"
+    foco_vs_multitask: "Depende — foco para criar, multitask para executar"
+    frameworks_fed:
+      - "hendricks: drena(burocracia+reuniões) vs energiza(ensinar+criar) = Zone of Excellence/Genius mapping"
+      - "sullivan: agradecem(simplificar) + flow(ensinar) + inovacao(criar_zero) = Unique Ability signals"
+      - "kolbe: inicio(executa_logo) + problemas(age_rapido) + detalhe(entrega_itera) = Quick Start alto, Fact Finder baixo"
+      - "clifton: energizam(ensinar+criar) + padrao(liderança) = Influencing + Strategic domains"
+
+  section_3_talents:
+    padrao_sucesso: "Em todos estava liderando e influenciando pessoas"
+    como_outros_descrevem: "Carismático e inspirador"
+    facilidade_natural: "Falar em público e apresentar ideias"
+    dominio_strengths: "INFLUENCIADOR - convenço, vendo, inspiro os outros a agir"
+    frustracao_recorrente: "Microgerenciamento e falta de autonomia"
+    estilo_comunicacao: "Inspirador e entusiasmado - uso histórias e emoção"
+    estilo_aprendizado: "Assiste vídeos e tutoriais, depois replica"
+    reacao_feedback: "Questiona e desafia se faz sentido"
+    contribuicao_mundo: "Inspirar e liderar movimentos de transformação"
+    competencia_vs_genialidade: "Sim"
+    competencia_vs_genialidade_detalhe: "Gestão financeira de projeto - é bom mas preferia não cuidar do dinheiro"
+    frameworks_fed:
+      - "clifton: padrao(liderar) + descricao(carismatico) + dominio(influenciador) = Influencing domain dominant"
+      - "hogshead: descricao(carismatico) + comunicacao(inspirador) = Power + Passion advantages"
+      - "hendricks: natural(falar_publico) + comp_vs_gen(gestao_financeira) = Genius(comunicação) vs Excellence(finanças)"
+      - "sullivan: contribuicao(inspirar_transformacao) + padrao(liderar) = Unique Ability = inspiring leadership"
+
+  section_4_business:
+    modelo_preferido: "Construir e gerenciar equipes que entregam"
+    tolerancia_risco: "Aceito riscos calculados com rede de proteção"
+    solo_vs_time: "Liderando um time pequeno (3-5 pessoas)"
+    timing_mercado: "Ser o PRIMEIRO em algo novo"
+    fonte_receita_ideal: "Vender conhecimento (cursos, livros, palestras, mentoria)"
+    relacao_preco: "Tenho dificuldade - sempre acho que deveria cobrar menos"
+    escala_vs_profundidade: "MUITAS pessoas com produto escalável"
+    perfil_wealth_dynamics: "CRIADOR — Muitas ideias, começo coisas novas, visionário"
+    frameworks_fed:
+      - "hamilton: perfil_wd(criador) + timing(primeiro) + intro_extro(extro) = Creator/Star axis (Dynamo)"
+      - "hormozi: receita(conhecimento) + preco(dificuldade) + escala(muitas_escalavel) = Value Equation gap in pricing"
+      - "sullivan: solo_vs_time(time_pequeno) + modelo(equipes) = Who Not How ready, needs pricing confidence"
+
+  section_5_vision:
+    resultado_90_dias: "Ter uma venda constante na empresa de molhos de pimenta com pelo menos 50k/mês. Conquistar os primeiros clientes pagantes para consultoria/mentoria."
+    meta_receita_mensal: "R$15.000 a R$50.000/mês"
+    maior_bloqueio: "Para pimentas, falta de vendedor ou capacidade de atingir número maior de compradores (atacado e varejo). Para consultoria, estratégia para começar a cobrar por isso."
+    tempo_disponivel: "10 a 20 horas/semana"
+    nivel_ai: "Básico"
+    frameworks_fed:
+      - "hormozi: meta(15-50k) + bloqueio(distribuição+monetização) + tempo(10-20h) = execution roadmap dual-track"
+      - "hendricks: bloqueio(dificuldade_cobrar) = Upper Limit Problem indicator (self-worth)"
+      - "sullivan: resultado_90d(molhos+consultoria) = Gap vs Gain — two parallel gaps"
+      - "ALL: constraint mapping — tempo limitado (10-20h), AI básico, dois negócios paralelos"

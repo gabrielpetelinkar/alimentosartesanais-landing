@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerador de Calendário Mensal — Content OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
+  --bg-card: #1A1A1A;
+  --bg-card-hover: #222222;
+  --gold: #D4A843;
+  --gold-light: #E8C96A;
+  --gold-dim: #A68A3E;
+  --text-primary: #F5F5F5;
+  --text-secondary: #AAAAAA;
+  --text-muted: #666666;
+  --border: #2A2A2A;
+  --success: #4CAF50;
+  --warning: #FF9800;
+  --danger: #F44336;
+  --info: #2196F3;
+  --p1: #D4A843;
+  --p2: #E87040;
+  --p3: #8B5CF6;
+  --p4: #10B981;
+  --p5: #3B82F6;
+  --soft: #4CAF50;
+  --medium-cta: #FF9800;
+  --hard: #F44336;
+  --jab: #2196F3;
+  --rh: #F44336;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+  border-bottom: 2px solid var(--gold);
+  padding: 32px 40px;
+  text-align: center;
+}
+.header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--gold);
+}
+.header p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+/* LAYOUT */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 24px 80px;
+}
+
+/* SETUP SECTION */
+.setup-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+.setup-section h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.setup-section h2 .badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--gold-dim);
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.field input, .field select, .field textarea {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.field textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* WEEK CONFIG */
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.week-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+.week-card h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.week-card h3 .recycling-tag {
+  font-size: 10px;
+  background: var(--warning);
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.week-card .field { margin-bottom: 10px; }
+.week-card .field:last-child { margin-bottom: 0; }
+
+/* BUTTONS */
+.btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #000;
+}
+.btn-gold:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(212,168,67,0.3); }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+.btn-outline:hover { background: rgba(212,168,67,0.1); }
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* CALENDAR OUTPUT */
+.calendar-output {
+  display: none;
+  margin-top: 32px;
+}
+.calendar-output.visible { display: block; }
+
+/* STATS BAR */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-card .stat-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--gold);
+}
+.stat-card .stat-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* WEEK TABLE */
+.week-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.week-header {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+.week-header h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+.week-header .ratio-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.ratio-good { background: rgba(76,175,80,0.2); color: var(--success); }
+.ratio-ok { background: rgba(255,152,0,0.2); color: var(--warning); }
+.ratio-bad { background: rgba(244,67,54,0.2); color: var(--danger); }
+
+.day-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.day-row:last-child { border-bottom: none; }
+
+.day-label {
+  padding: 14px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border);
+}
+
+.day-content {
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.content-piece {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border-left: 3px solid var(--border);
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+.content-piece.p1 { border-left-color: var(--p1); }
+.content-piece.p2 { border-left-color: var(--p2); }
+.content-piece.p3 { border-left-color: var(--p3); }
+.content-piece.p4 { border-left-color: var(--p4); }
+.content-piece.p5 { border-left-color: var(--p5); }
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.tag-platform { background: rgba(255,255,255,0.08); color: var(--text-secondary); }
+.tag-format { background: rgba(212,168,67,0.15); color: var(--gold); }
+.tag-template { background: rgba(139,92,246,0.15); color: #A78BFA; }
+.tag-jab { background: rgba(33,150,243,0.15); color: var(--jab); }
+.tag-rh { background: rgba(244,67,54,0.2); color: var(--rh); font-weight: 700; }
+.tag-cta-soft { background: rgba(76,175,80,0.15); color: var(--soft); }
+.tag-cta-medium { background: rgba(255,152,0,0.15); color: var(--medium-cta); }
+.tag-cta-hard { background: rgba(244,67,54,0.15); color: var(--hard); font-weight: 700; }
+
+.piece-text {
+  flex: 1;
+  min-width: 200px;
+}
+.piece-hook {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* CTA DETAIL */
+.cta-text {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* EXPORT */
+.export-section {
+  margin-top: 24px;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .header { padding: 20px 16px; }
+  .header h1 { font-size: 22px; }
+  .container { padding: 16px; }
+  .setup-section { padding: 20px; }
+  .day-row { grid-template-columns: 60px 1fr; }
+  .content-piece { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Gerador de Calendário Mensal</h1>
+  <p>Content OS — 5 Pilares · 10 Templates · 53 Hooks · CTA Strategy 73/21/6</p>
+</div>
+
+<div class="container">
+
+  <!-- SETUP -->
+  <div class="setup-section">
+    <h2>Configuração do Mês <span class="badge">SETUP</span></h2>
+    <div class="form-grid">
+      <div class="field">
+        <label>Mês / Ano</label>
+        <input type="month" id="monthYear" value="2026-04">
+      </div>
+      <div class="field">
+        <label>Ratio Jab : Right Hook</label>
+        <select id="ratioTarget">
+          <option value="11">11:1 (conservador)</option>
+          <option value="7" selected>7:1 (equilibrado)</option>
+          <option value="5">5:1 (agressivo)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Peças por semana</label>
+        <select id="piecesPerWeek">
+          <option value="8">8 (leve)</option>
+          <option value="10">10 (moderado)</option>
+          <option value="12" selected>12 (full)</option>
+          <option value="14">14 (intenso)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Semana de reciclagem</label>
+        <select id="recycleWeek">
+          <option value="3" selected>Semana 3</option>
+          <option value="4">Semana 4</option>
+          <option value="0">Nenhuma</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK THEMES -->
+  <div class="setup-section">
+    <h2>Temas por Semana <span class="badge">CONTEÚDO</span></h2>
+    <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
+      Defina as histórias/temas de cada semana. O gerador distribui automaticamente pelos 5 pilares, escolhe templates, hooks e CTAs.
+    </p>
+    <div class="weeks-grid" id="weeksGrid">
+      <!-- Gerado via JS -->
+    </div>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="actions" style="justify-content: center;">
+    <button class="btn btn-gold" onclick="generateCalendar()">Gerar Calendário</button>
+    <button class="btn btn-outline" onclick="fillExample()">Preencher Exemplo</button>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="calendar-output" id="calendarOutput">
+    <h2 style="font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; color: var(--gold); margin-bottom: 20px;">
+      Calendário Gerado
+    </h2>
+
+    <div class="stats-bar" id="statsBar"></div>
+    <div id="calendarWeeks"></div>
+
+    <div class="export-section">
+      <button class="btn btn-gold" onclick="exportMarkdown()">Exportar Markdown</button>
+      <button class="btn btn-outline" style="margin-left: 12px;" onclick="copyToClipboard()">Copiar Texto</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ===== DATA =====
+const PILARES = [
+  { id: 'P1', nome: 'Manifesto e Posicionamento', cor: 'p1', freq: 2, historiaBase: 'Artesanal Não é Caseiro' },
+  { id: 'P2', nome: 'Storytelling e Legado', cor: 'p2', freq: 2, historiaBase: 'O Isopor do Avô' },
+  { id: 'P3', nome: 'Erros e Lições de Produção', cor: 'p3', freq: 1.5, historiaBase: 'O Frasco que Estourou' },
+  { id: 'P4', nome: 'Vendas e Go-to-Market', cor: 'p4', freq: 1, historiaBase: 'A Mochila dos Food Trucks' },
+  { id: 'P5', nome: 'Bastidores e Prova Social', cor: 'p5', freq: 1, historiaBase: 'Todas (documentar)' },
+];
+
+const TEMPLATES = [
+  { id: 'T1', nome: 'Manifesto', pilares: ['P1'], formatos: ['Carrossel', 'Reel 30s', 'Feed'] },
+  { id: 'T2', nome: 'História→Lição', pilares: ['P2'], formatos: ['Reel 60s', 'Carrossel', 'Stories'] },
+  { id: 'T3', nome: 'Erro Real', pilares: ['P3'], formatos: ['Carrossel', 'Reel 45s', 'Stories'] },
+  { id: 'T4', nome: 'Contrário', pilares: ['P1'], formatos: ['Reel 30s', 'Feed', 'Carrossel'] },
+  { id: 'T5', nome: 'Como Eu Fiz', pilares: ['P4'], formatos: ['Carrossel', 'Reel 45s'] },
+  { id: 'T6', nome: 'Desafio', pilares: ['P4'], formatos: ['Reel 30s', 'Stories', 'Feed'] },
+  { id: 'T7', nome: 'Número+Verdade', pilares: ['P3', 'P4'], formatos: ['Carrossel', 'Reel 30s', 'Feed'] },
+  { id: 'T8', nome: 'Bastidores', pilares: ['P5'], formatos: ['Reel 45s', 'Stories', 'Reel 30s'] },
+  { id: 'T9', nome: 'Confissão+Virada', pilares: ['P2', 'P3'], formatos: ['Reel 60s', 'Carrossel', 'Stories'] },
+  { id: 'T10', nome: 'Prova+Oferta', pilares: ['P5'], formatos: ['Feed', 'Carrossel'] },
+];
+
+const HOOKS = {
+  contrario: [
+    "Se você acha que produto artesanal tem que ser barato, você é parte do problema.",
+    "Produto bom NÃO se vende sozinho. Quem te disse isso te fez mal.",
+    "Quanto mais ingredientes no rótulo, MENOS vende.",
+    "O maior inimigo do produtor artesanal não é a indústria. É ele mesmo.",
+    "Instagram não vende seu produto. Quem vende é você.",
+    "Artesanal não é caseiro. E se você trata assim, tá matando seu negócio.",
+    "Receita boa com comunicação ruim = produto invisível. Pra sempre.",
+    "Você não precisa de mais seguidores. Precisa de coragem pra cobrar o que vale.",
+  ],
+  pergunta: [
+    "Você sabe o custo REAL do seu produto? (A maioria não sabe.)",
+    "Quantas receitas de família estão morrendo agora porque ninguém documentou?",
+    "Qual o preço da sua vergonha? Porque cobrar barato tem custo.",
+    "Seu produto é bom. Mas seu cliente sabe que você existe?",
+    "Se eu te dissesse que com 3 mudanças você dobra seu preço — você ouviria?",
+    "Você produz artesanal e ainda faz 'no olho'? É questão de tempo.",
+    "O que acontece com sua receita quando você não estiver mais aqui?",
+    "Você tá construindo uma marca — ou um hobby caro?",
+  ],
+  numero: [
+    "12 anos, 11 produtos e 1 lição: quem só tira pedido, morre.",
+    "3 coisas que meço em cada lote. Se você não mede, não controla.",
+    "5 sinais de que seu produto vai dar problema antes de você perceber.",
+    "3 erros que quase quebraram meu negócio.",
+    "1 avô + 1 isopor + 1 molho de pimenta = 12 anos de negócio.",
+    "De 0 a 5 pontos de venda em 6 meses. O passo que ninguém fala.",
+    "3 formas de chegar no primeiro cliente — sem gastar 1 real.",
+  ],
+  historia: [
+    "Meu avô saía todo dia com um isopor no ombro. Compravam o salgado — voltavam pelo molho.",
+    "Quando meu avô morreu, fui atrás da receita. Ninguém tinha.",
+    "O cliente mandou foto do molho escorrendo pela parede da cozinha.",
+    "Eu saía pra comer hambúrguer com uma mochila cheia de molho de pimenta.",
+    "Chegaram na fábrica de madrugada e levaram tudo.",
+    "A cor mudou. O frasco fermentou. O lote inteiro foi pro lixo.",
+    "Eu cobrava metade do que valia. E quase quebrei.",
+  ],
+  desafio: [
+    "Calcule o custo REAL do seu produto hoje. Eu te desafio.",
+    "Pare de pedir desculpa pelo seu preço por 7 dias.",
+    "Ofereça seu produto pra 5 desconhecidos essa semana.",
+    "Documente sua receita completa hoje. Agora.",
+    "Me manda foto do seu produto. Feedback honesto.",
+    "Suba o preço 20% e veja se perde cliente. Spoiler: não vai.",
+  ],
+  resultado: [
+    "De mochila nos food trucks a e-commerce nacional. 12 anos.",
+    "Meu fornecedor agora tem compra garantida e renda justa.",
+    "Comecei dando molho de graça. Hoje sou jurado nacional.",
+    "Reconstruí a receita do meu avô de memória. Hoje é o mais vendido.",
+    "1 receita caseira virou 11 produtos. Sem investidor.",
+    "O molho que meu avô dava de brinde agora vende pra todo o Brasil.",
+  ],
+  bastidores: [
+    "Tá vendo essa balança? Ela salvou meu negócio.",
+    "Esse liquidificador queimou pela terceira vez. Acidez destrói tudo.",
+    "Isso aqui é o que ninguém mostra: 4h da manhã envasando molho.",
+    "Cada frasco passa por isso. Se não passar, não sai.",
+    "O cheiro dessa fábrica às 6 da manhã? Pimenta. Muito pimenta.",
+  ],
+  confissao: [
+    "Eu já vendi produto que sabia que não tava 100%. Nunca mais.",
+    "A verdade sobre produzir artesanal: é solitário.",
+    "Eu tinha vergonha de dizer quanto custava meu molho.",
+    "Meu maior erro não foi o frasco. Foi demorar 3 anos pra padronizar.",
+    "Ninguém te prepara pro dia em que roubam sua fábrica.",
+    "Opinião impopular: a maioria deveria parar de produzir e aprender a vender.",
+  ],
+};
+
+const HOOK_TO_TEMPLATE = {
+  contrario: ['T4', 'T1'],
+  pergunta: ['T4', 'T7'],
+  numero: ['T7', 'T5'],
+  historia: ['T2', 'T9'],
+  desafio: ['T6', 'T5'],
+  resultado: ['T5', 'T10'],
+  bastidores: ['T8', 'T3'],
+  confissao: ['T9', 'T3'],
+};
+
+const CTAS = {
+  soft: [
+    "Concorda ou discorda?",
+    "Manda pra alguém que precisa",
+    "Salva pra consultar",
+    "Qual é a sua versão?",
+    "Já passou por isso?",
+    "Comenta aqui 👇",
+    "Marca alguém que precisa ouvir isso",
+    "Se identificou? Salva.",
+  ],
+  medium: [
+    "Aprofundo na newsletter — link na bio",
+    "Guia gratuito sobre isso — link na bio",
+    "DM com CHECKLIST pro checklist completo",
+    "Conto mais na newsletter dessa semana",
+    "Na mentoria aprofundo isso — DM com MENTORIA",
+  ],
+  hard: [
+    "Mentoria — vagas limitadas. Link na bio",
+    "Curso com inscrições abertas. Link na bio",
+    "DM com MENTORIA pra saber mais",
+  ],
+};
+
+const BRIDGE_PHRASES = {
+  P1: "Tem muito mais no ebook — link na bio",
+  P2: "12 anos de erros — newsletter toda semana",
+  P3: "No curso aprofundo com passo a passo",
+  P4: "Isso é o que ajudo a resolver na mentoria",
+  P5: "",
+};
+
+const DIAS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+const PLATAFORMAS = ['IG', 'LinkedIn'];
+const FORMATOS_IG = ['Reel 60s', 'Reel 45s', 'Reel 30s', 'Carrossel', 'Stories', 'Feed'];
+const FORMATOS_LI = ['Post LinkedIn'];
+
+// ===== SEEDED RNG =====
+let rngState = 42;
+function seededRandom() {
+  rngState = (rngState * 1664525 + 1013904223) & 0x7fffffff;
+  return rngState / 0x7fffffff;
+}
+function pick(arr) { return arr[Math.floor(seededRandom() * arr.length)]; }
+function pickIndex(arr, usedSet) {
+  let attempts = 0;
+  let idx;
+  do { idx = Math.floor(seededRandom() * arr.length); attempts++; }
+  while (usedSet.has(idx) && attempts < 50);
+  usedSet.add(idx);
+  return arr[idx];
+}
+
+// ===== INIT =====
+function initWeeks() {
+  const grid = document.getElementById('weeksGrid');
+  grid.innerHTML = '';
+  for (let w = 1; w <= 4; w++) {
+    const recycleWeek = parseInt(document.getElementById('recycleWeek').value);
+    const isRecycle = w === recycleWeek;
+    grid.innerHTML += `
+      <div class="week-card">
+        <h3>Semana ${w} ${isRecycle ? '<span class="recycling-tag">RECICLAGEM</span>' : ''}</h3>
+        <div class="field">
+          <label>Histórias / Temas</label>
+          <textarea id="week${w}Themes" placeholder="${isRecycle ? 'Top performers pra reciclar (ex: Isopor do Avô, Manifesto Artesanal)' : 'Ex: O Isopor do Avô, Artesanal Não é Caseiro, Erros de produção'}"
+            rows="2"></textarea>
+        </div>
+        <div class="field">
+          <label>Foco especial (opcional)</label>
+          <input type="text" id="week${w}Focus" placeholder="${isRecycle ? 'Novo ângulo/hook dos reciclados' : 'Ex: Lançamento newsletter, Live programada'}">
+        </div>
+      </div>
+    `;
+  }
+}
+
+// ===== GENERATE =====
+function generateCalendar() {
+  rngState = Date.now() & 0x7fffffff;
+
+  const ratioTarget = parseInt(document.getElementById('ratioTarget').value);
+  const piecesPerWeek = parseInt(document.getElementById('piecesPerWeek').value);
+  const recycleWeek = parseInt(document.getElementById('recycleWeek').value);
+  const monthVal = document.getElementById('monthYear').value;
+  const [year, month] = monthVal.split('-').map(Number);
+
+  const monthNames = ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+  let totalJabs = 0, totalRH = 0, totalSoft = 0, totalMedium = 0, totalHard = 0;
+  let totalPieces = 0;
+  const pilarCount = { P1: 0, P2: 0, P3: 0, P4: 0, P5: 0 };
+
+  const allWeeks = [];
+
+  for (let w = 1; w <= 4; w++) {
+    const isRecycle = w === recycleWeek;
+    const themes = document.getElementById(`week${w}Themes`).value || '';
+    const focus = document.getElementById(`week${w}Focus`).value || '';
+
+    // Determine RH slots for this week
+    const rhCount = w === 2 ? Math.max(1, Math.floor(piecesPerWeek / 5)) :
+                    w === 4 ? 1 :
+                    Math.max(1, Math.floor(piecesPerWeek / (ratioTarget + 1)));
+    const jabCount = piecesPerWeek - rhCount;
+
+    const weekPieces = [];
+    const usedHooks = new Set();
+
+    // Build pillar distribution for the week
+    const pilarSlots = [];
+    const totalFreq = PILARES.reduce((s, p) => s + p.freq, 0);
+    PILARES.forEach(p => {
+      const slots = Math.max(1, Math.round((p.freq / totalFreq) * piecesPerWeek));
+      for (let i = 0; i < slots; i++) pilarSlots.push(p);
+    });
+    // Trim or pad to match piecesPerWeek
+    while (pilarSlots.length < piecesPerWeek) pilarSlots.push(pick(PILARES));
+    while (pilarSlots.length > piecesPerWeek) pilarSlots.pop();
+    // Shuffle
+    for (let i = pilarSlots.length - 1; i > 0; i--) {
+      const j = Math.floor(seededRandom() * (i + 1));
+      [pilarSlots[i], pilarSlots[j]] = [pilarSlots[j], pilarSlots[i]];
+    }
+
+    // Distribute across days (Mon-Sun)
+    const piecesPerDay = new Array(7).fill(0);
+    // Sun gets fewer pieces (1 RH typically), Sat gets 1-2 (stories)
+    const dayWeights = [2, 2, 2, 2, 2, 1, 1]; // Mon-Sun
+    const totalWeight = dayWeights.reduce((s, w) => s + w, 0);
+    let assigned = 0;
+    for (let d = 0; d < 7; d++) {
+      piecesPerDay[d] = Math.max(1, Math.round((dayWeights[d] / totalWeight) * piecesPerWeek));
+      assigned += piecesPerDay[d];
+    }
+    // Adjust
+    while (assigned > piecesPerWeek) {
+      const idx = Math.floor(seededRandom() * 5); // reduce from weekdays
+      if (piecesPerDay[idx] > 1) { piecesPerDay[idx]--; assigned--; }
+    }
+    while (assigned < piecesPerWeek) {
+      const idx = Math.floor(seededRandom() * 5);
+      piecesPerDay[idx]++; assigned++;
+    }
+
+    // RH goes on Sunday (or last piece of week)
+    let rhRemaining = rhCount;
+    let pilarIdx = 0;
+
+    for (let d = 0; d < 7; d++) {
+      const dayPieces = [];
+      for (let p = 0; p < piecesPerDay[d]; p++) {
+        const isRH = (d === 6 && rhRemaining > 0) || (d >= 5 && rhRemaining > 1 && p === piecesPerDay[d] - 1);
+        if (isRH) rhRemaining--;
+
+        const pilar = pilarSlots[pilarIdx % pilarSlots.length];
+        pilarIdx++;
+        pilarCount[pilar.id]++;
+
+        // Pick hook category matching pillar
+        const hookCats = pilar.id === 'P1' ? ['contrario', 'pergunta'] :
+                         pilar.id === 'P2' ? ['historia', 'confissao'] :
+                         pilar.id === 'P3' ? ['numero', 'confissao', 'bastidores'] :
+                         pilar.id === 'P4' ? ['desafio', 'resultado', 'numero'] :
+                         ['bastidores', 'historia'];
+        const hookCat = pick(hookCats);
+        const hook = pickIndex(HOOKS[hookCat], usedHooks);
+
+        // Pick template
+        const templateIds = HOOK_TO_TEMPLATE[hookCat];
+        const templateId = pick(templateIds);
+        const template = TEMPLATES.find(t => t.id === templateId);
+
+        // Pick format
+        const isLinkedin = (p > 0 && d < 5 && seededRandom() > 0.5);
+        const platform = isLinkedin ? 'LinkedIn' : 'IG';
+        let formato;
+        if (platform === 'LinkedIn') {
+          formato = 'Post LinkedIn';
+        } else if (d === 5) {
+          formato = 'Stories';
+        } else {
+          formato = pick(template.formatos);
+        }
+
+        // CTA
+        let ctaType, cta;
+        if (isRH) {
+          ctaType = 'hard';
+          cta = pick(CTAS.hard);
+          totalHard++;
+          totalRH++;
+        } else if (seededRandom() < 0.15) {
+          ctaType = 'medium';
+          cta = pick(CTAS.medium);
+          totalMedium++;
+          totalJabs++;
+        } else {
+          ctaType = 'soft';
+          cta = pick(CTAS.soft);
+          totalSoft++;
+          totalJabs++;
+        }
+
+        totalPieces++;
+
+        dayPieces.push({
+          pilar,
+          template,
+          hook,
+          hookCat,
+          platform,
+          formato,
+          ctaType,
+          cta,
+          isRH,
+          isRecycle,
+          bridge: BRIDGE_PHRASES[pilar.id],
+        });
+      }
+      weekPieces.push({ dia: DIAS[d], pieces: dayPieces });
+    }
+
+    allWeeks.push({
+      num: w,
+      isRecycle,
+      themes,
+      focus,
+      jabCount: weekPieces.reduce((s, d) => s + d.pieces.filter(p => !p.isRH).length, 0),
+      rhCount: weekPieces.reduce((s, d) => s + d.pieces.filter(p => p.isRH).length, 0),
+      days: weekPieces,
+    });
+  }
+
+  // ===== RENDER =====
+  // Stats
+  const statsHtml = `
+    <div class="stat-card"><div class="stat-value">${totalPieces}</div><div class="stat-label">Peças Total</div></div>
+    <div class="stat-card"><div class="stat-value">${totalJabs}:${totalRH}</div><div class="stat-label">Jab : Right Hook</div></div>
+    <div class="stat-card"><div class="stat-value">${totalSoft}</div><div class="stat-label">CTA Soft</div></div>
+    <div class="stat-card"><div class="stat-value">${totalMedium}</div><div class="stat-label">CTA Medium</div></div>
+    <div class="stat-card"><div class="stat-value">${totalHard}</div><div class="stat-label">CTA Hard</div></div>
+    <div class="stat-card"><div class="stat-value">${monthNames[month]}</div><div class="stat-label">${year}</div></div>
+  `;
+  document.getElementById('statsBar').innerHTML = statsHtml;
+
+  // Weeks
+  let weeksHtml = '';
+  allWeeks.forEach(week => {
+    const ratio = week.rhCount > 0 ? Math.round(week.jabCount / week.rhCount) : week.jabCount;
+    const ratioClass = ratio >= 7 ? 'ratio-good' : ratio >= 4 ? 'ratio-ok' : 'ratio-bad';
+
+    weeksHtml += `
+      <div class="week-block">
+        <div class="week-header">
+          <h3>Semana ${week.num} ${week.isRecycle ? '— RECICLAGEM' : ''} ${week.themes ? '— ' + week.themes.substring(0, 60) : ''}</h3>
+          <span class="ratio-badge ${ratioClass}">${ratio}:1 J:RH</span>
+        </div>
+    `;
+
+    week.days.forEach(day => {
+      if (day.pieces.length === 0) return;
+      weeksHtml += `
+        <div class="day-row">
+          <div class="day-label">${day.dia}</div>
+          <div class="day-content">
+      `;
+      day.pieces.forEach(piece => {
+        const ctaTag = piece.ctaType === 'soft' ? 'tag-cta-soft' :
+                       piece.ctaType === 'medium' ? 'tag-cta-medium' : 'tag-cta-hard';
+        const jrhTag = piece.isRH ? 'tag-rh' : 'tag-jab';
+
+        weeksHtml += `
+          <div class="content-piece ${piece.pilar.cor}">
+            <span class="tag tag-platform">${piece.platform}</span>
+            <span class="tag tag-format">${piece.formato}</span>
+            <span class="tag tag-template">${piece.template.nome}</span>
+            <span class="tag ${jrhTag}">${piece.isRH ? 'RIGHT HOOK' : 'JAB'}</span>
+            <span class="tag ${ctaTag}">CTA ${piece.ctaType}</span>
+            <div class="piece-text">
+              <div class="piece-hook">"${piece.hook}"</div>
+              <div class="cta-text">CTA: ${piece.cta}${piece.bridge && piece.ctaType === 'medium' ? ' · Ponte: ' + piece.bridge : ''}</div>
+            </div>
+          </div>
+        `;
+      });
+      weeksHtml += '</div></div>';
+    });
+
+    weeksHtml += '</div>';
+  });
+
+  document.getElementById('calendarWeeks').innerHTML = weeksHtml;
+
+  // Show
+  const output = document.getElementById('calendarOutput');
+  output.classList.add('visible');
+  output.scrollIntoView({ behavior: 'smooth' });
+
+  // Store for export
+  window._calendarData = { allWeeks, totalPieces, totalJabs, totalRH, totalSoft, totalMedium, totalHard, month: monthNames[month], year };
+}
+
+// ===== EXAMPLE =====
+function fillExample() {
+  document.getElementById('week1Themes').value = 'O Isopor do Avô, Artesanal Não é Caseiro';
+  document.getElementById('week1Focus').value = 'Inauguração newsletter';
+  document.getElementById('week2Themes').value = 'A Receita que Ninguém Tinha, O Frasco que Estourou';
+  document.getElementById('week2Focus').value = '';
+  document.getElementById('week3Themes').value = 'Top performers Semanas 1-2';
+  document.getElementById('week3Focus').value = 'Reciclados com novos hooks';
+  document.getElementById('week4Themes').value = 'A Mochila dos Food Trucks, Erros de produção';
+  document.getElementById('week4Focus').value = 'Hard CTA mentoria';
+}
+
+// ===== EXPORT =====
+function exportMarkdown() {
+  const d = window._calendarData;
+  if (!d) return;
+
+  let md = `# Calendário ${d.month} ${d.year}\n\n`;
+  md += `**Total:** ${d.totalPieces} peças | **Ratio:** ${d.totalJabs}:${d.totalRH} J:RH | **CTAs:** ${d.totalSoft} Soft / ${d.totalMedium} Medium / ${d.totalHard} Hard\n\n---\n\n`;
+
+  d.allWeeks.forEach(week => {
+    md += `## Semana ${week.num}${week.isRecycle ? ' — RECICLAGEM' : ''}${week.themes ? ' — ' + week.themes : ''}\n\n`;
+    md += `| Dia | Plataforma | Formato | Template | J/RH | CTA | Hook |\n`;
+    md += `|-----|-----------|---------|----------|------|-----|------|\n`;
+
+    week.days.forEach(day => {
+      day.pieces.forEach(piece => {
+        md += `| ${day.dia} | ${piece.platform} | ${piece.formato} | ${piece.template.nome} | ${piece.isRH ? 'RH' : 'Jab'} | ${piece.ctaType} | ${piece.hook.substring(0, 50)}... |\n`;
+      });
+    });
+    md += '\n';
+  });
+
+  const blob = new Blob([md], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `calendario-${d.month.toLowerCase()}-${d.year}.md`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function copyToClipboard() {
+  const d = window._calendarData;
+  if (!d) return;
+
+  let text = `CALENDÁRIO ${d.month.toUpperCase()} ${d.year}\n`;
+  text += `${d.totalPieces} peças | ${d.totalJabs}:${d.totalRH} J:RH | ${d.totalSoft}S/${d.totalMedium}M/${d.totalHard}H\n\n`;
+
+  d.allWeeks.forEach(week => {
+    text += `── SEMANA ${week.num}${week.isRecycle ? ' (RECICLAGEM)' : ''} ──\n`;
+    if (week.themes) text += `Temas: ${week.themes}\n`;
+    text += '\n';
+
+    week.days.forEach(day => {
+      day.pieces.forEach(piece => {
+        text += `${day.dia} | ${piece.platform} ${piece.formato} | ${piece.template.nome} | ${piece.isRH ? '🔴 RH' : '🔵 Jab'} | CTA ${piece.ctaType}\n`;
+        text += `  Hook: "${piece.hook}"\n`;
+        text += `  CTA: ${piece.cta}\n\n`;
+      });
+    });
+  });
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    const orig = btn.textContent;
+    btn.textContent = 'Copiado!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+
+// ===== INIT =====
+document.getElementById('recycleWeek').addEventListener('change', initWeeks);
+initWeeks();
+</script>
+
+</body>
+</html>

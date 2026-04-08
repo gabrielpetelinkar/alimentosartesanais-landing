@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PITADAS DE SABEDORIA - 4 Opcoes de Capa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: 'Montserrat', sans-serif;
+  padding: 40px 20px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #D4A843;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 60px;
+  font-weight: 300;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 60px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.option-label {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #D4A843;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.option-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.option-desc {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 24px;
+  text-align: center;
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+/* ========== BOOK COVER BASE ========== */
+.book-cover {
+  width: 320px;
+  height: 480px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    8px 8px 30px rgba(0,0,0,0.6),
+    -2px -2px 10px rgba(255,255,255,0.03),
+    0 0 60px rgba(212,168,67,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.book-cover:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow:
+    12px 12px 40px rgba(0,0,0,0.7),
+    0 0 80px rgba(212,168,67,0.15);
+}
+
+/* Spine effect */
+.book-cover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  z-index: 10;
+}
+
+/* ========== OPCAO 1: TEMPERO DIVINO ========== */
+.cover-1 {
+  background: linear-gradient(170deg, #0d1b2a 0%, #1b2838 40%, #162230 100%);
+}
+
+.cover-1 .bg-glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(212,168,67,0.15) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cover-1 .spice-hand {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.cover-1 .fingers {
+  font-size: 2.8rem;
+  filter: grayscale(0.3) brightness(0.9);
+  display: block;
+  margin-bottom: -10px;
+}
+
+.cover-1 .particles {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 120px;
+}
+
+.cover-1 .particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #D4A843;
+  animation: fall 3s infinite ease-in;
+}
+
+@keyframes fall {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(80px) scale(0.3); }
+}
+
+.cover-1 .particle:nth-child(1) { left: 30%; top: 0; animation-delay: 0s; background: #E8C85A; width: 5px; height: 5px; }
+.cover-1 .particle:nth-child(2) { left: 50%; top: 5px; animation-delay: 0.3s; background: #D4A843; width: 3px; height: 3px; }
+.cover-1 .particle:nth-child(3) { left: 70%; top: 2px; animation-delay: 0.6s; background: #C49A37; width: 4px; height: 4px; }
+.cover-1 .particle:nth-child(4) { left: 40%; top: 8px; animation-delay: 0.9s; background: #F0D878; width: 3px; height: 3px; }
+.cover-1 .particle:nth-child(5) { left: 60%; top: 3px; animation-delay: 1.2s; background: #D4A843; width: 5px; height: 5px; }
+.cover-1 .particle:nth-child(6) { left: 35%; top: 10px; animation-delay: 1.5s; background: #E8C85A; width: 2px; height: 2px; }
+.cover-1 .particle:nth-child(7) { left: 55%; top: 6px; animation-delay: 1.8s; background: #C49A37; width: 4px; height: 4px; }
+.cover-1 .particle:nth-child(8) { left: 45%; top: 12px; animation-delay: 2.1s; background: #F0D878; width: 3px; height: 3px; }
+.cover-1 .particle:nth-child(9) { left: 65%; top: 4px; animation-delay: 0.4s; background: #D4A843; width: 2px; height: 2px; }
+.cover-1 .particle:nth-child(10) { left: 48%; top: 9px; animation-delay: 0.7s; background: #E8C85A; width: 6px; height: 6px; box-shadow: 0 0 8px rgba(212,168,67,0.6); }
+
+.cover-1 .bible-icon {
+  position: absolute;
+  bottom: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.2rem;
+  opacity: 0.7;
+  filter: sepia(0.6) brightness(1.2);
+}
+
+.cover-1 .title-area {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 85%;
+}
+
+.cover-1 .title-pitadas {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #D4A843;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  text-shadow: 0 2px 15px rgba(212,168,67,0.3);
+}
+
+.cover-1 .title-de {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #a08445;
+  margin: 4px 0;
+}
+
+.cover-1 .title-sabedoria {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #F0E6CE;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.cover-1 .authors {
+  position: absolute;
+  bottom: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 80%;
+}
+
+.cover-1 .author-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #a08445;
+  font-weight: 400;
+}
+
+.cover-1 .separator {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4A843, transparent);
+  margin: 10px auto;
+}
+
+/* ========== OPCAO 2: CAMINHO DA SABEDORIA ========== */
+.cover-2 {
+  background: linear-gradient(180deg,
+    #0d1522 0%,
+    #1a2a3e 15%,
+    #2a3d55 30%,
+    #3d5a73 45%,
+    #c48a3f 65%,
+    #e8a840 75%,
+    #f0c060 85%,
+    #f8d878 95%
+  );
+}
+
+.cover-2 .landscape {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+}
+
+.cover-2 .mountains {
+  position: absolute;
+  bottom: 20%;
+  left: 0;
+  right: 0;
+  height: 120px;
+}
+
+.cover-2 .mountain {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+}
+
+.cover-2 .mountain-1 {
+  left: -20px;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-bottom: 100px solid #1a2a3e;
+}
+
+.cover-2 .mountain-2 {
+  left: 80px;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 120px solid #162235;
+}
+
+.cover-2 .mountain-3 {
+  right: -40px;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 90px solid #1a2a3e;
+}
+
+.cover-2 .ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22%;
+  background: linear-gradient(180deg, #1a2a3e 0%, #0d1522 100%);
+}
+
+.cover-2 .path {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 45%;
+  background: linear-gradient(180deg,
+    rgba(212,168,67,0.6) 0%,
+    rgba(212,168,67,0.3) 50%,
+    rgba(212,168,67,0.1) 100%
+  );
+  clip-path: polygon(35% 0%, 65% 0%, 80% 100%, 20% 100%);
+}
+
+.cover-2 .sun-glow {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle,
+    rgba(248,216,120,0.8) 0%,
+    rgba(232,168,64,0.4) 30%,
+    rgba(196,138,63,0.1) 60%,
+    transparent 80%
+  );
+  border-radius: 50%;
+}
+
+.cover-2 .floating-particles {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  height: 40%;
+}
+
+.cover-2 .fp {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #F0D878;
+  animation: floatUp 4s infinite ease-out;
+  opacity: 0.6;
+}
+
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  30% { opacity: 0.8; }
+  100% { opacity: 0; transform: translateY(-60px); }
+}
+
+.cover-2 .fp:nth-child(1) { left: 25%; top: 60%; animation-delay: 0s; }
+.cover-2 .fp:nth-child(2) { left: 40%; top: 50%; animation-delay: 0.5s; width: 4px; height: 4px; }
+.cover-2 .fp:nth-child(3) { left: 55%; top: 65%; animation-delay: 1s; }
+.cover-2 .fp:nth-child(4) { left: 70%; top: 55%; animation-delay: 1.5s; width: 2px; height: 2px; }
+.cover-2 .fp:nth-child(5) { left: 35%; top: 45%; animation-delay: 2s; width: 5px; height: 5px; box-shadow: 0 0 6px rgba(240,216,120,0.5); }
+.cover-2 .fp:nth-child(6) { left: 60%; top: 40%; animation-delay: 2.5s; }
+.cover-2 .fp:nth-child(7) { left: 48%; top: 58%; animation-delay: 3s; width: 4px; height: 4px; }
+
+.cover-2 .title-area {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 85%;
+  z-index: 5;
+}
+
+.cover-2 .title-pitadas {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #F8D878;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 20px rgba(248,216,120,0.4);
+}
+
+.cover-2 .title-de {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: #c4a060;
+  margin: 2px 0;
+}
+
+.cover-2 .title-sabedoria {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+.cover-2 .subtitle-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.cover-2 .authors {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 5;
+}
+
+.cover-2 .author-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #F0D878;
+  font-weight: 400;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.8);
+}
+
+/* ========== OPCAO 3: MINIMALISTA PREMIUM ========== */
+.cover-3 {
+  background: linear-gradient(170deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
+}
+
+.cover-3 .texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,0.008) 2px,
+    rgba(255,255,255,0.008) 4px
+  );
+}
+
+.cover-3 .lamp-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.cover-3 .lamp {
+  font-size: 4rem;
+  filter: sepia(1) saturate(3) brightness(0.9) hue-rotate(-10deg);
+  display: block;
+  position: relative;
+}
+
+.cover-3 .lamp-glow {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle,
+    rgba(212,168,67,0.2) 0%,
+    rgba(212,168,67,0.08) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.cover-3 .light-rays {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 160px;
+}
+
+.cover-3 .ray {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 1px;
+  height: 60px;
+  transform-origin: bottom center;
+  opacity: 0.3;
+}
+
+.cover-3 .ray::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #D4A843);
+  border-radius: 2px;
+}
+
+.cover-3 .ray:nth-child(1) { transform: rotate(-40deg); animation: rayPulse 2s infinite 0s; }
+.cover-3 .ray:nth-child(2) { transform: rotate(-20deg); animation: rayPulse 2s infinite 0.3s; }
+.cover-3 .ray:nth-child(3) { transform: rotate(0deg); animation: rayPulse 2s infinite 0.6s; height: 70px; }
+.cover-3 .ray:nth-child(4) { transform: rotate(20deg); animation: rayPulse 2s infinite 0.9s; }
+.cover-3 .ray:nth-child(5) { transform: rotate(40deg); animation: rayPulse 2s infinite 1.2s; }
+
+@keyframes rayPulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+
+.cover-3 .stars {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  right: 0;
+  height: 35%;
+}
+
+.cover-3 .star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #D4A843;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
+.cover-3 .star:nth-child(1) { left: 20%; top: 30%; animation-delay: 0s; }
+.cover-3 .star:nth-child(2) { left: 35%; top: 15%; animation-delay: 0.5s; width: 3px; height: 3px; }
+.cover-3 .star:nth-child(3) { left: 55%; top: 25%; animation-delay: 1s; }
+.cover-3 .star:nth-child(4) { left: 70%; top: 10%; animation-delay: 1.5s; width: 3px; height: 3px; }
+.cover-3 .star:nth-child(5) { left: 80%; top: 35%; animation-delay: 0.8s; }
+.cover-3 .star:nth-child(6) { left: 45%; top: 5%; animation-delay: 1.2s; width: 4px; height: 4px; box-shadow: 0 0 6px rgba(212,168,67,0.4); }
+.cover-3 .star:nth-child(7) { left: 28%; top: 20%; animation-delay: 0.3s; }
+.cover-3 .star:nth-child(8) { left: 65%; top: 32%; animation-delay: 1.8s; }
+
+.cover-3 .title-area {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 85%;
+  z-index: 5;
+}
+
+.cover-3 .title-pitadas {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #D4A843;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.cover-3 .title-de {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #8a7340;
+  margin: 3px 0;
+}
+
+.cover-3 .title-sabedoria {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #e8dcc8;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+}
+
+.cover-3 .gold-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4A843, transparent);
+  margin: 12px auto;
+}
+
+.cover-3 .authors {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 5;
+}
+
+.cover-3 .author-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #D4A843;
+  font-weight: 300;
+}
+
+.cover-3 .gold-border {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 1px solid rgba(212,168,67,0.15);
+  pointer-events: none;
+}
+
+/* ========== OPCAO 4: MOSAICO TIPOGRAFICO ========== */
+.cover-4 {
+  background: linear-gradient(170deg, #F5F0E8 0%, #EDE5D8 50%, #E8E0D0 100%);
+}
+
+.cover-4 .paper-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(0,0,0,0.01) 1px,
+      rgba(0,0,0,0.01) 2px
+    );
+}
+
+.cover-4 .ornament-frame {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 2px solid #C49A37;
+  opacity: 0.6;
+}
+
+.cover-4 .ornament-frame-inner {
+  position: absolute;
+  top: 26px;
+  left: 26px;
+  right: 26px;
+  bottom: 26px;
+  border: 1px solid rgba(196,154,55,0.3);
+}
+
+.cover-4 .corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: #C49A37;
+  opacity: 0.8;
+}
+
+.cover-4 .corner-tl { top: 14px; left: 14px; border-top: 3px solid; border-left: 3px solid; }
+.cover-4 .corner-tr { top: 14px; right: 14px; border-top: 3px solid; border-right: 3px solid; }
+.cover-4 .corner-bl { bottom: 14px; left: 14px; border-bottom: 3px solid; border-left: 3px solid; }
+.cover-4 .corner-br { bottom: 14px; right: 14px; border-bottom: 3px solid; border-right: 3px solid; }
+
+.cover-4 .symbols-top {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  font-size: 1rem;
+  opacity: 0.4;
+}
+
+.cover-4 .symbols-bottom {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  font-size: 1rem;
+  opacity: 0.4;
+}
+
+.cover-4 .symbol {
+  color: #8a6e2f;
+}
+
+.cover-4 .title-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+  width: 80%;
+}
+
+.cover-4 .title-pitadas {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #1B2838;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.cover-4 .title-de {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #8a6e2f;
+  margin: 6px 0;
+}
+
+.cover-4 .title-sabedoria {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #C49A37;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.cover-4 .subtitle-text {
+  font-family: 'Lora', serif;
+  font-size: 0.65rem;
+  color: #8a6e2f;
+  margin-top: 14px;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.cover-4 .decorative-line {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C49A37, transparent);
+  margin: 14px auto;
+}
+
+.cover-4 .decorative-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.cover-4 .dot {
+  width: 4px;
+  height: 4px;
+  background: #C49A37;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.cover-4 .dot:nth-child(2) { opacity: 0.8; width: 5px; height: 5px; }
+
+.cover-4 .authors {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.cover-4 .author-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #1B2838;
+  font-weight: 600;
+}
+
+.cover-4 .author-line {
+  width: 50px;
+  height: 1px;
+  background: #C49A37;
+  margin: 8px auto;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .book-cover {
+    width: 280px;
+    height: 420px;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1>PITADAS DE SABEDORIA</h1>
+<p class="subtitle">4 Direcoes Criativas para a Capa &mdash; Arao e Elzi Salgado</p>
+
+<div class="grid">
+
+  <!-- OPCAO 1: TEMPERO DIVINO -->
+  <div class="option">
+    <span class="option-label">Opcao 01</span>
+    <span class="option-name">Tempero Divino</span>
+    <p class="option-desc">Pitada de especiaria dourada caindo sobre Biblia. Metafora direta do titulo, atmosfera intima e quente.</p>
+    <div class="book-cover cover-1">
+      <div class="bg-glow"></div>
+      <div class="title-area">
+        <div class="title-pitadas">Pitadas</div>
+        <div class="title-de">de</div>
+        <div class="title-sabedoria">Sabedoria</div>
+      </div>
+      <div class="spice-hand">
+        <span class="fingers">&#129330;</span>
+      </div>
+      <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+      <div class="bible-icon">&#128214;</div>
+      <div class="separator"></div>
+      <div class="authors">
+        <div class="separator"></div>
+        <div class="author-name">Arao & Elzi Salgado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPCAO 2: CAMINHO DA SABEDORIA -->
+  <div class="option">
+    <span class="option-label">Opcao 02</span>
+    <span class="option-name">Caminho da Sabedoria</span>
+    <p class="option-desc">Trilha ao amanhecer com particulas douradas. Jornada de fe, contemplacao e esperanca.</p>
+    <div class="book-cover cover-2">
+      <div class="landscape">
+        <div class="mountains">
+          <div class="mountain mountain-1"></div>
+          <div class="mountain mountain-2"></div>
+          <div class="mountain mountain-3"></div>
+        </div>
+        <div class="ground"></div>
+        <div class="path"></div>
+      </div>
+      <div class="sun-glow"></div>
+      <div class="floating-particles">
+        <div class="fp"></div>
+        <div class="fp"></div>
+        <div class="fp"></div>
+        <div class="fp"></div>
+        <div class="fp"></div>
+        <div class="fp"></div>
+        <div class="fp"></div>
+      </div>
+      <div class="title-area">
+        <div class="title-pitadas">Pitadas</div>
+        <div class="title-de">de</div>
+        <div class="title-sabedoria">Sabedoria</div>
+        <div class="subtitle-text">100 reflexoes para temperar sua fe</div>
+      </div>
+      <div class="authors">
+        <div class="author-name">Arao & Elzi Salgado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPCAO 3: MINIMALISTA PREMIUM -->
+  <div class="option">
+    <span class="option-label">Opcao 03</span>
+    <span class="option-name">Minimalista Premium</span>
+    <p class="option-desc">Lampada de oleo dourada em fundo escuro. Sofisticacao, hot stamping, estilo best-seller.</p>
+    <div class="book-cover cover-3">
+      <div class="texture"></div>
+      <div class="gold-border"></div>
+      <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+      </div>
+      <div class="title-area">
+        <div class="title-pitadas">Pitadas</div>
+        <div class="title-de">de</div>
+        <div class="title-sabedoria">Sabedoria</div>
+        <div class="gold-line"></div>
+      </div>
+      <div class="lamp-container">
+        <div class="lamp-glow"></div>
+        <div class="light-rays">
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+        </div>
+        <span class="lamp">&#128367;</span>
+      </div>
+      <div class="authors">
+        <div class="author-name">Arao & Elzi Salgado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPCAO 4: MOSAICO TIPOGRAFICO -->
+  <div class="option">
+    <span class="option-label">Opcao 04</span>
+    <span class="option-name">Mosaico Tipografico</span>
+    <p class="option-desc">Capa tipografica elegante com moldura ornamental. Estilo editorial classico, artesanal.</p>
+    <div class="book-cover cover-4">
+      <div class="paper-texture"></div>
+      <div class="ornament-frame"></div>
+      <div class="ornament-frame-inner"></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <div class="symbols-top">
+        <span class="symbol">&#9733;</span>
+        <span class="symbol">&#10022;</span>
+        <span class="symbol">&#10038;</span>
+        <span class="symbol">&#10022;</span>
+        <span class="symbol">&#9733;</span>
+      </div>
+      <div class="title-area">
+        <div class="decorative-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <div class="title-pitadas">Pitadas</div>
+        <div class="title-de">de</div>
+        <div class="title-sabedoria">Sabedoria</div>
+        <div class="decorative-line"></div>
+        <div class="subtitle-text">100 reflexoes para temperar sua fe</div>
+      </div>
+      <div class="symbols-bottom">
+        <span class="symbol">&#10087;</span>
+        <span class="symbol">&#10047;</span>
+        <span class="symbol">&#10048;</span>
+        <span class="symbol">&#10047;</span>
+        <span class="symbol">&#10087;</span>
+      </div>
+      <div class="authors">
+        <div class="author-line"></div>
+        <div class="author-name">Arao & Elzi Salgado</div>
+        <div class="author-line"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

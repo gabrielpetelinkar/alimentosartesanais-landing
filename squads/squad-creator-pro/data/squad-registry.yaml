@@ -1,0 +1,778 @@
+metadata:
+  version: 1.0.0
+  last_updated: '2026-03-07'
+  total_squads: 28
+  maintainer: squad-creator
+  generated_by: scripts/refresh-registry.py
+squads:
+  aios-intel:
+    path: squads/aios-intel/
+    version: 2.1.0
+    description: 'External intelligence intake squad for the AIOS ecosystem. Ingests
+      tips, advice, and best practices from the Claude Code community, analyzes them
+      against the existing ecosystem, validates with engineering rigor, classifies
+      as ADOPT/TRIAL/ASSESS/HOLD, and implements approved improvements via PDCA cycle.
+      Also scans external GitHub repos for structural comparison, evaluates tools
+      (CLIs, MCPs, libraries) for adoption, and smoke-tests them in our environment.
+      Based on 6 elite minds: Boyd (OODA), Wardley (Maps), Kim (Three Ways), Ford/ThoughtWorks
+      (Tech Radar), Goldratt (TOC), Deming (PDCA).'
+    slashPrefix: aiosIntel
+    counts:
+      agents: 7
+      tasks: 29
+      workflows: 1
+      templates: 4
+      checklists: 2
+      data_files: 5
+    agent_names:
+    - john-boyd
+    - aios-intel-chief
+    - gene-kim
+    - edwards-deming
+    - eliyahu-goldratt
+    - neal-ford
+    - simon-wardley
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  banca-intel:
+    path: squads/banca-intel/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 10
+      tasks: 20
+      workflows: 3
+      templates: 9
+      checklists: 2
+      data_files: 4
+    agent_names:
+    - rosenshine
+    - krippendorff
+    - bloom
+    - banca-intel-chief
+    - mislevy
+    - tetlock
+    - silver
+    - extrator
+    - hubbard
+    - rasch
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  copy-os:
+    path: squads/copy-os/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 0
+      tasks: 14
+      workflows: 2
+      templates: 13
+      checklists: 3
+      data_files: 3
+    agent_names: []
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  cro:
+    path: squads/cro/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 6
+      tasks: 0
+      workflows: 1
+      templates: 0
+      checklists: 0
+      data_files: 0
+    agent_names:
+    - flint-mcglaughlin
+    - cro-chief
+    - chris-goward
+    - talia-wolf
+    - khalid-saleh
+    - peep-laja
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  cronos-core:
+    path: squads/cronos-core/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 1
+      tasks: 3
+      workflows: 0
+      templates: 0
+      checklists: 1
+      data_files: 3
+    agent_names:
+    - cronos-orchestrator
+    has_readme: false
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  curator:
+    path: squads/curator/
+    version: 3.4.0
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 12
+      tasks: 9
+      workflows: 5
+      templates: 9
+      checklists: 7
+      data_files: 6
+    agent_names:
+    - walter-murch
+    - content-miner-pro
+    - ffmpeg-cutter
+    - robert-mckee
+    - matthew-dicks
+    - mrbeast
+    - brendan-kane
+    - data-curator
+    - jonah-berger
+    - timestamp-cataloger
+    - curator-chief
+    - ken-burns
+    has_readme: true
+    has_changelog: true
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  design:
+    path: squads/design/
+    version: 2.1.0
+    description: Squad focado exclusivamente em Design System. Especializado em tokens,
+      componentes, acessibilidade, registry,
+    slashPrefix: DS
+    counts:
+      agents: 9
+      tasks: 89
+      workflows: 11
+      templates: 14
+      checklists: 14
+      data_files: 30
+    agent_names:
+    - dave-malouf
+    - design-chief
+    - ds-foundations-lead
+    - brad-frost
+    - design-system
+    - ds-token-architect
+    - nano-banana-generator
+    - dan-mall
+    - storybook-expert
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  dispatch:
+    path: squads/dispatch/
+    version: 1.0.0
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 4
+      tasks: 8
+      workflows: 3
+      templates: 5
+      checklists: 8
+      data_files: 13
+    agent_names:
+    - wave-planner
+    - quality-gate
+    - task-router
+    - dispatch-chief
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  education:
+    path: squads/education/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 16
+      tasks: 21
+      workflows: 4
+      templates: 11
+      checklists: 15
+      data_files: 6
+    agent_names:
+    - merrill-designer
+    - keller-motivator
+    - fsrs-scheduler
+    - education-chief
+    - wiggins-architect
+    - bjork-engineer
+    - mayer-presenter
+    - novak-mapper
+    - thalheimer-assessor
+    - clark-validator
+    - sweller-analyst
+    - rosenshine-teacher
+    - moore-filter
+    - ericsson-coach
+    - mec-compliance
+    - bloom-diagnostician
+    has_readme: true
+    has_changelog: true
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  estudos-criminais:
+    path: squads/estudos-criminais/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 1
+      tasks: 3
+      workflows: 1
+      templates: 0
+      checklists: 2
+      data_files: 1
+    agent_names:
+    - estudos-criminais-chief
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  gemini-ads-creative:
+    path: squads/gemini-ads-creative/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 7
+      tasks: 7
+      workflows: 2
+      templates: 3
+      checklists: 3
+      data_files: 3
+    agent_names:
+    - creative-psychologist
+    - prompt-architect
+    - visual-strategist
+    - format-optimizer
+    - gemini-ads-chief
+    - type-director
+    - ad-composer
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  hormozi:
+    path: squads/hormozi/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 16
+      tasks: 55
+      workflows: 9
+      templates: 4
+      checklists: 45
+      data_files: 4
+    agent_names:
+    - hormozi-copy
+    - hormozi-launch
+    - hormozi-closer
+    - hormozi-advisor
+    - hormozi-ads
+    - hormozi-hooks
+    - hormozi-workshop
+    - hormozi-audit
+    - hormozi-scale
+    - hormozi-models
+    - hormozi-pricing
+    - hormozi-retention
+    - hormozi-leads
+    - hormozi-chief
+    - hormozi-offers
+    - hormozi-content
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  kaizen:
+    path: squads/kaizen/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 7
+      tasks: 8
+      workflows: 3
+      templates: 4
+      checklists: 3
+      data_files: 3
+    agent_names:
+    - performance-tracker
+    - capability-mapper
+    - tech-radar
+    - cost-analyst
+    - bottleneck-hunter
+    - kaizen-chief
+    - topology-analyst
+    has_readme: true
+    has_changelog: true
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  launch-marketing:
+    path: squads/launch-marketing/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 9
+      tasks: 5
+      workflows: 1
+      templates: 0
+      checklists: 1
+      data_files: 1
+    agent_names:
+    - deiss-journey
+    - kennedy-copy
+    - sobral-traffic
+    - brunson-funnels
+    - adolpho-strategy
+    - launch-chief
+    - schwartz-diagnostic
+    - walker-launch
+    - rocha-launch-br
+    has_readme: false
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  launch-protocol:
+    path: squads/launch-protocol/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 7
+      tasks: 1
+      workflows: 1
+      templates: 0
+      checklists: 1
+      data_files: 0
+    agent_names:
+    - blair-warren-persuasion
+    - calendar-strategist
+    - patrick-hanlon-primal
+    - todd-brown-mechanism
+    - saul-alinsky-tactics
+    - launch-protocol-chief
+    - stefan-georgi-rmbc
+    has_readme: false
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  market-analysis:
+    path: squads/market-analysis/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 8
+      tasks: 0
+      workflows: 1
+      templates: 1
+      checklists: 1
+      data_files: 1
+    agent_names:
+    - schwartz
+    - market-chief
+    - dunford
+    - levesque
+    - moesta
+    - osterwalder
+    - intel
+    - maurya
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  mcp-forge:
+    path: squads/mcp-forge/
+    version: 1.0.0
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 6
+      tasks: 4
+      workflows: 1
+      templates: 0
+      checklists: 0
+      data_files: 0
+    agent_names:
+    - mahesh-murag
+    - james-higginbotham
+    - david-soria-parra
+    - mcp-forge-chief
+    - frank-fiegel
+    - jeremiah-lowin
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  mmos:
+    path: squads/mmos/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 15
+      tasks: 16
+      workflows: 4
+      templates: 8
+      checklists: 4
+      data_files: 1
+    agent_names:
+    - narrator
+    - craft-analyst
+    - domain-analyst
+    - profiler
+    - institutional-analyst
+    - adversarial-analyst
+    - fidelity-validator
+    - gap-detector
+    - mmos-chief
+    - depth-extractor
+    - adaptation-modeler
+    - modeler
+    - affect-mapper
+    - elicitor
+    - voice-analyst
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  numerologia:
+    path: squads/numerologia/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 7
+      tasks: 0
+      workflows: 0
+      templates: 0
+      checklists: 0
+      data_files: 1
+    agent_names:
+    - buess
+    - javane-bunker
+    - jordan
+    - cheiro
+    - goodwin-decoz
+    - numerologia-chief
+    - millman
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  product-lab:
+    path: squads/product-lab/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 6
+      tasks: 4
+      workflows: 2
+      templates: 0
+      checklists: 1
+      data_files: 0
+    agent_names:
+    - wiggins-mctighe
+    - david-merrill
+    - instanciador
+    - april-dunford
+    - product-lab-chief
+    - teresa-torres
+    has_readme: false
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  reverse-engineer:
+    path: squads/reverse-engineer/
+    version: 1.0.0
+    description: 'Deconstruct frameworks, tools, and systems to extract reusable patterns
+      that improve your projects. Based on 7 elite minds with documented frameworks
+      in systems thinking, pattern extraction, expert cognition, problem solving,
+      knowledge synthesis, and knowledge management.
+
+      '
+    slashPrefix: reverseEngineer
+    counts:
+      agents: 8
+      tasks: 9
+      workflows: 3
+      templates: 3
+      checklists: 2
+      data_files: 1
+    agent_names:
+    - george-polya
+    - cedric-chin
+    - donella-meadows
+    - christopher-alexander
+    - gary-klein
+    - reverse-engineer-chief
+    - tiago-forte
+    - shane-parrish
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  seo:
+    path: squads/seo/
+    version: 1.0.0
+    description: Post-design SEO optimization squad. Evaluates websites (0-100 score),
+      optimizes all SEO factors, and shows before/after improvement. Works like Yoast/RankMath
+      but as intelligent agents.
+    slashPrefix: ''
+    counts:
+      agents: 8
+      tasks: 3
+      workflows: 1
+      templates: 0
+      checklists: 2
+      data_files: 0
+    agent_names:
+    - on-page-optimizer
+    - performance-engineer
+    - seo-chief
+    - ai-visibility-optimizer
+    - technical-auditor
+    - site-architect
+    - schema-architect
+    - content-quality-assessor
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  simulado-cebraspe:
+    path: squads/simulado-cebraspe/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 6
+      tasks: 0
+      workflows: 1
+      templates: 0
+      checklists: 0
+      data_files: 0
+    agent_names:
+    - simulado-chief
+    - simulado-assembler
+    - distractor-engineer
+    - item-designer
+    - bloom-classifier
+    - cebraspe-analyzer
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  squad-creator:
+    path: squads/squad-creator/
+    version: 4.0.0
+    description: 'Base meta-squad para criar squads de agentes via templates e validacao
+      estrutural. Orchestrator: @squad-chief (triage, routing, criacao template-driven
+      de squads). Base mode: 24 tasks, 3 workflows, 1 agent. Pro mode: auto-detected
+      via squad-creator-pro/ (adds mind cloning, DNA extraction, multi-agent orchestration,
+      model routing, advanced optimization). v4.0: Base/Pro split — template-driven
+      base, mind-cloning pro.'
+    slashPrefix: squadCreator
+    counts:
+      agents: 1
+      tasks: 24
+      workflows: 3
+      templates: 18
+      checklists: 9
+      data_files: 10
+    agent_names:
+    - squad-chief
+    has_readme: true
+    has_changelog: true
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  squad-creator-pro:
+    path: squads/squad-creator-pro/
+    version: 3.1.0
+    description: 'Meta-squad para criar squads de agentes baseados em elite minds
+      reais. Orchestrator: @squad-chief (triage, routing, criação completa de squads).
+      Tier 1 Trio: @oalanicolas (Research & Extraction - mind cloning, DNA extraction,
+      curadoria), @pedro-valerio (Process & Automation - veto conditions, workflow
+      validation), @thiago_finch (Business Strategy & Marketing - funnel analysis,
+      ROI, go-to-market). v3.1: Complete trio — Alan extrai, Pedro estrutura, Thiago
+      direciona. Estatísticas calculadas dinamicamente via *refresh-registry.'
+    slashPrefix: squadCreator
+    counts:
+      agents: 4
+      tasks: 53
+      workflows: 15
+      templates: 18
+      checklists: 15
+      data_files: 32
+    agent_names:
+    - pedro-valerio
+    - oalanicolas
+    - squad-chief
+    - thiago_finch
+    has_readme: true
+    has_changelog: true
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  squad-doctor:
+    path: squads/squad-doctor/
+    version: 2.0.0
+    description: 'Meta-squad for ecosystem health: diagnose, heal, and evolve existing
+      squads. Orchestrator: @doctor-chief (triage, routing, mission status). Diagnostician:
+      scores squad health across 10 dimensions. Surgeon: auto-fixes trivial issues,
+      proposes structural changes. Evolutionist: discovers untapped potential, cross-squad
+      synergies, new capabilities. Guardian mode: post-creation quality gate for squad-creator-pro.
+      Persona: Mission Control Medical Bay.'
+    slashPrefix: squadDoctor
+    counts:
+      agents: 4
+      tasks: 7
+      workflows: 1
+      templates: 3
+      checklists: 3
+      data_files: 2
+    agent_names:
+    - surgeon
+    - evolutionist
+    - diagnostician
+    - doctor-chief
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  tech-research:
+    path: squads/tech-research/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 0
+      tasks: 0
+      workflows: 0
+      templates: 2
+      checklists: 0
+      data_files: 0
+    agent_names: []
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+  traffic-masters:
+    path: squads/traffic-masters/
+    version: unknown
+    description: ''
+    slashPrefix: ''
+    counts:
+      agents: 15
+      tasks: 16
+      workflows: 4
+      templates: 0
+      checklists: 4
+      data_files: 1
+    agent_names:
+    - ralph-burns
+    - tom-breeze
+    - fiscal
+    - ad-intel-analyst
+    - savannah-sanchez
+    - depesh-mandalia
+    - performance-analyst
+    - mirella-crespi
+    - molly-pittman
+    - traffic-masters-chief
+    - pedro-sobral
+    - kasim-aslam
+    - media-buyer
+    - pixel-specialist
+    - dara-denney
+    has_readme: true
+    has_changelog: false
+    domain: _TO_BE_INFERRED_
+    keywords: []
+    highlights: []
+    example_use: ''
+summary:
+  total_agents: 200
+  total_tasks: 408
+  total_workflows: 83
+  total_templates: 129
+  total_checklists: 148
+  total_data_files: 131
+

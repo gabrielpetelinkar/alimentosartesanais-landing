@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 06 — Produto de Nicho e Exclusividade: Encontre Seu Público</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #1A1A1A;
+  --bg-elevated: #222222;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --text-muted: #7A7A7A;
+  --text-warm: #FAF5EB;
+  --accent: #D4A843;
+  --accent-glow: rgba(212,168,67,0.15);
+  --accent-dark: #A08338;
+  --terracotta: #C45B3A;
+  --green: #5B8C3E;
+  --neutral-border: rgba(255,255,255,0.08);
+  --font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter', 'SF Pro Text', system-ui, sans-serif;
+  --font-editorial: 'Playfair Display', 'Georgia', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow: hidden; }
+body {
+    width: 100vw; height: 100vh; overflow: hidden; margin: 0; background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  html { scroll-snap-type: none; }
+  .slide {   width: 100vw; height: 100vh; }
+  .slide:last-child { page-break-after: avoid; }
+  .nav-hint, .speaker-notes { display: none !important; }
+}
+
+.slide {
+  width: 100vw; height: 100vh;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 60px 80px;
+  position: relative; overflow: hidden;
+  scroll-snap-align: start;
+}
+.slide-inner { max-width: 1120px; width: 100%; position: relative; z-index: 2; }
+
+/* Aula label */
+.aula-label {
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 24px;
+}
+
+/* Progress bar */
+.progress {
+  position: absolute; top: 40px; right: 80px; display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; z-index: 10;
+}
+.progress span { color: var(--text-muted); }
+.progress span.active { font-weight: 700; color: var(--accent); }
+.progress .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+.progress .dot.active { background: var(--text-primary); }
+.progress .line { width: 24px; height: 1px; background: rgba(255,255,255,0.12); }
+
+/* Slide counter */
+.slide-number {
+  position: absolute; bottom: 24px; right: 40px;
+  font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.2); z-index: 10;
+}
+.course-tag {
+  position: absolute; bottom: 24px; left: 40px;
+  font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.15);
+  letter-spacing: 1px; z-index: 10;
+}
+
+/* Typography */
+.title-hero {
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 7vw, 72px);
+  line-height: 1.05; letter-spacing: -2px;
+}
+.title-huge {
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(100px, 14vw, 180px);
+  line-height: 1; letter-spacing: -4px; color: var(--accent);
+}
+.title-xl {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15; letter-spacing: -1px;
+}
+.title-lg {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 3.2vw, 40px);
+  line-height: 1.2;
+}
+.title-md {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 32px);
+  line-height: 1.3;
+}
+.subtitle {
+  font-family: var(--font-display); font-weight: 400; font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.4; color: var(--text-secondary);
+}
+.body-text {
+  font-family: var(--font-body); font-weight: 400; font-size: 20px;
+  line-height: 1.5; color: var(--text-secondary);
+}
+.caption {
+  font-family: var(--font-body); font-weight: 400; font-size: 14px;
+  line-height: 1.4; color: var(--text-muted);
+}
+.hero-number {
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 8vw, 96px);
+  line-height: 1; letter-spacing: -2px;
+}
+.stat-number {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+}
+.quote-text {
+  font-family: var(--font-editorial); font-weight: 400; font-style: italic;
+  font-size: clamp(22px, 2.5vw, 32px); line-height: 1.4;
+}
+
+/* Colors */
+.gold { color: var(--accent); }
+.white { color: var(--text-primary); }
+.muted { color: var(--text-muted); }
+
+/* Decorative */
+.gold-line { width: 80px; height: 3px; background: var(--accent); margin: 20px 0; border: none; }
+.gold-line-wide { width: 160px; height: 3px; background: var(--accent); margin: 24px auto; }
+.gold-line-center { width: 80px; height: 3px; background: var(--accent); margin: 20px auto; }
+
+/* Glow backgrounds */
+.glow-bg {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at 50% 60%, rgba(212,168,67,0.18) 0%, transparent 65%);
+}
+
+/* Chapter badge */
+.ch-badge {
+  position: absolute; top: -20px; left: -20px;
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(100px, 14vw, 180px); line-height: 1;
+  opacity: 0.06; z-index: 0; pointer-events: none; color: var(--accent);
+}
+
+/* Stat cards */
+.stat-card {
+  background: var(--bg-secondary); border: 1px solid var(--neutral-border);
+  border-radius: 12px; padding: 32px; text-align: center;
+  border-top: 3px solid var(--accent);
+}
+.stats-row { display: flex; gap: 24px; margin-top: 32px; }
+.stats-row .stat-card { flex: 1; }
+
+/* Split layout */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.split-text { display: flex; flex-direction: column; gap: 16px; }
+
+/* Photo placeholders */
+.photo-area {
+  width: 100%; height: 100%; min-height: 300px;
+  display: flex; justify-content: center; align-items: center;
+  border-radius: 12px; position: relative;
+  font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
+  letter-spacing: 1px; text-transform: uppercase; text-align: center; padding: 20px;
+}
+.photo-area.food { background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 50%, #1a1510 100%); }
+.photo-area.landscape { background: linear-gradient(180deg, #1a2010 0%, #15200a 50%, #0a1505 100%); }
+.photo-area.rural { background: linear-gradient(160deg, #201a0a 0%, #2a1f10 50%, #1a1510 100%); }
+.photo-area.product { background: linear-gradient(135deg, #151015 0%, #201520 50%, #0D0D0D 100%); }
+.photo-area.market { background: linear-gradient(145deg, #1a1015 0%, #201520 50%, #151020 100%); }
+
+.photo-full {
+  position: absolute; inset: 0;
+  display: flex; justify-content: center; align-items: center;
+  font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
+  letter-spacing: 1px; text-transform: uppercase; text-align: center;
+}
+.photo-full.food { background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 30%, #1a1510 60%, #0D0D0D 100%); }
+.photo-full.landscape { background: linear-gradient(180deg, #1a2010 0%, #15200a 30%, #0a1505 60%, #0D0D0D 100%); }
+.photo-full.rural { background: linear-gradient(160deg, #201a0a 0%, #2a1f10 40%, #1a1510 70%, #0D0D0D 100%); }
+
+.overlay-dark {
+  position: absolute; inset: 0;
+  background: rgba(13, 13, 13, 0.65); z-index: 1;
+}
+.content-over {
+  position: relative; z-index: 2; max-width: 1120px; width: 100%;
+}
+.content-over-center {
+  position: relative; z-index: 2; max-width: 1120px; width: 100%;
+  text-align: center; display: flex; flex-direction: column; align-items: center;
+}
+
+/* Comparison */
+.comparison {
+  display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%;
+}
+.comp-side {
+  display: flex; flex-direction: column; justify-content: center; padding: 60px;
+}
+.comp-side.before { background: var(--bg-secondary); border-right: 2px solid #2a2a2a; }
+.comp-side.after { background: var(--bg-primary); }
+.comp-label {
+  font-family: var(--font-display); font-weight: 800; font-size: 18px;
+  letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px;
+}
+.comp-content {
+  font-family: var(--font-display); font-weight: 600; font-size: 28px;
+  line-height: 1.4; margin-bottom: 20px;
+}
+.comp-detail {
+  font-family: var(--font-body); font-size: 17px; color: var(--text-muted); line-height: 1.5;
+}
+
+/* Action items */
+.action-item { margin-bottom: 28px; }
+.action-item .arrow { color: var(--accent); font-size: 20px; margin-right: 12px; font-weight: 700; }
+.action-item .action-text {
+  font-family: var(--font-display); font-weight: 600; font-size: 22px; color: var(--text-primary); line-height: 1.4;
+}
+.action-item .action-detail {
+  font-family: var(--font-body); font-size: 17px; color: var(--text-secondary);
+  margin-top: 4px; padding-left: 32px;
+}
+
+/* List items */
+.list-item { margin-bottom: 24px; }
+.list-item .marker { color: var(--accent); font-size: 16px; margin-right: 10px; }
+.list-item .item-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--text-primary);
+}
+.list-item .item-desc {
+  font-family: var(--font-body); font-size: 17px; color: var(--text-secondary);
+  margin-top: 4px; padding-left: 26px;
+}
+
+/* Exercise box */
+.exercise-box {
+  border: 2px solid var(--accent); border-radius: 12px;
+  padding: 40px 48px; max-width: 800px; text-align: center;
+}
+
+/* Case bar */
+.case-bar {
+  background: var(--accent-glow); border-left: 4px solid var(--accent);
+  border-radius: 0 12px 12px 0; padding: 24px 32px; margin-top: 20px;
+}
+
+/* Three-circle Venn */
+.venn-container {
+  display: flex; justify-content: center; align-items: center;
+  gap: 0; margin-top: 32px; position: relative; height: 280px;
+}
+.venn-circle {
+  width: 200px; height: 200px; border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+  text-align: center; padding: 20px;
+  font-family: var(--font-display); font-weight: 600; font-size: 15px;
+  line-height: 1.3; color: var(--text-primary);
+  position: absolute;
+}
+.venn-circle:nth-child(1) { background: rgba(212,168,67,0.2); border: 2px solid rgba(212,168,67,0.4); left: calc(50% - 180px); top: 20px; }
+.venn-circle:nth-child(2) { background: rgba(91,140,62,0.2); border: 2px solid rgba(91,140,62,0.4); left: calc(50% - 20px); top: 20px; }
+.venn-circle:nth-child(3) { background: rgba(196,91,58,0.2); border: 2px solid rgba(196,91,58,0.4); left: calc(50% - 100px); top: 100px; }
+.venn-center {
+  position: absolute; left: calc(50% - 60px); top: 90px;
+  width: 120px; height: 60px; display: flex; justify-content: center; align-items: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 14px;
+  color: var(--accent); text-transform: uppercase; letter-spacing: 2px; z-index: 5;
+}
+
+/* Speaker notes */
+.speaker-notes {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.95); color: var(--text-secondary);
+  padding: 16px 80px; font-size: 14px; line-height: 1.5;
+  font-family: var(--font-body); z-index: 100; border-top: 1px solid var(--neutral-border);
+}
+body.show-notes .speaker-notes { display: block; }
+
+/* Navigation hint */
+.nav-hint {
+  position: fixed; bottom: 20px; right: 30px; z-index: 50;
+  font-family: var(--font-body); font-size: 12px; color: var(--text-muted); opacity: 0.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slide { padding: 30px 24px; }
+  .split { grid-template-columns: 1fr; gap: 24px; }
+  .stats-row { flex-direction: column; }
+  .comparison { grid-template-columns: 1fr; }
+  .progress { display: none; }
+}
+
+.slide-counter {
+  position: fixed; bottom: 20px; left: 30px; z-index: 50;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7A7A7A; opacity: 0.5; letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: HOOK — Foto full + headline impactante              -->
+<!-- ============================================================ -->
+<section class="slide" id="s1">
+  <div style="background:url('../assets/aulas/aula05-embalagem-ia.png') center/cover no-repeat !important;" class="photo-full food">
+    
+  </div>
+  <div class="overlay-dark"></div>
+  <div class="content-over" style="padding: 60px 80px; display:flex; flex-direction:column; justify-content:flex-end; height:100%; position:absolute; inset:0; z-index:2;">
+    <div style="margin-bottom: 80px;">
+      <p class="aula-label">AULA 06 · CRIAR</p>
+      <h1 class="title-xl" style="max-width:800px;">Vender para todos é a forma mais cara de <span class="gold">não vender para ninguém.</span></h1>
+    </div>
+  </div>
+  <div class="slide-number">01 / 26</div>
+  <div class="speaker-notes">A maioria dos produtores artesanais começa com a ideia errada: achar que precisa agradar a todos. A verdade é que tentar falar com todo mundo significa não ser ouvido por ninguém. Essa aula vai mudar essa mentalidade.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: TÍTULO DA AULA                                       -->
+<!-- ============================================================ -->
+<section class="slide" id="s2">
+  <div class="glow-bg"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <p class="title-huge" style="margin-bottom:24px;">06</p>
+    <h2 class="title-lg" style="margin-bottom:12px;">PRODUTO DE NICHO E EXCLUSIVIDADE</h2>
+    <p class="subtitle">Encontre seu público.</p>
+    <div class="gold-line-center" style="margin-top:28px;"></div>
+  </div>
+  <div class="slide-number">02 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: CONCEITO CENTRAL                                     -->
+<!-- ============================================================ -->
+<section class="slide" id="s3">
+  <div class="ch-badge">06</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <h2 class="title-lg" style="margin-bottom:24px;">No mercado artesanal, a força não está na <span class="gold">escala</span>, mas na <span class="gold">identidade bem definida.</span></h2>
+    <div class="gold-line-center"></div>
+    <p class="body-text" style="margin-top:24px;">Marcas sólidas nascem quando o produtor sabe exatamente para quem está produzindo.</p>
+  </div>
+  <div class="slide-number">03 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Um dos grandes equívocos de quem começa a produzir artesanalmente é acreditar que o sucesso está em agradar a todos. No mercado artesanal, o caminho é o oposto: quanto mais específico, mais forte.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: FOTO + INSIGHT — Exclusividade                       -->
+<!-- ============================================================ -->
+<section class="slide" id="s4">
+  <div class="ch-badge">06</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner">
+    <div class="split">
+      <div class="photo-area product" style="background:url('../assets/aulas/aula01-geleia-tapereba.webp') center/cover no-repeat !important; min-height:400px; border-radius:12px;">
+        
+      </div>
+      <div class="split-text">
+        <h2 class="title-lg">O mercado artesanal não compete com grandes indústrias — ele ocupa <span class="gold">espaços que elas não alcançam.</span></h2>
+        <hr class="gold-line">
+        <p class="body-text">A exclusividade diferencia produtos, cria conexão emocional e faz o consumidor sentir-se parte de um grupo seleto.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04 / 26</div>
+  <div class="speaker-notes">Grandes indústrias trabalham com volume e padronização. O artesanal ocupa o espaço da personalização, da história e da exclusividade — e esse espaço é cada vez mais valorizado.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: FRASE DE IMPACTO                                     -->
+<!-- ============================================================ -->
+<section class="slide" id="s5">
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="body-text" style="font-size:22px; margin-bottom:20px;">O consumidor contemporâneo não compra apenas um produto.</p>
+    <h2 class="title-xl gold" style="margin-bottom:24px;">Ele compra pertencimento, valores e identidade.</h2>
+    <div class="gold-line-center"></div>
+  </div>
+  <div class="slide-number">05 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: POR QUE NICHO FUNCIONA                               -->
+<!-- ============================================================ -->
+<section class="slide" id="s6">
+  <div class="ch-badge">06</div>
+  <div class="slide-inner">
+    <p class="aula-label">POR QUE NICHO FUNCIONA</p>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Consumidores dispostos a pagar mais</span></div>
+      <div class="item-desc">Produtos que representam seus valores justificam preços premium.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Conexão emocional profunda</span></div>
+      <div class="item-desc">Marcas de nicho criam comunidades, não apenas clientes.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Diferenciação real e difícil de copiar</span></div>
+      <div class="item-desc">Exclusividade constrói barreiras naturais contra a concorrência.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Lançamentos como experiências</span></div>
+      <div class="item-desc">Cada novo produto se torna um evento memorável para o público.</div>
+    </div>
+  </div>
+  <div class="slide-number">06 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: ESPAÇO PARA FOTOS — Exemplos de nicho                -->
+<!-- ============================================================ -->
+<section class="slide" id="s7">
+  <div class="slide-inner">
+    <p class="aula-label" style="margin-bottom:32px;">EXEMPLOS VISUAIS</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div class="photo-area food" style="background:url('../assets/aulas/WhatsApp Image 2026-03-23 at 14.58.20.jpeg') center/cover no-repeat !important; min-height:280px; border-radius:12px;">
+        
+      </div>
+      <div class="photo-area product" style="background:url('../assets/aulas/aula09-produto-vertical.jpg') center/cover no-repeat !important; min-height:280px; border-radius:12px;">
+        
+      </div>
+    </div>
+    <p class="caption" style="text-align:center; margin-top:16px;">Produtos de nicho não vendem apenas sabor — vendem exclusividade, identidade e pertencimento.</p>
+  </div>
+  <div class="slide-number">07 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: CASE — Edição limitada sazonal                       -->
+<!-- ============================================================ -->
+<section class="slide" id="s8">
+  <div style="background:url('../assets/aulas/aula09-gabriel-extra1.jpg') center/cover no-repeat !important;" class="photo-full food">
+    
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.2) 100%);"></div>
+  <div class="content-over" style="padding:60px 80px; display:flex; flex-direction:column; justify-content:flex-end; height:100%; position:absolute; inset:0; z-index:2;">
+    <div style="margin-bottom:80px;">
+      <p class="aula-label" style="font-size:14px; margin-bottom:16px;">CASE</p>
+      <h2 class="title-md white" style="margin-bottom:16px;">Edição limitada sazonal</h2>
+      <p class="body-text" style="max-width:700px;">Uma produtora lançou lotes numerados com ingredientes sazonais. Cada lançamento esgotava em horas — o público esperava pelo próximo como um evento.</p>
+    </div>
+  </div>
+  <div class="slide-number">08 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: TRANSIÇÃO — O QUE ESTÁ ACONTECENDO NO MERCADO        -->
+<!-- ============================================================ -->
+<section class="slide" id="s9">
+  <div class="glow-bg"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <h2 class="title-xl white">O que está acontecendo<br>no mercado</h2>
+    <div class="gold-line-center" style="margin-top:28px;"></div>
+  </div>
+  <div class="slide-number">09 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: HERO NUMBER — US$ 109 bi                            -->
+<!-- ============================================================ -->
+<section class="slide" id="s10">
+  <div class="ch-badge">06</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <p class="stat-number gold" style="font-size:clamp(60px, 10vw, 120px); margin-bottom:16px;">US$ 109 bi</p>
+    <h2 class="title-lg" style="margin-bottom:16px;">Projeção do mercado global de artesanais e nicho até 2033.</h2>
+    <div style="margin-top:16px; display:inline-flex; gap:24px; align-items:center;">
+      <div style="background:rgba(91,140,62,0.2); border:1px solid var(--green); border-radius:4px; padding:8px 16px;">
+        <span style="font-family:var(--font-display); font-weight:700; font-size:18px; color:var(--green);">CAGR 8,7%</span>
+      </div>
+    </div>
+    <p class="caption" style="margin-top:20px;">— Verified Market Reports, 2024</p>
+  </div>
+  <div class="slide-number">10 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: NÚMEROS DE MERCADO — 4 stat cards                   -->
+<!-- ============================================================ -->
+<section class="slide" id="s11">
+  <div class="slide-inner">
+    <p class="aula-label">NÚMEROS DE MERCADO</p>
+    <div class="stats-row">
+      <div class="stat-card">
+        <p class="stat-number gold">73%</p>
+        <p class="caption" style="margin-top:8px;">dos consumidores preferem marcas que transmitem autenticidade</p>
+        <p class="caption" style="margin-top:4px; font-size:12px;">Forbes Brasil, 2024</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-number gold">75%</p>
+        <p class="caption" style="margin-top:8px;">dispostos a pagar mais por artesanais personalizados</p>
+        <p class="caption" style="margin-top:4px; font-size:12px;">SEBRAE, 2024</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-number gold">61%</p>
+        <p class="caption" style="margin-top:8px;">preferem marcas que unem sabor tradicional e inovação</p>
+        <p class="caption" style="margin-top:4px; font-size:12px;">NielsenIQ, 2023</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">11 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: FOTO + INSIGHT — Mercado global                     -->
+<!-- ============================================================ -->
+<section class="slide" id="s12">
+  <div class="slide-inner">
+    <div class="split">
+      <div class="photo-area market" style="background:url('../assets/aulas/unnamed.jpg') center/cover no-repeat !important; min-height:400px; border-radius:12px;">
+        
+      </div>
+      <div class="split-text">
+        <p class="body-text" style="font-size:20px; margin-bottom:12px;">Marcas que exploram exclusividade conseguem</p>
+        <h2 class="title-xl gold">TRANSFORMAR LANÇAMENTOS EM EXPERIÊNCIAS.</h2>
+        <hr class="gold-line">
+        <p class="body-text" style="font-size:17px;">Fortalecem a conexão com o público e diferenciam-se em um mercado de US$ 51,51 bilhões (2024).</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: TRANSIÇÃO — O QUE VOCÊ PODE APRENDER                -->
+<!-- ============================================================ -->
+<section class="slide" id="s13">
+  <div class="glow-bg"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <h2 class="title-xl white">O que você pode<br>aprender com isso</h2>
+    <div class="gold-line-center" style="margin-top:28px;"></div>
+  </div>
+  <div class="slide-number">13 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: INSIGHT 1 — Definir público-alvo                    -->
+<!-- ============================================================ -->
+<section class="slide" id="s14">
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <h2 class="title-lg" style="margin-bottom:20px;">Definir público-alvo é <span class="gold">estratégico</span>, não excludente.</h2>
+    <div class="gold-line-center"></div>
+    <p class="body-text" style="margin-top:20px; font-size:22px;">Quando você sabe para quem produz, cada decisão —<br>do sabor à embalagem — ganha direção e propósito.</p>
+  </div>
+  <div class="slide-number">14 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: INSIGHT 2 — Margens mais altas                      -->
+<!-- ============================================================ -->
+<section class="slide" id="s15">
+  <div class="slide-inner" style="text-align:center; max-width:900px;">
+    <h2 class="title-lg" style="margin-bottom:20px;">Produtos de nicho permitem <span class="gold">margens mais altas</span> porque competem por <span class="gold">valor</span>, não por preço.</h2>
+    <div class="gold-line-center"></div>
+    <p class="body-text" style="margin-top:20px;">Quem compra exclusividade não compara preço — compara significado.</p>
+  </div>
+  <div class="slide-number">15 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: INSIGHT 3 — Edições limitadas + case bar            -->
+<!-- ============================================================ -->
+<section class="slide" id="s16">
+  <div class="slide-inner">
+    <div class="split">
+      <div class="split-text">
+        <h2 class="title-lg"><span class="gold">Edições limitadas</span> geram desejo.</h2>
+        <hr class="gold-line">
+        <p class="body-text">A escassez controlada transforma cada lançamento em um evento. O cliente não compra apenas o produto — compra a oportunidade de ter algo raro.</p>
+        <div class="case-bar">
+          <p class="body-text" style="font-size:16px; color:var(--text-primary);">Séries numeradas, ingredientes sazonais, embalagens comemorativas — tudo isso alimenta o desejo e a urgência.</p>
+        </div>
+      </div>
+      <div class="photo-area food" style="background:url('../assets/aulas/fibra_de_tucuma_480x480.webp') center/cover no-repeat !important; min-height:400px; border-radius:12px;">
+        
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">16 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: INSIGHT 4 — Personalização                          -->
+<!-- ============================================================ -->
+<section class="slide" id="s17">
+  <div class="slide-inner">
+    <div class="split">
+      <div class="photo-area product" style="background:url('../assets/aulas/6-linha-de-produtos-mel-batman.webp') center/cover no-repeat !important; min-height:400px; border-radius:12px;">
+        
+      </div>
+      <div class="split-text">
+        <h2 class="title-lg"><span class="gold">Personalização</span> aproxima o consumidor.</h2>
+        <hr class="gold-line">
+        <p class="body-text">Quando o cliente vê seu nome, sua preferência ou sua história refletida no produto, a relação deixa de ser comercial e passa a ser afetiva.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">17 / 26</div>
+  <div class="speaker-notes">Personalização não precisa ser complexa. Pode ser um rótulo com o nome, uma combinação de sabores sob medida ou uma embalagem para data especial.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: TRANSIÇÃO — TRANSFORME EM VANTAGEM                  -->
+<!-- ============================================================ -->
+<section class="slide" id="s18">
+  <div class="glow-bg"></div>
+  <div class="slide-inner" style="text-align:center;">
+    <h2 class="title-xl gold">Transforme isso em<br>vantagem competitiva</h2>
+    <div class="gold-line-center" style="margin-top:28px;"></div>
+  </div>
+  <div class="slide-number">18 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: AS 3 PERGUNTAS — Diagrama Venn                      -->
+<!-- ============================================================ -->
+<section class="slide" id="s19">
+  <div class="ch-badge">06</div>
+  <div class="progress"><span class="active">CRIAR</span><span class="dot active"></span><span class="line"></span><span>VENDER</span><span class="dot"></span><span class="line"></span><span>ESCALAR</span><span class="dot"></span></div>
+  <div class="slide-inner" style="text-align:center;">
+    <p class="aula-label">CRUZE 3 PERGUNTAS</p>
+    <h2 class="title-md" style="margin-bottom:8px;">A interseção revela sua <span class="gold">vantagem competitiva.</span></h2>
+    <div class="venn-container">
+      <div class="venn-circle">O que eu<br>faço bem?</div>
+      <div class="venn-circle">O que o mercado<br>valoriza?</div>
+      <div class="venn-circle">O que me<br>diferencia?</div>
+      <div class="venn-center">SEU NICHO</div>
+    </div>
+  </div>
+  <div class="slide-number">19 / 26</div>
+  <div class="speaker-notes">Esse é o exercício mais importante da aula. Onde as três respostas se cruzam, nasce o seu nicho. É ali que você deve concentrar energia, comunicação e produto.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: AÇÕES PRÁTICAS                                      -->
+<!-- ============================================================ -->
+<section class="slide" id="s20">
+  <div class="slide-inner">
+    <p class="aula-label" style="margin-bottom:24px;">AÇÕES PRÁTICAS</p>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Lance séries limitadas com ingredientes sazonais</span></div>
+      <div class="action-detail">Crie escassez real e calendário de expectativa para seu público.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Crie embalagens customizadas para datas comemorativas</span></div>
+      <div class="action-detail">Natal, Dia das Mães, aniversários — cada data é uma oportunidade de exclusividade.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Desenvolva produtos exclusivos que gerem engajamento</span></div>
+      <div class="action-detail">Convide o público a participar: votação de sabores, cocriação, pré-venda.</div>
+    </div>
+  </div>
+  <div class="slide-number">20 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: ANTES / DEPOIS                                      -->
+<!-- ============================================================ -->
+<section class="slide" id="s21" style="padding:0;">
+  <div class="comparison">
+    <div class="comp-side before">
+      <div class="comp-label" style="color:var(--terracotta);">ANTES ✗</div>
+      <div class="comp-content" style="color:#888;">"Geleia artesanal —<br>sabores variados"</div>
+      <div class="comp-detail">Público indefinido, sem nicho,<br>sem personalidade.<br><br>Compete por preço,<br>invisível na prateleira.</div>
+    </div>
+    <div class="comp-side after">
+      <div class="comp-label" style="color:var(--green);">DEPOIS ✓</div>
+      <div class="comp-content white">"Geleia orgânica<br>para harmonização<br>com queijos artesanais"</div>
+      <div class="comp-detail" style="color:var(--text-secondary);">Público claro, nicho definido,<br>narrativa forte.<br><br>Compete por <span class="gold">valor e identidade.</span></div>
+    </div>
+  </div>
+  <div class="slide-number">21 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: HERO NUMBER — 75%                                   -->
+<!-- ============================================================ -->
+<section class="slide" id="s22">
+  <div class="slide-inner" style="text-align:center; max-width:800px;">
+    <p class="hero-number gold" style="margin-bottom:24px;">75%</p>
+    <h2 class="title-lg" style="margin-bottom:16px;">dos consumidores estão dispostos a pagar <span class="gold">mais</span> por produtos artesanais personalizados.</h2>
+    <p class="caption" style="margin-top:24px;">— SEBRAE, 2024</p>
+  </div>
+  <div class="slide-number">22 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: EXERCÍCIO                                           -->
+<!-- ============================================================ -->
+<section class="slide" id="s23">
+  <div class="slide-inner" style="display:flex; flex-direction:column; align-items:center;">
+    <p class="aula-label" style="margin-bottom:32px;">EXERCÍCIO PARA AGORA</p>
+    <div class="exercise-box">
+      <h2 class="title-md" style="margin-bottom:20px;">Responda às 3 perguntas e encontre o <span class="gold">cruzamento</span>:</h2>
+      <div class="gold-line-center"></div>
+      <div style="text-align:left; margin-top:24px;">
+        <p class="body-text" style="font-size:19px; margin-bottom:12px;">1. O que eu faço bem?</p>
+        <p class="body-text" style="font-size:19px; margin-bottom:12px;">2. O que o mercado valoriza?</p>
+        <p class="body-text" style="font-size:19px;">3. O que me diferencia da concorrência?</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">23 / 26</div>
+  <div class="speaker-notes">Dê tempo para que cada pessoa escreva. Esse exercício é o mais importante da aula — é dele que sai a definição de nicho de cada produtor.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: RESUMO                                              -->
+<!-- ============================================================ -->
+<section class="slide" id="s24">
+  <div class="slide-inner">
+    <p class="aula-label" style="margin-bottom:32px;">O QUE LEVAR DESTA AULA</p>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Definir público-alvo é estratégico, não excludente</span></div>
+      <div class="item-desc">Quanto mais específico, mais forte a conexão com o cliente.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Produtos de nicho permitem margens mais altas</span></div>
+      <div class="item-desc">Exclusividade justifica preço premium e fideliza clientes.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Edições limitadas geram desejo e urgência</span></div>
+      <div class="item-desc">Escassez controlada transforma lançamentos em eventos.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Personalização aproxima e fideliza</span></div>
+      <div class="item-desc">O consumidor se torna parte da história da marca.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Exclusividade fortalece a narrativa da marca</span></div>
+      <div class="item-desc">Nicho bem definido é a base de uma marca sólida e memorável.</div>
+    </div>
+  </div>
+  <div class="slide-number">24 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: FECHAMENTO — Citação + próxima aula                 -->
+<!-- ============================================================ -->
+<section class="slide" id="s25">
+  <div style="background:url('../assets/aulas/aula06-produtor-ia.png') center/cover no-repeat !important;" class="photo-full landscape">
+    
+  </div>
+  <div class="overlay-dark" style="background: rgba(13,13,13,0.6);"></div>
+  <div class="content-over-center" style="padding:60px 80px; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; position:absolute; inset:0; z-index:2;">
+    <p class="quote-text" style="max-width:750px; margin-bottom:32px;">"Vender para todos é a forma mais cara de não vender para ninguém."</p>
+    <div class="gold-line-center"></div>
+    <div style="margin-top:40px; padding-top:20px; border-top:1px solid rgba(212,168,67,0.3);">
+      <p class="aula-label" style="font-size:13px; margin-bottom:8px;">PRÓXIMA AULA</p>
+      <p class="title-md white">Embalagem.</p>
+      <p class="body-text" style="font-size:16px; margin-top:4px;">Seu vendedor silencioso.</p>
+    </div>
+  </div>
+  <div class="slide-number">25 / 26</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: ENCERRAMENTO                                        -->
+<!-- ============================================================ -->
+<section class="slide" id="s26">
+  <div class="slide-inner" style="text-align:center;">
+    <p class="aula-label" style="letter-spacing:4px; margin-bottom:16px;">CURSO ONLINE</p>
+    <h2 class="title-lg white" style="margin-bottom:8px;">Guia Estratégico para<br>Produtores Artesanais</h2>
+    <p class="subtitle" style="margin-bottom:32px;">Gabriel Petelinkar.</p>
+    <div class="gold-line-center"></div>
+    <div style="margin-top:28px; display:flex; gap:40px; justify-content:center;">
+      <p class="body-text" style="font-size:16px; color:var(--accent);">@gabrielpetelinkar</p>
+      <p class="body-text" style="font-size:16px; color:var(--accent);">oriza.agro</p>
+    </div>
+  </div>
+  <div class="slide-number">26 / 26</div>
+</section>
+
+<div class="slide-counter" id="slideCounter">1 / ?</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.slide');
+  var current = 0;
+  var lastNav = 0;
+  var DEBOUNCE = 300;
+  var counter = document.getElementById('slideCounter');
+
+  function showSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = i === index ? 'flex' : 'none';
+    }
+    current = index;
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function next() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current < slides.length - 1) showSlide(current + 1);
+  }
+
+  function prev() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current > 0) showSlide(current - 1);
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); next();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); prev();
+    } else if (e.key === 'n' || e.key === 'N') {
+      document.body.classList.toggle('show-notes');
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(slides.length - 1);
+    }
+  });
+
+  document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    if (e.deltaY > 0) next(); else prev();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

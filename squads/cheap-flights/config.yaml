@@ -1,0 +1,85 @@
+squad:
+  name: cheap-flights
+  version: 1.0.0
+  domain: "Busca de passagens aéreas baratas — milhas, tarifas de erro, plataformas ocultas"
+  purpose: "Encontrar passagens aéreas ao menor custo possível usando todas as estratégias disponíveis: milhas, tarifas de erro, consolidadores, OTAs ocultas, programas de fidelidade BR e internacionais"
+  target_user: "Viajantes brasileiros que querem viajar mais gastando menos"
+  language: "pt-BR"
+  orchestrator: cheap-flights-chief
+
+  use_cases:
+    - "Encontrar tarifas de erro (erro de precificação) nacionais e internacionais"
+    - "Emitir passagens usando milhas SMILES, LATAM Pass, TudoAzul, Azul Fidelidade"
+    - "Descobrir plataformas e OTAs pouco conhecidas com preços menores"
+    - "Otimizar programas de cartão de crédito para acúmulo de pontos/milhas"
+    - "Encontrar rotas alternativas e conexões criativas para reduzir custos"
+    - "Monitorar promoções relâmpago e janelas de disponibilidade"
+
+  agents:
+    tier_0:
+      - id: scott-keyes
+        name: "Scott Keyes"
+        specialty: "Detecção de tarifas de erro e timing ideal de compra"
+        file: "agents/scott-keyes.md"
+      - id: paulo-mafra
+        name: "Paulo Mafra"
+        specialty: "Mercado brasileiro — SMILES, LATAM Pass, TudoAzul, Azul Fidelidade"
+        file: "agents/paulo-mafra.md"
+
+    tier_1:
+      - id: gary-leff
+        name: "Gary Leff"
+        specialty: "Award booking avançado, companhias parceiras, brechas técnicas"
+        file: "agents/gary-leff.md"
+      - id: ben-schlappig
+        name: "Ben Schlappig"
+        specialty: "Plataformas ocultas, cabines premium por preço de economy, aspirational redemptions"
+        file: "agents/ben-schlappig.md"
+
+    tier_2:
+      - id: brian-kelly
+        name: "Brian Kelly"
+        specialty: "Sistema de cartões de crédito, transferência de pontos, maximização de milhas"
+        file: "agents/brian-kelly.md"
+      - id: chris-guillebeau
+        name: "Chris Guillebeau"
+        specialty: "Travel hacking sistêmico, consolidadores, OTAs desconhecidas, brechas táticas"
+        file: "agents/chris-guillebeau.md"
+
+    orchestrator:
+      - id: cheap-flights-chief
+        name: "Cheap Flights Chief"
+        specialty: "Orquestração — diagnostica o pedido e roteia para o especialista certo"
+        file: "agents/cheap-flights-chief.md"
+
+  tasks:
+    - id: buscar-passagem
+      file: "tasks/buscar-passagem.md"
+      description: "Workflow completo de busca de passagem (diagnóstico → estratégia → execução)"
+    - id: otimizar-milhas
+      file: "tasks/otimizar-milhas.md"
+      description: "Otimizar uso de milhas existentes para máximo valor"
+    - id: monitorar-tarifas
+      file: "tasks/monitorar-tarifas.md"
+      description: "Configurar monitoramento de tarifas e alertas"
+
+  knowledge_base:
+    - "data/plataformas-ocultas.yaml"
+    - "data/programas-br.yaml"
+    - "data/ferramentas-busca.yaml"
+
+  quality_standards:
+    min_agent_lines: 400
+    require_output_examples: true
+    require_heuristics: true
+    require_handoffs: true
+
+  activation:
+    primary: "@cheap-flights:cheap-flights-chief"
+    specialists:
+      - "@cheap-flights:scott-keyes — Tarifas de erro"
+      - "@cheap-flights:paulo-mafra — Mercado BR"
+      - "@cheap-flights:gary-leff — Award booking avançado"
+      - "@cheap-flights:ben-schlappig — Plataformas ocultas"
+      - "@cheap-flights:brian-kelly — Cartões e pontos"
+      - "@cheap-flights:chris-guillebeau — Travel hacking"

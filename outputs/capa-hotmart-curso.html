@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=600">
+<title>Capa Hotmart — Curso Alimentos Artesanais</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Playfair+Display:wght@700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .cover {
+    width: 600px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+
+  /* Photo — positioned right side, cropped from waist up */
+  .photo-layer {
+    position: absolute;
+    right: -40px;
+    bottom: 0;
+    width: 420px;
+    height: 600px;
+    z-index: 1;
+  }
+
+  .photo-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: grayscale(15%) contrast(1.05);
+  }
+
+  /* Gradient overlay — dark from left to transparent on right */
+  .gradient-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      95deg,
+      #0a0a0a 0%,
+      #0a0a0a 30%,
+      rgba(10,10,10,0.95) 40%,
+      rgba(10,10,10,0.7) 55%,
+      rgba(10,10,10,0.3) 70%,
+      transparent 85%
+    );
+    z-index: 2;
+  }
+
+  /* Top gradient for text readability */
+  .gradient-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(
+      180deg,
+      rgba(10,10,10,0.9) 0%,
+      transparent 100%
+    );
+    z-index: 2;
+  }
+
+  /* Bottom gradient */
+  .gradient-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(
+      0deg,
+      rgba(10,10,10,0.95) 0%,
+      rgba(10,10,10,0.6) 50%,
+      transparent 100%
+    );
+    z-index: 2;
+  }
+
+  /* Accent line */
+  .accent-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #c8a456, #e8c976, #c8a456);
+    z-index: 10;
+  }
+
+  /* Content layer */
+  .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 36px 32px 32px;
+  }
+
+  /* Badge — top */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(200, 164, 86, 0.15);
+    border: 1px solid rgba(200, 164, 86, 0.4);
+    border-radius: 4px;
+    padding: 5px 12px;
+    width: fit-content;
+  }
+
+  .badge span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #e8c976;
+  }
+
+  /* Title area — middle-left */
+  .title-area {
+    max-width: 340px;
+  }
+
+  .kicker {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c8a456;
+    margin-bottom: 12px;
+  }
+
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 34px;
+    line-height: 1.15;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  .title em {
+    font-style: normal;
+    color: #e8c976;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.6);
+    max-width: 280px;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .author {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .author-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+  }
+
+  .author-title {
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .lessons-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 6px 12px;
+  }
+
+  .lessons-badge .number {
+    font-size: 18px;
+    font-weight: 900;
+    color: #e8c976;
+  }
+
+  .lessons-badge .label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.2;
+  }
+
+  /* Price badge */
+  .price-area {
+    position: absolute;
+    bottom: 80px;
+    right: 24px;
+    z-index: 6;
+    text-align: right;
+  }
+
+  .price-old {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.35);
+    text-decoration: line-through;
+    margin-bottom: 2px;
+  }
+
+  .price-current {
+    font-size: 32px;
+    font-weight: 900;
+    color: #e8c976;
+    line-height: 1;
+  }
+
+  .price-current .currency {
+    font-size: 18px;
+    font-weight: 700;
+    vertical-align: super;
+    margin-right: 2px;
+  }
+
+  .price-installment {
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    margin-top: 3px;
+  }
+
+  /* Bonus badge */
+  .bonus-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(200, 164, 86, 0.12);
+    border: 1px solid rgba(200, 164, 86, 0.3);
+    border-radius: 3px;
+    padding: 3px 8px;
+    margin-top: 6px;
+  }
+
+  .bonus-badge span {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #c8a456;
+  }
+
+  /* Decorative dots */
+  .dots {
+    position: absolute;
+    top: 80px;
+    left: 28px;
+    display: grid;
+    grid-template-columns: repeat(3, 4px);
+    gap: 8px;
+    z-index: 3;
+    opacity: 0.2;
+  }
+
+  .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #c8a456;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <!-- Accent line top -->
+  <div class="accent-line"></div>
+
+  <!-- Photo -->
+  <div class="photo-layer">
+    <img src="./images/autor-gabriel.jpg" alt="Gabriel Petelinkar" />
+  </div>
+
+  <!-- Gradients -->
+  <div class="gradient-left"></div>
+  <div class="gradient-top"></div>
+  <div class="gradient-bottom"></div>
+
+  <!-- Decorative dots -->
+  <div class="dots">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Top: Badge -->
+    <div class="badge">
+      <span>Curso Completo</span>
+    </div>
+
+    <!-- Middle: Title -->
+    <div class="title-area">
+      <div class="kicker">Do artesanal ao profissional</div>
+      <h1 class="title">Como <em>Criar</em>, Vender e Escalar Alimentos Artesanais</h1>
+      <p class="subtitle">O método completo para transformar sua produção artesanal em uma marca lucrativa</p>
+    </div>
+
+    <!-- Price -->
+    <div class="price-area">
+      <div class="price-old">R$ 497</div>
+      <div class="price-current"><span class="currency">R$</span>197</div>
+      <div class="price-installment">ou 12x de R$ 19,21</div>
+      <div class="bonus-badge"><span>+ 4 Bônus Exclusivos</span></div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="bottom-bar">
+      <div class="author">
+        <div class="author-name">Gabriel Petelinkar</div>
+        <div class="author-title">Produtor &amp; Empreendedor</div>
+      </div>
+      <div class="lessons-badge">
+        <div class="number">15</div>
+        <div class="label">Aulas<br>Práticas</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

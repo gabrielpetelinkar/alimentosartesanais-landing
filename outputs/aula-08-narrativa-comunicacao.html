@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Aula 08 — Narrativa e Comunicação Estratégica: Sua História Vende</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+
+  html { overflow: hidden; }
+
+  body {
+    width: 100vw; height: 100vh; overflow: hidden; margin: 0;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    background: #0D0D0D;
+    color: #FFFFFF;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    
+    
+    background: #0D0D0D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+  }
+
+  .slide:last-child {
+    page-break-after: avoid;
+  }
+
+  /* ===== COLORS ===== */
+  :root {
+    --bg-primary: #0D0D0D;
+    --bg-secondary: #1A1A1A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --text-muted: #7A7A7A;
+    --accent: #C45B3A;
+    --accent-glow: rgba(196, 91, 58, 0.15);
+    --accent-gold: #D4A843;
+    --accent-green: #5B8C3E;
+    --accent-terracotta: #C45B3A;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  .title-huge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 180px;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -4px;
+  }
+
+  .title-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: #FFFFFF;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+
+  .title-lg {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+
+  .title-md {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #B0B0B0;
+    line-height: 1.4;
+  }
+
+  .body-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #B0B0B0;
+    line-height: 1.5;
+  }
+
+  .caption {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #7A7A7A;
+  }
+
+  .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .terracotta { color: var(--accent); }
+  .green { color: #5B8C3E; }
+  .white { color: #FFFFFF; }
+  .muted { color: #B0B0B0; }
+
+  /* ===== DECORATIVE ===== */
+  .accent-line {
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    margin: 20px 0;
+  }
+
+  .accent-line-wide {
+    width: 160px;
+    height: 3px;
+    background: var(--accent);
+    margin: 24px auto;
+  }
+
+  .accent-line-center {
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    margin: 20px auto;
+  }
+
+  /* ===== GLOW BACKGROUND ===== */
+  .glow-bg {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ===== LAYOUT HELPERS ===== */
+  .centered {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .left-aligned {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .split-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px 60px 60px;
+  }
+
+  /* ===== PHOTO PLACEHOLDERS ===== */
+  .photo-full {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #7A7A7A;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .photo-full.food {
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 30%, #1a1510 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.landscape {
+    background: linear-gradient(180deg, #1a2010 0%, #15200a 30%, #0a1505 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.rural {
+    background: linear-gradient(160deg, #201a0a 0%, #2a1f10 40%, #1a1510 70%, #0D0D0D 100%);
+  }
+
+  .photo-full.market {
+    background: linear-gradient(145deg, #1a1015 0%, #201520 35%, #151020 65%, #0D0D0D 100%);
+  }
+
+  .photo-full.social {
+    background: linear-gradient(135deg, #1a100a 0%, #201815 35%, #15100d 65%, #0D0D0D 100%);
+  }
+
+  .photo-half {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #5a5a5a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .photo-half.food {
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 50%, #1a1510 100%);
+  }
+
+  .photo-half.rural {
+    background: linear-gradient(135deg, #201a0a 0%, #2a1f10 50%, #1a1510 100%);
+  }
+
+  .photo-half.product {
+    background: linear-gradient(135deg, #151015 0%, #201520 50%, #0D0D0D 100%);
+  }
+
+  .photo-half.fair {
+    background: linear-gradient(135deg, #1a1510 0%, #20180a 50%, #0D0D0D 100%);
+  }
+
+  .photo-half.social {
+    background: linear-gradient(135deg, #1a100a 0%, #201510 50%, #0D0D0D 100%);
+  }
+
+  .overlay-dark {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(13, 13, 13, 0.65);
+  }
+
+  .content-over {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .content-over-center {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ===== NUMBER HIGHLIGHT ===== */
+  .number-huge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 160px;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+
+  .number-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 120px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  /* ===== LIST ITEMS ===== */
+  .list-item {
+    margin-bottom: 28px;
+  }
+
+  .list-item .marker {
+    color: var(--accent);
+    font-size: 18px;
+    margin-right: 12px;
+  }
+
+  .list-item .item-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #FFFFFF;
+  }
+
+  .list-item .item-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #B0B0B0;
+    margin-top: 4px;
+    padding-left: 30px;
+  }
+
+  /* ===== ACTION ITEMS ===== */
+  .action-item {
+    margin-bottom: 32px;
+    padding-left: 0;
+  }
+
+  .action-item .arrow {
+    color: var(--accent);
+    font-size: 22px;
+    margin-right: 14px;
+    font-weight: 700;
+  }
+
+  .action-item .action-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .action-item .action-detail {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #B0B0B0;
+    margin-top: 4px;
+    padding-left: 36px;
+  }
+
+  /* ===== STAT CARDS ===== */
+  .stat-cards {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: var(--bg-secondary);
+    border-top: 4px solid var(--accent);
+    padding: 28px 24px;
+    width: 220px;
+    text-align: center;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .stat-card .stat-number {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-card .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #B0B0B0;
+    line-height: 1.4;
+  }
+
+  .stat-card .stat-source {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: #5a5a5a;
+    margin-top: 8px;
+  }
+
+  /* ===== COMPARISON ===== */
+  .comparison {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .comp-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+  }
+
+  .comp-side.before {
+    background: #1A1A1A;
+    border-right: 2px solid #2a2a2a;
+  }
+
+  .comp-side.after {
+    background: #0D0D0D;
+  }
+
+  .comp-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .comp-content {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+
+  .comp-detail {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: #7A7A7A;
+    line-height: 1.5;
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    z-index: 20;
+    height: 4px;
+  }
+
+  .progress-segment {
+    flex: 1;
+    height: 100%;
+    background: #2a2a2a;
+    position: relative;
+  }
+
+  .progress-segment.active {
+    background: var(--accent);
+  }
+
+  .progress-segment.completed {
+    background: #5B8C3E;
+  }
+
+  .progress-labels {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    z-index: 20;
+  }
+
+  .progress-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4a4a4a;
+    flex: 1;
+    text-align: center;
+  }
+
+  .progress-label.active {
+    color: var(--accent);
+  }
+
+  .progress-label.completed {
+    color: #5B8C3E;
+  }
+
+  /* ===== SLIDE COUNTER ===== */
+  .slide-number {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #4a4a4a;
+    z-index: 10;
+  }
+
+  .course-tag {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3a3a3a;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+
+  /* ===== BADGE ===== */
+  .badge {
+    position: absolute;
+    top: 28px;
+    right: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--accent);
+    background: rgba(196, 91, 58, 0.12);
+    padding: 6px 16px;
+    border-radius: 4px;
+    letter-spacing: 2px;
+    z-index: 20;
+  }
+
+  /* ===== CASE CARD ===== */
+  .case-bar {
+    background: rgba(196, 91, 58, 0.08);
+    border-left: 4px solid var(--accent);
+    padding: 24px 32px;
+    margin-top: 20px;
+  }
+
+  /* ===== EXERCISE ===== */
+  .exercise-box {
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 40px 50px;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  /* ===== NEXT CLASS TEASER ===== */
+  .next-class {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(196, 91, 58, 0.3);
+  }
+
+  /* ===== SPEAKER NOTES (hidden, print-only or dev reference) ===== */
+  .speaker-notes {
+    display: none;
+  }
+
+  @media print {
+    .speaker-notes {
+      display: none;
+    }
+    .progress-bar, .progress-labels, .badge {
+      display: none;
+    }
+  }
+
+.slide-counter {
+  position: fixed; bottom: 20px; left: 30px; z-index: 50;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7A7A7A; opacity: 0.5; letter-spacing: 1px;
+}
+
+/* Progress bar */
+.progress {
+  position: absolute; top: 28px; right: 40px; z-index: 10;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: #4a4a4a;
+}
+.progress .active { color: var(--accent); font-weight: 700; }
+.progress .dot { width: 6px; height: 6px; border-radius: 50%; background: #333; }
+.progress .dot.active { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.progress .line { width: 20px; height: 1px; background: #333; }
+
+
+/* Aula label */
+.aula-label {
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: HOOK / ABERTURA                                      -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-1">
+  <div style="background:url('../assets/aulas/aula08-filmando-smartphone.jpg') center/cover no-repeat !important;" class="photo-full social">
+    
+  </div>
+  <div class="overlay-dark"></div>
+  <div class="content-over">
+    <div style="margin-bottom: 60px;">
+      <div class="label" style="margin-bottom: 20px; font-size: 15px;">AULA 08 · VENDER</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 46px; color: #FFFFFF; line-height: 1.2; max-width: 800px;">
+        O brasileiro passa 9 horas por dia nas redes sociais. E em segundos decide se sua marca vale a <span class="terracotta">atenção.</span>
+      </div>
+    </div>
+  </div>
+  <div class="badge">08</div>
+  <div class="slide-number">01 / 26</div>
+  <div class="speaker-notes">Hook emocional. Dado sobre tempo nas redes para criar urgência. Conectar com a realidade do público.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: TÍTULO DA AULA                                       -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-2">
+  <div class="glow-bg" style="top: -200px; right: -200px;"></div>
+  <div class="centered" style="position: relative; z-index: 1;">
+    <div class="title-huge" style="margin-bottom: 24px;">08</div>
+    <div class="title-lg" style="margin-bottom: 12px;">NARRATIVA E COMUNICAÇÃO ESTRATÉGICA</div>
+    <div class="subtitle">Sua história vende.</div>
+    <div class="accent-line-center" style="margin-top: 28px;"></div>
+    <!-- Progress bar -->
+    <div class="progress"><span class="">CRIAR</span><span class="dot "></span><span class="line"></span><span class="active">VENDER</span><span class="dot active"></span><span class="line"></span><span class="">ESCALAR</span><span class="dot "></span></div>
+    </div>
+  <div class="slide-number">03 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Abrir com a ideia central: o ser humano é narrativo. O brasileiro, ainda mais — criativo, emocional, curioso.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: CONCEITO — O BRASILEIRO                              -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-4">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div class="body-text" style="font-size: 24px; margin-bottom: 20px;">O brasileiro é criativo, emocional e curioso.</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 38px; color: var(--accent); line-height: 1.25; text-align: center;">
+        NÃO CONSUMIMOS APENAS<br>O QUE O PRODUTO OFERECE —<br>MAS OS SIGNIFICADOS,<br>LEMBRANÇAS E PESSOAS<br>QUE O CERCAM.
+      </div>
+      <div class="accent-line-center" style="margin-top: 32px;"></div>
+    </div>
+  </div>
+  <div class="slide-number">04 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Reforçar que consumo é emocional. O produto artesanal carrega significado — e isso é o que diferencia.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: FOTO + INSIGHT (Autenticidade)                       -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-5">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/WhatsApp Image 2026-03-23 at 14.58.20.jpeg') center/cover no-repeat !important;" class="photo-half product">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          O público busca <span class="terracotta">autenticidade.</span>
+        </div>
+      </div>
+      <div class="accent-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Fotos e vídeos orgânicos, com narrativa própria e humor genuíno, geram muito mais engajamento do que campanhas tradicionais.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">05 / 26</div>
+  <div class="speaker-notes">Autenticidade como valor principal. O conteúdo real supera o conteúdo polido e artificial.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: COMUNICAÇÃO ESTRATÉGICA                              -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-6">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div class="body-text" style="font-size: 24px; margin-bottom: 20px;">A comunicação estratégica transforma o trabalho artesanal em</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 72px; color: var(--accent); line-height: 1;">
+        MARCA.
+      </div>
+      <div class="accent-line-center" style="margin-top: 32px;"></div>
+    </div>
+  </div>
+  <div class="slide-number">06 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Transição de produto para marca. Comunicação não é apenas divulgar — é posicionar e diferenciar.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: PILARES DA NARRATIVA                                 -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-7">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">PILARES DA NARRATIVA DE MARCA</div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Origem e história do produtor</span></div>
+      <div class="item-desc">A jornada pessoal cria conexão emocional e confiança.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Bastidores e processo artesanal</span></div>
+      <div class="item-desc">Transparência que transforma curiosidade em fidelidade.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Valores, propósito e missão</span></div>
+      <div class="item-desc">Reforçar o que a marca representa em cada ponto de contato.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Consistência visual e frequência</span></div>
+      <div class="item-desc">Identidade coesa que constrói reconhecimento e autoridade.</div>
+    </div>
+  </div>
+  <div class="slide-number">07 / 26</div>
+  <div class="speaker-notes">Quatro pilares fundamentais. Cada um sustenta a narrativa da marca artesanal.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: TRANSIÇÃO — MERCADO                                  -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-8">
+  <div class="glow-bg" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+  <div class="centered" style="position: relative; z-index: 1;">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE ESTÁ ACONTECENDO<br>NO MERCADO
+    </div>
+    <div class="accent-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">08 / 26</div>
+  <div class="speaker-notes">Slide de transição. Preparar o público para os dados de mercado que fundamentam a estratégia.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: NÚMERO DESTAQUE — 73%                                -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-9">
+  <div class="centered">
+    <div class="number-huge">73%</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        das empresas consideram suas ações em redes sociais <span class="terracotta">eficazes</span> ou muito eficazes.
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— Small Business Trends, 2024</div>
+  </div>
+  <div class="slide-number">09 / 26</div>
+  <div class="speaker-notes">Dado forte: a maioria reconhece que redes sociais funcionam. A questão é como usá-las bem.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: NÚMERO DESTAQUE — 62%                               -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-10">
+  <div class="centered">
+    <div class="number-huge">62%</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        mais chances de gerar <span class="terracotta">leads qualificados</span> para marcas que publicam conteúdo com frequência.
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— Content Marketing Institute, 2024</div>
+  </div>
+  <div class="slide-number">10 / 26</div>
+  <div class="speaker-notes">Frequência é chave. Não basta postar uma vez — é preciso consistência para gerar resultados.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: STAT CARDS — DADOS DE MERCADO                       -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-11">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 36px;">PANORAMA DO MERCADO DIGITAL</div>
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-number">54%</div>
+        <div class="stat-label">pesquisam produtos<br>nas redes sociais</div>
+        <div class="stat-source">Varejo S.A, 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">57%</div>
+        <div class="stat-label">compram de marcas<br>que seguem</div>
+        <div class="stat-source">Varejo S.A, 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">60%</div>
+        <div class="stat-label">mais confiança com<br>identidade visual coesa</div>
+        <div class="stat-source">Lucidpress, 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3x</div>
+        <div class="stat-label">mais retenção ao<br>responder feedback</div>
+        <div class="stat-source">Microsoft, 2024</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">11 / 26</div>
+  <div class="speaker-notes">Visão consolidada dos dados. As redes são vitrine, canal de venda e ferramenta de fidelização ao mesmo tempo.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: FOTO + INSIGHT (Redes sociais como vitrine)         -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-12">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/mundo-do-marketing-1.png') center/cover no-repeat !important;" class="photo-half social">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div class="body-text" style="font-size: 22px; margin-bottom: 16px;">Consumidores compartilham produtos com significado, gerando divulgação espontânea.</div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 40px; color: var(--accent); line-height: 1.2;">
+          REDES SOCIAIS<br>SÃO VITRINE.
+        </div>
+      </div>
+      <div class="accent-line" style="margin: 24px 0;"></div>
+      <div class="body-text" style="font-size: 18px;">
+        Cada post é uma oportunidade de venda. Cada story, um convite para conhecer sua marca.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12 / 26</div>
+  <div class="speaker-notes">Redes sociais como vitrine. Marcas ativas têm 3x mais chances de fidelizar clientes.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: CASE — BASTIDORES                                   -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-13">
+  <div style="background:url('../assets/aulas/aula04-maos-produtor-ia.png') center/cover no-repeat !important;" class="photo-full food">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.2) 100%);"></div>
+  <div class="content-over">
+    <div class="label" style="margin-bottom: 16px; font-size: 14px;">CASE</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: #FFFFFF; margin-bottom: 16px;">
+      BASTIDORES QUE TRIPLICARAM SEGUIDORES
+    </div>
+    <div class="body-text" style="max-width: 700px;">
+      Um produtor começou a mostrar os bastidores da produção no Instagram e triplicou seguidores em 6 meses, transformando curiosidade em vendas recorrentes.
+    </div>
+  </div>
+  <div class="slide-number">13 / 26</div>
+  <div class="speaker-notes">Case real. Bastidores criam identificação e proximidade. O público quer saber como é feito.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: TRANSIÇÃO — O QUE APRENDER                          -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-14">
+  <div class="glow-bg" style="bottom: -200px; left: -200px;"></div>
+  <div class="centered" style="position: relative; z-index: 1;">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE VOCÊ PODE<br>APRENDER COM ISSO
+    </div>
+    <div class="accent-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">14 / 26</div>
+  <div class="speaker-notes">Transição para os insights práticos. O que o produtor pode aplicar imediatamente.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: INSIGHT 1 — Sua história é sua maior arma           -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-15">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 42px; color: #FFFFFF; line-height: 1.25; text-align: center;">
+        Sua história é a sua<br><span class="terracotta">MAIOR ARMA.</span>
+      </div>
+      <div class="accent-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px; font-size: 22px;">
+        Conte sua origem e explique suas escolhas<br>com transparência. Isso cria conexão real.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">15 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Primeiro insight. A história pessoal do produtor é incopiável e cria vínculo emocional.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: INSIGHT 2 — Narrativa consistente                   -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-16">
+  <div class="centered">
+    <div style="max-width: 850px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 36px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        Narrativa consistente constrói <span class="terracotta">autoridade.</span> E é um diferencial estratégico que <span class="terracotta">não pode ser copiado.</span>
+      </div>
+      <div class="accent-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px;">
+        Reforce valores, propósito e missão em todos os pontos de contato.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">16 / 26</div>
+  <div class="speaker-notes">Consistência gera autoridade. Repetir a mensagem central fortalece posicionamento.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: FOTO + INSIGHT (Experiências e diálogos)            -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-17">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/WhatsApp Image 2026-03-23 at 14.58.20 (1).jpeg') center/cover no-repeat !important;" class="photo-half rural">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Crie experiências e abra <span class="terracotta">diálogos.</span>
+        </div>
+      </div>
+      <div class="accent-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Produtos isolados vendem menos. Experiências conectam e geram comunidade.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">17 / 26</div>
+  <div class="speaker-notes">Experiências criam comunidade. O diálogo com o público transforma cliente em defensor.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: CASE 2 — Identidade visual                          -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-18">
+  <div style="background:url('../assets/aulas/aula05-molhos-vibrantes.png') center/cover no-repeat !important;" class="photo-full rural">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.15) 100%);"></div>
+  <div class="content-over">
+    <div class="label" style="margin-bottom: 16px; font-size: 14px;">CASE</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: #FFFFFF; margin-bottom: 16px;">
+      IDENTIDADE VISUAL QUE GERA CONFIANÇA
+    </div>
+    <div class="body-text" style="max-width: 750px;">
+      Marcas com identidade visual coesa aumentam a confiança do consumidor em 60%, transformando reconhecimento em preferência de compra.
+    </div>
+  </div>
+  <div class="slide-number">18 / 26</div>
+  <div class="speaker-notes">Case de identidade visual. Coerência entre rótulo, embalagem, redes e ponto de venda.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: TRANSIÇÃO — AÇÃO                                    -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-19">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: var(--accent); text-align: center;">
+      TRANSFORME ISSO EM<br>VANTAGEM COMPETITIVA
+    </div>
+    <div class="accent-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">19 / 26</div>
+  <div class="speaker-notes">Transição para ações práticas. O que fazer a partir de agora.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: AÇÕES 1-3                                           -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-20">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Mostre o processo e os bastidores</span></div>
+      <div class="action-detail">Vídeos, fotos e conteúdo educativo aproximam o público da produção artesanal.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Use redes sociais para humanizar a marca</span></div>
+      <div class="action-detail">Crie identificação e engajamento mostrando pessoas e histórias reais.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Desenvolva linhas ou coleções temáticas</span></div>
+      <div class="action-detail">Temas sazonais, datas comemorativas e séries de conteúdo criam expectativa e recorrência.</div>
+    </div>
+  </div>
+  <div class="slide-number">20 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Três primeiras ações. Bastidores, humanização e coleções temáticas.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: AÇÕES 4-6                                           -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-21">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Convide o público a contar suas histórias</span></div>
+      <div class="action-detail">Mostre a participação dos seus produtos na vida real dos clientes, criando conexões genuínas.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Invista em vídeos curtos</span></div>
+      <div class="action-detail">Reels e shorts educativos ou divertidos ampliam alcance e tornam a marca memorável.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">&#9658;</span><span class="action-text">Mantenha consistência visual e frequência</span></div>
+      <div class="action-detail">Publicações regulares e identidade visual coerente constroem uma comunidade fiel.</div>
+    </div>
+  </div>
+  <div class="slide-number">21 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Mais três ações. Conteúdo gerado pelo usuário, vídeos curtos e consistência.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: ANTES / DEPOIS                                      -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-22">
+  <div class="comparison">
+    <div class="comp-side before">
+      <div class="comp-label terracotta">ANTES &#10007;</div>
+      <div class="comp-content" style="color: #888;">
+        "Posts esporádicos de foto do produto"
+      </div>
+      <div class="comp-detail">
+        Sem calendário, sem identidade visual,<br>sem narrativa, sem frequência.<br><br>O público esquece.
+      </div>
+    </div>
+    <div class="comp-side after">
+      <div class="comp-label green">DEPOIS &#10003;</div>
+      <div class="comp-content white">
+        "Calendário editorial:<br>bastidores, receitas,<br>história do produtor,<br>vídeos curtos"
+      </div>
+      <div class="comp-detail" style="color: #B0B0B0;">
+        Identidade visual coesa,<br>narrativa clara, frequência.<br><br>O público <span style="color: var(--accent);">lembra e compra.</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">22 / 26</div>
+  <div class="speaker-notes">Comparativo visual. Mostrar o contraste entre comunicação amadora e estratégica.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: NÚMERO DESTAQUE — 3x                                -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-23">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 140px; color: var(--accent); line-height: 1; letter-spacing: -3px;">3x</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 48px; color: var(--accent); margin-top: 4px;">MAIS RETENÇÃO</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        para marcas que monitoram e respondem ativamente ao <span class="terracotta">feedback</span> do público.
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— Microsoft, 2024</div>
+  </div>
+  <div class="slide-number">23 / 26</div>
+  <div class="speaker-notes">Dado de retenção. Responder feedback é parte da comunicação estratégica — não é opcional.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: EXERCÍCIO                                           -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-24">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 32px;">EXERCÍCIO PRA AGORA</div>
+    <div class="exercise-box">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 30px; color: #FFFFFF; line-height: 1.3; margin-bottom: 24px;">
+        Defina sua narrativa central: qual é a <span class="terracotta">ÚNICA HISTÓRIA</span> que sua marca precisa contar?
+      </div>
+      <div class="accent-line-center"></div>
+      <div class="body-text" style="margin-top: 20px; font-size: 20px;">
+        Pense: o que conecta você, seu produto e seu público?
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">24 / 26</div>
+  <div class="speaker-notes">Exercício prático. Dar 3-5 minutos para os participantes escreverem sua narrativa central em uma frase.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: RESUMO                                              -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-25">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">O QUE LEVAR DESTA AULA</div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Autenticidade supera campanhas tradicionais</span></div>
+      <div class="item-desc">Bastidores, histórias reais e humor genuíno geram mais engajamento.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Consistência visual constrói confiança</span></div>
+      <div class="item-desc">Identidade coesa em todos os pontos de contato fortalece a marca.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Narrativa é diferencial que não se copia</span></div>
+      <div class="item-desc">Sua história é única e transforma produto em marca.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">&#9670;</span><span class="item-title">Redes sociais são vitrine, canal e comunidade</span></div>
+      <div class="item-desc">Frequência, vídeos curtos e diálogo com o público geram vendas recorrentes.</div>
+    </div>
+  </div>
+  <div class="slide-number">25 / 26</div>
+  <div class="speaker-notes">Resumo com quatro pontos-chave. Reforçar que tudo se conecta: autenticidade, consistência, narrativa e presença digital.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: FECHAMENTO                                          -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-26">
+  <div style="background:url('../assets/aulas/aula08-instagram-ia.png') center/cover no-repeat !important;" class="photo-full landscape">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: rgba(13,13,13,0.6);"></div>
+  <div class="content-over-center">
+    <div class="quote" style="max-width: 750px; margin-bottom: 32px;">
+      "Sua história é a única coisa que nenhum concorrente pode copiar."
+    </div>
+    <div class="accent-line-center"></div>
+    <div class="next-class" style="margin-top: 32px;">
+      <div class="label" style="font-size: 14px; margin-bottom: 8px;">PRÓXIMA AULA</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF;">Eventos e Degustações.</div>
+      <div class="body-text" style="font-size: 16px; margin-top: 4px;">Criando defensores da marca.</div>
+    </div>
+    <div style="margin-top: 40px; display: flex; gap: 40px;">
+      <div class="body-text" style="font-size: 16px; color: var(--accent);">@gabrielpetelinkar</div>
+      <div class="body-text" style="font-size: 16px; color: var(--accent);">oriza.agro</div>
+    </div>
+  </div>
+  <div class="slide-number">26 / 26</div>
+  <div class="speaker-notes">Encerrar com o hook da aula. Anunciar próxima aula sobre eventos e degustações. Contatos na tela.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- KEYBOARD NAVIGATION                                           -->
+<!-- ============================================================ -->
+<div class="slide-counter" id="slideCounter">1 / ?</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.slide');
+  var current = 0;
+  var lastNav = 0;
+  var DEBOUNCE = 300;
+  var counter = document.getElementById('slideCounter');
+
+  function showSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = i === index ? 'flex' : 'none';
+    }
+    current = index;
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function next() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current < slides.length - 1) showSlide(current + 1);
+  }
+
+  function prev() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current > 0) showSlide(current - 1);
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); next();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); prev();
+    } else if (e.key === 'n' || e.key === 'N') {
+      document.body.classList.toggle('show-notes');
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(slides.length - 1);
+    }
+  });
+
+  document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    if (e.deltaY > 0) next(); else prev();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

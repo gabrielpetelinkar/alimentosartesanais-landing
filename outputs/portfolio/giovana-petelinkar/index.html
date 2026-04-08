@@ -1,2396 +1,1231 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22 font-family=%22DM Sans%22 fill=%22%23C4785B%22>G</text></svg>">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Giovana Petelinkar | Estrategista de Comunicação & Marketing Digital</title>
-<meta name="description" content="Portfólio profissional de Giovana Petelinkar. Estratégia de comunicação e marketing digital para marcas que merecem ser vistas.">
-
-<!-- Fonts: DM Sans + Source Serif 4 + DM Mono -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-
-<style>
-/* ============================================================
-   DESIGN SYSTEM — Ellen Lupton Refinement
-   Foundation: Chris Do Direction
-   Palette: Onyx, Marfim, Terracota, Sage, Grafite
-   Type: DM Sans (headings) + Source Serif 4 (body) + DM Mono (captions)
-   Scale: 1.333 (Perfect Fourth) — modular, perceptible hierarchy
-   Grid: 12-col, 24px gutter, 80px margin
-   Baseline: 8px unit for vertical rhythm
-   ============================================================ */
-
-:root {
-  /* --- Color Tokens --- */
-  --onyx: #1A1A1A;
-  --onyx-90: #333333;
-  --marfim: #F7F5F0;
-  --marfim-dark: #EFEADE;
-  --terracota: #C4785B;
-  --terracota-hover: #B0684D;
-  --terracota-10: rgba(196,120,91,0.10);
-  --sage: #8B9E7E;
-  --sage-light: #E8EDE5;
-  --grafite: #6B6B6B;
-  --white: #FFFFFF;
-  --divider: rgba(26,26,26,0.08);
-
-  /* --- Typography Tokens --- */
-  --font-heading: 'DM Sans', system-ui, sans-serif;
-  --font-body: 'Source Serif 4', Georgia, serif;
-  --font-mono: 'DM Mono', 'Courier New', monospace;
-
-  /* --- Modular Scale: 1.333 (Perfect Fourth) --- */
-  --scale-ratio: 1.333;
-  --text-xs: 0.75rem;    /* 12px — micro, tags */
-  --text-sm: 0.875rem;   /* 14px — small, captions */
-  --text-base: 1rem;     /* 16px — body base */
-  --text-md: 1.125rem;   /* 18px — body reading */
-  --text-lg: 1.333rem;   /* ~21px — H3 */
-  --text-xl: 1.777rem;   /* ~28px — H2 */
-  --text-2xl: 2.369rem;  /* ~38px — H1 */
-  --text-3xl: 3.157rem;  /* ~50px — Display */
-
-  /* --- Spatial Tokens (8px baseline unit) --- */
-  --space-unit: 8px;
-  --space-xs: 8px;       /* 1 unit */
-  --space-sm: 16px;      /* 2 units */
-  --space-md: 24px;      /* 3 units */
-  --space-lg: 32px;      /* 4 units */
-  --space-xl: 48px;      /* 6 units */
-  --space-2xl: 64px;     /* 8 units */
-  --space-3xl: 96px;     /* 12 units */
-  --space-4xl: 80px;     /* 10 units */
-
-  /* --- Layout Tokens --- */
-  --max-width: 1200px;
-  --gutter: 24px;
-  --margin: 80px;
-  --section-gap: 72px;
-  --measure: 65ch;       /* optimal line length */
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-body {
-  font-family: var(--font-body);
-  font-size: var(--text-md);
-  color: var(--onyx);
-  background: var(--marfim);
-  line-height: 1.6;
-}
-
-/* --- Typography: Modular Scale Hierarchy ---
-   Ratio 1.333 ensures each level is perceptibly distinct.
-   Line heights tighten as sizes increase (display reads differently than body).
-   Letter-spacing compensates for optical weight at large sizes.
-   --- */
-h1, h2, h3, h4 {
-  font-family: var(--font-heading);
-  color: var(--onyx);
-  text-wrap: balance;
-}
-
-h1 {
-  font-size: clamp(var(--text-2xl), 5vw, var(--text-3xl));
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  margin-bottom: var(--space-md);
-}
-
-h2 {
-  font-size: clamp(var(--text-xl), 3.5vw, var(--text-2xl));
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.015em;
-  margin-bottom: var(--space-sm);
-}
-
-h3 {
-  font-size: var(--text-lg);
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  margin-bottom: var(--space-xs);
-}
-
-h4 {
-  font-size: var(--text-sm);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.4;
-}
-
-p {
-  font-size: var(--text-md);
-  max-width: var(--measure);
-  line-height: 1.6;
-}
-
-/* Paragraph rhythm: consistent vertical spacing */
-p + p { margin-top: var(--space-sm); }
-
-.caption {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  color: var(--grafite);
-  letter-spacing: 0.02em;
-  line-height: 1.5;
-}
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--sage);
-  background: var(--sage-light);
-  padding: 4px 12px;
-  border-radius: 4px;
-  display: inline-block;
-  line-height: 1.4;
-  white-space: nowrap;
-}
-
-/* --- Selection highlight --- */
-::selection {
-  background: var(--terracota-10);
-  color: var(--onyx);
-}
-
-/* --- Focus accessibility --- */
-a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--terracota);
-  outline-offset: 4px;
-  border-radius: 4px;
-}
-
-/* --- Layout: Spatial System ---
-   All spacing derives from 8px baseline unit.
-   Sections use var(--section-gap) = 120px (15 units).
-   Components use var(--space-xl) = 48px (6 units).
-   Elements use var(--space-md) = 24px (3 units).
-   --- */
-.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--margin); }
-section { padding: var(--section-gap) 0; }
-
-/* --- Responsive: Graceful Degradation --- */
-@media (max-width: 1024px) {
-  :root { --margin: 48px; --section-gap: var(--space-3xl); }
-}
-
-@media (max-width: 768px) {
-  :root { --margin: 24px; --section-gap: var(--space-2xl); }
-  h1 { font-size: var(--text-2xl); }
-  h2 { font-size: var(--text-xl); }
-}
-
-@media (max-width: 480px) {
-  :root { --margin: 20px; --section-gap: var(--space-xl); }
-  .hero-image .photo-frame { max-width: 240px; }
-  .hero-content .subtitle { font-size: 1rem; margin-bottom: 28px; }
-  h1 { font-size: 2rem; }
-}
-
-/* --- Buttons --- */
-.btn-primary {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--white);
-  background: var(--terracota);
-  border: none;
-  padding: 16px 40px;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-.btn-primary:hover { background: var(--terracota-hover); transform: translateY(-2px); }
-
-.btn-secondary {
-  font-family: var(--font-heading);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--terracota);
-  background: transparent;
-  border: 2px solid var(--terracota);
-  padding: 12px 32px;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-.btn-secondary:hover { background: var(--terracota); color: var(--white); }
-
-/* ============================================================
-   SECTION 1: HERO (SB7 — Character + Guide)
-   Grunt Test: O que faz? Como melhora minha vida? O que faco agora?
-   ============================================================ */
-
-.hero {
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  padding: 80px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-
-.hero-content h1 { margin-bottom: 24px; }
-.hero-content .subtitle {
-  font-family: var(--font-body);
-  font-size: 1.25rem;
-  color: var(--grafite);
-  margin-bottom: 40px;
-  max-width: 520px;
-  line-height: 1.7;
-}
-
-.hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-
-.hero-image {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-image .photo-frame {
-  width: 100%;
-  max-width: 440px;
-  aspect-ratio: 3/4;
-  background: linear-gradient(135deg, #D4C5B9 0%, #A89888 100%);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-image .photo-frame::after {
-  content: 'Foto profissional da Giovana';
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: var(--white);
-  opacity: 0.7;
-  text-align: center;
-  padding: 20px;
-}
-
-.hero-image .photo-accent {
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 120px;
-  height: 120px;
-  background: var(--terracota);
-  opacity: 0.15;
-  border-radius: 50%;
-}
-
-@media (max-width: 768px) {
-  .hero { min-height: unset; padding: 48px 0; }
-  .hero-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-  .hero-cta-group { justify-content: center; }
-  .hero-image { order: -1; }
-  .hero-image .photo-frame { max-width: 300px; }
-  .hero-content .subtitle { margin-left: auto; margin-right: auto; }
-}
-
-/* ============================================================
-   SECTION 2: STAKES (SB7 — Problem + Failure)
-   ============================================================ */
-
-.stakes {
-  background: var(--white);
-  border-top: 1px solid rgba(0,0,0,0.06);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-
-.stakes h2 { margin-bottom: var(--space-xl); }
-
-.stakes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
-}
-
-.stake-card {
-  padding: var(--space-lg);
-  border-left: 3px solid var(--terracota);
-  background: var(--marfim);
-  border-radius: 0 8px 8px 0;
-  transition: transform 0.2s ease;
-}
-.stake-card:hover { transform: translateX(4px); }
-
-.stake-card p {
-  font-size: 1rem;
-  color: var(--onyx);
-  line-height: 1.6;
-}
-
-/* ============================================================
-   SECTION 3: VALUE (SB7 — Guide + Plan)
-   ============================================================ */
-
-.value .empathy-text {
-  font-family: var(--font-body);
-  font-size: var(--text-lg);
-  font-style: italic;
-  color: var(--grafite);
-  margin-bottom: var(--space-xl);
-  max-width: var(--measure);
-  line-height: 1.65;
-  border-left: 3px solid var(--terracota-10);
-  padding-left: var(--space-md);
-}
-
-.authority-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xl);
-  margin-bottom: var(--space-2xl);
-  align-items: center;
-}
-
-.authority-stat {
-  text-align: center;
-}
-
-.authority-stat .number {
-  font-family: var(--font-heading);
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--terracota);
-  display: block;
-}
-
-.authority-stat .label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--grafite);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Plan Steps */
-.plan-title {
-  font-family: var(--font-heading);
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--sage);
-  margin-bottom: 32px;
-}
-
-.plan-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-  margin-bottom: 48px;
-}
-
-.plan-step {
-  padding: 40px 32px;
-  background: var(--white);
-  border-radius: 12px;
-  position: relative;
-}
-
-.plan-step .step-number {
-  font-family: var(--font-heading);
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--terracota);
-  opacity: 0.2;
-  position: absolute;
-  top: 16px;
-  right: 24px;
-}
-
-.plan-step h3 { margin-bottom: 12px; }
-.plan-step p { font-size: 1rem; color: var(--grafite); }
-
-.value .cta-center { text-align: center; margin-top: 48px; }
-
-/* ============================================================
-   SECTION 4: COMPETENCIAS (Tags visuais)
-   ============================================================ */
-
-.competencias {
-  background: var(--white);
-  border-top: 1px solid rgba(0,0,0,0.06);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-
-.competencias h2 { margin-bottom: 40px; }
-
-.comp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-}
-
-.comp-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 24px;
-  border-radius: 8px;
-  transition: background 0.2s;
-}
-
-.comp-item:hover { background: var(--marfim); }
-
-.comp-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--sage-light);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 1.25rem;
-}
-
-.comp-item h3 { font-size: 1rem; margin-bottom: 4px; }
-.comp-item p { font-size: 0.875rem; color: var(--grafite); max-width: 100%; }
-
-/* ============================================================
-   SECTION 5: CASES (SB7 — Success / Proof)
-   ============================================================ */
-
-.cases h2 { margin-bottom: 16px; }
-.cases .section-subtitle {
-  color: var(--grafite);
-  margin-bottom: 64px;
-  font-size: 1.125rem;
-}
-
-.case-study {
-  margin-bottom: var(--section-gap);
-  padding-bottom: var(--space-xl);
-  border-bottom: 1px solid var(--divider);
-}
-.case-study:last-child { border-bottom: none; }
-
-.case-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: flex-end;
-  margin-bottom: 40px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-
-.case-header h3 { font-size: 1.75rem; }
-.case-meta { display: flex; gap: 12px; flex-wrap: wrap; }
-
-.case-hero-image {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: linear-gradient(135deg, #D4C5B9 0%, #B8A898 100%);
-  border-radius: 12px;
-  margin-bottom: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.case-hero-image .placeholder {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: rgba(255,255,255,0.6);
-}
-
-.case-narrative {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
-  padding-bottom: var(--space-md);
-  border-bottom: 1px solid var(--divider);
-}
-.case-narrative:last-of-type { border-bottom: none; }
-
-.case-narrative .label {
-  font-family: var(--font-heading);
-  font-size: var(--text-xs);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--terracota);
-  padding-top: 5px;
-  position: relative;
-}
-.case-narrative .label::after {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--terracota-10);
-  margin-top: var(--space-xs);
-}
-
-.case-narrative .content p {
-  margin-bottom: 16px;
-  color: var(--onyx);
-}
-
-.case-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-  margin-bottom: 48px;
-}
-
-.case-gallery-item {
-  aspect-ratio: 4/3;
-  background: linear-gradient(135deg, #E0D8D0 0%, #C8BEB4 100%);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.case-gallery-item .placeholder {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: rgba(0,0,0,0.3);
-}
-
-.case-results {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.case-result-item { text-align: center; min-width: 140px; }
-.case-result-item .metric {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--terracota);
-}
-.case-result-item .metric-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--grafite);
-  margin-top: 4px;
-}
-
-.deliveries-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-@media (max-width: 768px) {
-  .case-narrative { grid-template-columns: 1fr; gap: 16px; }
-  .case-header { grid-template-columns: 1fr; }
-}
-
-/* ============================================================
-   SECTION 6: SOBRE (SB7 — Guide backstory)
-   ============================================================ */
-
-.sobre {
-  background: var(--white);
-  border-top: 1px solid rgba(0,0,0,0.06);
-}
-
-.sobre-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.sobre-photo {
-  width: 100%;
-  aspect-ratio: 3/4;
-  background: linear-gradient(135deg, #3A3A3A 0%, #1A1A1A 100%);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sobre-photo .placeholder {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: rgba(255,255,255,0.5);
-}
-
-.sobre-content h2 { margin-bottom: 24px; }
-.sobre-content p { margin-bottom: 16px; color: var(--onyx); }
-
-.sobre-content .highlight-box {
-  background: var(--marfim);
-  border-left: 3px solid var(--terracota);
-  padding: 24px 32px;
-  margin: 32px 0;
-  border-radius: 0 8px 8px 0;
-}
-
-.sobre-content .highlight-box p {
-  font-style: italic;
-  color: var(--grafite);
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .sobre-grid { grid-template-columns: 1fr; gap: 32px; }
-  .sobre-photo { max-width: 280px; margin: 0 auto; }
-  .plan-step { padding: 24px 20px; }
-  .case-results { padding: 24px 16px; gap: 24px; }
-  .case-result-item { min-width: 80px; }
-  .contact-row { gap: 24px; }
-}
-
-/* ============================================================
-   SECTION 7: CTA FINAL (SB7 — Call to Action)
-   ============================================================ */
-
-.cta-final {
-  background: var(--onyx);
-  color: var(--white);
-  text-align: center;
-  padding: 100px 0;
-}
-
-.cta-final h2 { color: var(--white); margin-bottom: 16px; }
-.cta-final .cta-subtitle {
-  font-family: var(--font-body);
-  font-size: 1.25rem;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 48px;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cta-final .btn-primary { font-size: 1.125rem; padding: 20px 48px; }
-
-.contact-row {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 48px;
-  flex-wrap: wrap;
-}
-
-.contact-item {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.5);
-}
-
-.contact-item a { color: var(--terracota); text-decoration: none; }
-.contact-item a:hover { text-decoration: underline; }
-
-/* ============================================================
-   NAV
-   ============================================================ */
-
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: rgba(247,245,240,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  padding: 16px 0;
-  transition: transform 0.3s ease;
-}
-
-.nav-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--margin);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-logo {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.125rem;
-  color: var(--onyx);
-  text-decoration: none;
-}
-
-.nav-logo span { color: var(--terracota); }
-
-.nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-links a {
-  font-family: var(--font-heading);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--grafite);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--onyx); }
-.nav-links .btn-primary { padding: 10px 24px; font-size: 0.8125rem; }
-
-@media (max-width: 768px) {
-  .nav-links a:not(.btn-primary) { display: none; }
-  .cta-final { padding: 64px 0; }
-  .cta-final .btn-primary { font-size: 1rem; padding: 16px 32px; }
-}
-
-/* --- Divider --- */
-.section-divider {
-  width: 48px;
-  height: 3px;
-  background: var(--terracota);
-  margin-bottom: 32px;
-}
-
-/* --- Utils --- */
-.mt-1 { margin-top: var(--space-xs); }
-.mt-2 { margin-top: var(--space-sm); }
-.mt-4 { margin-top: var(--space-lg); }
-.mb-2 { margin-bottom: var(--space-sm); }
-.text-center { text-align: center; }
-
-/* ============================================================
-   NANCY DUARTE — Visual Storytelling Layer
-   Sparkline emotional arc, narrative transitions,
-   Star Moment treatment, Before/After visual construct
-   ============================================================ */
-
-/* --- Narrative Transitions: visual bridges between sections --- */
-.narrative-bridge {
-  text-align: center;
-  padding: var(--space-xl) 0;
-  position: relative;
-}
-.narrative-bridge::before {
-  content: '';
-  display: block;
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, var(--terracota));
-  margin: 0 auto var(--space-md);
-}
-.narrative-bridge p {
-  font-family: var(--font-body);
-  font-size: var(--text-md);
-  font-style: italic;
-  color: var(--grafite);
-  max-width: 480px;
-  margin: 0 auto;
-}
-
-/* --- Star Moment: signature case study gets premium treatment --- */
-.case-study.star-moment {
-  position: relative;
-  background: var(--white);
-  padding: var(--space-xl);
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-}
-.case-study.star-moment::before {
-  content: 'PROJETO DESTAQUE';
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  color: var(--terracota);
-  position: absolute;
-  top: calc(-1 * var(--space-sm));
-  left: var(--space-xl);
-  background: var(--marfim);
-  padding: 4px 16px;
-  border-radius: 4px;
-  border: 1px solid var(--terracota-10);
-}
-
-/* --- Before/After Visual Construct --- */
-.before-after {
-  display: grid;
-  grid-template-columns: 1fr 60px 1fr;
-  gap: 0;
-  align-items: stretch;
-  margin: var(--space-xl) 0;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.before-after .before,
-.before-after .after {
-  padding: var(--space-lg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.before-after .before {
-  background: #E8E4DF;
-  border-right: none;
-}
-.before-after .after {
-  background: var(--white);
-  border-left: none;
-}
-.before-after .arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(to right, #E8E4DF, var(--white));
-  font-size: 1.5rem;
-  color: var(--terracota);
-}
-.before-after h4 {
-  font-size: var(--text-xs);
-  color: var(--terracota);
-  margin-bottom: var(--space-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-.before-after p {
-  font-size: var(--text-sm);
-  color: var(--onyx-90);
-  max-width: 100%;
-}
-
-@media (max-width: 768px) {
-  .before-after { grid-template-columns: 1fr; }
-  .before-after .arrow {
-    height: 40px;
-    background: linear-gradient(to bottom, #E8E4DF, var(--white));
-    transform: rotate(90deg);
-  }
-}
-
-/* --- Sparkline Indicator: emotional intensity per case --- */
-.sparkline-indicator {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: var(--space-xs);
-}
-.sparkline-indicator .bar {
-  height: 3px;
-  border-radius: 2px;
-  background: var(--terracota);
-  transition: width 0.3s ease;
-}
-.sparkline-indicator .bar.low { width: 24px; opacity: 0.3; }
-.sparkline-indicator .bar.med { width: 36px; opacity: 0.6; }
-.sparkline-indicator .bar.high { width: 48px; opacity: 0.85; }
-.sparkline-indicator .bar.peak { width: 64px; opacity: 1; }
-.sparkline-indicator .intensity-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--grafite);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* --- Case Context Bar: role, duration, tools --- */
-.case-context {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-lg);
-  padding: var(--space-md) 0;
-  margin-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--divider);
-}
-.case-context-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.case-context-item .ctx-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--grafite);
-}
-.case-context-item .ctx-value {
-  font-family: var(--font-heading);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--onyx);
-}
-
-/* --- Case Results: impact metrics --- */
-.case-results {
-  background: var(--white);
-  border-radius: 12px;
-  padding: var(--space-lg);
-  margin: var(--space-lg) 0;
-}
-.case-results h4 {
-  color: var(--terracota);
-  margin-bottom: var(--space-md);
-  font-size: var(--text-xs);
-}
-.case-results-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xl);
-}
-.case-result-item { text-align: center; min-width: 140px; }
-.case-result-item .metric {
-  font-family: var(--font-heading);
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--terracota);
-  line-height: 1.2;
-}
-.case-result-item .metric-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--grafite);
-  margin-top: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-/* --- Case Insight: "o que aprendi" --- */
-.case-insight {
-  background: var(--marfim-dark);
-  border-left: 3px solid var(--sage);
-  padding: var(--space-md) var(--space-lg);
-  margin: var(--space-lg) 0;
-  border-radius: 0 8px 8px 0;
-}
-.case-insight .insight-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--sage);
-  margin-bottom: var(--space-xs);
-}
-.case-insight p {
-  font-style: italic;
-  color: var(--onyx-90);
-  font-size: var(--text-base);
-  max-width: 100%;
-}
-
-/* --- Case TL;DR: summary at top --- */
-.case-tldr {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--grafite);
-  font-style: italic;
-  padding: var(--space-sm) 0;
-  margin-bottom: var(--space-md);
-  border-bottom: 1px solid var(--divider);
-  max-width: var(--measure);
-}
-
-/* --- Case Transition: narrative connector between cases --- */
-.case-transition {
-  text-align: center;
-  padding: var(--space-lg) 0;
-  color: var(--grafite);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.5;
-}
-
-/* --- Print Optimization --- */
-@media print {
-  nav { display: none; }
-  .btn-primary, .btn-secondary { border: 1px solid var(--onyx); color: var(--onyx); background: none; }
-  section { break-inside: avoid; }
-  .case-study { break-inside: avoid; }
-  body { font-size: 11pt; }
-}
-.case-hero-image img, .case-gallery-item img { width:100%; height:100%; object-fit:cover; border-radius:inherit; }
-.case-hero-image { background:none !important; }
-.case-gallery-item { background:none !important; overflow:hidden; }
-
-/* --- Nav Dropdown --- */
-.nav-dropdown { position: relative; }
-.nav-dropdown-trigger { cursor: pointer; }
-.nav-dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: var(--white);
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  padding: 8px 0;
-  min-width: 220px;
-  z-index: 200;
-  margin-top: 8px;
-}
-.nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
-.nav-dropdown-menu { z-index: 999; }
-.nav-dropdown-menu a {
-  display: block;
-  padding: 8px 20px;
-  font-family: var(--font-heading);
-  font-size: 0.8125rem;
-  font-weight: 400;
-  color: var(--onyx-90);
-  text-decoration: none;
-  transition: background 0.15s, color 0.15s;
-}
-.nav-dropdown-menu a:hover { background: var(--marfim); color: var(--terracota); }
-
-
-/* ============================================================
-   CASE CAROUSEL — Slides horizontais
-   ============================================================ */
-.cases-carousel-wrapper {
-  position: relative;
-  margin-top: var(--space-lg);
-}
-
-.cases-carousel {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  padding: 8px 0 24px;
-  scrollbar-width: none;
-}
-.cases-carousel::-webkit-scrollbar { display: none; }
-
-.case-slide {
-  flex: 0 0 min(480px, 85vw);
-  scroll-snap-align: start;
-  background: var(--white);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-}
-.case-slide:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-}
-
-.case-slide.star-moment { border: 2px solid var(--terracota); }
-.case-slide.star-moment::before {
-  content: 'DESTAQUE';
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  color: var(--white);
-  background: var(--terracota);
-  padding: 4px 10px;
-  border-radius: 4px;
-  z-index: 2;
-}
-
-.case-slide-image {
-  width: 100%;
-  height: 240px;
-  overflow: hidden;
-  position: relative;
-}
-.case-slide-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.case-slide-image .slide-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--marfim-dark), var(--sage-light));
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--grafite);
-  text-align: center;
-  padding: 20px;
-}
-
-.case-slide-body {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex: 1;
-}
-
-.case-slide-body h3 {
-  font-size: var(--text-lg);
-  margin: 0;
-}
-
-.case-slide-body .case-subtitle {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--grafite);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.case-slide-body .case-desc {
-  font-size: var(--text-sm);
-  color: var(--onyx-90);
-  line-height: 1.55;
-  flex: 1;
-}
-
-.case-slide-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding-top: 8px;
-  border-top: 1px solid var(--divider);
-}
-
-.case-slide-tags .tag {
-  font-size: 10px;
-  padding: 3px 8px;
-}
-
-.case-slide-results {
-  display: flex;
-  gap: 16px;
-  padding: 16px 24px;
-  background: var(--marfim);
-  border-top: 1px solid var(--divider);
-}
-.case-slide-results .mini-metric {
-  text-align: center;
-  flex: 1;
-}
-.case-slide-results .mini-metric .val {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--terracota);
-  line-height: 1.2;
-}
-.case-slide-results .mini-metric .lbl {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: var(--grafite);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-/* Carousel arrows */
-.carousel-nav {
-  display: flex;
-  gap: 12px;
-  justify-content: flex-end;
-  margin-bottom: 16px;
-}
-.carousel-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1.5px solid var(--divider);
-  background: var(--white);
-  color: var(--onyx);
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-.carousel-btn:hover {
-  border-color: var(--terracota);
-  color: var(--terracota);
-}
-
-/* Scroll indicator dots */
-.carousel-dots {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 16px;
-}
-.carousel-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--divider);
-  transition: background 0.3s;
-}
-.carousel-dot.active { background: var(--terracota); }
-
-@media (max-width: 768px) {
-  .case-slide { flex: 0 0 90vw; }
-  .case-slide-image { height: 180px; }
-}
-
-/* Hide old case styles */
-.case-study { display: none !important; }
-.case-transition { display: none !important; }
-.narrative-bridge { display: none !important; }
-
-
-/* ============================================================
-   PREMIUM ENHANCED TIER — Paleta original preservada
-   Técnicas: scroll reveals, progress bar, grain, hover lift,
-   smooth scroll, favicon inline, foto fullbleed
-   ============================================================ */
-
-/* Smooth scroll global */
-html { scroll-behavior: smooth; }
-
-/* Scroll Progress Bar — Terracota */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9998;
-  height: 2px;
-  width: 0%;
-  background: linear-gradient(90deg, var(--terracota), var(--sage));
-  transition: width 0.1s linear;
-}
-
-/* Cinematic Scroll Reveals */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px) scale(0.98);
-  filter: blur(3px);
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-              filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-}
-.reveal-d1 { transition-delay: 0.08s; }
-.reveal-d2 { transition-delay: 0.16s; }
-.reveal-d3 { transition-delay: 0.24s; }
-.reveal-d4 { transition-delay: 0.32s; }
-
-/* Grain Texture — sutil sobre Marfim */
-.grain {
-  position: fixed;
-  inset: 0;
-  z-index: 9990;
-  pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px;
-  animation: grain-shift 0.5s steps(4) infinite;
-}
-@keyframes grain-shift {
-  0% { background-position: 0 0; }
-  25% { background-position: -80px 40px; }
-  50% { background-position: 40px -60px; }
-  75% { background-position: -40px 80px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .grain { animation: none; }
-  .reveal { transition: none; opacity: 1; transform: none; filter: none; }
-}
-
-/* Card Hover Lift — carrossel */
-.case-slide {
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-.case-slide:hover {
-  transform: translateY(-8px) !important;
-  box-shadow: 0 20px 48px rgba(26,26,26,0.12) !important;
-}
-
-/* Plan Step Cards — hover */
-.plan-step {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.plan-step:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(26,26,26,0.08);
-}
-
-/* Comp Items — hover */
-.comp-item {
-  transition: background 0.3s ease, transform 0.3s ease;
-  border-radius: 12px;
-}
-.comp-item:hover {
-  background: var(--white);
-  transform: translateX(4px);
-  box-shadow: 0 4px 16px rgba(26,26,26,0.06);
-}
-
-/* Authority Stats — counter style */
-.authority-stat .number {
-  font-variant-numeric: tabular-nums;
-  transition: transform 0.3s ease;
-}
-.authority-stat:hover .number {
-  transform: scale(1.08);
-}
-
-/* Hero photo — fullbleed no frame */
-.photo-frame {
-  overflow: hidden !important;
-}
-.photo-frame img {
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.photo-frame:hover img {
-  transform: scale(1.03);
-}
-
-/* Nav — subtle shadow on scroll */
-nav {
-  transition: box-shadow 0.3s ease, background 0.3s ease;
-}
-nav.scrolled {
-  box-shadow: 0 2px 20px rgba(26,26,26,0.06);
-}
-
-/* Section dividers — gradient fade */
-.section-divider {
-  background: linear-gradient(90deg, var(--terracota), var(--sage)) !important;
-  opacity: 0.7;
-}
-
-/* CTA buttons — refined hover */
-.btn-primary {
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  position: relative;
-  overflow: hidden;
-}
-.btn-primary:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 24px rgba(196, 120, 91, 0.3) !important;
-}
-
-/* Sobre photo — subtle zoom */
-.sobre-photo img {
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.sobre-photo:hover img {
-  transform: scale(1.02);
-}
-
-/* Carousel dots — active pulse */
-.carousel-dot.active {
-  animation: dot-pulse 2s ease infinite;
-}
-@keyframes dot-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* Carousel arrows — refined */
-.carousel-btn {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-.carousel-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(196, 120, 91, 0.15);
-}
-
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giovana Petelinkar — Portfólio</title>
+  <meta name="description" content="Portfólio de Giovana Petelinkar — Redatora, Estrategista de Conteúdo e Especialista em Posicionamento de Marca com mais de 9 anos de experiência.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #F7F5F2;
+      --bg-card:  #EFECEA;
+      --dark:     #1C1C1A;
+      --mid:      #6A6A68;
+      --light:    #B0AEA8;
+      --accent:   #A8896C;
+      --accent-lt:#D4B896;
+      --white:    #FFFFFF;
+      --tag-bg:   #E4E0DA;
+      --border:   #DEDAD4;
+
+      --f-serif:  'Cormorant Garamond', Georgia, serif;
+      --f-sans:   'Inter', system-ui, sans-serif;
+
+      --max:      1200px;
+      --gutter:   clamp(20px, 5vw, 80px);
+      --section:  clamp(60px, 8vw, 120px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--f-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── UTILITIES ───────────────────────── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      background: var(--tag-bg);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .section-label {
+      font-family: var(--f-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    img { display: block; width: 100%; }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247,245,242,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      font-family: var(--f-serif);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--dark);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--dark); }
+    .nav-cta { color: var(--accent) !important; font-weight: 500 !important; }
+
+    /* ── HERO ────────────────────────────── */
+    .hero {
+      padding: clamp(60px, 8vw, 120px) 0 clamp(40px, 5vw, 80px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero-name {
+      font-family: var(--f-serif);
+      font-size: clamp(44px, 6vw, 80px);
+      font-weight: 500;
+      line-height: 1.02;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: var(--f-serif);
+      font-size: clamp(18px, 2.4vw, 26px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--mid);
+      margin-bottom: 28px;
+      line-height: 1.4;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--mid);
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 13px 28px;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: background .2s;
+    }
+
+    .btn-primary:hover { background: #333; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      color: var(--dark);
+      font-size: 13px;
+      font-weight: 400;
+      padding: 13px 28px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: border-color .2s;
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-image { position: relative; }
+
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 2px;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -14px;
+      right: -14px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 12px 18px;
+      border-radius: 2px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    }
+
+    .hero-badge strong {
+      display: block;
+      font-family: var(--f-serif);
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--dark);
+    }
+
+    .hero-badge span {
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: .05em;
+    }
+
+    /* ── PROJETOS ────────────────────────── */
+    .projetos-header {
+      padding: var(--section) 0 clamp(24px, 3vw, 48px);
+      border-top: 1px solid var(--border);
+    }
+
+    .projetos-header-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .projetos-heading {
+      font-family: var(--f-serif);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 500;
+      line-height: 1.05;
+    }
+
+    .projetos-sub {
+      font-size: 13px;
+      color: var(--mid);
+      padding-bottom: 6px;
+    }
+
+    /* ── PROJECT (featured) ──────────────── */
+    .project {
+      padding: clamp(40px, 5vw, 72px) 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: start;
+    }
+
+    .project-inner.rev {
+      grid-template-columns: 1fr 280px;
+    }
+
+    .project-inner.rev .project-meta { order: 2; }
+    .project-inner.rev .project-visual { order: 1; }
+
+    .project-num {
+      font-family: var(--f-serif);
+      font-size: 52px;
+      font-weight: 400;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .project-client {
+      font-family: var(--f-serif);
+      font-size: clamp(22px, 2.8vw, 36px);
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .project-segment {
+      font-size: 13px;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+
+    .project-desc + .project-desc { margin-top: 12px; }
+
+    /* ── CAROUSEL / GALLERY ─────────────── */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--bg-card);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform .4s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+    }
+
+    .carousel-slide img,
+    .carousel-slide video {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-slide video {
+      background: #000;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      color: var(--dark);
+      transition: background .2s, box-shadow .2s;
+      z-index: 5;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+      backdrop-filter: blur(4px);
+    }
+
+    .carousel-btn:hover {
+      background: var(--white);
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 5;
+    }
+
+    .carousel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.5);
+      border: 1px solid rgba(0,0,0,.15);
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    .carousel-dot.active {
+      background: var(--white);
+      transform: scale(1.2);
+    }
+
+    /* Single image — no controls */
+    .carousel[data-count="1"] .carousel-btn,
+    .carousel[data-count="1"] .carousel-dots {
+      display: none;
+    }
+
+    /* ── OUTRAS PRODUÇÕES ────────────────── */
+    .outros {
+      padding: var(--section) 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .outros-heading {
+      font-family: var(--f-serif);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 500;
+      margin-bottom: 36px;
+    }
+
+    .outros-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .outro-card {
+      background: var(--bg-card);
+      overflow: hidden;
+      transition: background .2s;
+    }
+
+    .outro-card:hover { background: var(--tag-bg); }
+
+    .outro-img {
+      width: 100%;
+      aspect-ratio: 440/296;
+      object-fit: cover;
+      display: block;
+    }
+
+    .outro-body { padding: 20px 20px 24px; }
+
+    .outro-client {
+      font-family: var(--f-serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .outro-segment {
+      font-size: 12px;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .outro-services {
+      font-size: 12px;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+
+    /* ── SOBRE ───────────────────────────── */
+    .sobre {
+      padding: var(--section) 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+
+    .sobre-heading {
+      font-family: var(--f-serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+
+    .sobre-heading em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .sobre-text {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .sobre-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+      margin-bottom: 28px;
+    }
+
+    .sobre-photo-wrap { position: relative; }
+
+    .sobre-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 2px;
+    }
+
+    .sobre-badge {
+      position: absolute;
+      top: 20px;
+      left: -20px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 14px 18px;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.4;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(168,137,108,.35);
+    }
+
+    .sobre-badge strong {
+      display: block;
+      font-family: var(--f-serif);
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    /* ── CONTATO ─────────────────────────── */
+    .contato {
+      padding: var(--section) 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+    }
+
+    .contato-heading {
+      font-family: var(--f-serif);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 500;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .contato-heading em { font-style: italic; color: var(--accent); }
+
+    .contato-sub {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 400px;
+    }
+
+    .contato-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contato-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--dark);
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: border-color .2s, background .2s;
+    }
+
+    .contato-link:hover {
+      border-color: var(--accent);
+      background: rgba(168,137,108,.04);
+    }
+
+    .c-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--tag-bg);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .c-info strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .c-info span {
+      font-size: 12px;
+      color: var(--mid);
+    }
+
+    .contato-photo-wrap { position: relative; }
+
+    .contato-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 2px;
+      filter: grayscale(10%);
+    }
+
+    .contato-quote {
+      position: absolute;
+      bottom: 20px;
+      left: -16px;
+      right: 16px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      border-radius: 2px;
+    }
+
+    .contato-quote p {
+      font-family: var(--f-serif);
+      font-size: 15px;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.5;
+    }
+
+    .contato-quote cite {
+      display: block;
+      font-size: 11px;
+      color: var(--mid);
+      font-style: normal;
+      margin-top: 6px;
+      letter-spacing: .05em;
+    }
+
+    /* ── FOOTER ──────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 22px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-name {
+      font-family: var(--f-serif);
+      font-size: 14px;
+      color: var(--mid);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--light);
+    }
+
+    /* ── RESPONSIVE ──────────────────────── */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .sobre-grid,
+      .contato-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image,
+      .sobre-photo-wrap,
+      .contato-photo-wrap {
+        order: -1;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+
+      .hero-desc { max-width: 100%; }
+
+      .project-inner,
+      .project-inner.rev {
+        grid-template-columns: 1fr;
+      }
+
+      .project-inner.rev .project-meta,
+      .project-inner.rev .project-visual {
+        order: unset;
+      }
+
+      .outros-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-name { font-size: 38px; }
+
+      .projetos-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .sobre-badge { left: 0; top: -14px; }
+
+      .contato-quote { left: 0; right: 0; position: relative; margin-top: 12px; }
+      .contato-photo-wrap { max-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-outline { justify-content: center; }
+      .outros-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<div class="scroll-progress"></div>
-<div class="grain"></div>
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">Giovana <span>Petelinkar</span></a>
-    <div class="nav-links">
-      <div class="nav-dropdown">
-        <a href="#cases" class="nav-dropdown-trigger">Cases <span style="font-size:8px;vertical-align:middle;">&#9660;</span></a>
-        <div class="nav-dropdown-menu">
-          <a href="#case-renata-dias">Renata Dias Atelier</a>
-          <a href="#case-lumos">Lumos Decor</a>
-          <a href="#case-pipa">Reserva da Pipa</a>
-          <a href="#case-bauten">Bauten</a>
-          <a href="#case-mentora">Direcionamento de Conteúdo</a>
-          <a href="#case-davus">Davus Engenharia</a>
-          <a href="#case-dimensional">Dimensional Construções</a>
-          <a href="#case-leao">Leão Inteligência</a>
-          <a href="#case-amas">Instituto AMAS</a>
-          <a href="#case-livros">Edição de Livros</a>
-        </div>
-      </div>
-      <a href="#competencias">Serviços</a>
-      <a href="#sobre">Sobre</a>
-      <a href="https://wa.me/5583991263458?text=Ol%C3%A1%20Giovana%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" class="btn-primary">Vamos Conversar</a>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Giovana Petelinkar</a>
+      <ul class="nav-links">
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato" class="nav-cta">Contato</a></li>
+      </ul>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- ============================================================
-     SECTION 1: HERO (SB7. Character + Guide)
-     ============================================================ -->
-<section class="hero" id="inicio">
-  <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <h4 style="color: var(--sage); margin-bottom: 16px; font-size: 0.8125rem;">Estratégia de Comunicação &amp; Marketing Digital</h4>
-        <h1>Sua marca merece ser vista como realmente e</h1>
-        <p class="subtitle">Transformo a comunicação digital de marcas que merecem mais visibilidade em estratégia que conecta, engaja e converte. Do conteúdo ao resultado.</p>
-        <div class="hero-cta-group">
-          <a href="https://wa.me/5583991263458?text=Ol%C3%A1%20Giovana%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" class="btn-primary">Agende uma Conversa Estratégica</a>
-          <a href="#cases" class="btn-secondary">Ver Cases</a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <div class="photo-accent"></div>
-        <div class="photo-frame" style="background:none;">
-          <img src="img/giovana-hero.jpg" alt="Giovana Petelinkar" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
 
-<!-- ============================================================
-     SECTION 2: STAKES (SB7. Problem + Failure)
-     ============================================================ -->
-<section class="stakes" id="problemas">
-  <div class="container">
-    <h2>Você reconhece alguma dessas situações?</h2>
-    <div class="stakes-grid">
-      <div class="stake-card">
-        <p>Sua marca é incrível, mas a <strong>comunicação digital não reflete</strong> a qualidade do que você entrega.</p>
-      </div>
-      <div class="stake-card">
-        <p>Já contratou profissionais que entregaram <strong>conteúdo bonito mas sem resultado</strong> mensurável.</p>
-      </div>
-      <div class="stake-card">
-        <p>Sente que está investindo em marketing mas <strong>não sabe se está funcionando</strong> de verdade.</p>
-      </div>
-      <div class="stake-card">
-        <p>Concorrentes com menos qualidade estão <strong>ganhando mais visibilidade</strong> que você.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     SECTION 3: VALUE (SB7. Guide + Plan)
-     ============================================================ -->
-<section class="value" id="como-funciona">
-  <div class="container">
-    <div class="section-divider"></div>
-    <h2>Comunicação estratégica, não conteúdo genérico</h2>
-    <p class="empathy-text">"Eu sei como é ver uma marca incrível ser subestimada porque a comunicação não acompanha a qualidade do produto. O problema nunca foi o negócio. Era a forma como a história estava sendo contada."</p>
-
-    <div class="authority-row">
-      <div class="authority-stat">
-        <span class="number">7+</span>
-        <span class="label">Anos de experiência</span>
-      </div>
-      <div class="authority-stat">
-        <span class="number">12+</span>
-        <span class="label">Marcas atendidas</span>
-      </div>
-      <div class="authority-stat">
-        <span class="number">5</span>
-        <span class="label">Setores diferentes</span>
-      </div>
-      <div class="authority-stat">
-        <span class="number">360&deg;</span>
-        <span class="label">Visão do ecossistema digital</span>
-      </div>
-    </div>
-
-    <p class="plan-title">Como trabalhamos juntos</p>
-    <div class="plan-steps">
-      <div class="plan-step">
-        <span class="step-number">01</span>
-        <h3>Conversa Estratégica</h3>
-        <p>Entendo seu negócio, público e objetivos em uma reunião focada. Sem compromisso.</p>
-      </div>
-      <div class="plan-step">
-        <span class="step-number">02</span>
-        <h3>Plano Sob Medida</h3>
-        <p>Crio uma estratégia personalizada com canais, conteúdo e cronograma. Feita pro seu mercado.</p>
-      </div>
-      <div class="plan-step">
-        <span class="step-number">03</span>
-        <h3>Execução e Resultado</h3>
-        <p>Implemento, acompanho métricas e ajusto até funcionar. Você acompanha cada etapa.</p>
-      </div>
-    </div>
-
-    <div class="cta-center">
-      <a href="https://wa.me/5583991263458?text=Ol%C3%A1%20Giovana%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" class="btn-primary">Agende sua Conversa Estratégica</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     SECTION 4: COMPETENCIAS
-     ============================================================ -->
-<section class="competencias" id="competencias">
-  <div class="container">
-    <div class="section-divider"></div>
-    <h2>Como eu transformo sua comunicação</h2>
-    <div class="comp-grid">
-      <div class="comp-item">
-        <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14h6"/><path d="M9 18h6"/><path d="M9 10h6"/></svg></div>
-        <div>
-          <h3>Estratégia de Conteúdo</h3>
-          <p>Seu conteúdo deixa de ser postagem avulsa e vira sistema estratégico. Com planejamento, direção criativa e propósito em cada publicação.</p>
-        </div>
-      </div>
-      <div class="comp-item">
-        <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-        <div>
-          <h3>Gestão de Redes Sociais</h3>
-          <p>Suas redes deixam de ser vitrine parada e passam a gerar engajamento real. Gestão completa do planejamento à análise de resultados.</p>
-        </div>
-      </div>
-      <div class="comp-item">
-        <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-        <div>
-          <h3>Copywriting &amp; UX Writing</h3>
-          <p>Redação orientada a experiência do usuário, engajamento e conversão. E‑mails, landing pages, sites e legendas.</p>
-        </div>
-      </div>
-      <div class="comp-item">
-        <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-        <div>
-          <h3>Roteiro &amp; Produção de Vídeo</h3>
-          <p>Seus vídeos deixam de ser "conteúdo bonito" e passam a contar histórias que conectam. Do roteiro à edição final.</p>
-        </div>
-      </div>
-      <div class="comp-item">
-        <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="8" cy="18" r="2.5"/><circle cx="16" cy="18" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10c0-1.5-.3-2.9-.9-4.2"/></svg></div>
-        <div>
-          <h3>Identidade Visual &amp; Branding</h3>
-          <p>Concepção de identidade visual, direção de design e criação de linguagem gráfica coerente para marcas.</p>
-        </div>
-      </div>
-      <div class="comp-item">
-        <div class="comp-icon" style="color:var(--terracota);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
-        <div>
-          <h3>Campanhas Digitais</h3>
-          <p>Suas campanhas passam a ter estratégia de ponta a ponta. Da concepção à análise de resultados, otimizando cada real investido.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HIDDEN: Narrative Bridge: What Is → What Could Be -->
-<div class="narrative-bridge" style="display:none;">
-  <p>Agora que você conhece o que eu faço, deixa eu te mostrar como isso se traduz em resultados reais.</p>
-</div>
-
-<!-- ============================================================
-     SECTION 5: CASES (SB7. Success / Proof)
-     ============================================================ -->
-<section class="cases" style="display:none !important;" id="cases">
-  <div class="container">
-    <div class="section-divider"></div>
-    <h2>Histórias de marcas que encontraram sua voz</h2>
-    <p class="section-subtitle">Cada projeto começa com um desafio e termina com uma transformação. Estes são alguns dos que mais me orgulho.</p>
-
-    <!-- CASE 1: Renata Dias Atelier — STAR MOMENT -->
-    <article class="case-study star-moment" id="case-renata-dias">
-      <div class="case-header">
-        <div>
-          <h3>Renata Dias Atelier</h3>
-          <p class="caption">Moda Noiva & Festa | Construção de marca completa</p>
-          <div class="sparkline-indicator"><div class="bar peak"></div><span class="intensity-label">Projeto mais completo</span></div>
-        </div>
-        <div class="case-meta">
-          <span class="tag">Branding</span>
-          <span class="tag">Video</span>
-          <span class="tag">Social Media</span>
-          <span class="tag">Identidade Visual</span>
-        </div>
-      </div>
-      <p class="case-tldr">Como transformei uma marca artesanal fragmentada em uma presença digital coerente. Da identidade visual ao lançamento de coleção.</p>
-
-      <div class="case-context">
-        <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Assessora de Marketing e Mídias</span></div>
-        <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Moda Noiva & Festa</span></div>
-        <div class="case-context-item"><span class="ctx-label">Escopo</span><span class="ctx-value">Full-stack: marca a conteúdo</span></div>
-        <div class="case-context-item"><span class="ctx-label">Ferramentas</span><span class="ctx-value">Canva, CapCut, Instagram</span></div>
-      </div>
-
-      <div class="case-hero-image">
-        <img src="img/rd-feed.png" alt="Renata Dias Atelier — Feed Instagram" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      </div>
-
-      <div class="case-narrative">
-        <div class="label">Desafio</div>
-        <div class="content">
-          <p>O Renata Dias Atelier é um ateliê de vestidos de noiva e festa sob medida com 10 anos de trajetória. Apesar da qualidade excepcional do trabalho artesanal, a marca da estilista e do ateliê existiam de forma desconectada. Sem identidade visual unificada, sem estratégia de conteúdo, e sem presença digital que traduzisse a exclusividade do atendimento personalizado.</p>
-          <p>O risco: continuar invisível no digital enquanto concorrentes com menos qualidade dominavam as redes sociais do segmento.</p>
-        </div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Processo</div>
-        <div class="content">
-          <p>Assumi a responsabilidade completa pela presença digital. Do planejamento estratégico à execução. O primeiro passo foi mapear o posicionamento: entender o que tornava o ateliê único (design autoral, exclusividade, atendimento personalizado) e traduzir isso em linguagem visual e verbal para o digital.</p>
-          <p>Desenvolvi o planejamento e gerenciamento das redes sociais, produzi conteúdo visual e audiovisual (fotos, videos curtos, captação e edição), criei roteiros e direção de estilo para vídeos institucionais, e escrevi todas as legendas com tom alinhado à marca.</p>
-          <p>O ponto alto foi a coleção "Essence". Criei o conceito completo do zero: naming, identidade gráfica da coleção, produção visual (imagens e textos), e toda a comunicação de lançamento. O tema "deixe fluir o que importa" conectava a essência da marca com as emoções das noivas.</p>
-        </div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Entregas</div>
-        <div class="content">
-          <div class="deliveries-row">
-            <span class="tag">Redes sociais</span>
-            <span class="tag">Captação de vídeo</span>
-            <span class="tag">Edição de vídeo</span>
-            <span class="tag">Roteiro</span>
-            <span class="tag">Direção de estilo</span>
-            <span class="tag">Identidade visual</span>
-            <span class="tag">Conceito de coleção</span>
-            <span class="tag">Legendas</span>
+        <div class="hero-content">
+          <p class="hero-eyebrow">Portfólio Profissional</p>
+          <h1 class="hero-name">Giovana<br>Petelinkar</h1>
+          <p class="hero-title">Uma boa história<br>muda <em>tudo.</em></p>
+          <p class="hero-desc">
+            Mais do que juntar palavras, crio para traduzir pensamentos, sentimentos e ideias; transformando identidade em marca, estratégia em impacto, conceito em conexão.
+          </p>
+          <div class="hero-actions">
+            <a href="#projetos" class="btn-primary">Ver projetos</a>
+            <a href="#contato" class="btn-outline">Entrar em contato</a>
           </div>
         </div>
-      </div>
 
-      <!-- Before/After: Resonate Construct -->
-      <div class="before-after">
-        <div class="before">
-          <h4>Antes</h4>
-          <p>Marca da estilista e do ateliê desconectadas. Presença digital fragmentada, sem identidade visual. Conteúdo publicado sem direção estratégica. Coleções lançadas sem conceito visual.</p>
-        </div>
-        <div class="arrow">&#x2192;</div>
-        <div class="after">
-          <h4>Depois</h4>
-          <p>Marca integrada com identidade visual coerente em todos os canais. Coleção "Essence" lançada com conceito, naming e identidade próprios. Vídeos institucionais com roteiro e direção profissional. Narrativa de marca alinhada do feed ao stories.</p>
-        </div>
-      </div>
-
-      <div class="case-results">
-        <h4>Resultados</h4>
-        <div class="case-results-grid">
-          <div class="case-result-item"><span class="metric">100%</span><span class="metric-label">Identidade visual unificada</span></div>
-          <div class="case-result-item"><span class="metric">1</span><span class="metric-label">Coleção lançada com conceito completo</span></div>
-          <div class="case-result-item"><span class="metric">8</span><span class="metric-label">Tipos de entrega diferentes</span></div>
-          <div class="case-result-item"><span class="metric">10 anos</span><span class="metric-label">De marca reposicionada no digital</span></div>
-        </div>
-      </div>
-
-      <div class="case-gallery">
-        <div class="case-gallery-item"><img src="img/rd-instagram.jpg" alt="Instagram RD Atelier" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
-        <div class="case-gallery-item"><img src="img/rd-essence.png" alt="Coleção Essence" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
-        <div class="case-gallery-item"><img src="img/rd-feed.png" alt="Vídeo institucional RD" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
-      </div>
-
-      <div class="case-insight">
-        <div class="insight-label">O que aprendi</div>
-        <p>Marcas artesanais precisam de comunicação que respeite a essência do trabalho manual. A tentação é "modernizar" demais. Mas o diferencial está justamente na autenticidade. O papel do marketing é amplificar o que já é real, não inventar uma imagem.</p>
-      </div>
-    </article>
-
-    <div class="case-transition">caso seguinte</div>
-
-    <!-- CASE 2: Lumos Decor -->
-    <article class="case-study" id="case-lumos">
-      <div class="case-header">
-        <div>
-          <h3>Lumos Decor</h3>
-          <p class="caption">Arquitetura & Decoração | Planejamento estratégico + identidade</p>
-          <div class="sparkline-indicator"><div class="bar high"></div><span class="intensity-label">Pensamento estratégico</span></div>
-        </div>
-        <div class="case-meta">
-          <span class="tag">Estratégia</span>
-          <span class="tag">Branding</span>
-          <span class="tag">Identidade Visual</span>
-        </div>
-      </div>
-      <p class="case-tldr">Planejamento estratégico de comunicação e criação de identidade para uma loja de decoração que queria se posicionar como referência em design e lifestyle.</p>
-
-      <div class="case-context">
-        <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Estrategista de Comunicação</span></div>
-        <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Arquitetura e Decoração</span></div>
-        <div class="case-context-item"><span class="ctx-label">Período</span><span class="ctx-value">Planejamento trimestral</span></div>
-      </div>
-
-      <div class="case-hero-image">
-        <img src="img/lumos-moodboard.png" alt="Lumos Decor — Moodboard" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      </div>
-      <div class="case-narrative">
-        <div class="label">Desafio</div>
-        <div class="content">
-          <p>A Lumos Decor, loja de arquitetura e decoracao em desenvolvimento, precisava se posicionar como referência em design e lifestyle em um mercado onde marcas estabelecidas já dominavam. Sem uma estratégia de comunicação definida, o risco era ser percebida como "mais uma loja de moveis" em vez de uma curadoria premium de design.</p>
-        </div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Processo</div>
-        <div class="content">
-          <p>Comecei pelo que a maioria pula: defini o objetivo de comunicação antes de criar qualquer conteúdo. Para os primeiros três meses, estruturei uma estratégia em quatro pilares: transmitir qualidade e exclusividade em cada detalhe, incorporar tendências de mercado por meio de curadoria única, construir conexão com o público gerando sentimento de pertencimento, e ir além do varejo. Consolidar a marca como referência em lifestyle.</p>
-          <p>Criei o moodboard completo conectando estética, tendências e experiências do universo Lumos. Cada post, story e peça foi pensado para reforçar o posicionamento. Coesão visual como expressão da marca, não como padrão estético.</p>
-        </div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Entregas</div>
-        <div class="content">
-          <div class="deliveries-row">
-            <span class="tag">Planejamento estratégico</span>
-            <span class="tag">Objetivo de comunicação</span>
-            <span class="tag">Identidade visual</span>
-            <span class="tag">Moodboard</span>
-            <span class="tag">Conteúdo redes sociais</span>
+        <div class="hero-image">
+          <img src="img/giovana-hero.jpg" alt="Giovana Petelinkar" class="hero-photo">
+          <div class="hero-badge">
+            <strong>9+</strong>
+            <span>anos de experiência</span>
           </div>
         </div>
-      </div>
-      <div class="case-results">
-        <h4>Resultados</h4>
-        <div class="case-results-grid">
-          <div class="case-result-item"><span class="metric">4</span><span class="metric-label">Pilares estratégicos definidos</span></div>
-          <div class="case-result-item"><span class="metric">3 meses</span><span class="metric-label">Roadmap de comunicação</span></div>
-          <div class="case-result-item"><span class="metric">100%</span><span class="metric-label">Coesão visual implementada</span></div>
-        </div>
-      </div>
-      <div class="case-gallery">
-        <div class="case-gallery-item"><img src="img/lumos-objetivo.png" alt="Objetivo de comunicação Lumos" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
-        <div class="case-gallery-item"><img src="img/lumos-moodboard.png" alt="Moodboard Lumos Decor" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
-        <div class="case-gallery-item"><img src="img/lumos-stories.png" alt="Stories Lumos Decor" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
-      </div>
-    </article>
 
-    <div class="case-transition">caso seguinte</div>
+      </div>
+    </div>
+  </section>
 
-    <!-- CASE 3: Reserva da Pipa -->
-    <article class="case-study" id="case-pipa">
-      <div class="case-header">
-        <div>
-          <h3>Reserva da Pipa</h3>
-          <p class="caption">Condomínio Resort | Campanha multicanal</p>
-          <div class="sparkline-indicator"><div class="bar high"></div><span class="intensity-label">Multicanal</span></div>
-        </div>
-        <div class="case-meta">
-          <span class="tag">Social Media</span>
-          <span class="tag">Email Marketing</span>
-          <span class="tag">Landing Pages</span>
-          <span class="tag">Copywriting</span>
-        </div>
+  <!-- PROJETOS HEADER -->
+  <section class="projetos-header" id="projetos">
+    <div class="container">
+      <div class="projetos-header-inner">
+        <h2 class="projetos-heading">Projetos</h2>
+        <!-- removido: subtítulo "Seleção de trabalhos" a pedido da Giovana -->
       </div>
-      <p class="case-tldr">Estratégia multicanal que transformou um condomínio em um estilo de vida. Integrando redes sociais, e‑mail marketing e landing pages com storytelling de destino.</p>
+    </div>
+  </section>
 
-      <div class="case-context">
-        <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Gestora de Comunicação Digital</span></div>
-        <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Imobiliário / Turismo</span></div>
-        <div class="case-context-item"><span class="ctx-label">Localização</span><span class="ctx-value">Pipa, Tibau do Sul. RN</span></div>
-        <div class="case-context-item"><span class="ctx-label">Canais</span><span class="ctx-value">Instagram, Email, Landing Pages</span></div>
-      </div>
+  <!-- PROJECT 01 — Renata Dias Atelier -->
+  <article class="project">
+    <div class="container">
+      <div class="project-inner">
 
-      <div class="case-hero-image">
-        <img src="img/pipa-feed.png" alt="Reserva da Pipa — Feed" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      </div>
-      <div class="case-narrative">
-        <div class="label">Desafio</div>
-        <div class="content">
-          <p>O Condomínio Reserva da Pipa não queria vender lotes. Queria vender um estilo de vida. Localizado em um dos destinos mais desejados do Brasil, o condomínio precisava ir além do imóvel e comunicar a experiência completa: praias, gastronomia, natureza, comunidade. O desafio era criar uma presença digital que fizesse o público desejar o LUGAR, não apenas a propriedade.</p>
-        </div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Processo</div>
-        <div class="content">
-          <p>Desenhei uma estratégia multicanal que integrou três frentes: nas redes sociais, criei conteúdo que misturava o condomínio com os atrativos de Pipa: praias, restaurantes, eventos, experiências. A estratégia chave foi usar prova social do TripAdvisor (avaliações reais de turistas) como validação da região, transformando opiniões de terceiros em conteúdo para carrosséis.</p>
-          <p>No email marketing, desenvolvi copy de venda com CTAs claros para eventos de lançamento e entrega de lotes. Incluindo campanhas de indicação ("indique um amigo e ganhe um final de semana"). Nas landing pages, alinhei o tom aspiracional com informações práticas de localização, infraestrutura e investimento.</p>
-        </div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Entregas</div>
-        <div class="content">
-          <div class="deliveries-row">
-            <span class="tag">Redes sociais</span>
-            <span class="tag">Email marketing</span>
-            <span class="tag">Landing pages</span>
+        <div class="project-meta">
+          <p class="project-num">01</p>
+          <h3 class="project-client">Renata Dias<br>Atelier</h3>
+          <p class="project-segment">Ateliê sob medida</p>
+          <div class="project-tags">
             <span class="tag">Copywriting</span>
-            <span class="tag">Direção de design</span>
-            <span class="tag">Prova social (TripAdvisor)</span>
+            <span class="tag">Gestão de Mídias Sociais</span>
+            <span class="tag">Produção de Conteúdo</span>
+            <span class="tag">Posicionamento de Marca</span>
+          </div>
+          <p class="project-desc">
+            Ateliê de vestidos de noiva e festa sob medida. Atuei como Assessora de Marketing e Mídias — planejamento, criação e gerenciamento das redes sociais, captação de vídeos e fotos, direcionamento visual, produção de eventos e relacionamento com influencers.
+          </p>
+          <p class="project-desc">
+            Destaque para a <strong>Coleção Essence</strong>: projeto editorial completo com conceito, produção de conteúdo e identidade visual da coleção.
+          </p>
+        </div>
+
+        <div class="project-visual">
+          <div class="carousel" data-count="10">
+            <div class="carousel-track">
+              <div class="carousel-slide"><video src="img/rd-video-1.mp4" muted playsinline autoplay loop preload="metadata"></video></div>
+              <div class="carousel-slide"><img src="img/rd-costura.png" alt="Bastidores — Máquina de costura no ateliê"></div>
+              <div class="carousel-slide"><img src="img/rd-manequim.png" alt="Manequim com laço — Renata Dias Atelier"></div>
+              <div class="carousel-slide"><img src="img/rd-noiva-prova.png" alt="Prova de vestido de noiva"></div>
+              <div class="carousel-slide"><img src="img/rd-atelier-bastidor.png" alt="Bastidores do ateliê"></div>
+              <div class="carousel-slide"><img src="img/rd-post-historia.png" alt="Post Instagram — História da RD"></div>
+              <div class="carousel-slide"><img src="img/rd-post-espaco.png" alt="Post Instagram — Novo espaço RD"></div>
+              <div class="carousel-slide"><img src="img/rd-post-essence.png" alt="Post Instagram — Coleção Essence"></div>
+              <div class="carousel-slide"><video src="img/rd-video-espaco.mp4" muted playsinline autoplay loop preload="metadata"></video></div>
+              <div class="carousel-slide"><video src="img/rd-video-essence.mp4" muted playsinline autoplay loop preload="metadata"></video></div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Anterior">&#8249;</button>
+            <button class="carousel-btn next" aria-label="Próximo">&#8250;</button>
+            <div class="carousel-dots"></div>
           </div>
         </div>
+
       </div>
-      <div class="case-results">
-        <h4>Resultados</h4>
-        <div class="case-results-grid">
-          <div class="case-result-item"><span class="metric">3</span><span class="metric-label">Canais integrados</span></div>
-          <div class="case-result-item"><span class="metric">5+</span><span class="metric-label">Campanhas de email</span></div>
-          <div class="case-result-item"><span class="metric">Lifestyle</span><span class="metric-label">Posicionamento alcançado</span></div>
+    </div>
+  </article>
+
+  <!-- PROJECT 02 — Dimensional Construções -->
+  <article class="project">
+    <div class="container">
+      <div class="project-inner rev">
+
+        <div class="project-meta">
+          <p class="project-num">02</p>
+          <h3 class="project-client">Dimensional<br>Construções</h3>
+          <p class="project-segment">Construtora e incorporadora</p>
+          <div class="project-tags">
+            <span class="tag">Copywriting</span>
+            <span class="tag">Produção de Conteúdo</span>
+            <span class="tag">Gestão de Mídias Sociais</span>
+          </div>
+          <p class="project-desc">
+            Construtora com quase 50 anos de história e múltiplos empreendimentos no portfólio. O desafio: manter consistência de comunicação entre marcas distintas sem apagar as particularidades de cada uma — unindo tudo à identidade da própria construtora.
+          </p>
+          <p class="project-desc">
+            Gestão completa das redes sociais, direcionamento de design, redação de cards e legendas, roteirização de vídeos, e-mail marketing, banners, panfletos, book de empreendimento, landing pages e site.
+          </p>
         </div>
-      </div>
-      <div class="case-gallery">
-        <div class="case-gallery-item"><img src="img/pipa-feed.png" alt="Feed Reserva da Pipa" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
-        <div class="case-gallery-item"><img src="img/pipa-tripadvisor.png" alt="Reserva da Pipa — TripAdvisor" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
-        <div class="case-gallery-item"><img src="img/pipa-cartao.png" alt="Cartão Reserva da Pipa" style="width:100%;height:100%;object-fit:contain;border-radius:8px;background:var(--marfim);"></div>
-      </div>
-    </article>
 
-    <div class="case-transition">caso seguinte</div>
+        <div class="project-visual">
+          <div class="carousel" data-count="11">
+            <div class="carousel-track">
+              <div class="carousel-slide"><video src="img/dm-video-1.mp4" muted playsinline autoplay loop preload="metadata"></video></div>
+              <div class="carousel-slide"><img src="img/dm-vivere-tendencias.png" alt="Vivere Praia Concept — Tendências em arquitetura"></div>
+              <div class="carousel-slide"><img src="img/dm-vivere-nautica.png" alt="Vivere — Guardeira Náutica"></div>
+              <div class="carousel-slide"><img src="img/dm-screenshot-75.png" alt="HIT Cabo Branco — Decoração"></div>
+              <div class="carousel-slide"><img src="img/dm-logo-sunset.png" alt="Dimensional Construções — Identidade"></div>
+              <div class="carousel-slide"><img src="img/dm-historia-dimensional.png" alt="Dimensional — Sua história pode começar"></div>
+              <div class="carousel-slide"><img src="img/dm-screenshot-72.png" alt="Dimensional — Campanha emocional"></div>
+              <div class="carousel-slide"><img src="img/dm-oneway.png" alt="One Way — Edifício"></div>
+              <div class="carousel-slide"><img src="img/dm-screenshot-78.png" alt="MOVE — Closet"></div>
+              <div class="carousel-slide"><img src="img/dm-equipe.png" alt="Equipe Dimensional"></div>
+              <div class="carousel-slide"><img src="img/dm-vivere-obra.png" alt="Vivere — Acompanhamento de obra"></div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Anterior">&#8249;</button>
+            <button class="carousel-btn next" aria-label="Próximo">&#8250;</button>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
 
-    <!-- CASE 4: Bauten -->
-    <article class="case-study" id="case-bauten">
-      <div class="case-header">
+      </div>
+    </div>
+  </article>
+
+  <!-- PROJECT 03 — Gabriel Petelinkar -->
+  <article class="project">
+    <div class="container">
+      <div class="project-inner">
+
+        <div class="project-meta">
+          <p class="project-num">03</p>
+          <h3 class="project-client">Gabriel<br>Petelinkar</h3>
+          <p class="project-segment">Produtos Alimentícios Artesanais</p>
+          <div class="project-tags">
+            <span class="tag">Edição de Texto</span>
+            <span class="tag">Revisão</span>
+            <span class="tag">Estrutura Editorial</span>
+          </div>
+          <p class="project-desc">
+            Engenheiro agrônomo especialista em agronegócio, liderança e gestão de pessoas — empreendedor que há 12 anos atua no setor de produtos artesanais e desejava compartilhar seu conhecimento em um guia informativo e prático para produtores artesanais.
+          </p>
+          <p class="project-desc">
+            O trabalho envolveu aprimoramento de texto com foco em estrutura e qualidade, correção ortográfica e gramatical, coesão narrativa e padronização de fontes e informações.
+          </p>
+        </div>
+
+        <div class="project-visual">
+          <div class="carousel" data-count="2">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="img/gp-capa.jpeg" alt="Capa — Como Criar, Vender e Escalar Alimentos Artesanais"></div>
+              <div class="carousel-slide"><img src="img/gp-pagina.jpg" alt="Página interna — Estrutura do guia"></div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Anterior">&#8249;</button>
+            <button class="carousel-btn next" aria-label="Próximo">&#8250;</button>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- PROJECT 04 — AMAS -->
+  <article class="project">
+    <div class="container">
+      <div class="project-inner rev">
+
+        <div class="project-meta">
+          <p class="project-num">04</p>
+          <h3 class="project-client">AMAS</h3>
+          <p class="project-segment">ONG · Assistência Social</p>
+          <div class="project-tags">
+            <span class="tag">Redação</span>
+            <span class="tag">Design</span>
+            <span class="tag">Programação</span>
+          </div>
+          <p class="project-desc">
+            Instituto sem fins lucrativos com missão educacional, assistencial e beneficente voltada a pessoas em situação de vulnerabilidade. O objetivo era dar dignidade digital à instituição e tornar suas ações conhecidas, construindo prova social e credibilidade.
+          </p>
+          <p class="project-desc">
+            O trabalho envolveu redação, design e programação do site institucional — criando uma presença online que traduz o propósito da organização com clareza e respeito.
+          </p>
+        </div>
+
+        <div class="project-visual">
+          <div class="carousel" data-count="2">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="img/amas-home.jpeg" alt="Site AMAS — Página inicial"></div>
+              <div class="carousel-slide"><img src="img/amas-sobre.jpeg" alt="Site AMAS — Nossa História"></div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Anterior">&#8249;</button>
+            <button class="carousel-btn next" aria-label="Próximo">&#8250;</button>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- PROJECT 05 — Lumos Decor -->
+  <article class="project">
+    <div class="container">
+      <div class="project-inner">
+
+        <div class="project-meta">
+          <p class="project-num">05</p>
+          <h3 class="project-client">Lumos Decor</h3>
+          <p class="project-segment">Loja de Decoração</p>
+          <div class="project-tags">
+            <span class="tag">Planejamento</span>
+            <span class="tag">Identidade de Marca</span>
+            <span class="tag">Estratégia de Conteúdo</span>
+            <span class="tag">Marketing de Experiência</span>
+          </div>
+          <p class="project-desc">
+            Loja de arquitetura e decoração em desenvolvimento que precisava construir sua identidade de comunicação antes do lançamento — conectando estética, tendências e experiência de marca a uma estratégia coesa online e offline.
+          </p>
+          <p class="project-desc">
+            O resultado foi um planejamento que posiciona a Lumos como referência em design e lifestyle: qualidade, exclusividade e curadoria com personalidade.
+          </p>
+        </div>
+
+        <div class="project-visual">
+          <div class="carousel" data-count="3">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="img/lumos-mood-1.png" alt="Moodboard Lumos Decor — Referências de design"></div>
+              <div class="carousel-slide"><img src="img/lumos-mood-2.png" alt="Moodboard Lumos Decor — Paleta e lifestyle"></div>
+              <div class="carousel-slide"><img src="img/lumos-mood-3.png" alt="Moodboard Lumos Decor — Curadoria de peças"></div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Anterior">&#8249;</button>
+            <button class="carousel-btn next" aria-label="Próximo">&#8250;</button>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- OUTRAS PRODUÇÕES -->
+  <section class="outros">
+    <div class="container">
+      <p class="section-label">Mais trabalhos</p>
+      <h2 class="outros-heading">Outras produções</h2>
+
+      <div class="outros-grid">
+
+        <div class="outro-card">
+          <img src="img/outros-davus.png" alt="Davus Engenharia" class="outro-img">
+          <div class="outro-body">
+            <p class="outro-client">Davus Engenharia</p>
+            <p class="outro-segment">Engenharia e Incorporações</p>
+            <p class="outro-services">Gestão de Redes Sociais · Redação · E-mails Marketing · Landing Pages · Site · Book de Empreendimento</p>
+          </div>
+        </div>
+
+        <div class="outro-card">
+          <img src="img/outros-pipa.png" alt="Reserva da Pipa" class="outro-img">
+          <div class="outro-body">
+            <p class="outro-client">Reserva da Pipa</p>
+            <p class="outro-segment">Condomínio fechado</p>
+            <p class="outro-services">Gestão de Redes Sociais · Redação · E-mails Marketing · Landing Pages · E-Books Culturais</p>
+          </div>
+        </div>
+
+        <div class="outro-card">
+          <img src="img/outros-bauten.png" alt="Bauten" class="outro-img">
+          <div class="outro-body">
+            <p class="outro-client">Bauten</p>
+            <p class="outro-segment">Desenvolvimento Imobiliário</p>
+            <p class="outro-services">Redação Site Institucional · Book de Empreendimento</p>
+          </div>
+        </div>
+
+        <div class="outro-card">
+          <img src="img/outros-pedro-coelho.png" alt="Pedro Coelho" class="outro-img">
+          <div class="outro-body">
+            <p class="outro-client">Pedro Coelho</p>
+            <p class="outro-segment">Defensor Público Federal, Professor</p>
+            <p class="outro-services">Produção de Conteúdo para Redes Sociais · E-mail Funil de Vendas · Landing Pages</p>
+          </div>
+        </div>
+
+        <div class="outro-card">
+          <img src="img/outros-arao.png" alt="Arão e Elzi Salgado" class="outro-img">
+          <div class="outro-body">
+            <p class="outro-client">Arão e Elzi Salgado</p>
+            <p class="outro-segment">Autores independentes</p>
+            <p class="outro-services">Edição de Texto · Revisão · Padronização Editorial</p>
+          </div>
+        </div>
+
+        <div class="outro-card">
+          <img src="img/outros-revista-nassau.png" alt="Revista Nassau" class="outro-img">
+          <div class="outro-body">
+            <p class="outro-client">Revista Nassau</p>
+            <p class="outro-segment">Revista digital</p>
+            <p class="outro-services">Produção de Artigos Público-Alvo para Geração Z</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MIM -->
+  <section class="sobre" id="sobre">
+    <div class="container">
+      <div class="sobre-grid">
+
         <div>
-          <h3>Bauten Desenvolvimento Imobiliário</h3>
-          <p class="caption">Incorporadora de Luxo | Website + narrativa de marca</p>
-          <div class="sparkline-indicator"><div class="bar med"></div><span class="intensity-label">Copywriting premium</span></div>
-        </div>
-        <div class="case-meta">
-          <span class="tag">Website</span>
-          <span class="tag">Copywriting</span>
-          <span class="tag">UX Writing</span>
-          <span class="tag">Narrativa de Marca</span>
-        </div>
-      </div>
-      <p class="case-tldr">Redação completa de website institucional e emails para uma incorporadora de luxo. Traduzindo propósito e sustentabilidade em narrativa premium.</p>
-
-      <div class="case-context">
-        <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Redatora / UX Writer</span></div>
-        <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Imobiliário de Luxo</span></div>
-        <div class="case-context-item"><span class="ctx-label">Foco</span><span class="ctx-value">Design + Sustentabilidade</span></div>
-      </div>
-
-      <div class="case-hero-image">
-        <img src="img/bauten-site.png" alt="Bauten — Site Nossa História" style="object-position: top;">
-      </div>
-      <div class="case-narrative">
-        <div class="label">Desafio</div>
-        <div class="content">
-          <p>A Bauten e uma construtora e incorporadora que alia design de alto padrão com sustentabilidade. O site institucional precisava transmitir esse posicionamento premium com clareza. Mas a empresa não tinha redação profissional. O briefing trazia uma frase ambiciosa: "Construímos narrativas que dão sentido à vida." Meu trabalho era transformar essa visão em copy que funcionasse em cada página do site.</p>
-        </div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Processo</div>
-        <div class="content">
-          <p>Comecei pelo propósito, missão e visão. Não como exercício teórico, mas como base para cada decisão de texto. A página "Nossa História" precisava contar a origem da empresa sem ser genérica. "Nosso Conceito" precisava traduzir sustentabilidade em linguagem emocional. "Quem Faz" precisava humanizar os fundadores sem perder o tom institucional.</p>
-          <p>Cada página foi escrita separadamente, testada por legibilidade, e revisada para garantir que o tom premium fosse consistente do header ao footer. Os emails seguiram a mesma linguagem. Aspiracional, com CTAs claros e tom de conversa sofisticada.</p>
-        </div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Entregas</div>
-        <div class="content">
-          <div class="deliveries-row">
-            <span class="tag">Copy de website (3 páginas)</span>
-            <span class="tag">UX Writing</span>
-            <span class="tag">Email marketing</span>
-            <span class="tag">Narrativa institucional</span>
-            <span class="tag">Propósito / Missão / Visão</span>
-          </div>
-        </div>
-      </div>
-      <div class="case-results">
-        <h4>Resultados</h4>
-        <div class="case-results-grid">
-          <div class="case-result-item"><span class="metric">3</span><span class="metric-label">Páginas de site escritas</span></div>
-          <div class="case-result-item"><span class="metric">Premium</span><span class="metric-label">Tom de voz consistente</span></div>
-          <div class="case-result-item"><span class="metric">Video</span><span class="metric-label">Institucional baseado na copy</span></div>
-        </div>
-      </div>
-      <div class="case-gallery">
-        <div class="case-gallery-item"><img src="img/bauten-historia.png" alt="Website Bauten — Nossa História"></div>
-        <div class="case-gallery-item"><img src="img/bauten-conceito.png" alt="Website Bauten — Nosso Conceito"></div>
-        <div class="case-gallery-item"><img src="img/bauten-site.png" alt="Website Bauten — Completo"></div>
-      </div>
-    </article>
-
-    <div class="case-transition">caso seguinte</div>
-
-    <!-- CASE 5: Mentoria + Coach -->
-    <article class="case-study" id="case-mentora">
-      <div class="case-header">
-        <div>
-          <h3>Direcionamento Estratégico de Conteúdo</h3>
-          <p class="caption">Mentora Digital + Coach Autora | Roteiro e estratégia de conteúdo</p>
-          <div class="sparkline-indicator"><div class="bar med"></div><span class="intensity-label">Roteiro e narrativa</span></div>
-        </div>
-        <div class="case-meta">
-          <span class="tag">Roteiro</span>
-          <span class="tag">Estratégia de Conteúdo</span>
-          <span class="tag">Direcionamento Criativo</span>
-        </div>
-      </div>
-      <p class="case-tldr">Direcionamento estratégico de conteúdo para duas profissionais. Roteiros de Reels, cards e legendas que transformam expertise em conteúdo que engaja e converte.</p>
-
-      <div class="case-context">
-        <div class="case-context-item"><span class="ctx-label">Meu papel</span><span class="ctx-value">Estrategista de Conteúdo</span></div>
-        <div class="case-context-item"><span class="ctx-label">Setor</span><span class="ctx-value">Mentoria Digital + Desenvolvimento Pessoal</span></div>
-        <div class="case-context-item"><span class="ctx-label">Formato</span><span class="ctx-value">Reels, Cards, Legendas</span></div>
-      </div>
-
-      <div class="case-hero-image">
-        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,var(--marfim-dark),var(--sage-light));border-radius:12px;"><span style="font-family:var(--font-mono);font-size:0.8rem;color:var(--grafite);padding:20px;text-align:center;">Roteiros e direcionamento estratégico. conteúdo textual</span></div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Desafio</div>
-        <div class="content">
-          <p>Duas profissionais com expertise profunda mas dificuldade em traduzir conhecimento em conteúdo digital. A mentora do mercado digital precisava se posicionar como voz contra as "fórmulas mágicas" do marketing. A coach autora precisava lançar seu livro nas redes sem parecer vendedora. Mantendo a autenticidade da sua história pessoal de superação.</p>
-        </div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Processo</div>
-        <div class="content">
-          <p>Para a mentora, desenvolvi roteiro completo de Reels: tema ("Mercado digital e o pensamento fora da caixa"), cenário (armário/espelho, metáfora de trocar de roupa = trocar de mentalidade), abertura com gancho provocativo, desenvolvimento com conteúdo estratégico, e CTA claro para a incubadora. O roteiro desafiava as "verdades absolutas" do marketing digital. Posicionamento contrário que gera engajamento.</p>
-          <p>Para a coach autora, criei estratégia de pré‑lançamento do livro: Reels mostrando bastidores (escrevendo, na livraria, em reunião com assessoria), cards com citações do livro usando linguagem visual emocional, e legendas que conectassem cada post a jornada pessoal da autora. O tema central era identidade e liberdade. o grito de liberdade como metáfora.</p>
-        </div>
-      </div>
-      <div class="case-narrative">
-        <div class="label">Entregas</div>
-        <div class="content">
-          <div class="deliveries-row">
-            <span class="tag">Roteiros de Reels</span>
-            <span class="tag">Direcionamento criativo</span>
-            <span class="tag">Legendas</span>
-            <span class="tag">Cards de citação</span>
-            <span class="tag">Estratégia de lançamento</span>
-          </div>
-        </div>
-      </div>
-      <div class="case-results">
-        <h4>Resultados</h4>
-        <div class="case-results-grid">
-          <div class="case-result-item"><span class="metric">2</span><span class="metric-label">Estratégias personalizadas</span></div>
-          <div class="case-result-item"><span class="metric">Roteiros</span><span class="metric-label">Completos prontos para gravação</span></div>
-          <div class="case-result-item"><span class="metric">Lancamento</span><span class="metric-label">Livro com estratégia de conteúdo</span></div>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-
-<!-- ============================================================
-     SECTION 5B: CASES CAROUSEL
-     ============================================================ -->
-<section class="cases" id="cases" style="display:block !important;">
-  <div class="container">
-    <div class="section-divider"></div>
-    <h2>Histórias de marcas que encontraram sua voz</h2>
-    <p class="section-subtitle" style="color:var(--grafite);margin-bottom:8px;">Cada projeto começa com um desafio e termina com uma transformação.</p>
-
-    <div class="carousel-nav">
-      <button class="carousel-btn" onclick="document.getElementById('casesCarousel').scrollBy({left:-504,behavior:'smooth'})">&larr;</button>
-      <button class="carousel-btn" onclick="document.getElementById('casesCarousel').scrollBy({left:504,behavior:'smooth'})">&rarr;</button>
-    </div>
-
-    <div class="cases-carousel-wrapper">
-      <div class="cases-carousel" id="casesCarousel">
-
-        <!-- SLIDE 1: Renata Dias Atelier — STAR MOMENT -->
-        <div class="case-slide star-moment" id="case-renata-dias">
-          <div class="case-slide-image">
-            <img src="img/rd-feed.png" alt="Renata Dias Atelier — Feed Instagram">
-          </div>
-          <div class="case-slide-body">
-            <h3>Renata Dias Atelier</h3>
-            <div class="case-subtitle">Moda Noiva &amp; Festa | Construção de marca completa</div>
-            <p class="case-desc">O ateliê de vestidos sob medida com 10 anos de trajetória precisava integrar a marca da estilista e do ateliê em uma presença digital coerente. Assumi toda a comunicação: do planejamento estratégico à identidade visual, passando por vídeos institucionais, redes sociais e o lançamento da coleção "Essence". criando conceito, naming e toda a produção visual do zero.</p>
-            <div class="case-slide-tags">
-              <span class="tag">Branding</span>
-              <span class="tag">Vídeo</span>
-              <span class="tag">Social Media</span>
-              <span class="tag">Identidade Visual</span>
-              <span class="tag">Conceito de Coleção</span>
-            </div>
-          </div>
-          <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">360°</span><span class="lbl">Presença digital completa</span></div>
-            <div class="mini-metric"><span class="val">Essence</span><span class="lbl">Coleção criada do zero</span></div>
-            <div class="mini-metric"><span class="val">10 anos</span><span class="lbl">De marca reposicionada</span></div>
+          <p class="section-label">Sobre mim</p>
+          <h2 class="sobre-heading">Comunicação de verdade<br>não tem <em>fórmula</em></h2>
+          <p class="sobre-text">
+            Comunicação de verdade não tem fórmula — tem escuta, sensibilidade e intenção.
+          </p>
+          <p class="sobre-text">
+            Com foco em redação estratégica e identidade de marca, atuo desde 2017 em segmentos como moda, construção civil, saúde, educação, política, fé, finanças, ONGs e autores independentes. Cada marca um novo universo, um novo jeito de se expressar.
+          </p>
+          <p class="sobre-text">
+            Comunicar é tornar comum e, em um mundo repleto de mensagens, canais e, principalmente, ruídos, encontrar o espaço, a voz e a frequência certa é o que transforma barulho em impacto real.
+          </p>
+          <p class="sobre-text">
+            Porque no fim, toda marca é uma história. E toda história merece ser bem contada.
+          </p>
+          <div class="sobre-categories">
+            <span class="tag">Redator Digital</span>
+            <span class="tag">Roteirista de Conteúdo</span>
+            <span class="tag">Estrategista de Conteúdo</span>
+            <span class="tag">Gestor de Redes Sociais</span>
+            <span class="tag">Especialista em Posicionamento</span>
+            <span class="tag">Planejador de Marca</span>
           </div>
         </div>
 
-        <!-- SLIDE 2: Lumos Decor -->
-        <div class="case-slide" id="case-lumos">
-          <div class="case-slide-image">
-            <img src="img/lumos-moodboard.png" alt="Lumos Decor — Moodboard">
+        <div class="sobre-photo-wrap">
+          <div class="sobre-badge">
+            <strong>20+</strong>
+            clientes<br>atendidos
           </div>
-          <div class="case-slide-body">
-            <h3>Lumos Decor</h3>
-            <div class="case-subtitle">Arquitetura &amp; Decoração | Planejamento estratégico</div>
-            <p class="case-desc">Loja de decoração em desenvolvimento que precisava se posicionar como referência em design e lifestyle. Defini o objetivo de comunicação para os primeiros três meses, criei moodboard e identidade visual, estruturando quatro pilares estratégicos: qualidade, curadoria única, pertencimento e posicionamento além do varejo.</p>
-            <div class="case-slide-tags">
-              <span class="tag">Estratégia</span>
-              <span class="tag">Branding</span>
-              <span class="tag">Identidade Visual</span>
-              <span class="tag">Moodboard</span>
-            </div>
-          </div>
-          <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">Do zero</span><span class="lbl">Identidade construída</span></div>
-            <div class="mini-metric"><span class="val">3 meses</span><span class="lbl">Plano executável</span></div>
-          </div>
+          <img src="img/giovana-sobre.jpg" alt="Giovana Petelinkar" class="sobre-photo">
         </div>
 
-        <!-- SLIDE 3: Reserva da Pipa -->
-        <div class="case-slide" id="case-pipa">
-          <div class="case-slide-image">
-            <img src="img/pipa-feed.png" alt="Reserva da Pipa — Feed">
-          </div>
-          <div class="case-slide-body">
-            <h3>Reserva da Pipa</h3>
-            <div class="case-subtitle">Condomínio Resort | Campanha multicanal</div>
-            <p class="case-desc">O condomínio não queria vender lotes. Queria vender um estilo de vida. Criei estratégia multicanal integrando redes sociais, e‑mail marketing e landing pages. Usei prova social do TripAdvisor como validação da região, e campanhas de indicação com CTAs claros para eventos e lançamentos.</p>
-            <div class="case-slide-tags">
-              <span class="tag">Social Media</span>
-              <span class="tag">E‑mail Marketing</span>
-              <span class="tag">Landing Pages</span>
-              <span class="tag">Copywriting</span>
-            </div>
-          </div>
-          <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">3 canais</span><span class="lbl">Integrados em 1 estratégia</span></div>
-            <div class="mini-metric"><span class="val">Lifestyle</span><span class="lbl">De lotes a estilo de vida</span></div>
-          </div>
-        </div>
-
-        <!-- SLIDE 4: Bauten -->
-        <div class="case-slide" id="case-bauten">
-          <div class="case-slide-image">
-            <img src="img/bauten-site.png" alt="Bauten — Website">
-          </div>
-          <div class="case-slide-body">
-            <h3>Bauten</h3>
-            <div class="case-subtitle">Incorporadora de Luxo | Website + narrativa de marca</div>
-            <p class="case-desc">Incorporadora que alia design e sustentabilidade precisava de redação profissional para o site. Desenvolvi toda a copy. da "Nossa História" ao "Nosso Conceito" e "Quem Faz". traduzindo propósito, missão e visão em linguagem que conecta emocionalmente com o público de luxo.</p>
-            <div class="case-slide-tags">
-              <span class="tag">Website</span>
-              <span class="tag">Copywriting</span>
-              <span class="tag">UX Writing</span>
-              <span class="tag">Narrativa de Marca</span>
-            </div>
-          </div>
-          <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">Site completo</span><span class="lbl">Copy institucional</span></div>
-            <div class="mini-metric"><span class="val">Luxo</span><span class="lbl">Tom premium consolidado</span></div>
-          </div>
-        </div>
-
-        <!-- SLIDE 5: Mentora + Coach -->
-        <div class="case-slide" id="case-mentora">
-          <div class="case-slide-image">
-            <img src="img/mentora-artigo.png" alt="Direcionamento de Conteúdo — Artigo">
-          </div>
-          <div class="case-slide-body">
-            <h3>Direcionamento de Conteúdo</h3>
-            <div class="case-subtitle">Mentora Digital + Coach Autora | Roteiro e estratégia</div>
-            <p class="case-desc">Duas profissionais com expertise profunda mas dificuldade em traduzir conhecimento em conteúdo digital. Criei roteiros completos de Reels com tema, cenário e CTA, além de estratégia de pré-lançamento de livro com cards de citações e legendas narrativas.</p>
-            <div class="case-slide-tags">
-              <span class="tag">Roteiro</span>
-              <span class="tag">Estratégia de Conteúdo</span>
-              <span class="tag">Direcionamento Criativo</span>
-            </div>
-          </div>
-          <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">2 clientes</span><span class="lbl">Estratégias personalizadas</span></div>
-            <div class="mini-metric"><span class="val">Pronto</span><span class="lbl">Conteúdo executável</span></div>
-          </div>
-        </div>
-
-      
-        <!-- SLIDE 6: Davus Engenharia -->
-        <div class="case-slide" id="case-davus">
-          <div class="case-slide-image">
-            <img src="img/davus-feed.png" alt="Davus Engenharia — Feed Instagram">
-          </div>
-          <div class="case-slide-body">
-            <h3>Davus Engenharia</h3>
-            <div class="case-subtitle">Incorporadora | Lançamento imobiliário</div>
-            <p class="case-desc">Gestão de redes sociais e redação para e‑mails, landing pages e site. Foco no novo lançamento imobiliário com estilo de vida praiano, estética Wabi Sabi e diferenciais da marca entrando no mercado da cidade.</p>
-            <div class="case-slide-tags">
-              <span class="tag">Social Media</span>
-              <span class="tag">Copywriting</span>
-              <span class="tag">Direção de Design</span>
-              <span class="tag">Landing Pages</span>
-            </div>
-          </div>
-          <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">Wabi Sabi</span><span class="lbl">Conceito visual</span></div>
-            <div class="mini-metric"><span class="val">Multicanal</span><span class="lbl">Redes + e‑mail + site</span></div>
-          </div>
-        </div>
-
-        <!-- SLIDE 7: Dimensional Construções -->
-        <div class="case-slide" id="case-dimensional">
-          <div class="case-slide-image">
-            <img src="img/dimensional-feed.png" alt="Dimensional Construções — Feed">
-          </div>
-          <div class="case-slide-body">
-            <h3>Dimensional Construções</h3>
-            <div class="case-subtitle">Construtora 45 anos | Gestão multi-empreendimentos</div>
-            <p class="case-desc">Empresa consolidada no mercado imobiliário com diversos empreendimentos em lançamento e venda. Gestão de redes sociais, redação para e‑mails e landing pages, além de direcionamento, roteiro e legenda para vídeo institucional comemorativo dos 45 anos.</p>
-            <div class="case-slide-tags">
-              <span class="tag">Social Media</span>
-              <span class="tag">Vídeo</span>
-              <span class="tag">E‑mail Marketing</span>
-              <span class="tag">Roteiro</span>
-            </div>
-          </div>
-          <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">45 anos</span><span class="lbl">De história comunicados</span></div>
-            <div class="mini-metric"><span class="val">Vídeo</span><span class="lbl">Institucional + redes</span></div>
-          </div>
-        </div>
-
-        <!-- SLIDE 8: Leão Inteligência Imobiliária -->
-        <div class="case-slide" id="case-leao">
-          <div class="case-slide-image">
-            <img src="img/leao-feed.png" alt="Leão Inteligência Imobiliária — Feed">
-          </div>
-          <div class="case-slide-body">
-            <h3>Leão Inteligência Imobiliária</h3>
-            <div class="case-subtitle">Treinamento Imob. | Conteúdo B2B (slow content)</div>
-            <p class="case-desc">Soluções de gestão em alto nível para o mercado imobiliário, com especialização em lançamentos e treinamentos para corretores e construtoras. Gestão de redes sociais com slow content, direcionamento de design e redação para e‑mails.</p>
-            <div class="case-slide-tags">
-              <span class="tag">Social Media</span>
-              <span class="tag">Slow Content</span>
-              <span class="tag">Direção de Design</span>
-              <span class="tag">B2B</span>
-            </div>
-          </div>
-          <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">B2B</span><span class="lbl">Comunicação para corretores</span></div>
-            <div class="mini-metric"><span class="val">Autoridade</span><span class="lbl">Posicionamento construído</span></div>
-          </div>
-        </div>
-
-        <!-- SLIDE 9: Instituto AMAS -->
-        <div class="case-slide" id="case-amas">
-          <div class="case-slide-image">
-            <img src="img/amas-site.jpg" alt="Instituto AMAS — Mãos Amigas">
-          </div>
-          <div class="case-slide-body">
-            <h3>Instituto AMAS | Mãos Amigas</h3>
-            <div class="case-subtitle">ONG | Design e redação para site</div>
-            <p class="case-desc">ONG sem fins lucrativos com objetivos educacionais, assistenciais e beneficentes, voltada a pessoas em vulnerabilidade. Design, programação e suporte de redação para o site institucional.</p>
-            <div class="case-slide-tags">
-              <span class="tag">Design de Site</span>
-              <span class="tag">Redação</span>
-              <span class="tag">Terceiro Setor</span>
-            </div>
-          </div>
-          <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">Site</span><span class="lbl">Presença digital da ONG</span></div>
-            <div class="mini-metric"><span class="val">Social</span><span class="lbl">Comunicação com propósito</span></div>
-          </div>
-        </div>
-
-        <!-- SLIDE 10: Edição de Livros -->
-        <div class="case-slide" id="case-livros">
-          <div class="case-slide-image">
-            <img src="img/livros-montagem.jpg" alt="Edição de Texto e Revisão — Capas de Livros">
-          </div>
-          <div class="case-slide-body">
-            <h3>Edição de Texto e Revisão</h3>
-            <div class="case-subtitle">Editorial | Livros e e-books</div>
-            <p class="case-desc">Aprimoramento de manuscritos com foco na estrutura e qualidade textual. Correção de ortografia, gramática e coesão. Padronização e revisão de fontes e informações. Trabalho com autores cristãos (4 livros) e e-book sobre produção artesanal.</p>
-            <div class="case-slide-tags">
-              <span class="tag">Edição de Texto</span>
-              <span class="tag">Revisão</span>
-              <span class="tag">Livros</span>
-              <span class="tag">E-books</span>
-            </div>
-          </div>
-          <div class="case-slide-results">
-            <div class="mini-metric"><span class="val">5</span><span class="lbl">Publicações revisadas</span></div>
-            <div class="mini-metric"><span class="val">Editorial</span><span class="lbl">Estrutura + qualidade textual</span></div>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div class="carousel-dots">
-        <div class="carousel-dot active"></div>
-        <div class="carousel-dot"></div>
-        <div class="carousel-dot"></div>
-        <div class="carousel-dot"></div>
-        <div class="carousel-dot"></div>
-        <div class="carousel-dot"></div>
-        <div class="carousel-dot"></div>
-        <div class="carousel-dot"></div>
-        <div class="carousel-dot"></div>
-        <div class="carousel-dot"></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================================================
-     SECTION 6: SOBRE (SB7. Guide backstory)
-     ============================================================ -->
-<section class="sobre" id="sobre">
-  <div class="container">
-    <div class="sobre-grid">
-      <div class="sobre-photo" style="background:none;overflow:hidden;">
-        <img src="img/giovana-sobre.jpg" alt="Giovana Petelinkar" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      </div>
-      <div class="sobre-content">
-        <div class="section-divider"></div>
-        <h2>Oi, eu sou a Giovana</h2>
-        <p>Profissional de Comunicação e Marketing Digital com mais de 7 anos de experiência. Atuei em agências, empresas e como consultora independente, adquirindo uma visão completa do ecossistema digital e suas demandas.</p>
+  <!-- CONTATO -->
+  <section class="contato" id="contato">
+    <div class="container">
+      <div>
+        <p class="section-label">Contato</p>
+        <h2 class="contato-heading">Vamos<br>conversar</h2>
 
-        <div class="highlight-box">
-          <p>"O problema nunca foi o negócio. Era a forma como a história estava sendo contada."</p>
-        </div>
-
-        <p>Meu trabalho vai além de criar conteúdo. eu construo estratégias de comunicação que conectam marcas com seu público de forma autêntica e mensurável. Da estratégia de conteúdo à gestão de redes sociais, do roteiro de vídeo ao copywriting, da identidade visual à análise de resultados.</p>
-
-        <p>Acredito que toda marca tem uma história incrível pra contar. Meu papel é garantir que ela seja contada da forma certa, no canal certo, para as pessoas certas.</p>
-
-        <div class="mt-4">
-          <a href="https://wa.me/5583991263458?text=Ol%C3%A1%20Giovana%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" class="btn-primary">Vamos Conversar</a>
+        <div class="contato-links" style="max-width: 480px;">
+          <a href="mailto:gipetelinkar@gmail.com" class="contato-link">
+            <div class="c-icon">&#9993;</div>
+            <div class="c-info">
+              <strong>gipetelinkar@gmail.com</strong>
+              <span>E-mail</span>
+            </div>
+          </a>
+          <a href="https://wa.me/5583991263458" target="_blank" rel="noopener" class="contato-link">
+            <div class="c-icon">&#128241;</div>
+            <div class="c-info">
+              <strong>(83) 99126-3458</strong>
+              <span>WhatsApp</span>
+            </div>
+          </a>
+          <a href="https://instagram.com/gipetelinkar" target="_blank" rel="noopener" class="contato-link">
+            <div class="c-icon">&#9678;</div>
+            <div class="c-info">
+              <strong>@gipetelinkar</strong>
+              <span>Instagram</span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================================================
-     SECTION 7: CTA FINAL (SB7. Call to Action)
-     ============================================================ -->
-<section class="cta-final" id="contato">
-  <div class="container">
-    <h2>Cada projeto é uma nova história</h2>
-    <p class="cta-subtitle">Eu adoraria escrever a próxima com você.</p>
-    <a href="https://wa.me/5583991263458?text=Ol%C3%A1%20Giovana%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" class="btn-primary">Agende uma Conversa Estratégica</a>
-    <div class="contact-row">
-      <div class="contact-item"><a (83) 99126-3458>(83) 99126-3458</a></div>
-      <div class="contact-item"><a href="mailto:gipetelinkar@gmail.com">gipetelinkar@gmail.com</a></div>
-      <div class="contact-item"><a href="https://instagram.com/gipetelinkar" target="_blank" rel="noopener">@gipetelinkar</a></div>
-      <div class="contact-item"><a href="https://linkedin.com/in/giovanapetelinkar" target="_blank" rel="noopener">LinkedIn</a></div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-name">Giovana Petelinkar</span>
+        <span class="footer-copy">&copy; 2026</span>
+      </div>
     </div>
-  </div>
-</section>
+  </footer>
 
+  <!-- CAROUSEL JS -->
+  <script>
+    document.querySelectorAll('.carousel').forEach(carousel => {
+      const track = carousel.querySelector('.carousel-track');
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      const dotsContainer = carousel.querySelector('.carousel-dots');
+      const prevBtn = carousel.querySelector('.prev');
+      const nextBtn = carousel.querySelector('.next');
+      const count = slides.length;
+      let current = 0;
 
-<script>
-// Scroll to case slide when clicking submenu
-document.querySelectorAll('.nav-dropdown-menu a').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const id = link.getAttribute('href').replace('#', '');
-    const slide = document.getElementById(id);
-    const carousel = document.getElementById('casesCarousel');
-    if (slide && carousel) {
-      // Scroll page to cases section
-      document.getElementById('cases').scrollIntoView({ behavior: 'smooth' });
-      // Then scroll carousel to the right slide
-      setTimeout(() => {
-        slide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-      }, 500);
-    }
-  });
-});
-</script>
+      // Create dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.classList.add('carousel-dot');
+        dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
 
-<script>
-// === ENHANCED TIER JS ===
+      function goTo(index) {
+        // Pause previous video if any
+        const prevVideo = slides[current].querySelector('video');
+        if (prevVideo) { prevVideo.pause(); }
 
-// 1. Scroll Progress Bar
-window.addEventListener('scroll', () => {
-  const bar = document.querySelector('.scroll-progress');
-  if (bar) {
-    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    bar.style.width = pct + '%';
-  }
-});
+        current = (index + count) % count;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
 
-// 2. Cinematic Scroll Reveals
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
+        // Auto-play current video if any
+        const curVideo = slides[current].querySelector('video');
+        if (curVideo) { curVideo.currentTime = 0; curVideo.play(); }
+      }
 
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
 
-// 3. Nav shadow on scroll
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if (nav) {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
-  }
-});
+      // Touch/swipe support
+      let startX = 0;
+      let isDragging = false;
 
-// 4. Auto-add reveal classes to sections
-document.querySelectorAll('section > .container > *').forEach((el, i) => {
-  if (!el.classList.contains('reveal')) {
-    el.classList.add('reveal');
-    const delay = Math.min(i % 4, 3);
-    if (delay > 0) el.classList.add('reveal-d' + delay);
-  }
-});
+      carousel.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+      }, { passive: true });
 
-// Re-observe after adding classes
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-</script>
+      carousel.addEventListener('touchend', e => {
+        if (!isDragging) return;
+        isDragging = false;
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) {
+          diff > 0 ? goTo(current + 1) : goTo(current - 1);
+        }
+      }, { passive: true });
+    });
+  </script>
 
 </body>
 </html>
-<script>
-// Carousel dot navigation
-const carousel = document.getElementById('casesCarousel');
-const dots = document.querySelectorAll('.carousel-dot');
-if (carousel && dots.length) {
-  carousel.addEventListener('scroll', () => {
-    const slideWidth = carousel.querySelector('.case-slide').offsetWidth + 24;
-    const index = Math.round(carousel.scrollLeft / slideWidth);
-    dots.forEach((d, i) => d.classList.toggle('active', i === index));
-  });
-  dots.forEach((dot, i) => {
-    dot.style.cursor = 'pointer';
-    dot.addEventListener('click', () => {
-      const slideWidth = carousel.querySelector('.case-slide').offsetWidth + 24;
-      carousel.scrollTo({ left: slideWidth * i, behavior: 'smooth' });
-    });
-  });
-}
-</script>

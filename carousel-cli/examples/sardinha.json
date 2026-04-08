@@ -1,0 +1,134 @@
+{
+  "config": {
+    "handle": "@chilliepig",
+    "template": "storytelling"
+  },
+  "slides": [
+    {
+      "position": 1,
+      "role": "hook_visual",
+      "headline": "",
+      "subtext": "",
+      "variant": "image-full-overlay",
+      "bg_color": "#E8E4E0",
+      "text_color": "#1A1A1A",
+      "subtext_color": "#666666",
+      "accent_color": "#C45A3C",
+      "image_url": "",
+      "image_keywords": ["sardine tin cans colorful branding display"]
+    },
+    {
+      "position": 2,
+      "role": "cover",
+      "headline": "Um peixe de R$ 2 virou produto de R$ 45",
+      "subtext": "A sardinha portuguesa prova que branding transforma qualquer produto.",
+      "variant": "text-only",
+      "bg_color": "#E8E4E0",
+      "text_color": "#1A1A1A",
+      "subtext_color": "#666666",
+      "accent_color": "#C45A3C",
+      "image_url": "",
+      "image_keywords": []
+    },
+    {
+      "position": 3,
+      "role": "context",
+      "headline": "Portugal resolveu um problema que todo artesao conhece",
+      "subtext": "Produto incrivel, mas o mercado nao reconhece o valor. A sardinha era vista como 'comida barata' — ate que decidiram mudar a narrativa.",
+      "variant": "text-only",
+      "bg_color": "#E8E4E0",
+      "text_color": "#1A1A1A",
+      "subtext_color": "#666666",
+      "image_url": "",
+      "image_keywords": []
+    },
+    {
+      "position": 4,
+      "role": "insight",
+      "headline": "A embalagem virou a estrela",
+      "subtext": "Designs unicos, colecionaveis, com historias em cada lata. A sardinha deixou de ser 'mais uma' e virou objeto de desejo.",
+      "variant": "text-top-image-bottom",
+      "bg_color": "#E8E4E0",
+      "text_color": "#1A1A1A",
+      "subtext_color": "#666666",
+      "image_url": "",
+      "image_keywords": ["portuguese sardine tin art design colorful"]
+    },
+    {
+      "position": 5,
+      "role": "data",
+      "headline": "A sardinha portuguesa faturou +400M EUR em exportacao",
+      "subtext": "E o preco medio por lata saltou de 1 EUR para 4-12 EUR. Mesma sardinha, branding diferente.",
+      "variant": "data-highlight",
+      "data_value": "+400M€",
+      "bg_color": "#E8E4E0",
+      "text_color": "#1A1A1A",
+      "subtext_color": "#666666",
+      "accent_color": "#C45A3C",
+      "image_url": "",
+      "image_keywords": []
+    },
+    {
+      "position": 6,
+      "role": "proof",
+      "headline": "Lojas exclusivas so de sardinha em Lisboa",
+      "subtext": "Turistas fazem fila para comprar latas de sardinha como souvenir. O produto virou experiencia.",
+      "variant": "text-top-image-bottom",
+      "bg_color": "#E8E4E0",
+      "text_color": "#1A1A1A",
+      "subtext_color": "#666666",
+      "image_url": "",
+      "image_keywords": ["sardine shop lisbon portugal store"]
+    },
+    {
+      "position": 7,
+      "role": "transformation",
+      "headline": "O que mudou nao foi a sardinha. Foi a percepcao.",
+      "subtext": "Design, storytelling e posicionamento transformaram um commodity em marca premium.",
+      "variant": "text-only",
+      "bg_color": "#1A1A1A",
+      "text_color": "#E8E4E0",
+      "subtext_color": "#AAAAAA",
+      "image_url": "",
+      "image_keywords": []
+    },
+    {
+      "position": 8,
+      "role": "contrast",
+      "headline": "E se o seu molho artesanal tivesse esse mesmo tratamento?",
+      "subtext": "Voce ja tem o produto incrivel. Falta a narrativa que faz o mercado pagar o que ele vale.",
+      "variant": "text-only",
+      "bg_color": "#E8E4E0",
+      "text_color": "#1A1A1A",
+      "subtext_color": "#666666",
+      "accent_color": "#C45A3C",
+      "image_url": "",
+      "image_keywords": []
+    },
+    {
+      "position": 9,
+      "role": "cta",
+      "headline": "Salva este post. Manda pra quem precisa ouvir isso.",
+      "subtext": "Siga @chilliepig para mais estrategias de branding artesanal.",
+      "variant": "text-only",
+      "bg_color": "#C45A3C",
+      "text_color": "#FFFFFF",
+      "subtext_color": "rgba(255,255,255,0.85)",
+      "image_url": "",
+      "image_keywords": []
+    }
+  ],
+  "caption": "Um peixe de R$ 2 que virou produto de R$ 45.\n\nA sardinha portuguesa e a maior prova de que branding transforma qualquer produto — ate o mais 'simples'.\n\nPortugal tinha um problema que todo produtor artesanal conhece: produto incrivel, mas o mercado nao reconhecia o valor.\n\nA sardinha era vista como 'comida barata'. Ate que decidiram mudar a narrativa.\n\nO que fizeram:\n→ Embalagens com design unico e colecionavel\n→ Storytelling em cada lata (ano de producao, historia)\n→ Posicionamento premium com experiencia de marca\n\nResultado:\n• Exportacao passou de 400 milhoes EUR\n• Preco medio por lata: de 1 EUR para 4-12 EUR\n• Lojas exclusivas so de sardinha em Lisboa\n• Turistas fazem fila para comprar latas como souvenir\n\nO que mudou NAO foi a sardinha. Foi a percepcao.\n\nE o seu molho artesanal? Ja tem o produto. Falta a narrativa que faz o mercado pagar o que ele realmente vale.\n\nSalva este post e manda pra quem precisa ouvir isso. 🔥",
+  "hashtags": [
+    "#branding",
+    "#produtoartesanal",
+    "#marketingartesanal",
+    "#empreendedorismo",
+    "#molhodepimenta",
+    "#designdeembalagem",
+    "#storytelling",
+    "#sardinhaportuguesa",
+    "#estrategiademarca",
+    "#pequenosnegocios"
+  ]
+}

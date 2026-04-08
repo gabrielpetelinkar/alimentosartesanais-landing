@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview — Pain Points com Ilustrações CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A0A0A;
+      color: #E0E0E0;
+      min-height: 100vh;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #FAF5EB;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #888;
+      font-size: 0.875rem;
+      margin-bottom: 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ========== PAIN CARD ========== */
+    .pain-card {
+      background: rgba(212,168,83,0.05);
+      border: 1px solid rgba(212,168,83,0.12);
+      border-left: 4px solid #D4A853;
+      border-radius: 16px;
+      padding: 0;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .pain-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(212,168,83,0.25);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    /* ========== SCENE (illustration area) ========== */
+    .pain-scene {
+      height: 140px;
+      position: relative;
+      overflow: hidden;
+      background: #0E0E0E;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* ========== SCENE 1: Produto sem diferenciação — shelf with identical jars ========== */
+    .scene-shelf {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 12px;
+      height: 100%;
+      padding: 0 20px 20px;
+      background: linear-gradient(180deg, #0E0E0E 0%, #121212 100%);
+    }
+
+    .scene-shelf__jar {
+      width: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .scene-shelf__lid {
+      width: 32px;
+      height: 6px;
+      background: #333;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .scene-shelf__body {
+      width: 36px;
+      height: 50px;
+      background: #2A2A2A;
+      border-radius: 0 0 6px 6px;
+      border: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .scene-shelf__label {
+      width: 24px;
+      height: 16px;
+      background: #444;
+      border-radius: 2px;
+    }
+
+    .scene-shelf__jar--highlight .scene-shelf__body {
+      border-color: rgba(212,168,83,0.3);
+    }
+
+    .scene-shelf__jar--highlight .scene-shelf__label {
+      background: rgba(212,168,83,0.2);
+    }
+
+    .scene-shelf__question {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 1.5rem;
+      color: rgba(212,168,83,0.3);
+      font-weight: 700;
+    }
+
+    .scene-shelf__line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(212,168,83,0.15), transparent);
+    }
+
+    /* ========== SCENE 2: Marca sem história — empty speech bubble ========== */
+    .scene-story {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 20px;
+      background: linear-gradient(180deg, #0E0E0E 0%, #121212 100%);
+      position: relative;
+    }
+
+    .scene-story__bubble {
+      width: 180px;
+      height: 70px;
+      background: rgba(255,255,255,0.03);
+      border: 1px dashed rgba(255,255,255,0.12);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .scene-story__bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid rgba(255,255,255,0.12);
+    }
+
+    .scene-story__dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .scene-story__dot {
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    .scene-story__dot:nth-child(2) { animation-delay: 0.3s; }
+    .scene-story__dot:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.5; }
+    }
+
+    .scene-story__person {
+      position: absolute;
+      bottom: 16px;
+      left: 24px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #2A2A2A;
+      border: 1px solid #444;
+    }
+
+    .scene-story__person::after {
+      content: '';
+      position: absolute;
+      top: 22px;
+      left: 4px;
+      width: 12px;
+      height: 16px;
+      background: #2A2A2A;
+      border-radius: 4px;
+      border: 1px solid #444;
+    }
+
+    /* ========== SCENE 3: Embalagem que não vende — sad package ========== */
+    .scene-package {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 24px;
+      padding: 20px;
+      background: linear-gradient(180deg, #0E0E0E 0%, #121212 100%);
+      position: relative;
+    }
+
+    .scene-package__box {
+      width: 70px;
+      height: 80px;
+      background: #1A1A1A;
+      border: 1px solid #333;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      position: relative;
+    }
+
+    .scene-package__label-line {
+      width: 40px;
+      height: 3px;
+      background: #333;
+      border-radius: 2px;
+    }
+
+    .scene-package__label-line--short {
+      width: 28px;
+    }
+
+    .scene-package__arrow {
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.1);
+    }
+
+    .scene-package__box--premium {
+      border-color: rgba(212,168,83,0.3);
+      box-shadow: 0 0 20px rgba(212,168,83,0.08);
+    }
+
+    .scene-package__box--premium .scene-package__label-line {
+      background: rgba(212,168,83,0.3);
+    }
+
+    .scene-package__star {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.6rem;
+      color: #D4A853;
+    }
+
+    .scene-package__vs {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ========== SCENE 4: Presença digital fraca — dim phone ========== */
+    .scene-digital {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 20px;
+      background: linear-gradient(180deg, #0E0E0E 0%, #121212 100%);
+      position: relative;
+    }
+
+    .scene-digital__phone {
+      width: 56px;
+      height: 90px;
+      background: #1A1A1A;
+      border: 2px solid #333;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 6px 6px;
+      gap: 4px;
+      position: relative;
+    }
+
+    .scene-digital__notch {
+      width: 20px;
+      height: 3px;
+      background: #333;
+      border-radius: 2px;
+      position: absolute;
+      top: 4px;
+    }
+
+    .scene-digital__line {
+      width: 100%;
+      height: 3px;
+      background: #2A2A2A;
+      border-radius: 1px;
+      margin-top: 4px;
+    }
+
+    .scene-digital__line--short {
+      width: 60%;
+    }
+
+    .scene-digital__heart {
+      margin-top: auto;
+      font-size: 0.55rem;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .scene-digital__counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      color: #444;
+    }
+
+    .scene-digital__stats {
+      position: absolute;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .scene-digital__stat {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem;
+      color: #444;
+    }
+
+    .scene-digital__bar {
+      width: 50px;
+      height: 4px;
+      background: #1A1A1A;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .scene-digital__bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: #333;
+    }
+
+    .scene-digital__bar-fill--low { width: 15%; background: #c0392b; }
+    .scene-digital__bar-fill--med { width: 25%; background: #444; }
+
+    /* ========== SCENE 5: Crescimento estagnado — flat chart ========== */
+    .scene-growth {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      height: 100%;
+      padding: 16px 24px 20px;
+      background: linear-gradient(180deg, #0E0E0E 0%, #121212 100%);
+      position: relative;
+      gap: 4px;
+    }
+
+    .scene-growth__bar {
+      width: 20px;
+      border-radius: 3px 3px 0 0;
+      transition: height 0.3s;
+    }
+
+    .scene-growth__bar--flat {
+      background: #2A2A2A;
+      border: 1px solid #333;
+      border-bottom: none;
+    }
+
+    .scene-growth__bar--potential {
+      background: none;
+      border: 1px dashed rgba(212,168,83,0.2);
+      border-bottom: none;
+    }
+
+    .scene-growth__flatline {
+      position: absolute;
+      top: 55%;
+      left: 24px;
+      right: 24px;
+      height: 1px;
+      background: rgba(212,168,83,0.15);
+    }
+
+    .scene-growth__flatline-label {
+      position: absolute;
+      top: 48%;
+      right: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      color: rgba(212,168,83,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .scene-growth__axis {
+      position: absolute;
+      bottom: 18px;
+      left: 24px;
+      right: 24px;
+      height: 1px;
+      background: #222;
+    }
+
+    /* ========== SCENE 6: Falta de credibilidade — empty badges ========== */
+    .scene-cred {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 16px;
+      padding: 20px;
+      background: linear-gradient(180deg, #0E0E0E 0%, #121212 100%);
+    }
+
+    .scene-cred__badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .scene-cred__badge-inner {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .scene-cred__badge--empty::after {
+      content: '?';
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 16px;
+      height: 16px;
+      background: #1A1A1A;
+      border: 1px solid #333;
+      border-radius: 50%;
+      font-size: 0.5rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scene-cred__plus {
+      font-size: 1rem;
+      color: #222;
+    }
+
+    /* ========== TEXT CONTENT ========== */
+    .pain-content {
+      padding: 24px 28px;
+    }
+
+    .pain-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: #D4A853;
+      margin-bottom: 6px;
+    }
+
+    .pain-content p {
+      font-size: 0.85rem;
+      color: #999;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Você se identifica com algum desses desafios?</h1>
+  <p class="subtitle">Preview — Pain Points com ilustrações CSS puro</p>
+
+  <div class="grid">
+
+    <!-- 1. Produto sem diferenciação -->
+    <div class="pain-card">
+      <div class="pain-scene">
+        <div class="scene-shelf">
+          <div class="scene-shelf__jar">
+            <div class="scene-shelf__lid"></div>
+            <div class="scene-shelf__body"><div class="scene-shelf__label"></div></div>
+          </div>
+          <div class="scene-shelf__jar">
+            <div class="scene-shelf__lid"></div>
+            <div class="scene-shelf__body"><div class="scene-shelf__label"></div></div>
+          </div>
+          <div class="scene-shelf__jar scene-shelf__jar--highlight">
+            <div class="scene-shelf__lid"></div>
+            <div class="scene-shelf__body"><div class="scene-shelf__label"></div></div>
+          </div>
+          <div class="scene-shelf__jar">
+            <div class="scene-shelf__lid"></div>
+            <div class="scene-shelf__body"><div class="scene-shelf__label"></div></div>
+          </div>
+          <div class="scene-shelf__jar">
+            <div class="scene-shelf__lid"></div>
+            <div class="scene-shelf__body"><div class="scene-shelf__label"></div></div>
+          </div>
+          <div class="scene-shelf__jar">
+            <div class="scene-shelf__lid"></div>
+            <div class="scene-shelf__body"><div class="scene-shelf__label"></div></div>
+          </div>
+          <span class="scene-shelf__question">?</span>
+          <div class="scene-shelf__line"></div>
+        </div>
+      </div>
+      <div class="pain-content">
+        <h3>Produto sem diferenciação</h3>
+        <p>Seu produto compete por preço porque não tem identidade clara que o destaque da concorrência.</p>
+      </div>
+    </div>
+
+    <!-- 2. Marca sem história -->
+    <div class="pain-card">
+      <div class="pain-scene">
+        <div class="scene-story">
+          <div class="scene-story__person"></div>
+          <div class="scene-story__bubble">
+            <div class="scene-story__dots">
+              <div class="scene-story__dot"></div>
+              <div class="scene-story__dot"></div>
+              <div class="scene-story__dot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pain-content">
+        <h3>Marca sem história</h3>
+        <p>Você produz com qualidade, mas não sabe comunicar o que torna seu produto único e especial.</p>
+      </div>
+    </div>
+
+    <!-- 3. Embalagem que não vende -->
+    <div class="pain-card">
+      <div class="pain-scene">
+        <div class="scene-package">
+          <div class="scene-package__box">
+            <div class="scene-package__label-line"></div>
+            <div class="scene-package__label-line--short scene-package__label-line"></div>
+            <div class="scene-package__label-line"></div>
+          </div>
+          <div class="scene-package__vs">vs</div>
+          <div class="scene-package__box scene-package__box--premium">
+            <span class="scene-package__star">&#9733;</span>
+            <div class="scene-package__label-line"></div>
+            <div class="scene-package__label-line--short scene-package__label-line"></div>
+            <div class="scene-package__label-line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pain-content">
+        <h3>Embalagem que não vende</h3>
+        <p>Sua embalagem não transmite o valor artesanal e o cuidado por trás da produção.</p>
+      </div>
+    </div>
+
+    <!-- 4. Presença digital fraca -->
+    <div class="pain-card">
+      <div class="pain-scene">
+        <div class="scene-digital">
+          <div class="scene-digital__phone">
+            <div class="scene-digital__notch"></div>
+            <div class="scene-digital__line"></div>
+            <div class="scene-digital__line scene-digital__line--short"></div>
+            <div class="scene-digital__line"></div>
+            <div class="scene-digital__line scene-digital__line--short"></div>
+            <div class="scene-digital__heart">
+              &#9825; <span class="scene-digital__counter">3</span>
+            </div>
+          </div>
+          <div class="scene-digital__stats">
+            <div class="scene-digital__stat">
+              <span>alcance</span>
+              <div class="scene-digital__bar"><div class="scene-digital__bar-fill scene-digital__bar-fill--low"></div></div>
+            </div>
+            <div class="scene-digital__stat">
+              <span>engajamento</span>
+              <div class="scene-digital__bar"><div class="scene-digital__bar-fill scene-digital__bar-fill--med"></div></div>
+            </div>
+            <div class="scene-digital__stat">
+              <span>vendas</span>
+              <div class="scene-digital__bar"><div class="scene-digital__bar-fill scene-digital__bar-fill--low"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pain-content">
+        <h3>Presença digital fraca</h3>
+        <p>Não sabe como usar redes sociais de forma estratégica para atrair e fidelizar clientes.</p>
+      </div>
+    </div>
+
+    <!-- 5. Crescimento estagnado -->
+    <div class="pain-card">
+      <div class="pain-scene">
+        <div class="scene-growth">
+          <div class="scene-growth__bar scene-growth__bar--flat" style="height: 50px;"></div>
+          <div class="scene-growth__bar scene-growth__bar--flat" style="height: 55px;"></div>
+          <div class="scene-growth__bar scene-growth__bar--flat" style="height: 48px;"></div>
+          <div class="scene-growth__bar scene-growth__bar--flat" style="height: 52px;"></div>
+          <div class="scene-growth__bar scene-growth__bar--flat" style="height: 50px;"></div>
+          <div class="scene-growth__bar scene-growth__bar--flat" style="height: 49px;"></div>
+          <div class="scene-growth__bar scene-growth__bar--flat" style="height: 51px;"></div>
+          <div class="scene-growth__bar scene-growth__bar--flat" style="height: 50px;"></div>
+          <div class="scene-growth__bar scene-growth__bar--potential" style="height: 85px;"></div>
+          <div class="scene-growth__bar scene-growth__bar--potential" style="height: 95px;"></div>
+          <div class="scene-growth__flatline"></div>
+          <span class="scene-growth__flatline-label">estagnado</span>
+          <div class="scene-growth__axis"></div>
+        </div>
+      </div>
+      <div class="pain-content">
+        <h3>Crescimento estagnado</h3>
+        <p>Já vende, mas não consegue escalar ou alcançar novos mercados e pontos de venda.</p>
+      </div>
+    </div>
+
+    <!-- 6. Falta de credibilidade -->
+    <div class="pain-card">
+      <div class="pain-scene">
+        <div class="scene-cred">
+          <div class="scene-cred__badge scene-cred__badge--empty">
+            <span class="scene-cred__badge-inner">selo<br>arte</span>
+          </div>
+          <span class="scene-cred__plus">+</span>
+          <div class="scene-cred__badge scene-cred__badge--empty">
+            <span class="scene-cred__badge-inner">IG</span>
+          </div>
+          <span class="scene-cred__plus">+</span>
+          <div class="scene-cred__badge scene-cred__badge--empty">
+            <span class="scene-cred__badge-inner">orgânico</span>
+          </div>
+        </div>
+      </div>
+      <div class="pain-content">
+        <h3>Falta de credibilidade</h3>
+        <p>Sem certificações, selos ou parcerias que comprovem a qualidade do seu produto.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

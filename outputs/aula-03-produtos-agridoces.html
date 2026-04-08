@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 03 — Produtos Agridoces: O Equilíbrio que Conquista Paladares</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+
+  body {
+    width: 100vw; height: 100vh; overflow: hidden; margin: 0;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    background: #0D0D0D;
+    color: #FFFFFF;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    
+    
+    background: #0D0D0D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide:last-child {
+    page-break-after: avoid;
+  }
+
+  /* ===== COLORS ===== */
+  :root {
+    --bg-primary: #0D0D0D;
+    --bg-secondary: #1A1A1A;
+    --bg-elevated: #222222;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --text-muted: #7A7A7A;
+    --text-warm: #FAF5EB;
+    --accent: #D4A843;
+    --accent-glow: rgba(212,168,67,0.15);
+    --terracotta: #C45B3A;
+    --green: #5B8C3E;
+    --neutral-border: rgba(255,255,255,0.08);
+    --font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: 'Inter', 'SF Pro Text', system-ui, sans-serif;
+    --font-editorial: 'Playfair Display', 'Georgia', serif;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  .title-hero {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 200px;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -5px;
+  }
+
+  .title-huge {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 180px;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -4px;
+  }
+
+  .title-xl {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 48px;
+    color: var(--text-primary);
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+
+  .title-lg {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 40px;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .title-md {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .body-text {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .caption {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .aula-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .quote-text {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 32px;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .hero-number {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 160px;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 120px;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .gold { color: var(--accent); }
+  .green { color: var(--green); }
+  .terracotta { color: var(--terracotta); }
+  .white { color: var(--text-primary); }
+  .muted { color: var(--text-secondary); }
+
+  /* ===== DECORATIVE ===== */
+  .gold-line {
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    margin: 20px 0;
+  }
+
+  .gold-line-center {
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    margin: 20px auto;
+  }
+
+  .gold-line-wide {
+    width: 160px;
+    height: 3px;
+    background: var(--accent);
+    margin: 24px auto;
+  }
+
+  .glow-bg {
+    background: var(--accent-glow);
+    border-radius: 12px;
+    padding: 32px;
+  }
+
+  .ch-badge {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    padding: 6px 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.05);
+    z-index: 20;
+  }
+
+  .progress-inner {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  /* ===== LAYOUT HELPERS ===== */
+  .centered {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .left-aligned {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .split-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px 60px 60px;
+  }
+
+  /* ===== STATS ===== */
+  .stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--neutral-border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    text-align: center;
+    flex: 1;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    max-width: 1040px;
+  }
+
+  /* ===== PHOTO PLACEHOLDERS ===== */
+  .photo-full {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .photo-full.food {
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 30%, #1a1510 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.landscape {
+    background: linear-gradient(180deg, #1a2010 0%, #15200a 30%, #0a1505 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.rural {
+    background: linear-gradient(160deg, #201a0a 0%, #2a1f10 40%, #1a1510 70%, #0D0D0D 100%);
+  }
+
+  .photo-full.market {
+    background: linear-gradient(145deg, #1a1015 0%, #201520 35%, #151020 65%, #0D0D0D 100%);
+  }
+
+  .photo-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: #5a5a5a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 50%, #1a1510 100%);
+  }
+
+  .photo-half {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: #5a5a5a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .photo-half.food {
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 50%, #1a1510 100%);
+  }
+
+  .photo-half.rural {
+    background: linear-gradient(135deg, #201a0a 0%, #2a1f10 50%, #1a1510 100%);
+  }
+
+  .photo-half.product {
+    background: linear-gradient(135deg, #151015 0%, #201520 50%, #0D0D0D 100%);
+  }
+
+  .photo-half.fair {
+    background: linear-gradient(135deg, #1a1510 0%, #20180a 50%, #0D0D0D 100%);
+  }
+
+  .overlay-dark {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(13, 13, 13, 0.65);
+  }
+
+  .content-over {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .content-over-center {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ===== NUMBER HIGHLIGHT ===== */
+  .number-huge {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 160px;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+
+  .number-xl {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 120px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  /* ===== LIST ITEMS ===== */
+  .list-item {
+    margin-bottom: 28px;
+  }
+
+  .list-item .marker {
+    color: var(--accent);
+    font-size: 18px;
+    margin-right: 12px;
+  }
+
+  .list-item .item-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--text-primary);
+  }
+
+  .list-item .item-desc {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    padding-left: 30px;
+  }
+
+  /* ===== ACTION ITEMS ===== */
+  .action-item {
+    margin-bottom: 32px;
+    padding-left: 0;
+  }
+
+  .action-item .arrow {
+    color: var(--accent);
+    font-size: 22px;
+    margin-right: 14px;
+    font-weight: 700;
+  }
+
+  .action-item .action-text {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .action-item .action-detail {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    padding-left: 36px;
+  }
+
+  /* ===== COMPARISON ===== */
+  .comparison {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .comp-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+  }
+
+  .comp-side.before {
+    background: var(--bg-secondary);
+    border-right: 2px solid #2a2a2a;
+  }
+
+  .comp-side.after {
+    background: var(--bg-primary);
+  }
+
+  .comp-label {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .comp-content {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+
+  .comp-detail {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ===== CASE BAR ===== */
+  .case-bar {
+    background: rgba(212, 168, 67, 0.08);
+    border-left: 4px solid var(--accent);
+    padding: 24px 32px;
+    margin-top: 20px;
+  }
+
+  /* ===== EXERCISE ===== */
+  .exercise-box {
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 40px 50px;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  /* ===== SLIDE COUNTER ===== */
+  .slide-number {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 13px;
+    color: #4a4a4a;
+    z-index: 10;
+  }
+
+  .course-tag {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 12px;
+    color: #3a3a3a;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+
+  /* ===== SPEAKER NOTES ===== */
+  .speaker-notes {
+    display: none;
+  }
+
+  /* ===== NAV HINT ===== */
+  .nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: #3a3a3a;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .nav-hint.visible {
+    opacity: 1;
+  }
+
+  /* ===== NEXT CLASS TEASER ===== */
+  .next-class {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(212, 168, 67, 0.3);
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body { background: #0D0D0D; }
+    .slide { page-break-after: always; page-break-inside: avoid; }
+    .slide:last-child { page-break-after: avoid; }
+    .nav-hint { display: none; }
+    .speaker-notes { display: none; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media screen and (max-width: 1280px) {
+    .slide {
+      width: 100vw;
+      height: 56.25vw;
+    }
+    .title-huge { font-size: 14vw; }
+    .title-hero { font-size: 15.6vw; }
+    .hero-number { font-size: 12.5vw; }
+    .stat-number { font-size: 9.4vw; }
+    .number-huge { font-size: 12.5vw; }
+    .number-xl { font-size: 9.4vw; }
+  }
+
+  @media screen and (max-width: 768px) {
+    .split { flex-direction: column; }
+    .split-left, .split-right { width: 100%; height: 50%; }
+    .comparison { flex-direction: column; }
+    .comp-side { width: 100%; height: 50%; padding: 40px 30px; }
+    .stats-row { flex-direction: column; }
+    .centered, .left-aligned { padding: 40px 30px; }
+    .content-over, .content-over-center { padding: 40px 30px; }
+  }
+
+  /* ===== SCROLL-SNAP (screen mode) ===== */
+  @media screen {
+    html { overflow: hidden; }
+
+    .slide {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+  }
+
+.slide-counter {
+  position: fixed; bottom: 20px; left: 30px; z-index: 50;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7A7A7A; opacity: 0.5; letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: HOOK / ABERTURA                                      -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/aula03-composicao-frutas.jpg') center/cover no-repeat !important;" class="photo-full food">
+    
+  </div>
+  <div class="overlay-dark"></div>
+  <div class="content-over">
+    <div style="margin-bottom: 60px;">
+      <div class="aula-label" style="margin-bottom: 20px;">AULA 03 · CRIAR</div>
+      <div style="font-family: var(--font-display); font-weight: 800; font-size: 46px; color: #FFFFFF; line-height: 1.2; max-width: 850px;">
+        Geleia de morango com pimenta cresceu <span class="gold">52%.</span> Abacaxi com pimenta, <span class="gold">89%.</span> O consumidor está pedindo equilíbrio.
+      </div>
+    </div>
+  </div>
+  <div class="progress"><div class="progress-inner" style="width: 11%;"></div></div>
+  <div class="slide-number">01 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: TITULO DA AULA                                       -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="glow-bg"></div>
+  <div class="centered">
+    <div class="ch-badge" style="margin-bottom: 24px;">CRIAR</div>
+    <div class="title-huge" style="margin-bottom: 24px;">03</div>
+    <div class="title-lg" style="margin-bottom: 12px;">PRODUTOS AGRIDOCES</div>
+    <div class="subtitle">O equilíbrio que conquista paladares.</div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="progress"><div class="progress-inner" style="width: 11%;"></div></div>
+  <div class="slide-number">02 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: CONCEITO - ABERTURA                                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div style="font-family: var(--font-display); font-weight: 700; font-size: 38px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        O agridoce não é tendência passageira. É uma <span class="gold">resposta do mercado</span> a um consumidor que busca equilíbrio, sofisticação e prazer.
+      </div>
+      <div class="gold-line-center" style="margin-top: 32px;"></div>
+    </div>
+  </div>
+  <div class="slide-number">03 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: FOTO + INSIGHT                                       -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/Agridoce.jpg') center/cover no-repeat !important;" class="photo-half food">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: var(--font-display); font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Vai muito além dos molhos. Geleias, chutneys, conservas, antepastos, bebidas — o agridoce é <span class="gold">categoria transversal.</span>
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Combina elementos adocicados naturais — frutas, mel, rapadura — com acidez, salinidade ou picância para uma experiência mais ampla.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: CONCEITO 2 - EVOLUÇÃO NO CONSUMO                    -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div class="body-text" style="font-size: 24px; margin-bottom: 20px;">Produtos agridoces representam uma evolução no consumo.</div>
+      <div style="font-family: var(--font-display); font-weight: 800; font-size: 38px; color: var(--accent); line-height: 1.25; text-align: center;">
+        DESLOCAM O FOCO DO<br>IMPACTO IMEDIATO PARA<br>HARMONIZAÇÃO E USO RECORRENTE.
+      </div>
+      <div class="gold-line-center" style="margin-top: 32px;"></div>
+    </div>
+  </div>
+  <div class="slide-number">05 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: LISTA VISUAL - Categorias agridoces                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">CATEGORIAS DE PRODUTOS AGRIDOCES</div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Geleias, chutneys e conservas</span></div>
+      <div class="item-desc">Combinações com frutas regionais, mel e especiarias — alta versatilidade.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Antepastos e molhos agridoces</span></div>
+      <div class="item-desc">Harmonização direta com queijos, carnes e panificados artesanais.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Bebidas fermentadas e vinagres artesanais</span></div>
+      <div class="item-desc">Kombucha, shrubs, vinagres de frutas — equilíbrio entre doce e ácido.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Queijos, embutidos e panificados especiais</span></div>
+      <div class="item-desc">Perfis agridoces aplicados a categorias tradicionais — inovação acessível.</div>
+    </div>
+  </div>
+  <div class="slide-number">06 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: FOTO + FRUTAS REGIONAIS                              -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/banana-chips-agridoce-01-49af123b3f7012640b17629829045678-640-0.webp') center/cover no-repeat !important;" class="photo-half rural">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: var(--font-display); font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Frutas da região: <span class="gold">custo reduzido</span> e vínculo territorial fortalecido.
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Maracujá, goiaba, maçã, abacaxi, manga, caju, jabuticaba e frutas regionais. Mel, rapadura e caramelizações naturais reforçam o apelo artesanal.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">07 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: TRANSIÇÃO - MERCADO                                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: var(--font-display); font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE ESTÁ ACONTECENDO<br>NO MERCADO
+    </div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">08 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: NÚMERO DESTAQUE — US$ 9,8 bi                         -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="stat-number">US$ 9,8 bi</div>
+    <div style="max-width: 650px; margin-top: 24px;">
+      <div style="font-family: var(--font-display); font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        é o tamanho do mercado global de <span class="gold">geleias, compotas e chutneys</span> em 2024 — com crescimento anual de 4,1%.
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— IMARC Group, 2025</div>
+  </div>
+  <div class="slide-number">09 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: NÚMERO DESTAQUE — 4,1% CAGR                        -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="hero-number">4,1%</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: var(--font-display); font-weight: 500; font-size: 20px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        CAGR — taxa de crescimento anual composta do mercado global de geleias, compotas e chutneys.
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 20px;">— IMARC Group, 2025</div>
+  </div>
+  <div class="slide-number">10 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: STATS - CRESCIMENTO BOM PRINCÍPIO                   -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 36px; font-size: 16px;">CRESCIMENTO EM AGRIDOCES — BOM PRINCÍPIO ALIMENTOS</div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div style="font-family: var(--font-display); font-weight: 900; font-size: 72px; color: var(--accent); line-height: 1;">52%</div>
+        <div style="font-family: var(--font-display); font-weight: 600; font-size: 18px; color: #FFFFFF; margin-top: 16px;">Geleia de morango<br>com pimenta</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-family: var(--font-display); font-weight: 900; font-size: 72px; color: var(--accent); line-height: 1;">89%</div>
+        <div style="font-family: var(--font-display); font-weight: 600; font-size: 18px; color: #FFFFFF; margin-top: 16px;">Geleia de abacaxi<br>com pimenta</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-family: var(--font-display); font-weight: 900; font-size: 72px; color: var(--accent); line-height: 1;">4%</div>
+        <div style="font-family: var(--font-display); font-weight: 600; font-size: 18px; color: #FFFFFF; margin-top: 16px;">Vendas Centro-Oeste<br><span style="font-size: 14px; color: var(--text-secondary);">Elevado potencial</span></div>
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— Bom Princípio Alimentos, 2025</div>
+  </div>
+  <div class="slide-number">11 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: FOTO + MERCADO B2B                                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/X-Burger.jpg') center/cover no-repeat !important;" class="photo-half fair">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div class="body-text" style="font-size: 22px; margin-bottom: 16px;">No canal B2B, produtos agridoces são</div>
+        <div style="font-family: var(--font-display); font-weight: 800; font-size: 40px; color: var(--accent); line-height: 1.2;">
+          ITENS DE<br>HARMONIZAÇÃO<br>OBRIGATÓRIOS.
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 24px 0;"></div>
+      <div class="body-text" style="font-size: 18px;">
+        Hamburguerias e cafeterias artesanais utilizam geleias e chutneys agridoces como ingredientes-chave de diferenciação.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: CONSUMIDOR BRASILEIRO                               -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div style="font-family: var(--font-display); font-weight: 700; font-size: 42px; color: #FFFFFF; line-height: 1.25; text-align: center;">
+        O consumidor brasileiro está migrando para <span class="gold">experiências mais equilibradas.</span>
+      </div>
+      <div class="gold-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px; font-size: 22px;">
+        Frutas nativas, mel e rapadura conectam o sabor agridoce à identidade artesanal brasileira.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">13 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: TRANSIÇÃO - O QUE APRENDER                          -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: var(--font-display); font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE VOCÊ PODE<br>APRENDER COM ISSO
+    </div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">14 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: INSIGHT 1 - Ampliam o público                       -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div style="font-family: var(--font-display); font-weight: 700; font-size: 42px; color: #FFFFFF; line-height: 1.25; text-align: center;">
+        Produtos agridoces <span class="gold">ampliam o público consumidor</span> e geram mais ocasiões de consumo.
+      </div>
+      <div class="gold-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px; font-size: 22px;">
+        Funcionam como porta de entrada para consumidores que não comprariam picantes ou doces puros.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">15 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: INSIGHT 2 - Versatilidade                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 850px;">
+      <div style="font-family: var(--font-display); font-weight: 700; font-size: 36px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        Versatilidade é o motor do <span class="gold">uso recorrente.</span> O agridoce acompanha queijos, carnes, saladas, sanduíches, sobremesas.
+      </div>
+      <div class="gold-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px;">
+        Quanto mais ocasiões de consumo, maior a frequência de recompra.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">16 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: FOTO + INSIGHT (Território)                         -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/pote-doce-de-leite-410gr---fundo-branco--1--ypz2ylvadn.webp') center/cover no-repeat !important;" class="photo-half product">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: var(--font-display); font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Frutas da região <span class="gold">reduzem custos</span> e fortalecem o vínculo territorial.
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Usar ingredientes locais não é apenas economia — é construção de identidade e rastreabilidade que o consumidor valoriza.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">17 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: CASE — Bom Princípio                                -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/whatsapp-image-2023-11-10-at-17.48.54.webp') center/cover no-repeat !important;" class="photo-full rural">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.2) 100%);"></div>
+  <div class="content-over">
+    <div class="label" style="margin-bottom: 16px; font-size: 14px;">CASE</div>
+    <div style="font-family: var(--font-display); font-weight: 800; font-size: 32px; color: #FFFFFF; margin-bottom: 16px;">
+      BOM PRINCÍPIO ALIMENTOS
+    </div>
+    <div class="body-text" style="max-width: 750px;">
+      A geleia de morango com pimenta cresceu 52% e a de abacaxi com pimenta, 89%. O perfil agridoce com toque picante conquistou consumidores que buscavam equilíbrio — e abriu caminho para toda a linha de produtos da marca.
+    </div>
+  </div>
+  <div class="slide-number">18 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: TRANSIÇÃO - AÇÃO                                    -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: var(--font-display); font-weight: 800; font-size: 44px; color: var(--accent); text-align: center;">
+      TRANSFORME ISSO EM<br>VANTAGEM COMPETITIVA
+    </div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">19 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: AÇÕES 1-3                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Use frutas nativas ou com identidade local</span></div>
+      <div class="action-detail">Jabuticaba, caju, goiaba, manga — conectam sabor, território e custo reduzido.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Busque equilíbrio real entre doce, ácido e picante</span></div>
+      <div class="action-detail">A harmonia é o que diferencia o agridoce artesanal do industrializado.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Rótulos claros e atrativos</span></div>
+      <div class="action-detail">Comunique os ingredientes, a origem e a sugestão de uso de forma direta.</div>
+    </div>
+  </div>
+  <div class="slide-number">20 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: AÇÕES 4-5                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Explore versatilidade nas redes sociais</span></div>
+      <div class="action-detail">Mostre o mesmo produto em diferentes contextos: café da manhã, churrasco, tábua de frios, sobremesa.</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Eduque o consumidor com harmonizações e receitas</span></div>
+      <div class="action-detail">Conteúdo educativo gera valor, confiança e frequência de recompra.</div>
+    </div>
+  </div>
+  <div class="slide-number">21 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: ANTES / DEPOIS                                      -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="comparison">
+    <div class="comp-side before">
+      <div class="comp-label terracotta">ANTES ✗</div>
+      <div class="comp-content" style="color: #888;">
+        "Geleia de pimenta"
+      </div>
+      <div class="comp-detail">
+        Rótulo genérico, sem origem,<br>sem sugestão de uso,<br>sem identidade regional.<br><br>Compete por preço na prateleira.
+      </div>
+    </div>
+    <div class="comp-side after">
+      <div class="comp-label green">DEPOIS ✓</div>
+      <div class="comp-content white">
+        "Geleia artesanal de<br>maracujá com pimenta<br>dedo-de-moça — safra<br>do Vale do Ribeira"
+      </div>
+      <div class="comp-detail" style="color: var(--text-secondary);">
+        Fruta regional, variedade de pimenta,<br>origem territorial, perfil agridoce claro.<br><br>Compete por <span style="color: var(--accent);">experiência e identidade.</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">22 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: EXERCÍCIO                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 32px;">EXERCÍCIO PRA AGORA</div>
+    <div class="exercise-box">
+      <div style="font-family: var(--font-display); font-weight: 700; font-size: 30px; color: #FFFFFF; line-height: 1.3; margin-bottom: 24px;">
+        Escolha <span class="gold">uma fruta da sua região</span> e crie um perfil agridoce para ela — definindo o elemento doce, o ácido e o picante.
+      </div>
+      <div class="gold-line-center"></div>
+      <div class="body-text" style="margin-top: 20px; font-size: 20px;">
+        Pense: com quais pratos esse produto combinaria? Qual público ele alcançaria?
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">23 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: RESUMO                                              -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">O QUE LEVAR DESTA AULA</div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Agridoce amplia público e ocasiões de consumo</span></div>
+      <div class="item-desc">Funciona como porta de entrada para novos consumidores que buscam equilíbrio.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Frutas regionais reduzem custo e fortalecem identidade</span></div>
+      <div class="item-desc">Maracujá, jabuticaba, caju — ingredientes locais conectam sabor e território.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Versatilidade gera uso recorrente</span></div>
+      <div class="item-desc">Quanto mais harmonizações, maior a frequência de recompra.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Eduque e mostre — redes sociais e rótulos claros</span></div>
+      <div class="item-desc">Conteúdo educativo transforma produto em experiência e gera confiança.</div>
+    </div>
+  </div>
+  <div class="slide-number">24 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: FECHAMENTO (Moral + Próxima aula)                   -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/Boticario-PacocaAmor_Credito_Divulgacao.jpg') center/cover no-repeat !important;" class="photo-full food">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: rgba(13,13,13,0.6);"></div>
+  <div class="content-over-center">
+    <div class="quote-text" style="max-width: 750px; margin-bottom: 32px;">
+      "O equilíbrio entre doce e ácido não é concessão. É sofisticação — e o consumidor já entendeu isso."
+    </div>
+    <div class="gold-line-center"></div>
+    <div class="next-class" style="margin-top: 32px;">
+      <div class="label" style="font-size: 14px; margin-bottom: 8px;">PRÓXIMA AULA</div>
+      <div style="font-family: var(--font-display); font-weight: 600; font-size: 22px; color: #FFFFFF;">Fermentação.</div>
+      <div class="body-text" style="font-size: 16px; margin-top: 4px;">O sabor que nasce do tempo.</div>
+    </div>
+  </div>
+  <div class="slide-number">25 / 26</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: ENCERRAMENTO                                        -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 16px; letter-spacing: 4px;">CURSO ONLINE</div>
+    <div style="font-family: var(--font-display); font-weight: 800; font-size: 36px; color: #FFFFFF; line-height: 1.3; margin-bottom: 8px;">
+      GUIA ESTRATÉGICO PARA<br>PRODUTORES ARTESANAIS
+    </div>
+    <div class="subtitle" style="margin-bottom: 32px;">Gabriel Petelinkar.</div>
+    <div class="gold-line-center"></div>
+    <div style="margin-top: 28px; display: flex; gap: 40px;">
+      <div class="body-text" style="font-size: 16px; color: var(--accent);">@gabrielpetelinkar</div>
+      <div class="body-text" style="font-size: 16px; color: var(--accent);">oriza.agro</div>
+    </div>
+  </div>
+  <div class="slide-number">26 / 26</div>
+</div>
+
+<!-- ===== SPEAKER NOTES ===== -->
+<div class="speaker-notes">
+  <h3>Slide 1 — Hook</h3>
+  <p>Abrir com o dado impactante do crescimento das geleias agridoces. Criar curiosidade sobre por que o consumidor está pedindo equilíbrio.</p>
+
+  <h3>Slide 3 — Conceito</h3>
+  <p>Contextualizar que o agridoce não é moda — é resposta a uma mudança real no perfil de consumo. O brasileiro está buscando complexidade sem agressividade.</p>
+
+  <h3>Slide 6 — Categorias</h3>
+  <p>Mostrar que agridoce vai muito além de geleia com pimenta. Passa por conservas, antepastos, bebidas fermentadas, queijos e panificados.</p>
+
+  <h3>Slide 9 — Mercado global</h3>
+  <p>Trazer o número do mercado global para dar dimensão. US$ 9,8 bilhões é um mercado relevante e em crescimento consistente.</p>
+
+  <h3>Slide 11 — Dados Bom Princípio</h3>
+  <p>Case real brasileiro. Os números de crescimento são impressionantes e mostram que o consumidor já está comprando agridoce.</p>
+
+  <h3>Slide 15 — Ampliar público</h3>
+  <p>Reforçar que agridoce é porta de entrada. Quem não consome picante puro ou doce puro encontra no agridoce um equilíbrio acessível.</p>
+
+  <h3>Slide 18 — Case Bom Princípio</h3>
+  <p>Aprofundar o case. Mostrar como a combinação fruta + pimenta criou uma nova categoria dentro da marca.</p>
+
+  <h3>Slide 22 — Antes/Depois</h3>
+  <p>Comparação visual. Mostrar como pequenas mudanças no rótulo e na descrição transformam percepção de valor.</p>
+
+  <h3>Slide 23 — Exercício</h3>
+  <p>Pedir para o aluno escolher uma fruta local e montar um perfil agridoce. Estimular pensamento prático.</p>
+</div>
+
+<!-- ===== NAV HINT ===== -->
+<div class="nav-hint" id="navHint">Use ← → ou ↑ ↓ para navegar</div>
+
+<!-- ===== KEYBOARD NAVIGATION ===== -->
+<div class="slide-counter" id="slideCounter">1 / ?</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.slide');
+  var current = 0;
+  var lastNav = 0;
+  var DEBOUNCE = 300;
+  var counter = document.getElementById('slideCounter');
+
+  function showSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = i === index ? 'flex' : 'none';
+    }
+    current = index;
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function next() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current < slides.length - 1) showSlide(current + 1);
+  }
+
+  function prev() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current > 0) showSlide(current - 1);
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); next();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); prev();
+    } else if (e.key === 'n' || e.key === 'N') {
+      document.body.classList.toggle('show-notes');
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(slides.length - 1);
+    }
+  });
+
+  document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    if (e.deltaY > 0) next(); else prev();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

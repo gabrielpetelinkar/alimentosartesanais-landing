@@ -1,0 +1,42 @@
+{
+  "product": "Guia Estratégico: Como Criar, Vender e Escalar Alimentos Artesanais",
+  "offer": "De R$97 por R$27",
+  "tone": "authority, trust, warmth, artisanal mastery, premium quality",
+  "context": "course",
+  "palette": "obsidian_gold",
+  "subject_description": "a Brazilian man in his mid-30s with: (1) short dark brown wavy hair, (2) clean-shaven face with no beard or stubble, (3) fair olive skin tone, (4) brown eyes, (5) medium build, (6) wearing a black Ralph Lauren button-down polo shirt with small green logo on chest, (7) blue jeans, (8) silver dive watch on left wrist, (9) warm confident smile showing teeth, (10) sitting relaxed on a stool",
+  "symbols": [
+    {
+      "object": "artisanal glass jars with golden preserves and jams",
+      "meaning": "artisanal food craftsmanship",
+      "style": "large, warm-lit, semi-transparent, positioned behind subject"
+    },
+    {
+      "object": "wooden cutting board with aged cheese and herbs",
+      "meaning": "premium quality ingredients",
+      "style": "faint, lower background, barely visible"
+    },
+    {
+      "object": "subtle golden wheat stalks",
+      "meaning": "natural, organic origins",
+      "style": "very faint, far background, decorative only"
+    }
+  ],
+  "layers": {
+    "background": "warm dark rustic kitchen environment (#1A0F0A base) with soft terracotta-toned backlighting (#B5563A glow), aged wooden textures barely visible, warm smoke wisps with burnt sienna tint",
+    "midground": "auto",
+    "foreground": "warm terracotta rim light (#B5563A) on right edge of subject, subtle burnt umber fill light from left"
+  },
+  "seed": 42,
+  "model": "gemini-3.1-flash-image-preview",
+  "api_params": {
+    "seed": 42
+  },
+  "targets": {
+    "desktop": {
+      "aspect_ratio": "16:9",
+      "prompt": "IDENTITY LOCK — CRITICAL, HIGHEST PRIORITY: The subject is a Brazilian man in his mid-30s with: (1) short dark brown wavy hair, (2) clean-shaven face with no beard or stubble, (3) fair olive skin tone, (4) brown eyes, (5) medium build, (6) wearing a black Ralph Lauren button-down polo shirt with small green logo on chest, (7) blue jeans, (8) silver dive watch on left wrist, (9) warm confident smile showing teeth, (10) sitting relaxed on a stool. You MUST preserve the subject's EXACT facial features, bone structure, beard pattern, hair texture, skin tone, body proportions, and clothing from the reference photo. DO NOT alter, improve, idealize, or stylize any facial feature. Camera: medium shot (waist-up), 85mm f/1.8 equivalent, subject looking directly at camera with a confident, approachable expression. Sharp focus on face and eyes.\n\nCOMPOSITION LAYERS: BACKGROUND — warm dark rustic kitchen environment (#1A0F0A base) with soft terracotta-toned backlighting (#B5563A glow), aged wooden textures barely visible, warm smoke wisps with burnt sienna tint. MIDGROUND — a large artisanal glass jars with golden preserves and jams (large, warm-lit, semi-transparent, positioned behind subject) as the dominant midground element, a smaller wooden cutting board with aged cheese and herbs (faint, lower background, barely visible) as secondary element, a subtle hint of subtle golden wheat stalks (very faint, far background, decorative only). FOREGROUND — warm terracotta rim light (#B5563A) on right edge of subject, subtle burnt umber fill light from left.\n\nLAYOUT: The person is positioned on the RIGHT side of the frame, occupying approximately 40-45% of the image width. The LEFT 50-55% of the image MUST be a clean, visually rich but TEXT-FRIENDLY area — use a subtle gradient from #1A0F0A to #3D2B1F with conceptual elements that create depth WITHOUT competing with text overlays.\n\nThis is a hero image for a sales page selling: Guia Estratégico: Como Criar, Vender e Escalar Alimentos Artesanais. Offer: De R$97 por R$27. The mood and tone must convey: authority, trust, warmth, artisanal mastery, premium quality. STYLE: High-end advertising photography, cinematic color grading, shallow depth of field on background elements. Dramatic rim lighting separating the person from the background. Color accents in #B5563A. Ultra-sharp, magazine-quality resolution. The image should look like it was produced by a top-tier graphic design agency. ABSOLUTELY NO text, NO logos, NO watermarks, NO typography anywhere in the image.",
+      "negative_prompt": "blurry, low quality, distorted face, extra limbs, deformed hands, text, watermark, logo, signature, overexposed, underexposed, flat lighting, stock photo look, clipart, cartoon, illustration, painting, centered composition, symmetrical layout, wrong facial features, altered beard, different clothing than described, changed hair style, modified body proportions, added accessories not described"
+    }
+  }
+}

@@ -1,0 +1,426 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# WORKFLOW: Creator Journey — Knowledge to Recurring Revenue
+# Version: 1.0.0
+# Purpose: End-to-end workflow transforming expertise into a scalable creator business
+# ═══════════════════════════════════════════════════════════════════════════════
+
+workflow-id: wf-creator-journey
+name: Creator Journey
+version: 1.0.0
+estimated-time: "Variable (days to weeks per phase)"
+complexity: high
+
+description: |
+  Complete 7-phase journey from scattered knowledge to recurring revenue.
+  Each phase is powered by an elite mind with a documented framework.
+  Phases are sequential by default but creators can enter at any phase.
+
+orchestrator: "@creator-os:creator-os-chief"
+mode: Interactive
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# INPUTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+inputs:
+  - name: creator_domain
+    type: string
+    required: true
+    description: "Area of expertise (e.g., artisanal food production)"
+
+  - name: current_phase
+    type: integer
+    required: false
+    default: 0
+    description: "Phase to start at (0-6), determined by diagnostic"
+
+  - name: existing_assets
+    type: array
+    required: false
+    description: "What the creator already has (course, email list, etc.)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DIAGNOSTIC (Pre-Phase)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+diagnostic:
+  agent: "@creator-os:creator-os-chief"
+  description: "Determine creator's starting phase"
+  elicitation:
+    - question: "What is your area of expertise?"
+      captures: "creator_domain"
+
+    - question: "Do you have your knowledge organized and documented?"
+      yes_route: "skip_phase_0"
+      no_route: "start_phase_0"
+
+    - question: "Do you have a digital product (course, ebook, program)?"
+      yes_route: "skip_phase_1"
+      no_route: "start_phase_1"
+
+    - question: "Do you have an irresistible offer with clear value proposition?"
+      yes_route: "skip_phase_2"
+      no_route: "start_phase_2"
+
+    - question: "Have you launched your product to an audience?"
+      yes_route: "skip_phase_3"
+      no_route: "start_phase_3"
+
+    - question: "Do you have a consistent content/audience building system?"
+      yes_route: "skip_phase_4"
+      no_route: "start_phase_4"
+
+    - question: "Do you generate sales every day (not just during launches)?"
+      yes_route: "skip_phase_5"
+      no_route: "start_phase_5"
+
+    - question: "Do you have a membership or recurring revenue model?"
+      yes_route: "journey_complete"
+      no_route: "start_phase_6"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phases:
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-0
+    name: "Diagnose & Organize Knowledge"
+    agent: "@creator-os:tiago-forte"
+    framework: "Building a Second Brain + PARA Method"
+    mandatory: true
+
+    description: |
+      Organize all scattered knowledge into a structured, accessible system.
+      Use PARA (Projects, Areas, Resources, Archives) to categorize.
+      Apply CODE (Capture, Organize, Distill, Express) to process.
+
+    inputs:
+      - "Creator's domain expertise"
+      - "Existing notes, documents, bookmarks"
+      - "Key topics and subtopics"
+
+    outputs:
+      - "PARA-organized knowledge base"
+      - "Top 5-10 teachable topics identified"
+      - "Knowledge gaps identified"
+      - "Intermediate Packets ready for productization"
+
+    steps:
+      - "Audit all existing knowledge sources"
+      - "Apply PARA categorization to everything"
+      - "Identify Projects (active courses/products to create)"
+      - "Identify Areas (ongoing domains of expertise)"
+      - "Create Intermediate Packets (reusable knowledge chunks)"
+      - "Apply Progressive Summarization to key insights"
+      - "Map knowledge to potential product topics"
+
+    checkpoint:
+      criteria:
+        - "Knowledge organized in PARA structure"
+        - "At least 5 teachable topics identified"
+        - "Intermediate Packets created for top topics"
+      human_review: true
+      message: "Review your organized knowledge. Is anything missing?"
+
+    veto_conditions:
+      - "Creator cannot articulate their expertise → STOP, need more clarity"
+      - "No documented knowledge found → STOP, need content creation first"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-1
+    name: "Create Digital Product"
+    agent: "@creator-os:amy-porterfield"
+    framework: "Digital Course Academy"
+    mandatory: true
+
+    description: |
+      Transform organized knowledge into a structured digital product
+      (course, program, or ebook) that delivers a specific transformation.
+
+    inputs:
+      - "Organized knowledge from Phase 0"
+      - "Target student profile"
+      - "Desired transformation"
+
+    outputs:
+      - "Validated course topic"
+      - "Complete course outline (modules + lessons)"
+      - "Beta version or pre-sell validation"
+      - "Core content created"
+
+    steps:
+      - "Validate course topic (market demand + expertise match)"
+      - "Define the transformation (Point A → Point B)"
+      - "Design curriculum (modules, lessons, milestones)"
+      - "Create core content (video, text, worksheets)"
+      - "Beta test or pre-sell to validate"
+      - "Refine based on feedback"
+
+    checkpoint:
+      criteria:
+        - "Course topic validated with audience"
+        - "Minimum 4-module course outline"
+        - "At least 1 beta student or pre-sale"
+      human_review: true
+      message: "Review your course structure. Does it deliver a clear transformation?"
+
+    veto_conditions:
+      - "No validation from target audience → STOP, validate before building"
+      - "Course is just information dump → STOP, restructure around transformation"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-2
+    name: "Design Irresistible Offer"
+    agent: "@creator-os:russell-brunson"
+    framework: "Expert Secrets + Value Ladder"
+    mandatory: true
+
+    description: |
+      Position your product with an irresistible offer using the Value Ladder
+      and story-driven selling through the Epiphany Bridge.
+
+    inputs:
+      - "Digital product from Phase 1"
+      - "Target customer profile"
+      - "Competitive landscape"
+
+    outputs:
+      - "Complete Value Ladder (free → low → mid → high → premium)"
+      - "Epiphany Bridge story"
+      - "Offer stack with bonuses"
+      - "Pricing strategy"
+      - "Sales page framework"
+
+    steps:
+      - "Build Value Ladder with 4-5 tiers"
+      - "Craft Epiphany Bridge origin story"
+      - "Define Attractive Character"
+      - "Stack the offer (core + bonuses > 10x price)"
+      - "Apply Hook, Story, Offer framework"
+      - "Create urgency and scarcity elements"
+
+    checkpoint:
+      criteria:
+        - "Value Ladder has minimum 3 tiers"
+        - "Epiphany Bridge story written"
+        - "Offer value exceeds 10x the price"
+      human_review: true
+
+    veto_conditions:
+      - "No clear differentiation from competitors → STOP, find unique mechanism"
+      - "Price-to-value ratio below 5x → STOP, add more value or lower price"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-3
+    name: "Launch Product"
+    agent: "@creator-os:jeff-walker"
+    framework: "Product Launch Formula (PLF)"
+    mandatory: true
+
+    description: |
+      Execute a structured product launch using PLF methodology.
+      Create pre-launch content, build anticipation, and drive sales.
+
+    inputs:
+      - "Product + offer from Phases 1-2"
+      - "Email list (even if small)"
+      - "Launch timeline"
+
+    outputs:
+      - "Pre-launch content sequence (PLC 1, 2, 3)"
+      - "Email sequences (pre-launch, cart open, cart close)"
+      - "Launch timeline with milestones"
+      - "Post-launch debrief"
+
+    steps:
+      - "Choose launch type (Seed, Internal, or JV)"
+      - "Create Pre-Pre-Launch sequence"
+      - "Create Pre-Launch Content 1 (Opportunity)"
+      - "Create Pre-Launch Content 2 (Transformation)"
+      - "Create Pre-Launch Content 3 (Ownership)"
+      - "Execute Open Cart sequence"
+      - "Apply Mental Triggers (scarcity, social proof, authority)"
+      - "Execute Close Cart sequence"
+      - "Post-launch debrief and analysis"
+
+    checkpoint:
+      criteria:
+        - "3 pieces of pre-launch content created"
+        - "Email sequences written"
+        - "Launch timeline defined"
+        - "At least 1 successful launch completed"
+      human_review: true
+
+    veto_conditions:
+      - "No email list at all → STOP, build minimum 100-subscriber list first"
+      - "No pre-launch content → STOP, don't open cart without warming audience"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-4
+    name: "Build Audience Through Content"
+    agent: "@creator-os:nicolas-cole"
+    framework: "Art & Business of Online Writing"
+    mandatory: true
+
+    description: |
+      Build a consistent content system that attracts the right audience.
+      Practice in Public, write Atomic Essays, and grow your platform.
+
+    inputs:
+      - "Creator's domain and positioning"
+      - "Target audience profile"
+      - "Platform choice (LinkedIn, X, newsletter)"
+
+    outputs:
+      - "Content system with topics and cadence"
+      - "30 Atomic Essays published"
+      - "Growing audience metrics"
+      - "Content-to-product pipeline"
+
+    steps:
+      - "Choose primary platform"
+      - "Define content categories (using Digital Writing Compass)"
+      - "Write first 30 Atomic Essays (Ship 30 for 30 methodology)"
+      - "Apply Rate of Revelation to keep readers engaged"
+      - "Analyze data to find what resonates"
+      - "Double down on winning topics"
+      - "Build email list from content"
+
+    checkpoint:
+      criteria:
+        - "Published 30+ pieces of content"
+        - "Consistent publishing cadence established"
+        - "Email list growing from content"
+      human_review: true
+
+    veto_conditions:
+      - "Not publishing consistently → STOP, fix the habit first"
+      - "Writing for self instead of audience → STOP, analyze reader data"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-5
+    name: "Set Up Perpetual Sales"
+    agent: "@creator-os:leandro-ladeira"
+    framework: "VTSD + Stories 10x"
+    mandatory: true
+
+    description: |
+      Move from launch-only revenue to daily sales using perpetual
+      funnels and Instagram Stories conversion system.
+
+    inputs:
+      - "Existing product and offer"
+      - "Audience from Phase 4"
+      - "Instagram/social media presence"
+
+    outputs:
+      - "Perpetual sales funnel (always running)"
+      - "Stories 10x content calendar"
+      - "Daily conversion system"
+      - "Revenue dashboard"
+
+    steps:
+      - "Build perpetual funnel (traffic → landing → sales → checkout)"
+      - "Set up email sequences for perpetual (not launch)"
+      - "Implement Stories 10x methodology"
+      - "Create Reels for attraction, Stories for conversion"
+      - "Set up upsell/downsell sequences"
+      - "Monitor and optimize daily metrics"
+
+    checkpoint:
+      criteria:
+        - "Perpetual funnel live and generating daily sales"
+        - "Stories content calendar running"
+        - "Revenue more predictable (not launch-dependent)"
+      human_review: true
+
+    veto_conditions:
+      - "No product to sell → STOP, go back to Phase 1"
+      - "No audience → STOP, go back to Phase 4"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-6
+    name: "Create Recurring Revenue"
+    agent: "@creator-os:stu-mclaren"
+    framework: "The Membership Experience"
+    mandatory: false
+
+    description: |
+      Convert one-time buyers into recurring members with a membership
+      site that delivers ongoing value and predictable revenue.
+
+    inputs:
+      - "Existing customer base"
+      - "Content and expertise"
+      - "Community platform choice"
+
+    outputs:
+      - "Membership site with Success Path"
+      - "Onboarding sequence"
+      - "Retention system"
+      - "Monthly content plan"
+
+    steps:
+      - "Define Success Path (where members are → where they want to be)"
+      - "Design membership content (curation over creation)"
+      - "Set up internal + external marketing"
+      - "Build onboarding experience"
+      - "Implement retention strategies"
+      - "Launch membership (open/close or evergreen)"
+
+    checkpoint:
+      criteria:
+        - "Success Path defined"
+        - "Membership content for first 3 months planned"
+        - "Onboarding sequence built"
+        - "At least 10 founding members"
+      human_review: true
+
+    veto_conditions:
+      - "No existing customers → STOP, need customers first (Phases 3-5)"
+      - "No clear ongoing value → STOP, membership needs continuous benefit"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FINAL OUTPUT
+# ═══════════════════════════════════════════════════════════════════════════════
+
+final_output:
+  format: markdown
+  template: |
+    # Creator Journey Report: {domain}
+
+    **Creator:** {name}
+    **Domain:** {domain}
+    **Date:** {date}
+    **Phases Completed:** {completed}/{total}
+
+    ---
+
+    ## Journey Progress
+
+    | Phase | Expert | Status | Key Output |
+    |-------|--------|--------|------------|
+    | 0. Organize | Tiago Forte | {status} | {output} |
+    | 1. Create | Amy Porterfield | {status} | {output} |
+    | 2. Offer | Russell Brunson | {status} | {output} |
+    | 3. Launch | Jeff Walker | {status} | {output} |
+    | 4. Audience | Nicolas Cole | {status} | {output} |
+    | 5. Perpetual | Leandro Ladeira | {status} | {output} |
+    | 6. Recurring | Stu McLaren | {status} | {output} |
+
+    ---
+
+    ## Next Steps
+    {next_phase_details}
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# METADATA
+# ═══════════════════════════════════════════════════════════════════════════════
+
+metadata:
+  version: "1.0.0"
+  created: "2026-02-22"
+  author: "Squad Architect"
+  squad: "creator-os"

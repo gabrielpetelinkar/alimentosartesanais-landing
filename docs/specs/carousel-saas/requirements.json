@@ -1,0 +1,498 @@
+{
+  "storyId": "SPEC-carousel-saas",
+  "gatheredAt": "2026-03-01T00:00:00.000Z",
+  "source": "user",
+  "gatheredBy": "@pm",
+  "elicitationVersion": "2.0",
+  "projectName": "CarouselForge",
+  "projectDescription": "SaaS de criacao automatizada de carrosseis para Instagram, focado em produtores artesanais. Gera copy, busca imagens, renderiza slides e exporta pacote pronto a partir de um briefing curto.",
+
+  "functional": [
+    {
+      "id": "FR-1",
+      "description": "Sistema deve aceitar briefing do usuario via wizard passo-a-passo (3-5 etapas) coletando: tema, angulo/abordagem, tom de voz, CTA desejado, e preferencias visuais",
+      "priority": "P0",
+      "rationale": "Input estruturado garante qualidade do output. Wizard guia usuarios menos experientes",
+      "acceptance": [
+        "AC-1: Wizard com minimo 3 e maximo 5 passos",
+        "AC-2: Cada passo valida input antes de avancar",
+        "AC-3: Usuario pode voltar a passos anteriores",
+        "AC-4: Resumo do briefing apresentado antes de gerar"
+      ]
+    },
+    {
+      "id": "FR-2",
+      "description": "Sistema deve gerar arco narrativo completo com 9-10 slides a partir do briefing, incluindo copy de cada slide (titulo + subtexto) com ritmo e estrutura de storytelling",
+      "priority": "P0",
+      "rationale": "Core do produto. A narrativa diferencia de geradores genericos de imagem",
+      "acceptance": [
+        "AC-1: Gera exatamente 9 ou 10 slides por carrossel",
+        "AC-2: Cada slide tem papel definido no arco (hook, contexto, dado, insight, CTA, etc)",
+        "AC-3: Copy segue principios de copywriting (frases curtas, contraste, ritmo)",
+        "AC-4: Arco narrativo completo: abertura > desenvolvimento > conclusao > CTA"
+      ]
+    },
+    {
+      "id": "FR-3",
+      "description": "Sistema deve gerar legenda completa para Instagram incluindo storytelling longo, hashtags relevantes e CTA de engajamento",
+      "priority": "P0",
+      "rationale": "Legenda e parte essencial do post. Entregar junto economiza tempo do usuario",
+      "acceptance": [
+        "AC-1: Legenda com minimo 500 e maximo 2000 caracteres",
+        "AC-2: Inclui 10-20 hashtags relevantes ao tema e nicho",
+        "AC-3: Legenda segue arco narrativo coerente com os slides",
+        "AC-4: CTA claro no final da legenda"
+      ]
+    },
+    {
+      "id": "FR-4",
+      "description": "Sistema deve buscar imagens contextuais automaticamente via Unsplash e Pexels APIs usando keywords extraidas do conteudo gerado",
+      "priority": "P0",
+      "rationale": "Automacao de busca de imagem elimina etapa manual mais demorada",
+      "acceptance": [
+        "AC-1: Busca retorna minimo 3 opcoes de imagem por slide que usa imagem",
+        "AC-2: Keywords de busca derivadas do conteudo do slide",
+        "AC-3: Imagens retornadas em resolucao minima 1080x1080",
+        "AC-4: Respeita licencas de uso comercial das APIs"
+      ]
+    },
+    {
+      "id": "FR-5",
+      "description": "Sistema deve gerar imagens via DALL-E 3 API quando solicitado pelo usuario ou como opcao alternativa a stock photos",
+      "priority": "P1",
+      "rationale": "Imagens AI oferecem originalidade quando stock nao atende",
+      "acceptance": [
+        "AC-1: Gera imagem AI a partir de prompt derivado do conteudo do slide",
+        "AC-2: Imagem gerada em resolucao compativel (1024x1024 minimo)",
+        "AC-3: Usuario pode escolher entre stock e AI por slide"
+      ]
+    },
+    {
+      "id": "FR-6",
+      "description": "Sistema deve renderizar slides programaticamente combinando texto + imagem + template em PNGs 1080x1080 prontos para Instagram",
+      "priority": "P0",
+      "rationale": "Output final deve ser plug-and-play para Instagram sem edicao adicional",
+      "acceptance": [
+        "AC-1: Exporta 9-10 PNGs em 1080x1080 pixels",
+        "AC-2: Texto renderizado com tipografia do template selecionado",
+        "AC-3: Imagens posicionadas conforme layout do template",
+        "AC-4: Qualidade visual profissional (anti-aliasing, spacing correto)"
+      ]
+    },
+    {
+      "id": "FR-7",
+      "description": "Sistema deve apresentar preview do carrossel completo com editor inline permitindo alterar texto, imagem, cores e fonte por slide individual",
+      "priority": "P0",
+      "rationale": "Edicao pos-geracao e essencial para refinamento. Usuario precisa de controle",
+      "acceptance": [
+        "AC-1: Preview mostra todos os slides em sequencia",
+        "AC-2: Click em slide abre editor inline",
+        "AC-3: Pode editar texto (titulo e subtexto) de cada slide",
+        "AC-4: Pode trocar imagem (upload ou nova busca)",
+        "AC-5: Pode alterar cor de fundo e fonte por slide",
+        "AC-6: Alteracoes refletem no preview em tempo real"
+      ]
+    },
+    {
+      "id": "FR-8",
+      "description": "Sistema deve oferecer biblioteca de templates organizados por nicho (alimentos, cosmeticos, cervejas, etc) E por formato (storytelling, educacional, case study, receita, comparativo)",
+      "priority": "P0",
+      "rationale": "Templates por nicho+formato garantem relevancia visual para cada contexto",
+      "acceptance": [
+        "AC-1: Minimo 3 nichos com 2+ templates cada no lancamento",
+        "AC-2: Minimo 3 formatos de post (storytelling, educacional, receita)",
+        "AC-3: Cada template define: paleta de cores, tipografia, layout de slides, papeis dos slides",
+        "AC-4: Usuario pode filtrar templates por nicho e formato",
+        "AC-5: Templates sao semi-customizaveis (usuario pode trocar cores e fontes)"
+      ]
+    },
+    {
+      "id": "FR-9",
+      "description": "Quando busca de imagem nao encontrar resultado relevante, slide deve ser gerado como text-only com cor de fundo, e sistema deve sugerir upload de imagem propria",
+      "priority": "P1",
+      "rationale": "Fallback gracioso garante que geracao nunca falha por falta de imagem",
+      "acceptance": [
+        "AC-1: Slide text-only usa cor de fundo do template",
+        "AC-2: Indicador visual mostra que imagem pode ser adicionada",
+        "AC-3: Botao de upload disponivel no editor do slide",
+        "AC-4: Imagem uploaded substitui o fundo text-only"
+      ]
+    },
+    {
+      "id": "FR-10",
+      "description": "Sistema deve exportar pacote final contendo: PNGs dos slides + legenda formatada + hashtags em arquivo texto, disponivel para download imediato",
+      "priority": "P0",
+      "rationale": "Download imediato e o modelo do MVP (sem galeria/storage persistente)",
+      "acceptance": [
+        "AC-1: Download disponivel como ZIP contendo PNGs numerados + legenda.txt",
+        "AC-2: Download tambem disponivel como PNGs individuais",
+        "AC-3: Legenda copiavel com um click (clipboard)",
+        "AC-4: Link de download valido por minimo 1 hora apos geracao"
+      ]
+    },
+    {
+      "id": "FR-11",
+      "description": "Processamento do carrossel deve ser assincrono. Usuario submete briefing, sistema processa em background e notifica quando pronto",
+      "priority": "P0",
+      "rationale": "Pipeline completo (LLM + image search + AI gen + render) pode levar minutos. UX assincrona evita bloqueio",
+      "acceptance": [
+        "AC-1: Apos submissao do briefing, usuario ve tela de progresso",
+        "AC-2: Barra/indicador de progresso mostra etapa atual (gerando copy, buscando imagens, renderizando)",
+        "AC-3: Notificacao no browser quando carrossel esta pronto",
+        "AC-4: Usuario pode fechar e voltar — carrossel continua processando"
+      ]
+    }
+  ],
+
+  "nonFunctional": [
+    {
+      "id": "NFR-1",
+      "category": "performance",
+      "description": "Pipeline completo de geracao deve completar em no maximo 5 minutos para carrossel com 10 slides incluindo busca de imagem e render",
+      "metric": "p95 latencia < 300 segundos end-to-end"
+    },
+    {
+      "id": "NFR-2",
+      "category": "scalability",
+      "description": "Sistema deve suportar minimo 50 geracoes simultaneas sem degradacao significativa de performance",
+      "metric": "50 concurrent jobs com p95 < 6 minutos"
+    },
+    {
+      "id": "NFR-3",
+      "category": "usability",
+      "description": "Wizard de briefing deve ser completavel em menos de 2 minutos por usuario iniciante",
+      "metric": "Time-to-complete wizard < 120 segundos para 80% dos usuarios"
+    },
+    {
+      "id": "NFR-4",
+      "category": "reliability",
+      "description": "Taxa de sucesso de geracao deve ser >= 95%. Falhas em APIs externas devem ter fallback gracioso",
+      "metric": "Success rate >= 95%, fallback coverage 100% para image search"
+    },
+    {
+      "id": "NFR-5",
+      "category": "usability",
+      "description": "Interface deve ser responsiva e funcional em mobile (muitos produtores artesanais usam predominantemente celular)",
+      "metric": "100% das funcoes acessiveis em viewport >= 375px"
+    },
+    {
+      "id": "NFR-6",
+      "category": "security",
+      "description": "API keys de servicos externos (Claude, Unsplash, DALL-E) nunca devem ser expostas ao cliente. Todas as chamadas via server-side",
+      "metric": "Zero API keys em client-side code ou network requests visiveis"
+    }
+  ],
+
+  "constraints": [
+    {
+      "id": "CON-1",
+      "type": "technical",
+      "description": "Stack obrigatoria: Next.js (App Router) + Vercel para deploy",
+      "impact": "Define arquitetura do projeto, API routes, e modelo de deploy"
+    },
+    {
+      "id": "CON-2",
+      "type": "technical",
+      "description": "LLM obrigatorio: Claude API (Anthropic) para geracao de copy e narrativa",
+      "impact": "Dependencia de API externa, custo por geracao, rate limits"
+    },
+    {
+      "id": "CON-3",
+      "type": "technical",
+      "description": "Formato de saida fixo: Instagram 1080x1080 PNG. Outros formatos apenas em versoes futuras",
+      "impact": "Simplifica render engine, templates e UX de preview"
+    },
+    {
+      "id": "CON-4",
+      "type": "business",
+      "description": "MVP sem autenticacao e sem persistencia de dados do usuario. Download imediato apenas",
+      "impact": "Sem galeria pessoal, sem historico, sem tracking de uso por usuario no MVP"
+    },
+    {
+      "id": "CON-5",
+      "type": "business",
+      "description": "Monetizacao sera definida na v2. MVP e gratuito para validacao",
+      "impact": "Sem sistema de pagamento, sem planos, sem limites de uso no MVP"
+    },
+    {
+      "id": "CON-6",
+      "type": "technical",
+      "description": "Imagens stock devem vir de APIs com licenca comercial gratuita (Unsplash, Pexels)",
+      "impact": "Limita pool de imagens disponiveis, mas elimina custo de licenciamento"
+    }
+  ],
+
+  "assumptions": [
+    {
+      "id": "ASM-1",
+      "description": "Claude API tem capacidade suficiente para gerar copy de carrossel com qualidade profissional em portugues brasileiro",
+      "risk_if_wrong": "Copy gerada pode ser generica ou com erros de linguagem, exigindo fine-tuning ou prompt engineering extensivo",
+      "validation_needed": true
+    },
+    {
+      "id": "ASM-2",
+      "description": "Unsplash/Pexels possuem volume suficiente de imagens relevantes para nichos artesanais brasileiros",
+      "risk_if_wrong": "Busca retornara imagens genericas ou irrelevantes com frequencia. Fallback text-only sera usado demais",
+      "validation_needed": true
+    },
+    {
+      "id": "ASM-3",
+      "description": "Satori (ou alternativa) consegue renderizar templates complexos (tipografia serif bold, overlays de imagem) com qualidade visual profissional",
+      "risk_if_wrong": "Render pode parecer amador, exigindo engine alternativa (Puppeteer/Playwright headless, Sharp custom)",
+      "validation_needed": true
+    },
+    {
+      "id": "ASM-4",
+      "description": "Produtores artesanais tem familiaridade basica com ferramentas digitais para usar um wizard web",
+      "risk_if_wrong": "Taxa de abandono alta no wizard, necessidade de simplificacao extrema ou tutorial onboarding",
+      "validation_needed": false
+    },
+    {
+      "id": "ASM-5",
+      "description": "Vercel suporta funcoes serverless com tempo de execucao suficiente para pipeline assincrono (ou usaremos background functions/external queue)",
+      "risk_if_wrong": "Vercel tem limite de 60s para serverless functions no plano Hobby. Precisaremos de Vercel Pro ou infra de queue externa",
+      "validation_needed": true
+    }
+  ],
+
+  "domainModel": [
+    {
+      "id": "DM-1",
+      "entity": "Briefing",
+      "attributes": ["tema", "angulo", "tom_de_voz", "cta_desejado", "num_slides", "template_id", "preferencias_visuais"],
+      "relationships": [
+        { "type": "has_one", "target": "Carousel" },
+        { "type": "belongs_to", "target": "Template" }
+      ]
+    },
+    {
+      "id": "DM-2",
+      "entity": "Carousel",
+      "attributes": ["id", "status", "created_at", "slides_count", "caption", "hashtags", "download_url", "expires_at"],
+      "relationships": [
+        { "type": "has_many", "target": "Slide" },
+        { "type": "belongs_to", "target": "Briefing" },
+        { "type": "belongs_to", "target": "Template" }
+      ]
+    },
+    {
+      "id": "DM-3",
+      "entity": "Slide",
+      "attributes": ["position", "role", "headline", "subtext", "image_url", "image_source", "bg_color", "font_override"],
+      "relationships": [
+        { "type": "belongs_to", "target": "Carousel" },
+        { "type": "has_one", "target": "Image" }
+      ]
+    },
+    {
+      "id": "DM-4",
+      "entity": "Template",
+      "attributes": ["id", "name", "nicho", "formato", "paleta", "tipografia", "layout_config", "slide_roles"],
+      "relationships": [
+        { "type": "has_many", "target": "Carousel" }
+      ]
+    },
+    {
+      "id": "DM-5",
+      "entity": "Image",
+      "attributes": ["url", "source", "alt_text", "license", "width", "height"],
+      "relationships": [
+        { "type": "belongs_to", "target": "Slide" }
+      ]
+    },
+    {
+      "id": "DM-6",
+      "entity": "GenerationJob",
+      "attributes": ["id", "status", "current_step", "progress_pct", "started_at", "completed_at", "error"],
+      "relationships": [
+        { "type": "has_one", "target": "Carousel" },
+        { "type": "has_one", "target": "Briefing" }
+      ]
+    }
+  ],
+
+  "interactions": [
+    {
+      "id": "INT-1",
+      "trigger": "Usuario acessa pagina inicial",
+      "flow": [
+        "Landing page com CTA 'Criar Carrossel'",
+        "Click no CTA inicia wizard",
+        "Wizard Step 1: Tema e angulo",
+        "Wizard Step 2: Tom de voz e publico",
+        "Wizard Step 3: Preferencias visuais (template)",
+        "Wizard Step 4: Revisao do briefing",
+        "Click em 'Gerar' submete o briefing"
+      ],
+      "states": {
+        "loading": "Tela de progresso com etapa atual (gerando copy → buscando imagens → renderizando)",
+        "error": "Mensagem de erro com opcao de retry",
+        "empty": "N/A"
+      }
+    },
+    {
+      "id": "INT-2",
+      "trigger": "Carrossel gerado com sucesso",
+      "flow": [
+        "Notificacao no browser",
+        "Redirect para tela de preview",
+        "Preview mostra todos os slides em grid",
+        "Click em slide abre editor inline",
+        "Edicoes refletem em tempo real",
+        "Botao 'Exportar' gera ZIP para download",
+        "Legenda exibida ao lado com botao de copiar"
+      ],
+      "states": {
+        "loading": "Skeleton loader enquanto carrega preview",
+        "error": "Slide individual mostra erro se render falhou",
+        "empty": "N/A"
+      }
+    },
+    {
+      "id": "INT-3",
+      "trigger": "Usuario edita slide individual",
+      "flow": [
+        "Click no slide abre painel lateral de edicao",
+        "Campos editaveis: titulo, subtexto, imagem, cor de fundo, fonte",
+        "Trocar imagem: upload ou buscar nova",
+        "Alteracoes aplicadas em tempo real no preview",
+        "Botao 'Salvar alteracoes' confirma edicao",
+        "Slide re-renderizado com novas configs"
+      ],
+      "states": {
+        "loading": "Spinner no slide enquanto re-renderiza",
+        "error": "Tooltip com erro se render falhar",
+        "empty": "Placeholder se imagem removida"
+      }
+    }
+  ],
+
+  "edgeCases": [
+    {
+      "id": "EC-1",
+      "scenario": "Claude API indisponivel ou rate limited",
+      "handling": "Retry com backoff exponencial (3 tentativas). Se persistir, mostrar erro amigavel e sugerir tentar novamente em minutos",
+      "severity": "critical"
+    },
+    {
+      "id": "EC-2",
+      "scenario": "Busca de imagem retorna 0 resultados relevantes",
+      "handling": "Gerar slide como text-only com cor de fundo do template. Mostrar badge 'Adicionar imagem' no editor",
+      "severity": "medium"
+    },
+    {
+      "id": "EC-3",
+      "scenario": "DALL-E API falha ou retorna imagem de baixa qualidade",
+      "handling": "Fallback para text-only. Log do erro para analise de prompts. Nao bloquear geracao do carrossel",
+      "severity": "medium"
+    },
+    {
+      "id": "EC-4",
+      "scenario": "Usuario submete briefing muito vago (ex: 'fazer um post')",
+      "handling": "Wizard valida cada passo. Se briefing insuficiente, pedir mais detalhes antes de gerar. Minimo de caracteres por campo",
+      "severity": "high"
+    },
+    {
+      "id": "EC-5",
+      "scenario": "Render engine falha em gerar PNG de um slide",
+      "handling": "Retry individual do slide. Se persistir, entregar carrossel com slide problematico marcado para edicao manual",
+      "severity": "high"
+    },
+    {
+      "id": "EC-6",
+      "scenario": "Usuario fecha browser durante processamento assincrono",
+      "handling": "Job continua em background. Link de download disponivel por 1h. Se usuario voltar, ve resultado ou progresso",
+      "severity": "medium"
+    },
+    {
+      "id": "EC-7",
+      "scenario": "Texto gerado excede espaco visual do slide",
+      "handling": "Truncar com ellipsis ou reduzir font-size automaticamente. Editor permite ajustar manualmente",
+      "severity": "medium"
+    },
+    {
+      "id": "EC-8",
+      "scenario": "Vercel serverless function timeout (60s no plano Hobby)",
+      "handling": "Usar Vercel background functions, ou queue externa (Inngest, Trigger.dev) para jobs longos",
+      "severity": "critical"
+    }
+  ],
+
+  "terminology": [
+    {
+      "term": "Carrossel",
+      "definition": "Post de Instagram com multiplas imagens/slides que o usuario desliza horizontalmente. Maximo 10 slides",
+      "synonyms": ["carousel", "carrossel", "slider"],
+      "avoid": ["slideshow", "galeria"]
+    },
+    {
+      "term": "Briefing",
+      "definition": "Conjunto de inputs do usuario que define o que o carrossel deve comunicar: tema, angulo, tom, CTA",
+      "synonyms": ["brief", "prompt"],
+      "avoid": ["pedido", "solicitacao"]
+    },
+    {
+      "term": "Template",
+      "definition": "Configuracao visual pre-definida que inclui paleta de cores, tipografia, layout de slides e papeis de cada slide",
+      "synonyms": ["modelo", "layout"],
+      "avoid": ["tema"]
+    },
+    {
+      "term": "Arco narrativo",
+      "definition": "Estrutura de storytelling do carrossel: hook > contexto > desenvolvimento > insight > CTA",
+      "synonyms": ["narrative arc", "estrutura narrativa"],
+      "avoid": ["historia"]
+    },
+    {
+      "term": "Slide",
+      "definition": "Uma imagem individual dentro do carrossel. Cada slide tem papel definido no arco narrativo",
+      "synonyms": ["card", "pagina"],
+      "avoid": ["foto", "imagem"]
+    },
+    {
+      "term": "Render",
+      "definition": "Processo de combinar texto + imagem + template para gerar o PNG final do slide",
+      "synonyms": ["renderizacao", "geracao de imagem"],
+      "avoid": ["montagem"]
+    },
+    {
+      "term": "Nicho",
+      "definition": "Vertical de mercado do usuario (ex: alimentos artesanais, cosmeticos, cervejas). Define vocabulario e estetica",
+      "synonyms": ["vertical", "segmento"],
+      "avoid": ["categoria"]
+    }
+  ],
+
+  "openQuestions": [
+    {
+      "id": "OQ-1",
+      "question": "Qual servico de queue/background jobs usar no Vercel? (Inngest, Trigger.dev, Vercel Background Functions, ou BullMQ com Redis externo)",
+      "blocking": true,
+      "assignedTo": "@architect"
+    },
+    {
+      "id": "OQ-2",
+      "question": "Satori consegue renderizar tipografia serif bold com qualidade profissional? Precisamos de POC antes de comprometer a arquitetura de render",
+      "blocking": true,
+      "assignedTo": "@architect"
+    },
+    {
+      "id": "OQ-3",
+      "question": "Como persistir o estado do carrossel durante edicao se nao ha auth/database? (localStorage, URL state, session storage, temp DB)",
+      "blocking": false,
+      "assignedTo": "@architect"
+    },
+    {
+      "id": "OQ-4",
+      "question": "Onde armazenar PNGs temporarios para download? (Vercel Blob, Cloudflare R2, S3 com TTL, ou gerar on-demand)",
+      "blocking": false,
+      "assignedTo": "@architect"
+    },
+    {
+      "id": "OQ-5",
+      "question": "Custo estimado por geracao de carrossel (Claude API + Unsplash + DALL-E opcionalmente). Viabilidade sem monetizacao no MVP",
+      "blocking": false,
+      "assignedTo": "@analyst"
+    }
+  ]
+}

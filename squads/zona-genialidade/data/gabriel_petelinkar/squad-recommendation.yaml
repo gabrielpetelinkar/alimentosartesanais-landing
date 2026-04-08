@@ -1,0 +1,458 @@
+squad_recommendation:
+  metadata:
+    aluno_nome: "Gabriel Petelinkar Pereira"
+    aluno_slug: "gabriel_petelinkar"
+    data_recomendacao: "2026-02-21T00:00:00Z"
+    genius_profile_version: "1.0.0"
+    methodology: "Hamilton(40%) + Kolbe(30%) + Clifton(20%) + Context(10%)"
+    total_squads_avaliados: 18
+    total_squads_elegiveis: 15
+    squads_filtrados: 3
+    nota: "Scores são estimativas baseadas em assessment comportamental, não em testes formais"
+
+  # ═══════════════════════════════════════════════════════════════════
+  # RANKING COMPLETO
+  # ═══════════════════════════════════════════════════════════════════
+  ranking_completo:
+    - squad: "creator_os"
+      nome: "Creator-OS"
+      score: 0.87
+      rank: 1
+      breakdown:
+        hamilton: 0.40
+        kolbe: 0.23
+        clifton: 0.14
+        context: 0.10
+
+    - squad: "stories_10x"
+      nome: "Stories10x"
+      score: 0.82
+      rank: 2
+      breakdown:
+        hamilton: 0.40
+        kolbe: 0.30
+        clifton: 0.09
+        context: 0.03
+
+    - squad: "mentoria_engine"
+      nome: "MentoriaEngine"
+      score: 0.72
+      rank: 3
+      breakdown:
+        hamilton: 0.20
+        kolbe: 0.23
+        clifton: 0.12
+        context: 0.17
+
+    - squad: "copywriter_os"
+      nome: "CopywriterOS"
+      score: 0.68
+      rank: 4
+      breakdown:
+        hamilton: 0.40
+        kolbe: 0.23
+        clifton: 0.05
+        context: 0.00
+
+    - squad: "video_prod"
+      nome: "VideoProd"
+      score: 0.63
+      rank: 5
+      breakdown:
+        hamilton: 0.40
+        kolbe: 0.23
+        clifton: 0.00
+        context: 0.00
+
+    - squad: "conteudo_desenhado"
+      nome: "Conteúdo Desenhado"
+      score: 0.63
+      rank: 6
+      breakdown:
+        hamilton: 0.40
+        kolbe: 0.23
+        clifton: 0.00
+        context: 0.00
+
+    - squad: "dopamine_learning"
+      nome: "Dopamine Learning"
+      score: 0.52
+      rank: 7
+      breakdown:
+        hamilton: 0.20
+        kolbe: 0.15
+        clifton: 0.10
+        context: 0.07
+
+    - squad: "bestseller_writer"
+      nome: "BestSeller Writer"
+      score: 0.48
+      rank: 8
+      breakdown:
+        hamilton: 0.40
+        kolbe: 0.00
+        clifton: 0.05
+        context: 0.03
+
+    - squad: "marketing_ops"
+      nome: "MarketingOps"
+      score: 0.45
+      rank: 9
+      breakdown:
+        hamilton: 0.20
+        kolbe: 0.00
+        clifton: 0.20
+        context: 0.05
+
+    - squad: "meddpicc_qualifier"
+      nome: "MEDDPICC Qualifier"
+      score: 0.40
+      rank: 10
+      breakdown:
+        hamilton: 0.00
+        kolbe: 0.15
+        clifton: 0.20
+        context: 0.05
+
+    - squad: "video_data_storytelling"
+      nome: "Video Data Storytelling"
+      score: 0.35
+      rank: 11
+      breakdown:
+        hamilton: 0.20
+        kolbe: 0.15
+        clifton: 0.00
+        context: 0.00
+
+    - squad: "ai_studio_prompt_builder"
+      nome: "AI Studio Prompt Builder"
+      score: 0.28
+      rank: 12
+      breakdown:
+        hamilton: 0.00
+        kolbe: 0.15
+        clifton: 0.10
+        context: 0.03
+
+    - squad: "tool_discovery"
+      nome: "Tool Discovery"
+      score: 0.25
+      rank: 13
+      breakdown:
+        hamilton: 0.00
+        kolbe: 0.15
+        clifton: 0.10
+        context: 0.00
+
+    # Squads eliminados (score < 0.30, perfil incompatível)
+    - squad: "content_distillery"
+      score: 0.10
+      rank: 14
+      motivo_baixo: "Requer Fact Finder 7+ e Follow Thru 6+ — Gabriel tem FF:3 FT:3"
+
+    - squad: "mmos_mind_mapper"
+      score: 0.10
+      rank: 15
+      motivo_baixo: "Requer Fact Finder 8+ e Follow Thru 7+ — totalmente contra o MO conativo"
+
+    - squad: "aios_methodology"
+      score: 0.00
+      rank: 16
+      motivo_baixo: "Perfil Mechanic/Accumulator — oposto ao Creator-Star"
+
+    - squad: "etl_data_collector"
+      score: 0.00
+      rank: 17
+      motivo_baixo: "Perfil Accumulator/Mechanic com Follow Thru 7+ — oposto ao perfil"
+
+    - squad: "gdrive_ingestor"
+      score: 0.00
+      rank: 18
+      motivo_baixo: "Perfil operacional repetitivo — mataria o Quick Start 8 de tédio"
+
+  # ═══════════════════════════════════════════════════════════════════
+  # TOP 3 RECOMENDAÇÕES DETALHADAS
+  # ═══════════════════════════════════════════════════════════════════
+  top_3:
+    recomendacao_1:
+      squad: "creator_os"
+      nome: "Creator-OS"
+      score: 0.87
+      titulo: "Seu Squad Natural — Creator-OS"
+      racional: |
+        Gabriel, este squad foi FEITO para o seu perfil. Veja o cruzamento:
+
+        WEALTH DYNAMICS (Creator): Você se auto-identificou como Criador e TUDO no seu perfil
+        confirma isso — criar do zero é sua maior satisfação, quer ser o primeiro em algo novo,
+        mais intuitivo que analítico, começa a executar logo. Creator-OS é o habitat natural
+        do perfil Creator: criar cursos, mentorias, programas e produtos digitais.
+
+        KOLBE (QS:8): Seu Quick Start 8 significa que você inicia rápido, testa, itera.
+        Creator-OS funciona exatamente assim — lança MVP do curso, valida com os primeiros
+        alunos, ajusta no caminho. Não precisa de plano perfeito antes de começar.
+
+        CLIFTON (Communication #1 + Developer #5): Seu talento #1 é COMUNICAR e o #5 é
+        DESENVOLVER outros. Creator-OS é literalmente sobre comunicar conhecimento para
+        desenvolver outras pessoas. É a interseção perfeita dos seus talentos.
+
+        SULLIVAN (Unique Ability): Sua habilidade única é "traduzir conhecimento técnico do
+        agro em negócios artesanais lucrativos — ensinando com clareza e paixão".
+        Creator-OS é o VEÍCULO para monetizar essa habilidade única.
+
+        CONVERGÊNCIA MÁXIMA: Zona de Genialidade (ensinar/criar) + UA (traduzir conhecimento) +
+        Creator-Star + Communication + Quick Start alto = Creator-OS é o squad onde tudo converge.
+
+        BONUS DECISIVO: Você já tem a fábrica de molhos como PROVA SOCIAL. Poucos educadores
+        de agroindústria artesanal podem dizer "eu faço isso na prática". Isso dispara seu
+        Perceived Likelihood na Value Equation do Hormozi.
+
+      como_comecar:
+        - passo: "Definir o programa 'Da Receita à Prateleira' com os 8 módulos que você já sabe ensinar"
+          prazo: "Semana 1"
+        - passo: "Gravar 3 vídeos-aula piloto usando o celular direto da fábrica (autenticidade > produção)"
+          prazo: "Semana 2"
+        - passo: "Convidar 5 pessoas para a turma beta gratuita (em troca de depoimento)"
+          prazo: "Semana 3"
+        - passo: "Fechar a primeira turma paga com os aprendizados do beta"
+          prazo: "Semana 4-6"
+
+      riscos:
+        - risco: "ULP tipo 1 — resistência a cobrar pelo conhecimento"
+          mitigacao: "Começar com preço baixo (R$497) e subir progressivamente. O beta gratuito quebra o gelo."
+        - risco: "Quick Start 8 + Follow Thru 3 = pode começar e não sistematizar"
+          mitigacao: "Usar templates prontos do Creator-OS. Contratar assistente para organizar conteúdo."
+        - risco: "Tempo limitado (10-20h/semana) dividido entre 3 atividades"
+          mitigacao: "Nos primeiros 90 dias, dedicar 80% do tempo disponível ao Creator-OS. Fábrica no piloto automático."
+
+      potencial_receita:
+        curto_prazo: "R$5.000-15.000/mês em 90 dias (primeira turma paga, 10-30 alunos x R$497-997)"
+        medio_prazo: "R$20.000-50.000/mês em 6 meses (turmas recorrentes + mentoria premium)"
+        longo_prazo: "R$50.000-100.000/mês em 12 meses (programa gravado + mentoria + eventos)"
+        nota: "Estimativa conservadora. Margem de 80%+ por ser produto digital."
+
+    recomendacao_2:
+      squad: "stories_10x"
+      nome: "Stories10x"
+      score: 0.82
+      titulo: "Sua Alternativa Forte — Stories10x"
+      racional: |
+        Gabriel, se o Creator-OS é o motor do seu negócio, o Stories10x é o COMBUSTÍVEL.
+
+        HAMILTON (Creator + Star): Esta é a ÚNICA combinação que tem match duplo no seu perfil.
+        Creator gera as histórias, Star as performa na frente das câmeras. Você é ambos.
+        Stories10x é sobre multiplicar UMA história em 10+ formatos: vídeo, post, reels,
+        artigo, podcast, palestra. Com Communication #1, isso é natural pra você.
+
+        KOLBE (QS:8 + IM:6): Quick Start alto + Implementor equilibrado = você cria conteúdo
+        rápido E consegue dar forma tangível. Perfect match: tem uma fábrica real pra filmar,
+        campos pra mostrar, produtos pra segurar na mão. Conteúdo que MOSTRA é mais forte
+        que conteúdo que FALA.
+
+        HOGSHEAD (The Rockstar): Passion + Innovation = as pessoas não compram só o que você
+        sabe, compram COMO VOCÊ FAZ SENTIR. Stories10x é o veículo para maximizar seu
+        arquétipo Rockstar — energia contagiante multiplicada em todas as plataformas.
+
+        POR QUE #2 E NÃO #1: Stories10x constrói AUDIÊNCIA, mas audiência sem produto = vaidade.
+        Creator-OS constrói PRODUTO. O ideal é Creator-OS primeiro, Stories10x como acelerador.
+
+      como_comecar:
+        - passo: "Escolher 1 história da fábrica que mostra sua jornada (de zero ao primeiro lote vendido)"
+          prazo: "Semana 1"
+        - passo: "Transformar em 5 formatos: vídeo longo (YouTube), 3 reels (Instagram), 1 post (LinkedIn)"
+          prazo: "Semana 2"
+        - passo: "Criar rotina semanal de '1 história da semana' direto do campo/fábrica"
+          prazo: "Semana 3-4"
+
+      riscos:
+        - risco: "Criar conteúdo sem produto = audiência que não converte"
+          mitigacao: "Sempre terminar conteúdo com CTA para o programa (Creator-OS)"
+        - risco: "Quick Start 8 pode criar conteúdo demais sem consistência"
+          mitigacao: "Regra: 1 história por semana. Qualidade > quantidade."
+        - risco: "ULP pode travar a exposição pública"
+          mitigacao: "Começar com bastidores da fábrica (mais confortável) antes de ensinar diretamente"
+
+      potencial_receita:
+        curto_prazo: "R$0 direto (audiência não gera receita imediata)"
+        medio_prazo: "R$5.000-15.000/mês em 6 meses (vendas do programa via conteúdo orgânico)"
+        longo_prazo: "R$20.000-50.000/mês em 12 meses (patrocínios + vendas + parcerias)"
+        nota: "Stories10x é ACELERADOR de receita, não gerador direto. Funciona melhor JUNTO com Creator-OS."
+
+    recomendacao_3:
+      squad: "mentoria_engine"
+      nome: "MentoriaEngine"
+      score: 0.72
+      titulo: "Seu Curinga Estratégico — MentoriaEngine"
+      racional: |
+        Gabriel, este squad toca DIRETO na sua Zona de Genialidade.
+
+        ZONA DE GENIALIDADE (Hendricks): Você entra em flow quando ensina e mentora.
+        Faria de graça. Outros agradecem especificamente por isso. MentoriaEngine é o
+        squad que transforma essa genialidade em MOTOR DE RECEITA escalável.
+
+        CLIFTON (Developer #5): Seu talento Developer significa que você sente prazer
+        genuíno em ver outros crescerem. MentoriaEngine cria o sistema para que isso
+        aconteça em escala — sem depender de 1:1 infinito.
+
+        SULLIVAN (Who Not How): Você já delega com instruções claras e confia.
+        MentoriaEngine usa essa habilidade: você cria o framework de mentoria,
+        e a engine escala com processos, templates e até IA.
+
+        POR QUE #3: MentoriaEngine é POTENTE para Gabriel, mas requer que ele COBRE
+        por mentoria — e esse é exatamente o ULP dele. É o squad que mais desafia
+        o bloqueio, mas também o que mais o recompensa quando supera.
+
+        COMPLEMENTARIDADE: Creator-OS cria o curso (1-para-muitos), MentoriaEngine
+        cria a mentoria premium (1-para-poucos, high ticket). Juntos = pirâmide
+        completa de monetização do conhecimento.
+
+      como_comecar:
+        - passo: "Definir 3 temas de mentoria que você já faz de graça (com resultados comprovados)"
+          prazo: "Semana 1"
+        - passo: "Oferecer mentoria paga para 3 clientes a R$500/mês cada (preço de entrada)"
+          prazo: "Semana 2-3"
+        - passo: "Documentar o processo e criar framework repetível para as sessões"
+          prazo: "Mês 2"
+
+      riscos:
+        - risco: "ULP forte: 'como vou cobrar por algo que sempre dei de graça?'"
+          mitigacao: "Reframe: 'gratuito era fase de aprendizado. Agora é profissional.' Começar barato e subir."
+        - risco: "Follow Thru 3 pode dificultar manter agenda e follow-up com mentorados"
+          mitigacao: "Usar ferramenta de agendamento automático. Criar templates de follow-up."
+        - risco: "Pode consumir tempo demais em 1:1 e não sobrar para Creator-OS"
+          mitigacao: "Limitar a 5 mentorados/mês. Priorizar grupo > individual."
+
+      potencial_receita:
+        curto_prazo: "R$1.500-5.000/mês em 90 dias (3-10 mentorados x R$500)"
+        medio_prazo: "R$10.000-25.000/mês em 6 meses (10-25 mentorados, ticket médio R$1.000)"
+        longo_prazo: "R$25.000-50.000/mês em 12 meses (mentoria em grupo + individual premium)"
+        nota: "Mentoria tem margem de 95%+ e é o produto com menor custo de aquisição quando você já tem audiência."
+
+  # ═══════════════════════════════════════════════════════════════════
+  # DREAM SQUAD
+  # ═══════════════════════════════════════════════════════════════════
+  dream_squad:
+    nome_sugerido: "AgriCreator Academy"
+    descricao: |
+      O squad perfeito para Gabriel seria uma ACADEMIA COMPLETA de agroindústria artesanal:
+      cursos online (Creator-OS) + conteúdo multiplataforma (Stories10x) + mentorias
+      escaláveis (MentoriaEngine), tudo alimentado pela fábrica de molhos como laboratório
+      e prova social ao vivo.
+
+      Não é um squad do catálogo — é a FUSÃO dos 3 primeiros, personalizado para
+      o nicho de agroindústria artesanal.
+
+    baseado_em:
+      unique_ability: "Traduzir conhecimento técnico do agro em negócios artesanais lucrativos"
+      zona_genialidade: "Ensinar, comunicar e inspirar"
+      perfil_riqueza: "Creator-Star Dynamo — cria e aparece"
+      arquetipo_marca: "The Rockstar — energia contagiante + ideias audaciosas"
+
+    diferencial: |
+      Nenhum educador no mercado de agroindústria artesanal combina:
+      1. Experiência REAL (fábrica de molhos funcionando)
+      2. Credibilidade técnica (supervisão de equipe agro por 5-10 anos)
+      3. Carisma e comunicação (Communication #1, Rockstar archetype)
+      4. Metodologia validada (consultoria que já dá resultado, mesmo sem cobrar)
+
+      Gabriel não seria "mais um curso online". Seria O CARA da agroindústria artesanal no Brasil.
+
+    viabilidade:
+      score: 0.75
+      nota: |
+        Viabilidade ALTA mas requer resolução do ULP de monetização.
+        Todos os ingredientes existem — falta a AUTORIZAÇÃO INTERNA para cobrar.
+        Viabilidade sobe para 0.95 quando os primeiros 3 clientes pagantes provarem
+        que o mercado QUER pagar por esse conhecimento.
+      pre_requisitos_faltantes:
+        - "Resolver ULP tipo 1 (começar cobrando, mesmo que pouco)"
+        - "Criar prova social documentada (3-5 cases de sucesso)"
+        - "Sistematizar a fábrica para rodar sem dependência dele"
+        - "Dedicar 60%+ do tempo disponível para criação e ensino"
+
+    caminho_ate_dream_squad:
+      - fase: "Fase 1 — Começar com Creator-OS + MentoriaEngine"
+        duracao: "0-6 meses"
+        objetivo: |
+          Criar o programa 'Da Receita à Prateleira' (Creator-OS).
+          Conquistar primeiros 10-20 alunos pagantes.
+          Iniciar mentoria individual para 3-5 clientes premium.
+          QUEBRAR O ULP: os primeiros R$ cobrados são os mais difíceis.
+        marco: "R$10.000/mês de receita educacional"
+
+      - fase: "Fase 2 — Adicionar Stories10x como acelerador"
+        duracao: "6-12 meses"
+        objetivo: |
+          Criar rotina de conteúdo semanal (1 história/semana).
+          Construir audiência de 5.000+ seguidores qualificados.
+          Lançar segunda turma do programa com preço maior.
+          Contratar gerente operacional para a fábrica.
+        marco: "R$30.000/mês de receita educacional + fábrica no piloto automático"
+
+      - fase: "Fase 3 — Lançar AgriCreator Academy"
+        duracao: "12-18 meses"
+        objetivo: |
+          Unificar curso + mentoria + conteúdo em uma ACADEMIA.
+          Programa gravado (escalável) + mentoria em grupo (recorrente) + eventos presenciais.
+          Se posicionar como A REFERÊNCIA nacional em agroindústria artesanal.
+        marco: "R$50.000-100.000/mês | 60%+ do tempo na Zona de Genialidade"
+
+  # ═══════════════════════════════════════════════════════════════════
+  # NEXT STEP IMEDIATO
+  # ═══════════════════════════════════════════════════════════════════
+  immediate_next_step:
+    squad_para_comecar: "Creator-OS"
+    motivo: |
+      Creator-OS é o squad #1 porque resolve os dois problemas simultâneos do Gabriel:
+      1. MONETIZA a genialidade (ensinar) — responde à meta de consultoria/mentoria
+      2. USA a fábrica como prova social — potencializa o negócio de molhos indiretamente
+      Começar pelo Dream Squad seria prematuro — precisa resolver o ULP primeiro.
+    acao_concreta: |
+      HOJE: Abra um documento em branco e escreva os títulos dos 8 módulos do programa
+      'Da Receita à Prateleira'. Você já sabe o que ensinar — a ordem já está na sua cabeça.
+      Não precisa de conteúdo perfeito. Só os títulos. 15 minutos.
+    prazo: "HOJE — 15 minutos"
+    recurso_necessario: "Nenhum. Só um lugar para escrever (papel, celular, computador)."
+    criterio_sucesso: "Documento com 8 títulos de módulos que fazem sentido na jornada do aluno."
+    nota_motivacional: |
+      Gabriel, você já tem TUDO: o conhecimento, a experiência, a fábrica, o carisma,
+      a paixão por ensinar. Falta UMA coisa: autorização. Se autorize a cobrar.
+      O mercado está esperando por alguém que ensine exatamente o que você já sabe fazer.
+      Esse alguém é VOCÊ. Comece hoje.
+
+  # ═══════════════════════════════════════════════════════════════════
+  # ANTI-RECOMMENDATIONS (Squads a EVITAR)
+  # ═══════════════════════════════════════════════════════════════════
+  anti_recommendations:
+    - squad: "aios_methodology"
+      score: 0.00
+      motivo: |
+        AIOS/MethodologyOS requer Mechanic/Accumulator com Follow Thru 8+ e Fact Finder 7+.
+        Gabriel é o OPOSTO: Creator-Star com QS 8, FF 3, FT 3. Operaria contra TODOS os
+        instintos conativos. Receita para burnout em semanas.
+
+    - squad: "etl_data_collector"
+      score: 0.00
+      motivo: |
+        Coleta e transformação de dados requer paciência, sistematização e análise profunda.
+        Com Follow Thru 3 e Fact Finder 3, Gabriel abandonaria na primeira semana.
+        Além disso, não se conecta com nenhum dos seus talentos ou zona de genialidade.
+
+    - squad: "mmos_mind_mapper"
+      score: 0.10
+      motivo: |
+        Criação de clones cognitivos requer pesquisa profundíssima (FF 8+) e sistematização
+        rigorosa (FT 7+). Gabriel opera na velocidade oposta. Seria como pedir para um
+        corredor de 100m rasos fazer maratona de documentação.
+
+    - squad: "gdrive_ingestor"
+      score: 0.00
+      motivo: |
+        Ingestão e classificação de conteúdo é trabalho repetitivo e processual.
+        Mataria a energia Creator-Star e o Quick Start 8. Zero alinhamento.
+
+    - squad: "content_distillery"
+      score: 0.10
+      motivo: |
+        Apesar de ser sobre conteúdo (área de Gabriel), Content Distillery é sobre DESTILAÇÃO
+        analítica — curar, categorizar, estruturar. Requer Fact Finder 7+ e Follow Thru 6+.
+        Gabriel é criador de conteúdo, não curador de conteúdo.

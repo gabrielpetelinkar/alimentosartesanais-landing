@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 14 — Certificação e Selos de Qualidade: Credibilidade Tangível</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+
+  html { overflow: hidden; }
+
+  body {
+    width: 100vw; height: 100vh; overflow: hidden; margin: 0;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    background: #0D0D0D;
+    color: #FFFFFF;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    
+    
+    background: #0D0D0D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .slide:last-child {
+    page-break-after: avoid;
+  }
+
+  /* ===== COLORS ===== */
+  :root {
+    --bg-primary: #0D0D0D;
+    --bg-secondary: #1A1A1A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --text-muted: #7A7A7A;
+    --accent-gold: #D4A843;
+    --accent-green: #5B8C3E;
+    --accent-terracotta: #C45B3A;
+    --accent-gold-glow: rgba(212, 168, 67, 0.15);
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  .title-huge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 180px;
+    color: #D4A843;
+    line-height: 1;
+    letter-spacing: -4px;
+  }
+
+  .title-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: #FFFFFF;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+
+  .title-lg {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+
+  .title-md {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #B0B0B0;
+    line-height: 1.4;
+  }
+
+  .body-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #B0B0B0;
+    line-height: 1.5;
+  }
+
+  .caption {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #7A7A7A;
+  }
+
+  .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #D4A843;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .gold { color: #D4A843; }
+  .green { color: #5B8C3E; }
+  .terracotta { color: #C45B3A; }
+  .white { color: #FFFFFF; }
+  .muted { color: #B0B0B0; }
+
+  /* ===== DECORATIVE ===== */
+  .gold-line {
+    width: 80px;
+    height: 3px;
+    background: #D4A843;
+    margin: 20px 0;
+  }
+
+  .gold-line-wide {
+    width: 160px;
+    height: 3px;
+    background: #D4A843;
+    margin: 24px auto;
+  }
+
+  .gold-line-center {
+    width: 80px;
+    height: 3px;
+    background: #D4A843;
+    margin: 20px auto;
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0;
+    z-index: 10;
+  }
+
+  .progress-item {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 24px;
+    color: #4a4a4a;
+    border-bottom: 2px solid #2a2a2a;
+  }
+
+  .progress-item.active {
+    color: #5B8C3E;
+    border-bottom: 2px solid #5B8C3E;
+  }
+
+  /* ===== BADGE ===== */
+  .badge-14 {
+    position: absolute;
+    top: 24px;
+    right: 40px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(91, 140, 62, 0.15);
+    border: 2px solid #5B8C3E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #5B8C3E;
+    z-index: 10;
+  }
+
+  /* ===== LAYOUT HELPERS ===== */
+  .centered {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .left-aligned {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .split-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px 60px 60px;
+  }
+
+  /* ===== PHOTO PLACEHOLDERS ===== */
+  .photo-full {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #7A7A7A;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .photo-full.food {
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 30%, #1a1510 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.landscape {
+    background: linear-gradient(180deg, #1a2010 0%, #15200a 30%, #0a1505 60%, #0D0D0D 100%);
+  }
+
+  .photo-full.rural {
+    background: linear-gradient(160deg, #201a0a 0%, #2a1f10 40%, #1a1510 70%, #0D0D0D 100%);
+  }
+
+  .photo-full.market {
+    background: linear-gradient(145deg, #1a1015 0%, #201520 35%, #151020 65%, #0D0D0D 100%);
+  }
+
+  .photo-full.certification {
+    background: linear-gradient(150deg, #0d1a0d 0%, #1a2a10 30%, #15200a 60%, #0D0D0D 100%);
+  }
+
+  .photo-half {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #5a5a5a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .photo-half.food {
+    background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 50%, #1a1510 100%);
+  }
+
+  .photo-half.rural {
+    background: linear-gradient(135deg, #201a0a 0%, #2a1f10 50%, #1a1510 100%);
+  }
+
+  .photo-half.product {
+    background: linear-gradient(135deg, #151015 0%, #201520 50%, #0D0D0D 100%);
+  }
+
+  .photo-half.fair {
+    background: linear-gradient(135deg, #1a1510 0%, #20180a 50%, #0D0D0D 100%);
+  }
+
+  .photo-half.certification {
+    background: linear-gradient(135deg, #0d1a0d 0%, #1a2a10 50%, #0D0D0D 100%);
+  }
+
+  .overlay-dark {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(13, 13, 13, 0.65);
+  }
+
+  .content-over {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .content-over-center {
+    position: relative;
+    z-index: 2;
+    padding: 80px 120px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ===== NUMBER HIGHLIGHT ===== */
+  .number-huge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 160px;
+    color: #D4A843;
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+
+  .number-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 120px;
+    color: #D4A843;
+    line-height: 1;
+  }
+
+  /* ===== LIST ITEMS ===== */
+  .list-item {
+    margin-bottom: 28px;
+  }
+
+  .list-item .marker {
+    color: #D4A843;
+    font-size: 18px;
+    margin-right: 12px;
+  }
+
+  .list-item .item-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #FFFFFF;
+  }
+
+  .list-item .item-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #B0B0B0;
+    margin-top: 4px;
+    padding-left: 30px;
+  }
+
+  /* ===== ACTION ITEMS ===== */
+  .action-item {
+    margin-bottom: 32px;
+    padding-left: 0;
+  }
+
+  .action-item .arrow {
+    color: #D4A843;
+    font-size: 22px;
+    margin-right: 14px;
+    font-weight: 700;
+  }
+
+  .action-item .action-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .action-item .action-detail {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #B0B0B0;
+    margin-top: 4px;
+    padding-left: 36px;
+  }
+
+  /* ===== STAT CARDS ===== */
+  .stat-cards {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1040px;
+  }
+
+  .stat-card {
+    background: rgba(91, 140, 62, 0.08);
+    border: 1px solid rgba(91, 140, 62, 0.3);
+    border-radius: 8px;
+    padding: 28px 32px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    max-width: 240px;
+  }
+
+  .stat-card .stat-number {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    color: #5B8C3E;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-card .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #B0B0B0;
+    line-height: 1.4;
+  }
+
+  .stat-card .stat-source {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: #5a5a5a;
+    margin-top: 8px;
+  }
+
+  /* ===== COMPARISON ===== */
+  .comparison {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .comp-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+  }
+
+  .comp-side.before {
+    background: #1A1A1A;
+    border-right: 2px solid #2a2a2a;
+  }
+
+  .comp-side.after {
+    background: #0D0D0D;
+  }
+
+  .comp-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .comp-content {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+
+  .comp-detail {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: #7A7A7A;
+    line-height: 1.5;
+  }
+
+  /* ===== SLIDE COUNTER ===== */
+  .slide-number {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #4a4a4a;
+    z-index: 10;
+  }
+
+  .course-tag {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3a3a3a;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+
+  /* ===== CASE CARD ===== */
+  .case-bar {
+    background: rgba(212, 168, 67, 0.08);
+    border-left: 4px solid #D4A843;
+    padding: 24px 32px;
+    margin-top: 20px;
+  }
+
+  /* ===== EXERCISE ===== */
+  .exercise-box {
+    border: 2px solid #D4A843;
+    border-radius: 8px;
+    padding: 40px 50px;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  /* ===== NEXT CLASS TEASER ===== */
+  .next-class {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(212, 168, 67, 0.3);
+  }
+
+  /* ===== ELIGIBLE PRODUCTS ===== */
+  .product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .product-tag {
+    background: rgba(91, 140, 62, 0.12);
+    border: 1px solid rgba(91, 140, 62, 0.35);
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #5B8C3E;
+  }
+
+  /* ===== SPEAKER NOTES (hidden on screen, visible in print/dev) ===== */
+  .speaker-notes {
+    display: none;
+  }
+
+  @media print {
+    .speaker-notes {
+      display: block;
+      page-break-before: avoid;
+      padding: 12px 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #666;
+      border-top: 1px dashed #ccc;
+      background: #f9f9f9;
+    }
+  }
+
+.slide-counter {
+  position: fixed; bottom: 20px; left: 30px; z-index: 50;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7A7A7A; opacity: 0.5; letter-spacing: 1px;
+}
+
+/* Progress bar */
+.progress {
+  position: absolute; top: 28px; right: 40px; z-index: 10;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: #4a4a4a;
+}
+.progress .active { color: var(--accent); font-weight: 700; }
+.progress .dot { width: 6px; height: 6px; border-radius: 50%; background: #333; }
+.progress .dot.active { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.progress .line { width: 20px; height: 1px; background: #333; }
+
+
+/* Aula label */
+.aula-label {
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+
+
+/* Glow background */
+.glow-bg {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(91,140,62,0.08) 0%, transparent 70%);
+  top: -100px; right: -100px; z-index: 0; pointer-events: none;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: HOOK / ABERTURA                                      -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/aula11-rotulo-ia.png') center/cover no-repeat !important;" class="photo-full certification">
+    
+  </div>
+  <div class="overlay-dark"></div>
+  <div class="content-over">
+    <div style="margin-bottom: 60px;">
+      <div class="label" style="margin-bottom: 20px; font-size: 15px;">AULA 14 · ESCALAR</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; line-height: 1.2; max-width: 850px;">
+        "Um selo não é apenas um símbolo — é uma <span class="gold">porta que abre mercados inteiros.</span>"
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">01 / 26</div>
+  <div class="speaker-notes">Abrir com impacto: o selo como metáfora de acesso. Perguntar quem já tem alguma certificação.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: TÍTULO DA AULA                                       -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="glow-bg"></div>
+  <div class="centered">
+    <div class="progress-bar">
+      <div class="progress-item">CRIAR</div>
+      <div class="progress-item">VENDER</div>
+      <div class="progress-item active">ESCALAR</div>
+    </div>
+    <div class="badge-14">14</div>
+    <div class="title-huge" style="margin-bottom: 24px;">14</div>
+    <div class="title-lg" style="margin-bottom: 12px;">CERTIFICAÇÃO E SELOS</div>
+    <div class="subtitle">Credibilidade tangível.</div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">02 / 26</div>
+  <div class="speaker-notes">Aula 14 da seção ESCALAR. Foco em como certificações e selos funcionam como ferramentas estratégicas de crescimento.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: CONCEITO — ABERTURA                                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="progress-bar">
+      <div class="progress-item">CRIAR</div>
+      <div class="progress-item">VENDER</div>
+      <div class="progress-item active">ESCALAR</div>
+    </div>
+    <div style="max-width: 900px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 38px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        A certificação é <span class="gold">processo.</span><br>O selo é <span class="gold">prova visível.</span>
+      </div>
+      <div class="gold-line-center" style="margin-top: 32px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px;">
+        Juntos, reforçam autenticidade, transparência e compromisso com qualidade.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">03 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Distinguir certificação (processo formal de avaliação) de selo (expressão visual do reconhecimento). Ambos são complementares.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: FOTO + INSIGHT (Confiança)                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/2-5_Selos_governamentais.jpg') center/cover no-repeat !important;" class="photo-half product">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          No mercado artesanal, a <span class="gold">confiança</span> é a moeda mais valiosa.
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Certificações e selos transformam essa confiança em algo tangível e verificável — mais do que simples identificações, são ferramentas estratégicas.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04 / 26</div>
+  <div class="speaker-notes">No artesanal, o vínculo produtor-consumidor é baseado em confiança. O selo materializa essa confiança.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: CONCEITO — FERRAMENTAS ESTRATÉGICAS                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div class="body-text" style="font-size: 24px; margin-bottom: 20px;">A certificação avalia. O selo comunica.</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 38px; color: #D4A843; line-height: 1.25; text-align: center;">
+        JUNTOS, REFORÇAM<br>AUTENTICIDADE,<br>TRANSPARÊNCIA E QUALIDADE.
+      </div>
+      <div class="gold-line-center" style="margin-top: 32px;"></div>
+    </div>
+  </div>
+  <div class="slide-number">05 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Reforçar que são mais do que identificações — são ferramentas de posicionamento.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: LISTA VISUAL — Principais selos                      -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">SELOS QUE TRANSFORMAM NEGÓCIOS</div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Selo ARTE (Lei nº 13.680/2018)</span></div>
+      <div class="item-desc">Revolucionou o mercado artesanal permitindo comercialização nacional de produtos de origem animal.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Indicações Geográficas (IGs)</span></div>
+      <div class="item-desc">Reconhecem produtos com características únicas ligadas ao território — consolidando-se no Brasil.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Certificações regionais e estaduais</span></div>
+      <div class="item-desc">Agro SP Artesanal, CIDASC e outros programas que abrem portas locais e nacionais.</div>
+    </div>
+  </div>
+  <div class="slide-number">06 / 26</div>
+  <div class="speaker-notes">Apresentar os três pilares de certificação. Explicar brevemente cada um antes de aprofundar.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: CASE — ARROZ VERMELHO DO VALE DO PIANCÓ              -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/1ffd07_d5d2fb54006f43b8aa3e95328f4617damv2.jpg') center/cover no-repeat !important;" class="photo-full rural">
+    
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.2) 100%);"></div>
+  <div class="content-over">
+    <div class="label" style="margin-bottom: 16px; font-size: 14px;">CASE</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: #FFFFFF; margin-bottom: 16px;">
+      ARROZ VERMELHO DO VALE DO PIANCÓ (PB)
+    </div>
+    <div class="body-text" style="max-width: 750px;">
+      Maior produtor mundial dessa variedade. 5 mil famílias envolvidas em processo de obtenção de Indicação Geográfica pelo INPI — valorizando tradição, território e comunidade.
+    </div>
+  </div>
+  <div class="slide-number">07 / 26</div>
+  <div class="speaker-notes">Case real de IG em processo. Mostrar como a IG valoriza as 5 mil famílias e conecta produto ao território.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: TRANSIÇÃO — MERCADO                                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE ESTÁ ACONTECENDO<br>NO MERCADO
+    </div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">08 / 26</div>
+  <div class="speaker-notes">Transição para dados de mercado. Certificações e selos ganhando relevância na decisão de compra.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: NÚMERO DESTAQUE — 280                                -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="number-huge">280</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        produtos certificados com o <span class="gold">Selo ARTE</span> em 2025.
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— CIDASC / MAPA, 2025</div>
+  </div>
+  <div class="slide-number">09 / 26</div>
+  <div class="speaker-notes">280 produtos já certificados — número em crescimento. O Selo ARTE consolidou a expansão do reconhecimento artesanal.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: NÚMERO DESTAQUE — 129                               -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="number-huge">129</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        estabelecimentos registrados com <span class="gold">Selo Agro SP Artesanal.</span>
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 24px;">— Secretaria de Agricultura de SP, 2024</div>
+  </div>
+  <div class="slide-number">10 / 26</div>
+  <div class="speaker-notes">Programa estadual de referência. Mostra que certificações regionais são viáveis e estão em expansão.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: NÚMERO DESTAQUE — 122                               -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="number-huge">122</div>
+    <div style="max-width: 600px; margin-top: 24px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF; text-align: center; line-height: 1.4;">
+        <span class="gold">Indicações Geográficas</span> registradas no Brasil pelo INPI.
+      </div>
+    </div>
+    <div style="margin-top: 16px; display: flex; gap: 24px; align-items: center;">
+      <div style="background: rgba(91,140,62,0.2); border: 1px solid #5B8C3E; border-radius: 4px; padding: 8px 16px;">
+        <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: #5B8C3E;">TODAS AS REGIÕES DO BRASIL</span>
+      </div>
+    </div>
+    <div class="caption" style="margin-top: 20px;">— INPI, 2024</div>
+  </div>
+  <div class="slide-number">11 / 26</div>
+  <div class="speaker-notes">122 IGs abrangendo todas as regiões. As IGs se consolidam como ferramenta de valorização territorial.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: STAT CARDS — PANORAMA                               -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 36px;">PANORAMA DAS CERTIFICAÇÕES NO BRASIL</div>
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-number">280</div>
+        <div class="stat-label">Produtos com<br>Selo ARTE</div>
+        <div class="stat-source">CIDASC/MAPA, 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">129</div>
+        <div class="stat-label">Estabelecimentos<br>Agro SP Artesanal</div>
+        <div class="stat-source">Sec. Agricultura SP, 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">122</div>
+        <div class="stat-label">Indicações<br>Geográficas</div>
+        <div class="stat-source">INPI, 2024</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12 / 26</div>
+  <div class="speaker-notes">Visão consolidada dos três números. O cenário brasileiro de certificações está em plena expansão.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: PRODUTOS ELEGÍVEIS                                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div class="label" style="margin-bottom: 24px;">PRODUTOS ELEGÍVEIS AO SELO ARTE</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 30px; color: #FFFFFF; line-height: 1.3; text-align: center; margin-bottom: 28px;">
+        De queijo artesanal a subprodutos de pescados — a <span class="gold">diversidade é ampla.</span>
+      </div>
+      <div class="product-tags">
+        <span class="product-tag">Queijo</span>
+        <span class="product-tag">Manteiga</span>
+        <span class="product-tag">Doce de leite</span>
+        <span class="product-tag">Salame</span>
+        <span class="product-tag">Hambúrguer</span>
+        <span class="product-tag">Mel</span>
+        <span class="product-tag">Subprodutos de pescados</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">13 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Mostrar que o Selo ARTE não se restringe a queijos. Listar todos os produtos elegíveis para ampliar o alcance da audiência.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: FOTO + INSIGHT (Decisão de compra)                  -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/Captura de Tela 2026-03-23 às 16.12.17.png') center/cover no-repeat !important;" class="photo-half food">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div class="body-text" style="font-size: 22px; margin-bottom: 16px;">Selos têm ganhado cada vez mais relevância na decisão de compra.</div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 38px; color: #D4A843; line-height: 1.2;">
+          ARTESANAIS,<br>GOURMET E<br>SUSTENTÁVEIS.
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 24px 0;"></div>
+      <div class="body-text" style="font-size: 18px;">
+        Marcas certificadas se posicionam como profissionais e éticas.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">14 / 26</div>
+  <div class="speaker-notes">Certificações e selos ganhando relevância na decisão de compra, especialmente em nichos premium.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: TRANSIÇÃO — O QUE APRENDER                          -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; text-align: center;">
+      O QUE VOCÊ PODE<br>APRENDER COM ISSO
+    </div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">15 / 26</div>
+  <div class="speaker-notes">Transição para os aprendizados práticos. Cinco pontos-chave que o produtor deve internalizar.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: INSIGHT 1 — Profissionalismo                        -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 900px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 42px; color: #FFFFFF; line-height: 1.25; text-align: center;">
+        Certificações aumentam<br><span class="gold">PROFISSIONALISMO.</span>
+      </div>
+      <div class="gold-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px; font-size: 22px;">
+        Mesmo negócios de pequeno porte, com processos bem estruturados,<br>podem alcançar o mesmo reconhecimento de grandes marcas.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">16 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Certificações elevam o patamar profissional. Processos bem documentados são o primeiro passo.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: INSIGHT 2 — Selos atraem                            -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="max-width: 850px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 36px; color: #FFFFFF; line-height: 1.3; text-align: center;">
+        Selos atraem <span class="gold">consumidores exigentes</span> e <span class="gold">distribuidores</span>, abrindo novas oportunidades de venda.
+      </div>
+      <div class="gold-line-center" style="margin-top: 28px;"></div>
+      <div class="body-text" style="text-align: center; margin-top: 20px;">
+        Parcerias estratégicas surgem quando há credibilidade comprovada.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">17 / 26</div>
+  <div class="speaker-notes">Selos abrem portas para distribuidores e redes que exigem certificação. É acesso a mercado, não apenas imagem.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: FOTO + INSIGHT (Certificações regionais)            -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="split">
+    <div class="split-left">
+      <div style="background:url('../assets/aulas/Voce-conhece-o-selo-eureciclo-2.png') center/cover no-repeat !important;" class="photo-half certification">
+        
+      </div>
+    </div>
+    <div class="split-right">
+      <div style="margin-bottom: 20px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #FFFFFF; line-height: 1.3;">
+          Certificações regionais são <span class="gold">viáveis</span> e fortalecem o <span class="gold">território.</span>
+        </div>
+      </div>
+      <div class="gold-line" style="margin: 20px 0;"></div>
+      <div class="body-text">
+        Com planejamento, organização e apoio de cooperativas ou associações locais, o reconhecimento formal está ao alcance. Selos vinculados à origem criam identidade coletiva.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">18 / 26</div>
+  <div class="speaker-notes">Certificações regionais são viáveis para pequenos produtores. Fortalecimento territorial beneficia toda a cadeia.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: CASE — SELO ARTE: DE LOCAL PARA NACIONAL            -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/content_selo_de_indicacao_geografica_queijo_minas_artesanal_serro.jpeg') center/cover no-repeat !important;" class="photo-full food">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.15) 100%);"></div>
+  <div class="content-over">
+    <div class="label" style="margin-bottom: 16px; font-size: 14px;">CASE</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: #FFFFFF; margin-bottom: 16px;">
+      SELO ARTE: DE LOCAL PARA NACIONAL
+    </div>
+    <div class="body-text" style="max-width: 750px;">
+      Queijos, manteigas, salames e derivados que antes ficavam restritos ao município agora podem ser vendidos em todo o Brasil graças à Lei nº 13.680/2018.
+    </div>
+  </div>
+  <div class="slide-number">19 / 26</div>
+  <div class="speaker-notes">O Selo ARTE revolucionou o mercado artesanal ao permitir comercialização nacional. Acesso ao mercado como vantagem competitiva concreta.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: TRANSIÇÃO — AÇÃO                                    -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 44px; color: #D4A843; text-align: center;">
+      TRANSFORME ISSO EM<br>VANTAGEM COMPETITIVA
+    </div>
+    <div class="gold-line-center" style="margin-top: 28px;"></div>
+  </div>
+  <div class="slide-number">20 / 26</div>
+  <div class="speaker-notes">Transição para ações práticas. Cinco estratégias para transformar certificação em vantagem competitiva.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: AÇÕES 1-3                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Escolha certificações alinhadas ao seu produto</span></div>
+      <div class="action-detail">Priorize selos que agreguem valor real e tenham significado para o seu cliente</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Valorize os selos na comunicação</span></div>
+      <div class="action-detail">Inclua no rótulo, embalagens e ambiente digital — reforce credibilidade em todos os pontos de contato</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Eduque o consumidor sobre cada selo</span></div>
+      <div class="action-detail">Explique o que cada selo representa, aumentando confiança e ampliando percepção de valor</div>
+    </div>
+  </div>
+  <div class="slide-number">21 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Três primeiras ações: escolha alinhada, valorização na comunicação e educação do consumidor.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: AÇÕES 4-5                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Associe certificação e storytelling</span></div>
+      <div class="action-detail">Conte histórias sobre o processo artesanal, o cuidado com insumos e a conexão com o território</div>
+    </div>
+    <div class="action-item">
+      <div><span class="arrow">►</span><span class="action-text">Mantenha coerência no dia a dia</span></div>
+      <div class="action-detail">Certificação deve refletir práticas reais — consistência entre discurso e ação sustenta credibilidade</div>
+    </div>
+  </div>
+  <div class="slide-number">22 / 26</div>
+  <div class="course-tag">GUIA ESTRATÉGICO PARA PRODUTORES ARTESANAIS</div>
+  <div class="speaker-notes">Storytelling + certificação = combinação poderosa. Coerência no dia a dia é o que sustenta tudo.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: ANTES / DEPOIS                                      -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="comparison">
+    <div class="comp-side before">
+      <div class="comp-label terracotta">ANTES ✗</div>
+      <div class="comp-content" style="color: #888;">
+        "Produto sem certificação,<br>vendido apenas no<br>município"
+      </div>
+      <div class="comp-detail">
+        Comercialização local apenas,<br>alcance limitado,<br>sem diferenciação formal.<br><br>Compete por preço.
+      </div>
+    </div>
+    <div class="comp-side after">
+      <div class="comp-label green">DEPOIS ✓</div>
+      <div class="comp-content white">
+        "Produto com Selo ARTE<br>+ Indicação Geográfica,<br>história no rótulo"
+      </div>
+      <div class="comp-detail" style="color: #B0B0B0;">
+        Vendido em todo o território nacional,<br>preço premium, credibilidade<br>comprovada, mercado exigente.<br><br>Compete por <span style="color: #D4A843;">valor e identidade.</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">23 / 26</div>
+  <div class="speaker-notes">Contraste visual entre antes e depois. A certificação transforma o posicionamento — de preço para valor.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: EXERCÍCIO                                           -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="centered">
+    <div class="label" style="margin-bottom: 32px;">EXERCÍCIO PRA AGORA</div>
+    <div class="exercise-box">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 30px; color: #FFFFFF; line-height: 1.3; margin-bottom: 24px;">
+        Pesquise quais certificações existem no <span class="gold">seu estado</span> para o seu tipo de produto.
+      </div>
+      <div class="gold-line-center"></div>
+      <div class="body-text" style="margin-top: 20px; font-size: 20px;">
+        Liste pelo menos 2 caminhos possíveis para obter um selo de qualidade.
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">24 / 26</div>
+  <div class="speaker-notes">Exercício prático: pesquisar certificações disponíveis no estado do aluno. Estimular ação imediata.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: RESUMO                                              -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="left-aligned">
+    <div class="label" style="margin-bottom: 40px;">O QUE LEVAR DESTA AULA</div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Certificação = processo; Selo = prova visual</span></div>
+      <div class="item-desc">Juntos, reforçam autenticidade e credibilidade no mercado artesanal.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Selos abrem portas para o mercado nacional</span></div>
+      <div class="item-desc">O Selo ARTE e as IGs são ferramentas estratégicas para expandir alcance e atrair distribuidores.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Certificações fortalecem marca e território</span></div>
+      <div class="item-desc">Aumentam valor percebido, profissionalismo e criam identidade coletiva para toda a cadeia.</div>
+    </div>
+    <div class="list-item">
+      <div><span class="marker">◆</span><span class="item-title">Coerência sustenta credibilidade</span></div>
+      <div class="item-desc">Associar certificação, storytelling e prática diária é o caminho para o crescimento sustentável.</div>
+    </div>
+  </div>
+  <div class="slide-number">25 / 26</div>
+  <div class="speaker-notes">Resumo com quatro pontos-chave. Reforçar que certificação é investimento em posicionamento e diferenciação.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: FECHAMENTO + PRÓXIMA AULA + ENCERRAMENTO            -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div style="background:url('../assets/aulas/aula06-limitada-ia.png') center/cover no-repeat !important;" class="photo-full landscape">
+    <span style="position:absolute; bottom:30px; left:40px; opacity:0.3;"></span>
+  </div>
+  <div class="overlay-dark" style="background: rgba(13,13,13,0.6);"></div>
+  <div class="content-over-center">
+    <div class="quote" style="max-width: 750px; margin-bottom: 32px;">
+      "Um selo não é apenas um símbolo — é uma porta que abre mercados inteiros."
+    </div>
+    <div class="gold-line-center"></div>
+    <div class="next-class" style="margin-top: 32px;">
+      <div class="label" style="font-size: 14px; margin-bottom: 8px;">PRÓXIMA AULA</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF;">Profissionalização e Consistência.</div>
+      <div class="body-text" style="font-size: 16px; margin-top: 4px;">A base do crescimento sustentável.</div>
+    </div>
+    <div style="margin-top: 36px; display: flex; gap: 40px;">
+      <div class="body-text" style="font-size: 16px; color: #D4A843;">@gabrielpetelinkar</div>
+      <div class="body-text" style="font-size: 16px; color: #D4A843;">oriza.agro</div>
+    </div>
+  </div>
+  <div class="slide-number">26 / 26</div>
+  <div class="speaker-notes">Fechar com o hook da aula. Anunciar próxima aula: Profissionalização e Consistência — a base do crescimento sustentável. Dúvidas no chat.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- KEYBOARD NAVIGATION                                           -->
+<!-- ============================================================ -->
+<div class="slide-counter" id="slideCounter">1 / ?</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.slide');
+  var current = 0;
+  var lastNav = 0;
+  var DEBOUNCE = 300;
+  var counter = document.getElementById('slideCounter');
+
+  function showSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = i === index ? 'flex' : 'none';
+    }
+    current = index;
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function next() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current < slides.length - 1) showSlide(current + 1);
+  }
+
+  function prev() {
+    var now = Date.now();
+    if (now - lastNav < DEBOUNCE) return;
+    lastNav = now;
+    if (current > 0) showSlide(current - 1);
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); next();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); prev();
+    } else if (e.key === 'n' || e.key === 'N') {
+      document.body.classList.toggle('show-notes');
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(slides.length - 1);
+    }
+  });
+
+  document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    if (e.deltaY > 0) next(); else prev();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

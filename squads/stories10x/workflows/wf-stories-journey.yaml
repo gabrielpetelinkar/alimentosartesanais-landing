@@ -1,0 +1,452 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# WORKFLOW: Stories Journey — One Story to 10+ Content Pieces
+# Version: 1.0.0
+# Purpose: End-to-end workflow for discovering, structuring, multiplying, and
+#          monetizing authentic stories across multiple platforms
+# ═══════════════════════════════════════════════════════════════════════════════
+
+workflow-id: wf-stories-journey
+name: Stories Journey
+version: 1.0.0
+estimated-time: "Variable (days to weeks per phase)"
+complexity: high
+
+description: |
+  Complete 6-phase journey from untold authentic stories to a monetized content
+  engine. Each phase is powered by an elite mind with a documented framework.
+  Phases are sequential by default but creators can enter at any phase.
+  Casey Neistat (visual storytelling) is a cross-cutting specialist available
+  during Phases 1-4.
+
+orchestrator: "@stories10x:stories10x-chief"
+mode: Interactive
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# INPUTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+inputs:
+  - name: creator_domain
+    type: string
+    required: true
+    description: "Area of expertise (e.g., artisanal food production)"
+
+  - name: current_phase
+    type: integer
+    required: false
+    default: 0
+    description: "Phase to start at (0-5), determined by diagnostic"
+
+  - name: existing_assets
+    type: array
+    required: false
+    description: "What the creator already has (stories, content, audience, products)"
+
+  - name: active_platforms
+    type: array
+    required: false
+    description: "Social media platforms the creator is active on"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DIAGNOSTIC (Pre-Phase)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+diagnostic:
+  agent: "@stories10x:stories10x-chief"
+  description: "Determine creator's starting phase in the Stories Journey"
+  elicitation:
+    - question: "What is your area of expertise?"
+      captures: "creator_domain"
+
+    - question: "Do you have authentic personal/professional stories identified and documented?"
+      yes_route: "skip_phase_0"
+      no_route: "start_phase_0"
+
+    - question: "Are your stories structured with clear narrative arcs (character, problem, guide, plan, result)?"
+      yes_route: "skip_phase_1"
+      no_route: "start_phase_1"
+
+    - question: "Can you turn 1 story into 10+ pieces of content across platforms?"
+      yes_route: "skip_phase_2"
+      no_route: "start_phase_2"
+
+    - question: "Does your content have hooks that stop the scroll in the first 3 seconds?"
+      yes_route: "skip_phase_3"
+      no_route: "start_phase_3"
+
+    - question: "Do you have a repeatable weekly content system (not dependent on inspiration)?"
+      yes_route: "skip_phase_4"
+      no_route: "start_phase_4"
+
+    - question: "Is your content directly connected to revenue (product sales, leads, conversions)?"
+      yes_route: "journey_complete"
+      no_route: "start_phase_5"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phases:
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-0
+    name: "Discover Your Authentic Stories"
+    agent: "@stories10x:donald-miller"
+    framework: "StoryBrand SB7 + Story Mining Method"
+    mandatory: true
+
+    description: |
+      Mine your authentic stories from life and work experiences.
+      Create a Story Bank with 10-15 stories categorized by type.
+      Build your BrandScript using the SB7 framework.
+
+    inputs:
+      - "Creator's domain expertise"
+      - "Professional background"
+      - "Key life experiences"
+
+    outputs:
+      - "Story Bank with 10-15 authentic stories"
+      - "BrandScript (SB7 framework)"
+      - "One-Liner (Problem → Solution → Result)"
+      - "Stories categorized and ranked by resonance"
+
+    steps:
+      - "Mine 5 story categories: origin, transformation, struggle, lesson, client success"
+      - "Document each story with title, type, emotional core, key message"
+      - "Build BrandScript with all 7 SB7 elements"
+      - "Create One-Liner"
+      - "Rank stories by resonance potential (1-5)"
+
+    checkpoint:
+      criteria:
+        - "Minimum 10 stories in Story Bank"
+        - "BrandScript complete with all 7 elements"
+        - "One-Liner follows Problem → Solution → Result"
+        - "Stories span at least 3 different types"
+      human_review: true
+      message: "Review your Story Bank. Are these the stories that best represent you?"
+
+    veto_conditions:
+      - "No authentic stories found → STOP, need deeper mining"
+      - "Creator cannot articulate audience's problem → STOP, clarify first"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-1
+    name: "Architect Stories for Impact"
+    agent: "@stories10x:donald-miller"
+    framework: "StoryBrand SB7 Framework"
+    mandatory: true
+
+    description: |
+      Structure 3-5 stories using the SB7 narrative arc for maximum impact.
+      Identify the ONE Pillar Story that best represents the brand.
+      Create story variations for different platforms and contexts.
+
+    inputs:
+      - "Story Bank from Phase 0"
+      - "BrandScript"
+      - "Top 5 ranked stories"
+
+    outputs:
+      - "3-5 stories structured with SB7 arc"
+      - "Pillar Story identified and polished"
+      - "Story variations (social, email, long-form, video)"
+      - "Story-to-content mapping"
+
+    steps:
+      - "Select top 3-5 stories from Story Bank"
+      - "Apply SB7 structure to each (character, problem, guide, plan, success, failure)"
+      - "Add hooks to each story"
+      - "Identify Pillar Story using selection criteria"
+      - "Create platform-specific variations"
+      - "Map stories to content purposes"
+
+    checkpoint:
+      criteria:
+        - "3-5 stories fully structured with SB7"
+        - "Pillar Story scored above 4.0/5.0"
+        - "Story variations for at least 3 formats"
+        - "Stories pass clarity test"
+      human_review: true
+      message: "Review your structured stories. Do they feel authentic and compelling?"
+
+    veto_conditions:
+      - "Stories make the BRAND the hero → STOP, customer is the hero"
+      - "No clear Pillar Story → STOP, need stronger stories"
+      - "Hooks don't create curiosity → STOP, rewrite hooks"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-2
+    name: "Multiply Content — 1 Story → 10+ Pieces"
+    agent: "@stories10x:gary-vaynerchuk"
+    framework: "Content Model Pyramid + Document Don't Create"
+    mandatory: true
+
+    description: |
+      Take structured stories and multiply each into 10+ platform-native
+      content pieces using the Content Pyramid model.
+
+    inputs:
+      - "3-5 structured stories from Phase 1"
+      - "Pillar Story"
+      - "Creator's active platforms"
+
+    outputs:
+      - "Content Multiplication Matrix"
+      - "2-week content calendar"
+      - "Platform-native adaptations"
+      - "Pillar → micro content breakdown"
+
+    steps:
+      - "Build Content Pyramid for each story"
+      - "Create platform-native adaptations (not cross-posts)"
+      - "Apply Jab, Jab, Jab, Right Hook ratio"
+      - "Build 2-week content calendar"
+      - "Set up Document Don't Create capture system"
+
+    checkpoint:
+      criteria:
+        - "Each story multiplied into 10+ pieces"
+        - "Content is platform-native"
+        - "2-week calendar populated"
+        - "Jab/Right Hook ratio is 4:1"
+      human_review: true
+      message: "Review the content calendar. Is this realistic for your schedule?"
+
+    veto_conditions:
+      - "Cross-posting same content to all platforms → STOP, adapt for each"
+      - "Calendar exceeds creator's capacity → STOP, reduce and focus"
+      - "All content is promotional → STOP, maintain 4:1 ratio"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-3
+    name: "Engineer Hooks for Attention"
+    agent: "@stories10x:brendan-kane"
+    framework: "Hook Point Framework"
+    mandatory: true
+
+    description: |
+      Engineer scroll-stopping hooks for every content piece.
+      Build a Hook Library of 50+ hooks. Create testing plan.
+
+    inputs:
+      - "Content Multiplication Matrix from Phase 2"
+      - "All content pieces"
+      - "Creator's niche"
+
+    outputs:
+      - "Hook Library (50+ hooks, 8 categories)"
+      - "All content pieces hook-optimized"
+      - "Hook testing plan"
+      - "Platform-specific hook variations"
+
+    steps:
+      - "Build Hook Library across 8 categories"
+      - "Create 3-5 hook variations per content piece"
+      - "Rank hooks by stopping power"
+      - "Adapt hooks per platform"
+      - "Create hook testing plan"
+
+    checkpoint:
+      criteria:
+        - "50+ hooks in library"
+        - "Each content piece has primary + A/B test hook"
+        - "Platform-specific adaptations done"
+        - "Testing plan created"
+      human_review: true
+      message: "Review hooks. Would YOU stop scrolling for these?"
+
+    veto_conditions:
+      - "Generic hooks → STOP, tailor to audience pain points"
+      - "Clickbait hooks → STOP, hooks must deliver on promise"
+      - "No testing plan → WARN, hooks must be tested"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-4
+    name: "Systemize Content Production"
+    agent: "@stories10x:justin-welsh"
+    framework: "Content Operating System"
+    mandatory: true
+
+    description: |
+      Build a repeatable weekly content system with templates,
+      batching schedule, and recycling engine.
+
+    inputs:
+      - "Hook-optimized content from Phase 3"
+      - "Content Multiplication Matrix"
+      - "Creator's weekly time availability"
+
+    outputs:
+      - "Content Operating System"
+      - "10 content templates"
+      - "30-day content calendar"
+      - "Weekly batching schedule"
+      - "Recycling tracker"
+
+    steps:
+      - "Define 3-5 content pillars"
+      - "Create 10 reusable templates"
+      - "Design weekly content sprint"
+      - "Build 30-day calendar"
+      - "Set up recycling engine"
+      - "Establish idea capture system"
+
+    checkpoint:
+      criteria:
+        - "System fits within available hours"
+        - "10 templates created"
+        - "30-day calendar populated"
+        - "Batching schedule separates creation/editing/distribution"
+      human_review: true
+      message: "Review your Content OS. Can you follow this system every week?"
+
+    veto_conditions:
+      - "System requires more time than available → STOP, simplify"
+      - "No templates → STOP, templates are the core"
+      - "Dependent on daily inspiration → STOP, batch and schedule"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-5
+    name: "Connect Content to Revenue"
+    agent: "@stories10x:dan-koe"
+    framework: "Content Monetization Flywheel"
+    mandatory: true
+
+    description: |
+      Map every content piece to a revenue path. Design CTA strategy.
+      Build the flywheel that connects content to income.
+
+    inputs:
+      - "Content OS from Phase 4"
+      - "30-day calendar"
+      - "Creator's product/offer stack"
+
+    outputs:
+      - "Content Monetization Map"
+      - "CTA Strategy (80/15/5 ratio)"
+      - "Content-to-product alignment"
+      - "Revenue flywheel design"
+      - "Monetized 30-day calendar"
+
+    steps:
+      - "Map content tiers to revenue paths"
+      - "Design graduated CTA strategy"
+      - "Align content pillars with products"
+      - "Design revenue flywheel"
+      - "Update calendar with CTAs and offers"
+
+    checkpoint:
+      criteria:
+        - "Every content piece mapped to monetization path"
+        - "CTA ratio is 80/15/5"
+        - "At least 3 revenue paths identified"
+        - "Flywheel designed with metrics"
+      human_review: true
+      message: "Review monetization map. Does this feel authentic, not salesy?"
+
+    veto_conditions:
+      - "No product/offer to sell → STOP, need something to monetize"
+      - "All content is promotional → STOP, 80% must be value"
+      - "No email list strategy → WARN, email is the monetization engine"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  - id: PHASE-VISUAL
+    name: "Visual Storytelling (Cross-Cutting Specialist)"
+    agent: "@stories10x:casey-neistat"
+    framework: "Vlog 3-Act Structure"
+    mandatory: false
+
+    description: |
+      Cross-cutting specialist available during Phases 1-4.
+      Structures video content, creates shot lists, defines editing rhythm.
+      Can be invoked whenever video/visual storytelling is needed.
+
+    inputs:
+      - "Any structured story from Phase 1+"
+      - "Platform and format requirements"
+      - "Creator's equipment/capability"
+
+    outputs:
+      - "Video structure (3-act breakdown)"
+      - "Shot list"
+      - "Editing rhythm map"
+      - "B-roll strategy"
+      - "Music/audio direction"
+
+    steps:
+      - "Define 3-act video structure"
+      - "Create detailed shot list (A-roll + B-roll)"
+      - "Map editing rhythm (fast/medium/slow)"
+      - "Plan B-roll strategy"
+      - "Provide music/audio direction"
+
+    checkpoint:
+      criteria:
+        - "3-act structure defined"
+        - "First 3 seconds designed as scroll-stopper"
+        - "Shot list has A-roll and B-roll"
+        - "Editing rhythm mapped"
+      human_review: true
+
+    veto_conditions:
+      - "No story/narrative → STOP, structure story first"
+      - "Shot list is only talking head → STOP, add visual variety"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FINAL OUTPUT
+# ═══════════════════════════════════════════════════════════════════════════════
+
+final_output:
+  format: markdown
+  template: |
+    # Stories Journey Report: {domain}
+
+    **Creator:** {name}
+    **Domain:** {domain}
+    **Date:** {date}
+    **Phases Completed:** {completed}/{total}
+
+    ---
+
+    ## Journey Progress
+
+    | Phase | Expert | Status | Key Output |
+    |-------|--------|--------|------------|
+    | 0. Discover | Donald Miller | {status} | {output} |
+    | 1. Architect | Donald Miller | {status} | {output} |
+    | 2. Multiply | Gary Vaynerchuk | {status} | {output} |
+    | 3. Hook | Brendan Kane | {status} | {output} |
+    | 4. Systemize | Justin Welsh | {status} | {output} |
+    | 5. Monetize | Dan Koe | {status} | {output} |
+    | Visual* | Casey Neistat | {status} | {output} |
+
+    ---
+
+    ## Content Engine Summary
+    - Stories in Bank: {story_count}
+    - Content Pieces Created: {content_count}
+    - Hooks in Library: {hook_count}
+    - Weekly System: {system_status}
+    - Revenue Paths: {revenue_paths}
+
+    ---
+
+    ## Next Steps
+    {next_phase_details}
+
+    ---
+
+    ## Integration with Creator-OS
+    {integration_status}
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# METADATA
+# ═══════════════════════════════════════════════════════════════════════════════
+
+metadata:
+  version: "1.0.0"
+  created: "2026-02-22"
+  author: "Squad Architect"
+  squad: "stories10x"

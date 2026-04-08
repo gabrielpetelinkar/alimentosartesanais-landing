@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiplicador de Conteúdo — Content OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
+  --bg-card: #1A1A1A;
+  --bg-card-hover: #222222;
+  --gold: #D4A843;
+  --gold-light: #E8C96A;
+  --gold-dim: #A68A3E;
+  --text-primary: #F5F5F5;
+  --text-secondary: #AAAAAA;
+  --text-muted: #666666;
+  --border: #2A2A2A;
+  --success: #4CAF50;
+  --warning: #FF9800;
+  --danger: #F44336;
+  --info: #2196F3;
+  --p1: #D4A843;
+  --p2: #E87040;
+  --p3: #8B5CF6;
+  --p4: #10B981;
+  --p5: #3B82F6;
+  --pillar: #F97316;
+  --medium-tier: #8B5CF6;
+  --micro: #06B6D4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.header {
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+  border-bottom: 2px solid var(--gold);
+  padding: 32px 40px;
+  text-align: center;
+}
+.header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--gold);
+}
+.header p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 24px 80px;
+}
+
+/* SECTIONS */
+.section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+.section h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h2 .badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--gold-dim);
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* FORMS */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.field input, .field select, .field textarea {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.field textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.7;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.form-row .field { margin-bottom: 0; }
+
+/* PILLAR SELECTOR */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+.pillar-option {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.pillar-option:hover { border-color: var(--text-muted); }
+.pillar-option.selected { border-color: var(--gold); background: rgba(212,168,67,0.08); }
+.pillar-option .pillar-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.pillar-option .pillar-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* BUTTONS */
+.btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #000;
+}
+.btn-gold:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(212,168,67,0.3); }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+.btn-outline:hover { background: rgba(212,168,67,0.1); }
+.btn-sm { padding: 6px 14px; font-size: 11px; }
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* OUTPUT */
+.output { display: none; }
+.output.visible { display: block; }
+
+/* STATS */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-card .stat-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+}
+.stat-card .stat-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+.stat-pillar { color: var(--pillar); }
+.stat-medium { color: var(--medium-tier); }
+.stat-micro { color: var(--micro); }
+
+/* TIER SECTIONS */
+.tier-section {
+  margin-bottom: 24px;
+}
+.tier-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.tier-header h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+.tier-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.tier-dot.pillar { background: var(--pillar); }
+.tier-dot.medium { background: var(--medium-tier); }
+.tier-dot.micro { background: var(--micro); }
+
+/* CONTENT CARDS */
+.content-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 14px;
+}
+.content-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.content-card:hover { border-color: var(--text-muted); }
+.card-top {
+  padding: 14px 16px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.tag-platform { background: rgba(255,255,255,0.08); color: var(--text-secondary); }
+.tag-format { background: rgba(212,168,67,0.15); color: var(--gold); }
+.tag-template { background: rgba(139,92,246,0.15); color: #A78BFA; }
+.tag-hook-cat { background: rgba(6,182,212,0.15); color: var(--micro); }
+.tag-cta-soft { background: rgba(76,175,80,0.15); color: #4CAF50; }
+.tag-cta-medium { background: rgba(255,152,0,0.15); color: #FF9800; }
+.tag-cta-hard { background: rgba(244,67,54,0.15); color: #F44336; }
+.tag-tier-pillar { background: rgba(249,115,22,0.2); color: var(--pillar); }
+.tag-tier-medium { background: rgba(139,92,246,0.2); color: var(--medium-tier); }
+.tag-tier-micro { background: rgba(6,182,212,0.2); color: var(--micro); }
+
+.card-body {
+  padding: 0 16px 14px;
+}
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.card-hook {
+  font-size: 13px;
+  color: var(--gold-light);
+  font-style: italic;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.card-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+.card-cta {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.card-cta strong { color: var(--text-secondary); }
+
+.card-actions {
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+}
+
+/* EXPORT */
+.export-section {
+  margin-top: 24px;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .header { padding: 20px 16px; }
+  .header h1 { font-size: 22px; }
+  .container { padding: 16px; }
+  .section { padding: 20px; }
+  .content-cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Multiplicador de Conteúdo</h1>
+  <p>1 Pillar → Medium + Micro · 10 Templates · 53 Hooks · CTA Strategy</p>
+</div>
+
+<div class="container">
+
+  <!-- INPUT: PILLAR -->
+  <div class="section">
+    <h2>Pilar de Conteúdo <span class="badge">PILAR</span></h2>
+    <div class="pillar-grid" id="pilarGrid"></div>
+  </div>
+
+  <!-- INPUT: CONTENT -->
+  <div class="section">
+    <h2>Conteúdo Pillar <span class="badge">INPUT</span></h2>
+
+    <div class="field">
+      <label>Título / Tema da peça Pillar</label>
+      <input type="text" id="pillarTitle" placeholder="Ex: O Isopor do Avô — de salgado na rua a e-commerce nacional">
+    </div>
+
+    <div class="field">
+      <label>Texto / Roteiro do Pillar (cole o conteúdo completo)</label>
+      <textarea id="pillarText" rows="8" placeholder="Cole aqui o texto do seu Reel, carrossel ou post principal. Quanto mais detalhado, melhores as peças derivadas.
+
+Ex: Meu avô saía todo dia com um isopor no ombro. Dentro: salgado caseiro. Do lado: um potinho de molho de pimenta que ele fazia em casa. As pessoas compravam o salgado — e voltavam pelo molho..."></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>História-fonte</label>
+        <select id="sourceStory">
+          <option value="isopor">O Isopor do Avô</option>
+          <option value="receita">A Receita que Ninguém Tinha</option>
+          <option value="frasco">O Frasco que Estourou</option>
+          <option value="artesanal">Artesanal Não é Caseiro</option>
+          <option value="mochila">A Mochila dos Food Trucks</option>
+          <option value="outro">Outra história</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Formato original do Pillar</label>
+        <select id="pillarFormat">
+          <option value="reel90">Reel 90s</option>
+          <option value="reel60">Reel 60s</option>
+          <option value="carrossel">Carrossel 10 slides</option>
+          <option value="feed">Post feed longo</option>
+          <option value="live">Live / Vídeo longo</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Peças a gerar</label>
+        <select id="pieceCount">
+          <option value="compact">Compacto (8-10)</option>
+          <option value="standard" selected>Padrão (14-16)</option>
+          <option value="full">Completo (18-20)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions" style="margin-top: 20px;">
+      <button class="btn btn-gold" onclick="multiply()">Multiplicar Conteúdo</button>
+      <button class="btn btn-outline" onclick="fillExampleInput()">Preencher Exemplo</button>
+    </div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output" id="outputSection">
+
+    <div class="section" style="border-color: var(--gold);">
+      <h2>Peças Geradas <span class="badge">OUTPUT</span></h2>
+      <div class="stats-bar" id="statsBar"></div>
+
+      <!-- PILLAR -->
+      <div class="tier-section" id="tierPillar"></div>
+
+      <!-- MEDIUM -->
+      <div class="tier-section" id="tierMedium"></div>
+
+      <!-- MICRO -->
+      <div class="tier-section" id="tierMicro"></div>
+    </div>
+
+    <div class="export-section">
+      <button class="btn btn-gold" onclick="exportAll()">Exportar Tudo (Markdown)</button>
+      <button class="btn btn-outline" style="margin-left: 12px;" onclick="copyAll()">Copiar Texto</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ===== DATA =====
+const PILARES = [
+  { id: 'P1', nome: 'Manifesto e Posicionamento', cor: 'p1', hookCats: ['contrario', 'pergunta'] },
+  { id: 'P2', nome: 'Storytelling e Legado', cor: 'p2', hookCats: ['historia', 'confissao'] },
+  { id: 'P3', nome: 'Erros e Lições de Produção', cor: 'p3', hookCats: ['numero', 'confissao', 'bastidores'] },
+  { id: 'P4', nome: 'Vendas e Go-to-Market', cor: 'p4', hookCats: ['desafio', 'resultado', 'numero'] },
+  { id: 'P5', nome: 'Bastidores e Prova Social', cor: 'p5', hookCats: ['bastidores', 'historia'] },
+];
+
+const TEMPLATES = {
+  T1: { nome: 'Manifesto', desc: 'Afirmação provocativa, frases curtas, ritmo de manifesto', pilares: ['P1'] },
+  T2: { nome: 'História→Lição', desc: 'Loop narrativo, história breve, lição clara', pilares: ['P2'] },
+  T3: { nome: 'Erro Real', desc: 'Descrição vívida, causa, aprendizado, ação', pilares: ['P3'] },
+  T4: { nome: 'Contrário', desc: 'Crença comum desafiada com evidência', pilares: ['P1'] },
+  T5: { nome: 'Como Eu Fiz', desc: 'Resultado + passos práticos', pilares: ['P4'] },
+  T6: { nome: 'Desafio', desc: 'Ação específica + dare direto', pilares: ['P4'] },
+  T7: { nome: 'Número+Verdade', desc: 'Lista específica + credibilidade', pilares: ['P3', 'P4'] },
+  T8: { nome: 'Bastidores', desc: 'Cena sensorial, processo real', pilares: ['P5'] },
+  T9: { nome: 'Confissão+Virada', desc: 'Vulnerabilidade + mudança + lição', pilares: ['P2', 'P3'] },
+  T10: { nome: 'Prova+Oferta', desc: 'Resultado + CTA direto', pilares: ['P5'] },
+};
+
+const HOOKS = {
+  contrario: [
+    "Se você acha que produto artesanal tem que ser barato, você é parte do problema.",
+    "Produto bom NÃO se vende sozinho. Quem te disse isso te fez mal.",
+    "Quanto mais ingredientes no rótulo, MENOS vende.",
+    "O maior inimigo do produtor artesanal não é a indústria. É ele mesmo.",
+    "Instagram não vende seu produto. Quem vende é você.",
+    "Artesanal não é caseiro. E se você trata assim, tá matando seu negócio.",
+    "Receita boa com comunicação ruim = produto invisível. Pra sempre.",
+    "Você não precisa de mais seguidores. Precisa de coragem pra cobrar o que vale.",
+  ],
+  pergunta: [
+    "Você sabe o custo REAL do seu produto? (A maioria não sabe.)",
+    "Quantas receitas de família estão morrendo agora porque ninguém documentou?",
+    "Qual o preço da sua vergonha? Porque cobrar barato tem custo.",
+    "Seu produto é bom. Mas seu cliente sabe que você existe?",
+    "Você produz artesanal e ainda faz 'no olho'? É questão de tempo.",
+    "O que acontece com sua receita quando você não estiver mais aqui?",
+    "Você tá construindo uma marca — ou um hobby caro?",
+  ],
+  numero: [
+    "12 anos, 11 produtos e 1 lição: quem só tira pedido, morre.",
+    "3 coisas que meço em cada lote. Se você não mede, não controla.",
+    "5 sinais de que seu produto vai dar problema antes de você perceber.",
+    "3 erros que quase quebraram meu negócio.",
+    "1 avô + 1 isopor + 1 molho de pimenta = 12 anos de negócio.",
+    "3 formas de chegar no primeiro cliente — sem gastar 1 real.",
+  ],
+  historia: [
+    "Meu avô saía todo dia com um isopor no ombro. Compravam o salgado — voltavam pelo molho.",
+    "Quando meu avô morreu, fui atrás da receita. Ninguém tinha.",
+    "O cliente mandou foto do molho escorrendo pela parede da cozinha.",
+    "Eu saía pra comer hambúrguer com uma mochila cheia de molho de pimenta.",
+    "A cor mudou. O frasco fermentou. O lote inteiro foi pro lixo.",
+    "Eu cobrava metade do que valia. E quase quebrei.",
+  ],
+  desafio: [
+    "Calcule o custo REAL do seu produto hoje. Eu te desafio.",
+    "Pare de pedir desculpa pelo seu preço por 7 dias.",
+    "Ofereça seu produto pra 5 desconhecidos essa semana.",
+    "Suba o preço 20% e veja se perde cliente. Spoiler: não vai.",
+    "Me manda foto do seu produto. Feedback honesto.",
+  ],
+  resultado: [
+    "De mochila nos food trucks a e-commerce nacional. 12 anos.",
+    "Comecei dando molho de graça. Hoje sou jurado nacional.",
+    "1 receita caseira virou 11 produtos. Sem investidor.",
+    "O molho que meu avô dava de brinde agora vende pra todo o Brasil.",
+  ],
+  bastidores: [
+    "Tá vendo essa balança? Ela salvou meu negócio.",
+    "Esse liquidificador queimou pela terceira vez. Acidez destrói tudo.",
+    "Isso aqui é o que ninguém mostra: 4h da manhã envasando molho.",
+    "Cada frasco passa por isso. Se não passar, não sai.",
+    "O cheiro dessa fábrica às 6 da manhã? Pimenta. Muito pimenta.",
+  ],
+  confissao: [
+    "Eu já vendi produto que sabia que não tava 100%. Nunca mais.",
+    "A verdade sobre produzir artesanal: é solitário.",
+    "Eu tinha vergonha de dizer quanto custava meu molho.",
+    "Meu maior erro não foi o frasco. Foi demorar 3 anos pra padronizar.",
+    "Ninguém te prepara pro dia em que roubam sua fábrica.",
+  ],
+};
+
+const CTAS = {
+  soft: [
+    "Concorda ou discorda? Comenta 👇",
+    "Manda pra alguém que precisa ouvir isso",
+    "Salva pra consultar depois",
+    "Já passou por isso? Conta aqui",
+    "Qual é a sua versão dessa história?",
+    "Se identificou? Salva e compartilha",
+    "Marca alguém que precisa ouvir",
+  ],
+  medium: [
+    "Aprofundo na newsletter — link na bio",
+    "Guia gratuito sobre isso — link na bio",
+    "DM com CHECKLIST pro checklist completo",
+    "Na mentoria aprofundo isso — DM com MENTORIA",
+    "Conto mais na newsletter dessa semana",
+  ],
+  hard: [
+    "Mentoria — vagas limitadas. Link na bio",
+    "Curso com inscrições abertas. Link na bio",
+    "DM com MENTORIA pra saber mais",
+  ],
+};
+
+const BRIDGES = {
+  P1: "Tem muito mais no ebook — link na bio",
+  P2: "12 anos de erros — newsletter toda semana",
+  P3: "No curso aprofundo com passo a passo",
+  P4: "Isso é o que ajudo a resolver na mentoria",
+  P5: "",
+};
+
+// PIECE BLUEPRINTS per tier
+const MEDIUM_BLUEPRINTS = [
+  { format: 'Carrossel 8-10 slides', platform: 'IG', templates: ['T1','T2','T3','T4','T5','T7','T9'] },
+  { format: 'Post LinkedIn longo', platform: 'LinkedIn', templates: ['T2','T4','T9','T7'] },
+  { format: 'Email/Newsletter', platform: 'Email', templates: ['T2','T3','T5','T9'] },
+  { format: 'Carrossel educativo', platform: 'IG', templates: ['T3','T5','T7'] },
+  { format: 'Reel 45s', platform: 'IG', templates: ['T2','T3','T5','T8','T9'] },
+  { format: 'Carrossel comparativo', platform: 'IG', templates: ['T4','T7','T1'] },
+  { format: 'Post LinkedIn curto', platform: 'LinkedIn', templates: ['T1','T4','T7','T6'] },
+];
+
+const MICRO_BLUEPRINTS = [
+  { format: 'Reel 15s (só hook)', platform: 'IG', templates: ['T4','T1','T6'] },
+  { format: 'Stories sequence 5-7', platform: 'IG', templates: ['T2','T8','T9'] },
+  { format: 'Quote graphic', platform: 'IG', templates: ['T1','T4','T9'] },
+  { format: 'Story enquete', platform: 'IG', templates: ['T4','T6','T7'] },
+  { format: 'Post feed frase', platform: 'IG', templates: ['T1','T4','T9'] },
+  { format: 'Reel 30s trecho', platform: 'IG', templates: ['T2','T3','T5','T8'] },
+  { format: 'Story caixa de perguntas', platform: 'IG', templates: ['T6','T7','T3'] },
+  { format: 'Carrossel mini 5 slides', platform: 'IG', templates: ['T3','T5','T7'] },
+  { format: 'Post LinkedIn quote', platform: 'LinkedIn', templates: ['T1','T4','T9'] },
+  { format: 'Reel bastidores', platform: 'IG', templates: ['T8','T3'] },
+  { format: 'Story "Sabia que..."', platform: 'IG', templates: ['T7','T4'] },
+  { format: 'Repost/remix trending', platform: 'IG', templates: ['T1','T4','T6'] },
+];
+
+// ===== STATE =====
+let selectedPilar = null;
+let generatedPieces = [];
+
+// ===== INIT =====
+function initPillarGrid() {
+  const grid = document.getElementById('pilarGrid');
+  grid.innerHTML = PILARES.map(p => `
+    <div class="pillar-option" data-pilar="${p.id}" onclick="selectPilar('${p.id}')">
+      <div class="pillar-id">${p.id}</div>
+      <div class="pillar-name">${p.nome}</div>
+    </div>
+  `).join('');
+}
+
+function selectPilar(id) {
+  selectedPilar = PILARES.find(p => p.id === id);
+  document.querySelectorAll('.pillar-option').forEach(el => {
+    el.classList.toggle('selected', el.dataset.pilar === id);
+  });
+}
+
+// ===== HELPERS =====
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function pickUnique(arr, used) {
+  const available = arr.filter((_, i) => !used.has(i));
+  if (available.length === 0) { used.clear(); return pick(arr); }
+  const item = pick(available);
+  used.add(arr.indexOf(item));
+  return item;
+}
+
+function extractKeyPhrases(text) {
+  if (!text) return [];
+  const sentences = text.split(/[.!?\n]+/).filter(s => s.trim().length > 15);
+  return sentences.slice(0, 8).map(s => s.trim());
+}
+
+function generateCaption(template, hook, pillarText, keyPhrases, format) {
+  const T = TEMPLATES[template];
+  const phrase = keyPhrases.length > 0 ? pick(keyPhrases) : '';
+
+  const structures = {
+    T1: `${hook}\n\n${phrase ? phrase + '.' : ''}\n\nIsso não é opinião. É o que 12 anos produzindo me ensinaram.\n\nProduto artesanal não é hobby.\nÉ negócio.\nÉ legado.\nÉ posicionamento.\n\nQuem entende, cobra o que vale.`,
+    T2: `${hook}\n\n${phrase ? phrase : 'A história é simples — mas a lição mudou minha forma de produzir.'}\n\nO que aprendi: resultado não vem de receita secreta. Vem de consistência, padrão e coragem de cobrar o que vale.\n\nToda história tem uma lição. Essa é a minha.`,
+    T3: `${hook}\n\n${phrase ? phrase : 'Aconteceu comigo. E se você produz artesanal, pode acontecer com você.'}\n\nO erro: confiar no "olhômetro" em vez de medir.\nA causa: pressa + falta de processo.\nO aprendizado: padronizar ANTES de escalar.\n\nHoje meço tudo. Cada lote. Sem exceção.`,
+    T4: `${hook}\n\n${phrase ? 'A verdade é: ' + phrase.toLowerCase() : 'Todo mundo repete isso. Mas quem produz de verdade sabe que não funciona assim.'}\n\nO que ninguém te conta é que a crença popular destrói mais negócios artesanais do que a concorrência.\n\nPensa diferente? Comenta aqui.`,
+    T5: `${hook}\n\nPasso 1: Parei de fazer "no olho" e padronizei cada receita.\nPasso 2: Calculei o custo REAL (incluindo meu tempo).\nPasso 3: Ajustei o preço sem pedir desculpa.\n\n${phrase ? phrase : 'Resultado: margem dobrou em 3 meses.'}\n\nSimples? Sim. Fácil? Não. Mas funciona.`,
+    T6: `${hook}\n\n${phrase ? phrase : 'Essa semana, faça uma coisa diferente.'}\n\nNão precisa ser perfeito.\nPrecisa ser feito.\n\nQuem aceita o desafio? Comenta "EU" 👇`,
+    T7: `${hook}\n\n${phrase ? phrase : 'Números não mentem. E esses mudaram meu negócio.'}\n\n1. Padronização salvou 30% de perda por lote\n2. Precificação correta triplicou a margem\n3. Comunicação clara dobrou as vendas\n\nQual desses você ainda não fez?`,
+    T8: `${hook}\n\n${phrase ? phrase : 'Isso é o que acontece por trás de cada frasco.'}\n\nO cheiro da pimenta de manhã cedo.\nO barulho do liquidificador.\nA textura que precisa estar exata.\n\nNinguém vê esse processo. Mas é ele que faz o produto ser o que é.`,
+    T9: `${hook}\n\n${phrase ? phrase : 'Eu não tenho orgulho de tudo que fiz. Mas aprendi com cada erro.'}\n\nA virada veio quando parei de esconder os erros e comecei a documentar.\n\nHoje cada erro virou processo. Cada processo virou padrão. Cada padrão virou qualidade.\n\nVulnerabilidade não é fraqueza. É o começo da evolução.`,
+    T10: `${hook}\n\n${phrase ? phrase : 'O resultado fala por si.'}\n\nDe produção caseira a marca nacional.\nDe "no olho" a processo industrial artesanal.\nDe vergonha de cobrar a preço premium.\n\n12 anos de erros, acertos e muito molho de pimenta.`,
+  };
+
+  return structures[template] || `${hook}\n\n${phrase || 'Conteúdo do produtor artesanal.'}\n\n#artesanal #produtor #chilliepig`;
+}
+
+// ===== MULTIPLY =====
+function multiply() {
+  if (!selectedPilar) {
+    alert('Selecione um pilar de conteúdo primeiro.');
+    return;
+  }
+
+  const title = document.getElementById('pillarTitle').value.trim();
+  const text = document.getElementById('pillarText').value.trim();
+  const story = document.getElementById('sourceStory').value;
+  const format = document.getElementById('pillarFormat').value;
+  const countMode = document.getElementById('pieceCount').value;
+
+  if (!title) {
+    alert('Preencha o título do Pillar.');
+    return;
+  }
+
+  const keyPhrases = extractKeyPhrases(text);
+  const hookCats = selectedPilar.hookCats;
+  const usedHooks = new Set();
+
+  const mediumCount = countMode === 'compact' ? 3 : countMode === 'standard' ? 5 : 7;
+  const microCount = countMode === 'compact' ? 5 : countMode === 'standard' ? 9 : 12;
+
+  generatedPieces = [];
+
+  // PILLAR piece
+  const pillarHookCat = pick(hookCats);
+  const pillarHook = pickUnique(HOOKS[pillarHookCat], usedHooks);
+  generatedPieces.push({
+    tier: 'pillar',
+    title: title,
+    format: format === 'reel90' ? 'Reel 90s' : format === 'reel60' ? 'Reel 60s' : format === 'carrossel' ? 'Carrossel 10 slides' : format === 'feed' ? 'Post feed longo' : 'Live/Vídeo',
+    platform: 'IG',
+    template: null,
+    hookCat: pillarHookCat,
+    hook: pillarHook,
+    caption: text || `${pillarHook}\n\n[Conteúdo completo do Pillar — narrativa principal]`,
+    cta: { type: 'soft', text: pick(CTAS.soft) },
+  });
+
+  // MEDIUM pieces
+  const usedMedium = new Set();
+  for (let i = 0; i < mediumCount; i++) {
+    const bp = pickUnique(MEDIUM_BLUEPRINTS, usedMedium);
+    const templateId = pick(bp.templates.filter(t => TEMPLATES[t].pilares.some(p => p === selectedPilar.id || ['P3','P4'].includes(p)))) || pick(bp.templates);
+    const hCat = pick(hookCats);
+    const hook = pickUnique(HOOKS[hCat], usedHooks);
+
+    const ctaRoll = Math.random();
+    const ctaType = ctaRoll < 0.15 ? 'medium' : 'soft';
+    const cta = pick(CTAS[ctaType]);
+
+    const caption = generateCaption(templateId, hook, text, keyPhrases, bp.format);
+
+    generatedPieces.push({
+      tier: 'medium',
+      title: `M${i+1}: ${TEMPLATES[templateId].nome} — ${bp.format}`,
+      format: bp.format,
+      platform: bp.platform,
+      template: templateId,
+      hookCat: hCat,
+      hook,
+      caption,
+      cta: { type: ctaType, text: cta },
+    });
+  }
+
+  // MICRO pieces
+  const usedMicro = new Set();
+  for (let i = 0; i < microCount; i++) {
+    const bp = pickUnique(MICRO_BLUEPRINTS, usedMicro);
+    const templateId = pick(bp.templates);
+    const hCat = pick(hookCats);
+    const hook = pickUnique(HOOKS[hCat], usedHooks);
+
+    const ctaType = 'soft';
+    const cta = pick(CTAS.soft);
+
+    // Micro captions are shorter
+    const phrase = keyPhrases.length > 0 ? pick(keyPhrases) : '';
+    let caption;
+    if (bp.format.includes('Reel 15s') || bp.format.includes('Quote') || bp.format.includes('frase')) {
+      caption = hook;
+    } else if (bp.format.includes('enquete') || bp.format.includes('perguntas')) {
+      caption = `${hook}\n\nSim ou Não?\nConcorda ou Discorda?\n\n[Usar sticker de enquete/perguntas]`;
+    } else if (bp.format.includes('Stories')) {
+      caption = `Slide 1: ${hook}\nSlide 2: ${phrase || 'Contexto da história'}\nSlide 3: A virada\nSlide 4: O aprendizado\nSlide 5: CTA — ${cta}`;
+    } else if (bp.format.includes('bastidores')) {
+      caption = `${hook}\n\n[Mostrar processo real — gravação no local]\n\n${phrase || 'O que ninguém vê por trás do produto.'}`;
+    } else {
+      caption = `${hook}\n\n${phrase || 'Conteúdo derivado do Pillar.'}\n\n${cta}`;
+    }
+
+    generatedPieces.push({
+      tier: 'micro',
+      title: `m${i+1}: ${bp.format}`,
+      format: bp.format,
+      platform: bp.platform,
+      template: templateId,
+      hookCat: hCat,
+      hook,
+      caption,
+      cta: { type: ctaType, text: cta },
+    });
+  }
+
+  renderOutput();
+}
+
+// ===== RENDER =====
+function renderOutput() {
+  const pillarPieces = generatedPieces.filter(p => p.tier === 'pillar');
+  const mediumPieces = generatedPieces.filter(p => p.tier === 'medium');
+  const microPieces = generatedPieces.filter(p => p.tier === 'micro');
+
+  // Stats
+  document.getElementById('statsBar').innerHTML = `
+    <div class="stat-card"><div class="stat-value" style="color: var(--gold);">${generatedPieces.length}</div><div class="stat-label">Total Peças</div></div>
+    <div class="stat-card"><div class="stat-value stat-pillar">${pillarPieces.length}</div><div class="stat-label">Pillar</div></div>
+    <div class="stat-card"><div class="stat-value stat-medium">${mediumPieces.length}</div><div class="stat-label">Medium</div></div>
+    <div class="stat-card"><div class="stat-value stat-micro">${microPieces.length}</div><div class="stat-label">Micro</div></div>
+    <div class="stat-card"><div class="stat-value" style="color: var(--gold);">${selectedPilar.id}</div><div class="stat-label">${selectedPilar.nome.split(' ')[0]}</div></div>
+  `;
+
+  // Tiers
+  renderTier('tierPillar', 'Pillar', 'pillar', pillarPieces);
+  renderTier('tierMedium', `Medium (${mediumPieces.length} peças)`, 'medium', mediumPieces);
+  renderTier('tierMicro', `Micro (${microPieces.length} peças)`, 'micro', microPieces);
+
+  // Show
+  document.getElementById('outputSection').classList.add('visible');
+  document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+}
+
+function renderTier(containerId, title, tierClass, pieces) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = `
+    <div class="tier-header">
+      <div class="tier-dot ${tierClass}"></div>
+      <h3>${title}</h3>
+    </div>
+    <div class="content-cards">
+      ${pieces.map((p, i) => renderCard(p, i)).join('')}
+    </div>
+  `;
+}
+
+function renderCard(piece, index) {
+  const ctaClass = piece.cta.type === 'soft' ? 'tag-cta-soft' :
+                   piece.cta.type === 'medium' ? 'tag-cta-medium' : 'tag-cta-hard';
+  const tierClass = piece.tier === 'pillar' ? 'tag-tier-pillar' :
+                    piece.tier === 'medium' ? 'tag-tier-medium' : 'tag-tier-micro';
+
+  return `
+    <div class="content-card">
+      <div class="card-top">
+        <span class="tag ${tierClass}">${piece.tier.toUpperCase()}</span>
+        <span class="tag tag-platform">${piece.platform}</span>
+        <span class="tag tag-format">${piece.format}</span>
+        ${piece.template ? `<span class="tag tag-template">${TEMPLATES[piece.template].nome}</span>` : ''}
+        <span class="tag tag-hook-cat">${piece.hookCat}</span>
+        <span class="tag ${ctaClass}">CTA ${piece.cta.type}</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${piece.title}</div>
+        <div class="card-hook">"${piece.hook}"</div>
+        <div class="card-text">${escapeHtml(piece.caption)}</div>
+        <div class="card-cta">
+          <strong>CTA:</strong> ${piece.cta.text}
+          ${BRIDGES[selectedPilar.id] && piece.cta.type === 'medium' ? `<br><strong>Ponte:</strong> ${BRIDGES[selectedPilar.id]}` : ''}
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-outline btn-sm" onclick="copyCard(${index})">Copiar</button>
+      </div>
+    </div>
+  `;
+}
+
+function escapeHtml(text) {
+  return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+}
+
+// ===== COPY/EXPORT =====
+function copyCard(index) {
+  const p = generatedPieces[index];
+  const text = `${p.title}\n\n${p.caption}\n\nCTA: ${p.cta.text}`;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    const orig = btn.textContent;
+    btn.textContent = 'Copiado!';
+    setTimeout(() => btn.textContent = orig, 1500);
+  });
+}
+
+function exportAll() {
+  let md = `# Multiplicação: ${document.getElementById('pillarTitle').value}\n\n`;
+  md += `**Pilar:** ${selectedPilar.id} — ${selectedPilar.nome}\n`;
+  md += `**Total:** ${generatedPieces.length} peças (1 Pillar + ${generatedPieces.filter(p=>p.tier==='medium').length} Medium + ${generatedPieces.filter(p=>p.tier==='micro').length} Micro)\n\n---\n\n`;
+
+  ['pillar', 'medium', 'micro'].forEach(tier => {
+    const pieces = generatedPieces.filter(p => p.tier === tier);
+    md += `## ${tier.toUpperCase()} (${pieces.length})\n\n`;
+    pieces.forEach(p => {
+      md += `### ${p.title}\n`;
+      md += `- **Plataforma:** ${p.platform} | **Formato:** ${p.format}\n`;
+      if (p.template) md += `- **Template:** ${TEMPLATES[p.template].nome}\n`;
+      md += `- **Hook (${p.hookCat}):** "${p.hook}"\n`;
+      md += `- **CTA (${p.cta.type}):** ${p.cta.text}\n\n`;
+      md += `${p.caption}\n\n---\n\n`;
+    });
+  });
+
+  const blob = new Blob([md], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `multiplicacao-${document.getElementById('pillarTitle').value.substring(0,30).replace(/\s+/g,'-').toLowerCase()}.md`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function copyAll() {
+  let text = `MULTIPLICAÇÃO: ${document.getElementById('pillarTitle').value}\n`;
+  text += `${selectedPilar.id} — ${selectedPilar.nome}\n`;
+  text += `${generatedPieces.length} peças\n\n`;
+
+  generatedPieces.forEach(p => {
+    text += `═══ ${p.title} ═══\n`;
+    text += `${p.platform} | ${p.format} | ${p.template ? TEMPLATES[p.template].nome : 'Pillar'} | CTA ${p.cta.type}\n\n`;
+    text += `Hook: "${p.hook}"\n\n`;
+    text += `${p.caption}\n\n`;
+    text += `CTA: ${p.cta.text}\n\n`;
+    text += `─────────────────\n\n`;
+  });
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    const orig = btn.textContent;
+    btn.textContent = 'Copiado!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+
+// ===== EXAMPLE =====
+function fillExampleInput() {
+  selectPilar('P2');
+  document.getElementById('pillarTitle').value = 'O Isopor do Avô — de salgado na rua a e-commerce nacional';
+  document.getElementById('pillarText').value = `Meu avô saía todo dia com um isopor no ombro.
+
+Dentro: salgado caseiro.
+Do lado: um potinho de molho de pimenta que ele fazia em casa.
+
+As pessoas compravam o salgado — e voltavam pelo molho.
+
+Ele nunca percebeu. Nunca monetizou. Nunca documentou a receita.
+
+Quando ele morreu, fui atrás do molho. Ninguém tinha a receita. Ninguém tinha anotado nada.
+
+Reconstruí de memória. Testei, errei, ajustei. Levei 3 anos.
+
+Hoje esse molho é o carro-chefe da Chillie Pig.
+11 produtos. E-commerce nacional. Jurado de concursos.
+
+Tudo começou com um isopor. E uma receita que quase morreu.
+
+A lição: documente. Padronize. Não deixe seu legado depender da memória de alguém.`;
+  document.getElementById('sourceStory').value = 'isopor';
+  document.getElementById('pillarFormat').value = 'reel90';
+  document.getElementById('pieceCount').value = 'standard';
+}
+
+// Init
+initPillarGrid();
+</script>
+
+</body>
+</html>
