@@ -1356,7 +1356,7 @@
       <div class="nav-urgency">
         <span class="nav-urgency-badge">🔥 OFERTA DE LANÇAMENTO</span>
         <span class="nav-urgency-text">De R$148 por apenas R$47. Acaba em</span>
-        <span class="nav-countdown-timer" data-countdown>48:00:00</span>
+        <span class="nav-countdown-timer" data-countdown>00:15:00</span>
       </div>
       <a href="https://pay.hotmart.com/D105263783H?checkoutMode=10" class="nav-cta" target="_blank" rel="noopener noreferrer">Quero Meu Guia</a>
     </nav>
@@ -1665,7 +1665,7 @@
         <div class="countdown-bar" id="countdownOferta">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span class="countdown-text">Preço de lançamento volta pra <strong>R$148</strong> em</span>
-          <span class="countdown-digits" data-countdown>48:00:00</span>
+          <span class="countdown-digits" data-countdown>00:15:00</span>
         </div>
         <div class="value-total-original" style="color:#8A7A68">R$ 148</div>
         <div class="value-total-price" style="font-family:var(--heading-font);font-size:3.5rem;font-weight:800;color:#B5563A;margin-bottom:8px">R$ 47</div>
@@ -1688,7 +1688,7 @@
         <div class="countdown-bar" id="countdownCta">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span class="countdown-text">Volta pra <strong>R$148</strong> em</span>
-          <span class="countdown-digits" data-countdown>48:00:00</span>
+          <span class="countdown-digits" data-countdown>00:15:00</span>
         </div>
         <div class="cta-price">R$ 47</div>
         <a href="https://pay.hotmart.com/D105263783H?checkoutMode=10" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
@@ -1812,10 +1812,10 @@
     // COUNTDOWN — Evergreen 48h per visitor
     (() => {
       const KEY = 'aa_countdown_end';
-      const HOURS = 48;
+      const MINUTES = 15;
       let end = localStorage.getItem(KEY);
       if (!end) {
-        end = Date.now() + HOURS * 60 * 60 * 1000;
+        end = Date.now() + MINUTES * 60 * 1000;
         localStorage.setItem(KEY, end);
       }
       end = parseInt(end, 10);
