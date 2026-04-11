@@ -1,0 +1,37 @@
+{
+  "product": "Dra. Giovana Stipp — Hematologia Veterinária",
+  "offer": "Cursos, Mentoria e Conteúdo Especializado",
+  "tone": "authority, warmth, scientific precision, trust, approachable expertise",
+  "context": "course",
+  "palette": "warm",
+  "subject_description": "a Brazilian woman in her early 30s with: (1) long wavy auburn-red hair falling past her shoulders, (2) cat-eye semi-transparent glasses with tortoiseshell pattern on the temples, (3) fair skin with light freckles, (4) hazel-green eyes, (5) medium build, (6) dark burgundy/wine-colored linen blouse with a small tattoo visible on her left forearm, (7) subtle warm smile, friendly and intelligent expression",
+  "symbols": [
+    {
+      "object": "microscope silhouette",
+      "meaning": "laboratory science, diagnostic precision",
+      "style": "large, semi-transparent, warm blush tones, floating right side"
+    },
+    {
+      "object": "blood cell / erythrocyte cross-section",
+      "meaning": "hematology, hemogram mastery",
+      "style": "small, elegant, bordeaux-tinted, subtle midground"
+    }
+  ],
+  "layers": {
+    "background": "deep dark navy-to-black gradient (#0A0F1A) with very subtle warm burgundy (#9B2335) vignette on the right edge, minimal and clean",
+    "midground": "auto",
+    "foreground": "warm blush-rose rim light on her right side, soft key light from left, cinematic depth of field"
+  },
+  "seed": 42,
+  "model": "gemini-3.1-flash-image-preview",
+  "api_params": {
+    "seed": 42
+  },
+  "targets": {
+    "desktop": {
+      "aspect_ratio": "16:9",
+      "prompt": "IDENTITY LOCK — CRITICAL, HIGHEST PRIORITY: The subject is a Brazilian woman in her early 30s with: (1) long wavy auburn-red hair falling past her shoulders, (2) cat-eye semi-transparent glasses with tortoiseshell pattern on the temples, (3) fair skin with light freckles, (4) hazel-green eyes, (5) medium build, (6) dark burgundy/wine-colored linen blouse with a small tattoo visible on her left forearm, (7) subtle warm smile, friendly and intelligent expression. You MUST preserve the subject's EXACT facial features, bone structure, beard pattern, hair texture, skin tone, body proportions, and clothing from the reference photo. DO NOT alter, improve, idealize, or stylize any facial feature. Camera: medium shot (waist-up), 85mm f/1.8 equivalent, subject looking directly at camera with a confident, approachable expression. Sharp focus on face and eyes.\n\nCOMPOSITION LAYERS: BACKGROUND — deep dark navy-to-black gradient (#0A0F1A) with very subtle warm burgundy (#9B2335) vignette on the right edge, minimal and clean. MIDGROUND — a large microscope silhouette (large, semi-transparent, warm blush tones, floating right side) as the dominant midground element, a smaller blood cell / erythrocyte cross-section (small, elegant, bordeaux-tinted, subtle midground) as secondary element. FOREGROUND — warm blush-rose rim light on her right side, soft key light from left, cinematic depth of field.\n\nLAYOUT: The person is positioned on the RIGHT side of the frame, occupying approximately 40-45% of the image width. The LEFT 50-55% of the image MUST be a clean, visually rich but TEXT-FRIENDLY area — use a subtle gradient from #2c1810 to #4a2c17 with conceptual elements that create depth WITHOUT competing with text overlays.\n\nThis is a hero image for a sales page selling: Dra. Giovana Stipp — Hematologia Veterinária. Offer: Cursos, Mentoria e Conteúdo Especializado. The mood and tone must convey: authority, warmth, scientific precision, trust, approachable expertise. STYLE: High-end advertising photography, cinematic color grading, shallow depth of field on background elements. Dramatic rim lighting separating the person from the background. Color accents in #f4a261. Ultra-sharp, magazine-quality resolution. The image should look like it was produced by a top-tier graphic design agency. ABSOLUTELY NO text, NO logos, NO watermarks, NO typography anywhere in the image.",
+      "negative_prompt": "blurry, low quality, distorted face, extra limbs, deformed hands, text, watermark, logo, signature, overexposed, underexposed, flat lighting, stock photo look, clipart, cartoon, illustration, painting, centered composition, symmetrical layout, wrong facial features, altered beard, different clothing than described, changed hair style, modified body proportions, added accessories not described"
+    }
+  }
+}

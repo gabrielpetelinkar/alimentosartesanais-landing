@@ -1,0 +1,21 @@
+{
+  "product": "Dra. Giovana Stipp — Hematologia Veterinária",
+  "offer": "Cursos, Mentoria e Conteúdo Especializado",
+  "tone": "authority, warmth, scientific precision, trust, approachable expertise",
+  "subject_photo": "/Users/gabrielpetelinkar/AIOSORIZA/outputs/hero-giovana-stipp/giovana-foto2-0-0.png",
+  "subject_description": "a Brazilian woman in her early 30s with: (1) long wavy auburn-red hair falling past her shoulders, (2) cat-eye semi-transparent glasses with tortoiseshell pattern on the temples, (3) fair skin with light freckles, (4) hazel-green eyes, (5) medium build, (6) dark burgundy/wine-colored linen blouse with a small tattoo visible on her left forearm, (7) subtle warm smile, friendly and intelligent expression",
+  "symbols": [
+    {"object": "microscope silhouette", "meaning": "laboratory science, diagnostic precision", "style": "large, semi-transparent, warm blush tones, floating right side"},
+    {"object": "blood cell / erythrocyte cross-section", "meaning": "hematology, hemogram mastery", "style": "small, elegant, bordeaux-tinted, subtle midground"}
+  ],
+  "layers": {
+    "background": "deep dark navy-to-black gradient (#0A0F1A) with very subtle warm burgundy (#9B2335) vignette on the right edge, minimal and clean",
+    "midground": "auto",
+    "foreground": "warm blush-rose rim light on her right side, soft key light from left, cinematic depth of field"
+  },
+  "context": "course",
+  "palette": "warm",
+  "seed": 42,
+  "sizes": ["desktop"],
+  "output_dir": "/Users/gabrielpetelinkar/AIOSORIZA/outputs/hero-giovana-stipp/hero-output"
+}
