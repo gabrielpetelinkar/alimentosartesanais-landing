@@ -3220,72 +3220,78 @@ var CHAPTERS = [
   icon: '#i-heart',
   content: `
 <style>
-  .plac-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
-  .plac-tab { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border-light); background: transparent; cursor: pointer; font-size: 13px; color: var(--text-secondary); transition: all .18s; font-family: inherit; }
-  .plac-tab:hover { background: var(--bg-card-alt); }
-  .plac-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
-  .plac-panel { display: none; }
-  .plac-panel.active { display: block; }
-  .plac-hint { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
-  .plac-sp-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
-  .plac-sp-tab { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border-light); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; }
-  .plac-sp-tab:hover { background: var(--bg-card-alt); }
-  .plac-sp-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
-  .plac-sp-panel { display: none; }
-  .plac-sp-panel.active { display: block; }
-  .plac-vis-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
-  .plac-vis-card { border-radius: var(--radius-sm); border: 1px solid var(--border-card); overflow: hidden; background: var(--bg-card); }
-  .plac-vis-label { font-size: 11px; font-weight: 600; color: var(--text-secondary); padding: 6px 10px; background: var(--bg-card-alt); border-bottom: 1px solid var(--border-light); text-transform: uppercase; letter-spacing: .05em; }
-  .plac-vis-svg { width: 100%; height: 160px; display: block; }
-  .plac-vis-placeholder { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--text-muted); padding: 12px; text-align: center; background: var(--bg-card-alt); }
-  .plac-sp-detail { border-radius: var(--radius-sm); border: 1px solid var(--border-card); padding: 12px 16px; background: var(--bg-card); }
-  .plac-sp-row { display: flex; gap: 8px; margin-bottom: 7px; font-size: 12px; }
-  .plac-sp-key { color: var(--text-secondary); min-width: 140px; flex-shrink: 0; font-weight: 600; }
-  .plac-sp-val { color: var(--text-primary); line-height: 1.5; }
-  .plac-hist-info { padding: 12px; font-size: 12px; color: var(--text-primary); line-height: 1.6; }
-  .plac-hist-title { font-weight: 600; margin-bottom: 8px; }
-  .plac-hist-note { padding: 8px; background: var(--bg-card-alt); border-radius: 6px; font-size: 11px; margin-top: 8px; color: var(--text-secondary); }
-  .plac-memo { margin-top: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-card); padding: 12px 16px; background: var(--bg-card-alt); }
-  .plac-memo-label { font-size: 10.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
-  .plac-memo-text { font-size: 13px; font-family: "SF Mono","Fira Code","Consolas",monospace; line-height: 1.8; color: var(--text-primary); }
-  .plac-arr { color: var(--text-muted); margin: 0 1px; }
-  .plac-anx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-  .plac-anx-card { border-radius: var(--radius-sm); border: 1px solid var(--border-card); padding: 12px 14px; background: var(--bg-card); cursor: pointer; transition: border-color .15s, background .15s; }
-  .plac-anx-card:hover { border-color: var(--border-light); background: var(--bg-card-alt); }
-  .plac-anx-title { font-weight: 600; font-size: 13px; margin-bottom: 2px; color: var(--text-primary); }
-  .plac-anx-sub { font-size: 11px; color: var(--text-secondary); line-height: 1.3; }
-  .plac-info-panel { background: var(--bg-card-alt); border-radius: var(--radius-sm); border: 1px solid var(--border-card); padding: 12px 16px; margin-top: 8px; font-size: 13px; line-height: 1.65; min-height: 56px; color: var(--text-primary); }
-  .plac-info-panel.empty { color: var(--text-muted); font-style: italic; }
-  .plac-hl { background: var(--amber-100); border-radius: 3px; padding: 1px 4px; font-weight: 600; color: var(--amber-700); }
-  .plac-cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  .plac-cmp-table th { padding: 7px 10px; border-bottom: 2px solid var(--border-light); font-weight: 600; color: var(--text-secondary); font-size: 11px; text-align: left; background: var(--bg-card-alt); }
-  .plac-cmp-table td { padding: 6px 10px; border-bottom: 1px solid var(--border-light); color: var(--text-primary); vertical-align: top; }
-  .plac-cmp-table tr:nth-child(even) td { background: var(--bg-card-alt); }
-  @media (max-width: 500px) { .plac-vis-row, .plac-anx-grid { grid-template-columns: 1fr; } }
+  .plac2-section-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+  .plac2-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .plac2-tab { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border-light); background: transparent; cursor: pointer; font-size: 13px; color: var(--text-secondary); transition: all .18s; font-family: inherit; }
+  .plac2-tab:hover { background: var(--bg-hover); }
+  .plac2-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .plac2-panel { display: none; }
+  .plac2-panel.active { display: block; }
+  .plac2-hint { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+  .plac2-sp-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .plac2-sp-tab { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border-light); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; }
+  .plac2-sp-tab:hover { background: var(--bg-hover); }
+  .plac2-sp-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .plac2-sp-panel { display: none; }
+  .plac2-sp-panel.active { display: block; }
+  .plac2-vis-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .plac2-vis-card { border-radius: 8px; border: 1px solid var(--border-card); overflow: hidden; background: var(--bg-card); }
+  .plac2-vis-label { font-size: 11px; font-weight: 600; color: var(--text-secondary); padding: 6px 10px; background: var(--bg-hover); border-bottom: 1px solid var(--border-card); text-transform: uppercase; letter-spacing: .05em; }
+  .plac2-vis-img { width: 100%; height: 160px; object-fit: cover; display: block; }
+  .plac2-vis-svg { width: 100%; height: 160px; display: block; }
+  .plac2-vis-placeholder { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--text-muted); padding: 12px; text-align: center; background: var(--bg-hover); }
+  .plac2-sp-detail { border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 16px; background: var(--bg-card); }
+  .plac2-sp-row { display: flex; gap: 8px; margin-bottom: 7px; font-size: 12px; }
+  .plac2-sp-key { color: var(--text-secondary); min-width: 140px; flex-shrink: 0; font-weight: 600; }
+  .plac2-sp-val { color: var(--text-primary); line-height: 1.5; }
+  .plac2-badge { display: inline-block; font-size: 10.5px; padding: 1px 7px; border-radius: 10px; font-weight: 600; margin-left: 4px; vertical-align: middle; }
+  .plac2-bwarn { background: #fef3db; color: #633806; }
+  .plac2-binfo { background: var(--blue-100); color: var(--blue-700); }
+  .plac2-hist-info { padding: 12px; font-size: 12px; color: var(--text-primary); line-height: 1.6; }
+  .plac2-hist-info .plac2-title { font-weight: 600; margin-bottom: 8px; }
+  .plac2-hist-info .plac2-note { padding: 8px; background: var(--bg-hover); border-radius: 6px; font-size: 11px; margin-top: 8px; }
+  .plac2-memo { margin-top: 14px; border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 16px; background: var(--bg-hover); }
+  .plac2-memo-label { font-size: 10.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+  .plac2-memo-text { font-size: 13px; font-family: "SF Mono","Fira Code","Consolas",monospace; line-height: 1.8; color: var(--text-primary); }
+  .plac2-arr { color: var(--text-muted); margin: 0 1px; }
+  .plac2-anx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+  .plac2-anx-card { border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 14px; background: var(--bg-card); cursor: pointer; transition: border-color .15s, background .15s; }
+  .plac2-anx-card:hover { border-color: var(--border-light); background: var(--bg-hover); }
+  .plac2-anx-title { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+  .plac2-anx-sub { font-size: 11px; color: var(--text-secondary); line-height: 1.3; }
+  .plac2-info-panel { background: var(--bg-hover); border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 16px; margin-top: 8px; font-size: 13px; line-height: 1.65; min-height: 56px; color: var(--text-primary); }
+  .plac2-info-panel.empty { color: var(--text-muted); font-style: italic; }
+  .plac2-hl { background: #fef3db; border-radius: 3px; padding: 1px 4px; font-weight: 600; }
+  .plac2-cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .plac2-cmp-table th { padding: 7px 10px; border-bottom: 2px solid var(--border-card); font-weight: 600; color: var(--text-secondary); font-size: 11px; text-align: left; background: var(--bg-hover); }
+  .plac2-cmp-table td { padding: 6px 10px; border-bottom: 1px solid var(--border-card); color: var(--text-primary); vertical-align: top; }
+  .plac2-cmp-table tr:nth-child(even) td { background: var(--bg-hover); }
+  @media (max-width: 500px) { .plac2-vis-row, .plac2-anx-grid { grid-template-columns: 1fr; } }
 </style>
 
-<div class="plac-tabs">
-  <button class="plac-tab active" onclick="placSetTab('anatomica',this)">Classificação anatômica</button>
-  <button class="plac-tab" onclick="placSetTab('histologica',this)">Classificação histológica</button>
-  <button class="plac-tab" onclick="placSetTab('resumo',this)">Resumo por espécie</button>
-  <button class="plac-tab" onclick="placSetTab('anexos',this)">Anexos fetais</button>
+<div class="plac2-tabs">
+  <button class="plac2-tab active" onclick="plac2SetTab('anatomica',this)">Classificação anatômica</button>
+  <button class="plac2-tab" onclick="plac2SetTab('histologica',this)">Classificação histológica</button>
+  <button class="plac2-tab" onclick="plac2SetTab('resumo',this)">Resumo por espécie</button>
+  <button class="plac2-tab" onclick="plac2SetTab('anexos',this)">Anexos fetais</button>
+  <button class="plac2-tab" onclick="plac2SetTab('bovequi',this)">Bovino vs. Equino</button>
 </div>
 
 <!-- ANATÔMICA -->
-<div class="plac-panel active" id="plac-panel-anatomica">
-  <p class="plac-hint">Selecione o tipo para ver esquema e detalhes</p>
-  <div class="plac-sp-tabs">
-    <button class="plac-sp-tab active" onclick="placSetType('difusa',this)">Difusa</button>
-    <button class="plac-sp-tab" onclick="placSetType('cotiled',this)">Cotiledonária</button>
-    <button class="plac-sp-tab" onclick="placSetType('zonaria',this)">Zonária</button>
-    <button class="plac-sp-tab" onclick="placSetType('discoidal',this)">Discoidal</button>
+<div class="plac2-panel active" id="plac2-panel-anatomica">
+  <p class="plac2-hint">Selecione o tipo para ver esquema, foto e detalhes</p>
+  <div class="plac2-sp-tabs">
+    <button class="plac2-sp-tab active" onclick="plac2SetType('difusa',this)">Difusa</button>
+    <button class="plac2-sp-tab" onclick="plac2SetType('cotiled',this)">Cotiledonária</button>
+    <button class="plac2-sp-tab" onclick="plac2SetType('zonaria',this)">Zonária</button>
+    <button class="plac2-sp-tab" onclick="plac2SetType('discoidal',this)">Discoidal</button>
   </div>
 
-  <div class="plac-sp-panel active" id="plac-type-difusa">
-    <div class="plac-vis-row">
-      <div class="plac-vis-card">
-        <div class="plac-vis-label">Esquema — placenta difusa</div>
-        <svg class="plac-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <div class="plac2-sp-panel active" id="plac2-type-difusa">
+    <div class="plac2-vis-row">
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Esquema — placenta difusa</div>
+        <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="150" cy="80" rx="110" ry="62" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1"/>
           <ellipse cx="150" cy="80" rx="75" ry="42" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
           <text x="150" y="74" text-anchor="middle" font-size="11" fill="#085041" font-family="sans-serif" font-weight="500">Córion</text>
@@ -3293,24 +3299,25 @@ var CHAPTERS = [
           <text x="150" y="140" text-anchor="middle" font-size="10" fill="#5a5a56" font-family="sans-serif">Égua · Porca · Jumenta</text>
         </svg>
       </div>
-      <div class="plac-vis-card">
-        <div class="plac-vis-placeholder">Superfície uniforme do córion da égua — microcotilédones distribuídos uniformemente, visíveis apenas à microscopia</div>
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Foto — placenta de égua</div>
+        <img class="plac2-vis-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Mare_placenta_microcotyledonary.jpg/640px-Mare_placenta_microcotyledonary.jpg" alt="Placenta difusa da égua" onerror="this.parentNode.innerHTML='<div class=\'plac2-vis-placeholder\'>Superfície uniforme do córion da égua — microcotilédones visíveis à inspeção cuidadosa</div>'">
       </div>
     </div>
-    <div class="plac-sp-detail">
-      <div class="plac-sp-row"><span class="plac-sp-key">Distribuição</span><span class="plac-sp-val">Vilosidades distribuídas por praticamente toda a superfície do córion — contato amplo e uniforme com o endométrio</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Espécies</span><span class="plac-sp-val">Égua (microcotiledonária difusa), Porca (difusa com pregas), Jumenta, Camela</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Égua — detalhe</span><span class="plac-sp-val">Tecnicamente <strong>microcotiledonária</strong>: as vilosidades formam microplacentomas invisíveis a olho nu, distribuídos uniformemente — por isso parece difusa macroscopicamente mas tem estrutura microscópica semelhante à cotiledonária</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Porca — detalhe</span><span class="plac-sp-val">Difusa com pregas (rugas) que aumentam a área de contato; presença de aréolas sobre as glândulas uterinas</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Aderência</span><span class="plac-sp-val">Adeciduada — separação suave ao parto, sem destruição endometrial</span></div>
+    <div class="plac2-sp-detail">
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Distribuição</span><span class="plac2-sp-val">Vilosidades distribuídas por praticamente toda a superfície do córion — contato amplo e uniforme com o endométrio</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Espécies</span><span class="plac2-sp-val">Égua (microcotiledonária difusa), Porca (difusa com pregas), Jumenta, Camela</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Égua — detalhe</span><span class="plac2-sp-val">Tecnicamente <strong>microcotiledonária</strong>: as vilosidades formam microplacentomas invisíveis a olho nu, distribuídos uniformemente — por isso parece difusa macroscopicamente mas tem estrutura microscópica semelhante à cotiledonária</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Porca — detalhe</span><span class="plac2-sp-val">Difusa com pregas (rugas) que aumentam a área de contato; presença de aréolas sobre as glândulas uterinas</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Aderência</span><span class="plac2-sp-val">Adeciduada — separação suave ao parto, sem destruição endometrial</span></div>
     </div>
   </div>
 
-  <div class="plac-sp-panel" id="plac-type-cotiled">
-    <div class="plac-vis-row">
-      <div class="plac-vis-card">
-        <div class="plac-vis-label">Esquema — placenta cotiledonária</div>
-        <svg class="plac-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <div class="plac2-sp-panel" id="plac2-type-cotiled">
+    <div class="plac2-vis-row">
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Esquema — placenta cotiledonária</div>
+        <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="150" cy="80" rx="110" ry="62" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1"/>
           <circle cx="90" cy="65" r="18" fill="#FAEEDA" stroke="#BA7517" stroke-width="1.5"/>
           <circle cx="150" cy="55" r="18" fill="#FAEEDA" stroke="#BA7517" stroke-width="1.5"/>
@@ -3325,24 +3332,25 @@ var CHAPTERS = [
           <text x="150" y="148" text-anchor="middle" font-size="10" fill="#5a5a56" font-family="sans-serif">Vaca · Ovelha · Cabra · Búfala</text>
         </svg>
       </div>
-      <div class="plac-vis-card">
-        <div class="plac-vis-placeholder">Placenta cotiledonária bovina — placentomas (cotilédone fetal + carúncula materna) distribuídos pelo córion</div>
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Foto — placentomas bovinos</div>
+        <img class="plac2-vis-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Bovine_placenta_cotyledonary.jpg/640px-Bovine_placenta_cotyledonary.jpg" alt="Placentomas bovinos" onerror="this.parentNode.innerHTML='<div class=\'plac2-vis-placeholder\'>Placenta cotiledonária bovina — placentomas (cotilédone fetal + carúncula materna) distribuídos pelo córion</div>'">
       </div>
     </div>
-    <div class="plac-sp-detail">
-      <div class="plac-sp-row"><span class="plac-sp-key">Estrutura</span><span class="plac-sp-val">Vilosidades agrupadas em <strong>cotilédones fetais</strong> que se encaixam nas <strong>carúnculas maternas</strong>, formando os <strong>placentomas</strong></span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Nº de placentomas</span><span class="plac-sp-val">Vaca: 70–120 · Ovelha: ~80–90 · Cabra: 90–120 · Búfala: ~60–90</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Áreas intercotiledonares</span><span class="plac-sp-val">Córion liso entre os placentomas — aposto ao endométrio sem vilosidades</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Histologia</span><span class="plac-sp-val">Sinoepiteliocorial nos placentomas — células binucleadas do trofoblasto fundem-se com epitélio uterino</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Aderência</span><span class="plac-sp-val">Adeciduada — retenção de placenta (&gt;12 h em bovinos) é patológica e complicação frequente</span></div>
+    <div class="plac2-sp-detail">
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Estrutura</span><span class="plac2-sp-val">Vilosidades agrupadas em <strong>cotilédones fetais</strong> que se encaixam nas <strong>carúnculas maternas</strong>, formando os <strong>placentomas</strong></span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Nº de placentomas</span><span class="plac2-sp-val">Vaca: 70–120 · Ovelha: ~80–90 · Cabra: 90–120 · Búfala: ~60–90</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Áreas intercotiledonares</span><span class="plac2-sp-val">Córion liso entre os placentomas — aposto ao endométrio sem vilosidades</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Histologia</span><span class="plac2-sp-val">Sinoepiteliocorial nos placentomas — células binucleadas do trofoblasto fundem-se com epitélio uterino</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Aderência</span><span class="plac2-sp-val">Adeciduada — retenção de placenta (&gt;12 h em bovinos) é patológica e complicação frequente</span></div>
     </div>
   </div>
 
-  <div class="plac-sp-panel" id="plac-type-zonaria">
-    <div class="plac-vis-row">
-      <div class="plac-vis-card">
-        <div class="plac-vis-label">Esquema — placenta zonária</div>
-        <svg class="plac-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <div class="plac2-sp-panel" id="plac2-type-zonaria">
+    <div class="plac2-vis-row">
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Esquema — placenta zonária</div>
+        <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="150" cy="80" rx="110" ry="62" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.5"/>
           <ellipse cx="150" cy="80" rx="110" ry="62" fill="none" stroke="#7F77DD" stroke-width="12"/>
           <text x="150" y="76" text-anchor="middle" font-size="11" fill="#26215C" font-family="sans-serif" font-weight="500">faixa zonária</text>
@@ -3350,25 +3358,25 @@ var CHAPTERS = [
           <text x="150" y="148" text-anchor="middle" font-size="10" fill="#5a5a56" font-family="sans-serif">Cadela · Gata</text>
         </svg>
       </div>
-      <div class="plac-vis-card">
-        <div class="plac-vis-placeholder">Placenta zonária da cadela — faixa esverdeada (uteroverdina) ao redor do córion, característica dos carnívoros</div>
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Foto — placenta zonária (cadela)</div>
+        <img class="plac2-vis-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Canine_zonary_placenta.jpg/640px-Canine_zonary_placenta.jpg" alt="Placenta zonária da cadela" onerror="this.parentNode.innerHTML='<div class=\'plac2-vis-placeholder\'>Placenta zonária da cadela — faixa esverdeada (uteroverdina) ao redor do córion, característica dos carnívoros</div>'">
       </div>
     </div>
-    <div class="plac-sp-detail">
-      <div class="plac-sp-row"><span class="plac-sp-key">Distribuição</span><span class="plac-sp-val">Vilosidades em <strong>faixa (cinto) ao redor do equador</strong> do saco coriônico — pólos livres sem contato placentário</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Espécies</span><span class="plac-sp-val">Cadela, Gata (e outros carnívoros — urso, foca, elefante)</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">💡 Mnemônico</span><span class="plac-sp-val">A placenta dos <strong>pequenos animais</strong> (cadela e gata) é conhecida como <strong>"cinturão"</strong> — a faixa ao redor do equador do saco coriônico lembra um cinto/cinturão</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Uteroverdina</span><span class="plac-sp-val">Pigmento verde-azulado característico dos carnívoros — produto da degradação de hemoglobina nos hematomas marginais. Normal em cadelas e gatas</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Histologia</span><span class="plac-sp-val">Endoteliocorial — trofoblasto em contato direto com endotélio dos vasos maternos</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Aderência</span><span class="plac-sp-val">Cadela: deciduada · Gata: semideciduada</span></div>
+    <div class="plac2-sp-detail">
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Distribuição</span><span class="plac2-sp-val">Vilosidades em <strong>faixa (cinto) ao redor do equador</strong> do saco coriônico — pólos livres sem contato placentário</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Espécies</span><span class="plac2-sp-val">Cadela, Gata (e outros carnívoros — urso, foca, elefante)</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Uteroverdina</span><span class="plac2-sp-val">Pigmento verde-azulado característico dos carnívoros — produto da degradação de hemoglobina nos hematomas marginais. Normal em cadelas e gatas</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Histologia</span><span class="plac2-sp-val">Endoteliocorial — trofoblasto em contato direto com endotélio dos vasos maternos</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Aderência</span><span class="plac2-sp-val">Cadela: deciduada · Gata: semideciduada</span></div>
     </div>
   </div>
 
-  <div class="plac-sp-panel" id="plac-type-discoidal">
-    <div class="plac-vis-row">
-      <div class="plac-vis-card">
-        <div class="plac-vis-label">Esquema — placenta discoidal</div>
-        <svg class="plac-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <div class="plac2-sp-panel" id="plac2-type-discoidal">
+    <div class="plac2-vis-row">
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Esquema — placenta discoidal</div>
+        <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="150" cy="80" rx="110" ry="62" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.5"/>
           <ellipse cx="150" cy="80" rx="55" ry="42" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
           <text x="150" y="76" text-anchor="middle" font-size="11" fill="#26215C" font-family="sans-serif" font-weight="500">disco único</text>
@@ -3376,35 +3384,35 @@ var CHAPTERS = [
           <text x="150" y="148" text-anchor="middle" font-size="10" fill="#5a5a56" font-family="sans-serif">Primatas · Roedores · Coelhos</text>
         </svg>
       </div>
-      <div class="plac-vis-card">
-        <div class="plac-vis-placeholder">Área de troca restrita a disco circular · Hemocorial · Sangue materno em contato direto com trofoblasto · Primatas e roedores — não em espécies domésticas veterinárias</div>
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-placeholder">Área de troca restrita a disco circular · Hemocorial · Sangue materno em contato direto com trofoblasto · Primatas e roedores — não em espécies domésticas veterinárias</div>
       </div>
     </div>
-    <div class="plac-sp-detail">
-      <div class="plac-sp-row"><span class="plac-sp-key">Distribuição</span><span class="plac-sp-val">Disco único (discoidal) ou duplo (bidiscoidal) — área de troca restrita a região circular</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Espécies</span><span class="plac-sp-val">Primatas (incluindo humanos), roedores, coelhos — não ocorre em espécies domésticas veterinárias</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Relevância veterinária</span><span class="plac-sp-val">Modelos animais em pesquisa biomédica — ratos e camundongos têm placenta discoidal hemocorial extensivamente usada em pesquisa</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Histologia</span><span class="plac-sp-val">Hemocorial — tipo mais invasivo; sangue materno banha diretamente o trofoblasto fetal</span></div>
-      <div class="plac-sp-row"><span class="plac-sp-key">Aderência</span><span class="plac-sp-val">Deciduada — tecido materno é expelido com a placenta ao parto</span></div>
+    <div class="plac2-sp-detail">
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Distribuição</span><span class="plac2-sp-val">Disco único (discoidal) ou duplo (bidiscoidal) — área de troca restrita a região circular</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Espécies</span><span class="plac2-sp-val">Primatas (incluindo humanos), roedores, coelhos — não ocorre em espécies domésticas veterinárias</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Relevância veterinária</span><span class="plac2-sp-val">Modelos animais em pesquisa biomédica — ratos e camundongos têm placenta discoidal hemocorial extensivamente usada em pesquisa</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Histologia</span><span class="plac2-sp-val">Hemocorial — tipo mais invasivo; sangue materno banha diretamente o trofoblasto fetal</span></div>
+      <div class="plac2-sp-row"><span class="plac2-sp-key">Aderência</span><span class="plac2-sp-val">Deciduada — tecido materno é expelido com a placenta ao parto</span></div>
     </div>
   </div>
 </div>
 
 <!-- HISTOLÓGICA -->
-<div class="plac-panel" id="plac-panel-histologica">
-  <p class="plac-hint">Selecione o tipo histológico</p>
-  <div class="plac-sp-tabs">
-    <button class="plac-sp-tab active" onclick="placSetHist('epiteli',this)">Epiteliocorial</button>
-    <button class="plac-sp-tab" onclick="placSetHist('sindesm',this)">Sinoepiteliocorial</button>
-    <button class="plac-sp-tab" onclick="placSetHist('endotel',this)">Endoteliocorial</button>
-    <button class="plac-sp-tab" onclick="placSetHist('hemocor',this)">Hemocorial</button>
+<div class="plac2-panel" id="plac2-panel-histologica">
+  <p class="plac2-hint">Selecione o tipo histológico</p>
+  <div class="plac2-sp-tabs">
+    <button class="plac2-sp-tab active" onclick="plac2SetHist('epiteli',this)">Epiteliocorial</button>
+    <button class="plac2-sp-tab" onclick="plac2SetHist('sindesm',this)">Sindesmocorial</button>
+    <button class="plac2-sp-tab" onclick="plac2SetHist('endotel',this)">Endoteliocorial</button>
+    <button class="plac2-sp-tab" onclick="plac2SetHist('hemocor',this)">Hemocorial</button>
   </div>
 
-  <div class="plac-sp-panel active" id="plac-hist-epiteli">
-    <div class="plac-vis-row">
-      <div class="plac-vis-card">
-        <div class="plac-vis-label">Esquema — barreira epiteliocorial (6 camadas)</div>
-        <svg class="plac-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <div class="plac2-sp-panel active" id="plac2-hist-epiteli">
+    <div class="plac2-vis-row">
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Esquema — barreira epiteliocorial (6 camadas)</div>
+        <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
           <rect x="20" y="10" width="260" height="20" rx="3" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
           <text x="150" y="24" text-anchor="middle" font-size="9" fill="#0c447c" font-family="sans-serif">endotélio fetal</text>
           <rect x="20" y="33" width="260" height="18" rx="3" fill="#B5D4F4" stroke="#378ADD" stroke-width="0.5"/>
@@ -3420,23 +3428,23 @@ var CHAPTERS = [
           <text x="150" y="144" text-anchor="middle" font-size="9" fill="#E1F5EE" font-family="sans-serif">endotélio materno</text>
         </svg>
       </div>
-      <div class="plac-vis-card">
-        <div class="plac-hist-info">
-          <div class="plac-hist-title">6 camadas entre sangue fetal e materno</div>
+      <div class="plac2-vis-card">
+        <div class="plac2-hist-info">
+          <div class="plac2-title">6 camadas entre sangue fetal e materno</div>
           <div style="margin-bottom:6px;color:var(--text-secondary)">Égua, Porca, Ruminantes (áreas intercotiledonares)</div>
           <div style="margin-bottom:6px">Menor invasividade — trofoblasto apenas aposto ao epitélio uterino</div>
           <div style="margin-bottom:6px">Troca de nutrientes por difusão e pinocitose</div>
-          <div class="plac-hist-note">Mnemônico: EPIteliocorial = EPIco (Égua + Porca)</div>
+          <div class="plac2-note">Mnemônico: EPIteliocorial = EPIco (Égua + Porca)</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="plac-sp-panel" id="plac-hist-sindesm">
-    <div class="plac-vis-row">
-      <div class="plac-vis-card">
-        <div class="plac-vis-label">Esquema — sinoepiteliocorial (5 camadas)</div>
-        <svg class="plac-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <div class="plac2-sp-panel" id="plac2-hist-sindesm">
+    <div class="plac2-vis-row">
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Esquema — sinoepiteliocorial (5 camadas)</div>
+        <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
           <rect x="20" y="10" width="260" height="20" rx="3" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
           <text x="150" y="24" text-anchor="middle" font-size="9" fill="#0c447c" font-family="sans-serif">endotélio fetal</text>
           <rect x="20" y="33" width="260" height="18" rx="3" fill="#B5D4F4" stroke="#378ADD" stroke-width="0.5"/>
@@ -3452,23 +3460,23 @@ var CHAPTERS = [
           <text x="150" y="148" text-anchor="middle" font-size="9" fill="#633806" font-family="sans-serif">5 camadas — epitélio uterino parcialmente erodido</text>
         </svg>
       </div>
-      <div class="plac-vis-card">
-        <div class="plac-hist-info">
-          <div class="plac-hist-title">Sinoepiteliocorial (nomenclatura atual)</div>
+      <div class="plac2-vis-card">
+        <div class="plac2-hist-info">
+          <div class="plac2-title">Sinoepiteliocorial (nomenclatura atual)</div>
           <div style="margin-bottom:6px;color:var(--text-secondary)">Ruminantes — nos placentomas</div>
           <div style="margin-bottom:6px">Células binucleadas do trofoblasto fundem-se com epitélio uterino formando células trinucleadas e sincício misto</div>
           <div style="margin-bottom:6px">O termo "sindesmocorial" está sendo substituído por <strong>sinoepiteliocorial</strong> na literatura atual</div>
-          <div class="plac-hist-note">Ruminantes têm epiteliocorial (áreas intercotiledonares) + sinoepiteliocorial (placentomas)</div>
+          <div class="plac2-note">Ruminantes têm epiteliocorial (áreas intercotiledonares) + sinoepiteliocorial (placentomas)</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="plac-sp-panel" id="plac-hist-endotel">
-    <div class="plac-vis-row">
-      <div class="plac-vis-card">
-        <div class="plac-vis-label">Esquema — endoteliocorial (4 camadas)</div>
-        <svg class="plac-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <div class="plac2-sp-panel" id="plac2-hist-endotel">
+    <div class="plac2-vis-row">
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Esquema — endoteliocorial (4 camadas)</div>
+        <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
           <rect x="20" y="10" width="260" height="20" rx="3" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
           <text x="150" y="24" text-anchor="middle" font-size="9" fill="#0c447c" font-family="sans-serif">endotélio fetal</text>
           <rect x="20" y="33" width="260" height="18" rx="3" fill="#B5D4F4" stroke="#378ADD" stroke-width="0.5"/>
@@ -3483,23 +3491,23 @@ var CHAPTERS = [
           <text x="150" y="148" text-anchor="middle" font-size="10" fill="#5a5a56" font-family="sans-serif">Cadela · Gata</text>
         </svg>
       </div>
-      <div class="plac-vis-card">
-        <div class="plac-hist-info">
-          <div class="plac-hist-title">Trofoblasto em contato direto com endotélio materno</div>
+      <div class="plac2-vis-card">
+        <div class="plac2-hist-info">
+          <div class="plac2-title">Trofoblasto em contato direto com endotélio materno</div>
           <div style="margin-bottom:6px;color:var(--text-secondary)">Cadela, Gata (carnívoros domésticos)</div>
           <div style="margin-bottom:6px">Maior permeabilidade que epiteliocorial — transferência de IgG pela placenta possível mas limitada</div>
           <div style="margin-bottom:6px">Uteroverdina: pigmento verde da degradação de hemácias nos hematomas marginais — normal</div>
-          <div class="plac-hist-note">Mnemônico: ENDOteliocorial = ENDOsseu cão (carnívoros)</div>
+          <div class="plac2-note">Mnemônico: ENDOteliocorial = ENDOsseu cão (carnívoros)</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="plac-sp-panel" id="plac-hist-hemocor">
-    <div class="plac-vis-row">
-      <div class="plac-vis-card">
-        <div class="plac-vis-label">Esquema — hemocorial (3 camadas)</div>
-        <svg class="plac-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <div class="plac2-sp-panel" id="plac2-hist-hemocor">
+    <div class="plac2-vis-row">
+      <div class="plac2-vis-card">
+        <div class="plac2-vis-label">Esquema — hemocorial (3 camadas)</div>
+        <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
           <rect x="20" y="10" width="260" height="20" rx="3" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
           <text x="150" y="24" text-anchor="middle" font-size="9" fill="#0c447c" font-family="sans-serif">endotélio fetal</text>
           <rect x="20" y="33" width="260" height="18" rx="3" fill="#B5D4F4" stroke="#378ADD" stroke-width="0.5"/>
@@ -3518,13 +3526,13 @@ var CHAPTERS = [
           <text x="150" y="148" text-anchor="middle" font-size="10" fill="#5a5a56" font-family="sans-serif">Primatas · Roedores · Coelhos</text>
         </svg>
       </div>
-      <div class="plac-vis-card">
-        <div class="plac-hist-info">
-          <div class="plac-hist-title">Tipo mais invasivo — sangue materno em contato direto</div>
+      <div class="plac2-vis-card">
+        <div class="plac2-hist-info">
+          <div class="plac2-title">Tipo mais invasivo — sangue materno em contato direto</div>
           <div style="margin-bottom:6px;color:var(--text-secondary)">Humanos, primatas, roedores — não em espécies domésticas</div>
           <div style="margin-bottom:6px">Máxima troca de nutrientes, gases e anticorpos maternos</div>
           <div style="margin-bottom:6px">Transferência placentária de IgG extensiva — imunidade passiva fetal robusta</div>
-          <div class="plac-hist-note">Mnemônico: HEMOcorial = HEMOrragia de Primata</div>
+          <div class="plac2-note">Mnemônico: HEMOcorial = HEMOrragia de Primata</div>
         </div>
       </div>
     </div>
@@ -3532,8 +3540,8 @@ var CHAPTERS = [
 </div>
 
 <!-- RESUMO POR ESPÉCIE -->
-<div class="plac-panel" id="plac-panel-resumo">
-  <table class="plac-cmp-table">
+<div class="plac2-panel" id="plac2-panel-resumo">
+  <table class="plac2-cmp-table">
     <thead>
       <tr><th>Espécie</th><th>Anatômica</th><th>Histológica</th><th>Aderência</th><th>Obs.</th></tr>
     </thead>
@@ -3544,28 +3552,28 @@ var CHAPTERS = [
       <tr><td><strong>Cabra</strong></td><td>Cotiledonária</td><td>Sinoepiteliocorial</td><td>Adeciduada</td><td>90–120 placentomas</td></tr>
       <tr><td><strong>Búfala</strong></td><td>Cotiledonária</td><td>Sinoepiteliocorial</td><td>Adeciduada</td><td>~60–90 placentomas · similar à vaca</td></tr>
       <tr><td><strong>Porca</strong></td><td>Difusa (com pregas)</td><td>Epiteliocorial</td><td>Adeciduada</td><td>Aréolas sobre glândulas uterinas</td></tr>
-      <tr><td><strong>Cadela</strong></td><td>Zonária <em>("cinturão")</em></td><td>Endoteliocorial</td><td>Deciduada</td><td>Uteroverdina (hematomas marginais)</td></tr>
-      <tr><td><strong>Gata</strong></td><td>Zonária <em>("cinturão")</em></td><td>Endoteliocorial</td><td>Semideciduada</td><td>Uteroverdina presente</td></tr>
+      <tr><td><strong>Cadela</strong></td><td>Zonária</td><td>Endoteliocorial</td><td>Deciduada</td><td>Uteroverdina (hematomas marginais)</td></tr>
+      <tr><td><strong>Gata</strong></td><td>Zonária</td><td>Endoteliocorial</td><td>Semideciduada</td><td>Uteroverdina presente</td></tr>
     </tbody>
   </table>
-  <div class="plac-memo">
-    <div class="plac-memo-label">Mnemônicos histológicos</div>
-    <div class="plac-memo-text">
-      EPIteliocorial <span class="plac-arr">→</span> EPIco: Égua + Porca (+ ruminantes — área interplacentomal)<br>
-      SINoepiEPIteliocorial <span class="plac-arr">→</span> Ruminantes (placentomas) — células binucleadas<br>
-      ENDOteliocorial <span class="plac-arr">→</span> ENDOsseu cão: Carnívoros<br>
-      HEMOcorial <span class="plac-arr">→</span> HEMOrragia de Primata: Humanos/Roedores
+  <div class="plac2-memo">
+    <div class="plac2-memo-label">Mnemônicos histológicos</div>
+    <div class="plac2-memo-text">
+      EPIteliocorial <span class="plac2-arr">→</span> EPIco: Égua + Porca (+ ruminantes — área interplacentomal)<br>
+      SINoepiEPIteliocorial <span class="plac2-arr">→</span> Ruminantes (placentomas) — células binucleadas<br>
+      ENDOteliocorial <span class="plac2-arr">→</span> ENDOsseu cão: Carnívoros<br>
+      HEMOcorial <span class="plac2-arr">→</span> HEMOrragia de Primata: Humanos/Roedores
     </div>
   </div>
 </div>
 
 <!-- ANEXOS FETAIS -->
-<div class="plac-panel" id="plac-panel-anexos">
-  <p class="plac-hint">Clique em cada anexo para ver detalhes</p>
-  <div class="plac-vis-row" style="margin-bottom:14px">
-    <div class="plac-vis-card">
-      <div class="plac-vis-label">Esquema — anexos fetais (ruminante)</div>
-      <svg class="plac-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+<div class="plac2-panel" id="plac2-panel-anexos">
+  <p class="plac2-hint">Clique em cada anexo para ver detalhes</p>
+  <div class="plac2-vis-row" style="margin-bottom:14px">
+    <div class="plac2-vis-card">
+      <div class="plac2-vis-label">Esquema — anexos fetais (ruminante)</div>
+      <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
         <ellipse cx="150" cy="80" rx="100" ry="58" fill="#E6F1FB" stroke="#378ADD" stroke-width="1"/>
         <text x="246" y="34" text-anchor="start" font-size="9" fill="#0c447c" font-family="sans-serif">Córion</text>
         <ellipse cx="150" cy="80" rx="70" ry="40" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
@@ -3579,17 +3587,97 @@ var CHAPTERS = [
         <text x="46" y="34" text-anchor="middle" font-size="8" fill="#633806" font-family="sans-serif">umbilical</text>
       </svg>
     </div>
-    <div class="plac-vis-card">
-      <div class="plac-vis-placeholder">Membranas fetais bovinas — âmnio (interno, transparente), alantoide (externo, vascularizado) e placentomas no córion</div>
+    <div class="plac2-vis-card">
+      <div class="plac2-vis-label">Foto — membranas fetais bovinas</div>
+      <img class="plac2-vis-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Bovine_fetal_membranes.jpg/640px-Bovine_fetal_membranes.jpg" alt="Membranas fetais bovinas" onerror="this.parentNode.innerHTML='<div class=\'plac2-vis-placeholder\'>Membranas fetais bovinas — âmnio (interno, transparente), alantoide (externo, vascularizado) e placentomas no córion</div>'">
     </div>
   </div>
-  <div class="plac-anx-grid">
-    <div class="plac-anx-card" onclick="placInfoAnx('amnio')"><div class="plac-anx-title">Âmnio</div><div class="plac-anx-sub">Envolve diretamente o feto · líquido amniótico</div></div>
-    <div class="plac-anx-card" onclick="placInfoAnx('alantoide')"><div class="plac-anx-title">Alantoide</div><div class="plac-anx-sub">Excretor fetal · urina fetal · vasos umbilicais</div></div>
-    <div class="plac-anx-card" onclick="placInfoAnx('vitelino')"><div class="plac-anx-title">Saco vitelino</div><div class="plac-anx-sub">Nutrição inicial · regride com placenta corioalantoide</div></div>
-    <div class="plac-anx-card" onclick="placInfoAnx('corio')"><div class="plac-anx-title">Córion (alantocório)</div><div class="plac-anx-sub">Camada mais externa · trofoblasto · placenta</div></div>
+  <div class="plac2-anx-grid">
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('amnio')"><div class="plac2-anx-title">Âmnio</div><div class="plac2-anx-sub">Envolve diretamente o feto · líquido amniótico</div></div>
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('alantoide')"><div class="plac2-anx-title">Alantoide</div><div class="plac2-anx-sub">Excretor fetal · urina fetal · vasos umbilicais</div></div>
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('vitelino')"><div class="plac2-anx-title">Saco vitelino</div><div class="plac2-anx-sub">Nutrição inicial · regride com placenta corioalantoide</div></div>
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('corio')"><div class="plac2-anx-title">Córion (alantocório)</div><div class="plac2-anx-sub">Camada mais externa · trofoblasto · placenta</div></div>
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('cordao')"><div class="plac2-anx-title">Cordão umbilical</div><div class="plac2-anx-sub">Conexão feto–placenta · 2 artérias + 1 veia + uraco</div></div>
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('liquidos')"><div class="plac2-anx-title">Líquidos fetais</div><div class="plac2-anx-sub">Amniótico vs. alantoideo · funções · diferenças</div></div>
   </div>
-  <div class="plac-info-panel empty" id="plac-info-anx">Clique em um anexo para ver detalhes.</div>
+  <div class="plac2-info-panel empty" id="plac2-info-anx">Clique em um anexo para ver detalhes.</div>
+
+  <div style="margin-top:18px;border-left:3px solid #BA7517;background:#fef3db;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;line-height:1.55">
+    <strong style="color:#633806">Passagem embrião → feto</strong> — ocorre quando completa a organogênese:
+    <span style="font-family:monospace;font-size:12px;display:block;margin-top:6px;line-height:1.9">
+      Bovino: 45 dias · Equino: 40 dias · Ovino: 34 dias · Canino: 35 dias
+    </span>
+  </div>
+
+  <div style="margin-top:10px;border-left:3px solid #378ADD;background:#e8f1fb;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;line-height:1.6">
+    <strong>Funções dos líquidos fetais:</strong> proteção física (trauma, temperatura, desidratação), filtração, respiração, nutrição fetal, meio estéril para crescimento, movimentação e desenvolvimento musculoesquelético.<br>
+    <strong>Funções da placenta:</strong> barreira imunológica, órgão secretor de hormônios, trocas materno-fetais (O₂, nutrientes, resíduos), abertura e lubrificação da via fetal no parto.
+  </div>
+</div>
+
+<!-- BOVINO VS EQUINO -->
+<div class="plac2-panel" id="plac2-panel-bovequi">
+  <div style="border-left:3px solid #BA7517;background:#fef3db;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55">
+    <strong style="color:#633806">Tópico de prova frequente</strong> — diferenças entre bovinos e equinos nos anexos fetais, migração embrionária e parto
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+    <div style="border-radius:8px;border:1px solid var(--border-card);padding:12px;background:var(--bg-card)">
+      <div style="font-weight:600;font-size:13px;margin-bottom:8px;color:var(--blue-700)">Bovinos</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.7">
+        Âmnio recobre o embrião<br>
+        Alantoide recobre <strong>metade</strong> do embrião<br>
+        Possui <strong>amniocório</strong> (região comunicante entre âmnio e córion)<br>
+        No parto: rompe no amniocório → feto nasce <strong>desprovido de envoltórios</strong><br>
+        Libera líquido amniótico E alantoideo simultaneamente
+      </div>
+    </div>
+    <div style="border-radius:8px;border:1px solid var(--border-card);padding:12px;background:var(--bg-card)">
+      <div style="font-weight:600;font-size:13px;margin-bottom:8px;color:#27500a">Equinos</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.7">
+        Âmnio recobre o embrião<br>
+        Alantoide recobre o embrião <strong>todo</strong> (empurra para região dorsal)<br>
+        <strong>Não possui amniocório</strong><br>
+        No parto: rompe a membrana corioalantoide na <strong>estrela cervical</strong><br>
+        Potro nasce envolto pelo âmnio
+      </div>
+    </div>
+  </div>
+
+  <div style="border-radius:8px;border:1px solid var(--border-card);padding:12px 14px;background:var(--bg-hover);margin-bottom:14px">
+    <div style="font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">O que é a estrela cervical?</div>
+    <div style="font-size:13px;line-height:1.6;color:var(--text-primary)">O córion equino apoia-se no endométrio uterino em toda a sua extensão, <strong>com exceção de uma pequena área na região cervical</strong> chamada estrela cervical — onde não há vilosidades e o córion é liso. É exatamente nesse ponto mais fraco que a membrana corioalantoide se rompe no início do parto equino, liberando o líquido alantoideo antes do potro.</div>
+  </div>
+
+  <div style="border-radius:8px;border:1px solid var(--border-card);padding:12px 14px;background:var(--bg-card);margin-bottom:14px">
+    <div style="font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Migração do embrião equino — posição ao longo da gestação</div>
+    <div style="font-size:13px;line-height:1.8;color:var(--text-primary);font-family:monospace">
+      D22 → embrião visível na <strong>região ventral</strong>, em cima do saco vitelínico<br>
+      D30–36 → posição <strong>equatorial</strong> (½ saco vitelínico acima, ½ alantoide abaixo)<br>
+      D40 → região <strong>dorsal</strong> (alantoide abaixo); começa a descer pelo cordão umbilical → passa a ser chamado de <strong>feto</strong><br>
+      D50 → posição <strong>ventral</strong>; cordão umbilical visível à US
+    </div>
+  </div>
+
+  <div style="border-radius:8px;border:1px solid var(--border-card);padding:12px 14px;background:var(--bg-card)">
+    <div style="font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Células de girdle e cálices endometriais — exclusivos dos equinos</div>
+    <div style="font-size:13px;line-height:1.7;color:var(--text-primary)">
+      <span style="background:#fef3db;border-radius:3px;padding:1px 4px;font-weight:600">~Dia 35</span> — células de girdle (células trofoblásticas invasivas) invadem o endométrio e formam os <strong>cálices endometriais</strong><br><br>
+      <strong>Função:</strong> produzem <span style="background:#e8f1fb;border-radius:3px;padding:1px 4px;font-weight:600">eCG (PMSG)</span> — gonadotrofina coriônica equina com ação FSH+LH-like<br><br>
+      <strong>eCG estimula:</strong> produção de P4 pelos CLs acessórios e primário; manutenção da gestação inicial<br><br>
+      <span style="background:#fef3db;border-radius:3px;padding:1px 4px;font-weight:600">Dias 100–120</span> — cálices endometriais se transformam em cicatrizes e param de produzir eCG; a <strong>placenta corioalantoide assume</strong> a produção de P4 para o restante da gestação
+    </div>
+  </div>
+
+  <div style="margin-top:12px;border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-hover)">
+    <div style="font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px">US na gestação equina inicial — o que se vê</div>
+    <div style="font-size:13px;font-family:monospace;line-height:1.8;color:var(--text-primary)">
+      Inicialmente: saco vitelínico (esférico, anecoico)<br>
+      Depois: relação saco vitelínico / alantoide<br>
+      D22: embrião visível ventral ao saco vitelínico<br>
+      D40+: embrião/feto na região dorsal · cordão umbilical identificável
+    </div>
+  </div>
 </div>
 
 `
@@ -4656,41 +4744,47 @@ window.rmgSetSp = function(sp, el) {
   if (panel) panel.classList.add('active');
 };
 
-// === CAPÍTULO 5 — PLACENTAÇÃO E ANEXOS FETAIS ===
-var placAnx = {
-  amnio: 'O <strong>âmnio</strong> é a membrana mais interna, envolvendo diretamente o feto. Contém o <span class="plac-hl">líquido amniótico</span> com funções de: proteção mecânica, regulação térmica, permitir movimentação fetal (essencial para desenvolvimento musculoesquelético), lubrificação do canal do parto e participação na dilatação cervical.',
-  alantoide: 'O <strong>alantoide</strong> é a membrana de função excretora — acumula a <span class="plac-hl">urina fetal diluída</span>. Em ruminantes e equinos, é volumoso e vascularizado. Ao fundir-se com o córion forma o <span class="plac-hl">alantocório</span>, que é a estrutura placentária definitiva.',
-  vitelino: 'O <strong>saco vitelino</strong> (vesícula umbilical) fornece nutrição ao embrião antes da placenta corioalantoide estar completamente formada (~primeiros 30–40 dias em bovinos). Regride progressivamente à medida que o alantocório assume a função placentária.',
-  corio: 'O <strong>córion</strong> é a camada mais externa das membranas fetais, em contato direto com o endométrio materno. Origina-se do trofoblasto do blastocisto expandido. Ao fundir-se com o alantoide forma o <span class="plac-hl">alantocório</span> — placenta funcional definitiva.'
+// === CAPÍTULO 6 — PLACENTAÇÃO E ANEXOS FETAIS ===
+var plac2Anx = {
+  amnio: 'O <strong>âmnio</strong> é a membrana mais interna, envolvendo diretamente o feto. Contém o <span class="plac2-hl">líquido amniótico</span> com funções de: proteção mecânica, regulação térmica, permitir movimentação fetal (essencial para desenvolvimento musculoesquelético), lubrificação do canal do parto e participação na dilatação cervical. O oligoâmnio (volume reduzido) e o hidrâmnio (volume excessivo) são condições patológicas com diferentes causas e prognósticos.',
+  alantoide: 'O <strong>alantoide</strong> é a membrana de função excretora — acumula a <span class="plac2-hl">urina fetal diluída</span>. Em ruminantes e equinos, é volumoso e vascularizado. Ao fundir-se com o córion forma o <span class="plac2-hl">alantocório</span>, que é a estrutura placentária definitiva. Os vasos umbilicais percorrem o alantoide até o cordão umbilical. O fluido alantoide é diferente do amniótico: mais volumoso, turvo e com resíduos metabólicos.',
+  vitelino: 'O <strong>saco vitelino</strong> (vesícula umbilical) fornece nutrição ao embrião antes da placenta corioalantoide estar completamente formada (~primeiros 30–40 dias em bovinos). Regride progressivamente à medida que o alantocório assume a função placentária. A vesícula vitelina visível à ultrassonografia é indicativo de gestação inicial, antes da visualização do embrião.',
+  corio: 'O <strong>córion</strong> é a camada mais externa das membranas fetais, em contato direto com o endométrio materno. Origina-se do trofoblasto do blastocisto expandido. Ao fundir-se com o alantoide forma o <span class="plac2-hl">alantocório</span> — placenta funcional definitiva. O tipo de contato entre o trofoblasto e o endométrio define a classificação histológica da placenta.',
+  cordao: 'O <strong>cordão umbilical</strong> conecta o feto à placenta e contém: <span class="plac2-hl">2 artérias umbilicais</span> (levam sangue desoxigenado do feto à placenta), <span class="plac2-hl">1 veia umbilical</span> (leva sangue oxigenado e nutrientes da placenta ao feto) e o <span class="plac2-hl">uraco</span> (conduto que conecta a bexiga fetal ao alantoide). Envolto por gelatina de Wharton. Comprimento: bovinos ~30–40 cm · equinos ~55–90 cm · ovinos ~20–25 cm · caninos ~10–15 cm por filhote.',
+  liquidos: '<strong>Líquido amniótico</strong> — produzido pelo epitélio amniótico, pulmões e rins fetais; claro/translúcido; funções: proteção mecânica, regulação térmica, meio para deglutição fetal, lubrificação no parto. <strong>Líquido alantoideo</strong> — essencialmente urina fetal diluída; mais turvo e volumoso; cor amarelada; acumula produtos do metabolismo fetal. <span class="plac2-hl">Diferença importante:</span> no parto bovino, o amniocório permite ruptura simultânea de ambos os compartimentos. No parto equino, a membrana corioalantoide rompe na estrela cervical liberando o líquido alantoideo primeiro — o potro nasce ainda envolto pelo âmnio.'
 };
-window.placInfoAnx = function(key) {
-  var el = document.getElementById('plac-info-anx');
+window.plac2InfoAnx = function(key) {
+  var el = document.getElementById('plac2-info-anx');
   if (!el) return;
-  el.innerHTML = placAnx[key];
-  el.classList.remove('empty');
+  el.innerHTML = plac2Anx[key];
+  el.classList.remove('plac2-empty');
 };
-window.placSetTab = function(tab, el) {
+window.plac2SetTab = function(tab, el) {
   var ch = el.closest('.chapter-body') || document;
-  ch.querySelectorAll('.plac-tab').forEach(function(t){ t.classList.remove('active'); });
-  ch.querySelectorAll('.plac-panel').forEach(function(p){ p.classList.remove('active'); });
+  ch.querySelectorAll('.plac2-tab').forEach(function(t){ t.classList.remove('active'); });
+  ch.querySelectorAll('.plac2-panel').forEach(function(p){ p.classList.remove('active'); });
   el.classList.add('active');
-  var panel = document.getElementById('plac-panel-' + tab);
+  var panel = ch.querySelector('#plac2-panel-' + tab);
   if (panel) panel.classList.add('active');
 };
-window.placSetType = function(type, el) {
-  var panel = document.getElementById('plac-panel-anatomica');
-  panel.querySelectorAll('.plac-sp-tab').forEach(function(t){ t.classList.remove('active'); });
-  panel.querySelectorAll('.plac-sp-panel').forEach(function(p){ p.classList.remove('active'); });
+window.plac2SetType = function(type, el) {
+  var ch = el.closest('.chapter-body') || document;
+  var panel = ch.querySelector('#plac2-panel-anatomica');
+  if (!panel) return;
+  panel.querySelectorAll('.plac2-sp-tab').forEach(function(t){ t.classList.remove('active'); });
+  panel.querySelectorAll('.plac2-sp-panel').forEach(function(p){ p.classList.remove('active'); });
   el.classList.add('active');
-  var sp = document.getElementById('plac-type-' + type);
+  var sp = panel.querySelector('#plac2-type-' + type);
   if (sp) sp.classList.add('active');
 };
-window.placSetHist = function(hist, el) {
-  var panel = document.getElementById('plac-panel-histologica');
-  panel.querySelectorAll('.plac-sp-tab').forEach(function(t){ t.classList.remove('active'); });
-  panel.querySelectorAll('.plac-sp-panel').forEach(function(p){ p.classList.remove('active'); });
+window.plac2SetHist = function(hist, el) {
+  var ch = el.closest('.chapter-body') || document;
+  var panel = ch.querySelector('#plac2-panel-histologica');
+  if (!panel) return;
+  panel.querySelectorAll('.plac2-sp-tab').forEach(function(t){ t.classList.remove('active'); });
+  panel.querySelectorAll('.plac2-sp-panel').forEach(function(p){ p.classList.remove('active'); });
   el.classList.add('active');
-  var sp = document.getElementById('plac-hist-' + hist);
+  var sp = panel.querySelector('#plac2-hist-' + hist);
   if (sp) sp.classList.add('active');
 };
 
