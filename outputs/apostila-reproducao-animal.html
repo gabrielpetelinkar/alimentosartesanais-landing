@@ -2707,60 +2707,6 @@ var CHAPTERS = [
   </div>
 </div>
 
-<script>
-(function(){
-var fertDB = {
-  tr: {
-    vagina: 'A <strong>cérvix</strong> é a primeira grande barreira ao transporte espermático. O muco cervical é estruturado em filamentos que permitem a passagem de espermatozoides com morfologia e motilidade normais, mas retêm os defeituosos. Em bovinos e ovinos, a deposição vaginal (IA convencional) enfrenta essa barreira — razão pela qual a IA intrauterina supera a vaginal em taxa de concepção. A redução de 10⁸ para ~10⁶ ocorre em minutos.',
-    utero: 'No útero, o transporte é facilitado pelas <span class="fert-hl">contrações miometriais</span> (mediadas pelo E2 e pela ocitocina liberada durante a cópula) e pelos cílios do epitélio. O útero também realiza seleção imunológica — leucócitos fagocitam grande parte dos espermatozoides nesta fase, o que é fisiológico e faz parte da seleção progressiva.',
-    tuba: 'A <span class="fert-hl">junção utero-tubárica (JUT)</span> é uma barreira anatômica e funcional seletiva. A mucosa da JUT retém espermatozoides com defeitos estruturais. Apenas 10³–10⁴ espermatozoides chegam à tuba, onde se ligam ao epitélio do istmo e aguardam a ovulação. A seleção é progressiva — quanto mais distante da deposição, menor o número e maior a qualidade dos espermatozoides remanescentes.',
-    istmo: 'O <strong>istmo da tuba uterina</strong> funciona como reservatório espermático: os espermatozoides ligam-se ao epitélio via lectinas e glicoproteínas, ficando em estado de baixa motilidade que prolonga sua viabilidade por horas a dias. Próximo da ovulação, sinais (progesterona, E2 e fatores do fluido folicular) promovem a liberação dos espermatozoides do epitélio — eles retomam motilidade hiperativa e migram para a ampola onde encontram o oócito.',
-    oocito: 'O oócito é captado pelas <span class="fert-hl">fímbrias</span> da tuba, auxiliadas por cílios e contrações musculares. O transporte até a ampola (local da fertilização) é rápido — minutos a horas. O transporte da ampola até o útero leva 3–5 dias e é modulado por P4 (acelera o transporte, prepara o útero) e E2. Em equinos, o embrião demora ~6 dias para chegar ao útero — durante esse período produz PGE2 para garantir sua passagem pelo istmo.',
-    equino: 'O embrião equino produz <span class="fert-hl">PGE2 (prostaglandina E2)</span>, que relaxa o músculo liso do istmo da tuba uterina, permitindo sua passagem para o útero. Embriões não viáveis não produzem PGE2 em quantidade suficiente e ficam retidos no istmo — este é o mecanismo de <span class="fert-hl">seleção de viabilidade oviductal</span>. Em TE equina: embriões de má qualidade têm menor taxa de recuperação uterina justamente porque ficam retidos na tuba.'
-  },
-  cap: {
-    colesterol: 'A <strong>remoção de colesterol</strong> é o evento inicial da capacitação. A membrana plasmática espermática é rica em colesterol (adquirido no epidídimo e no plasma seminal), que confere rigidez e impede a reação acrossômica prematura. No trato feminino, esse colesterol é removido por <span class="fert-hl">aceptores lipídicos</span> presentes no fluido uterino e tubárico — incluindo lipoproteínas de alta densidade (HDL), vesículas extracelulares e, em menor grau, albumina sérica. In vitro, albumina sérica (BSA) é usada nos meios de capacitação como aceptora de colesterol em bovinos e suínos, mas não representa fielmente o mecanismo fisiológico e não é eficaz em equinos.',
-    membrana: 'As alterações de membrana incluem hiperpolarização inicial seguida de despolarização progressiva; abertura de canais de Ca²⁺, especialmente o <span class="fert-hl">CatSper</span> (canal espermático específico ativado por progesterona); e influxo de <span class="fert-hl">HCO₃⁻</span>, que é o ativador direto da adenilil ciclase solúvel (sAC). O canal CatSper é essencial — camundongos knockout para CatSper são inférteis mesmo com morfologia espermática normal.',
-    camp: 'O <span class="fert-hl">HCO₃⁻</span> ativa a adenilil ciclase solúvel (sAC), elevando o AMPc intracelular. O AMPc ativa a PKA (proteína quinase A), que fosforila múltiplas proteínas flagelares e acrossômicas. A fosforilação em tirosina de proteínas flagelares é um marcador molecular de capacitação usado em laboratório para confirmar o processo in vitro.',
-    hiperativ: 'A <strong>hiperativação</strong> é a mudança no padrão de motilidade: de progressiva (linear) para assimétrica de alta amplitude (movimentos em "chicote"). É necessária para: (1) liberação do espermatozoide do epitélio do istmo; (2) penetração mecânica da zona pelúcida, junto com as enzimas acrossômicas. Espermatozoides hiperativados têm maior força propulsiva, essencial para atravessar a ZP.',
-    especies: 'A capacitação in vitro é bem estabelecida para <span class="fert-hl">bovinos, suínos, ovinos e pequenos animais</span> — base da FIV nessas espécies. Em equinos, a capacitação in vitro é extremamente difícil: o espermatozoide equino tem particularidades de membrana que dificultam a remoção de colesterol pelos protocolos convencionais, e o processo não culmina em reação acrossômica eficiente in vitro. Por isso a <span class="fert-hl">ICSI</span> é o método de escolha em equinos — o espermatozoide é injetado diretamente no oócito, contornando a necessidade de capacitação e reação acrossômica.'
-  },
-  fus: {
-    ra: 'A <strong>reação acrossômica</strong> é induzida pela ligação do espermatozoide à <span class="fert-hl">ZP3</span> (glicoproteína da zona pelúcida). Essa ligação ativa receptores que promovem influxo de Ca²⁺ e fusão da membrana acrossômica externa com a membrana plasmática. Enzimas liberadas: <span class="fert-hl">acrosina</span> (serina-protease), <span class="fert-hl">hialuronidase</span> (digere o cumulus), neuraminidase e fosfatases ácidas. A penetração da ZP é combinação de ação enzimática + força mecânica (hiperativação). Espermatozoides com reação acrossômica prematura perdem capacidade fertilizante.',
-    izumo: 'A fusão das membranas dos gametas é mediada por <span class="fert-hl">IZUMO1</span> (proteína espermática, família das imunoglobulinas) e <span class="fert-hl">JUNO</span> (proteína do oócito, receptor de folato). IZUMO1 fica oculta no acrossomo intacto e se redistribui para a superfície equatorial após a reação acrossômica. JUNO está na membrana plasmática do oócito e é rapidamente internalizada após a fusão do primeiro espermatozoide — contribuindo para o bloqueio à polispermia. Camundongos knockout para IZUMO1 ou JUNO são completamente inférteis.',
-    ativacao: 'A ativação do oócito é desencadeada por <span class="fert-hl">oscilações repetidas de Ca²⁺</span> intracelular, geradas pelo fator <span class="fert-hl">PLCζ</span> introduzido pelo espermatozoide. As oscilações de Ca²⁺ inativam o CSF (Cytostatic Factor), permitindo a conclusão da Meiose II e a extrusão do 2º corpúsculo polar. A ativação por PLCζ é a base da ativação artificial de oócitos (AOA) usada em casos de falha de fertilização após ICSI.',
-    rapido: 'O <strong>bloqueio rápido por despolarização</strong> é um mecanismo clássico descrito em ouriço-do-mar e outros invertebrados marinhos, onde a membrana do oócito vai de –70 mV para +20 mV em segundos após a fusão do primeiro espermatozoide, impedindo a fusão de espermatozoides adicionais. Em mamíferos, a despolarização ocorre mas é <span class="fert-hl">inconsistente e insuficiente</span> para bloquear a polispermia de forma confiável — experimentos de clamp de voltagem em camundongos mostraram que manter a membrana artificialmente despolarizada não impede a fusão de espermatozoides adicionais. O mecanismo principal em mamíferos é a reação cortical.',
-    lento: 'A <strong>reação cortical</strong> é o principal bloqueio à polispermia em mamíferos. As oscilações de Ca²⁺ induzem a <span class="fert-hl">exocitose dos grânulos corticais</span> — organelas subplasmaléticas do oócito. As enzimas liberadas (ovastacina, calreticulina, proteases) modificam a zona pelúcida: clivam a ZP2 e ZP3, eliminando os sítios de ligação espermática. A zona modificada — <span class="fert-hl">membrana de fecundação</span> — é impermeável a novos espermatozoides. Ovastacina cliva especificamente a ZP2, impedindo a ligação de espermatozoides adicionais mesmo que penetrem parcialmente a ZP.',
-    juno: 'Após a fusão do primeiro espermatozoide, a proteína <span class="fert-hl">JUNO</span> é rapidamente internalizada da superfície do oócito — desaparece da membrana plasmática em minutos. Como JUNO é o receptor obrigatório de IZUMO1 para a fusão gamética, sua remoção da superfície impede que espermatozoides adicionais se fundam ao oócito, mesmo que consigam atravessar a zona pelúcida modificada. Esse mecanismo atua em nível de membrana plasmática, complementando a reação cortical que atua em nível de zona pelúcida.'
-  },
-  dev: {
-    singamia: 'A <strong>singamia</strong> é a fusão dos pró-núcleos masculino e feminino, restabelecendo a diploidia (2n). Ocorre 12–20 h após a fertilização, na ampola da tuba. Nesse momento o genoma ainda não está ativo — o embrião depende de mRNAs maternos acumulados no oócito durante o crescimento folicular.',
-    clivagem: 'As primeiras <strong>clivagens</strong> ocorrem sem crescimento celular — o embrião se divide mas não aumenta de tamanho (os blastômeros ficam progressivamente menores). O genoma embrionário ainda está silenciado. A ativação do genoma embrionário (EGA) ocorre em diferentes estágios: <span class="fert-hl">bovinos e ovinos: 8–16 células</span>; suínos: 4 células; equinos: 8–16 células; camundongos: 2 células. O embrião precisa de meios de cultivo diferentes antes e após a EGA.',
-    morula: 'A <strong>compactação</strong> é o processo pelo qual os blastômeros se unem via <span class="fert-hl">E-caderina</span> (molécula de adesão cálcio-dependente), formando junções estreitas (tight junctions). Ocorre no estágio de 8–16 células. Determina o primeiro evento de diferenciação: células externas → trofoblasto; células internas → ICM. Embriões sem compactação adequada não formam blastocisto — critério de qualidade em TE.',
-    blastocisto: 'O <strong>blastocisto</strong> é caracterizado por: <span class="fert-hl">ICM</span> (Massa Celular Interna → embrião), <span class="fert-hl">trofoblasto</span> (camada externa → placenta) e <span class="fert-hl">blastocele</span> (cavidade com fluido). A expansão é ativa — Na⁺/K⁺-ATPase no trofoblasto bombeia íons criando gradiente osmótico. O grau de expansão é critério de classificação de qualidade embrionária (Grau 1–4 na escala IETS).',
-    hatching: 'A <strong>eclosão (hatching)</strong> é a saída do embrião da zona pelúcida, pré-requisito para implantação. O embrião produz <span class="fert-hl">estrofedina</span> (protease) que digere localmente a ZP, combinada à pressão mecânica das contrações do blastocisto. In vitro, o hatching assistido (perfuração mecânica, química ou laser da ZP) é usado para melhorar taxas de implantação em protocolos de TE quando o embrião não eclode espontaneamente.',
-    ativgenoma: 'A <strong>ativação do genoma embrionário (EGA)</strong> é o momento em que o embrião começa a transcrever seu próprio DNA. Os estágios variam: <span class="fert-hl">bovinos e ovinos: 8–16 células</span>; suínos: 4 células; equinos: 8–16 células; camundongos: 2 células. É o momento de maior sensibilidade ao ambiente de cultivo — bloqueio do desenvolvimento in vitro frequentemente ocorre nesse estágio (fenômeno do "bloqueio de 8 células" em bovinos).',
-    icm: 'A ICM e o trofoblasto expressam fatores de transcrição distintos: <span class="fert-hl">Oct4, Nanog e Sox2</span> (ICM — pluripotência) vs. <span class="fert-hl">Cdx2</span> (trofoblasto — linhagem extraembrionária). O trofoblasto origina o córion e a placenta. A ICM origina o epiblasto (→ embrião) e o hipoblasto (→ saco vitelínico). As células-tronco embrionárias (ESCs) derivam da ICM e são a base da tecnologia de células-tronco pluripotentes.'
-  }
-};
-
-window.fertInfo = function(group, key) {
-  var map = { tr:'fert-info-tr', cap:'fert-info-cap', fus:'fert-info-fus', dev:'fert-info-dev' };
-  var el = document.getElementById(map[group]);
-  if (!el) return;
-  el.innerHTML = fertDB[group][key];
-  el.classList.remove('empty');
-};
-window.fertSetTab = function(tab, el) {
-  var ch = el.closest('.chapter-body') || document;
-  ch.querySelectorAll('.fert-tab').forEach(function(t){ t.classList.remove('active'); });
-  ch.querySelectorAll('.fert-panel').forEach(function(p){ p.classList.remove('active'); });
-  el.classList.add('active');
-  var panel = document.getElementById('fert-panel-' + tab);
-  if (panel) panel.classList.add('active');
-};
-})();
-</script>
 `
 },
 {
@@ -2945,41 +2891,6 @@ window.fertSetTab = function(tab, el) {
   </table>
 </div>
 
-<script>
-(function(){
-var rmgDB = {
-  c: {
-    problema: 'Em cada ciclo estral, o <strong>endométrio produz PGF2α</strong> a partir do dia ~14–16, em resposta a pulsos de ocitocina (de origem hipofisária e do próprio CL). Essa PGF2α chega ao CL via sistema de contracorrente (em ruminantes) ou circulação sistêmica (em equinos) e causa sua regressão — luteólise. A queda de P4 resultante encerra a fase lútea. Para que a gestação se mantenha, esse processo precisa ser interrompido.',
-    solucao: 'O embrião precisa "avisar" o útero de sua presença antes que a luteólise seja desencadeada. Cada espécie usa um sinal diferente — proteínas (IFN-τ em ruminantes), hormônios esteroides (E2 em suínos) ou estímulos físicos (mobilidade em equinos). O resultado final é sempre o mesmo: <span class="rmg-hl">supressão ou redirecionamento da PGF2α</span> endometrial, preservando o CL e mantendo a P4 elevada.',
-    janela: 'A janela crítica é o período em que o embrião deve estar presente e ativo para que o RMG seja eficaz. Fora dessa janela, o sinal embrionário não consegue mais suprimir a luteólise — mesmo que o embrião seja viável. Em biotecnologia reprodutiva, embriões transferidos devem estar no estágio correto para coincidir com a janela crítica da receptora. Em bovinos: dias 14–17; ovinos: 12–13; equinos e suínos: 11–16.',
-    resultado: 'Com o RMG bem-sucedido, o <strong>CL persiste</strong> como CL gestacional, produzindo P4 em concentrações elevadas. A P4 mantém o endométrio em estado secretório, inibe contrações miometriais, suprime o GnRH pulsátil e prepara o ambiente para implantação. Em bovinos, o CL gestacional persiste pelos primeiros ~150 dias, sendo gradualmente substituído pela P4 placentária.'
-  }
-};
-
-window.rmgInfo = function(group, key) {
-  var el = document.getElementById('rmg-info-' + group);
-  if (!el) return;
-  el.innerHTML = rmgDB[group][key];
-  el.classList.remove('empty');
-};
-window.rmgSetTab = function(tab, el) {
-  var ch = el.closest('.chapter-body') || document;
-  ch.querySelectorAll('.rmg-tab').forEach(function(t){ t.classList.remove('active'); });
-  ch.querySelectorAll('.rmg-panel').forEach(function(p){ p.classList.remove('active'); });
-  el.classList.add('active');
-  var panel = document.getElementById('rmg-panel-' + tab);
-  if (panel) panel.classList.add('active');
-};
-window.rmgSetSp = function(sp, el) {
-  var ch = el.closest('.rmg-panel') || document;
-  ch.querySelectorAll('.rmg-sp-tab').forEach(function(t){ t.classList.remove('active'); });
-  ch.querySelectorAll('.rmg-sp-panel').forEach(function(p){ p.classList.remove('active'); });
-  el.classList.add('active');
-  var panel = document.getElementById('rmg-sp-' + sp);
-  if (panel) panel.classList.add('active');
-};
-})();
-</script>
 `
 },
 {
@@ -3361,46 +3272,6 @@ window.rmgSetSp = function(sp, el) {
   <div class="plac-info-panel empty" id="plac-info-anx">Clique em um anexo para ver detalhes.</div>
 </div>
 
-<script>
-(function(){
-var placAnx = {
-  amnio: 'O <strong>âmnio</strong> é a membrana mais interna, envolvendo diretamente o feto. Contém o <span class="plac-hl">líquido amniótico</span> com funções de: proteção mecânica, regulação térmica, permitir movimentação fetal (essencial para desenvolvimento musculoesquelético), lubrificação do canal do parto e participação na dilatação cervical. O oligoâmnio (volume reduzido) e o hidrâmnio (volume excessivo) são condições patológicas com diferentes causas e prognósticos.',
-  alantoide: 'O <strong>alantoide</strong> é a membrana de função excretora — acumula a <span class="plac-hl">urina fetal diluída</span>. Em ruminantes e equinos, é volumoso e vascularizado. Ao fundir-se com o córion forma o <span class="plac-hl">alantocório</span>, que é a estrutura placentária definitiva. Os vasos umbilicais percorrem o alantoide até o cordão umbilical. O fluido alantoide é diferente do amniótico: mais volumoso, turvo e com resíduos metabólicos.',
-  vitelino: 'O <strong>saco vitelino</strong> (vesícula umbilical) fornece nutrição ao embrião antes da placenta corioalantoide estar completamente formada (~primeiros 30–40 dias em bovinos). Regride progressivamente à medida que o alantocório assume a função placentária. A vesícula vitelina visível à ultrassonografia é indicativo de gestação inicial, antes da visualização do embrião.',
-  corio: 'O <strong>córion</strong> é a camada mais externa das membranas fetais, em contato direto com o endométrio materno. Origina-se do trofoblasto do blastocisto expandido. Ao fundir-se com o alantoide forma o <span class="plac-hl">alantocório</span> — placenta funcional definitiva. O tipo de contato entre o trofoblasto e o endométrio define a classificação histológica da placenta. Nas áreas sem vilosidades, o córion liso fica aposto ao endométrio sem troca placentária ativa.'
-};
-
-window.placInfoAnx = function(key) {
-  var el = document.getElementById('plac-info-anx');
-  el.innerHTML = placAnx[key];
-  el.classList.remove('empty');
-};
-window.placSetTab = function(tab, el) {
-  var ch = el.closest('.chapter-body') || document;
-  ch.querySelectorAll('.plac-tab').forEach(function(t){ t.classList.remove('active'); });
-  ch.querySelectorAll('.plac-panel').forEach(function(p){ p.classList.remove('active'); });
-  el.classList.add('active');
-  var panel = document.getElementById('plac-panel-' + tab);
-  if (panel) panel.classList.add('active');
-};
-window.placSetType = function(type, el) {
-  var panel = document.getElementById('plac-panel-anatomica');
-  panel.querySelectorAll('.plac-sp-tab').forEach(function(t){ t.classList.remove('active'); });
-  panel.querySelectorAll('.plac-sp-panel').forEach(function(p){ p.classList.remove('active'); });
-  el.classList.add('active');
-  var sp = document.getElementById('plac-type-' + type);
-  if (sp) sp.classList.add('active');
-};
-window.placSetHist = function(hist, el) {
-  var panel = document.getElementById('plac-panel-histologica');
-  panel.querySelectorAll('.plac-sp-tab').forEach(function(t){ t.classList.remove('active'); });
-  panel.querySelectorAll('.plac-sp-panel').forEach(function(p){ p.classList.remove('active'); });
-  el.classList.add('active');
-  var sp = document.getElementById('plac-hist-' + hist);
-  if (sp) sp.classList.add('active');
-};
-})();
-</script>
 `
 },
 {
@@ -4139,6 +4010,127 @@ var MATCH_PAIRS = [
 
 var isEditing = false;
 var bookmarks = JSON.parse(localStorage.getItem('repro-animal-bookmarks') || '[]');
+
+// === CAPÍTULO 3 — FERTILIZAÇÃO E DESENVOLVIMENTO ===
+var fertDB = {
+  tr: {
+    vagina: 'A <strong>cérvix</strong> é a primeira grande barreira ao transporte espermático. O muco cervical é estruturado em filamentos que permitem a passagem de espermatozoides com morfologia e motilidade normais, mas retêm os defeituosos. Em bovinos e ovinos, a deposição vaginal (IA convencional) enfrenta essa barreira — razão pela qual a IA intrauterina supera a vaginal em taxa de concepção. A redução de 10⁸ para ~10⁶ ocorre em minutos.',
+    utero: 'No útero, o transporte é facilitado pelas <span class="fert-hl">contrações miometriais</span> (mediadas pelo E2 e pela ocitocina liberada durante a cópula) e pelos cílios do epitélio. O útero também realiza seleção imunológica — leucócitos fagocitam grande parte dos espermatozoides nesta fase, o que é fisiológico e faz parte da seleção progressiva.',
+    tuba: 'A <span class="fert-hl">junção utero-tubárica (JUT)</span> é uma barreira anatômica e funcional seletiva. A mucosa da JUT retém espermatozoides com defeitos estruturais. Apenas 10³–10⁴ espermatozoides chegam à tuba, onde se ligam ao epitélio do istmo e aguardam a ovulação. A seleção é progressiva — quanto mais distante da deposição, menor o número e maior a qualidade dos espermatozoides remanescentes.',
+    istmo: 'O <strong>istmo da tuba uterina</strong> funciona como reservatório espermático: os espermatozoides ligam-se ao epitélio via lectinas e glicoproteínas, ficando em estado de baixa motilidade que prolonga sua viabilidade por horas a dias. Próximo da ovulação, sinais (progesterona, E2 e fatores do fluido folicular) promovem a liberação dos espermatozoides do epitélio — eles retomam motilidade hiperativa e migram para a ampola onde encontram o oócito.',
+    oocito: 'O oócito é captado pelas <span class="fert-hl">fímbrias</span> da tuba, auxiliadas por cílios e contrações musculares. O transporte até a ampola (local da fertilização) é rápido — minutos a horas. O transporte da ampola até o útero leva 3–5 dias e é modulado por P4 (acelera o transporte, prepara o útero) e E2. Em equinos, o embrião demora ~6 dias para chegar ao útero — durante esse período produz PGE2 para garantir sua passagem pelo istmo.',
+    equino: 'O embrião equino produz <span class="fert-hl">PGE2 (prostaglandina E2)</span>, que relaxa o músculo liso do istmo da tuba uterina, permitindo sua passagem para o útero. Embriões não viáveis não produzem PGE2 em quantidade suficiente e ficam retidos no istmo — este é o mecanismo de <span class="fert-hl">seleção de viabilidade oviductal</span>. Em TE equina: embriões de má qualidade têm menor taxa de recuperação uterina justamente porque ficam retidos na tuba.'
+  },
+  cap: {
+    colesterol: 'A <strong>remoção de colesterol</strong> é o evento inicial da capacitação. A membrana plasmática espermática é rica em colesterol (adquirido no epidídimo e no plasma seminal), que confere rigidez e impede a reação acrossômica prematura. No trato feminino, esse colesterol é removido por <span class="fert-hl">aceptores lipídicos</span> presentes no fluido uterino e tubárico — incluindo lipoproteínas de alta densidade (HDL), vesículas extracelulares e, em menor grau, albumina sérica.',
+    membrana: 'As alterações de membrana incluem hiperpolarização inicial seguida de despolarização progressiva; abertura de canais de Ca²⁺, especialmente o <span class="fert-hl">CatSper</span> (canal espermático específico ativado por progesterona); e influxo de <span class="fert-hl">HCO₃⁻</span>, que é o ativador direto da adenilil ciclase solúvel (sAC). O canal CatSper é essencial — camundongos knockout para CatSper são inférteis mesmo com morfologia espermática normal.',
+    camp: 'O <span class="fert-hl">HCO₃⁻</span> ativa a adenilil ciclase solúvel (sAC), elevando o AMPc intracelular. O AMPc ativa a PKA (proteína quinase A), que fosforila múltiplas proteínas flagelares e acrossômicas. A fosforilação em tirosina de proteínas flagelares é um marcador molecular de capacitação usado em laboratório para confirmar o processo in vitro.',
+    hiperativ: 'A <strong>hiperativação</strong> é a mudança no padrão de motilidade: de progressiva (linear) para assimétrica de alta amplitude (movimentos em "chicote"). É necessária para: (1) liberação do espermatozoide do epitélio do istmo; (2) penetração mecânica da zona pelúcida, junto com as enzimas acrossômicas. Espermatozoides hiperativados têm maior força propulsiva, essencial para atravessar a ZP.',
+    especies: 'A capacitação in vitro é bem estabelecida para <span class="fert-hl">bovinos, suínos, ovinos e pequenos animais</span> — base da FIV nessas espécies. Em equinos, a capacitação in vitro é extremamente difícil: o espermatozoide equino tem particularidades de membrana que dificultam a remoção de colesterol pelos protocolos convencionais. Por isso a <span class="fert-hl">ICSI</span> é o método de escolha em equinos.'
+  },
+  fus: {
+    ra: 'A <strong>reação acrossômica</strong> é induzida pela ligação do espermatozoide à <span class="fert-hl">ZP3</span> (glicoproteína da zona pelúcida). Essa ligação ativa receptores que promovem influxo de Ca²⁺ e fusão da membrana acrossômica externa com a membrana plasmática. Enzimas liberadas: <span class="fert-hl">acrosina</span> (serina-protease), <span class="fert-hl">hialuronidase</span> (digere o cumulus), neuraminidase e fosfatases ácidas.',
+    izumo: 'A fusão das membranas dos gametas é mediada por <span class="fert-hl">IZUMO1</span> (proteína espermática) e <span class="fert-hl">JUNO</span> (proteína do oócito, receptor de folato). IZUMO1 fica oculta no acrossomo intacto e se redistribui para a superfície equatorial após a reação acrossômica. JUNO está na membrana plasmática do oócito e é rapidamente internalizada após a fusão do primeiro espermatozoide — contribuindo para o bloqueio à polispermia.',
+    ativacao: 'A ativação do oócito é desencadeada por <span class="fert-hl">oscilações repetidas de Ca²⁺</span> intracelular, geradas pelo fator <span class="fert-hl">PLCζ</span> introduzido pelo espermatozoide. As oscilações de Ca²⁺ inativam o CSF (Cytostatic Factor), permitindo a conclusão da Meiose II e a extrusão do 2º corpúsculo polar.',
+    rapido: 'O <strong>bloqueio rápido por despolarização</strong> é um mecanismo clássico descrito em ouriço-do-mar. Em mamíferos, a despolarização ocorre mas é <span class="fert-hl">inconsistente e insuficiente</span> para bloquear a polispermia de forma confiável. O mecanismo principal em mamíferos é a reação cortical.',
+    lento: 'A <strong>reação cortical</strong> é o principal bloqueio à polispermia em mamíferos. As oscilações de Ca²⁺ induzem a <span class="fert-hl">exocitose dos grânulos corticais</span>. As enzimas liberadas modificam a zona pelúcida: clivam a ZP2 e ZP3, eliminando os sítios de ligação espermática. A zona modificada — <span class="fert-hl">membrana de fecundação</span> — é impermeável a novos espermatozoides.',
+    juno: 'Após a fusão do primeiro espermatozoide, a proteína <span class="fert-hl">JUNO</span> é rapidamente internalizada da superfície do oócito. Como JUNO é o receptor obrigatório de IZUMO1 para a fusão gamética, sua remoção impede que espermatozoides adicionais se fundam ao oócito, complementando a reação cortical.'
+  },
+  dev: {
+    singamia: 'A <strong>singamia</strong> é a fusão dos pró-núcleos masculino e feminino, restabelecendo a diploidia (2n). Ocorre 12–20 h após a fertilização, na ampola da tuba. Nesse momento o genoma ainda não está ativo — o embrião depende de mRNAs maternos acumulados no oócito.',
+    clivagem: 'As primeiras <strong>clivagens</strong> ocorrem sem crescimento celular. A ativação do genoma embrionário (EGA) ocorre em: <span class="fert-hl">bovinos e ovinos: 8–16 células</span>; suínos: 4 células; equinos: 8–16 células; camundongos: 2 células.',
+    morula: 'A <strong>compactação</strong> é o processo pelo qual os blastômeros se unem via <span class="fert-hl">E-caderina</span>, formando junções estreitas. Ocorre no estágio de 8–16 células. Determina o primeiro evento de diferenciação: células externas → trofoblasto; células internas → ICM.',
+    blastocisto: 'O <strong>blastocisto</strong> é caracterizado por: <span class="fert-hl">ICM</span> (Massa Celular Interna → embrião), <span class="fert-hl">trofoblasto</span> (camada externa → placenta) e <span class="fert-hl">blastocele</span> (cavidade com fluido). A expansão é ativa — Na⁺/K⁺-ATPase no trofoblasto bombeia íons criando gradiente osmótico.',
+    hatching: 'A <strong>eclosão (hatching)</strong> é a saída do embrião da zona pelúcida, pré-requisito para implantação. O embrião produz estrofedina (protease) que digere localmente a ZP, combinada à pressão mecânica das contrações do blastocisto.',
+    ativgenoma: 'A <strong>ativação do genoma embrionário (EGA)</strong> é o momento em que o embrião começa a transcrever seu próprio DNA. Estágios: <span class="fert-hl">bovinos e ovinos: 8–16 células</span>; suínos: 4 células; equinos: 8–16 células; camundongos: 2 células.',
+    icm: 'A ICM e o trofoblasto expressam fatores de transcrição distintos: <span class="fert-hl">Oct4, Nanog e Sox2</span> (ICM — pluripotência) vs. <span class="fert-hl">Cdx2</span> (trofoblasto). O trofoblasto origina o córion e a placenta. A ICM origina o epiblasto (→ embrião) e o hipoblasto (→ saco vitelínico).'
+  }
+};
+window.fertInfo = function(group, key) {
+  var map = { tr:'fert-info-tr', cap:'fert-info-cap', fus:'fert-info-fus', dev:'fert-info-dev' };
+  var el = document.getElementById(map[group]);
+  if (!el) return;
+  el.innerHTML = fertDB[group][key];
+  el.classList.remove('empty');
+};
+window.fertSetTab = function(tab, el) {
+  var ch = el.closest('.chapter-body') || document;
+  ch.querySelectorAll('.fert-tab').forEach(function(t){ t.classList.remove('active'); });
+  ch.querySelectorAll('.fert-panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  var panel = document.getElementById('fert-panel-' + tab);
+  if (panel) panel.classList.add('active');
+};
+
+// === CAPÍTULO 4 — RECONHECIMENTO MATERNO DA GESTAÇÃO ===
+var rmgDB = {
+  c: {
+    problema: 'Em cada ciclo estral, o <strong>endométrio produz PGF2α</strong> a partir do dia ~14–16, em resposta a pulsos de ocitocina. Essa PGF2α chega ao CL via sistema de contracorrente (em ruminantes) ou circulação sistêmica (em equinos) e causa sua regressão — luteólise. A queda de P4 resultante encerra a fase lútea. Para que a gestação se mantenha, esse processo precisa ser interrompido.',
+    solucao: 'O embrião precisa "avisar" o útero de sua presença antes que a luteólise seja desencadeada. Cada espécie usa um sinal diferente — proteínas (IFN-τ em ruminantes), hormônios esteroides (E2 em suínos) ou estímulos físicos (mobilidade em equinos). O resultado final é sempre o mesmo: <span class="rmg-hl">supressão ou redirecionamento da PGF2α</span> endometrial, preservando o CL e mantendo a P4 elevada.',
+    janela: 'A janela crítica é o período em que o embrião deve estar presente e ativo para que o RMG seja eficaz. Em bovinos: dias 14–17; ovinos: 12–13; equinos e suínos: 11–16. Embriões transferidos devem estar no estágio correto para coincidir com a janela crítica da receptora.',
+    resultado: 'Com o RMG bem-sucedido, o <strong>CL persiste</strong> como CL gestacional, produzindo P4 em concentrações elevadas. A P4 mantém o endométrio em estado secretório, inibe contrações miometriais, suprime o GnRH pulsátil e prepara o ambiente para implantação. Em bovinos, o CL gestacional persiste pelos primeiros ~150 dias.'
+  }
+};
+window.rmgInfo = function(group, key) {
+  var el = document.getElementById('rmg-info-' + group);
+  if (!el) return;
+  el.innerHTML = rmgDB[group][key];
+  el.classList.remove('empty');
+};
+window.rmgSetTab = function(tab, el) {
+  var ch = el.closest('.chapter-body') || document;
+  ch.querySelectorAll('.rmg-tab').forEach(function(t){ t.classList.remove('active'); });
+  ch.querySelectorAll('.rmg-panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  var panel = document.getElementById('rmg-panel-' + tab);
+  if (panel) panel.classList.add('active');
+};
+window.rmgSetSp = function(sp, el) {
+  var ch = el.closest('.rmg-panel') || document;
+  ch.querySelectorAll('.rmg-sp-tab').forEach(function(t){ t.classList.remove('active'); });
+  ch.querySelectorAll('.rmg-sp-panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  var panel = document.getElementById('rmg-sp-' + sp);
+  if (panel) panel.classList.add('active');
+};
+
+// === CAPÍTULO 5 — PLACENTAÇÃO E ANEXOS FETAIS ===
+var placAnx = {
+  amnio: 'O <strong>âmnio</strong> é a membrana mais interna, envolvendo diretamente o feto. Contém o <span class="plac-hl">líquido amniótico</span> com funções de: proteção mecânica, regulação térmica, permitir movimentação fetal (essencial para desenvolvimento musculoesquelético), lubrificação do canal do parto e participação na dilatação cervical.',
+  alantoide: 'O <strong>alantoide</strong> é a membrana de função excretora — acumula a <span class="plac-hl">urina fetal diluída</span>. Em ruminantes e equinos, é volumoso e vascularizado. Ao fundir-se com o córion forma o <span class="plac-hl">alantocório</span>, que é a estrutura placentária definitiva.',
+  vitelino: 'O <strong>saco vitelino</strong> (vesícula umbilical) fornece nutrição ao embrião antes da placenta corioalantoide estar completamente formada (~primeiros 30–40 dias em bovinos). Regride progressivamente à medida que o alantocório assume a função placentária.',
+  corio: 'O <strong>córion</strong> é a camada mais externa das membranas fetais, em contato direto com o endométrio materno. Origina-se do trofoblasto do blastocisto expandido. Ao fundir-se com o alantoide forma o <span class="plac-hl">alantocório</span> — placenta funcional definitiva.'
+};
+window.placInfoAnx = function(key) {
+  var el = document.getElementById('plac-info-anx');
+  if (!el) return;
+  el.innerHTML = placAnx[key];
+  el.classList.remove('empty');
+};
+window.placSetTab = function(tab, el) {
+  var ch = el.closest('.chapter-body') || document;
+  ch.querySelectorAll('.plac-tab').forEach(function(t){ t.classList.remove('active'); });
+  ch.querySelectorAll('.plac-panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  var panel = document.getElementById('plac-panel-' + tab);
+  if (panel) panel.classList.add('active');
+};
+window.placSetType = function(type, el) {
+  var panel = document.getElementById('plac-panel-anatomica');
+  panel.querySelectorAll('.plac-sp-tab').forEach(function(t){ t.classList.remove('active'); });
+  panel.querySelectorAll('.plac-sp-panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  var sp = document.getElementById('plac-type-' + type);
+  if (sp) sp.classList.add('active');
+};
+window.placSetHist = function(hist, el) {
+  var panel = document.getElementById('plac-panel-histologica');
+  panel.querySelectorAll('.plac-sp-tab').forEach(function(t){ t.classList.remove('active'); });
+  panel.querySelectorAll('.plac-sp-panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  var sp = document.getElementById('plac-hist-' + hist);
+  if (sp) sp.classList.add('active');
+};
 
 // === CAPÍTULO 6 — GESTAÇÃO E DIAGNÓSTICO GESTACIONAL ===
 var gdDb = {
