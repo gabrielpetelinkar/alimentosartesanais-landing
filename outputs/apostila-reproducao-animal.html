@@ -2146,7 +2146,85 @@ var CHAPTERS = [
   title: 'Ciclo Estral Comparado',
   icon: '#i-sync',
   content: `
-<!-- CICLO ESTRAL COMPARADO — componente interativo 2.1–2.4 -->
+<style>
+  .ce-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .ce-tab { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 13px; color: var(--text-secondary); transition: all .18s; font-family: inherit; }
+  .ce-tab:hover { background: var(--bg-hover); }
+  .ce-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .ce-panel { display: none; } .ce-panel.active { display: block; }
+  .ce-hint { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+  .ce-fases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .ce-fase-card { border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 10px 14px; background: var(--bg-card); cursor: pointer; transition: border-color .15s, background .15s; }
+  .ce-fase-card:hover { border-color: var(--border-card); background: var(--bg-hover); }
+  .ce-fase-title { font-weight: 600; font-size: 13.5px; margin-bottom: 2px; color: var(--text-primary); }
+  .ce-fase-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+  .ce-info-panel { background: var(--bg-card-alt); border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 12px 16px; margin-top: 8px; font-size: 13px; line-height: 1.65; min-height: 56px; color: var(--text-primary); }
+  .ce-info-panel.empty { color: var(--text-muted); font-style: italic; }
+  .ce-hl { background: var(--amber-100); border-radius: 3px; padding: 1px 4px; font-weight: 600; color: var(--amber-700); }
+  .ce-memo { margin-top: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 12px 16px; background: var(--bg-card-alt); }
+  .ce-memo-label { font-size: 10.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+  .ce-memo-text { font-size: 13px; font-family: "SF Mono","Fira Code","Consolas",monospace; line-height: 1.8; color: var(--text-primary); }
+  .ce-arr { color: var(--text-muted); margin: 0 1px; }
+  .ce-badge { display: inline-block; font-size: 10.5px; padding: 1px 7px; border-radius: 10px; font-weight: 600; margin-left: 4px; vertical-align: middle; }
+  .ce-bwarn { background: var(--amber-100); color: var(--amber-700); }
+  .ce-binfo { background: var(--blue-100); color: var(--blue-700); }
+  .ce-bsuc  { background: var(--green-100,#eaf3de); color: var(--green-700,#27500a); }
+  .ce-bdanger { background: var(--red-100,#fce8e8); color: var(--red-700,#7a1f1f); }
+  .ce-sp-selector { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .ce-sp-btn { padding: 5px 13px; border-radius: 16px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; user-select: none; }
+  .ce-sp-btn:hover { background: var(--bg-hover); }
+  .ce-sp-btn.selected { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .ce-sp-hint { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; }
+  .ce-cmp-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .ce-cmp-table th { padding: 8px 10px; border-bottom: 2px solid var(--border-light); font-weight: 600; color: var(--text-secondary); text-align: center; font-size: 12px; background: var(--bg-card-alt); }
+  .ce-cmp-table th.ce-param-col { text-align: left; min-width: 130px; }
+  .ce-cmp-table td { padding: 7px 10px; border-bottom: 1px solid var(--border-light); color: var(--text-primary); text-align: center; vertical-align: top; font-size: 12px; }
+  .ce-cmp-table td.ce-param-col { font-weight: 600; color: var(--text-secondary); font-size: 11px; text-align: left; background: var(--bg-card-alt); }
+  .ce-cmp-table tr:nth-child(even) td { background: var(--bg-card-alt); }
+  .ce-table-note { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+  .ce-sp-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .ce-sp-tab { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; }
+  .ce-sp-tab:hover { background: var(--bg-hover); }
+  .ce-sp-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .ce-sp-panel { display: none; } .ce-sp-panel.active { display: block; }
+  .ce-sp-detail { border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 14px 16px; background: var(--bg-card); }
+  .ce-sp-detail h4 { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: var(--text-primary); }
+  .ce-sp-row { display: flex; gap: 8px; margin-bottom: 7px; font-size: 12px; }
+  .ce-sp-key { color: var(--text-secondary); min-width: 140px; flex-shrink: 0; font-weight: 600; }
+  .ce-sp-val { color: var(--text-primary); line-height: 1.5; }
+  .ce-fol-sp-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .ce-fol-sp-tab { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; }
+  .ce-fol-sp-tab:hover { background: var(--bg-hover); }
+  .ce-fol-sp-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .ce-fol-sp-panel { display: none; } .ce-fol-sp-panel.active { display: block; }
+  .ce-onda-card { border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 12px 14px; background: var(--bg-card); margin-bottom: 8px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .ce-onda-card:hover { border-color: var(--border-card); background: var(--bg-hover); }
+  .ce-onda-title { font-weight: 600; font-size: 13.5px; margin-bottom: 2px; color: var(--text-primary); }
+  .ce-onda-sub { font-size: 12px; color: var(--text-secondary); }
+  .ce-estacao-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 4px; }
+  .ce-est-card { border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 14px 12px; text-align: center; background: var(--bg-card); }
+  .ce-est-icon { font-size: 20px; margin-bottom: 6px; }
+  .ce-est-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); }
+  .ce-est-body { font-size: 11px; color: var(--text-secondary); line-height: 1.4; }
+  .ce-flux-sp-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .ce-flux-sp-tab { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; }
+  .ce-flux-sp-tab:hover { background: var(--bg-hover); }
+  .ce-flux-sp-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .ce-flux-sp-panel { display: none; } .ce-flux-sp-panel.active { display: block; }
+  .ce-flux-wrap { display: flex; flex-direction: column; gap: 4px; }
+  .ce-flux-node { border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 9px 14px; background: var(--bg-card); flex: 1; }
+  .ce-flux-node.ce-highlight { border-color: #378ADD; background: var(--blue-100); }
+  .ce-flux-node.ce-warn { border-color: var(--amber-600,#BA7517); background: var(--amber-100); }
+  .ce-flux-node.ce-suc { border-color: #3B6D11; background: var(--green-100,#eaf3de); }
+  .ce-flux-node.ce-danger { border-color: #A32D2D; background: var(--red-100,#fce8e8); }
+  .ce-flux-node.ce-gray { border-color: var(--border-card); background: var(--bg-card-alt); }
+  .ce-fn-title { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 1px; }
+  .ce-fn-sub { font-size: 11px; color: var(--text-secondary); line-height: 1.35; }
+  .ce-flux-arrow { display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--text-muted); padding: 2px 0; }
+  .ce-flux-split { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .ce-flux-note { font-size: 11.5px; color: var(--text-secondary); background: var(--bg-card-alt); border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 8px 12px; margin-top: 10px; line-height: 1.5; }
+</style>
+
 <div class="ce-tabs">
   <button class="ce-tab active" onclick="ceSetTab('fases',this)">Fases do ciclo</button>
   <button class="ce-tab" onclick="ceSetTab('tabela',this)">Tabela comparativa</button>
@@ -2159,15 +2237,15 @@ var CHAPTERS = [
 <!-- FASES -->
 <div class="ce-panel active" id="ce-panel-fases">
   <p class="ce-hint">Clique em cada fase para ver detalhes e mecanismos</p>
-  <div class="fases-grid">
-    <div class="fase-card" onclick="ceInfo('fases','proestro')"><div class="fase-title">Proestro</div><div class="fase-sub">Crescimento folicular; estrogênio crescente</div></div>
-    <div class="fase-card" onclick="ceInfo('fases','estro')"><div class="fase-title">Estro <span class="ce-badge ce-binfo">pico LH</span></div><div class="fase-sub">Aceitação do macho; ovulação</div></div>
-    <div class="fase-card" onclick="ceInfo('fases','metaestro')"><div class="fase-title">Metaestro</div><div class="fase-sub">Formação do CL; progesterona crescente</div></div>
-    <div class="fase-card" onclick="ceInfo('fases','diestro')"><div class="fase-title">Diestro <span class="ce-badge ce-bwarn">fase lútea</span></div><div class="fase-sub">P4 elevada; luteólise ou gestação</div></div>
+  <div class="ce-fases-grid">
+    <div class="ce-fase-card" onclick="ceInfo('fases','proestro')"><div class="ce-fase-title">Proestro</div><div class="ce-fase-sub">Crescimento folicular; estrogênio crescente</div></div>
+    <div class="ce-fase-card" onclick="ceInfo('fases','estro')"><div class="ce-fase-title">Estro <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fase-sub">Aceitação do macho; ovulação</div></div>
+    <div class="ce-fase-card" onclick="ceInfo('fases','metaestro')"><div class="ce-fase-title">Metaestro</div><div class="ce-fase-sub">Formação do CL; progesterona crescente</div></div>
+    <div class="ce-fase-card" onclick="ceInfo('fases','diestro')"><div class="ce-fase-title">Diestro <span class="ce-badge ce-bwarn">fase lútea</span></div><div class="ce-fase-sub">P4 elevada; luteólise ou gestação</div></div>
   </div>
-  <div class="fases-grid">
-    <div class="fase-card" onclick="ceInfo('fases','luteolise')"><div class="fase-title">Luteólise</div><div class="fase-sub">PGF2α uterina; mecanismo espécie-dependente</div></div>
-    <div class="fase-card" onclick="ceInfo('fases','anestro')"><div class="fase-title">Anestro</div><div class="fase-sub">Ausência de ciclos; causas variadas</div></div>
+  <div class="ce-fases-grid">
+    <div class="ce-fase-card" onclick="ceInfo('fases','luteolise')"><div class="ce-fase-title">Luteólise</div><div class="ce-fase-sub">PGF2α uterina; mecanismo espécie-dependente</div></div>
+    <div class="ce-fase-card" onclick="ceInfo('fases','anestro')"><div class="ce-fase-title">Anestro</div><div class="ce-fase-sub">Ausência de ciclos; causas variadas</div></div>
   </div>
   <div class="ce-info-panel empty" id="ce-info-fases">Clique em uma fase para ver detalhes.</div>
   <div class="ce-memo">
@@ -2179,7 +2257,7 @@ var CHAPTERS = [
 <!-- TABELA -->
 <div class="ce-panel" id="ce-panel-tabela">
   <p class="ce-sp-hint">Selecione as espécies para comparar (até 4)</p>
-  <div class="ce-sp-sel">
+  <div class="ce-sp-selector">
     <button class="ce-sp-btn selected" onclick="ceToggleSp('vaca',this)">Vaca</button>
     <button class="ce-sp-btn selected" onclick="ceToggleSp('egua',this)">Égua</button>
     <button class="ce-sp-btn selected" onclick="ceToggleSp('ovelha',this)">Ovelha</button>
@@ -2196,37 +2274,44 @@ var CHAPTERS = [
 <!-- PARTICULARIDADES -->
 <div class="ce-panel" id="ce-panel-especies">
   <div class="ce-sp-tabs">
-    <button class="ce-sp-tab active" onclick="ceSp('egua',this)">Égua</button>
-    <button class="ce-sp-tab" onclick="ceSp('gata',this)">Gata</button>
-    <button class="ce-sp-tab" onclick="ceSp('porca',this)">Porca</button>
-    <button class="ce-sp-tab" onclick="ceSp('cadela',this)">Cadela</button>
-    <button class="ce-sp-tab" onclick="ceSp('ovelha',this)">Ovelha / Cabra</button>
-    <button class="ce-sp-tab" onclick="ceSp('vaca',this)">Vaca</button>
-    <button class="ce-sp-tab" onclick="ceSp('bufala',this)">Búfala</button>
+    <button class="ce-sp-tab active" onclick="ceSetSp('egua',this)">Égua</button>
+    <button class="ce-sp-tab" onclick="ceSetSp('gata',this)">Gata</button>
+    <button class="ce-sp-tab" onclick="ceSetSp('porca',this)">Porca</button>
+    <button class="ce-sp-tab" onclick="ceSetSp('cadela',this)">Cadela</button>
+    <button class="ce-sp-tab" onclick="ceSetSp('ovelha',this)">Ovelha / Cabra</button>
+    <button class="ce-sp-tab" onclick="ceSetSp('vaca',this)">Vaca</button>
+    <button class="ce-sp-tab" onclick="ceSetSp('bufala',this)">Búfala</button>
   </div>
+
   <div class="ce-sp-panel active" id="ce-sp-egua">
     <div class="ce-sp-detail">
       <h4>Égua — particularidades reprodutivas</h4>
       <div class="ce-sp-row"><span class="ce-sp-key">Sazonalidade</span><span class="ce-sp-val">Poliéstrica estacional de <strong>dias longos</strong> — melatonina baixa (noites curtas) ativa o eixo reprodutivo; estação reprodutiva primavera/verão</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Fossa de ovulação</span><span class="ce-sp-val">Estrutura anatômica exclusiva: depressão na margem medial do ovário revestida por epitélio germinativo — único local de liberação do oócito. O folículo precisa migrar e se posicionar sobre a fossa antes de romper. O ovário equino é anatomicamente "invertido": parênquima na periferia, zona germinativa no interior.</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Fossa de ovulação</span><span class="ce-sp-val">Estrutura anatômica exclusiva da égua: uma depressão na margem medial do ovário, revestida por epitélio germinativo, que é o único local por onde o oócito pode ser liberado. Diferente de outras espécies — onde a ovulação pode ocorrer em qualquer ponto da superfície ovariana — na égua o folículo precisa migrar e se posicionar sobre a fossa antes de romper.</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Folículo pré-ovulatório</span><span class="ce-sp-val">35–50 mm; amolecimento da parede (avaliado por US) é sinal de ovulação iminente</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Luteólise</span><span class="ce-sp-val">PGF2α via recirculação sistêmica pelo <strong>plexo vásculo-ováreo</strong> — diferente de bovinos e ovinos, onde ocorre por difusão local entre veia uterina e artéria ovárica ipsilateral</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Transição primavera</span><span class="ce-sp-val">Período de anovulação com folículos grandes que não ovulam; pode ser antecipado com luz artificial ou progestágenos</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Transição primavera</span><span class="ce-sp-val">Período de anovulação com folículos grandes que não ovulam; problemático para manejo; pode ser antecipado com luz artificial ou progestágenos</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Oócito ovulado</span><span class="ce-sp-val">Ovula em <strong>Prófase I (dictioteno)</strong> — meiose completa-se no oviduto após fecundação</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">FIV / reprodução assistida</span><span class="ce-sp-val">FIV convencional ineficiente; <strong>ICSI</strong> é o método de escolha</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">FIV / reprodução assistida</span><span class="ce-sp-val">FIV convencional ineficiente pela dificuldade de capacitação in vitro; <strong>ICSI</strong> é o método de escolha</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Gestação</span><span class="ce-sp-val">335–342 dias (média ~340 d); influenciada pela estação e pelo sexo do potro</span></div>
     </div>
   </div>
+
   <div class="ce-sp-panel" id="ce-sp-gata">
     <div class="ce-sp-detail">
       <h4>Gata — ovuladora induzida</h4>
-      <div class="ce-sp-row"><span class="ce-sp-key">Mecanismo</span><span class="ce-sp-val">Estímulo coital → nervo pudendo → GnRH hipotalâmico → pico LH → ovulação ~24–36 h após cópula</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Sem cópula</span><span class="ce-sp-val">Ciclos anovulatórios repetidos; pseudogestação se estímulo parcial insuficiente para ovulação completa</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Sazonalidade</span><span class="ce-sp-val">Poliéstrica estacional de <strong>dias longos</strong> (como a égua); anestro nos meses de menor fotoperíodo em latitudes temperadas</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Retorno ao estro</span><span class="ce-sp-val">2–3 semanas se não ovular; CL de pseudogestação dura ~35–40 dias se ovular sem fecundar</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Gestação</span><span class="ce-sp-val">63–65 dias (média 64 d); 58–71 d considerados normais</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Puberdade</span><span class="ce-sp-val">6–9 meses; peso mínimo ~2,5 kg</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Ciclo estral</span><span class="ce-sp-val">14–19 dias (variável conforme presença ou não de cópula)</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Proestro</span><span class="ce-sp-val">~2 dias; vocalização, lordose, roca a cabeça em objetos; citologia: células intermediárias (~60%) e parabasais (~18%)</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Estro</span><span class="ce-sp-val">2–19 dias; aceita monta, vocaliza, lordose, ergue a cauda, expõe a vulva; citologia: predomínio de <strong>células superficiais</strong>; ovulação apenas se houver coito</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Mecanismo de ovulação</span><span class="ce-sp-val">Espículas penianas → estímulo vaginal → nervo pudendo → GnRH hipotalâmico → pico de LH</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Timing da ovulação</span><span class="ce-sp-val">Cobertura no <strong>início do estro</strong>: ovulação em ~52 h; cobertura a partir do <strong>D3 do estro</strong>: ovulação em ~24 h (receptores de LH já presentes)</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Sem cópula → interestro</span><span class="ce-sp-val">8–10 dias; fase <strong>exclusiva da gata</strong>; folículos regridem sem ovular; depois retorna ao estro</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Pseudogestação</span><span class="ce-sp-val">Cobertura infértil: CL funcional por ~40 dias → depois entra em interestro</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Sazonalidade</span><span class="ce-sp-val">Poliéstrica de <strong>dias longos</strong> (como a égua); anestro nos meses de menor fotoperíodo</span></div>
     </div>
   </div>
+
   <div class="ce-sp-panel" id="ce-sp-porca">
     <div class="ce-sp-detail">
       <h4>Porca — reflexo de imobilidade</h4>
@@ -2234,54 +2319,51 @@ var CHAPTERS = [
       <div class="ce-sp-row"><span class="ce-sp-key">Feromônio</span><span class="ce-sp-val">Androsterona e androstenona do varrão potencializam o reflexo; sprays comerciais disponíveis</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Duração do estro</span><span class="ce-sp-val">40–72 h (média ~60 h); ovulação entre 1/3 e 2/3 do estro</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Ovulação</span><span class="ce-sp-val">10–25 oócitos; ovulação em massa em ~4–6 h; espermatozoides devem estar presentes antes</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Efeito macho</span><span class="ce-sp-val">Introdução do varrão após anestro adianta o início da ciclicidade</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">IA</span><span class="ce-sp-val">12–24 h após início do estro, ou 2x durante o estro; doses de 80–100 mL (IA convencional)</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Gestação</span><span class="ce-sp-val">114 dias ("três meses, três semanas e três dias")</span></div>
     </div>
   </div>
+
   <div class="ce-sp-panel" id="ce-sp-cadela">
     <div class="ce-sp-detail">
       <h4>Cadela — monoéstrica</h4>
       <div class="ce-sp-row"><span class="ce-sp-key">Ciclo</span><span class="ce-sp-val">Monoéstrica; intervalo interestral 5–12 meses, altamente variável por raça e porte</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Proestro</span><span class="ce-sp-val">7–10 dias: corrimento sanguinolento (sangramento uterino), edema vulvar, atração de machos sem aceitação</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Pico de LH</span><span class="ce-sp-val">Ocorre no <strong>final do proestro / início do estro</strong>, quando o E2 já está em declínio — diferente das outras espécies. Dura apenas ~24–48 h, sendo fácil de perder na coleta seriada</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Estro</span><span class="ce-sp-val">7–10 dias: corrimento pálido/seroso, aceitação do macho; ovulação ~48–72 h após o pico de LH</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Oócito</span><span class="ce-sp-val">Ovula como <strong>oócito primário</strong> (Prófase I); maturação completa 48–72 h após ovulação — janela fértil de ~5–7 dias</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Citologia vaginal</span><span class="ce-sp-val">Células superficiais anucleadas no pico do estro (cornificação >80%) — essencial para timing de IA</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Progesterona (P4)</span><span class="ce-sp-val">P4 >2 ng/mL = ovulação; P4 >4–5 ng/mL = oócitos maduros — mais prático que dosar LH na rotina clínica</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Proestro</span><span class="ce-sp-val">7–10 dias: corrimento sanguinolento, edema vulvar, atração de machos sem aceitação</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Pico de LH</span><span class="ce-sp-val">Ocorre no <strong>final do proestro / início do estro</strong>, quando o E2 já está em declínio — diferente das outras espécies</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Oócito</span><span class="ce-sp-val">Ovula como <strong>oócito primário</strong> (imaturo em Prófase I); maturação completa 48–72 h após a ovulação — janela fértil de ~5–7 dias</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Progesterona (P4)</span><span class="ce-sp-val">P4 >2 ng/mL = ovulação; P4 >4–5 ng/mL = oócitos maduros</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Diestro</span><span class="ce-sp-val">P4 elevada mesmo sem gestação — pseudogestação fisiológica na espécie; dura ~60–80 dias</span></div>
     </div>
   </div>
+
   <div class="ce-sp-panel" id="ce-sp-ovelha">
     <div class="ce-sp-detail">
       <h4>Ovelha e Cabra — dias curtos</h4>
       <div class="ce-sp-row"><span class="ce-sp-key">Sazonalidade</span><span class="ce-sp-val">Poliéstricas estacionais de <strong>dias curtos</strong>: melatonina alta (noites longas) ativa o eixo reprodutivo; estação outono/inverno</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Efeito macho</span><span class="ce-sp-val">Introdução do macho após anestro induz ciclicidade em 3–5 dias — estímulo físico, visual e olfativo</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Efeito macho</span><span class="ce-sp-val">Introdução do macho após anestro induz ciclicidade em 3–5 dias</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Ovulação silenciosa</span><span class="ce-sp-val">Primeiro ciclo pós-anestro frequentemente sem comportamento de estro visível</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Luteólise</span><span class="ce-sp-val">PGF2α uterina via difusão local entre veia uterina e artéria ovárica ipsilateral (contracorrente)</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Raças tropicais</span><span class="ce-sp-val">Santa Inês, Morada Nova e similares têm sazonalidade reduzida ou ausente — ciclam o ano todo</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Gestação</span><span class="ce-sp-val">148–152 dias (média 150 d) para ambas as espécies</span></div>
     </div>
   </div>
+
   <div class="ce-sp-panel" id="ce-sp-vaca">
     <div class="ce-sp-detail">
       <h4>Vaca — poliéstrica contínua</h4>
-      <div class="ce-sp-row"><span class="ce-sp-key">Estro</span><span class="ce-sp-val">12–18 h; um dos mais curtos — detecção desafiadora; ~50% dos estros ocorrem à noite</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Estro</span><span class="ce-sp-val">12–18 h; um dos mais curtos entre ruminantes — ~50% dos estros ocorrem à noite</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Luteólise</span><span class="ce-sp-val">PGF2α da veia uterina para artéria ovárica ipsilateral por contracorrente (difusão local)</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Corpo hemorrágico</span><span class="ce-sp-val">Fisiológico pós-ovulação; parede espessa e ecogênica com filamentos de fibrina; regride em ~24–48 h → CL funcional</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Cisto folicular</span><span class="ce-sp-val">>25 mm por >10 dias sem ovular; anestro (mais comum) ou ninfomania; tto: GnRH ou hCG</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Timing de IA</span><span class="ce-sp-val">Regra AM/PM: detectada de manhã → IA à tarde; detectada à tarde → IA na manhã seguinte</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Ondas foliculares</span><span class="ce-sp-val">2–3 ondas por ciclo (ver aba Dinâmica Folicular)</span></div>
     </div>
   </div>
+
   <div class="ce-sp-panel" id="ce-sp-bufala">
     <div class="ce-sp-detail">
       <h4>Búfala — particularidades reprodutivas</h4>
-      <div class="ce-sp-row"><span class="ce-sp-key">Sazonalidade</span><span class="ce-sp-val">Poliéstrica estacional de <strong>dias curtos</strong>; atividade reprodutiva máxima outono/inverno; sazonalidade atenuada em regiões tropicais</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Sazonalidade</span><span class="ce-sp-val">Poliéstrica estacional de <strong>dias curtos</strong>; atividade reprodutiva máxima outono/inverno</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Estro</span><span class="ce-sp-val">20–22 h; manifestação discreta e frequentemente noturna — dificulta detecção</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Puberdade</span><span class="ce-sp-val">18–24 meses — mais tardia que bovinos; fortemente influenciada por nutrição e fotoperíodo</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Folículo pré-ovulatório</span><span class="ce-sp-val">10–15 mm (menor que bovinos); ovulação espontânea</span></div>
-      <div class="ce-sp-row"><span class="ce-sp-key">Anestro pós-parto</span><span class="ce-sp-val">Principal entrave reprodutivo da espécie; média de 90–150 dias — mais longo que em bovinos</span></div>
+      <div class="ce-sp-row"><span class="ce-sp-key">Anestro pós-parto</span><span class="ce-sp-val">Principal entrave reprodutivo; média de 90–150 dias — mais longo que em bovinos</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">Gestação</span><span class="ce-sp-val">~310 dias (305–320 d)</span></div>
       <div class="ce-sp-row"><span class="ce-sp-key">IATF</span><span class="ce-sp-val">Protocolos adaptados dos bovinos (Ovsynch, CIDR) com ajustes de dose e timing</span></div>
     </div>
@@ -2291,192 +2373,213 @@ var CHAPTERS = [
 <!-- DINÂMICA FOLICULAR -->
 <div class="ce-panel" id="ce-panel-folicular">
   <p class="ce-hint">Selecione a espécie</p>
-  <div class="ce-fol-tabs">
-    <button class="ce-fol-tab active" onclick="ceFolSp('bovino',this)">Bovino / Búfala</button>
-    <button class="ce-fol-tab" onclick="ceFolSp('egua',this)">Égua</button>
-    <button class="ce-fol-tab" onclick="ceFolSp('ovinos',this)">Ovelha / Cabra</button>
-    <button class="ce-fol-tab" onclick="ceFolSp('porca',this)">Porca</button>
-    <button class="ce-fol-tab" onclick="ceFolSp('cadela',this)">Cadela / Gata</button>
+  <div class="ce-fol-sp-tabs">
+    <button class="ce-fol-sp-tab active" onclick="ceFolSp('bovino',this)">Bovino / Búfala</button>
+    <button class="ce-fol-sp-tab" onclick="ceFolSp('egua',this)">Égua</button>
+    <button class="ce-fol-sp-tab" onclick="ceFolSp('ovinos',this)">Ovelha / Cabra</button>
+    <button class="ce-fol-sp-tab" onclick="ceFolSp('porca',this)">Porca</button>
+    <button class="ce-fol-sp-tab" onclick="ceFolSp('cadela',this)">Cadela / Gata</button>
   </div>
-  <div class="ce-fol-panel active" id="ce-fol-bovino">
-    <div class="ce-onda-card" onclick="ceInfo('fol','3ondas')"><div class="ce-onda-title">Padrão de 3 ondas <span class="ce-badge ce-binfo">~50% das vacas</span></div><div class="ce-onda-sub">Emergências nos dias 0, 9 e 16 — ciclo médio de 21 dias</div></div>
-    <div class="ce-onda-card" onclick="ceInfo('fol','2ondas')"><div class="ce-onda-title">Padrão de 2 ondas <span class="ce-badge ce-bwarn">~50% das vacas</span></div><div class="ce-onda-sub">Emergências nos dias 0 e 11 — ciclo ligeiramente mais curto</div></div>
-    <div class="ce-onda-card" onclick="ceInfo('fol','dominancia')"><div class="ce-onda-title">Dominância folicular</div><div class="ce-onda-sub">Mecanismo de seleção do folículo dominante e supressão dos subordinados</div></div>
-    <div class="ce-onda-card" onclick="ceInfo('fol','ch_cisto')"><div class="ce-onda-title">Corpo hemorrágico vs. Cisto folicular <span class="ce-badge ce-bdanger">diferencial</span></div><div class="ce-onda-sub">Distinção ultrassonográfica e clínica</div></div>
-    <div class="ce-onda-card" onclick="ceInfo('fol','bufala_fol')"><div class="ce-onda-title">Búfala — diferenças em relação à vaca</div><div class="ce-onda-sub">Folículo menor, dominância menos pronunciada, sazonalidade influenciando as ondas</div></div>
-    <div class="ce-info-panel empty" id="ce-info-fol">Clique em um padrão acima para ver a explicação.</div>
+
+  <div class="ce-fol-sp-panel active" id="ce-fol-bovino">
+    <div class="ce-onda-card" onclick="ceInfoFol('3ondas','ce-info-fol-bov')"><div class="ce-onda-title">Padrão de 3 ondas <span class="ce-badge ce-binfo">~50% das vacas</span></div><div class="ce-onda-sub">Emergências nos dias 0, 9 e 16 — ciclo médio de 21 dias</div></div>
+    <div class="ce-onda-card" onclick="ceInfoFol('2ondas','ce-info-fol-bov')"><div class="ce-onda-title">Padrão de 2 ondas <span class="ce-badge ce-bwarn">~50% das vacas</span></div><div class="ce-onda-sub">Emergências nos dias 0 e 11 — ciclo ligeiramente mais curto</div></div>
+    <div class="ce-onda-card" onclick="ceInfoFol('dominancia','ce-info-fol-bov')"><div class="ce-onda-title">Dominância folicular</div><div class="ce-onda-sub">Mecanismo de seleção do folículo dominante e supressão dos subordinados</div></div>
+    <div class="ce-onda-card" onclick="ceInfoFol('ch_cisto','ce-info-fol-bov')"><div class="ce-onda-title">Corpo hemorrágico vs. Cisto folicular <span class="ce-badge ce-bdanger">diferencial</span></div><div class="ce-onda-sub">Distinção ultrassonográfica e clínica</div></div>
+    <div class="ce-onda-card" onclick="ceInfoFol('bufala_fol','ce-info-fol-bov')"><div class="ce-onda-title">Búfala — diferenças em relação à vaca</div><div class="ce-onda-sub">Folículo menor, dominância menos pronunciada, sazonalidade influenciando as ondas</div></div>
+    <div class="ce-info-panel empty" id="ce-info-fol-bov">Clique em um padrão acima para ver a explicação.</div>
   </div>
-  <div class="ce-fol-panel" id="ce-fol-egua">
-    <div class="ce-onda-card" onclick="ceInfo('fol','egua_fol')"><div class="ce-onda-title">Ondas foliculares na égua</div><div class="ce-onda-sub">Padrão irregular; múltiplos folículos; folículo dominante 35–50 mm</div></div>
-    <div class="ce-onda-card" onclick="ceInfo('fol','egua_trans')"><div class="ce-onda-title">Período de transição primavera</div><div class="ce-onda-sub">Folículos grandes anovulatórios; manejo específico</div></div>
-    <div class="ce-onda-card" onclick="ceInfo('fol','egua_fossa')"><div class="ce-onda-title">Fossa de ovulação — anatomia e implicações</div><div class="ce-onda-sub">Por que a égua só ovula num único ponto do ovário</div></div>
+
+  <div class="ce-fol-sp-panel" id="ce-fol-egua">
+    <div class="ce-onda-card" onclick="ceInfoFol('egua_fol','ce-info-fol-egua')"><div class="ce-onda-title">Ondas foliculares na égua</div><div class="ce-onda-sub">Padrão irregular; múltiplos folículos; folículo dominante 35–50 mm</div></div>
+    <div class="ce-onda-card" onclick="ceInfoFol('egua_trans','ce-info-fol-egua')"><div class="ce-onda-title">Período de transição primavera</div><div class="ce-onda-sub">Folículos grandes anovulatórios; manejo específico</div></div>
+    <div class="ce-onda-card" onclick="ceInfoFol('egua_fossa','ce-info-fol-egua')"><div class="ce-onda-title">Fossa de ovulação — anatomia e implicações</div><div class="ce-onda-sub">Por que a égua só ovula num único ponto do ovário</div></div>
     <div class="ce-info-panel empty" id="ce-info-fol-egua">Clique em um item acima para ver detalhes.</div>
   </div>
-  <div class="ce-fol-panel" id="ce-fol-ovinos">
-    <div class="ce-onda-card" onclick="ceInfo('fol','ovinos_fol')"><div class="ce-onda-title">Dinâmica folicular em ovinos e caprinos</div><div class="ce-onda-sub">Folículos pequenos; múltiplas ovulações; dominância menos marcada</div></div>
-    <div class="ce-info-panel empty" id="ce-info-fol-ovinos">Clique para ver detalhes.</div>
+
+  <div class="ce-fol-sp-panel" id="ce-fol-ovinos">
+    <div class="ce-onda-card" onclick="ceInfoFol('ovinos_fol','ce-info-fol-ovi')"><div class="ce-onda-title">Dinâmica folicular em ovinos e caprinos</div><div class="ce-onda-sub">Folículos pequenos; múltiplas ovulações; dominância menos marcada</div></div>
+    <div class="ce-info-panel empty" id="ce-info-fol-ovi">Clique para ver detalhes.</div>
   </div>
-  <div class="ce-fol-panel" id="ce-fol-porca">
-    <div class="ce-onda-card" onclick="ceInfo('fol','porca_fol')"><div class="ce-onda-title">Dinâmica folicular na porca</div><div class="ce-onda-sub">Grande coort de folículos; ovulação em massa; sem ondas bem definidas</div></div>
-    <div class="ce-info-panel empty" id="ce-info-fol-porca">Clique para ver detalhes.</div>
+
+  <div class="ce-fol-sp-panel" id="ce-fol-porca">
+    <div class="ce-onda-card" onclick="ceInfoFol('porca_fol','ce-info-fol-por')"><div class="ce-onda-title">Dinâmica folicular na porca</div><div class="ce-onda-sub">Grande coort de folículos; ovulação em massa; sem ondas bem definidas</div></div>
+    <div class="ce-info-panel empty" id="ce-info-fol-por">Clique para ver detalhes.</div>
   </div>
-  <div class="ce-fol-panel" id="ce-fol-cadela">
-    <div class="ce-onda-card" onclick="ceInfo('fol','cadela_fol')"><div class="ce-onda-title">Dinâmica folicular na cadela</div><div class="ce-onda-sub">Recrutamento em grupo; oócitos imaturos; longo anestro interfere no padrão</div></div>
-    <div class="ce-onda-card" onclick="ceInfo('fol','gata_fol')"><div class="ce-onda-title">Dinâmica folicular na gata</div><div class="ce-onda-sub">Ovulação induzida; múltiplos folículos pequenos; ciclos anovulatórios frequentes</div></div>
-    <div class="ce-info-panel empty" id="ce-info-fol-cadela">Clique para ver detalhes.</div>
+
+  <div class="ce-fol-sp-panel" id="ce-fol-cadela">
+    <div class="ce-onda-card" onclick="ceInfoFol('cadela_fol','ce-info-fol-cad')"><div class="ce-onda-title">Dinâmica folicular na cadela</div><div class="ce-onda-sub">Recrutamento em grupo; oócitos imaturos; longo anestro interfere no padrão</div></div>
+    <div class="ce-onda-card" onclick="ceInfoFol('gata_fol','ce-info-fol-cad')"><div class="ce-onda-title">Dinâmica folicular na gata</div><div class="ce-onda-sub">Ovulação induzida; múltiplos folículos pequenos; ciclos anovulatórios frequentes</div></div>
+    <div class="ce-info-panel empty" id="ce-info-fol-cad">Clique para ver detalhes.</div>
   </div>
 </div>
 
 <!-- FLUXOGRAMAS -->
 <div class="ce-panel" id="ce-panel-fluxo">
   <p class="ce-hint">Selecione a espécie para ver o fluxograma do ciclo estral</p>
-  <div class="ce-flux-tabs">
-    <button class="ce-flux-tab active" onclick="ceFluxSp('vaca',this)">Vaca</button>
-    <button class="ce-flux-tab" onclick="ceFluxSp('egua',this)">Égua</button>
-    <button class="ce-flux-tab" onclick="ceFluxSp('ovelha',this)">Ovelha / Cabra</button>
-    <button class="ce-flux-tab" onclick="ceFluxSp('porca',this)">Porca</button>
-    <button class="ce-flux-tab" onclick="ceFluxSp('cadela',this)">Cadela</button>
-    <button class="ce-flux-tab" onclick="ceFluxSp('bufala',this)">Búfala</button>
+  <div class="ce-flux-sp-tabs">
+    <button class="ce-flux-sp-tab active" onclick="ceFluxSp('vaca',this)">Vaca</button>
+    <button class="ce-flux-sp-tab" onclick="ceFluxSp('egua',this)">Égua</button>
+    <button class="ce-flux-sp-tab" onclick="ceFluxSp('ovelha',this)">Ovelha / Cabra</button>
+    <button class="ce-flux-sp-tab" onclick="ceFluxSp('porca',this)">Porca</button>
+    <button class="ce-flux-sp-tab" onclick="ceFluxSp('cadela',this)">Cadela</button>
+    <button class="ce-flux-sp-tab" onclick="ceFluxSp('bufala',this)">Búfala</button>
+    <button class="ce-flux-sp-tab" onclick="ceFluxSp('gata',this)">Gata</button>
   </div>
-  <!-- VACA -->
-  <div class="ce-flux-panel active" id="ce-flux-vaca">
+
+  <div class="ce-flux-sp-panel active" id="ce-flux-vaca">
     <div class="ce-flux-wrap">
-      <div class="ce-flux-node gray"><div class="ce-fn-title">Luteólise (dia 0)</div><div class="ce-fn-sub">PGF2α endometrial via contracorrente → queda de P4 → CL regride</div></div>
+      <div class="ce-flux-node ce-gray"><div class="ce-fn-title">Luteólise (dia 0)</div><div class="ce-fn-sub">PGF2α endometrial via contracorrente → queda de P4 → CL regride</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Proestro (dias 0–3)</div><div class="ce-fn-sub">FSH → crescimento folicular acelerado · E2 crescente · muco cervical fluido</div></div>
+      <div class="ce-flux-node ce-highlight"><div class="ce-fn-title">Proestro (dias 0–3)</div><div class="ce-fn-sub">FSH → crescimento folicular acelerado · E2 crescente · muco cervical fluido</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Estro (12–18 h) <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fn-sub">E2 peak → feedback positivo → pico LH · aceitação do macho · reflexo de imobilidade</div></div>
+      <div class="ce-flux-node ce-highlight"><div class="ce-fn-title">Estro (12–18 h) <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fn-sub">E2 peak → feedback positivo → pico LH · aceitação do macho · reflexo de imobilidade</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node suc"><div class="ce-fn-title">Ovulação (10–12 h após fim do estro)</div><div class="ce-fn-sub">Folículo 12–18 mm · 1 ovulação (raro 2) · regra AM/PM para IA</div></div>
+      <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Ovulação (10–12 h após fim do estro)</div><div class="ce-fn-sub">Folículo 12–18 mm · 1 ovulação (raro 2) · regra AM/PM para IA</div></div>
       <div class="ce-flux-arrow">↓</div>
       <div class="ce-flux-node"><div class="ce-fn-title">Metaestro (dias 1–5 pós-ovulação)</div><div class="ce-fn-sub">Corpo hemorrágico → luteinização · P4 começa a subir · 2–3 ondas foliculares no ciclo</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node warn"><div class="ce-fn-title">Diestro (~14–16 dias)</div><div class="ce-fn-sub">P4 elevada · GnRH pulsátil inibido · endométrio preparado para implantação</div></div>
+      <div class="ce-flux-node ce-warn"><div class="ce-fn-title">Diestro (~14–16 dias)</div><div class="ce-fn-sub">P4 elevada · GnRH pulsátil inibido · endométrio preparado para implantação</div></div>
       <div class="ce-flux-arrow">↓</div>
       <div class="ce-flux-split">
-        <div class="ce-flux-node suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">Reconhecimento materno (IFN-τ) bloqueia PGF2α · CL persiste · 280 dias</div></div>
-        <div class="ce-flux-node danger"><div class="ce-fn-title">Luteólise</div><div class="ce-fn-sub">Sem gestação → PGF2α endometrial → regressão CL → novo ciclo</div></div>
+        <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">IFN-τ bloqueia PGF2α · CL persiste · 280 dias</div></div>
+        <div class="ce-flux-node ce-danger"><div class="ce-fn-title">Luteólise</div><div class="ce-fn-sub">PGF2α endometrial → regressão CL → novo ciclo · protocolos IATF adaptados</div></div>
       </div>
     </div>
-    <div class="ce-flux-note">Duração total do ciclo: 18–24 dias (média 21 d). Ponto crítico: ovulação ocorre APÓS o fim do estro — não durante.</div>
+    <div class="ce-flux-note">Duração total: 18–24 dias (média 21 d). Ponto crítico: ovulação ocorre APÓS o fim do estro — não durante.</div>
   </div>
-  <!-- ÉGUA -->
-  <div class="ce-flux-panel" id="ce-flux-egua">
+
+  <div class="ce-flux-sp-panel" id="ce-flux-egua">
     <div class="ce-flux-wrap">
-      <div class="ce-flux-node gray"><div class="ce-fn-title">Anestro sazonal (inverno)</div><div class="ce-fn-sub">Dias curtos → melatonina ↑ → GnRH pulsátil ↓ · ovários pequenos e inativos</div></div>
+      <div class="ce-flux-node ce-gray"><div class="ce-fn-title">Anestro sazonal (inverno)</div><div class="ce-fn-sub">Dias curtos → melatonina ↑ → GnRH pulsátil ↓</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node warn"><div class="ce-fn-title">Transição primavera</div><div class="ce-fn-sub">Folículos grandes (>35 mm) que não ovulam · ciclos anovulatórios · duração variável (semanas)</div></div>
+      <div class="ce-flux-node ce-warn"><div class="ce-fn-title">Transição primavera</div><div class="ce-fn-sub">Folículos grandes (>35 mm) que não ovulam · ciclos anovulatórios</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Proestro</div><div class="ce-fn-sub">Folículo dominante cresce até 35–50 mm · E2 crescente · comportamento de receptividade crescente</div></div>
+      <div class="ce-flux-node ce-highlight"><div class="ce-fn-title">Estro (4–7 dias) <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fn-sub">Aceitação do macho · folículo migra para a fossa de ovulação · amolecimento da parede folicular</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Estro (4–7 dias) <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fn-sub">Aceitação do macho · folículo migra para a fossa de ovulação · amolecimento da parede folicular</div></div>
+      <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Ovulação (24–48 h antes do fim do estro)</div><div class="ce-fn-sub">Exclusivamente pela fossa de ovulação · folículo 35–50 mm · oócito em Prófase I</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node suc"><div class="ce-fn-title">Ovulação (24–48 h antes do fim do estro)</div><div class="ce-fn-sub">Exclusivamente pela fossa de ovulação · folículo 35–50 mm · oócito em Prófase I (dictioteno)</div></div>
-      <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node"><div class="ce-fn-title">Metaestro / formação do CL</div><div class="ce-fn-sub">CL primário · P4 sobe · luteólise via plexo vásculo-ováreo (recirculação sistêmica)</div></div>
-      <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node warn"><div class="ce-fn-title">Diestro (~14 dias)</div><div class="ce-fn-sub">P4 elevada · CL funcional · endométrio preparado</div></div>
+      <div class="ce-flux-node ce-warn"><div class="ce-fn-title">Diestro (~14 dias)</div><div class="ce-fn-sub">P4 elevada · luteólise via plexo vásculo-ováreo (recirculação sistêmica)</div></div>
       <div class="ce-flux-arrow">↓</div>
       <div class="ce-flux-split">
-        <div class="ce-flux-node suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">Reconhecimento materno equino (eMF) migra pelo útero · 335–342 dias · ICSI para reprodução assistida</div></div>
-        <div class="ce-flux-node danger"><div class="ce-fn-title">Luteólise</div><div class="ce-fn-sub">PGF2α via plexo vásculo-ováreo → CL regride → novo ciclo</div></div>
+        <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">335–342 dias · ICSI para reprodução assistida</div></div>
+        <div class="ce-flux-node ce-danger"><div class="ce-fn-title">Luteólise</div><div class="ce-fn-sub">PGF2α via plexo vásculo-ováreo → novo ciclo</div></div>
       </div>
     </div>
-    <div class="ce-flux-note">Ponto crítico: ovulação ocorre ANTES do fim do estro (diferente da vaca). Fossa de ovulação é exclusiva da égua — único ponto de liberação do oócito.</div>
+    <div class="ce-flux-note">Ponto crítico: ovulação ocorre ANTES do fim do estro (diferente da vaca). Fossa de ovulação é exclusiva da égua.</div>
   </div>
-  <!-- OVELHA / CABRA -->
-  <div class="ce-flux-panel" id="ce-flux-ovelha">
+
+  <div class="ce-flux-sp-panel" id="ce-flux-ovelha">
     <div class="ce-flux-wrap">
-      <div class="ce-flux-node gray"><div class="ce-fn-title">Anestro sazonal (verão / primavera)</div><div class="ce-fn-sub">Dias longos → melatonina ↓ → GnRH pulsátil ↓ · ovários inativos · efeito macho pode encurtar anestro</div></div>
+      <div class="ce-flux-node ce-gray"><div class="ce-fn-title">Anestro sazonal (verão / primavera)</div><div class="ce-fn-sub">Dias longos → melatonina ↓ inibe eixo · efeito macho pode encurtar anestro</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node warn"><div class="ce-fn-title">1º ciclo pós-anestro <span class="ce-badge ce-bwarn">ovulação silenciosa</span></div><div class="ce-fn-sub">Ovulação ocorre sem comportamento de estro visível — não confundir com anovulação</div></div>
+      <div class="ce-flux-node ce-warn"><div class="ce-fn-title">1º ciclo pós-anestro <span class="ce-badge ce-bwarn">ovulação silenciosa</span></div><div class="ce-fn-sub">Ovulação sem comportamento de estro visível</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Proestro</div><div class="ce-fn-sub">FSH → múltiplos folículos pequenos (5–9 mm) · E2 crescente</div></div>
+      <div class="ce-flux-node ce-highlight"><div class="ce-fn-title">Estro (24–36 h ovelha / 24–48 h cabra) <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fn-sub">Aceitação do macho · múltiplos folículos pequenos</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Estro (24–36 h ovelha / 24–48 h cabra) <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fn-sub">Aceitação do macho · pico LH · comportamento de estro mais evidente na cabra</div></div>
-      <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node suc"><div class="ce-fn-title">Ovulação (1–3 oócitos)</div><div class="ce-fn-sub">Ovelha: 24–30 h pós-início · Cabra: 30–36 h pós-início · ovulação em qualquer ponto do ovário</div></div>
-      <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node warn"><div class="ce-fn-title">Diestro (~10–12 dias)</div><div class="ce-fn-sub">P4 elevada · CL funcional · PGF2α via contracorrente ipsilateral</div></div>
+      <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Ovulação (1–3 oócitos)</div><div class="ce-fn-sub">Ovelha: 24–30 h pós-início · Cabra: 30–36 h pós-início</div></div>
       <div class="ce-flux-arrow">↓</div>
       <div class="ce-flux-split">
-        <div class="ce-flux-node suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">148–152 dias · gestação gemelar frequente · reconhecimento materno via IFN-τ</div></div>
-        <div class="ce-flux-node danger"><div class="ce-fn-title">Luteólise</div><div class="ce-fn-sub">PGF2α via veia uterina → artéria ovárica ipsilateral → novo ciclo ~17 d (ovelha) / ~21 d (cabra)</div></div>
+        <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">148–152 dias · RMG via IFN-τ</div></div>
+        <div class="ce-flux-node ce-danger"><div class="ce-fn-title">Luteólise</div><div class="ce-fn-sub">PGF2α via contracorrente ipsilateral → novo ciclo</div></div>
       </div>
     </div>
     <div class="ce-flux-note">Raças tropicais (Santa Inês, Morada Nova) têm sazonalidade atenuada e podem ciclar o ano todo.</div>
   </div>
-  <!-- PORCA -->
-  <div class="ce-flux-panel" id="ce-flux-porca">
+
+  <div class="ce-flux-sp-panel" id="ce-flux-porca">
     <div class="ce-flux-wrap">
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Proestro (1–3 dias)</div><div class="ce-fn-sub">FSH → recrutamento de grande coort folicular (10–25) · E2 crescente · edema vulvar · inquietação</div></div>
+      <div class="ce-flux-node ce-highlight"><div class="ce-fn-title">Estro (40–72 h) <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fn-sub">Reflexo de imobilidade ao dorso · orelhas eretas · aceitação do varrão</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Estro (40–72 h) <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fn-sub">Reflexo de imobilidade ao dorso · orelhas eretas · edema vulvar · aceitação do varrão</div></div>
+      <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Ovulação (entre 1/3 e 2/3 do estro)</div><div class="ce-fn-sub">10–25 oócitos · em massa em ~4–6 h · IA: 12–24 h após início</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node suc"><div class="ce-fn-title">Ovulação (entre 1/3 e 2/3 do estro)</div><div class="ce-fn-sub">10–25 oócitos · ovulação em massa em ~4–6 h · sptz devem estar presentes ANTES da ovulação · IA: 12–24 h após início</div></div>
-      <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node"><div class="ce-fn-title">Metaestro</div><div class="ce-fn-sub">Múltiplos CLs formando · P4 sobe rapidamente · sem ondas foliculares bem definidas</div></div>
-      <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node warn"><div class="ce-fn-title">Diestro (~13–14 dias)</div><div class="ce-fn-sub">P4 elevada · múltiplos CLs ativos · anestro lactacional potente após o parto</div></div>
+      <div class="ce-flux-node ce-warn"><div class="ce-fn-title">Diestro (~13–14 dias)</div><div class="ce-fn-sub">P4 elevada · múltiplos CLs ativos</div></div>
       <div class="ce-flux-arrow">↓</div>
       <div class="ce-flux-split">
-        <div class="ce-flux-node suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">114 dias ("3 meses, 3 semanas, 3 dias") · implantação difusa (placentação epiteliocorial)</div></div>
-        <div class="ce-flux-node danger"><div class="ce-fn-title">Luteólise</div><div class="ce-fn-sub">PGF2α endometrial → CL regride → ciclo de ~21 dias</div></div>
+        <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">114 dias ("3 meses, 3 semanas, 3 dias")</div></div>
+        <div class="ce-flux-node ce-danger"><div class="ce-fn-title">Luteólise</div><div class="ce-fn-sub">PGF2α endometrial → novo ciclo ~21 dias</div></div>
       </div>
     </div>
-    <div class="ce-flux-note">Anestro pós-parto lactacional é mediado por opioides endógenos (sucção inibe GnRH). Desmame precoce antecipa retorno ao estro.</div>
+    <div class="ce-flux-note">Anestro pós-parto lactacional mediado por opioides endógenos (sucção inibe GnRH). Desmame precoce antecipa retorno ao estro.</div>
   </div>
-  <!-- CADELA -->
-  <div class="ce-flux-panel" id="ce-flux-cadela">
+
+  <div class="ce-flux-sp-panel" id="ce-flux-cadela">
     <div class="ce-flux-wrap">
-      <div class="ce-flux-node gray"><div class="ce-fn-title">Anestro (1–6 meses)</div><div class="ce-fn-sub">Ovários inativos · duração variável por raça (raças gigantes = anestro mais longo)</div></div>
+      <div class="ce-flux-node ce-gray"><div class="ce-fn-title">Anestro (1–6 meses)</div><div class="ce-fn-sub">Ovários inativos · duração variável por raça</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Proestro (7–10 dias)</div><div class="ce-fn-sub">E2 crescente · corrimento sanguinolento · edema vulvar · atração de machos sem aceitação</div></div>
+      <div class="ce-flux-node ce-highlight"><div class="ce-fn-title">Proestro (7–10 dias)</div><div class="ce-fn-sub">E2 crescente · corrimento sanguinolento · edema vulvar · atração de machos sem aceitação</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Final do proestro / início do estro <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fn-sub">Pico de LH quando E2 já está em declínio — diferente das outras espécies · P4 começa a subir antes da ovulação</div></div>
+      <div class="ce-flux-node ce-highlight"><div class="ce-fn-title">Final proestro / início estro <span class="ce-badge ce-binfo">pico LH</span></div><div class="ce-fn-sub">Pico de LH quando E2 já está em declínio — diferente das outras espécies</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Estro (7–10 dias)</div><div class="ce-fn-sub">Corrimento pálido/seroso · aceitação do macho · citologia: >80% células cornificadas anucleadas</div></div>
+      <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Ovulação <span class="ce-badge ce-bwarn">oócito primário</span></div><div class="ce-fn-sub">6–12 oócitos imaturos · maturação 48–72 h pós-ovulação · janela fértil ~5–7 dias · P4 >2 ng/mL = ovulação</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node suc"><div class="ce-fn-title">Ovulação <span class="ce-badge ce-bwarn">oócito primário</span></div><div class="ce-fn-sub">6–12 oócitos imaturos (Prófase I) · maturação 48–72 h pós-ovulação · janela fértil ~5–7 dias · P4 >2 ng/mL = ovulação · P4 >4–5 ng/mL = oócitos maduros</div></div>
-      <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node warn"><div class="ce-fn-title">Diestro (60–80 dias) — igual com ou sem gestação</div><div class="ce-fn-sub">P4 elevada por CL funcional mesmo sem prenhez · pseudogestação fisiológica · lactação fantasma possível</div></div>
+      <div class="ce-flux-node ce-warn"><div class="ce-fn-title">Diestro (60–80 dias) — igual com ou sem gestação</div><div class="ce-fn-sub">P4 elevada · pseudogestação fisiológica</div></div>
       <div class="ce-flux-arrow">↓</div>
       <div class="ce-flux-split">
-        <div class="ce-flux-node suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">63 dias (56–70 d) · implantação tardia · placentação zonária endoteliocorial</div></div>
-        <div class="ce-flux-node gray"><div class="ce-fn-title">Anestro obrigatório</div><div class="ce-fn-sub">Após o diestro, período de anestro obrigatório antes do próximo proestro — monoéstrica</div></div>
+        <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">63 dias · placentação zonária endoteliocorial</div></div>
+        <div class="ce-flux-node ce-gray"><div class="ce-fn-title">Anestro obrigatório</div><div class="ce-fn-sub">Após diestro — monoéstrica</div></div>
       </div>
     </div>
-    <div class="ce-flux-note">Ponto crítico: o pico de LH na cadela ocorre quando o E2 já está caindo (final do proestro). O oócito leva 48–72 h para maturar após a ovulação. Use P4 sérica para timing: >2 ng/mL = ovulação; >4–5 ng/mL = oócitos maduros.</div>
+    <div class="ce-flux-note">Ponto crítico: pico de LH ocorre quando E2 já está caindo. O oócito leva 48–72 h para maturar. Use P4: >2 ng/mL = ovulação; >4–5 ng/mL = oócitos maduros.</div>
   </div>
-  <!-- BÚFALA -->
-  <div class="ce-flux-panel" id="ce-flux-bufala">
+
+  <div class="ce-flux-sp-panel" id="ce-flux-bufala">
     <div class="ce-flux-wrap">
-      <div class="ce-flux-node gray"><div class="ce-fn-title">Anestro sazonal (verão / primavera) + anestro pós-parto</div><div class="ce-fn-sub">Dias curtos ativam o eixo (oposto da égua) · anestro pós-parto: 90–150 dias · principal entrave reprodutivo</div></div>
+      <div class="ce-flux-node ce-gray"><div class="ce-fn-title">Anestro sazonal (verão) + anestro pós-parto</div><div class="ce-fn-sub">Dias longos inibem eixo · anestro pós-parto 90–150 dias · principal entrave reprodutivo</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Proestro</div><div class="ce-fn-sub">FSH → 2–3 ondas foliculares/ciclo · folículo dominante 10–15 mm · E2 crescente · sinais discretos</div></div>
+      <div class="ce-flux-node ce-highlight"><div class="ce-fn-title">Estro (20–22 h) <span class="ce-badge ce-bwarn">manifestação noturna</span></div><div class="ce-fn-sub">Sinais discretos · frequentemente noturno · detecção difícil</div></div>
       <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node highlight"><div class="ce-fn-title">Estro (20–22 h) <span class="ce-badge ce-bwarn">manifestação noturna</span></div><div class="ce-fn-sub">Sinais discretos · frequentemente noturno · detecção difícil</div></div>
-      <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node suc"><div class="ce-fn-title">Ovulação</div><div class="ce-fn-sub">Folículo 10–15 mm · 1–2 ovulações · ovulação espontânea</div></div>
-      <div class="ce-flux-arrow">↓</div>
-      <div class="ce-flux-node warn"><div class="ce-fn-title">Diestro (~16–18 dias)</div><div class="ce-fn-sub">P4 elevada · fase lútea proporcionalmente longa · CL funcional semelhante ao bovino</div></div>
+      <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Ovulação</div><div class="ce-fn-sub">Folículo 10–15 mm · fossa de ovulação presente</div></div>
       <div class="ce-flux-arrow">↓</div>
       <div class="ce-flux-split">
-        <div class="ce-flux-node suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">~310 dias · reconhecimento materno via IFN-τ · placentação cotiledonária</div></div>
-        <div class="ce-flux-node danger"><div class="ce-fn-title">Luteólise</div><div class="ce-fn-sub">PGF2α endometrial → CL regride → ciclo ~21 dias · protocolos IATF adaptados dos bovinos</div></div>
+        <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Gestação</div><div class="ce-fn-sub">~310 dias · placentação cotiledonária</div></div>
+        <div class="ce-flux-node ce-danger"><div class="ce-fn-title">Luteólise</div><div class="ce-fn-sub">PGF2α → CL regride → ciclo ~21 dias · IATF adaptado dos bovinos</div></div>
       </div>
     </div>
-    <div class="ce-flux-note">A sazonalidade da búfala é de dias curtos (como ovinos) — o oposto da égua. Em regiões tropicais a sazonalidade é atenuada, mas o anestro pós-parto prolongado continua sendo o maior desafio reprodutivo.</div>
+    <div class="ce-flux-note">Sazonalidade de dias curtos (como ovinos) — o oposto da égua. Anestro pós-parto prolongado é o maior desafio reprodutivo.</div>
+  </div>
+
+  <div class="ce-flux-sp-panel" id="ce-flux-gata">
+    <div class="ce-flux-wrap">
+      <div class="ce-flux-node ce-gray"><div class="ce-fn-title">Anestro (30–90 dias)</div><div class="ce-fn-sub">Fotoperíodo reduzido ou pós-parto · eixo HPG inativo</div></div>
+      <div class="ce-flux-arrow">↓</div>
+      <div class="ce-flux-node ce-highlight"><div class="ce-fn-title">Proestro (~2 dias)</div><div class="ce-fn-sub">Vocalização, lordose · citologia: células intermediárias (~60%) e parabasais (~18%)</div></div>
+      <div class="ce-flux-arrow">↓</div>
+      <div class="ce-flux-node ce-highlight"><div class="ce-fn-title">Estro (2–19 dias)</div><div class="ce-fn-sub">Aceita monta · citologia: células superficiais · <strong>ovulação só com cópula</strong></div></div>
+      <div class="ce-flux-arrow">↓</div>
+      <div class="ce-flux-split">
+        <div class="ce-flux-node ce-warn"><div class="ce-fn-title">Sem cópula → Interestro (8–10 dias)</div><div class="ce-fn-sub">Fase exclusiva da gata · folículos involuem sem ovular · retorna ao estro</div></div>
+        <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Com cópula → Ovulação</div><div class="ce-fn-sub">D1–2: ovula em ~52 h · D3+: ovula em ~24 h · 3–8 oócitos</div></div>
+      </div>
+      <div class="ce-flux-arrow">↓</div>
+      <div class="ce-flux-split">
+        <div class="ce-flux-node ce-suc"><div class="ce-fn-title">Gestação (63–65 dias)</div><div class="ce-fn-sub">CL autônomo · P4: ~2 ng/mL início → 15–20 ng/mL (D25–30)</div></div>
+        <div class="ce-flux-node ce-warn"><div class="ce-fn-title">Pseudogestação (~40 dias)</div><div class="ce-fn-sub">Cobertura infértil · CL funcional por ~40 dias</div></div>
+      </div>
+    </div>
+    <div class="ce-flux-note">Pontos críticos: (1) Ovulação induzida — sem cópula não há pico de LH. (2) Interestro é exclusivo da gata. (3) Cobrir a partir do D3 garante ovulação mais rápida (~24 h).</div>
   </div>
 </div>
 
 <!-- SAZONALIDADE -->
 <div class="ce-panel" id="ce-panel-estacao">
   <p class="ce-hint">A melatonina é o sinal neuroendócrino do fotoperíodo</p>
-  <div class="estacao-grid">
-    <div class="est-card"><div class="est-icon">&#9728;</div><div class="est-title">Dias longos</div><div class="est-body">Égua, Gata<br>Melatonina baixa → ativa reprodução<br>Primavera / verão</div></div>
-    <div class="est-card"><div class="est-icon">&#9684;</div><div class="est-title">Dias curtos</div><div class="est-body">Ovelha, Cabra, Búfala<br>Melatonina alta → ativa reprodução<br>Outono / inverno</div></div>
-    <div class="est-card"><div class="est-icon">&#9711;</div><div class="est-title">Contínuas</div><div class="est-body">Vaca, Porca<br>Fotoperíodo não determinante<br>Ciclam o ano todo</div></div>
+  <div class="ce-estacao-grid">
+    <div class="ce-est-card">
+      <div class="ce-est-icon">&#9728;</div>
+      <div class="ce-est-title">Dias longos</div>
+      <div class="ce-est-body">Égua, Gata<br>Melatonina baixa → ativa reprodução<br>Primavera / verão</div>
+    </div>
+    <div class="ce-est-card">
+      <div class="ce-est-icon">&#9684;</div>
+      <div class="ce-est-title">Dias curtos</div>
+      <div class="ce-est-body">Ovelha, Cabra, Búfala<br>Melatonina alta → ativa reprodução<br>Outono / inverno</div>
+    </div>
+    <div class="ce-est-card">
+      <div class="ce-est-icon">&#9711;</div>
+      <div class="ce-est-title">Contínuas</div>
+      <div class="ce-est-body">Vaca, Porca<br>Fotoperíodo não determinante<br>Ciclam o ano todo</div>
+    </div>
   </div>
   <div class="ce-memo" style="margin-top:16px">
     <div class="ce-memo-label">Mecanismo da melatonina</div>
@@ -4010,6 +4113,119 @@ var MATCH_PAIRS = [
 
 var isEditing = false;
 var bookmarks = JSON.parse(localStorage.getItem('repro-animal-bookmarks') || '[]');
+
+// === CAPÍTULO 2 — CICLO ESTRAL COMPARADO ===
+var ceSpData = {
+  vaca:   { label:'Vaca',   tipo:'Poliéstrica contínua', puberd:'8–18 m', ciclo:'21 d (18–24)', estro:'12–18 h', ovul:'Espontânea; 10–12 h pós-fim estro', diametro:'12–18 mm', novul:'1 (raro 2)', local:'Qualquer', gestacao:'280 d' },
+  egua:   { label:'Égua',   tipo:'Poliéstrica estacional (dias longos)', puberd:'12–18 m', ciclo:'21 d (19–26)', estro:'4–7 dias', ovul:'Espontânea; 24–48 h antes fim estro', diametro:'35–50 mm', novul:'1 (2 em ~25%)', local:'Fossa ov. (exclusiva)', gestacao:'335–342 d' },
+  ovelha: { label:'Ovelha', tipo:'Poliéstrica estacional (dias curtos)', puberd:'6–8 m', ciclo:'17 d (14–19)', estro:'24–36 h', ovul:'Espontânea; 24–30 h pós-início', diametro:'5–8 mm', novul:'1–3', local:'Qualquer', gestacao:'148–152 d' },
+  cabra:  { label:'Cabra',  tipo:'Poliéstrica estacional (dias curtos)', puberd:'4–6 m', ciclo:'21 d (19–23)', estro:'24–48 h', ovul:'Espontânea; 30–36 h pós-início', diametro:'7–9 mm', novul:'1–3', local:'Qualquer', gestacao:'148–152 d' },
+  porca:  { label:'Porca',  tipo:'Poliéstrica contínua', puberd:'5–7 m', ciclo:'21 d (18–24)', estro:'40–72 h', ovul:'Espontânea; 38–42 h pós-início', diametro:'7–10 mm', novul:'10–25', local:'Qualquer', gestacao:'114 d' },
+  bufala: { label:'Búfala', tipo:'Poliéstrica estacional (dias curtos)', puberd:'18–24 m', ciclo:'~21 d', estro:'20–22 h', ovul:'Espontânea', diametro:'10–15 mm', novul:'1–2', local:'Fossa ov.', gestacao:'~310 d' },
+  cadela: { label:'Cadela', tipo:'Monoéstrica', puberd:'6–12 m', ciclo:'6–12 m', estro:'7–10 dias', ovul:'Espontânea', diametro:'6–10 mm', novul:'6–12', local:'Qualquer', gestacao:'63 d' },
+  gata:   { label:'Gata',   tipo:'Poliéstrica estacional (dias longos / induzida)', puberd:'4–9 m', ciclo:'Variável', estro:'3–10 dias', ovul:'Induzida pela cópula', diametro:'3–5 mm', novul:'3–8', local:'Qualquer', gestacao:'63–65 d' }
+};
+var ceParams = [
+  { key:'tipo', label:'Tipo' }, { key:'puberd', label:'Puberdade' },
+  { key:'ciclo', label:'Duração do ciclo' }, { key:'estro', label:'Duração do estro' },
+  { key:'ovul', label:'Ovulação' }, { key:'diametro', label:'Diâm. folicular' },
+  { key:'novul', label:'Nº ovulações' }, { key:'local', label:'Local ovulação' },
+  { key:'gestacao', label:'Gestação' }
+];
+var ceSelected = ['vaca','egua','ovelha','cabra'];
+function ceRenderTable() {
+  var cols = ceSelected.map(function(s){ return ceSpData[s]; });
+  var html = '<table class="ce-cmp-table"><thead><tr><th class="ce-param-col">Parâmetro</th>';
+  cols.forEach(function(c){ html += '<th>' + c.label + '</th>'; });
+  html += '</tr></thead><tbody>';
+  ceParams.forEach(function(p) {
+    html += '<tr><td class="ce-param-col">' + p.label + '</td>';
+    cols.forEach(function(c){ html += '<td>' + c[p.key] + '</td>'; });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  var el = document.getElementById('ce-cmp-container');
+  if (el) el.innerHTML = html;
+}
+window.ceToggleSp = function(sp, el) {
+  if (ceSelected.includes(sp)) {
+    if (ceSelected.length === 1) return;
+    ceSelected = ceSelected.filter(function(s){ return s !== sp; });
+    el.classList.remove('selected');
+  } else {
+    if (ceSelected.length >= 4) return;
+    ceSelected.push(sp);
+    el.classList.add('selected');
+  }
+  ceRenderTable();
+};
+var ceDbFases = {
+  proestro: 'O <strong>proestro</strong> é a fase de crescimento folicular acelerado, dominada pelo <span class="ce-hl">estrogênio crescente</span> produzido pelas células da granulosa via FSH. O E2 prepara o trato reprodutivo (muco cervical fluido, edema vulvar), estimula o comportamento de aproximação ao macho e, em concentração suficiente, desencadeia o <span class="ce-hl">feedback positivo</span> sobre a hipófise — mecanismo responsável pelo pico pré-ovulatório de LH.',
+  estro: 'O <strong>estro</strong> é o período de aceitação do macho, coincidindo com o pico de estrogênio. O <span class="ce-hl">pico pré-ovulatório de LH</span> é desencadeado pelo feedback positivo do E2. A ovulação ocorre horas a dias após o pico de LH, dependendo da espécie.',
+  metaestro: 'O <strong>metaestro</strong> é o período de formação e vascularização do <span class="ce-hl">corpo lúteo (CL)</span> a partir das células da granulosa e da teca luteinizadas pelo LH. A progesterona começa a subir. Em bovinos, o corpo hemorrágico é visível nos primeiros 1–3 dias.',
+  diestro: 'O <strong>diestro</strong> é a fase de dominância lútea com <span class="ce-hl">progesterona (P4) elevada</span>. A P4 prepara o endométrio para implantação, inibe o GnRH pulsátil e mantém a gestação. Se não houver reconhecimento materno da gestação, o endométrio produz <span class="ce-hl">PGF2α</span>, causando luteólise.',
+  luteolise: 'A <strong>luteólise</strong> é mediada pela <span class="ce-hl">PGF2α endometrial</span>. Em bovinos e ovinos, a PGF2α passa da veia uterina para a artéria ovárica <strong>ipsilateral</strong> por difusão local (contracorrente). Na égua, o transporte ocorre via recirculação sistêmica pelo <span class="ce-hl">plexo vásculo-ováreo</span>. A PGF2α exógena (cloprostenol, dinoprost) é usada em protocolos de sincronização.',
+  anestro: 'O <strong>anestro</strong> é a ausência de atividade cíclica ovariana. Causas: <span class="ce-hl">sazonalidade</span> (fotoperíodo — ovinos, cabras, éguas, búfalas); <span class="ce-hl">anestro pós-parto lactacional</span> (bovinos, suínos — mediado pelo efeito inibitório da sucção sobre o GnRH via opioides endógenos); <span class="ce-hl">balanço energético negativo</span> (vacas de alta produção); subnutrição; patologias ovarianas (cistos).'
+};
+var ceDbFol = {
+  '3ondas': 'No padrão de <strong>3 ondas foliculares</strong>, emergências ocorrem aproximadamente nos dias <span class="ce-hl">0, 9 e 16</span> do ciclo. Cada onda é iniciada por um pulso de FSH. O folículo dominante das ondas 1 e 2 é suprimido pela progesterona lútea alta; o da 3ª onda ovula quando o CL regride.',
+  '2ondas': 'No padrão de <strong>2 ondas foliculares</strong>, emergências nos dias <span class="ce-hl">0 e 11</span>. O ciclo tende a ser ligeiramente mais curto (~20 dias). Ambos os padrões são fisiológicos e têm fertilidade equivalente na prática clínica.',
+  dominancia: 'A <strong>dominância folicular</strong> envolve seleção de um folículo entre os co-dominantes recrutados por FSH. O folículo dominante produz <span class="ce-hl">inibina e estradiol</span>, suprimindo o FSH sistêmico — a queda do FSH causa atresia dos folículos subordinados. Esse mecanismo é explorado em protocolos de IATF com GnRH no dia 0.',
+  ch_cisto: '<strong>Corpo hemorrágico (CH):</strong> fisiológico pós-ovulação. Na US: parede espessa e ecogênica, filamentos de fibrina, regride em ~24–48 h → CL. Não requer tratamento.<br><br><strong>Cisto folicular:</strong> >25 mm por >10 dias sem ovular. Causa anestro ou ninfomania. Tratamento: <span class="ce-hl">GnRH</span> ou <span class="ce-hl">hCG</span>.',
+  bufala_fol: 'A búfala tem dinâmica folicular semelhante à vaca, com <span class="ce-hl">2–3 ondas foliculares</span> por ciclo. Diferenças: folículo dominante menor (10–15 mm vs. 12–18 mm na vaca); dominância folicular menos pronunciada, especialmente durante o anestro sazonal.',
+  egua_fol: 'A égua tem dinâmica folicular <span class="ce-hl">irregular e menos previsível</span> que bovinos. Múltiplos folículos se desenvolvem simultaneamente; o folículo dominante atinge 35–50 mm antes de ovular. Em ~25% dos ciclos ocorre dupla ovulação (gestação gemelar indesejável na égua).',
+  egua_trans: 'O <strong>período de transição primavera</strong> ocorre entre o anestro invernal e a estação reprodutiva plena. Caracteriza-se pelo crescimento de folículos grandes (>30 mm) que não ovulam. Manejo: <span class="ce-hl">luz artificial</span> (16h luz/dia) antecipa o início da estação.',
+  egua_fossa: 'A <strong>fossa de ovulação</strong> é uma estrutura anatômica única da égua. Enquanto em todas as outras espécies o ovário tem epitélio germinativo em toda a superfície, na égua esse epitélio está <span class="ce-hl">restrito a uma única depressão</span> na margem medial do ovário. O folículo deve migrar e se posicionar sobre a fossa antes de poder romper.',
+  ovinos_fol: 'Em ovinos e caprinos, múltiplos folículos pequenos (5–9 mm) se desenvolvem em cada onda. A <span class="ce-hl">dominância folicular é menos marcada</span> — vários folículos competem e frequentemente 2–3 ovulam simultaneamente.',
+  porca_fol: 'Na porca, uma <span class="ce-hl">grande coort de folículos</span> (10–25) se desenvolve simultaneamente. Não há dominância folicular clara. A ovulação ocorre em massa em ~4–6 h — os espermatozoides devem estar presentes ANTES da ovulação.',
+  cadela_fol: 'Na cadela, os folículos são recrutados em grupo durante o proestro. Particularidade: os oócitos são ovulados como <span class="ce-hl">oócitos primários imaturos</span> e só completam a meiose ~48–72 h após a ovulação — daí a janela fértil ser mais ampla (~5–7 dias).',
+  gata_fol: 'Na gata, múltiplos folículos pequenos se desenvolvem durante o estro, mas a ovulação só ocorre mediante estímulo coital. Sem cópula, o folículo involui sem ovular — inicia-se um novo ciclo em ~2–3 semanas.'
+};
+window.ceInfo = function(group, key) {
+  var el = document.getElementById('ce-info-fases');
+  if (!el) return;
+  el.innerHTML = ceDbFases[key] || '';
+  el.classList.remove('empty');
+};
+window.ceInfoFol = function(key, targetId) {
+  var el = document.getElementById(targetId);
+  if (!el) return;
+  el.innerHTML = ceDbFol[key] || '';
+  el.classList.remove('empty');
+};
+window.ceSetTab = function(tab, el) {
+  var body = el.closest('.chapter-body') || document;
+  body.querySelectorAll('.ce-tab').forEach(function(t){ t.classList.remove('active'); });
+  body.querySelectorAll('.ce-panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  var panel = document.getElementById('ce-panel-' + tab);
+  if (panel) panel.classList.add('active');
+  if (tab === 'tabela') ceRenderTable();
+};
+window.ceSetSp = function(sp, el) {
+  var body = el.closest('.ce-panel') || document;
+  body.querySelectorAll('.ce-sp-tab').forEach(function(t){ t.classList.remove('active'); });
+  body.querySelectorAll('.ce-sp-panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  var panel = document.getElementById('ce-sp-' + sp);
+  if (panel) panel.classList.add('active');
+};
+window.ceFolSp = function(sp, el) {
+  var body = el.closest('.ce-panel') || document;
+  body.querySelectorAll('.ce-fol-sp-tab').forEach(function(t){ t.classList.remove('active'); });
+  body.querySelectorAll('.ce-fol-sp-panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  var panel = document.getElementById('ce-fol-' + sp);
+  if (panel) panel.classList.add('active');
+};
+window.ceFluxSp = function(sp, el) {
+  var body = el.closest('.ce-panel') || document;
+  body.querySelectorAll('.ce-flux-sp-tab').forEach(function(t){ t.classList.remove('active'); });
+  body.querySelectorAll('.ce-flux-sp-panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  var panel = document.getElementById('ce-flux-' + sp);
+  if (panel) panel.classList.add('active');
+};
 
 // === CAPÍTULO 3 — FERTILIZAÇÃO E DESENVOLVIMENTO ===
 var fertDB = {
