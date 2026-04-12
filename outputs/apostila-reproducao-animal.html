@@ -3602,83 +3602,212 @@ var CHAPTERS = [
 {
   id: 'biotecnologias',
   num: 7,
-  title: 'Sincronização e Biotecnologias',
+  title: 'Biotecnologias da Reprodução',
   icon: '#i-settings',
   content: `
-<h3>7.1 Sincronização do Estro e da Ovulação</h3>
-<h4>Protocolo Ovsynch (Bovinos)</h4>
-<p>Protocolo padrão para IATF (Inseminação Artificial em Tempo Fixo):</p>
-<ul>
-  <li><strong>D0:</strong> GnRH (leuprorrelin, buserrelin) — sincroniza onda folicular, lhc → ovulação/luteinização</li>
-  <li><strong>D7:</strong> PGF2α (d-cloprostenol, cloprostenol) — luteólise</li>
-  <li><strong>D9:</strong> GnRH — pico de LH → ovulação sincronizada</li>
-  <li><strong>D9 + 16–20h:</strong> IATF</li>
-</ul>
-
-<div class="alert alert-info">
-<strong>ℹ️ Variações do Ovsynch</strong><br>
-• <strong>CO-Synch:</strong> IATF no momento do 2º GnRH<br>
-• <strong>Pre-Synch:</strong> 2 doses de PGF2α antes do Ovsynch para sincronizar fase do ciclo<br>
-• <strong>Select Synch:</strong> GnRH + PGF2α (detecção de estro sem IATF)<br>
-• <strong>Ovsynch + CIDR:</strong> Progesterona suplementar para vacas em anestro
+<style>
+  .iatf-header { margin-bottom: 16px; }
+  .iatf-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+  .iatf-title { font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 0; }
+  .iatf-tabs { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
+  .iatf-tab { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 13px; color: var(--text-secondary); transition: all .18s; font-family: inherit; }
+  .iatf-tab:hover { background: var(--bg-hover); }
+  .iatf-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .iatf-panel { display: none; }
+  .iatf-panel.active { display: block; }
+  .iatf-sp-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .iatf-sp-tab { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; }
+  .iatf-sp-tab:hover { background: var(--bg-hover); }
+  .iatf-sp-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .iatf-sp-panel { display: none; }
+  .iatf-sp-panel.active { display: block; }
+  .iatf-badge { display: inline-block; font-size: 10.5px; padding: 1px 7px; border-radius: 10px; font-weight: 600; margin-left: 4px; vertical-align: middle; }
+  .iatf-bwarn { background: #fef3db; color: #633806; }
+  .iatf-binfo { background: var(--blue-100); color: var(--blue-700); }
+  .iatf-bsuc { background: #eaf3de; color: #27500a; }
+  .iatf-bdanger { background: #fce8e8; color: #7a1f1f; }
+  .iatf-prova-box { border-left: 3px solid #BA7517; background: #fef3db; border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; line-height: 1.55; color: var(--text-primary); }
+  .iatf-prova-box strong { color: #633806; }
+  .iatf-info-box { border-left: 3px solid var(--blue-700); background: var(--blue-100); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; line-height: 1.55; color: var(--text-primary); }
+  .iatf-memo { margin-top: 14px; border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 16px; background: var(--bg-hover); }
+  .iatf-memo-label { font-size: 10.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+  .iatf-memo-text { font-size: 13px; font-family: "SF Mono","Fira Code",Consolas,monospace; line-height: 1.8; color: var(--text-primary); }
+  .iatf-hl { background: #fef3db; border-radius: 3px; padding: 1px 4px; font-weight: 600; }
+  .iatf-card { border-radius: 8px; border: 1px solid var(--border-card); padding: 10px 14px; background: var(--bg-card); margin-bottom: 8px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .iatf-card:hover { border-color: var(--border-light); background: var(--bg-hover); }
+  .iatf-card-title { font-weight: 600; font-size: 13px; margin-bottom: 2px; color: var(--text-primary); }
+  .iatf-card-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+  .iatf-info-panel { background: var(--bg-hover); border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 16px; margin-top: 8px; font-size: 13px; line-height: 1.65; min-height: 52px; color: var(--text-primary); }
+  .iatf-empty { color: var(--text-muted); font-style: italic; }
+  .iatf-proto { display: flex; flex-direction: column; margin-bottom: 12px; }
+  .iatf-prow { display: flex; align-items: stretch; gap: 8px; }
+  .iatf-pday { font-size: 11px; font-weight: 600; color: var(--text-muted); min-width: 46px; flex-shrink: 0; padding-top: 13px; text-align: right; }
+  .iatf-pspine { display: flex; flex-direction: column; align-items: center; width: 18px; flex-shrink: 0; }
+  .iatf-pdot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 12px; }
+  .iatf-pline { flex: 1; width: 1.5px; background: var(--border-card); margin: 3px 0; }
+  .iatf-pcard { flex: 1; margin-bottom: 8px; border-radius: 8px; border: 1px solid var(--border-card); padding: 8px 12px; background: var(--bg-card); }
+  .iatf-ptitle { font-weight: 600; font-size: 13px; margin-bottom: 1px; color: var(--text-primary); }
+  .iatf-psub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+  .iatf-horm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+  .iatf-horm-card { border-radius: 8px; border: 1px solid var(--border-card); padding: 10px 12px; background: var(--bg-card); cursor: pointer; transition: border-color .15s, background .15s; }
+  .iatf-horm-card:hover { border-color: var(--border-light); background: var(--bg-hover); }
+  .iatf-horm-name { font-weight: 600; font-size: 13px; margin-bottom: 2px; color: var(--text-primary); }
+  .iatf-horm-sub { font-size: 11px; color: var(--text-secondary); line-height: 1.3; }
+  .iatf-d-purple { background: #7F77DD; }
+  .iatf-d-coral { background: #D85A30; }
+  .iatf-d-teal { background: #1D9E75; }
+  .iatf-d-amber { background: #BA7517; }
+  .iatf-d-blue { background: #378ADD; }
+  .iatf-d-gray { background: #888780; }
+</style>
+<div class="iatf-header">
+  <p class="iatf-label">7.1</p>
+  <h3 class="iatf-title">IATF — Inseminação Artificial em Tempo Fixo</h3>
+</div>
+<div class="iatf-tabs">
+  <button class="iatf-tab active" onclick="iatfSetTab('p4e2',this)">Protocolo P4+E2 <span class="iatf-badge iatf-bsuc">Brasil</span></button>
+  <button class="iatf-tab" onclick="iatfSetTab('ovsynch',this)">Ovsynch / Double Ovsynch</button>
+  <button class="iatf-tab" onclick="iatfSetTab('hormonios',this)">Hormônios</button>
+  <button class="iatf-tab" onclick="iatfSetTab('categorias',this)">Categorias animais</button>
+  <button class="iatf-tab" onclick="iatfSetTab('inducao',this)">Indução de puberdade</button>
 </div>
 
-<h4>Dispositivos de Progesterona</h4>
-<ul>
-  <li><strong>CIDR (Dispositivo Intravaginal de Progesterona):</strong> 1,38g P4; 7–9 dias</li>
-  <li><strong>PRID (Dispositivo Intravaginal de Progesterona):</strong> Alternativa similar</li>
-  <li><strong>Implante subcutâneo (Crestar/Syncro-Mate):</strong> Norgestomet</li>
-  <li>Finalidade: Sincronizar fase lútea, tratar anestro, sincronizar em época de transição</li>
-</ul>
-
-<h3>7.2 Superovulação e Transferência de Embriões (TE)</h3>
-<h4>Protocolo de Superovulação (Bovinos)</h4>
-<ol>
-  <li><strong>Sincronização do ciclo:</strong> CIDR + PGF2α</li>
-  <li><strong>Superovulação:</strong> FSH (pFSH — FSH de pituitária porcina) — 2x/dia por 4 dias (doses decrescentes)</li>
-  <li><strong>Retirada do CIDR + PGF2α:</strong> Luteólise</li>
-  <li><strong>GnRH ou LH:</strong> Indução da ovulação</li>
-  <li><strong>Cobrição/IA:</strong> 2–3 vezes no estro</li>
-  <li><strong>Coleta dos embriões:</strong> Dia 7 pós-ovulação (lavagem uterina transcervical)</li>
-</ol>
-<p>Rendimento médio: 5–8 embriões transferíveis por coleta em bovinos.</p>
-
-<h4>Avaliação e Classificação de Embriões (IETS)</h4>
-<div class="table-wrap"><table>
-<tr><th>Grau</th><th>Qualidade</th><th>Características</th></tr>
-<tr><td><strong>1 — Excelente</strong></td><td>Transferir fresco ou congelar</td><td>Simétrico, compacto, blastômeros uniformes, zona intacta, sem debris</td></tr>
-<tr><td><strong>2 — Bom</strong></td><td>Transferir fresco preferencialmente</td><td>Leves irregularidades; zona intacta; ≤15% debris</td></tr>
-<tr><td><strong>3 — Regular</strong></td><td>Transferir fresco apenas</td><td>Irregularidades moderadas; 15–25% debris; zona com alterações leves</td></tr>
-<tr><td><strong>4 — Inviável</strong></td><td>Descartar</td><td>Degenerado; >25% debris; blastômeros colapsados</td></tr>
-</table></div>
-
-<h3>7.3 Congelamento de Sêmen</h3>
-<h4>Etapas do Congelamento</h4>
-<ol>
-  <li><strong>Coleta:</strong> Vagina artificial, eletroejaculação, massagem ampular</li>
-  <li><strong>Avaliação:</strong> Motilidade, vigor, morfologia, concentração</li>
-  <li><strong>Diluição:</strong> Diluidor com glicerol (crioprotetor) + gema de ovo ou leite desnatado</li>
-  <li><strong>Resfriamento lento:</strong> 37°C → 5°C (2–4 horas)</li>
-  <li><strong>Envase:</strong> Palhetas 0,25 ou 0,5 mL</li>
-  <li><strong>Congelamento:</strong> Vapor de nitrogênio → –196°C</li>
-  <li><strong>Armazenamento:</strong> Botijão de nitrogênio líquido (–196°C)</li>
-</ol>
-
-<div class="alert alert-exam">
-<strong>🎯 Parâmetros Mínimos (CFMV)</strong><br>
-Sêmen fresco bovino (pós-diluição): Motilidade progressiva ≥70%, Vigor ≥3<br>
-Sêmen congelado (pós-descongelamento): <strong>Motilidade ≥35%</strong>, Vigor ≥3, Morfologia: defeitos maiores ≤20%
+<!-- P4+E2 -->
+<div class="iatf-panel active" id="iatf-panel-p4e2">
+  <div class="iatf-prova-box">
+    <strong>Protocolo mais usado no Brasil</strong> — base de P4 intravaginal + estradiol. Aplicado em ~91% das IAs bovinas no Brasil em 2023. Indicado especialmente para <span class="iatf-hl">Bos indicus</span> e bovinos de corte.
+  </div>
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('corte3',this)">Corte — 3 manejos</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('corte4',this)">Corte — 4 manejos</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('leite',this)">Leite</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('novilha',this)">Novilhas</button>
+  </div>
+  <div class="iatf-sp-panel active" id="iatf-sp-corte3">
+    <div class="iatf-info-box">3 manejos: D0, D8 e D10. Protocolo padrão recomendado — menos estresse animal, menor custo de mão de obra.</div>
+    <div class="iatf-proto">
+      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 intravaginal + BE <span class="iatf-badge iatf-binfo">2 mg IM</span></div><div class="iatf-psub">CIDR (1,38 g) ou Repro one/neo · BE induz atresia folicular e sincroniza nova onda · Opcional: PGF2α se CL presente</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D8</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α + eCG + CE</div><div class="iatf-psub">PGF2α 0,5 mg · eCG 300 UI · CE 1 mg — luteólise + crescimento folicular + indução de ovulação</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D10</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">~48 h após retirada do dispositivo</span></div><div class="iatf-psub">GnRH opcional · indicado para vacas sem manifestação de cio ao bastão marcador no D8</div></div></div>
+    </div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Resumo</div><div class="iatf-memo-text">D0: P4 + BE → D8: retirada + PGF + eCG + CE → D10: IATF (±GnRH)</div></div>
+  </div>
+  <div class="iatf-sp-panel" id="iatf-sp-corte4">
+    <div class="iatf-info-box">4 manejos: D0, D7, D9 e D11. Indicado quando há alta proporção de CL no lote (vacas solteiras, novilhas com cio a mais tempo).</div>
+    <div class="iatf-proto">
+      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 + BE 2 mg</div><div class="iatf-psub">Mesmo que protocolo de 3 manejos</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α <span class="iatf-badge iatf-bwarn">1ª dose — luteólise antecipada</span></div><div class="iatf-psub">Dinoprost ou cloprostenol · dispositivo permanece</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D9</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α + CE + eCG</div><div class="iatf-psub">CE 0,5–1 mg + eCG 300 UI + PGF2α 2ª dose</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D11</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">~48 h após D9</span></div><div class="iatf-psub">GnRH opcional · resultados equivalentes ao protocolo de 3 manejos</div></div></div>
+    </div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Resumo</div><div class="iatf-memo-text">D0: P4+BE → D7: PGF → D9: retirada+PGF+CE+eCG → D11: IATF</div></div>
+  </div>
+  <div class="iatf-sp-panel" id="iatf-sp-leite">
+    <div class="iatf-info-box">Vacas leiteiras de alta produção: dispositivo 2 g, sem eCG, PGF2α dupla (D7+D8). GnRH no D0 é o Double Ovsynch — maior evidência de benefício nessa categoria.</div>
+    <div class="iatf-proto">
+      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 (2 g) + BE 2 mg <span class="iatf-badge iatf-binfo">±GnRH</span></div><div class="iatf-psub">Repro sync 2 g · GnRH no D0 = Double Ovsynch</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α 1ª dose</div><div class="iatf-psub">Dispositivo permanece · luteólise parcial</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D8</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α 2ª dose + CE 0,5 mg</div><div class="iatf-psub">Sem eCG · CE 0,5 mg</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D10</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">sem hormônio adicional</span></div><div class="iatf-psub">~48 h após D8</div></div></div>
+    </div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Resumo leite</div><div class="iatf-memo-text">D0: P4(2g)+BE(±GnRH) → D7: PGF → D8: retirada+PGF+CE → D10: IATF</div></div>
+  </div>
+  <div class="iatf-sp-panel" id="iatf-sp-novilha">
+    <div class="iatf-info-box">Novilhas têm menor massa lútea e respondem melhor a dispositivos de menor concentração de P4 e menor duração.</div>
+    <div class="iatf-proto">
+      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 monodose (0,5 g) + BE 2 mg</div><div class="iatf-psub">Repro one 0,5 g (1º uso) ou multidose 1 g (2º+ uso) · 7 dias</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α + eCG + CE</div><div class="iatf-psub">eCG 300 UI · CE 0,5 mg (metade da dose de vacas) · PGF2α 0,5 mg</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D9</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">~48 h após D7</span></div><div class="iatf-psub">GnRH opcional</div></div></div>
+    </div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Diferenças novilhas vs. vacas</div><div class="iatf-memo-text">P4: 0,5 g monodose (não 1,38 g) · 7 dias (não 8)<br>CE: 0,5 mg (não 1 mg) · protocolo 2 dias mais curto</div></div>
+  </div>
 </div>
 
-<h3>7.4 FIV (Fertilização In Vitro)</h3>
-<h4>Etapas da FIV Bovina</h4>
-<ol>
-  <li><strong>OPU (Ovum Pick-Up):</strong> Aspiração folicular guiada por US transvaginal</li>
-  <li><strong>MIV (Maturação In Vitro):</strong> TCM-199 + FSH + E2 + LH; 22–24h a 38,5°C, 5% CO2</li>
-  <li><strong>FIV:</strong> Capacitação espermática (heparina ou ionóforo) + co-cultivo; 18–20h</li>
-  <li><strong>CIV (Cultivo In Vitro):</strong> Até blastocisto (dia 7–8); SOF ou TCM-199</li>
-  <li><strong>TE ou congelamento</strong></li>
-</ol>
+<!-- OVSYNCH -->
+<div class="iatf-panel" id="iatf-panel-ovsynch">
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('ovsynch_std',this)">Ovsynch padrão</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('double',this)">Double Ovsynch</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('variacoes',this)">Outras variações</button>
+  </div>
+  <div class="iatf-sp-panel active" id="iatf-sp-ovsynch_std">
+    <div class="iatf-info-box">Protocolo baseado em GnRH — indicado para Bos taurus e leiteiras. Aplicável onde ésteres de estradiol são proibidos (UE, EUA, Canadá).</div>
+    <div class="iatf-proto">
+      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH <span class="iatf-badge iatf-binfo">buserelina · lecirrelina</span></div><div class="iatf-psub">Ovula folículo dominante → emergência de nova onda sincronizada</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α <span class="iatf-badge iatf-bdanger">cloprostenol · dinoprost</span></div><div class="iatf-psub">Luteólise · ±2ª dose no D8 garante luteólise em até 25% das não respondedoras</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D9</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH — ovulação sincronizada</div><div class="iatf-psub">Pico de LH → ovulação do folículo dominante da onda sincronizada</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D9+16h</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">16–20 h após 2º GnRH</span></div><div class="iatf-psub">Sem detecção de estro</div></div></div>
+    </div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Resumo</div><div class="iatf-memo-text">D0: GnRH → D7: PGF(±D8) → D9: GnRH → D9+16h: IATF</div></div>
+  </div>
+  <div class="iatf-sp-panel" id="iatf-sp-double">
+    <div class="iatf-prova-box"><strong>Double Ovsynch</strong> — maior taxa de prenhez em vacas leiteiras de alta produção. Adiciona pré-sincronizador (GnRH+PGF+GnRH) antes do Ovsynch padrão para garantir que a vaca inicie o protocolo no D6–7 do ciclo.</div>
+    <div class="iatf-proto">
+      <div class="iatf-prow"><div class="iatf-pday">D-17</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-gray"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH <span class="iatf-badge iatf-binfo">pré-sincronizador</span></div><div class="iatf-psub">Ovula folículo dominante · inicia nova onda controlada</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D-10</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α</div><div class="iatf-psub">Luteólise do CL formado após o 1º GnRH</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D-3</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH — início do Ovsynch</div><div class="iatf-psub">Vaca entra no D0 do Ovsynch padronizada no D6–7 do ciclo</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α</div><div class="iatf-psub">Luteólise</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D2</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH → IATF +16 h</div><div class="iatf-psub">Ovulação sincronizada</div></div></div>
+    </div>
+  </div>
+  <div class="iatf-sp-panel" id="iatf-sp-variacoes">
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Clique para ver detalhes</p>
+    <div class="iatf-card" onclick="iatfInfo('var','cosynch')"><div class="iatf-card-title">CO-Synch</div><div class="iatf-card-sub">IATF no momento do 2º GnRH · reduz um manejo</div></div>
+    <div class="iatf-card" onclick="iatfInfo('var','presynch')"><div class="iatf-card-title">Pre-Synch</div><div class="iatf-card-sub">2 doses de PGF2α antes do Ovsynch · vacas ciclando</div></div>
+    <div class="iatf-card" onclick="iatfInfo('var','selectsynch')"><div class="iatf-card-title">Select Synch</div><div class="iatf-card-sub">GnRH + PGF2α apenas · detecção de estro pós-PGF2α</div></div>
+    <div class="iatf-card" onclick="iatfInfo('var','cidrsynch')"><div class="iatf-card-title">Ovsynch + CIDR <span class="iatf-badge iatf-binfo">anestro</span></div><div class="iatf-card-sub">P4 exógena durante protocolo · vacas sem CL</div></div>
+    <div class="iatf-info-panel iatf-empty" id="iatf-info-var">Clique em uma variação.</div>
+  </div>
+</div>
+
+<!-- HORMÔNIOS -->
+<div class="iatf-panel" id="iatf-panel-hormonios">
+  <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Clique em cada hormônio para ver mecanismo, dose e indicação</p>
+  <div class="iatf-horm-grid">
+    <div class="iatf-horm-card" onclick="iatfInfo('h','be')"><div class="iatf-horm-name">BE — benzoato de estradiol</div><div class="iatf-horm-sub">Sincronização da onda folicular · D0</div></div>
+    <div class="iatf-horm-card" onclick="iatfInfo('h','ce')"><div class="iatf-horm-name">CE — cipionato de estradiol</div><div class="iatf-horm-sub">Indutor de ovulação · retirada do dispositivo</div></div>
+    <div class="iatf-horm-card" onclick="iatfInfo('h','pgf')"><div class="iatf-horm-name">PGF2α</div><div class="iatf-horm-sub">Luteólise · cloprostenol · dinoprost</div></div>
+    <div class="iatf-horm-card" onclick="iatfInfo('h','ecg')"><div class="iatf-horm-name">eCG (PMSG)</div><div class="iatf-horm-sub">Bos indicus · anestro · 200–400 UI</div></div>
+    <div class="iatf-horm-card" onclick="iatfInfo('h','gnrh')"><div class="iatf-horm-name">GnRH</div><div class="iatf-horm-sub">Induz LH · ovulação · buserelina</div></div>
+    <div class="iatf-horm-card" onclick="iatfInfo('h','p4')"><div class="iatf-horm-name">P4 — progesterona</div><div class="iatf-horm-sub">CIDR 1,38 g · Repro one 0,5 g · 7–9 dias</div></div>
+  </div>
+  <div class="iatf-info-panel iatf-empty" id="iatf-info-h">Clique em um hormônio.</div>
+</div>
+
+<!-- CATEGORIAS -->
+<div class="iatf-panel" id="iatf-panel-categorias">
+  <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Clique para ver particularidades do protocolo em cada categoria</p>
+  <div class="iatf-card" onclick="iatfInfo('cat','vacas_cria')"><div class="iatf-card-title">Vacas de cria (primíparas e multíparas lactantes)</div><div class="iatf-card-sub">Anestro pós-parto · ECC · eCG essencial</div></div>
+  <div class="iatf-card" onclick="iatfInfo('cat','novilhas')"><div class="iatf-card-title">Novilhas (ciclando)</div><div class="iatf-card-sub">P4 0,5 g · CE 0,5 mg · 7 dias · avaliação ginecológica prévia</div></div>
+  <div class="iatf-card" onclick="iatfInfo('cat','vacas_solteiras')"><div class="iatf-card-title">Vacas solteiras (sem bezerro ao pé)</div><div class="iatf-card-sub">Alta proporção de CL · 4 manejos indicado</div></div>
+  <div class="iatf-card" onclick="iatfInfo('cat','leiteiras')"><div class="iatf-card-title">Vacas leiteiras de alta produção</div><div class="iatf-card-sub">P4 2 g · sem eCG · Double Ovsynch · PGF dupla</div></div>
+  <div class="iatf-card" onclick="iatfInfo('cat','bos_indicus')"><div class="iatf-card-title">Bos indicus (Nelore e cruzados) <span class="iatf-badge iatf-bsuc">Brasil</span></div><div class="iatf-card-sub">P4+E2 · eCG 300 UI obrigatório · 4 ondas foliculares</div></div>
+  <div class="iatf-info-panel iatf-empty" id="iatf-info-cat">Clique em uma categoria.</div>
+</div>
+
+<!-- INDUÇÃO DE PUBERDADE -->
+<div class="iatf-panel" id="iatf-panel-inducao">
+  <div class="iatf-info-box">Novilhas pré-púberes ou em transição precisam de protocolo de indução antes da IATF. Avaliar: peso (≥65% do peso adulto), ECC, sanidade, útero e ovários à US.</div>
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('aval',this)">Avaliação prévia</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('proto_inducao',this)">Protocolo de indução</button>
+  </div>
+  <div class="iatf-sp-panel active" id="iatf-sp-aval">
+    <div class="iatf-card" onclick="iatfInfo('ind','ciclica')"><div class="iatf-card-title">Novilha cíclica</div><div class="iatf-card-sub">CL presente · útero desenvolvido · inicia protocolo padrão</div></div>
+    <div class="iatf-card" onclick="iatfInfo('ind','transicao')"><div class="iatf-card-title">Novilha em transição</div><div class="iatf-card-sub">Folículos &gt;8 mm · útero &gt;1,5 cm · pré-ovulatória</div></div>
+    <div class="iatf-card" onclick="iatfInfo('ind','prepubere')"><div class="iatf-card-title">Novilha pré-púbere</div><div class="iatf-card-sub">Folículos pequenos · útero &lt;1,5 cm · indução obrigatória</div></div>
+    <div class="iatf-info-panel iatf-empty" id="iatf-info-ind">Clique em uma categoria.</div>
+  </div>
+  <div class="iatf-sp-panel" id="iatf-sp-proto_inducao">
+    <div class="iatf-proto">
+      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 (0,5–1 g) + BE 2 mg</div><div class="iatf-psub">7–8 dias de uso</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D7–8</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α</div><div class="iatf-psub">Luteólise se houver CL formado</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D30–40</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Reavaliação ginecológica</div><div class="iatf-psub">Novilhas ciclando iniciam protocolo padrão</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D40+</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Protocolo padrão de IATF</div><div class="iatf-psub">Resposta equivalente a novilhas naturalmente cíclicas</div></div></div>
+    </div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Quando iniciar</div><div class="iatf-memo-text">Ideal: 30–40 dias antes da estação de monta<br>Mínimo: 12 dias entre indução e protocolo de IATF</div></div>
+  </div>
+</div>
 `
 },
 {
@@ -4402,6 +4531,59 @@ window.gdSetCron = function(c, el) {
   panel.querySelectorAll('.gd-sp-panel').forEach(function(p){ p.classList.remove('active'); });
   el.classList.add('active');
   document.getElementById('gd-cron-' + c).classList.add('active');
+};
+
+// === CAPÍTULO 7 — IATF / BIOTECNOLOGIAS ===
+var iatfDb = {
+  var: {
+    cosynch: 'No <strong>CO-Synch</strong>, a IATF é realizada simultaneamente ao 2º GnRH (não 16–20 h depois), eliminando um manejo. Taxa de prenhez ligeiramente menor, mas o ganho operacional compensa em rebanhos grandes. Variante CO-Synch + CIDR é comum para vacas em anestro.',
+    presynch: 'O <strong>Pre-Synch</strong> aplica 2 doses de PGF2α com 14 dias de intervalo, terminando 12 dias antes do 1º GnRH do Ovsynch. Garante que as vacas entrem no D0 na fase lútea, aumentando a proporção que responde adequadamente ao 1º GnRH. Indicado para vacas ciclando. Limitação: não resolve o problema de anestro.',
+    selectsynch: 'O <strong>Select Synch</strong> usa apenas GnRH + PGF2α (sem 2º GnRH), seguido de detecção de estro. Sincroniza luteólise mas não ovulação. Exige mão de obra para detecção de estro (48–96 h após PGF2α). Menor custo hormonal.',
+    cidrsynch: 'O <strong>Ovsynch + CIDR</strong> insere dispositivo de P4 no D0 e o retira no D7 junto com a PGF2α. Beneficia principalmente <span class="iatf-hl">vacas em anestro</span>: mimetiza a fase lútea e melhora a resposta ao 2º GnRH. +5–10% de prenhez em vacas sem CL. Protocolo padrão para rebanhos com alto índice de anestro pós-parto.'
+  },
+  h: {
+    be: 'O <strong>benzoato de estradiol (BE)</strong> no D0 induz <span class="iatf-hl">atresia do folículo dominante presente</span> e sincroniza a emergência de nova onda folicular. Dose: 2 mg IM (vacas e novilhas). Meia-vida ~24 h. Proibido na UE, EUA, Canadá e Austrália — nesses países usa-se GnRH.',
+    ce: 'O <strong>cipionato de estradiol (CE)</strong> é o indutor de ovulação dos protocolos P4+E2 — aplicado na retirada do dispositivo. Dose: 1 mg IM em vacas; 0,5 mg em novilhas. Meia-vida mais longa que o BE (~72 h), permitindo a janela de 48 h entre retirada e IATF sem GnRH adicional.',
+    pgf: 'A <strong>PGF2α</strong> promove <span class="iatf-hl">luteólise</span> — regressão do CL — reduzindo a P4 circulante. Análogos: d-cloprostenol (0,15 mg), cloprostenol (0,5 mg), dinoprost (25 mg). CLs com ≥5 dias respondem plenamente. CLs jovens podem não regredir — justificativa da dose dupla (D7+D8) em protocolos modernos.',
+    ecg: 'O <strong>eCG</strong> (FSH-like + LH-like) estimula crescimento folicular final e aumenta o diâmetro do folículo pré-ovulatório. Essencial em <span class="iatf-hl">Bos indicus</span> e vacas em anestro. Dose: 200–400 UI IM na retirada do dispositivo. Folículo maior → ovulação mais sincronizada → melhor CL → melhor taxa de prenhez. Não necessário em leiteiras de alta produção.',
+    gnrh: 'O <strong>GnRH</strong> estimula liberação de LH e FSH pela hipófise. No D0 do Ovsynch: induz ovulação do folículo dominante → emergência de nova onda. No D9 (2º GnRH): pico de LH → ovulação sincronizada para IATF. Análogos: buserelina (10 µg), lecirrelina. No protocolo P4+E2, é opcional no dia da IATF.',
+    p4: 'A <strong>P4</strong> exógena via dispositivo suprime o ciclo, sincroniza a onda folicular e beneficia vacas em anestro. Dispositivos: CIDR 1,38 g (1–3 usos), Repro one 0,5 g monodose, Repro neo/sync 1 g multidose. Duração: 7 dias (novilhas) ou 8–9 dias (vacas). Reutilização até 3 vezes com taxa de prenhez satisfatória.'
+  },
+  cat: {
+    vacas_cria: '<strong>Vacas de cria lactantes</strong>: alta incidência de anestro pós-parto, especialmente primíparas e animais com baixo ECC (&lt;3). eCG 300 UI obrigatório. Estratégias adicionais: desmame temporário 48 h antes da IATF. ECC mínimo 2,5 para entrar no protocolo. Protocolo de 3 manejos P4+E2 é o padrão.',
+    novilhas: '<strong>Novilhas ciclando</strong>: avaliar peso (≥65% do peso adulto — ~325–350 kg para Nelore) e ciclicidade por US. Dispositivo 0,5 g por 7 dias. CE 0,5 mg. eCG 300 UI. Taxa de prenhez média: 50–65% em primeiros protocolos.',
+    vacas_solteiras: '<strong>Vacas solteiras</strong>: ciclos regulares e maior proporção de CL. Isso justifica o <span class="iatf-hl">protocolo de 4 manejos</span> com PGF2α no D7 para garantir luteólise antecipada. Boas candidatas para taxas de prenhez acima de 60%.',
+    leiteiras: '<strong>Vacas leiteiras de alta produção</strong>: P4 circulante mais baixa (diluição pelo volume de leite), menor expressão de estro, maior anestro. Dispositivo de P4 2 g (Repro sync), PGF dupla (D7+D8), sem eCG, Double Ovsynch para melhor resultado. Taxa alvo: ≥35% P/IA.',
+    bos_indicus: '<strong>Bos indicus</strong>: folículo pré-ovulatório menor que taurinos, 4 ondas foliculares/ciclo (vs. 2–3), menor expressão de estro. Protocolo P4+E2 com eCG especificamente desenvolvido para zebuínos. eCG aumenta o folículo pré-ovulatório. Taxas de prenhez: ~50–55% em campo, 65–70% com bom manejo.'
+  },
+  ind: {
+    ciclica: '<strong>Novilha cíclica</strong>: CL visível à US, útero com boa tonicidade, folículo dominante presente. Pode iniciar o protocolo padrão de IATF diretamente. Melhor prognóstico de taxa de prenhez.',
+    transicao: '<strong>Novilha em transição</strong>: folículos &gt;8 mm e corno uterino &gt;1,5 cm — há pulsatilidade de LH ativa, está próxima da primeira ovulação. Sem CL ainda. Submetida ao protocolo de indução, tipicamente ovula e ciclifica dentro de 30 dias.',
+    prepubere: '<strong>Novilha pré-púbere</strong>: folículos &lt;4 mm, corno uterino &lt;1,5 cm, sem CL. Pulsatilidade de LH insuficiente. Necessita de protocolo de indução (P4+BE por 7–8 dias) 30–40 dias antes da estação de monta para melhores resultados.'
+  }
+};
+window.iatfInfo = function(g, k) {
+  var el = document.getElementById('iatf-info-' + g);
+  if (!el) return;
+  el.innerHTML = iatfDb[g][k];
+  el.classList.remove('iatf-empty');
+};
+window.iatfSetTab = function(t, el) {
+  var body = el.closest('.chapter-body') || document;
+  body.querySelectorAll('.iatf-tab').forEach(function(x) { x.classList.remove('active'); });
+  body.querySelectorAll('.iatf-panel').forEach(function(x) { x.classList.remove('active'); });
+  el.classList.add('active');
+  var p = body.querySelector('#iatf-panel-' + t);
+  if (p) p.classList.add('active');
+};
+window.iatfSetSp = function(sp, el) {
+  var panel = el.closest('.iatf-panel') || document.body;
+  var tabs = el.closest('.iatf-sp-tabs');
+  if (tabs) tabs.querySelectorAll('.iatf-sp-tab').forEach(function(x) { x.classList.remove('active'); });
+  panel.querySelectorAll('.iatf-sp-panel').forEach(function(x) { x.classList.remove('active'); });
+  el.classList.add('active');
+  var t = panel.querySelector('#iatf-sp-' + sp);
+  if (t) t.classList.add('active');
 };
 
 // === BUILD CHAPTERS ===
