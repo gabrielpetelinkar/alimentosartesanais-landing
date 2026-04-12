@@ -4342,19 +4342,67 @@ var CHAPTERS = [
 .iap-d-teal{background:#1D9E75}.iap-d-amber{background:#BA7517}.iap-d-gray{background:#888780}
 </style>
 
-<p class="iap-label">7.1 — Manejo Reprodutivo</p>
-<h2>Indução do Parto, Aborto e Retenção de Placenta</h2>
+<p class="iap-label">7.1 — Parto e Puerpério</p>
+<h2>Parto, Puerpério e Manejo Reprodutivo</h2>
 
 <div class="iap-tabs">
-  <button class="iap-tab active" onclick="iapSetTab('inducao',this)">Indução do parto</button>
+  <button class="iap-tab active" onclick="iapSetTab('parto',this)">Parto e Puerpério</button>
+  <button class="iap-tab" onclick="iapSetTab('inducao',this)">Indução do parto</button>
   <button class="iap-tab" onclick="iapSetTab('aborto',this)">Aborto terapêutico</button>
   <button class="iap-tab" onclick="iapSetTab('drogas',this)">Drogas utilizadas</button>
   <button class="iap-tab" onclick="iapSetTab('retencao',this)">Retenção de placenta</button>
   <button class="iap-tab" onclick="iapSetTab('tabela',this)">Tabela geral</button>
 </div>
 
+<!-- PARTO E PUERPÉRIO -->
+<div class="iap-panel active" id="iap-panel-parto">
+  <div class="iap-info-box">O parto é desencadeado pelo eixo feto-placenta-mãe: cortisol fetal (CRH → ACTH → cortisol) ativa enzimas placentárias → queda de P4, aumento de E2 e PGF2α → E2 aumenta receptores de ocitocina no miométrio → PGF2α e ocitocina (reflexo de Ferguson) → contrações progressivas.</div>
+
+  <div class="iap-sp-tabs">
+    <button class="iap-sp-tab active" onclick="iapSetSp('fases',this)">Fases do parto</button>
+    <button class="iap-sp-tab" onclick="iapSetSp('estatica',this)">Estática fetal</button>
+    <button class="iap-sp-tab" onclick="iapSetSp('puerperio',this)">Puerpério</button>
+  </div>
+
+  <div class="iap-sp-panel active" id="iap-sp-fases">
+    <div class="iap-prova-box"><strong>Fase II (expulsão fetal)</strong> é a mais cobrada em prova: égua tem a fase expulsiva mais rápida (~15–30 min) — atraso = distocia. Fase III &gt;3 h em égua = emergência.</div>
+    <table class="iap-t-table">
+      <tr><th>Fase</th><th>Eventos</th><th>Vaca</th><th>Égua</th><th>Ovelha/Cabra</th><th>Porca</th></tr>
+      <tr><td><strong>I — Preparatória</strong></td><td>Dilatação cervical; contrações fracas; agitação; anorexia; edema vulvar</td><td>2–8 h</td><td>1–4 h</td><td>2–6 h</td><td>2–12 h</td></tr>
+      <tr><td><strong>II — Expulsão fetal</strong></td><td>Ruptura da bolsa das águas; contrações fortes + prensa abdominal; nascimento</td><td>30–60 min</td><td><strong>15–30 min</strong></td><td>30–45 min</td><td>10–30 min/feto</td></tr>
+      <tr><td><strong>III — Expulsão da placenta</strong></td><td>Separação e expulsão das membranas fetais</td><td>2–8 h (máx 12 h)</td><td><strong>1–3 h (máx 3 h)</strong></td><td>1–2 h</td><td>~60 min</td></tr>
+    </table>
+    <div class="iap-memo"><div class="iap-memo-label">Retenção de placenta — prazos críticos</div><div class="iap-memo-text">Égua: &gt;3 h = EMERGÊNCIA · Vaca: &gt;12 h = tratamento · Ovelha: &gt;8 h · Cadela: &gt;12–24 h
+Causas: hipocalcemia, deficiência de Se/Vit E, brucelose, doença cotiledônica, indução do parto</div></div>
+  </div>
+
+  <div class="iap-sp-panel" id="iap-sp-estatica">
+    <div class="iap-info-box">A estática fetal descreve a relação do feto com o canal do parto. Alterações geram distócia.</div>
+    <div class="iap-tl">
+      <div class="iap-tl-row"><div class="iap-tl-spine"><div class="iap-tl-dot iap-d-teal"></div><div class="iap-tl-line"></div></div><div class="iap-tl-card iap-dest"><div class="iap-tl-title">Apresentação — relação eixo fetal/materno</div><div class="iap-tl-sub"><strong>Longitudinal anterior (cefálica):</strong> normal — cabeça + membros anteriores primeiro (mais comum) · <strong>Longitudinal posterior (podálica):</strong> aceita em ruminantes e porcas, risco maior · <strong>Transversa:</strong> anormal; distócia grave</div></div></div>
+      <div class="iap-tl-row"><div class="iap-tl-spine"><div class="iap-tl-dot iap-d-blue"></div><div class="iap-tl-line"></div></div><div class="iap-tl-card"><div class="iap-tl-title">Posição — relação dorso fetal/estruturas maternas</div><div class="iap-tl-sub"><strong>Dorso-sacral:</strong> normal — dorso do feto voltado para o sacro materno · <strong>Dorso-púbica:</strong> anormal · <strong>Dorso-ilíacas (D ou E):</strong> anormais</div></div></div>
+      <div class="iap-tl-row"><div class="iap-tl-spine"><div class="iap-tl-dot iap-d-amber"></div></div><div class="iap-tl-card"><div class="iap-tl-title">Postura — posição dos membros e cabeça</div><div class="iap-tl-sub"><strong>Normal:</strong> cabeça repousada sobre membros anteriores estendidos ("posição de cavalinho") · <strong>Anormal:</strong> cabeça desviada lateralmente, membros retidos, pescoço inclinado</div></div></div>
+    </div>
+  </div>
+
+  <div class="iap-sp-panel" id="iap-sp-puerperio">
+    <div class="iap-info-box">Puerpério é o período de involução uterina e retomada da atividade reprodutiva após o parto.</div>
+    <table class="iap-t-table">
+      <tr><th>Parâmetro</th><th>Vaca</th><th>Égua</th><th>Ovelha/Cabra</th><th>Cadela</th></tr>
+      <tr><td>Involução uterina</td><td>25–45 dias</td><td>20–30 dias</td><td>20–30 dias</td><td>3–4 semanas</td></tr>
+      <tr><td>Retorno ao estro</td><td>30–60 dias (anestro pós-parto)</td><td><strong>7–14 dias (estro do potro)</strong></td><td>Sazonal (anestro lactacional)</td><td>Meses (anestro de lactação)</td></tr>
+      <tr><td>Lóquios</td><td>2–3 semanas</td><td>2–3 dias</td><td>~2 semanas</td><td>4–6 semanas (normal)</td></tr>
+    </table>
+    <div class="iap-tl">
+      <div class="iap-tl-row"><div class="iap-tl-spine"><div class="iap-tl-dot iap-d-teal"></div><div class="iap-tl-line"></div></div><div class="iap-tl-card iap-dest"><div class="iap-tl-title">Estro do potro (Foal Heat) <span class="iap-badge iap-bwarn">prova frequente</span></div><div class="iap-tl-sub">A égua retorna ao estro em <span class="iap-hl">7–14 dias pós-parto</span> (média 9–10 dias). Taxa de concepção baixa (~50%) pelo útero ainda em involução. Recomenda-se esperar o <strong>2º estro pós-parto (~30 dias)</strong> para melhor resultado gestacional.</div></div></div>
+      <div class="iap-tl-row"><div class="iap-tl-spine"><div class="iap-tl-dot iap-d-blue"></div><div class="iap-tl-line"></div></div><div class="iap-tl-card"><div class="iap-tl-title">Anestro pós-parto bovino</div><div class="iap-tl-sub">Mediado por opioides endógenos (sucção inibe GnRH). Desmame precoce antecipa retorno ao estro. Vacas de corte em anestro: protocolo de IATF com P4 + eCG melhora resposta.</div></div></div>
+      <div class="iap-tl-row"><div class="iap-tl-spine"><div class="iap-tl-dot iap-d-amber"></div></div><div class="iap-tl-card"><div class="iap-tl-title">Metrite pós-parto</div><div class="iap-tl-sub">Infecção uterina nas primeiras 3 semanas pós-parto; principal causa: retenção de placenta, distócia, contaminação. Tratamento: ATB sistêmico (penicilina + estreptomicina, amoxicilina), lavagem uterina nos casos graves.</div></div></div>
+    </div>
+  </div>
+</div>
+
 <!-- INDUÇÃO DO PARTO -->
-<div class="iap-panel active" id="iap-panel-inducao">
+<div class="iap-panel" id="iap-panel-inducao">
   <div class="iap-info-box">A indução do parto é indicada quando a gestação ultrapassa o prazo esperado, há comprometimento fetal ou materno, ou quando o manejo da propriedade exige parto programado. <strong>Nunca induzir prematuramente — risco de neonato imaturo.</strong></div>
 
   <div class="iap-sp-tabs">
@@ -4513,8 +4561,269 @@ Cadela: E2 antes D22 = embriotóxico · aglepristone = melhor opção · efeitos
 `
 },
 {
-  id: 'obstetricia',
+  id: 'estatica-distocia',
   num: 11,
+  title: 'Estática Fetal e Distocia',
+  icon: '#i-hospital',
+  content: `
+<style>
+.ef-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.ef-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.ef-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+.ef-tab:hover{background:var(--bg-hover)}.ef-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.ef-panel{display:none}.ef-panel.active{display:block}
+.ef-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.ef-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+.ef-sp-tab:hover{background:var(--bg-hover)}.ef-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.ef-sp-panel{display:none}.ef-sp-panel.active{display:block}
+.ef-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+.ef-bwarn{background:#fef3db;color:#633806}.ef-binfo{background:var(--blue-100);color:var(--blue-700)}
+.ef-bsuc{background:#eaf3de;color:#27500a}.ef-bdanger{background:#fce8e8;color:#7a1f1f}
+.ef-hl{background:#fef3db;border-radius:3px;padding:1px 4px;font-weight:600}
+.ef-prova-box{border-left:3px solid #BA7517;background:#fef3db;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.ef-prova-box strong{color:#633806}
+.ef-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.ef-danger-box{border-left:3px solid #A32D2D;background:#fce8e8;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.ef-danger-box strong{color:#7a1f1f}
+.ef-ap-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.ef-ap-card{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card);cursor:pointer;transition:border-color .15s,background .15s}
+.ef-ap-card:hover{border-color:var(--border-light);background:var(--bg-hover)}
+.ef-ap-card.ef-eutocico{border-color:#3B6D11;background:#eaf3de}
+.ef-ap-card.ef-distocico{border-color:#A32D2D;background:#fce8e8}
+.ef-ap-title{font-weight:600;font-size:13px;margin-bottom:2px}
+.ef-ap-sub{font-size:12px;color:var(--text-secondary);line-height:1.4}
+.ef-info-panel{background:var(--bg-hover);border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;margin-top:8px;font-size:13px;line-height:1.65;min-height:56px}
+.ef-info-panel.empty{color:var(--text-muted);font-style:italic}
+.ef-man-card{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card);margin-bottom:8px;cursor:pointer;transition:border-color .15s,background .15s}
+.ef-man-card:hover{border-color:var(--border-light);background:var(--bg-hover)}
+.ef-man-num{font-size:22px;font-weight:700;color:var(--blue-700);line-height:1;float:left;margin-right:12px;margin-top:2px}
+.ef-man-title{font-weight:600;font-size:13px;margin-bottom:2px}
+.ef-man-sub{font-size:12px;color:var(--text-secondary);line-height:1.4}
+.ef-man-clear{clear:both}
+.ef-inst-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ef-inst-card{border-radius:8px;border:1px solid var(--border-card);padding:9px 12px;background:var(--bg-card)}
+.ef-inst-name{font-weight:600;font-size:12px;margin-bottom:2px}
+.ef-inst-uso{font-size:11px;color:var(--text-secondary);line-height:1.35}
+.ef-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-hover);margin-top:12px}
+.ef-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.ef-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
+.ef-vib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.ef-vib-card{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card)}
+.ef-vib-title{font-weight:600;font-size:12px;margin-bottom:4px;color:var(--text-primary)}
+.ef-vib-item{font-size:12px;color:var(--text-secondary);line-height:1.55;padding-left:8px;border-left:2px solid var(--border-light);margin-bottom:3px}
+</style>
+
+<p class="ef-label">7.2 — Obstetrícia</p>
+<h2>Estática Fetal e Auxílio ao Parto Distócico</h2>
+
+<div class="ef-tabs">
+  <button class="ef-tab active" onclick="efSetTab('estatica',this)">Estática fetal</button>
+  <button class="ef-tab" onclick="efSetTab('distocias',this)">Distocias fetais</button>
+  <button class="ef-tab" onclick="efSetTab('exame',this)">Exame obstétrico</button>
+  <button class="ef-tab" onclick="efSetTab('manobras',this)">Manobras / Intervenções</button>
+  <button class="ef-tab" onclick="efSetTab('instrumental',this)">Instrumental</button>
+</div>
+
+<!-- ESTÁTICA FETAL -->
+<div class="ef-panel active" id="ef-panel-estatica">
+  <div class="ef-prova-box">
+    <strong>Parto eutócico — estática fetal correta:</strong><br>
+    Apresentação: <span class="ef-hl">Longitudinal anterior</span> · Posição: <span class="ef-hl">Dorsal (superior)</span> · Atitude: <span class="ef-hl">Estendida</span><br>
+    Em 95–97% dos partos normais em bovinos e equinos o feto nasce em apresentação longitudinal anterior
+  </div>
+
+  <div style="margin-bottom:16px">
+    <div style="font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Estática normal por espécie</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card)">
+        <div style="font-weight:600;font-size:13px;margin-bottom:6px;color:var(--blue-700)">Bovinos / Ovinos / Caprinos</div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.7">Apresentação: <strong>longitudinal anterior</strong><br>Posição: <strong>dorsal (superior)</strong><br>Atitude: <strong>estendida</strong><br><span style="font-size:11px;color:var(--text-muted)">Cabeça apoiada sobre os dois membros anteriores estendidos · "mergulhador"</span></div>
+      </div>
+      <div style="border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card)">
+        <div style="font-weight:600;font-size:13px;margin-bottom:6px;color:#27500a">Equinos</div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.7">Apresentação: <strong>longitudinal anterior</strong><br>Posição: <strong>dorsal (superior)</strong><br>Atitude: <strong>estendida</strong><br><span style="font-size:11px;color:var(--text-muted)">Membros anteriores estendidos · cabeça sobre os membros · parto muito rápido (30 min)</span></div>
+      </div>
+      <div style="border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card)">
+        <div style="font-weight:600;font-size:13px;margin-bottom:6px;color:#633806">Suínos</div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.7">Apresentação: <strong>longitudinal anterior OU posterior</strong><br>Posição: <strong>dorsal ou ventral</strong> (ambas aceitas)<br>Atitude: <strong>estendida</strong><br><span style="font-size:11px;color:var(--text-muted)">Apresentação posterior é comum e normal nos suínos — não é distócica · alternância entre cornos</span></div>
+      </div>
+      <div style="border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card)">
+        <div style="font-weight:600;font-size:13px;margin-bottom:6px;color:#D4537E">Cão / Gato</div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.7">Apresentação: <strong>longitudinal anterior OU posterior</strong><br>Posição: <strong>qualquer</strong> (pequeno porte, útero bicornual)<br>Atitude: <strong>estendida</strong><br><span style="font-size:11px;color:var(--text-muted)">Apresentação posterior normal em 40% dos filhotes · gata pode pausar o parto horas entre filhotes</span></div>
+      </div>
+    </div>
+    <div style="border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card);margin-top:8px">
+      <div style="font-weight:600;font-size:13px;margin-bottom:4px">Bubalinos</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Apresentação: <strong>longitudinal anterior</strong> · Posição: <strong>dorsal</strong> · Atitude: <strong>estendida</strong> — idêntico aos bovinos</div>
+    </div>
+  </div>
+
+  <div class="ef-sp-tabs">
+    <button class="ef-sp-tab active" onclick="efSetSp('apresentacao',this)">Apresentação</button>
+    <button class="ef-sp-tab" onclick="efSetSp('posicao',this)">Posição</button>
+    <button class="ef-sp-tab" onclick="efSetSp('atitude',this)">Atitude</button>
+  </div>
+
+  <div class="ef-sp-panel active" id="ef-sp-apresentacao">
+    <div class="ef-info-box"><strong>Apresentação</strong> = relação entre o eixo longitudinal do feto e o eixo longitudinal da mãe</div>
+    <div class="ef-ap-grid">
+      <div class="ef-ap-card ef-eutocico"><div class="ef-ap-title">Longitudinal anterior <span class="ef-badge ef-bsuc">eutócico</span></div><div class="ef-ap-sub">Cabeça e membros anteriores voltados para a via fetal; apresentação normal — 95–97% dos partos</div></div>
+      <div class="ef-ap-card"><div class="ef-ap-title">Longitudinal posterior</div><div class="ef-ap-sub">Membros posteriores e garupa voltados para a via fetal; possível em equinos e bovinos; mais complicado mas manejável</div></div>
+      <div class="ef-ap-card ef-distocico"><div class="ef-ap-title">Transversal dorsal <span class="ef-badge ef-bdanger">distócico</span></div><div class="ef-ap-sub">Eixo do feto perpendicular ao da mãe, dorso voltado para a cérvice; na prática: cesárea</div></div>
+      <div class="ef-ap-card ef-distocico"><div class="ef-ap-title">Transversal ventral <span class="ef-badge ef-bdanger">distócico</span></div><div class="ef-ap-sub">Eixo perpendicular, abdome do feto voltado para a cérvice; cesárea na maioria dos casos</div></div>
+      <div class="ef-ap-card ef-distocico"><div class="ef-ap-title">Vertical dorsal <span class="ef-badge ef-bdanger">distócico</span></div><div class="ef-ap-sub">Eixo longitudinal do feto perpendicular ao da mãe no plano vertical, dorso para cima</div></div>
+      <div class="ef-ap-card ef-distocico"><div class="ef-ap-title">Vertical ventral <span class="ef-badge ef-bdanger">distócico</span></div><div class="ef-ap-sub">Eixo vertical, abdome voltado para cima; cesárea obrigatória</div></div>
+    </div>
+    <div class="ef-memo"><div class="ef-memo-label">Versão</div><div class="ef-memo-text">Versão = manobra para converter apresentação transversal ou vertical em longitudinal
+Na prática: apresentação transversal → cesárea (raramente corrigível em grandes animais)</div></div>
+  </div>
+
+  <div class="ef-sp-panel" id="ef-sp-posicao">
+    <div class="ef-info-box"><strong>Posição</strong> = relação entre o dorso do feto e o dorso (coluna vertebral) da mãe</div>
+    <div class="ef-ap-grid">
+      <div class="ef-ap-card ef-eutocico"><div class="ef-ap-title">Dorsal / superior <span class="ef-badge ef-bsuc">eutócica</span></div><div class="ef-ap-sub">Dorso do feto voltado para o sacro materno — posição fisiológica; promove paralelismo entre feto e canal do parto</div></div>
+      <div class="ef-ap-card ef-distocico"><div class="ef-ap-title">Ventral / inferior <span class="ef-badge ef-bdanger">distócica</span></div><div class="ef-ap-sub">Dorso do feto voltado para o púbis materno; corrigir por rotação antes da tração</div></div>
+      <div class="ef-ap-card ef-distocico"><div class="ef-ap-title">Lateral direita</div><div class="ef-ap-sub">Dorso do feto voltado para o ílio direito; rotação necessária para corrigir</div></div>
+      <div class="ef-ap-card ef-distocico"><div class="ef-ap-title">Lateral esquerda</div><div class="ef-ap-sub">Dorso do feto voltado para o ílio esquerdo; corrigir por rotação sobre o eixo longitudinal</div></div>
+    </div>
+    <div class="ef-memo"><div class="ef-memo-label">Nomenclatura — partes envolvidas</div><div class="ef-memo-text">Parte FETAL: dorso ou lombar (região posterior do feto)
+Parte MATERNA: ílio · ísquio · púbis · sacro
+Ex: dorsossacra = dorso fetal voltado ao sacro materno (eutócica)</div></div>
+  </div>
+
+  <div class="ef-sp-panel" id="ef-sp-atitude">
+    <div class="ef-info-box"><strong>Atitude</strong> = disposição das partes móveis do feto — cabeça, pescoço e membros — estendidos ou flexionados</div>
+    <div class="ef-ap-grid">
+      <div class="ef-ap-card ef-eutocico"><div class="ef-ap-title">Estendida <span class="ef-badge ef-bsuc">eutócica</span></div><div class="ef-ap-sub">Cabeça, pescoço e membros completamente estendidos — atitude fisiológica para passagem pelo canal do parto</div></div>
+      <div class="ef-ap-card ef-distocico"><div class="ef-ap-title">Flexionada <span class="ef-badge ef-bdanger">distócica</span></div><div class="ef-ap-sub">Qualquer flexão da cabeça, pescoço ou membros — impede ou dificulta a passagem; requer correção obstétrica</div></div>
+    </div>
+    <div class="ef-info-box" style="margin-top:12px"><strong>Desvios de cabeça e pescoço:</strong> Esternal (para baixo entre os membros) · Lateral direito ou esquerdo · Dorsal (cabeça para cima/trás) · Flexão da articulação atlantooccipital</div>
+    <div class="ef-info-box"><strong>Desvios de membros anteriores:</strong> Flexão sobre a nuca → <span class="ef-hl">principal causa de laceração perineal e fístula retrovaginal</span> · Flexão da articulação cárpica · Flexão das articulações escapuloumeral e úmeroradial</div>
+    <div class="ef-info-box"><strong>Desvios de membros posteriores:</strong> Flexão da articulação társica (jarrete) · Flexão da articulação coxofemoral (apresentação posterior com membros retidos)</div>
+  </div>
+</div>
+
+<!-- DISTOCIAS -->
+<div class="ef-panel" id="ef-panel-distocias">
+  <div class="ef-info-box">Distocia = dificuldade na expulsão do feto. Causas <strong>maternas</strong> (pélvicas, cervicais, vaginais) ou <strong>fetais</strong> (estática, tamanho, malformações). Em equinos a causa fetal é predominante (90% das distocias).</div>
+
+  <div class="ef-sp-tabs">
+    <button class="ef-sp-tab active" onclick="efSetSp('causas_dist',this)">Causas</button>
+    <button class="ef-sp-tab" onclick="efSetSp('tipos_dist',this)">Alterações de estática</button>
+    <button class="ef-sp-tab" onclick="efSetSp('indicacoes',this)">Indicações de intervenção</button>
+  </div>
+
+  <div class="ef-sp-panel active" id="ef-sp-causas_dist">
+    <div class="ef-ap-grid">
+      <div class="ef-ap-card"><div class="ef-ap-title">Desproporção feto-materna</div><div class="ef-ap-sub">Feto grande demais para a pelve materna; principal causa em bovinos de corte; influência genética do touro importante</div></div>
+      <div class="ef-ap-card"><div class="ef-ap-title">Alterações de estática fetal</div><div class="ef-ap-sub">Desvios de apresentação, posição e atitude; mais comuns em equinos; desvio de cabeça e membros são os mais frequentes em bovinos</div></div>
+      <div class="ef-ap-card"><div class="ef-ap-title">Gestação gemelar</div><div class="ef-ap-sub">Dois fetos tentando entrar simultaneamente; engajamento simultâneo ou posicionamento desfavorável</div></div>
+      <div class="ef-ap-card"><div class="ef-ap-title">Monstruosidades fetais</div><div class="ef-ap-sub">Artrogripose, hidrocefalia, schistosomus reflexus, anasarca; requerem fetotomia ou cesariana</div></div>
+      <div class="ef-ap-card"><div class="ef-ap-title">Feto enfisematoso</div><div class="ef-ap-sub">Feto morto em decomposição com gases acumulados; diagnóstico pelo odor e crepitação; fetotomia ou cesariana</div></div>
+      <div class="ef-ap-card"><div class="ef-ap-title">Atonia uterina</div><div class="ef-ap-sub">Primária: ausência de receptores de ocitocina. Secundária: fadiga muscular por esforço excessivo. Tratamento: cálcio + ocitocina</div></div>
+    </div>
+  </div>
+
+  <div class="ef-sp-panel" id="ef-sp-tipos_dist">
+    <div class="ef-ap-grid">
+      <div class="ef-ap-card ef-distocico" onclick="efInfo('dist','cabeca_lat')"><div class="ef-ap-title">Desvio lateral de cabeça</div><div class="ef-ap-sub">Cabeça voltada lateralmente; corrente no maxilar + retropulsão + extensão</div></div>
+      <div class="ef-ap-card ef-distocico" onclick="efInfo('dist','cabeca_inf')"><div class="ef-ap-title">Desvio esternal (cabeça entre membros)</div><div class="ef-ap-sub">Cabeça voltada para baixo entre os membros anteriores</div></div>
+      <div class="ef-ap-card ef-distocico" onclick="efInfo('dist','carpo')"><div class="ef-ap-title">Flexão de carpo (membro ant.)</div><div class="ef-ap-sub">Articulação cárpica flexionada; um ou ambos os membros; corrente no metacarpo + extensão</div></div>
+      <div class="ef-ap-card ef-distocico" onclick="efInfo('dist','nuca')"><div class="ef-ap-title">Flexão sobre a nuca <span class="ef-badge ef-bdanger">laceração!</span></div><div class="ef-ap-sub">Membro anterior sobre a nuca; causa laceração perineal e fístula retrovaginal</div></div>
+      <div class="ef-ap-card ef-distocico" onclick="efInfo('dist','jarrete')"><div class="ef-ap-title">Flexão de társica (membro post.)</div><div class="ef-ap-sub">Apresentação posterior com jarrete flexionado; correção por extensão do membro</div></div>
+      <div class="ef-ap-card ef-distocico" onclick="efInfo('dist','coxo')"><div class="ef-ap-title">Flexão coxofemoral bilateral</div><div class="ef-ap-sub">Apresentação posterior com membros completamente retidos; difícil correção; cesariana frequente</div></div>
+    </div>
+    <div class="ef-info-panel empty" id="ef-info-dist">Clique em uma distocia para ver manobra de correção.</div>
+  </div>
+
+  <div class="ef-sp-panel" id="ef-sp-indicacoes">
+    <div class="ef-prova-box"><strong>Indicações de intervenção obstétrica</strong> — intervir quando:</div>
+    <div style="font-size:13px;line-height:1.8;color:var(--text-primary);margin-bottom:12px">· Distocia de causa fetal confirmada ao exame vaginal<br>· Ausência de progressão após surgimento dos membros na vulva<br>· Comprometimento do estado geral da fêmea<br>· Comprometimento do estado geral do feto (FC fetal reduzida, reflexos ausentes)<br>· Corrimento vaginal de odor pútrido (feto morto em decomposição)<br>· Atonia uterina primária ou secundária refratária</div>
+    <div class="ef-danger-box"><strong>Antes de qualquer intervenção:</strong> exame obstétrico interno obrigatório para avaliar viabilidade fetal, estática, grau de lubrificação e dilatação das vias fetais</div>
+  </div>
+</div>
+
+<!-- EXAME OBSTÉTRICO -->
+<div class="ef-panel" id="ef-panel-exame">
+  <div class="ef-info-box">O exame obstétrico interno é o primeiro passo obrigatório em qualquer distocia — avalia viabilidade fetal, estática, dilatação e decide pela melhor intervenção. Realizado por via <strong>vaginal</strong> (bovinos e equinos), nunca retal para esse fim.</div>
+
+  <div class="ef-vib-grid">
+    <div class="ef-vib-card"><div class="ef-vib-title">Avaliação da via fetal</div><div class="ef-vib-item">Grau de dilatação da cérvice</div><div class="ef-vib-item">Grau de lubrificação</div><div class="ef-vib-item">Integridade das paredes vaginais</div><div class="ef-vib-item">Presença de edema ou lacerações</div></div>
+    <div class="ef-vib-card"><div class="ef-vib-title">Viabilidade fetal — reflexos</div><div class="ef-vib-item">Reflexo digital: de sucção ou anal</div><div class="ef-vib-item">Palpação do cordão umbilical (pulsação)</div><div class="ef-vib-item">Pressão sobre as pálpebras (reflexo palpebral)</div><div class="ef-vib-item">Tônus muscular geral</div></div>
+    <div class="ef-vib-card"><div class="ef-vib-title">Estática fetal</div><div class="ef-vib-item">Determinar apresentação (longitudinal/transversal)</div><div class="ef-vib-item">Determinar posição (dorsal/ventral/lateral)</div><div class="ef-vib-item">Determinar atitude (estendida/flexionada)</div><div class="ef-vib-item">Identificar qual parte está apresentada</div></div>
+    <div class="ef-vib-card"><div class="ef-vib-title">Outros parâmetros</div><div class="ef-vib-item">Tamanho relativo do feto</div><div class="ef-vib-item">Rigor mortis (feto morto há mais de 6 h)</div><div class="ef-vib-item">Enfisema (crepitação — feto em decomposição)</div><div class="ef-vib-item">Contrações uterinas residuais</div></div>
+  </div>
+
+  <div class="ef-memo"><div class="ef-memo-label">Decisão baseada no exame</div><div class="ef-memo-text">Feto vivo + distocia corrigível → correção + tração guiada
+Feto vivo + distocia não corrigível → cesariana
+Feto morto recente → fetotomia parcial ou total (exceto carnívoros e suínos)
+Feto enfisematoso / decomposição → fetotomia total ou cesariana
+Feto transverso (na prática) → cesariana</div></div>
+</div>
+
+<!-- MANOBRAS -->
+<div class="ef-panel" id="ef-panel-manobras">
+  <div class="ef-info-box">As intervenções obstétricas são procedimentos cruentos ou incruentos para resolver distocias. Sempre com lubrificação exagerada e seguindo as forças naturais de contração.</div>
+
+  <div class="ef-man-card" onclick="efInfo('man','atonia')"><div class="ef-man-num">1</div><div class="ef-man-title">Auxílio às contrações — Atonia uterina</div><div class="ef-man-sub">Primária (ausência de receptores) · Secundária (fadiga muscular) · Tratamento: Cálcio + Ocitocina</div><div class="ef-man-clear"></div></div>
+  <div class="ef-man-card" onclick="efInfo('man','tracao')"><div class="ef-man-num">2</div><div class="ef-man-title">Tração forçada</div><div class="ef-man-sub">Máximo 3 homens · Correntes nos ossos longos (nunca articulações) · Acompanha as contrações · Linha de tração curva natural do canal</div><div class="ef-man-clear"></div></div>
+  <div class="ef-man-card" onclick="efInfo('man','episio')"><div class="ef-man-num">3</div><div class="ef-man-title">Episiotomia</div><div class="ef-man-sub">Cadela: incisão única · Égua, vaca, ovelha: incisão em V · Sutura com fio absorvível</div><div class="ef-man-clear"></div></div>
+  <div class="ef-man-card" onclick="efInfo('man','correcao')"><div class="ef-man-num">4</div><div class="ef-man-title">Correções de distocias fetais (manobras incruentas)</div><div class="ef-man-sub">Retropulsão · Extensão · Rotação · Versão · Tração</div><div class="ef-man-clear"></div></div>
+  <div class="ef-man-card" onclick="efInfo('man','fetotomia')"><div class="ef-man-num">5</div><div class="ef-man-title">Fetotomia</div><div class="ef-man-sub">Feto morto preferencialmente · Fetótomo Thygesen + fio serra de Liess · NÃO usar em carnívoros e suínos</div><div class="ef-man-clear"></div></div>
+  <div class="ef-man-card" onclick="efInfo('man','cesariana')"><div class="ef-man-num">6</div><div class="ef-man-title">Cesariana</div><div class="ef-man-sub">Sutura útero: Schmiden + Cushing · Musculatura: ponto em X · Pele: Wolf (U) · Flanco esquerdo em ruminantes/equinos</div><div class="ef-man-clear"></div></div>
+  <div class="ef-man-card" onclick="efInfo('man','histerotomia')"><div class="ef-man-num">7</div><div class="ef-man-title">Histerotomia</div><div class="ef-man-sub">Insuficiente dilatação da cérvix · Cesárea é a opção mais utilizada</div><div class="ef-man-clear"></div></div>
+
+  <div class="ef-info-panel empty" id="ef-info-man">Clique em uma intervenção para ver detalhes.</div>
+</div>
+
+<!-- INSTRUMENTAL -->
+<div class="ef-panel" id="ef-panel-instrumental">
+  <div class="ef-prova-box"><strong>Instrumental obstétrico</strong> — conhecimento cobrado em provas de residência, especialmente os instrumentos específicos de espécie e função</div>
+
+  <div class="ef-sp-tabs">
+    <button class="ef-sp-tab active" onclick="efSetSp('inst_geral',this)">Instrumental geral</button>
+    <button class="ef-sp-tab" onclick="efSetSp('inst_esp',this)">Por espécie</button>
+  </div>
+
+  <div class="ef-sp-panel active" id="ef-sp-inst_geral">
+    <div class="ef-inst-grid">
+      <div class="ef-inst-card"><div class="ef-inst-name">Fetótomo modelo Thygesen</div><div class="ef-inst-uso">Fetotomia — guia o fio de corte pelo interior do útero</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Fio serra de Liess</div><div class="ef-inst-uso">Corta estruturas fetais dentro do útero; usado com o fetótomo</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Passador de fio</div><div class="ef-inst-uso">Introduz o fio de Liess no fetótomo</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Muleta obstétrica</div><div class="ef-inst-uso">Retropulsão e correção da apresentação fetal</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Garfo obstétrico</div><div class="ef-inst-uso">Correção de rotação — gira o feto sobre o eixo longitudinal</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Correntes obstétricas + bastões</div><div class="ef-inst-uso">Tração forçada — colocar sobre ossos longos, nunca articulações</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Gancho de Cray</div><div class="ef-inst-uso">Tração — instrumento lesivo; uso apenas em feto morto</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Fórceps obstétrico</div><div class="ef-inst-uso">Tração — mais usado em cães; pinça a cabeça fetal para extração</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Bomba de infusão de mucilagem</div><div class="ef-inst-uso">Injetar mucilagem (lubrificante) dentro do útero — lubrificação exagerada obrigatória</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Pinça uterina</div><div class="ef-inst-uso">Manipulação uterina durante cesariana</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Ambú / Pêra de sucção</div><div class="ef-inst-uso">Reanimação neonatal — desobstrução das vias aéreas do neonato após o parto</div></div>
+    </div>
+  </div>
+
+  <div class="ef-sp-panel" id="ef-sp-inst_esp">
+    <div class="ef-info-box"><strong>Instrumentos específicos por espécie</strong></div>
+    <div class="ef-inst-grid">
+      <div class="ef-inst-card"><div class="ef-inst-name">Vaginoscópio de Polanski <span class="ef-badge ef-binfo">Equinos</span></div><div class="ef-inst-uso">"Bico de pato" — espéculo de abertura lateral para exame vaginal em éguas</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Vaginoscópio tubular <span class="ef-badge ef-bwarn">Bovinos</span></div><div class="ef-inst-uso">Espéculo tubular para exame vaginal em vacas</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Rinoscópio <span class="ef-badge ef-bsuc">Cadela</span></div><div class="ef-inst-uso">Visualização vaginal em cadelas — câmara estreita</div></div>
+      <div class="ef-inst-card"><div class="ef-inst-name">Otoscópio <span class="ef-badge ef-bsuc">Cadela</span></div><div class="ef-inst-uso">Alternativa ao rinoscópio para inspeção vaginal em cadelas de pequeno porte</div></div>
+    </div>
+    <div class="ef-prova-box" style="margin-top:12px"><strong>Regras absolutas para tração forçada:</strong><br>
+    · Correntes nos ossos longos — <span class="ef-hl">nunca nas articulações</span> · Material de fácil esterilização obrigatório<br>
+    · Fixar membros <strong>separadamente</strong> · Nunca tracionar envoltórios fetais<br>
+    · <strong>Nunca</strong> usar força mecânica (roldana, trator) ou animal (cavalo)<br>
+    · Máximo <span class="ef-hl">3 homens</span> · Tracionar <strong>apenas</strong> durante as contrações<br>
+    · Membros de forma <strong>alternada</strong> · Lubrificação exagerada obrigatória<br>
+    · Proteger períneo com mãos espalmadas · Linha de tração = curvatura natural do canal
+    </div>
+  </div>
+</div>
+`
+},
+{
+  id: 'obstetricia',
+  num: 12,
   title: 'Obstetrícia',
   icon: '#i-hospital',
   content: `
@@ -4577,7 +4886,7 @@ Protocolo atual:<br>
 },
 {
   id: 'andrologico',
-  num: 12,
+  num: 13,
   title: 'Exame Andrológico',
   icon: '#i-telescope',
   content: `
@@ -4635,7 +4944,7 @@ Defeitos <strong>Menores</strong> = comprometem motilidade ou não afetam fertil
 },
 {
   id: 'patologias-macho',
-  num: 13,
+  num: 14,
   title: 'Patologias do Macho',
   icon: '#i-medical',
   content: `
@@ -4663,7 +4972,7 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
 },
 {
   id: 'patologias-femea',
-  num: 14,
+  num: 15,
   title: 'Patologias da Fêmea',
   icon: '#i-stethoscope',
   content: `
@@ -4716,7 +5025,7 @@ Cisto folicular: >25mm; presente por >10 dias; ausência de CL no ovário ipsila
 },
 {
   id: 'infecciosas',
-  num: 15,
+  num: 16,
   title: 'Doenças Infecciosas da Reprodução',
   icon: '#i-virus',
   content: `
@@ -5223,6 +5532,49 @@ window.impSetSp = function(sp, el) {
   panel.querySelectorAll('.imp-sp-panel').forEach(function(x) { x.classList.remove('active'); });
   el.classList.add('active');
   var t = panel.querySelector('#imp-sp-' + sp);
+  if (t) t.classList.add('active');
+};
+
+// === CAPÍTULO 11 — ESTÁTICA FETAL E DISTOCIA ===
+var efDb = {
+  dist: {
+    cabeca_lat: '<strong>Desvio lateral de cabeça:</strong> A cabeça do feto está voltada lateralmente (direita ou esquerda). Manobra: retropulsão do feto para criar espaço → colocar laço/corrente no maxilar → extensão da cabeça e pescoço para a posição normal → tração guiada. Prognóstico bom se intervenção precoce.',
+    cabeca_inf: '<strong>Desvio esternal (cabeça entre membros):</strong> Cabeça flexionada ventralmente entre os membros anteriores — "apresentação da nuca". Retropulsão → laço no pescoço ou maxilar → extensão da cabeça para a posição normal. Mais difícil de corrigir que o desvio lateral.',
+    carpo: '<strong>Flexão de carpo:</strong> Um ou ambos os membros anteriores com articulação cárpica flexionada; apenas a ponta do casco apresentada ou membro dobrado. Manobra: retropulsão + colocar corrente no metacarpo + extensão do membro. Lubrificação abundante é essencial.',
+    nuca: '<strong>Flexão sobre a nuca:</strong> Membro anterior posicionado sobre a nuca do feto. É a principal causa de <span class="ef-hl">laceração perineal e fístula retrovaginal</span> — o casco do membro fura o teto da vagina antes de sair pela vulva. Manobra: retirar o membro da posição de nuca antes de tracionar, ou fetotomia desse membro se feto morto.',
+    jarrete: '<strong>Flexão de társica (jarrete):</strong> Apresentação posterior com hock flexionado. Casco apresentado na vagina, mas o jarrete fica retido. Manobra: retropulsão + extensão do membro pelo curvilhão e metatarso + colocar corrente e tracionar. Risco de perfuração uterina pelo casco durante a manobra.',
+    coxo: '<strong>Flexão coxofemoral bilateral:</strong> Apresentação posterior com ambos os membros completamente retidos — apenas a garupa apresentada. Difícil correção em grandes animais pelo pouco espaço. Geralmente indica cesariana, especialmente em equinos. Em bovinos pode-se tentar com gancho de Cray em feto morto ou fetotomia.'
+  },
+  man: {
+    atonia: 'A <strong>atonia uterina primária</strong> ocorre quando o miométrio não consegue responder a estímulos endógenos, geralmente por ausência ou insuficiência de receptores de ocitocina — pode ser hereditária ou por deficiência de cálcio. A <strong>atonia secundária</strong> ocorre por exaustão muscular após contrações prolongadas sem progressão do parto. Tratamento: <span class="ef-hl">gluconato de cálcio IV</span> (restaura contratilidade do miométrio) + <span class="ef-hl">ocitocina</span> (nas primeiras 24 h pós-início das contrações). Se não houver resposta e feto vivo: cesariana.',
+    tracao: 'A <strong>tração forçada</strong> é indicada quando o feto está adequadamente posicionado (eutocia ou distocia corrigida) e as contrações maternas são insuficientes. Regras: correntes sobre os ossos longos (nunca articulações); membros fixados separadamente; nunca usar força mecânica ou animal (máximo 3 homens = ~160 kg de força); tracionar <strong>apenas durante as contrações</strong>; tracionar membros de forma <strong>alternada</strong> (simula a marcha fetal); linha de tração = curvatura natural do canal do parto (primeiro para baixo, depois horizontalmente); lubrificação exagerada obrigatória; proteger o períneo com as mãos espalmadas durante a passagem da cabeça.',
+    episio: 'A <strong>episiotomia</strong> é a incisão cirúrgica dos lábios vulvares para ampliar a abertura e permitir a passagem do feto sem laceração. Técnica: <strong>cadela</strong> — incisão única vertical; <strong>égua, vaca e ovelha</strong> — incisão em V (duas incisões laterais). Sutura após o parto com fio absorvível (categute ou Vicryl). Indicada quando há estenose vulvar congênita ou adquirida, cicatrizes de partos anteriores, ou risco iminente de laceração grave.',
+    correcao: 'As <strong>manobras incruentas</strong> são realizadas manualmente antes de qualquer tração:<br><strong>Retropulsão (repulsão):</strong> empurrar o feto de volta para o útero para criar espaço<br><strong>Extensão:</strong> estender as partes flexionadas (membros, pescoço)<br><strong>Rotação:</strong> girar o feto sobre seu eixo longitudinal para corrigir posição<br><strong>Versão:</strong> alterar apresentação oblíqua ou transversal para longitudinal — na prática, apresentação transversal = cesariana<br><strong>Tração:</strong> extração do feto devidamente posicionado — último passo',
+    fetotomia: 'A <strong>fetotomia</strong> é a fragmentação do feto no interior do útero para facilitar sua extração. Indicações: feto preferencialmente morto; fetos grandes; fetos enfisematosos; monstruosidades fetais; distocia sem possibilidade de correção. Instrumental: <span class="ef-hl">Fetótomo modelo Thygesen</span> (guia o fio) + <span class="ef-hl">fio serra de Liess</span> (corta). <strong>NÃO usar em carnívoros e suínos</strong> — útero desses animais não suporta a manipulação.',
+    cesariana: 'A <strong>cesariana</strong> é indicada em: feto vivo com distocia não corrigível; fetos grandes; deformações pélvicas graves; dilatação insuficiente das vias fetais; torção uterina grave; atonia uterina secundária refratária. Via de acesso: <span class="ef-hl">flanco esquerdo</span> em ruminantes, equinos e suínos — incisão vertical ~30 cm. <strong>Suturas do útero:</strong> Schmiden + Cushing (categute cromado). <strong>Musculatura:</strong> ponto em X (Vicryl). <strong>Pele:</strong> Wolf/U (nylon).',
+    histerotomia: 'A <strong>histerotomia</strong> é a incisão cirúrgica da cérvice uterina quando há dilatação insuficiente. Na prática clínica, a cesariana é a opção mais utilizada e segura para esses casos, pois permite melhor visualização e acesso.'
+  }
+};
+window.efInfo = function(g, k) {
+  var el = document.getElementById('ef-info-' + g);
+  if (!el) return;
+  el.innerHTML = efDb[g][k] || '';
+  el.classList.remove('empty');
+};
+window.efSetTab = function(t, el) {
+  var body = el.closest('.chapter-body') || document;
+  body.querySelectorAll('.ef-tab').forEach(function(x){ x.classList.remove('active'); });
+  body.querySelectorAll('.ef-panel').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  var p = document.getElementById('ef-panel-' + t);
+  if (p) p.classList.add('active');
+};
+window.efSetSp = function(sp, el) {
+  var panel = el.closest('.ef-panel') || document.body;
+  panel.querySelectorAll('.ef-sp-tab').forEach(function(x){ x.classList.remove('active'); });
+  panel.querySelectorAll('.ef-sp-panel').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  var t = document.getElementById('ef-sp-' + sp);
   if (t) t.classList.add('active');
 };
 
