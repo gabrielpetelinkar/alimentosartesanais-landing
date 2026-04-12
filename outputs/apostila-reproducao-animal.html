@@ -3683,230 +3683,404 @@ var CHAPTERS = [
 `
 },
 {
-  id: 'gestacao',
+  id: 'periodo-gestacao',
   num: 7,
-  title: 'Gestação e Diagnóstico Gestacional',
+  title: 'Período de Gestação',
   icon: '#i-pregnant',
   content: `
 <style>
-  .gd-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
-  .gd-tab { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 13px; color: var(--text-secondary); transition: all .18s; font-family: inherit; }
-  .gd-tab:hover { background: var(--bg-hover); }
-  .gd-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
-  .gd-panel { display: none; } .gd-panel.active { display: block; }
-  .gd-hint { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
-  .gd-sp-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
-  .gd-sp-tab { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; }
-  .gd-sp-tab:hover { background: var(--bg-hover); }
-  .gd-sp-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
-  .gd-sp-panel { display: none; } .gd-sp-panel.active { display: block; }
-  .gd-badge { display: inline-block; font-size: 10.5px; padding: 1px 7px; border-radius: 10px; font-weight: 600; margin-left: 4px; vertical-align: middle; }
-  .gd-bwarn { background: var(--amber-100); color: var(--amber-700); }
-  .gd-binfo { background: var(--blue-100); color: var(--blue-700); }
-  .gd-bsuc  { background: var(--green-100,#eaf3de); color: var(--green-700,#27500a); }
-  .gd-bdanger { background: var(--red-100,#fce8e8); color: var(--red-700,#7a1f1f); }
-  .gd-prova-box { border-left: 3px solid var(--amber-600,#BA7517); background: var(--amber-100); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; line-height: 1.55; color: var(--text-primary); }
-  .gd-prova-box strong { color: var(--amber-700); }
-  .gd-dur-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-bottom: 14px; }
-  .gd-dur-card { border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 10px 12px; background: var(--bg-card); text-align: center; }
-  .gd-dur-card.highlight { border-color: var(--amber-600,#BA7517); background: var(--amber-100); }
-  .gd-dur-sp { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
-  .gd-dur-days { font-size: 22px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
-  .gd-dur-card.highlight .gd-dur-days { color: var(--amber-700); }
-  .gd-dur-mnem { font-size: 11px; color: var(--text-muted); }
-  .gd-memo { margin-top: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 12px 16px; background: var(--bg-card-alt); }
-  .gd-memo-label { font-size: 10.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
-  .gd-memo-text { font-size: 13px; font-family: "SF Mono","Fira Code","Consolas",monospace; line-height: 1.8; color: var(--text-primary); }
-  .gd-diag-card { border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 10px 14px; background: var(--bg-card); margin-bottom: 8px; cursor: pointer; transition: border-color .15s, background .15s; }
-  .gd-diag-card:hover { border-color: var(--border-card); background: var(--bg-hover); }
-  .gd-diag-title { font-weight: 600; font-size: 13.5px; margin-bottom: 2px; color: var(--text-primary); }
-  .gd-diag-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
-  .gd-info-panel { background: var(--bg-card-alt); border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 12px 16px; margin-top: 8px; font-size: 13px; line-height: 1.65; min-height: 56px; color: var(--text-primary); }
-  .gd-info-panel.empty { color: var(--text-muted); font-style: italic; }
-  .gd-hl { background: var(--amber-100); border-radius: 3px; padding: 1px 4px; font-weight: 600; color: var(--amber-700); }
-  .gd-timeline { display: flex; flex-direction: column; }
-  .gd-trow { display: flex; align-items: stretch; gap: 8px; }
-  .gd-tday { font-size: 11px; font-weight: 600; color: var(--text-muted); min-width: 64px; flex-shrink: 0; padding-top: 16px; }
-  .gd-tspine { display: flex; flex-direction: column; align-items: center; width: 18px; flex-shrink: 0; }
-  .gd-tdot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 14px; }
-  .gd-tline { flex: 1; width: 1.5px; background: var(--border-light); margin: 3px 0; }
-  .gd-tcard { flex: 1; margin-bottom: 8px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 8px 12px; background: var(--bg-card); }
-  .gd-tcard-title { font-weight: 600; font-size: 13px; margin-bottom: 1px; color: var(--text-primary); }
-  .gd-tcard-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
-  .gd-d-blue { background: #378ADD; } .gd-d-teal { background: #1D9E75; }
-  .gd-d-amber { background: #BA7517; } .gd-d-purple { background: #7F77DD; }
-  .gd-d-coral { background: #D85A30; }
+*{box-sizing:border-box;margin:0;padding:0}
+.pg-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.pg-label ~ h2{font-size:20px;font-weight:600;margin-bottom:6px}
+.pg-subtitle{font-size:13px;color:var(--text-secondary);margin-bottom:20px}
+.pg-prova-box{border-left:3px solid #BA7517;background:#fef3db;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:16px;font-size:13px;line-height:1.55}
+.pg-prova-box strong{color:#633806}
+.pg-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:16px;font-size:13px;line-height:1.55}
+.pg-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+.pg-bwarn{background:#fef3db;color:#633806}
+.pg-binfo{background:var(--blue-100);color:var(--blue-700)}
+.pg-bsuc{background:#eaf3de;color:#27500a}
+.pg-hl{background:#fef3db;border-radius:3px;padding:1px 4px;font-weight:600}
+.pg-esp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px}
+.pg-esp-card{border-radius:8px;border:1px solid var(--border-card);padding:14px 16px;background:var(--bg-card);cursor:pointer;transition:border-color .15s,background .15s;position:relative}
+.pg-esp-card:hover{border-color:var(--border-light);background:var(--bg-hover)}
+.pg-esp-card.active{border-color:#378ADD;background:var(--blue-100)}
+.pg-esp-dias{font-size:28px;font-weight:700;color:var(--blue-700);line-height:1;margin-bottom:2px}
+.pg-esp-nome{font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:1px}
+.pg-esp-meses{font-size:11px;color:var(--text-secondary)}
+.pg-esp-detalhe{font-size:10.5px;color:var(--text-muted);margin-top:4px}
+.pg-detalhe-panel{border-radius:8px;border:1px solid var(--border-card);padding:14px 16px;background:var(--bg-hover);min-height:80px;margin-bottom:20px;font-size:13px;line-height:1.7;color:var(--text-primary)}
+.pg-detalhe-panel.empty{color:var(--text-muted);font-style:italic}
+.pg-gest-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px}
+.pg-gest-table th{background:var(--bg-hover);font-weight:600;text-align:left;padding:8px 12px;border:1px solid var(--border-card);font-size:12px;color:var(--text-secondary)}
+.pg-gest-table td{padding:8px 12px;border:1px solid var(--border-card);vertical-align:middle;line-height:1.4}
+.pg-gest-table tr:hover td{background:var(--bg-hover)}
+.pg-dias-num{font-size:18px;font-weight:700;color:var(--blue-700)}
+.pg-bar-wrap{margin-bottom:20px}
+.pg-bar-label{font-size:11px;color:var(--text-muted);margin-bottom:4px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.pg-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.pg-bar-nome{font-size:12px;font-weight:500;color:var(--text-secondary);min-width:100px;flex-shrink:0;text-align:right}
+.pg-bar-track{flex:1;height:22px;background:var(--bg-card-alt);border-radius:4px;overflow:hidden;position:relative}
+.pg-bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap;transition:width .4s ease}
+.pg-bar-dias{font-size:11px;color:var(--text-secondary);min-width:60px;flex-shrink:0}
+.pg-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-hover);margin-top:8px}
+.pg-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.pg-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
 </style>
 
-<div class="gd-tabs">
-  <button class="gd-tab active" onclick="gdSetTab('duracao',this)">Duração da gestação</button>
-  <button class="gd-tab" onclick="gdSetTab('diagnostico',this)">Diagnóstico gestacional</button>
-  <button class="gd-tab" onclick="gdSetTab('cronologia',this)">Cronologia fetal</button>
+<p class="pg-label">6.1 — Gestação</p>
+<h2>Período de Gestação</h2>
+<p class="pg-subtitle">O tempo de gestação está relacionado a fatores maternos, genéticos e ambientais</p>
+
+<div class="pg-prova-box">
+  <strong>Mnemônicos clássicos de prova:</strong><br>
+  Suíno: <span class="pg-hl">3-3-3</span> (3 meses, 3 semanas, 3 dias = 114 dias)<br>
+  Cão/Gato: <span class="pg-hl">9 semanas</span> (~63 dias)<br>
+  Equino: <span class="pg-hl">11 meses</span> (~336 dias) · Asinino: <span class="pg-hl">12 meses</span> (~360 dias)
 </div>
 
-<!-- DURAÇÃO -->
-<div class="gd-panel active" id="gd-panel-duracao">
-  <div class="gd-prova-box">
-    <strong>Mais cobrado em provas:</strong> Porca = 3 meses + 3 semanas + 3 dias = <strong>114 dias</strong>
-  </div>
-  <div class="gd-dur-grid">
-    <div class="gd-dur-card"><div class="gd-dur-sp">Vaca</div><div class="gd-dur-days">280</div><div class="gd-dur-mnem">~9 meses</div></div>
-    <div class="gd-dur-card"><div class="gd-dur-sp">Égua</div><div class="gd-dur-days">340</div><div class="gd-dur-mnem">~11 meses</div></div>
-    <div class="gd-dur-card"><div class="gd-dur-sp">Ovelha</div><div class="gd-dur-days">150</div><div class="gd-dur-mnem">~5 meses</div></div>
-    <div class="gd-dur-card"><div class="gd-dur-sp">Cabra</div><div class="gd-dur-days">150</div><div class="gd-dur-mnem">~5 meses</div></div>
-    <div class="gd-dur-card highlight"><div class="gd-dur-sp">Porca</div><div class="gd-dur-days">114</div><div class="gd-dur-mnem">3-3-3</div></div>
-    <div class="gd-dur-card"><div class="gd-dur-sp">Búfala</div><div class="gd-dur-days">310</div><div class="gd-dur-mnem">~10 meses</div></div>
-    <div class="gd-dur-card"><div class="gd-dur-sp">Cadela</div><div class="gd-dur-days">63</div><div class="gd-dur-mnem">9 semanas</div></div>
-    <div class="gd-dur-card"><div class="gd-dur-sp">Gata</div><div class="gd-dur-days">64</div><div class="gd-dur-mnem">~9 semanas</div></div>
-    <div class="gd-dur-card"><div class="gd-dur-sp">Jumenta</div><div class="gd-dur-days">365</div><div class="gd-dur-mnem">~12 meses</div></div>
-  </div>
-  <div class="gd-memo">
-    <div class="gd-memo-label">Ordem crescente</div>
-    <div class="gd-memo-text">
-      Cadela (63) · Gata (64) · Porca (114) · Ovelha = Cabra (150)<br>
-      Vaca (280) · Búfala (310) · Égua (340) · Jumenta (365)
-    </div>
-  </div>
+<!-- CARDS -->
+<div class="pg-esp-grid" id="pg-esp-grid"></div>
+<div class="pg-detalhe-panel empty" id="pg-detalhe">Clique em uma espécie para ver detalhes.</div>
+
+<!-- BARRA VISUAL -->
+<div class="pg-bar-wrap">
+  <div class="pg-bar-label">Duração comparada (dias)</div>
+  <div id="pg-bars"></div>
 </div>
 
-<!-- DIAGNÓSTICO -->
-<div class="gd-panel" id="gd-panel-diagnostico">
-  <div class="gd-sp-tabs">
-    <button class="gd-sp-tab active" onclick="gdSetDiag('todos',this)">Todos os métodos</button>
-    <button class="gd-sp-tab" onclick="gdSetDiag('cadela',this)">Cadela</button>
-    <button class="gd-sp-tab" onclick="gdSetDiag('vaca',this)">Vaca</button>
-    <button class="gd-sp-tab" onclick="gdSetDiag('egua',this)">Égua</button>
-  </div>
+<!-- TABELA -->
+<table class="pg-gest-table">
+  <tr>
+    <th>Espécie / Raça</th>
+    <th>Dias</th>
+    <th>Equivalente</th>
+    <th>Observação</th>
+  </tr>
+  <tr><td><strong>Equino</strong></td><td><span class="pg-dias-num">336</span></td><td>~11 meses</td><td>Influenciado pela estação do ano, sexo do potro e genética; fêmeas carregam ligeiramente mais</td></tr>
+  <tr><td><strong>Asinino (jumento)</strong></td><td><span class="pg-dias-num">360</span></td><td>~12 meses</td><td>Gestação mais longa entre os equídeos domésticos</td></tr>
+  <tr><td><strong>Bubalino (búfala)</strong></td><td><span class="pg-dias-num">300</span></td><td>~10 meses</td><td>Ligeiramente mais longa que os bovinos taurinos</td></tr>
+  <tr><td><strong>Bovino zebuíno</strong></td><td><span class="pg-dias-num">285</span></td><td>~9,5 meses</td><td>Nelore e cruzados zebuínos têm gestação ligeiramente mais longa que taurinos</td></tr>
+  <tr><td><strong>Bovino taurino</strong></td><td><span class="pg-dias-num">280</span></td><td>~9 meses</td><td>Holandês, Angus, Simental; gestações de múltiplos fetos tendem a ser mais curtas</td></tr>
+  <tr><td><strong>Ovino</strong></td><td><span class="pg-dias-num">150</span></td><td>~5 meses</td><td>Variação 147–154 dias; gestações gemelares ligeiramente mais curtas</td></tr>
+  <tr><td><strong>Caprino</strong></td><td><span class="pg-dias-num">150</span></td><td>~5 meses</td><td>Variação 147–154 dias; similar ao ovino</td></tr>
+  <tr><td><strong>Suíno</strong></td><td><span class="pg-dias-num">114</span></td><td>3m · 3s · 3d</td><td>Mnemônico: 3 meses, 3 semanas e 3 dias; ninhadas grandes tendem a nascer mais cedo</td></tr>
+  <tr><td><strong>Cão / Gato</strong></td><td><span class="pg-dias-num">63</span></td><td>~9 semanas</td><td>Cão: 58–68 dias · Gato: 52–74 dias; contagem a partir da ovulação (não da cópula)</td></tr>
+</table>
 
-  <div class="gd-sp-panel active" id="gd-diag-todos">
-    <p class="gd-hint">Clique em cada método para ver detalhes</p>
-    <div class="gd-diag-card" onclick="gdInfo('d','palp')">
-      <div class="gd-diag-title">Palpação retal <span class="gd-badge gd-binfo">Vaca · Égua · Búfala</span></div>
-      <div class="gd-diag-sub">Vaca: a partir do dia 30–35 · Égua: 18–20 dias</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('d','us')">
-      <div class="gd-diag-title">Ultrassonografia <span class="gd-badge gd-bsuc">padrão ouro</span></div>
-      <div class="gd-diag-sub">Todas as espécies · Vaca: 18–25d pós-IA · Égua: 11–14d pós-ovulação · ver aba Cadela para detalhes</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('d','p4')">
-      <div class="gd-diag-title">Progesterona (P4)</div>
-      <div class="gd-diag-sub">Confirma CL ativo, não confirma gestação · falsos positivos frequentes</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('d','ecg')">
-      <div class="gd-diag-title">eCG / PMSG <span class="gd-badge gd-binfo">Égua · dias 40–120</span></div>
-      <div class="gd-diag-sub">Taças endometriais · pode persistir após morte fetal</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('d','pag')">
-      <div class="gd-diag-title">PAGs — proteínas associadas à gestação</div>
-      <div class="gd-diag-sub">Bovinos e ovinos · a partir do dia 28 · ELISA · alta especificidade</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('d','relaxina')">
-      <div class="gd-diag-title">Relaxina sérica <span class="gd-badge gd-binfo">Cadela</span></div>
-      <div class="gd-diag-sub">Detectável a partir do dia ~22 · confiável a partir do dia 28–30 · exclusiva da gestação</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('d','nao_retorno')">
-      <div class="gd-diag-title">Não-retorno ao estro</div>
-      <div class="gd-diag-sub">Presuntivo · ~21 dias pós-IA · precisão ~70%</div>
-    </div>
-    <div class="gd-info-panel empty" id="gd-info-d">Clique em um método para ver detalhes.</div>
-  </div>
-
-  <div class="gd-sp-panel" id="gd-diag-cadela">
-    <div class="gd-prova-box">
-      <strong>Atenção:</strong> P4 não serve para diagnóstico gestacional em cadelas — está elevada em qualquer diestro, com ou sem gestação.
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('cad','us')">
-      <div class="gd-diag-title">Ultrassonografia <span class="gd-badge gd-bsuc">método de escolha precoce</span></div>
-      <div class="gd-diag-sub">Vesículas visíveis a partir do dia ~19–21 pós-ovulação · falso negativo possível antes do dia 21</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('cad','relaxina')">
-      <div class="gd-diag-title">Relaxina sérica <span class="gd-badge gd-binfo">específica de gestação</span></div>
-      <div class="gd-diag-sub">Detectável a partir do dia ~22 · confiável a partir do dia 28–30 · exclusiva da gestação</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('cad','p4')">
-      <div class="gd-diag-title">Progesterona (P4) <span class="gd-badge gd-bdanger">não confirma gestação</span></div>
-      <div class="gd-diag-sub">Elevada em qualquer diestro · útil apenas para confirmar ovulação ou fase lútea</div>
-    </div>
-    <div class="gd-info-panel empty" id="gd-info-cad">Clique em um método para ver detalhes.</div>
-  </div>
-
-  <div class="gd-sp-panel" id="gd-diag-vaca">
-    <div class="gd-diag-card" onclick="gdInfo('vac','us_vaca')">
-      <div class="gd-diag-title">Ultrassonografia <span class="gd-badge gd-bsuc">padrão ouro</span></div>
-      <div class="gd-diag-sub">A partir do dia 18–25 · vesícula embrionária · batimento cardíaco ~dia 21–22</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('vac','palp_vaca')">
-      <div class="gd-diag-title">Palpação retal</div>
-      <div class="gd-diag-sub">A partir do dia 30–35 · flutuação do corno gestante · requer experiência</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('vac','p4_vaca')">
-      <div class="gd-diag-title">Progesterona (P4) — dia 21–24</div>
-      <div class="gd-diag-sub">P4 elevada sugere gestação · falso positivo em CL persistente ou cisto luteal</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('vac','pag_vaca')">
-      <div class="gd-diag-title">PAGs (proteínas associadas à gestação)</div>
-      <div class="gd-diag-sub">A partir do dia 28 · ELISA · alta especificidade · sem falso positivo por CL</div>
-    </div>
-    <div class="gd-info-panel empty" id="gd-info-vac">Clique em um método para ver detalhes.</div>
-  </div>
-
-  <div class="gd-sp-panel" id="gd-diag-egua">
-    <div class="gd-diag-card" onclick="gdInfo('eq','us_egua')">
-      <div class="gd-diag-title">Ultrassonografia <span class="gd-badge gd-bsuc">padrão ouro</span></div>
-      <div class="gd-diag-sub">A partir do dia 11–14 · vesícula redonda com halo · diagnóstico de gêmeos essencial</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('eq','palp_egua')">
-      <div class="gd-diag-title">Palpação retal</div>
-      <div class="gd-diag-sub">A partir do dia 18–20 · tônus uterino aumentado · vesícula palpável</div>
-    </div>
-    <div class="gd-diag-card" onclick="gdInfo('eq','ecg_egua')">
-      <div class="gd-diag-title">eCG / PMSG <span class="gd-badge gd-bwarn">dias 40–120</span></div>
-      <div class="gd-diag-sub">Taças endometriais · não confirma viabilidade · pode persistir após morte fetal</div>
-    </div>
-    <div class="gd-info-panel empty" id="gd-info-eq">Clique em um método para ver detalhes.</div>
-  </div>
+<div class="pg-info-box">
+  <strong>Fatores que influenciam a duração da gestação:</strong> genética da raça, número de fetos (gestações múltiplas tendem a ser mais curtas), sexo do feto, estação do ano (equinos), nutrição materna, idade da fêmea e condição corporal.
 </div>
 
-<!-- CRONOLOGIA FETAL -->
-<div class="gd-panel" id="gd-panel-cronologia">
-  <div class="gd-sp-tabs">
-    <button class="gd-sp-tab active" onclick="gdSetCron('vaca',this)">Vaca</button>
-    <button class="gd-sp-tab" onclick="gdSetCron('egua',this)">Égua</button>
+<div class="pg-memo">
+  <div class="pg-memo-label">Ordem crescente — dias de gestação</div>
+  <div class="pg-memo-text">
+    Cão/Gato (63) → Suíno (114) → Ovino/Caprino (150) → Bovino taurino (280) → Bovino zebuíno (285) → Bubalino (300) → Equino (336) → Asinino (360)
   </div>
+</div>
+`
+},
+{
+  id: 'diagnostico-gestacao',
+  num: 8,
+  title: 'Diagnóstico de Gestação',
+  icon: '#i-chart',
+  content: `
+<style>
+.dg-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.dg-label ~ h2{font-size:20px;font-weight:600;margin-bottom:20px}
+.dg-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.dg-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+.dg-tab:hover{background:var(--bg-hover)}.dg-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.dg-panel{display:none}.dg-panel.active{display:block}
+.dg-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.dg-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+.dg-sp-tab:hover{background:var(--bg-hover)}.dg-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.dg-sp-panel{display:none}.dg-sp-panel.active{display:block}
+.dg-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+.dg-bwarn{background:#fef3db;color:#633806}
+.dg-binfo{background:var(--blue-100);color:var(--blue-700)}
+.dg-bsuc{background:#eaf3de;color:#27500a}
+.dg-bdanger{background:#fce8e8;color:#7a1f1f}
+.dg-hl{background:#fef3db;border-radius:3px;padding:1px 4px;font-weight:600}
+.dg-prova-box{border-left:3px solid #BA7517;background:#fef3db;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.dg-prova-box strong{color:#633806}
+.dg-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.dg-suc-box{border-left:3px solid #3B6D11;background:#eaf3de;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.dg-tl{display:flex;flex-direction:column;margin-bottom:12px}
+.dg-tl-row{display:flex;align-items:stretch;gap:8px}
+.dg-tl-spine{display:flex;flex-direction:column;align-items:center;width:16px;flex-shrink:0}
+.dg-tl-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:12px}
+.dg-tl-line{flex:1;width:1.5px;background:var(--border-card);margin:3px 0}
+.dg-tl-card{flex:1;margin-bottom:7px;border-radius:8px;border:1px solid var(--border-card);padding:8px 12px;background:var(--bg-card)}
+.dg-tl-title{font-weight:600;font-size:13px;margin-bottom:1px;color:var(--text-primary)}
+.dg-tl-sub{font-size:12px;color:var(--text-secondary);line-height:1.45}
+.dg-tl-dur{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:5px;vertical-align:middle;background:var(--bg-hover);color:var(--text-secondary);border:1px solid var(--border-card)}
+.dg-tl-card.dg-destaque{border-color:#378ADD;background:var(--blue-100)}
+.dg-tl-card.dg-warn{border-color:#BA7517;background:#fef3db}
+.dg-met-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.dg-met-card{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card);cursor:pointer;transition:border-color .15s,background .15s}
+.dg-met-card:hover{border-color:var(--border-light);background:var(--bg-hover)}
+.dg-met-title{font-weight:600;font-size:13px;margin-bottom:2px}
+.dg-met-sub{font-size:12px;color:var(--text-secondary);line-height:1.4}
+.dg-info-panel{background:var(--bg-hover);border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;margin-top:8px;font-size:13px;line-height:1.65;min-height:56px}
+.dg-info-panel.empty{color:var(--text-muted);font-style:italic}
+.dg-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-hover);margin-top:12px}
+.dg-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.dg-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
+.dg-d-blue{background:#378ADD}.dg-d-purple{background:#7F77DD}.dg-d-coral{background:#D85A30}
+.dg-d-teal{background:#1D9E75}.dg-d-amber{background:#BA7517}.dg-d-gray{background:#888780}
+.dg-d-green{background:#639922}
+.dg-diag-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px}
+.dg-diag-table th{background:var(--bg-hover);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-card);font-size:11px;color:var(--text-secondary)}
+.dg-diag-table td{padding:6px 10px;border:1px solid var(--border-card);vertical-align:top;line-height:1.45}
+.dg-diag-table tr:nth-child(even) td{background:var(--bg-hover)}
+.dg-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.dg-destaque{border-color:#378ADD;background:var(--blue-100)}
+.dg-warn{border-color:#BA7517;background:#fef3db}
+</style>
 
-  <div class="gd-sp-panel active" id="gd-cron-vaca">
-    <div class="gd-timeline">
-      <div class="gd-trow"><div class="gd-tday">Dia 1</div><div class="gd-tspine"><div class="gd-tdot gd-d-blue"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Fertilização</div><div class="gd-tcard-sub">Na ampola da tuba uterina</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 7–8</div><div class="gd-tspine"><div class="gd-tdot gd-d-blue"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Blastocisto no útero</div><div class="gd-tcard-sub">Hatching e início do alongamento do concepto</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 14–17</div><div class="gd-tspine"><div class="gd-tdot gd-d-purple"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">RMG — IFN-τ <span class="gd-badge gd-binfo">janela crítica</span></div><div class="gd-tcard-sub">Supressão da luteólise · CL persiste · P4 mantida</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 19–22</div><div class="gd-tspine"><div class="gd-tdot gd-d-teal"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Elongação do concepto</div><div class="gd-tcard-sub">10 cm → mais de 1 metro · batimento cardíaco detectável por US</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 28–30</div><div class="gd-tspine"><div class="gd-tdot gd-d-teal"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Cotilédones visíveis · PAG detectável</div><div class="gd-tcard-sub">Coração batendo · diagnóstico por PAG possível a partir deste momento</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 35–45</div><div class="gd-tspine"><div class="gd-tdot gd-d-teal"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Feto detectável à palpação retal</div><div class="gd-tcard-sub">Vesícula flutuante no corno gestante</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 60</div><div class="gd-tspine"><div class="gd-tdot gd-d-amber"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Organogênese completa</div><div class="gd-tcard-sub">Período crítico de teratogênese encerrado</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 150+</div><div class="gd-tspine"><div class="gd-tdot gd-d-amber"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Fase fetal — crescimento</div><div class="gd-tcard-sub">P4 placentária começa a complementar o CL</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 280</div><div class="gd-tspine"><div class="gd-tdot gd-d-coral"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Parto <span class="gd-badge gd-bsuc">270–292 dias</span></div><div class="gd-tcard-sub">Cortisol fetal → queda P4 → E2↑ → ocitocina → PGF2α → expulsão</div></div></div>
-    </div>
+<p class="dg-label">6.2 — Diagnóstico de Gestação</p>
+<h2>Diagnóstico de Gestação</h2>
+
+<div class="dg-tabs">
+  <button class="dg-tab active" onclick="dgSetTab('metodos',this)">Métodos</button>
+  <button class="dg-tab" onclick="dgSetTab('bovinos',this)">Bovinos</button>
+  <button class="dg-tab" onclick="dgSetTab('equinos',this)">Equinos</button>
+  <button class="dg-tab" onclick="dgSetTab('ovinos',this)">Ovinos / Caprinos</button>
+  <button class="dg-tab" onclick="dgSetTab('carnivoros',this)">Cães e Gatos</button>
+  <button class="dg-tab" onclick="dgSetTab('tabela',this)">Tabela geral</button>
+</div>
+
+<!-- MÉTODOS -->
+<div class="dg-panel active" id="dg-panel-metodos">
+  <div class="dg-info-box">Cada método tem janela ideal de uso, sensibilidade e informações que consegue fornecer. A ultrassonografia é o padrão ouro para a maioria das espécies — fornece diagnóstico precoce, viabilidade fetal, número de fetos e estimativa de idade gestacional.</div>
+
+  <div class="dg-met-grid">
+    <div class="dg-met-card" onclick="dgInfo('met','palp')"><div class="dg-met-title">Palpação retal</div><div class="dg-met-sub">Bovinos e equinos · diagnóstico por estruturas palpáveis</div></div>
+    <div class="dg-met-card" onclick="dgInfo('met','us_tr')"><div class="dg-met-title">US transretal</div><div class="dg-met-sub">Bovinos, equinos, ovinos/caprinos (precoce)</div></div>
+    <div class="dg-met-card" onclick="dgInfo('met','us_ta')"><div class="dg-met-title">US transabdominal</div><div class="dg-met-sub">Pequenos animais · ruminantes (fase tardia)</div></div>
+    <div class="dg-met-card" onclick="dgInfo('met','relaxina')"><div class="dg-met-title">Relaxina sérica</div><div class="dg-met-sub">Cão e Gato · hormônio específico da gestação</div></div>
+    <div class="dg-met-card" onclick="dgInfo('met','prog')"><div class="dg-met-title">Progesterona (P4)</div><div class="dg-met-sub">Suporte à gestação · NÃO confirma gestação em cadelas/gatas</div></div>
+    <div class="dg-met-card" onclick="dgInfo('met','radio')"><div class="dg-met-title">Radiografia</div><div class="dg-met-sub">Pequenos animais · contagem fetal a partir do dia 45</div></div>
+    <div class="dg-met-card" onclick="dgInfo('met','pag')"><div class="dg-met-title">PAG / eCG</div><div class="dg-met-sub">Bovinos (PAG) · Equinos (eCG/PMSG)</div></div>
+    <div class="dg-met-card" onclick="dgInfo('met','palp_abd')"><div class="dg-met-title">Palpação abdominal</div><div class="dg-met-sub">Cadelas D23–30 · Gatas D40–50</div></div>
   </div>
+  <div class="dg-info-panel empty" id="dg-info-met">Clique em um método para ver detalhes.</div>
 
-  <div class="gd-sp-panel" id="gd-cron-egua">
-    <div class="gd-timeline">
-      <div class="gd-trow"><div class="gd-tday">Dia 1</div><div class="gd-tspine"><div class="gd-tdot gd-d-blue"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Fertilização</div><div class="gd-tcard-sub">Na ampola · oócito em Prófase I completa a meiose no oviduto</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 6</div><div class="gd-tspine"><div class="gd-tdot gd-d-blue"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Blastocisto no útero</div><div class="gd-tcard-sub">Envolto em cápsula glicoproteica (até dia ~21) — exclusividade da égua</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 11–16</div><div class="gd-tspine"><div class="gd-tdot gd-d-purple"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Migração embrionária — RMG <span class="gd-badge gd-binfo">6–12x/dia</span></div><div class="gd-tcard-sub">PGE2 embrionária · supressão de PGF2α por todo o endométrio</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 11–14</div><div class="gd-tspine"><div class="gd-tdot gd-d-teal"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">US possível <span class="gd-badge gd-bsuc">diagnóstico precoce</span></div><div class="gd-tcard-sub">Vesícula redonda com halo ecogênico · diagnóstico e redução de gêmeos nessa fase</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 21</div><div class="gd-tspine"><div class="gd-tdot gd-d-teal"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Fixação embrionária</div><div class="gd-tcard-sub">Embrião para de migrar e se fixa no corno uterino definitivamente</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 38–150</div><div class="gd-tspine"><div class="gd-tdot gd-d-amber"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Taças endometriais → eCG</div><div class="gd-tcard-sub">Células do trofoblasto invadem endométrio · produzem eCG luteotrófico · persistem após morte fetal</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 100–150</div><div class="gd-tspine"><div class="gd-tdot gd-d-amber"></div><div class="gd-tline"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Placenta corioalantoide assume função completa</div><div class="gd-tcard-sub">P4 placentária → CL começa a regredir</div></div></div>
-      <div class="gd-trow"><div class="gd-tday">Dia 340</div><div class="gd-tspine"><div class="gd-tdot gd-d-coral"></div></div><div class="gd-tcard"><div class="gd-tcard-title">Parto <span class="gd-badge gd-bsuc">320–360 dias</span></div><div class="gd-tcard-sub">Duração influenciada por sexo do potro e estação do ano</div></div></div>
-    </div>
+  <div class="dg-info-box" style="margin-top:14px">
+    <strong>Via de exame por espécie:</strong><br>
+    Bovinos, equinos, caprinos e ovinos: preferível <strong>transretal</strong> inicialmente → transabdominal na fase tardia<br>
+    Cães e gatos: <strong>transabdominal</strong>
   </div>
 </div>
 
+<!-- BOVINOS -->
+<div class="dg-panel" id="dg-panel-bovinos">
+  <div class="dg-sp-tabs">
+    <button class="dg-sp-tab active" onclick="dgSetSp('bov_palp',this)">Palpação retal</button>
+    <button class="dg-sp-tab" onclick="dgSetSp('bov_us',this)">Ultrassonografia</button>
+    <button class="dg-sp-tab" onclick="dgSetSp('bov_pag',this)">PAG sérica</button>
+  </div>
+
+  <div class="dg-sp-panel active" id="dg-sp-bov_palp">
+    <div class="dg-prova-box"><strong>Palpação retal em bovinos</strong> — método clássico; diagnóstico confiável a partir dos 35–45 dias; risco de dano embrionário se feito antes dos 35 dias</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">19–21 dias <span class="dg-tl-dur">vesícula palpável</span></div><div class="dg-tl-sub">Aumento de volume em formato arredondado na região da bifurcação dos cornos; diagnóstico precoce mas risco de ruptura — não recomendado na rotina</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-purple"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">35–45 dias <span class="dg-tl-dur">assimetria dos cornos</span></div><div class="dg-tl-sub">Corno gravídico maior; presença de vesícula amniótica; paredes duplas palpáveis — método seguro e confiável nessa fase</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-coral"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">45–60 dias <span class="dg-tl-dur">beliscamento positivo</span></div><div class="dg-tl-sub">Deslizamento do corioalantoide sobre a parede uterina — <span class="dg-hl">beliscamento positivo</span>; confirmação confiável; realizar no corno oposto ao CL para não lesionar embrião</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">60 dias / 2 meses <span class="dg-tl-dur">balotamento</span></div><div class="dg-tl-sub">Prova de balotamento positiva; feto palpável; concepto ocupa completamente o corno uterino gravídico</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-amber"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">90–120 dias / 3–4 meses</div><div class="dg-tl-sub">Placentomas palpáveis; útero na transição entre cavidade pélvica e abdominal; frêmito arterial palpável ipsilateral ao corno gravídico a partir do 4º mês</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-coral"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">120 dias / 4 meses <span class="dg-tl-dur">frêmito</span></div><div class="dg-tl-sub"><span class="dg-hl">Frêmito palpável</span> na artéria uterina ipsilateral ao corno gravídico — sinal confiável de gestação avançada; artéria espessa e com pulsação característica</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-gray"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">150–180 dias / 5–6 meses</div><div class="dg-tl-sub">Útero na cavidade abdominal; difícil de ser palpado completamente; cérvix distendida e desviada ventralmente</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-green"></div></div><div class="dg-tl-card"><div class="dg-tl-title">210–240 dias / 7–8 meses</div><div class="dg-tl-sub">Feto retorna à cavidade pélvica; membros fetais palpáveis pela retal</div></div></div>
+    </div>
+    <div class="dg-memo"><div class="dg-memo-label">Sinais progressivos na palpação retal — bovinos</div><div class="dg-memo-text">D19–21: vesícula · D35–45: assimetria · D45–60: beliscamento · D60: balotamento · D90–120: placentomas · D120: frêmito · D150–180: cavidade abdominal · D210+: membros palpáveis</div></div>
+  </div>
+
+  <div class="dg-sp-panel" id="dg-sp-bov_us">
+    <div class="dg-prova-box"><strong>US transretal em bovinos</strong> — padrão ouro para diagnóstico precoce; confiabilidade ~100% a partir do dia 25–28; transdutor linear 5 MHz</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">17–21 dias <span class="dg-tl-dur">vesícula</span></div><div class="dg-tl-sub">Vesícula embrionária anecoica visível; difícil diferenciação de fluido fisiológico do proestro; falsos positivos possíveis antes do dia 25</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-purple"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">21–24 dias <span class="dg-tl-dur">vesícula 3–10 mm</span></div><div class="dg-tl-sub">Aumento de fluido intrauterino; vesícula embrionária 3–10 mm; diagnóstico possível mas confirmar com US repetida</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-coral"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">25–30 dias <span class="dg-tl-dur">confiabilidade 100%</span></div><div class="dg-tl-sub">Vesícula ~18–20 mm; <span class="dg-hl">batimento cardíaco visível</span>; embrião identificável a partir do dia 25–28; diagnóstico definitivo e confiável</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">30–40 dias</div><div class="dg-tl-sub">Vesícula ~20 mm; <span class="dg-hl">placentomas visíveis</span>; membranas fetais distinguíveis; boa janela para diagnóstico e contagem de fetos</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-amber"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">40 dias</div><div class="dg-tl-sub">Cordão umbilical visível; estruturas ósseas (costelas, vértebras, membros) distinguíveis; biometria fetal possível</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-green"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">60 dias <span class="dg-tl-dur">sexagem fetal</span></div><div class="dg-tl-sub"><span class="dg-hl">Sexagem fetal pelo tubérculo genital</span>: próximo ao cordão umbilical = fêmea; entre os membros posteriores = macho; melhor janela D55–70</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-gray"></div></div><div class="dg-tl-card"><div class="dg-tl-title">&gt;70 dias</div><div class="dg-tl-sub">Ossos fazem sombra acústica; biometria pela articulação atlantooccipital à base da cauda (crown-rump) para estimativa de idade gestacional; a partir de D150–180 diagnóstico transretal difícil — feto na cavidade abdominal</div></div></div>
+    </div>
+    <div class="dg-memo"><div class="dg-memo-label">Marcos US bovinos</div><div class="dg-memo-text">D17–21: vesícula · D25–28: embrião + batimento cardíaco (100% confiável) · D30–40: placentomas · D40: cordão umbilical + ossos · D60: sexagem fetal (tubérculo genital) · D70+: sombra óssea</div></div>
+  </div>
+
+  <div class="dg-sp-panel" id="dg-sp-bov_pag">
+    <div class="dg-suc-box"><strong>PAG sérica (proteínas associadas à gestação)</strong> — produzidas pelo trofoblasto bovino; método hormonal específico da gestação; não requer equipamento de imagem</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">Dia ~25 <span class="dg-tl-dur">detectável na circulação</span></div><div class="dg-tl-sub">PAG começa a ser detectada no sangue; níveis ainda baixos; falsos negativos possíveis nessa fase precoce</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">Dia 28–30 <span class="dg-tl-dur">confiável por ELISA</span></div><div class="dg-tl-sub">Diagnóstico confiável por ELISA a partir do dia 28; especificidade alta; útil para diagnóstico em campo sem equipamento de US; kits comerciais disponíveis (BioPRYN, IDEXX)</div></div></div>
+    </div>
+    <div class="dg-memo"><div class="dg-memo-label">PAG vs. P4 em bovinos</div><div class="dg-memo-text">PAG: específica da gestação → diagnóstico positivo = prenhez<br>P4: elevada em qualquer diestro → não confirma gestação sozinha</div></div>
+  </div>
+</div>
+
+<!-- EQUINOS -->
+<div class="dg-panel" id="dg-panel-equinos">
+  <div class="dg-sp-tabs">
+    <button class="dg-sp-tab active" onclick="dgSetSp('eq_us',this)">Ultrassonografia transretal</button>
+    <button class="dg-sp-tab" onclick="dgSetSp('eq_ecg',this)">eCG (PMSG)</button>
+    <button class="dg-sp-tab" onclick="dgSetSp('eq_palp',this)">Palpação retal</button>
+  </div>
+
+  <div class="dg-sp-panel active" id="dg-sp-eq_us">
+    <div class="dg-prova-box"><strong>US transretal equinos</strong> — método de eleição; vesícula embrionária visível a partir do dia 9–10; diagnóstico precoce e acompanhamento da migração embrionária</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">9–10 dias <span class="dg-tl-dur">vesícula 10–15 mm</span></div><div class="dg-tl-sub">Vesícula embrionária (saco vitelínico) 10–15 mm; esférica, anecoica; diagnóstico precoce possível; embrião ainda não visível</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-purple"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">13 dias <span class="dg-tl-dur">12–18 mm</span></div><div class="dg-tl-sub">Vesícula cresce 3–4 mm/dia; grande o suficiente para confirmar gestação; embrião ainda não visível</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-coral"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">21 dias <span class="dg-tl-dur">embrião visível</span></div><div class="dg-tl-sub">Embrião visível na <span class="dg-hl">porção ventral</span> da vesícula (em cima do saco vitelínico)</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">24 dias <span class="dg-tl-dur">batimento cardíaco</span></div><div class="dg-tl-sub"><span class="dg-hl">Batimento cardíaco detectável</span>; confirmação de viabilidade embrionária</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-amber"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">33 dias <span class="dg-tl-dur">posição equatorial</span></div><div class="dg-tl-sub">Embrião na <span class="dg-hl">zona equatorial</span> da vesícula (½ saco vitelínico + ½ cavidade alantoideana)</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-green"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">40 dias <span class="dg-tl-dur">posição dorsal</span></div><div class="dg-tl-sub">Embrião na <span class="dg-hl">região dorsal</span> (alantoide abaixo); passa a ser chamado de feto; movimentos observáveis com nitidez; cordão umbilical visível ligado à porção superior da vesícula</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-gray"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">45–50 dias</div><div class="dg-tl-sub">Feto com ~6 cm; visualização apenas em seções; movimentos fetais evidentes</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-coral"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-warn"><div class="dg-tl-title">60 dias <span class="dg-tl-dur">US transretal perde eficiência</span></div><div class="dg-tl-sub">Feto grande demais para US transretal; transabdominal passa a ser preferível; muita mobilidade fetal e líquido; sexagem fetal não é possível pelo tubérculo genital nessa fase (diferente dos bovinos)</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div></div><div class="dg-tl-card"><div class="dg-tl-title">120–160 dias <span class="dg-tl-dur">sexagem fetal</span></div><div class="dg-tl-sub"><span class="dg-hl">Sexagem fetal equino:</span> detecção das gônadas na cavidade abdominal; feto macho: mediastino hiperecóico no testículo; feto fêmea: diferenciação córtex/medular no ovário. Não pode ser feita aos 60 dias como na vaca — feto muito móvel + muito líquido + cordão umbilical longo</div></div></div>
+    </div>
+    <div class="dg-memo"><div class="dg-memo-label">Posição do embrião equino ao longo da gestação</div><div class="dg-memo-text">D21: ventral (acima do saco vitelínico) → D33: equatorial → D40: dorsal (alantoide abaixo) → D50: ventral com cordão umbilical visível</div></div>
+  </div>
+
+  <div class="dg-sp-panel" id="dg-sp-eq_ecg">
+    <div class="dg-suc-box"><strong>eCG (PMSG) — gonadotrofina coriônica equina</strong> — produzida pelos cálices endometriais equinos; detectável no sangue entre os dias 40–120 da gestação</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">~Dia 35 <span class="dg-tl-dur">formação dos cálices</span></div><div class="dg-tl-sub">Células de girdle invadem o endométrio → formação dos cálices endometriais → início da produção de eCG</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">Dias 40–120 <span class="dg-tl-dur">janela diagnóstica</span></div><div class="dg-tl-sub">eCG detectável no sangue; pico ao redor do dia 60–70; diagnóstico de gestação possível por dosagem; indica gestação viva (eCG é produzida pelo tecido fetal)</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-gray"></div></div><div class="dg-tl-card dg-warn"><div class="dg-tl-title">Dias 100–120 <span class="dg-tl-dur">fim da produção</span></div><div class="dg-tl-sub">Cálices endometriais regridem → cicatrizes → eCG cai a zero; placenta assume produção de P4; eCG pode permanecer detectável mesmo após morte embrionária (cálices já formados)</div></div></div>
+    </div>
+  </div>
+
+  <div class="dg-sp-panel" id="dg-sp-eq_palp">
+    <div class="dg-info-box">Palpação retal em equinos — menos detalhada que US, mas útil na rotina de campo</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">60 dias / 2 meses</div><div class="dg-tl-sub">Concepto ocupa completamente o corno uterino gravídico; placenta (alantocório) começa a se estender para o corno não gravídico</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">90 dias / 3 meses</div><div class="dg-tl-sub">Feto ocupa os dois cornos uterinos</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-amber"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">100 dias</div><div class="dg-tl-sub">Aumento significativo de líquido uterino; útero bastante distendido e flutuante</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-green"></div></div><div class="dg-tl-card"><div class="dg-tl-title">240 dias / 8 meses</div><div class="dg-tl-sub">Feto assume apresentação anterior longitudinal ventral; sentido com facilidade pela palpação retal</div></div></div>
+    </div>
+    <div class="dg-memo"><div class="dg-memo-label">Diferença importante — palpação retal equinos vs. bovinos</div><div class="dg-memo-text">Égua: ovários mais dorsais, cérvix sem anéis de cartilagem, útero RELAXADO no estro (ao contrário da vaca)<br>No diestro: útero TENSO na égua · na vaca é o oposto</div></div>
+  </div>
+</div>
+
+<!-- OVINOS/CAPRINOS -->
+<div class="dg-panel" id="dg-panel-ovinos">
+  <div class="dg-prova-box"><strong>Ovinos e Caprinos — US preferível</strong> · Transretal até D35 · Transretal ou transabdominal D35–70 · Transabdominal após D70</div>
+  <div class="dg-tl">
+    <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">19–20 dias <span class="dg-tl-dur">saco gestacional</span></div><div class="dg-tl-sub">Saco gestacional visível à US transretal em cabras ~dia 19–20; fluido uterino detectável; diagnóstico precoce possível com equipamento de qualidade</div></div></div>
+    <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-purple"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">24–25 dias <span class="dg-tl-dur">batimento cardíaco</span></div><div class="dg-tl-sub"><span class="dg-hl">Batimento cardíaco detectável</span>; embrião visível entre os dias 20–25; confirmação de viabilidade; diagnóstico confiável nessa fase</div></div></div>
+    <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-coral"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">30 dias <span class="dg-tl-dur">diagnóstico seguro</span></div><div class="dg-tl-sub">Presença do embrião, placentomas visíveis e batimento cardíaco; diagnóstico gestacional com segurança; movimentação fetal possível a partir do dia ~32</div></div></div>
+    <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">35–40 dias <span class="dg-tl-dur">melhor janela para contagem</span></div><div class="dg-tl-sub"><span class="dg-hl">Melhor período para contagem do número de embriões/fetos</span>; transretal e transabdominal equivalentes nessa fase</div></div></div>
+    <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-amber"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">50 dias <span class="dg-tl-dur">sexagem fetal</span></div><div class="dg-tl-sub">Definição do sexo pelo tubérculo genital; janela 40–60 dias</div></div></div>
+    <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-green"></div></div><div class="dg-tl-card"><div class="dg-tl-title">70–90 dias</div><div class="dg-tl-sub">Melhor visualização dos placentomas; via transabdominal preferível; boa janela para biometria fetal</div></div></div>
+  </div>
+  <div class="dg-memo"><div class="dg-memo-label">Marcos US ovinos/caprinos</div><div class="dg-memo-text">D19–20: saco gestacional · D24–25: batimento cardíaco · D30: diagnóstico seguro · D35–40: contagem de fetos · D50: sexagem · D70–90: placentomas</div></div>
+</div>
+
+<!-- CARNÍVOROS -->
+<div class="dg-panel" id="dg-panel-carnivoros">
+  <div class="dg-sp-tabs">
+    <button class="dg-sp-tab active" onclick="dgSetSp('can_us',this)">Cadela — US</button>
+    <button class="dg-sp-tab" onclick="dgSetSp('can_palp',this)">Cadela — Palpação</button>
+    <button class="dg-sp-tab" onclick="dgSetSp('can_relaxina',this)">Cadela/Gata — Relaxina</button>
+    <button class="dg-sp-tab" onclick="dgSetSp('can_radio',this)">Radiografia</button>
+    <button class="dg-sp-tab" onclick="dgSetSp('gata_us',this)">Gata — US</button>
+  </div>
+
+  <div class="dg-sp-panel active" id="dg-sp-can_us">
+    <div class="dg-prova-box"><strong>US transabdominal em cadelas</strong> — método de eleição; diagnóstico precoce, viabilidade fetal, estimativa do número de fetos e idade gestacional</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">14–21 dias <span class="dg-tl-dur">saco vitelínico 2–3 mm</span></div><div class="dg-tl-sub">Visualização do saco vitelínico com 2–3 mm; estruturas anecoicas; vesículas crescem ~1 mm/dia entre D17–30</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-purple"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">20–22 dias <span class="dg-tl-dur">batimento cardíaco</span></div><div class="dg-tl-sub">Tecido embrionário evidente; <span class="dg-hl">batimento cardíaco visível</span> (~dia 20–22); concepto com 10–20 mm; confirmação de viabilidade</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-coral"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">23–30 dias</div><div class="dg-tl-sub">Vesícula embrionária ~40 mm; cabeça distinguível; corpo alongado; brotos dos membros anteriores; cordão umbilical evidente; movimentos fetais a partir do dia ~25</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">37–42 dias</div><div class="dg-tl-sub">Costelas, estômago e bexiga visíveis; hemisférios cerebrais distinguíveis; câmaras cardíacas visíveis</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-amber"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">47–53 dias</div><div class="dg-tl-sub">Mineralização completa da ossatura (D47); órgãos viscerais evidentes (D53); biometria fetal para estimativa de idade gestacional</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-green"></div></div><div class="dg-tl-card dg-warn"><div class="dg-tl-title">58–63 dias <span class="dg-tl-dur">pré-parto</span></div><div class="dg-tl-sub">Feto completo; monitorar batimentos cardíacos fetais — <span class="dg-hl">FC abaixo de 170 bpm indica sofrimento fetal</span>; US essencial para auxiliar decisão de indução ou cesárea</div></div></div>
+    </div>
+    <div class="dg-memo"><div class="dg-memo-label">Marcos US cadela</div><div class="dg-memo-text">D14–21: saco vitelínico · D20–22: batimento cardíaco · D23–30: cabeça/corpo/cordão · D37–42: órgãos internos · D47: mineralização · D58–63: pré-parto (FC &lt;170 = sofrimento fetal)</div></div>
+  </div>
+
+  <div class="dg-sp-panel" id="dg-sp-can_palp">
+    <div class="dg-info-box">Palpação abdominal em cadelas — método simples, sem equipamento, mas limitado por temperamento, porte, condição corporal e número de fetos</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">18–20 dias</div><div class="dg-tl-sub">Apenas em cadelas menores e mais magras; saculações discretas</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-coral"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">23–30 dias <span class="dg-tl-dur">janela ideal</span></div><div class="dg-tl-sub"><span class="dg-hl">Melhor período para palpação abdominal</span>; dia 23 = melhor dia; saculações bem palpáveis, tamanho de avelã; requer experiência do examinador</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-gray"></div></div><div class="dg-tl-card dg-warn"><div class="dg-tl-title">&gt;30 dias <span class="dg-tl-dur">dificuldade crescente</span></div><div class="dg-tl-sub">Saculações perdem forma definida; confusão com alças intestinais; palpação menos confiável após D30</div></div></div>
+    </div>
+    <div class="dg-memo"><div class="dg-memo-label">Palpação em gatas</div><div class="dg-memo-text">Gatas com 40–50 dias: já é possível palpar a cabeça fetal</div></div>
+  </div>
+
+  <div class="dg-sp-panel" id="dg-sp-can_relaxina">
+    <div class="dg-prova-box"><strong>Relaxina sérica</strong> — hormônio específico da gestação em cadelas e gatas; produzido pela placenta; <span class="dg-hl">P4 NÃO confirma gestação</span> (elevada em qualquer diestro)</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">Dia ~20–22 <span class="dg-tl-dur">cadela — detectável</span></div><div class="dg-tl-sub">Relaxina começa a ser detectada; níveis ainda baixos; possíveis falsos negativos nessa fase</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">Dia 28–30 <span class="dg-tl-dur">cadela — confiável</span></div><div class="dg-tl-sub">Relaxina confiável para diagnóstico; pico entre dias 40–50; kits comerciais (Witness Relaxin®, FASTest®); resultado negativo deve ser reavaliado 1 semana depois</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-purple"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">Dia ~20 <span class="dg-tl-dur">gata — detectável</span></div><div class="dg-tl-sub">Relaxina detectável a partir do dia 20 após a monta; confiável ao redor do dia 25; 100% de acerto nos diagnósticos positivos com kit Witness Relaxin® em um estudo com 28 gatas prenhes</div></div></div>
+    </div>
+    <div class="dg-memo"><div class="dg-memo-label">Por que P4 não confirma gestação em cadelas e gatas?</div><div class="dg-memo-text">CL autônomo: P4 se mantém elevada em qualquer diestro (gestante ou não) durante 60–80 dias<br>Relaxina é produzida exclusivamente pela placenta → ausente no diestro não gestacional<br>P4 útil apenas para: confirmar ovulação e monitorar suporte lúteo da gestação</div></div>
+  </div>
+
+  <div class="dg-sp-panel" id="dg-sp-can_radio">
+    <div class="dg-info-box">Radiografia — útil para contagem exata de fetos no final da gestação; complementa o US</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">43–45 dias <span class="dg-tl-dur">cavidades distinguíveis</span></div><div class="dg-tl-sub">Possível distinguir cavidade torácica da abdominal; esqueleto fetal começa a ser visível</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">55–60 dias <span class="dg-tl-dur">contagem exata de fetos</span></div><div class="dg-tl-sub"><span class="dg-hl">Melhor janela para contagem do número exato de fetos</span>; ossificação completa visível; informação essencial para planejamento do parto e identificação de fetos retidos</div></div></div>
+    </div>
+    <div class="dg-memo"><div class="dg-memo-label">US vs. Radiografia em cadelas</div><div class="dg-memo-text">US: diagnóstico precoce + viabilidade fetal (batimento cardíaco) + estimativa do número<br>Radiografia: contagem EXATA de fetos (D55–60) + posicionamento fetal + detecção de gás intrauterino</div></div>
+  </div>
+
+  <div class="dg-sp-panel" id="dg-sp-gata_us">
+    <div class="dg-info-box">US transabdominal em gatas — similar à cadela, porém a gata tem menor cooperação no exame e útero bicornual mais estreito</div>
+    <div class="dg-tl">
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-blue"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card dg-destaque"><div class="dg-tl-title">Dias 11–14 <span class="dg-tl-dur">vesícula gestacional</span></div><div class="dg-tl-sub">Com equipamentos modernos, vesícula gestacional visível a partir do dia 11–14; diagnóstico mais precoce que na cadela</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-purple"></div><div class="dg-tl-line"></div></div><div class="dg-tl-card"><div class="dg-tl-title">Dia 16–20 <span class="dg-tl-dur">embrião visível</span></div><div class="dg-tl-sub">Embrião identificável; batimento cardíaco detectável a partir do dia ~20; diagnóstico de viabilidade</div></div></div>
+      <div class="dg-tl-row"><div class="dg-tl-spine"><div class="dg-tl-dot dg-d-teal"></div></div><div class="dg-tl-card"><div class="dg-tl-title">40–50 dias</div><div class="dg-tl-sub">Cabeça fetal palpável; estruturas fetais bem definidas; boa janela para biometria e estimativa de número de fetos</div></div></div>
+    </div>
+    <div class="dg-memo"><div class="dg-memo-label">Relaxina na gata</div><div class="dg-memo-text">Detectável a partir do dia ~20; confiável ao redor do dia 25<br>P4 não distingue gestação de pseudogestação em gatas — relaxina é o método hormonal de escolha</div></div>
+  </div>
+</div>
+
+<!-- TABELA GERAL -->
+<div class="dg-panel" id="dg-panel-tabela">
+  <div class="dg-prova-box"><strong>Tabela de referência rápida — principais marcos diagnósticos por espécie</strong></div>
+  <table class="dg-diag-table">
+    <tr>
+      <th>Espécie</th>
+      <th>Método</th>
+      <th>Dia</th>
+      <th>Marco / O que se vê</th>
+    </tr>
+    <tr><td rowspan="5"><strong>Bovinos</strong></td><td>US transretal</td><td>17–21</td><td>Vesícula embrionária anecoica</td></tr>
+    <tr><td>US transretal</td><td><strong>25–28</strong></td><td>Embrião + batimento cardíaco (100% confiável)</td></tr>
+    <tr><td>US transretal</td><td>60</td><td>Sexagem fetal pelo tubérculo genital</td></tr>
+    <tr><td>Palpação retal</td><td>45–60</td><td>Beliscamento positivo (corioalantoide)</td></tr>
+    <tr><td>PAG sérica</td><td><strong>28–30</strong></td><td>Diagnóstico hormonal específico da gestação</td></tr>
+    <tr><td rowspan="4"><strong>Equinos</strong></td><td>US transretal</td><td><strong>9–10</strong></td><td>Vesícula embrionária 10–15 mm</td></tr>
+    <tr><td>US transretal</td><td>21</td><td>Embrião visível (ventral); D24: batimento cardíaco</td></tr>
+    <tr><td>US transretal</td><td>120–160</td><td>Sexagem fetal pelas gônadas</td></tr>
+    <tr><td>eCG sérica</td><td>40–120</td><td>Janela diagnóstica hormonal</td></tr>
+    <tr><td rowspan="3"><strong>Ovinos/Caprinos</strong></td><td>US transretal</td><td>19–20</td><td>Saco gestacional em cabras</td></tr>
+    <tr><td>US transretal/abd</td><td><strong>30</strong></td><td>Embrião + placentomas + batimento cardíaco</td></tr>
+    <tr><td>US transretal/abd</td><td>35–40</td><td>Melhor janela para contagem de fetos</td></tr>
+    <tr><td rowspan="5"><strong>Cadela</strong></td><td>US transabdominal</td><td>20–22</td><td>Batimento cardíaco; vesícula 10–20 mm</td></tr>
+    <tr><td>Palpação abdominal</td><td><strong>23–30</strong></td><td>Saculações palpáveis; D23 = melhor dia</td></tr>
+    <tr><td>Relaxina sérica</td><td>22–28</td><td>Detectável; confiável após D28</td></tr>
+    <tr><td>Radiografia</td><td>55–60</td><td>Contagem exata de fetos</td></tr>
+    <tr><td>P4 sérica</td><td>—</td><td><span style="color:#a32d2d;font-weight:600">NÃO confirma gestação</span> (elevada em qualquer diestro)</td></tr>
+    <tr><td rowspan="3"><strong>Gata</strong></td><td>US transabdominal</td><td>11–14</td><td>Vesícula gestacional (equipamentos modernos)</td></tr>
+    <tr><td>Relaxina sérica</td><td>~20–25</td><td>Detectável D20; confiável D25</td></tr>
+    <tr><td>P4 sérica</td><td>—</td><td><span style="color:#a32d2d;font-weight:600">NÃO confirma gestação</span> (pseudogestação = P4 elevada)</td></tr>
+  </table>
+</div>
 `
 },
 {
   id: 'biotecnologias',
-  num: 8,
+  num: 9,
   title: 'Biotecnologias da Reprodução',
   icon: '#i-settings',
   content: `
@@ -4117,7 +4291,7 @@ var CHAPTERS = [
 },
 {
   id: 'parto',
-  num: 9,
+  num: 10,
   title: 'Parto e Puerpério',
   icon: '#i-baby',
   content: `
@@ -4186,7 +4360,7 @@ A égua retorna ao estro em 7–14 dias pós-parto (média 9–10 dias). Porém,
 },
 {
   id: 'obstetricia',
-  num: 10,
+  num: 11,
   title: 'Obstetrícia',
   icon: '#i-hospital',
   content: `
@@ -4249,7 +4423,7 @@ Protocolo atual:<br>
 },
 {
   id: 'andrologico',
-  num: 11,
+  num: 12,
   title: 'Exame Andrológico',
   icon: '#i-telescope',
   content: `
@@ -4307,7 +4481,7 @@ Defeitos <strong>Menores</strong> = comprometem motilidade ou não afetam fertil
 },
 {
   id: 'patologias-macho',
-  num: 12,
+  num: 13,
   title: 'Patologias do Macho',
   icon: '#i-medical',
   content: `
@@ -4335,7 +4509,7 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
 },
 {
   id: 'patologias-femea',
-  num: 13,
+  num: 14,
   title: 'Patologias da Fêmea',
   icon: '#i-stethoscope',
   content: `
@@ -4388,7 +4562,7 @@ Cisto folicular: >25mm; presente por >10 dias; ausência de CL no ovário ipsila
 },
 {
   id: 'infecciosas',
-  num: 14,
+  num: 15,
   title: 'Doenças Infecciosas da Reprodução',
   icon: '#i-virus',
   content: `
@@ -4788,60 +4962,75 @@ window.plac2SetHist = function(hist, el) {
   if (sp) sp.classList.add('active');
 };
 
-// === CAPÍTULO 6 — GESTAÇÃO E DIAGNÓSTICO GESTACIONAL ===
-var gdDb = {
-  d: {
-    palp: 'A <strong>palpação retal</strong> é amplamente usada em bovinos e equinos. Na vaca, permite detectar: flutuação do corno gestante (dia 35+), deslizamento das membranas fetais, fremissement da artéria uterina média (vibração característica em gestação avançada) e tônus uterino reduzido. Na égua, detecta aumento de tônus e vesícula gestacional a partir do dia 18–20. Risco: manipulação intempestiva pode causar abortamento precoce na vaca, especialmente antes do dia 45.',
-    us: 'A <strong>ultrassonografia</strong> é o padrão ouro para diagnóstico gestacional em todas as espécies. Com sondas de alta frequência (7,5 MHz), vesículas são visíveis na égua a partir do dia 11–14 pós-ovulação e na vaca a partir do dia 18–25 pós-IA. Permite: detecção precoce, visualização do embrião, batimento cardíaco, diagnóstico de gêmeos e avaliação de viabilidade.',
-    p4: 'A <strong>P4</strong> confirma CL ativo, não gestação. P4 elevada no dia 21–24 pode indicar gestação, mas também ocorre em CL persistente, cistos luteais ou pseudogestação. <span class="gd-hl">Falso positivo</span>: P4 elevada sem gestação. Maior valor diagnóstico: P4 baixa no dia 21 confirma retorno ao ciclo. Na cadela, a P4 não tem utilidade para diagnóstico gestacional — está elevada em qualquer diestro.',
-    ecg: 'O <strong>eCG (PMSG)</strong> é produzido pelas <span class="gd-hl">taças endometriais</span> entre os dias 40–150. Confirma que houve gestação, mas <span class="gd-hl">não confirma viabilidade</span>: as taças persistem mesmo após morte fetal e continuam produzindo eCG por semanas. eCG positivo + US sem batimento cardíaco = gestação inviável.',
-    pag: 'As <strong>PAGs</strong> são produzidas pelo trofoblasto binucleado em ruminantes. Detectáveis por ELISA a partir do dia ~28 em bovinos. Alta especificidade — confirmam gestação ativa. Sem falso positivo por CL persistente. Podem permanecer elevadas por 2–3 semanas após perda embrionária tardia.',
-    relaxina: 'A <strong>relaxina</strong> é um marcador específico de gestação em <span class="gd-hl">cadelas e gatas</span> — não é usada como método diagnóstico em bovinos, equinos ou ruminantes. Na cadela, é produzida pelo CL gestacional e pela placenta, e é exclusiva da gestação (não ocorre no diestro sem fertilização). Detectável a partir do dia ~22 pós-ovulação, com detecção confiável a partir do dia 28–30. Kits de imunocromatografia rápida disponíveis para uso clínico.',
-    nao_retorno: 'O <strong>não-retorno ao estro</strong> é presuntivo: se a fêmea não retornar ao estro ~21 dias após a IA, sugere-se gestação. Precisão ~70% — inclui casos de anestro, diestro prolongado e mortalidade embrionária tardia. Útil em sistemas extensivos sem acesso a outros métodos.'
-  },
-  cad: {
-    us: 'Na cadela, a <strong>ultrassonografia</strong> é o método de escolha para diagnóstico precoce. Com sondas de alta frequência (7,5 MHz ou mais), vesículas gestacionais são visíveis a partir do dia <span class="gd-hl">~19–21 pós-ovulação</span> — falso negativo possível antes do dia 21. O embrião e o batimento cardíaco fetal são detectáveis a partir do dia 23–25. Também permite estimativa do número de fetos e avaliação de viabilidade fetal.',
-    relaxina: 'A <strong>relaxina sérica</strong> é o marcador bioquímico específico de gestação na cadela. <span class="gd-hl">Exclusiva da gestação</span> — não ocorre no diestro sem fertilização. Detectável a partir do dia ~22 pós-ovulação, com concentrações confiáveis a partir do dia 28–30. Kits de imunocromatografia rápida (ELISA lateral flow) disponíveis para uso ambulatorial.',
-    p4: 'A <strong>P4 não serve para confirmar gestação</strong> na cadela. O CL é autônomo e produz P4 elevada por 60–80 dias com ou sem gestação. Utilidade da P4 na cadela: (1) confirmar ovulação (P4 >2 ng/mL); (2) estimar o momento do parto (queda de P4 &lt;2 ng/mL precede o parto em ~24 h); (3) auxiliar no manejo de insuficiência lútea em gestações de risco.'
-  },
-  vac: {
-    us_vaca: 'Na vaca (US transretal, sonda 7,5 MHz), a vesícula gestacional aparece a partir do dia 18–22 como estrutura anecóica no corno uterino. O embrião é visível ~dia 20–22 e o <span class="gd-hl">batimento cardíaco</span> confirma viabilidade a partir do dia 21–22. Diagnóstico de gêmeos é importante — gestação gemelar em bovinos tem alta taxa de complicações (freemartinismo, distocia, menor produção leiteira).',
-    palp_vaca: 'A <strong>palpação retal</strong> bovina é confiável a partir do dia 35–45. Sinais: flutuação do corno gestante (35d+), deslizamento das membranas fetais (60–90d), palpação do feto (90d+) e fremissement da artéria uterina média (vibração tátil por aumento do fluxo sanguíneo — sinal clássico do 2º-3º trimestre). Não deve ser realizada antes do dia 35–40 por risco de abortamento.',
-    p4_vaca: 'Na vaca, P4 >1 ng/mL no dia 21–24 pós-IA sugere ausência de luteólise. Sensibilidade ~90%, especificidade baixa — <span class="gd-hl">falsos positivos</span> em: CL persistente, cisto luteal, morte embrionária após o dia 16. Maior valor diagnóstico: P4 baixa no dia 21 confirma retorno ao ciclo. Triagem em larga escala por ELISA de P4 no leite é prática comum em programas de IATF.',
-    pag_vaca: 'As <strong>PAGs</strong> são detectadas no sangue ou leite por ELISA. Vantagens: alta especificidade, confirma gestação ativa, sem falso positivo por CL persistente. Limitação: podem permanecer elevadas por 2–3 semanas após perda embrionária tardia. Testes de leite para PAG são amplamente usados em programas de IATF (~dia 28–32 pós-IA).'
-  },
-  eq: {
-    us_egua: 'Na égua (US transretal), a vesícula gestacional aparece como estrutura redonda, anecóica, com <span class="gd-hl">halo ecogênico</span> a partir do dia 11–14. O embrião é visível ~dia 17–21 e o batimento cardíaco confirma viabilidade ~dia 21. Diagnóstico e redução de gêmeos deve ser feito antes do dia 16 — após a fixação, a redução é mais difícil e o risco de perder ambos aumenta.',
-    palp_egua: 'A <strong>palpação retal</strong> na égua detecta: aumento de tônus uterino (sinal precoce), assimetria entre os cornos e vesícula gestacional palpável a partir do dia 18–20. É complementar à US — a US é sempre recomendada para confirmar viabilidade e excluir gêmeos.',
-    ecg_egua: 'O <strong>eCG</strong> confirma que houve gestação, mas <span class="gd-hl">não confirma viabilidade</span>: as taças endometriais persistem mesmo após morte fetal por semanas. eCG positivo + US negativo ou sem batimento cardíaco = gestação inviável. O eCG tem ação luteotrófica e é responsável pela formação de CLs acessórios na égua gestante.'
-  }
+// === CAPÍTULO 7 — PERÍODO DE GESTAÇÃO ===
+var pgEspecies = [
+  {nome:'Equino', dias:336, meses:'~11 meses', detalhe:'<strong>336 dias (~11 meses)</strong>. A duração é influenciada pela estação do ano — potros nascidos na primavera têm gestações ligeiramente mais longas. O sexo do potro também influencia: fetos machos tendem a ter gestação ~2 dias mais longa que fêmeas. A nutrição materna e a genética da raça também são fatores relevantes. Raças pesadas de tiro têm gestações mais longas que as de corrida.', cor:'#378ADD'},
+  {nome:'Asinino', dias:360, meses:'~12 meses', detalhe:'<strong>360 dias (~12 meses)</strong>. Gestação mais longa entre os equídeos domésticos. Os burros e jumentos têm gestação consistentemente mais longa que os cavalos. Mulas (cruzamento equino × asinino) têm gestação intermediária, geralmente em torno de 350 dias.', cor:'#534AB7'},
+  {nome:'Bubalino', dias:300, meses:'~10 meses', detalhe:'<strong>300 dias (~10 meses)</strong>. Ligeiramente mais longa que os bovinos. O anestro pós-parto prolongado (90–150 dias) na búfala combinado com a gestação longa resulta no maior intervalo entre partos entre os ruminantes de produção.', cor:'#5DCAA5'},
+  {nome:'Bovino zebuíno', dias:285, meses:'~9,5 meses', detalhe:'<strong>285 dias (~9,5 meses)</strong>. Nelore, Brahman e cruzados zebuínos têm gestação ligeiramente mais longa que os taurinos. Gestações de gêmeos tendem a ser ~10 dias mais curtas que gestações simples.', cor:'#1D9E75'},
+  {nome:'Bovino taurino', dias:280, meses:'~9 meses', detalhe:'<strong>280 dias (~9 meses)</strong>. Holandês, Angus, Simental, Hereford. Variação de ~270–292 dias conforme raça, estação e número de fetos. Partos induzidos com corticoides + PGF2α são possíveis nos últimos 2 semanas da gestação.', cor:'#639922'},
+  {nome:'Ovino', dias:150, meses:'~5 meses', detalhe:'<strong>150 dias (~5 meses)</strong>. Variação normal: 147–154 dias. Gestações gemelares ou de tripletos tendem a ser 2–4 dias mais curtas que gestações simples. A raça influencia: Santa Inês ~148 dias, Texel ~150 dias.', cor:'#BA7517'},
+  {nome:'Caprino', dias:150, meses:'~5 meses', detalhe:'<strong>150 dias (~5 meses)</strong>. Variação normal: 147–154 dias. Similar ao ovino. Cabras leiteiras de alta produção tendem a ter gestações ligeiramente mais curtas. Gestações múltiplas (2–4 crias) são comuns.', cor:'#EF9F27'},
+  {nome:'Suíno', dias:114, meses:'3m 3s 3d', detalhe:'<strong>114 dias — mnemônico: 3 meses, 3 semanas e 3 dias</strong>. Ninhadas grandes (>12 leitões) tendem a nascer 1–2 dias antes. Gestação mais curta que ruminantes, mas ninhadas muito maiores. Marrãs (primíparas) têm gestação ligeiramente mais curta que porcas multíparas.', cor:'#D85A30'},
+  {nome:'Cão / Gato', dias:63, meses:'~9 semanas', detalhe:'<strong>~63 dias (~9 semanas)</strong>. <em>Cão:</em> 58–68 dias a partir da cópula; contagem mais precisa a partir da ovulação (P4 >2 ng/mL) — 63±1 dias. Raças pequenas tendem a ter gestações ligeiramente mais curtas. <em>Gato:</em> 52–74 dias; variação maior que na cadela. A contagem a partir da cópula é menos precisa em ambas as espécies devido ao longo período fértil (cadela: 5–7 dias; gata: dias-estro).', cor:'#D4537E'}
+];
+(function() {
+  var MAX = 360;
+  var grid = document.getElementById('pg-esp-grid');
+  var bars = document.getElementById('pg-bars');
+  var det = document.getElementById('pg-detalhe');
+  if (!grid || !bars || !det) return;
+  pgEspecies.forEach(function(e, i) {
+    var c = document.createElement('div');
+    c.className = 'pg-esp-card';
+    c.innerHTML = '<div class="pg-esp-dias">' + e.dias + '</div><div class="pg-esp-nome">' + e.nome + '</div><div class="pg-esp-meses">' + e.meses + '</div>';
+    c.onclick = function() {
+      document.querySelectorAll('.pg-esp-card').forEach(function(x){ x.classList.remove('active'); });
+      c.classList.add('active');
+      det.innerHTML = e.detalhe;
+      det.classList.remove('empty');
+    };
+    grid.appendChild(c);
+    var row = document.createElement('div');
+    row.className = 'pg-bar-row';
+    var pct = Math.round((e.dias / MAX) * 100);
+    row.innerHTML = '<div class="pg-bar-nome">' + e.nome + '</div><div class="pg-bar-track"><div class="pg-bar-fill" style="width:' + pct + '%;background:' + e.cor + '">' + e.dias + 'd</div></div><div class="pg-bar-dias">' + e.meses + '</div>';
+    bars.appendChild(row);
+  });
+})();
+
+// === CAPÍTULO 8 — DIAGNÓSTICO DE GESTAÇÃO ===
+var dgMet = {
+  palp: 'A <strong>palpação retal</strong> é o método clássico para bovinos e equinos. Em bovinos, o diagnóstico confiável começa aos 35–45 dias (assimetria dos cornos) sendo o <span class="dg-hl">beliscamento positivo</span> (D45–60) o sinal mais prático. Risco de ruptura da vesícula amniótica se realizada antes dos 35 dias. Em equinos, fornece informações a partir dos 60 dias; menos detalhada que a US.',
+  us_tr: 'A <strong>US transretal</strong> é o padrão ouro para diagnóstico precoce em grandes animais. Em bovinos: 100% confiável a partir do D25–28. Em equinos: vesícula visível desde o D9–10. Em ovinos/caprinos: diagnóstico seguro ao D30, mas transretal preferível somente até D35.',
+  us_ta: 'A <strong>US transabdominal</strong> é a via de eleição em pequenos animais (cães e gatos) — realizada com transdutor convexo ou linear de alta frequência. Em ruminantes, é preferível após a segunda metade da gestação, quando o feto já está na cavidade abdominal e a US transretal perde eficiência.',
+  relaxina: 'A <strong>relaxina</strong> é o hormônio mais específico da gestação em cadelas e gatas — produzido exclusivamente pela placenta (não pelo CL). <strong>Cadela:</strong> detectável D22–28, confiável após D28. <strong>Gata:</strong> detectável D20, confiável D25. Kits comerciais: Witness Relaxin®, FASTest®. <span class="dg-hl">A P4 NÃO confirma gestação</span> em carnívoros — CL autônomo mantém P4 elevada em qualquer diestro.',
+  prog: 'A <strong>progesterona (P4)</strong> <strong>não confirma gestação</strong> em cadelas e gatas porque o CL autônomo mantém P4 elevada em qualquer diestro (gestante ou não). É útil apenas para: confirmar que a ovulação ocorreu (P4 >2 ng/mL), monitorar o suporte lúteo durante a gestação e identificar hipoluteoidismo (risco de aborto). Em bovinos, P4 baixa no D18–21 indica retorno ao estro (não prenhez).',
+  radio: 'A <strong>radiografia</strong> é o método de eleição para <strong>contagem exata do número de fetos</strong> no final da gestação em pequenos animais. Em cadelas: a partir do D43–45 (cavidades distinguíveis) e ideal no D55–60 (ossificação completa). Permite identificar fetos em posição anormal e presença de gás intrauterino (morte fetal). Não fornece informações sobre viabilidade fetal.',
+  pag: 'As <strong>PAGs (proteínas associadas à gestação)</strong> em bovinos são produzidas pelo trofoblasto e são específicas da gestação — detectáveis no sangue a partir do D25, confiáveis por ELISA a partir do D28–30. Kits comerciais disponíveis. Em equinos, o <strong>eCG (PMSG)</strong> é produzido pelos cálices endometriais entre D40–120 e pode ser dosado como indicador de gestação nessa janela — porém pode permanecer detectável mesmo após morte embrionária.',
+  palp_abd: 'A <strong>palpação abdominal</strong> em cadelas é válida entre D23–30, sendo o D23 o melhor momento — saculações bem palpáveis do tamanho de uma avelã. Após D30, as saculações desfazem a forma esférica e podem ser confundidas com alças intestinais. Exige animal colaborativo, porte adequado e examinador experiente. Em <strong>gatas</strong>, a palpação de cabeças fetais é possível a partir de D40–50.'
 };
-window.gdInfo = function(group, key) {
-  var el = document.getElementById('gd-info-' + group);
+window.dgInfo = function(g, k) {
+  var el = document.getElementById('dg-info-' + g);
   if (!el) return;
-  el.innerHTML = gdDb[group][key];
+  el.innerHTML = dgMet[k] || '';
   el.classList.remove('empty');
 };
-window.gdSetTab = function(tab, el) {
+window.dgSetTab = function(t, el) {
   var body = el.closest('.chapter-body') || document;
-  body.querySelectorAll('.gd-tab').forEach(function(t){ t.classList.remove('active'); });
-  body.querySelectorAll('.gd-panel').forEach(function(p){ p.classList.remove('active'); });
+  body.querySelectorAll('.dg-tab').forEach(function(x){ x.classList.remove('active'); });
+  body.querySelectorAll('.dg-panel').forEach(function(x){ x.classList.remove('active'); });
   el.classList.add('active');
-  document.getElementById('gd-panel-' + tab).classList.add('active');
+  var p = document.getElementById('dg-panel-' + t);
+  if (p) p.classList.add('active');
 };
-window.gdSetDiag = function(d, el) {
-  var panel = document.getElementById('gd-panel-diagnostico');
-  panel.querySelectorAll('.gd-sp-tab').forEach(function(t){ t.classList.remove('active'); });
-  panel.querySelectorAll('.gd-sp-panel').forEach(function(p){ p.classList.remove('active'); });
+window.dgSetSp = function(sp, el) {
+  var panel = el.closest('.dg-panel') || document.body;
+  panel.querySelectorAll('.dg-sp-tab').forEach(function(x){ x.classList.remove('active'); });
+  panel.querySelectorAll('.dg-sp-panel').forEach(function(x){ x.classList.remove('active'); });
   el.classList.add('active');
-  document.getElementById('gd-diag-' + d).classList.add('active');
-};
-window.gdSetCron = function(c, el) {
-  var panel = document.getElementById('gd-panel-cronologia');
-  panel.querySelectorAll('.gd-sp-tab').forEach(function(t){ t.classList.remove('active'); });
-  panel.querySelectorAll('.gd-sp-panel').forEach(function(p){ p.classList.remove('active'); });
-  el.classList.add('active');
-  document.getElementById('gd-cron-' + c).classList.add('active');
+  var t = document.getElementById('dg-sp-' + sp);
+  if (t) t.classList.add('active');
 };
 
 // === CAPÍTULO 5 — IMPLANTAÇÃO EMBRIONÁRIA ===
