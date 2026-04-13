@@ -5158,8 +5158,323 @@ Feto transverso (na prática) → cesariana</div></div>
 `
 },
 {
-  id: 'patologias-macho',
+  id: 'glandulas-semen',
   num: 13,
+  title: 'Glândulas e Frações do Sêmen',
+  icon: '#i-drop',
+  content: `
+<style>
+.gls-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.gls-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-card);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+.gls-tab:hover{background:var(--bg-hover)}.gls-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.gls-panel{display:none}.gls-panel.active{display:block}
+.gls-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.gls-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-card);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+.gls-sp-tab:hover{background:var(--bg-hover)}.gls-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.gls-sp-panel{display:none}.gls-sp-panel.active{display:block}
+.gls-hl{background:var(--warn-bg,#fef3db);border-radius:3px;padding:1px 4px;font-weight:600}
+.gls-prova-box{border-left:3px solid #BA7517;background:var(--warn-bg,#fef3db);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.gls-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.gls-suc-box{border-left:3px solid #3B6D11;background:var(--success-bg,#eaf3de);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.gls-danger-box{border-left:3px solid #A32D2D;background:var(--danger-bg,#fce8e8);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.gls-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px}
+.gls-ref-table th{background:var(--bg-secondary);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-card);font-size:11px;color:var(--text-secondary)}
+.gls-ref-table td{padding:6px 10px;border:1px solid var(--border-card);vertical-align:middle;line-height:1.45}
+.gls-ref-table tr:nth-child(even) td{background:var(--bg-secondary)}
+.gls-check{color:#3B6D11;font-weight:700;font-size:15px}
+.gls-cross{color:#A32D2D;font-weight:700;font-size:15px}
+.gls-partial{color:#BA7517;font-weight:700;font-size:14px}
+.gls-gland-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.gls-gland-card{border-radius:8px;border:1px solid var(--border-card);padding:12px 14px;background:var(--bg-card);cursor:pointer;transition:border-color .15s,background .15s}
+.gls-gland-card:hover{border-color:var(--border-hover,#d0cfcc);background:var(--bg-hover)}
+.gls-gland-title{font-weight:600;font-size:13px;margin-bottom:3px}
+.gls-gland-sub{font-size:12px;color:var(--text-secondary);line-height:1.4}
+.gls-info-panel{background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;margin-top:8px;font-size:13px;line-height:1.7;min-height:60px}
+.gls-info-panel.empty{color:var(--text-muted);font-style:italic}
+.gls-frac-container{margin-bottom:16px}
+.gls-frac-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.gls-frac-row{display:flex;gap:4px;margin-bottom:6px;align-items:center}
+.gls-frac-nome{font-size:12px;font-weight:500;color:var(--text-secondary);min-width:70px;flex-shrink:0;text-align:right}
+.gls-frac-barra{display:flex;height:28px;flex:1;border-radius:6px;overflow:hidden;border:1px solid var(--border-card)}
+.gls-frac-seg{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;transition:width .3s;white-space:nowrap;overflow:hidden;padding:0 4px}
+.gls-frac-pobre{background:#888780}
+.gls-frac-rica{background:#378ADD}
+.gls-frac-gel{background:#BA7517}
+.gls-frac-info{font-size:11px;color:var(--text-muted);margin-left:6px}
+.gls-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-secondary);margin-top:10px;margin-bottom:10px}
+.gls-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.gls-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
+.gls-legenda{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px;font-size:11px}
+.gls-leg-item{display:flex;align-items:center;gap:5px}
+.gls-leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+</style>
+
+<div class="gls-tabs">
+  <button class="gls-tab active" onclick="glsSetTab('glandulas',this)">Glândulas por espécie</button>
+  <button class="gls-tab" onclick="glsSetTab('funcoes',this)">Funções e secreções</button>
+  <button class="gls-tab" onclick="glsSetTab('fracoes',this)">Frações do ejaculado</button>
+  <button class="gls-tab" onclick="glsSetTab('tabela_geral',this)">Tabela geral</button>
+</div>
+
+<!-- GLÂNDULAS POR ESPÉCIE -->
+<div class="gls-panel active" id="gls-panel-glandulas">
+  <div class="gls-info-box">As 4 glândulas genitais acessórias produzem o plasma seminal — o meio líquido em que os espermatozoides são suspensos. <strong>A presença de cada glândula varia entre as espécies</strong> e é frequentemente cobrada em provas.</div>
+  <div class="gls-prova-box">
+    <strong>Regras para decorar:</strong><br>
+    · <strong>Cão e Gato</strong> — NÃO têm vesícula seminal<br>
+    · <strong>Suíno e Gato</strong> — NÃO têm ampola do ducto deferente<br>
+    · <strong>Suíno</strong> — tem bulbouretral enorme (origem do gel) e vesícula seminal muito desenvolvida<br>
+    · <strong>Próstata</strong> — TODAS as espécies domésticas possuem (cão = mais desenvolvida)
+  </div>
+  <table class="gls-ref-table">
+    <tr>
+      <th>Glândula</th>
+      <th>Bovinos / Ovinos / Caprinos</th>
+      <th>Equinos</th>
+      <th>Suínos</th>
+      <th>Cão</th>
+      <th>Gato</th>
+    </tr>
+    <tr>
+      <td><strong>Ampola do ducto deferente</strong></td>
+      <td><span class="gls-check">✔</span> Presente · 8–10 cm (bovinos)</td>
+      <td><span class="gls-check">✔</span> Presente · grande</td>
+      <td><span class="gls-cross">✘</span> Ausente</td>
+      <td><span class="gls-partial">~</span> Rudimentar / ausente como glândula</td>
+      <td><span class="gls-cross">✘</span> Ausente</td>
+    </tr>
+    <tr>
+      <td><strong>Vesícula seminal (glândula vesicular)</strong></td>
+      <td><span class="gls-check">✔</span> Bem desenvolvida · lobulada</td>
+      <td><span class="gls-check">✔</span> Presente · superfície lisa</td>
+      <td><span class="gls-check">✔</span> Muito desenvolvida · enorme</td>
+      <td><span class="gls-cross">✘</span> <strong>Ausente</strong></td>
+      <td><span class="gls-cross">✘</span> <strong>Ausente</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Próstata</strong></td>
+      <td><span class="gls-partial">~</span> Presente · difusa · pouco desenvolvida</td>
+      <td><span class="gls-check">✔</span> Presente</td>
+      <td><span class="gls-check">✔</span> Presente</td>
+      <td><span class="gls-check">✔</span> <strong>Muito desenvolvida</strong> · bilobada · única glândula funcional grande</td>
+      <td><span class="gls-check">✔</span> Presente · pequena</td>
+    </tr>
+    <tr>
+      <td><strong>Glândula bulbouretral (Cowper)</strong></td>
+      <td><span class="gls-partial">~</span> Presente · pouco desenvolvida · fibrosa</td>
+      <td><span class="gls-partial">~</span> Presente · pouco desenvolvida · fibrosa</td>
+      <td><span class="gls-check">✔</span> <strong>Muito desenvolvida</strong> · maior entre as domésticas · origem do gel</td>
+      <td><span class="gls-cross">✘</span> <strong>Ausente</strong></td>
+      <td><span class="gls-check">✔</span> Presente · pequena</td>
+    </tr>
+  </table>
+  <div class="gls-memo"><div class="gls-memo-label">Resumo por espécie — quais glândulas possui</div><div class="gls-memo-text">Bovinos / Ovinos / Caprinos: Ampola + Vesícula seminal + Próstata (difusa) + Bulbouretral (fibrosa)<br>Equinos: Ampola (grande) + Vesícula seminal + Próstata + Bulbouretral<br>Suínos: Vesícula seminal (enorme) + Próstata + Bulbouretral (enorme) — SEM ampola<br>Cão: Próstata (muito desenvolvida — ÚNICA glândula acessória funcional importante) — SEM vesícula, SEM bulbouretral<br>Gato: Próstata + Bulbouretral — SEM vesícula, SEM ampola</div></div>
+</div>
+
+<!-- FUNÇÕES E SECREÇÕES -->
+<div class="gls-panel" id="gls-panel-funcoes">
+  <div class="gls-info-box">Cada glândula secreta componentes específicos do plasma seminal. As secreções fornecem energia, proteção, tampão de pH, lubrificação e em alguns casos formam o gel seminal (tampão cervical).</div>
+  <div class="gls-gland-grid">
+    <div class="gls-gland-card" onclick="glsInfo('gl','ampola')">
+      <div class="gls-gland-title">Ampola do ducto deferente</div>
+      <div class="gls-gland-sub">Armazenamento + secreção · presentes em bovinos, ovinos, equinos</div>
+    </div>
+    <div class="gls-gland-card" onclick="glsInfo('gl','vesicula')">
+      <div class="gls-gland-title">Vesícula seminal (glândula vesicular)</div>
+      <div class="gls-gland-sub">Maior contribuição para volume · frutose · prostaglandinas · ausente em cão e gato</div>
+    </div>
+    <div class="gls-gland-card" onclick="glsInfo('gl','prostata')">
+      <div class="gls-gland-title">Próstata</div>
+      <div class="gls-gland-sub">Presente em TODAS as espécies · confere odor característico · única glândula do cão</div>
+    </div>
+    <div class="gls-gland-card" onclick="glsInfo('gl','bulbo')">
+      <div class="gls-gland-title">Glândula bulbouretral (Cowper)</div>
+      <div class="gls-gland-sub">Lubrificação · limpeza da uretra · gel seminal no suíno · ausente no cão</div>
+    </div>
+  </div>
+  <div class="gls-info-panel empty" id="gls-info-gl">Clique em uma glândula para ver função, secreção e particularidades.</div>
+  <div class="gls-memo" style="margin-top:12px"><div class="gls-memo-label">Composição do plasma seminal — principais componentes</div><div class="gls-memo-text">Frutose (vesícula seminal): substrato energético anaeróbico para os espermatozoides<br>Citrato e zinco (próstata): antioxidantes e moduladores da coagulação<br>Prostaglandinas (vesícula seminal): estimulam contrações do trato genital feminino<br>Carnitina e glicerofosfocolina (epidídimo): fontes de energia e maturação espermática<br>Tampão bicarbonato: neutraliza pH ácido da urina residual na uretra<br>Proteínas coaguladoras (vesícula seminal): formam o coágulo/gel seminal<br>Enzimas proteolíticas (próstata): liquefação do coágulo seminal</div></div>
+</div>
+
+<!-- FRAÇÕES DO EJACULADO -->
+<div class="gls-panel" id="gls-panel-fracoes">
+  <div class="gls-info-box">O ejaculado da maioria das espécies pode ser dividido em frações com concentrações espermáticas diferentes, originadas de diferentes estruturas. Isso é importante para a coleta, processamento e IA.</div>
+  <div class="gls-sp-tabs">
+    <button class="gls-sp-tab active" onclick="glsSetSp('frac_cao',this)">Cão (3 frações)</button>
+    <button class="gls-sp-tab" onclick="glsSetSp('frac_eq',this)">Equino (3 frações)</button>
+    <button class="gls-sp-tab" onclick="glsSetSp('frac_sui',this)">Suíno (gel)</button>
+    <button class="gls-sp-tab" onclick="glsSetSp('frac_bov',this)">Bovinos / Ruminantes</button>
+  </div>
+
+  <!-- CÃO -->
+  <div class="gls-sp-panel active" id="gls-sp-frac_cao">
+    <div class="gls-prova-box"><strong>Cão</strong> — única espécie com 3 frações claramente distintas e colecionáveis separadamente. A próstata é a ÚNICA glândula acessória funcional importante — as frações 1 e 3 são prostáticas.</div>
+    <div class="gls-legenda">
+      <div class="gls-leg-item"><div class="gls-leg-dot" style="background:#888780"></div>Prostática / pobre</div>
+      <div class="gls-leg-item"><div class="gls-leg-dot" style="background:#378ADD"></div>Rica em espermatozoides</div>
+    </div>
+    <div class="gls-frac-container">
+      <div class="gls-frac-label">Composição do ejaculado canino (representação proporcional)</div>
+      <div class="gls-frac-row">
+        <div class="gls-frac-nome">Ejaculado total</div>
+        <div class="gls-frac-barra">
+          <div class="gls-frac-seg gls-frac-pobre" style="width:20%">1ª fração</div>
+          <div class="gls-frac-seg gls-frac-rica" style="width:15%">2ª</div>
+          <div class="gls-frac-seg" style="width:65%;background:#5C6BC0">3ª fração (prostática)</div>
+        </div>
+        <div class="gls-frac-info">2–80 mL total</div>
+      </div>
+    </div>
+    <table class="gls-ref-table">
+      <tr><th>Fração</th><th>Origem</th><th>Aspecto</th><th>Volume</th><th>Espermatozoides</th><th>Uso</th></tr>
+      <tr><td><strong>1ª — pré-espermática</strong></td><td>Próstata</td><td>Aquosa, transparente</td><td>0,5–4 mL</td><td>Ausentes (poucos)</td><td>Limpa uretra · <strong>descartar</strong></td></tr>
+      <tr><td><strong>2ª — espermática</strong></td><td>Epidídimo + testículo</td><td>Branco opalescente a cremoso</td><td>0,5–3,5 mL</td><td><strong>Alta — até 400×10⁶/mL</strong></td><td><strong>AVALIADA no espermograma · usada para IA</strong></td></tr>
+      <tr><td><strong>3ª — pós-espermática (prostática)</strong></td><td>Próstata</td><td>Aquosa, transparente</td><td>1–80 mL</td><td>Poucos ou ausentes</td><td>Dilui e transporta espermatozoides</td></tr>
+    </table>
+    <div class="gls-suc-box"><strong>Na coleta por manipulação digital:</strong> a 2ª fração é mais curta (15–30 s), mais espessa e branca. A 3ª começa quando o sêmen volta a ficar transparente. Para IA, coleta-se a 2ª e início da 3ª fração.</div>
+  </div>
+
+  <!-- EQUINO -->
+  <div class="gls-sp-panel" id="gls-sp-frac_eq">
+    <div class="gls-prova-box"><strong>Equino</strong> — ejaculado composto por 5–8 jatos distribuídos em 3 frações. A fração gel (porção gelatinosa) é produzida pelas vesículas seminais e deve ser <span class="gls-hl">filtrada antes da análise e IA</span>.</div>
+    <div class="gls-legenda">
+      <div class="gls-leg-item"><div class="gls-leg-dot" style="background:#888780"></div>Pré-espermática (bulbouretral)</div>
+      <div class="gls-leg-item"><div class="gls-leg-dot" style="background:#378ADD"></div>Rica em espermatozoides</div>
+      <div class="gls-leg-item"><div class="gls-leg-dot" style="background:#BA7517"></div>Gel (vesícula seminal)</div>
+    </div>
+    <div class="gls-frac-container">
+      <div class="gls-frac-label">Composição do ejaculado equino (representação aproximada)</div>
+      <div class="gls-frac-row">
+        <div class="gls-frac-nome">Ejaculado total</div>
+        <div class="gls-frac-barra">
+          <div class="gls-frac-seg gls-frac-pobre" style="width:10%">1ª</div>
+          <div class="gls-frac-seg gls-frac-rica" style="width:55%">2ª fração — rica</div>
+          <div class="gls-frac-seg gls-frac-gel" style="width:35%">3ª — pobre + gel</div>
+        </div>
+        <div class="gls-frac-info">40–150 mL total</div>
+      </div>
+    </div>
+    <table class="gls-ref-table">
+      <tr><th>Fração</th><th>Origem</th><th>Aspecto</th><th>Jatos</th><th>Espermatozoides</th><th>Uso</th></tr>
+      <tr><td><strong>1ª — pré-espermática</strong></td><td>Glândulas bulbouretrais</td><td>Translúcida, aquosa</td><td>1º jato</td><td>Geralmente ausentes</td><td>Lubrificação da uretra · <strong>descartar</strong></td></tr>
+      <tr><td><strong>2ª — rica em espermatozoides</strong></td><td>Epidídimo + próstata + ampolas</td><td>Branco leitoso</td><td>2º ao 4º jato</td><td><strong>100–300×10⁶/mL</strong></td><td><strong>Fração de interesse para IA e criopreservação</strong></td></tr>
+      <tr><td><strong>3ª — pobre + gel</strong></td><td>Vesículas seminais</td><td>Aquosa a gelatinosa · gel amarelado</td><td>5º jato em diante</td><td>Baixa concentração</td><td>Tampão cervical na monta natural. <strong>Filtrar o gel antes da IA</strong></td></tr>
+    </table>
+    <div class="gls-info-box"><strong>Coleta fracionada equina</strong> — usada no diagnóstico de vesiculite seminal. O garanhão com vesiculite tem neutrófilos e bactérias concentrados na 3ª fração. Separando as frações, pode-se usar apenas a Fração A (1º e 2º jatos) para IA.</div>
+    <div class="gls-danger-box"><strong>Gel seminal equino</strong> — produzido pelas vesículas seminais · gelatinoso, amarelado · funciona como tampão cervical na monta natural · <span class="gls-hl">PREJUDICIAL para a IA</span> → impede avaliação da motilidade + obstrui pipetas → filtrar SEMPRE com gaze antes da análise e do processamento.</div>
+  </div>
+
+  <!-- SUÍNO -->
+  <div class="gls-sp-panel" id="gls-sp-frac_sui">
+    <div class="gls-info-box"><strong>Suíno</strong> — ejaculado muito volumoso (40–300 mL). O gel seminal é produzido pelas <span class="gls-hl">glândulas bulbouretrais</span> (muito desenvolvidas) e pelas vesículas seminais.</div>
+    <div class="gls-legenda">
+      <div class="gls-leg-item"><div class="gls-leg-dot" style="background:#888780"></div>Fração pré / pós (pobre)</div>
+      <div class="gls-leg-item"><div class="gls-leg-dot" style="background:#378ADD"></div>Fração rica (espermática)</div>
+      <div class="gls-leg-item"><div class="gls-leg-dot" style="background:#BA7517"></div>Gel (bulbouretral)</div>
+    </div>
+    <div class="gls-frac-container">
+      <div class="gls-frac-label">Ejaculado suíno (representação aproximada)</div>
+      <div class="gls-frac-row">
+        <div class="gls-frac-nome">Ejaculado total</div>
+        <div class="gls-frac-barra">
+          <div class="gls-frac-seg gls-frac-pobre" style="width:15%">Pré</div>
+          <div class="gls-frac-seg gls-frac-rica" style="width:40%">Fração rica (espermática)</div>
+          <div class="gls-frac-seg gls-frac-gel" style="width:15%">Gel</div>
+          <div class="gls-frac-seg gls-frac-pobre" style="width:30%">Fração pós (pobre)</div>
+        </div>
+        <div class="gls-frac-info">40–300 mL</div>
+      </div>
+    </div>
+    <table class="gls-ref-table">
+      <tr><th>Fração</th><th>Aspecto</th><th>Espermatozoides</th><th>Uso</th></tr>
+      <tr><td><strong>Pré-espermática</strong></td><td>Aquosa, transparente</td><td>Poucos</td><td>Descartada normalmente</td></tr>
+      <tr><td><strong>Fração rica (espermática)</strong></td><td>Branca a acinzentada, leitosa</td><td><strong>200–300×10⁶/mL</strong></td><td><strong>Usada para doses de IA</strong></td></tr>
+      <tr><td><strong>Fração gel</strong></td><td>Gelatinosa, coagulada</td><td>Poucos</td><td><strong>Filtrar</strong> — não incluir nas doses</td></tr>
+      <tr><td><strong>Fração pós-espermática (pobre)</strong></td><td>Aquosa, baixa concentração</td><td>Baixa</td><td>Pode ser incluída nas doses</td></tr>
+    </table>
+    <div class="gls-memo"><div class="gls-memo-label">Coleta por manipulação digital em suínos</div><div class="gls-memo-text">Reflexo de imobilidade: porca em estro assume posição rígida quando pressão é aplicada ao dorso<br>Mão pressiona glande em forma de saca-rolhas → garante tração adequada<br>Volume alto: coletado em copo graduado grande (300–500 mL)<br>Filtro de gaze: filtrar gel continuamente durante a coleta</div></div>
+  </div>
+
+  <!-- BOVINOS -->
+  <div class="gls-sp-panel" id="gls-sp-frac_bov">
+    <div class="gls-info-box"><strong>Bovinos e ruminantes</strong> — ejaculado com volume relativamente baixo (3–8 mL) e alta concentração espermática. O sêmen bovino é homogêneo — não há separação evidente de frações como no cão.</div>
+    <table class="gls-ref-table">
+      <tr><th>Parâmetro</th><th>Valor</th><th>Observações</th></tr>
+      <tr><td>Volume total</td><td>3–8 mL (VA) · 8–16 mL (EE)</td><td>Eletroejaculador aumenta secreção das glândulas acessórias → maior volume</td></tr>
+      <tr><td>Concentração</td><td>800–2000×10⁶/mL</td><td>Alta concentração — o mais concentrado entre os grandes animais</td></tr>
+      <tr><td>Cor</td><td>Branco leitoso a creme</td><td>Quanto mais branco/cremoso, maior a concentração</td></tr>
+      <tr><td>Fracionamento</td><td>Não há frações distintas</td><td>Sêmen homogêneo · avaliado integralmente · não há filtração de gel</td></tr>
+    </table>
+    <div class="gls-prova-box"><strong>Diferença entre VA e EE em bovinos:</strong> Vagina artificial (VA) → o volume reflete apenas o ejaculado natural. Eletroejaculador (EE) → estimula as glândulas acessórias com corrente elétrica → maior volume (mais plasma seminal) mas mesma concentração total de espermatozoides. O EE não aumenta o número de espermatozoides — só adiciona mais plasma seminal.</div>
+  </div>
+</div>
+
+<!-- TABELA GERAL -->
+<div class="gls-panel" id="gls-panel-tabela_geral">
+  <div class="gls-suc-box">Tabela de referência rápida — presença de glândulas e características das frações por espécie</div>
+  <table class="gls-ref-table">
+    <tr>
+      <th>Espécie</th>
+      <th>Ampola</th>
+      <th>Vesícula seminal</th>
+      <th>Próstata</th>
+      <th>Bulbouretral</th>
+      <th>Frações</th>
+      <th>Gel seminal</th>
+    </tr>
+    <tr>
+      <td><strong>Bovinos / Ruminantes</strong></td>
+      <td><span class="gls-check">✔</span> 8–10 cm</td>
+      <td><span class="gls-check">✔</span> Lobulada</td>
+      <td><span class="gls-partial">~</span> Difusa</td>
+      <td><span class="gls-partial">~</span> Fibrosa/pequena</td>
+      <td>Sêmen homogêneo — sem frações distintas</td>
+      <td><span class="gls-cross">✘</span> Não tem</td>
+    </tr>
+    <tr>
+      <td><strong>Equinos</strong></td>
+      <td><span class="gls-check">✔</span> Grande</td>
+      <td><span class="gls-check">✔</span> Superfície lisa</td>
+      <td><span class="gls-check">✔</span></td>
+      <td><span class="gls-partial">~</span> Pequena/fibrosa</td>
+      <td>3 frações: bulbouretral (1ª) · rica (2ª) · pobre+gel (3ª)</td>
+      <td><span class="gls-check">✔</span> Vesícula seminal · <strong>filtrar!</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Suínos</strong></td>
+      <td><span class="gls-cross">✘</span> Ausente</td>
+      <td><span class="gls-check">✔</span> Enorme</td>
+      <td><span class="gls-check">✔</span></td>
+      <td><span class="gls-check">✔</span> <strong>Enorme</strong></td>
+      <td>4 frações: pré · rica · gel · pós-espermática (pobre)</td>
+      <td><span class="gls-check">✔</span> Bulbouretral · <strong>filtrar!</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Cão</strong></td>
+      <td><span class="gls-cross">✘</span> Ausente (funcional)</td>
+      <td><span class="gls-cross">✘</span> <strong>Ausente</strong></td>
+      <td><span class="gls-check">✔</span> <strong>Única glândula importante</strong></td>
+      <td><span class="gls-cross">✘</span> <strong>Ausente</strong></td>
+      <td><strong>3 frações: 1ª prostática · 2ª espermática · 3ª prostática</strong></td>
+      <td><span class="gls-cross">✘</span> Não tem</td>
+    </tr>
+    <tr>
+      <td><strong>Gato</strong></td>
+      <td><span class="gls-cross">✘</span> Ausente</td>
+      <td><span class="gls-cross">✘</span> <strong>Ausente</strong></td>
+      <td><span class="gls-check">✔</span> Presente</td>
+      <td><span class="gls-check">✔</span> Pequena</td>
+      <td>Volume muito pequeno · não se fraciona na prática</td>
+      <td><span class="gls-cross">✘</span> Não tem</td>
+    </tr>
+  </table>
+  <div class="gls-memo"><div class="gls-memo-label">Pontos críticos de prova</div><div class="gls-memo-text">Cão: ÚNICA glândula = próstata → as 3 frações são todas de origem prostática (exceto os sptz do epidídimo)<br>Equinos e suínos: GEL seminal → filtrar ANTES de avaliar e antes de inseminar<br>Suíno: sem ampola · bulbouretral gigante → gel<br>Bovino: sem gel · sêmen homogêneo · VA tem menor volume que EE (EE adiciona plasma seminal)<br>Vesícula seminal: ausente em cão e gato → cão não tem frutose no plasma seminal<br>(O epidídimo supre energia pela carnitina/glicerofosfocolina)</div></div>
+</div>
+`
+},
+{
+  id: 'patologias-macho',
+  num: 14,
   title: 'Patologias do Macho',
   icon: '#i-medical',
   content: `
@@ -5187,7 +5502,7 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
 },
 {
   id: 'patologias-femea',
-  num: 14,
+  num: 15,
   title: 'Patologias da Fêmea',
   icon: '#i-stethoscope',
   content: `
@@ -5240,7 +5555,7 @@ Cisto folicular: >25mm; presente por >10 dias; ausência de CL no ovário ipsila
 },
 {
   id: 'infecciosas',
-  num: 15,
+  num: 16,
   title: 'Doenças Infecciosas da Reprodução',
   icon: '#i-virus',
   content: `
@@ -5748,6 +6063,38 @@ window.impSetSp = function(sp, el) {
   el.classList.add('active');
   var t = panel.querySelector('#imp-sp-' + sp);
   if (t) t.classList.add('active');
+};
+
+// === CAPÍTULO 13 — GLÂNDULAS GENITAIS ACESSÓRIAS E FRAÇÕES DO SÊMEN ===
+var glsDb = {
+  gl: {
+    ampola: 'A <strong>ampola do ducto deferente</strong> é uma dilatação glandular da porção terminal do ducto deferente. Funciona como reservatório temporário de espermatozoides antes da ejaculação. Secreta ergotioneína (antioxidante) e outros constituintes do plasma seminal. Em bovinos: 8–10 cm, palpável transretalmente. Em equinos: grande e funcionalmente importante. <span class="gls-hl">Ausente em suínos e gato.</span> No cão existe como estrutura mas não é funcional como glândula — por isso o cão não tem ampola considerada como glândula acessória relevante.',
+    vesicula: 'A <strong>vesícula seminal (glândula vesicular)</strong> é a principal responsável pelo volume seminal e pela maior parte do plasma seminal. Secreta: <span class="gls-hl">frutose</span> (principal substrato energético dos espermatozoides), prostaglandinas, proteínas, citrato, bicarbonato e fatores de coagulação. Em bovinos: lobulada, palpável transretalmente — vesiculite seminal é causa importante de infertilidade. Em suínos: muito desenvolvida, contribui para o gel. Em equinos: superfície lisa (diferente da bovinos lobulada). <span class="gls-hl">AUSENTE em cão e gato</span> — por isso o plasma seminal canino e felino não contém frutose em quantidade significativa.',
+    prostata: 'A <strong>próstata</strong> está presente em TODAS as espécies domésticas e confere o <span class="gls-hl">odor característico (sui generis)</span> ao sêmen. Secreta: citrato, zinco (antioxidante), enzimas proteolíticas (liquefação do coágulo), fosfatase ácida prostática. Em cão: muito desenvolvida (bilobada), única glândula acessória funcional importante — o volume da 3ª fração é diretamente proporcional ao tamanho da próstata. Em ruminantes: próstata difusa (tecido prostático disperso ao redor da uretra pélvica), pouco volumosa. Hiperplasia prostática benigna (HPB) em cães velhos → aumenta volume da 3ª fração.',
+    bulbo: 'A <strong>glândula bulbouretral (de Cowper)</strong> fica próxima ao arco isquiático. Secreta fluido mucoso que limpa e lubrifica a uretra antes da ejaculação e lubrifica a genitália da fêmea. Em <span class="gls-hl">suínos</span>: extremamente desenvolvida (até 12 cm × 2,5 cm) — é a origem do gel seminal suíno (tampão cervical). Em bovinos e equinos: pequena e fibrosa, contribuição mínima. <span class="gls-hl">AUSENTE no cão</span> — por isso o cão não tem fração pré-espermática de origem bulbouretral (a 1ª fração é prostática, não bulbouretral como no equino).'
+  }
+};
+window.glsInfo = function(g, k) {
+  var el = document.getElementById('gls-info-' + g);
+  if (!el) return;
+  el.innerHTML = glsDb[g] && glsDb[g][k] ? glsDb[g][k] : '';
+  el.classList.remove('empty');
+};
+window.glsSetTab = function(t, el) {
+  var body = el.closest('.chapter-body') || document;
+  body.querySelectorAll('.gls-tab').forEach(function(x) { x.classList.remove('active'); });
+  body.querySelectorAll('.gls-panel').forEach(function(x) { x.classList.remove('active'); });
+  el.classList.add('active');
+  var panel = body.querySelector('#gls-panel-' + t);
+  if (panel) panel.classList.add('active');
+};
+window.glsSetSp = function(sp, el) {
+  var panel = el.closest('.gls-panel') || document.body;
+  panel.querySelectorAll('.gls-sp-tab').forEach(function(x) { x.classList.remove('active'); });
+  panel.querySelectorAll('.gls-sp-panel').forEach(function(x) { x.classList.remove('active'); });
+  el.classList.add('active');
+  var target = document.getElementById('gls-sp-' + sp);
+  if (target) target.classList.add('active');
 };
 
 // === CAPÍTULO 12 — EXAME ANDROLÓGICO E AVALIAÇÃO ESPERMÁTICA ===
