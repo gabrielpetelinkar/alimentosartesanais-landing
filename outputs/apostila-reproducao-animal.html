@@ -4099,13 +4099,13 @@ var CHAPTERS = [
   .iatf-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
   .iatf-title { font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 0; }
   .iatf-tabs { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
-  .iatf-tab { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 13px; color: var(--text-secondary); transition: all .18s; font-family: inherit; }
+  .iatf-tab { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border-light); background: transparent; cursor: pointer; font-size: 13px; color: var(--text-secondary); transition: all .18s; font-family: inherit; }
   .iatf-tab:hover { background: var(--bg-hover); }
   .iatf-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
   .iatf-panel { display: none; }
   .iatf-panel.active { display: block; }
   .iatf-sp-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
-  .iatf-sp-tab { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border-card); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; }
+  .iatf-sp-tab { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border-light); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; }
   .iatf-sp-tab:hover { background: var(--bg-hover); }
   .iatf-sp-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
   .iatf-sp-panel { display: none; }
@@ -4118,51 +4118,482 @@ var CHAPTERS = [
   .iatf-prova-box { border-left: 3px solid #BA7517; background: #fef3db; border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; line-height: 1.55; color: var(--text-primary); }
   .iatf-prova-box strong { color: #633806; }
   .iatf-info-box { border-left: 3px solid var(--blue-700); background: var(--blue-100); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; line-height: 1.55; color: var(--text-primary); }
-  .iatf-memo { margin-top: 14px; border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 16px; background: var(--bg-hover); }
+  .iatf-danger-box { border-left: 3px solid #A32D2D; background: #fce8e8; border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; line-height: 1.55; color: var(--text-primary); }
+  .iatf-danger-box strong { color: #7a1f1f; }
+  .iatf-memo { margin-top: 14px; border-radius: 8px; border: 1px solid var(--border-light); padding: 12px 16px; background: var(--bg-hover); }
   .iatf-memo-label { font-size: 10.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
   .iatf-memo-text { font-size: 13px; font-family: "SF Mono","Fira Code",Consolas,monospace; line-height: 1.8; color: var(--text-primary); }
   .iatf-hl { background: #fef3db; border-radius: 3px; padding: 1px 4px; font-weight: 600; }
-  .iatf-card { border-radius: 8px; border: 1px solid var(--border-card); padding: 10px 14px; background: var(--bg-card); margin-bottom: 8px; cursor: pointer; transition: border-color .15s, background .15s; }
-  .iatf-card:hover { border-color: var(--border-light); background: var(--bg-hover); }
+  .iatf-card { border-radius: 8px; border: 1px solid var(--border-light); padding: 10px 14px; background: var(--bg-card); margin-bottom: 8px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .iatf-card:hover { border-color: var(--bg-hover); background: var(--bg-hover); }
   .iatf-card-title { font-weight: 600; font-size: 13px; margin-bottom: 2px; color: var(--text-primary); }
   .iatf-card-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
-  .iatf-info-panel { background: var(--bg-hover); border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 16px; margin-top: 8px; font-size: 13px; line-height: 1.65; min-height: 52px; color: var(--text-primary); }
+  .iatf-info-panel { background: var(--bg-hover); border-radius: 8px; border: 1px solid var(--border-light); padding: 12px 16px; margin-top: 8px; font-size: 13px; line-height: 1.65; min-height: 52px; color: var(--text-primary); }
   .iatf-empty { color: var(--text-muted); font-style: italic; }
   .iatf-proto { display: flex; flex-direction: column; margin-bottom: 12px; }
   .iatf-prow { display: flex; align-items: stretch; gap: 8px; }
   .iatf-pday { font-size: 11px; font-weight: 600; color: var(--text-muted); min-width: 46px; flex-shrink: 0; padding-top: 13px; text-align: right; }
   .iatf-pspine { display: flex; flex-direction: column; align-items: center; width: 18px; flex-shrink: 0; }
   .iatf-pdot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 12px; }
-  .iatf-pline { flex: 1; width: 1.5px; background: var(--border-card); margin: 3px 0; }
-  .iatf-pcard { flex: 1; margin-bottom: 8px; border-radius: 8px; border: 1px solid var(--border-card); padding: 8px 12px; background: var(--bg-card); }
+  .iatf-pline { flex: 1; width: 1.5px; background: var(--border-light); margin: 3px 0; }
+  .iatf-pcard { flex: 1; margin-bottom: 8px; border-radius: 8px; border: 1px solid var(--border-light); padding: 8px 12px; background: var(--bg-card); }
   .iatf-ptitle { font-weight: 600; font-size: 13px; margin-bottom: 1px; color: var(--text-primary); }
   .iatf-psub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
   .iatf-horm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-  .iatf-horm-card { border-radius: 8px; border: 1px solid var(--border-card); padding: 10px 12px; background: var(--bg-card); cursor: pointer; transition: border-color .15s, background .15s; }
-  .iatf-horm-card:hover { border-color: var(--border-light); background: var(--bg-hover); }
+  .iatf-horm-card { border-radius: 8px; border: 1px solid var(--border-light); padding: 10px 12px; background: var(--bg-card); cursor: pointer; transition: border-color .15s, background .15s; }
+  .iatf-horm-card:hover { border-color: var(--bg-hover); background: var(--bg-hover); }
   .iatf-horm-name { font-weight: 600; font-size: 13px; margin-bottom: 2px; color: var(--text-primary); }
   .iatf-horm-sub { font-size: 11px; color: var(--text-secondary); line-height: 1.3; }
+  .iatf-ref-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 14px; }
+  .iatf-ref-table th { background: var(--bg-hover); font-weight: 600; text-align: left; padding: 7px 10px; border: 1px solid var(--border-light); font-size: 11px; color: var(--text-secondary); }
+  .iatf-ref-table td { padding: 6px 10px; border: 1px solid var(--border-light); vertical-align: top; line-height: 1.5; }
+  .iatf-ref-table tr:nth-child(even) td { background: var(--bg-hover); }
+  .iatf-step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .iatf-step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--blue-100); color: var(--blue-700); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .iatf-step-content { flex: 1; }
+  .iatf-step-title { font-weight: 600; font-size: 13px; color: var(--text-primary); margin-bottom: 2px; }
+  .iatf-step-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
   .iatf-d-purple { background: #7F77DD; }
   .iatf-d-coral { background: #D85A30; }
   .iatf-d-teal { background: #1D9E75; }
   .iatf-d-amber { background: #BA7517; }
   .iatf-d-blue { background: #378ADD; }
   .iatf-d-gray { background: #888780; }
+  .iatf-d-green { background: #27a85f; }
+  .iatf-d-pink { background: #c25ea8; }
 </style>
 <div class="iatf-header">
-  <p class="iatf-label">7.1</p>
-  <h3 class="iatf-title">IATF — Inseminação Artificial em Tempo Fixo</h3>
+  <p class="iatf-label">Capítulo 9</p>
+  <h3 class="iatf-title">Biotecnologias da Reprodução Animal</h3>
 </div>
 <div class="iatf-tabs">
-  <button class="iatf-tab active" onclick="iatfSetTab('p4e2',this)">Protocolo P4+E2 <span class="iatf-badge iatf-bsuc">Brasil</span></button>
-  <button class="iatf-tab" onclick="iatfSetTab('ovsynch',this)">Ovsynch / Double Ovsynch</button>
-  <button class="iatf-tab" onclick="iatfSetTab('hormonios',this)">Hormônios</button>
-  <button class="iatf-tab" onclick="iatfSetTab('categorias',this)">Categorias animais</button>
-  <button class="iatf-tab" onclick="iatfSetTab('inducao',this)">Indução de puberdade</button>
+  <button class="iatf-tab active" onclick="iatfSetTab('ia',this)">IA / IATF</button>
+  <button class="iatf-tab" onclick="iatfSetTab('te',this)">TE <span class="iatf-badge iatf-binfo">Transferência de embrião</span></button>
+  <button class="iatf-tab" onclick="iatfSetTab('opu',this)">OPU <span class="iatf-badge iatf-bsuc">Aspiração folicular</span></button>
+  <button class="iatf-tab" onclick="iatfSetTab('fiv',this)">FIV</button>
+  <button class="iatf-tab" onclick="iatfSetTab('icsi',this)">ICSI</button>
+  <button class="iatf-tab" onclick="iatfSetTab('sexagem',this)">Sexagem</button>
+  <button class="iatf-tab" onclick="iatfSetTab('clonagem',this)">Clonagem</button>
 </div>
 
-<!-- P4+E2 -->
-<div class="iatf-panel active" id="iatf-panel-p4e2">
+<!-- IA / IATF -->
+<div class="iatf-panel active" id="iatf-panel-ia">
+  <div class="iatf-prova-box"><strong>IA — Inseminação Artificial:</strong> técnica de maior impacto na reprodução animal. Permite uso de sêmen sexado, congelado e transporte internacional de genética. IATF (Tempo Fixo) elimina detecção de cio — Brasil lidera o mundo em IATF bovina com ~15 milhões de doses/ano.</div>
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('ia_fund',this)">Fundamentos da IA</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('ia_semen',this)">Sêmen e parâmetros</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('ia_p4e2',this)">Protocolo P4+E2 <span class="iatf-badge iatf-bsuc">Brasil</span></button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('ia_ovsynch',this)">Ovsynch / Double Ovsynch</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('ia_hormonios',this)">Hormônios</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('ia_especies',this)">Por espécie</button>
+  </div>
+
+  <div class="iatf-sp-panel active" id="iatf-sp-ia_fund">
+    <div class="iatf-info-box">A IA é a biotecnologia reprodutiva mais aplicada no mundo. Exige avaliação prévia de qualidade seminal e sincronização do estro/ovulação para IATF.</div>
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Coleta e avaliação do sêmen</div><div class="iatf-step-sub">Vagina artificial (padrão) ou eletroejaculação. Parâmetros: motilidade, vigor, morfologia, concentração</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Processamento e criopreservação</div><div class="iatf-step-sub">Diluidores (Tris, leite, gema de ovo) → envasamento em palhetas 0,25 mL ou 0,5 mL → curva de resfriamento → nitrogênio líquido (−196 °C)</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Descongelamento e deposição</div><div class="iatf-step-sub">37–38 °C por 30–45 s. Deposição transcervical no corpo do útero (bovinos) ou no corno uterino ipsilateral ao folículo dominante (equinos: via endoscopia)</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">4</div><div class="iatf-step-content"><div class="iatf-step-title">Sincronização do estro / IATF</div><div class="iatf-step-sub">IA convencional: detecção de estro + IA 12–18 h após. IATF: protocolo hormonal → IA em tempo fixo sem detecção de estro</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Vantagens da IA</div><div class="iatf-memo-text">Disseminação de genética superior · Controle de DSTs venéreas · 1 touro = centenas de doses<br>Rastreabilidade genética · Sêmen sexado (até 90% do sexo desejado)</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-ia_semen">
+    <div class="iatf-prova-box"><strong>Parâmetros mínimos CBRA (bovinos) — sêmen congelado pós-descongelamento:</strong> Motilidade progressiva ≥35% · Vigor ≥3 · Defeitos maiores ≤20% · Defeitos menores ≤10% · Defeitos totais ≤30%</div>
+    <table class="iatf-ref-table">
+      <tr><th>Parâmetro</th><th>Fresco (mínimo)</th><th>Congelado/descongelado (mínimo)</th></tr>
+      <tr><td>Motilidade progressiva</td><td>≥70%</td><td>≥35%</td></tr>
+      <tr><td>Vigor</td><td>≥3</td><td>≥3</td></tr>
+      <tr><td>Defeitos maiores</td><td>≤20%</td><td>≤20%</td></tr>
+      <tr><td>Defeitos menores</td><td>≤10%</td><td>≤10%</td></tr>
+      <tr><td>Defeitos totais</td><td>≤30%</td><td>≤30%</td></tr>
+      <tr><td>Concentração mínima/dose</td><td>—</td><td>≥10 milhões de espermatozoides progressivos</td></tr>
+    </table>
+    <div class="iatf-info-box">Sêmen sexado: motilidade pós-descongelamento ≥35% (mesma exigência), porém a taxa de concepção é 10–15% menor que sêmen convencional — aceito por permitir escolha do sexo.</div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Classificação dos defeitos espermáticos</div><div class="iatf-memo-text">MAIORES (afetam fertilização): cabeça piriforme, acrossomo dobrado, cauda dobrada com gota, inserção anormal da PI<br>MENORES (menor impacto): gota citoplasmática distal, cauda simples dobrada</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-ia_p4e2">
+    <div class="iatf-info-box">Protocolo mais usado no Brasil — base de P4 intravaginal + estradiol. Aplicado em ~91% das IAs bovinas no Brasil em 2023. Indicado especialmente para <span class="iatf-hl">Bos indicus</span> e bovinos de corte.</div>
+    <div class="iatf-sp-tabs" style="margin-top:8px">
+      <button class="iatf-sp-tab active" onclick="iatfSetSp('corte3',this)">Corte — 3 manejos</button>
+      <button class="iatf-sp-tab" onclick="iatfSetSp('corte4',this)">Corte — 4 manejos</button>
+      <button class="iatf-sp-tab" onclick="iatfSetSp('leite',this)">Leite</button>
+      <button class="iatf-sp-tab" onclick="iatfSetSp('novilha',this)">Novilhas</button>
+    </div>
+    <div class="iatf-sp-panel active" id="iatf-sp-corte3">
+      <div class="iatf-proto">
+        <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 intravaginal + BE <span class="iatf-badge iatf-binfo">2 mg IM</span></div><div class="iatf-psub">CIDR (1,38 g) ou Repro one/neo · BE induz atresia folicular e sincroniza nova onda · Opcional: PGF2α se CL presente</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D8</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α + eCG + CE</div><div class="iatf-psub">PGF2α 0,5 mg · eCG 300 UI · CE 1 mg — luteólise + crescimento folicular + indução de ovulação</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D10</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">~48 h após retirada do dispositivo</span></div><div class="iatf-psub">GnRH opcional · indicado para vacas sem manifestação de cio ao bastão marcador no D8</div></div></div>
+      </div>
+      <div class="iatf-memo"><div class="iatf-memo-label">Resumo</div><div class="iatf-memo-text">D0: P4 + BE → D8: retirada + PGF + eCG + CE → D10: IATF (±GnRH)</div></div>
+    </div>
+    <div class="iatf-sp-panel" id="iatf-sp-corte4">
+      <div class="iatf-proto">
+        <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 + BE 2 mg</div><div class="iatf-psub">Mesmo que protocolo de 3 manejos</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α <span class="iatf-badge iatf-bwarn">1ª dose — luteólise antecipada</span></div><div class="iatf-psub">Dinoprost ou cloprostenol · dispositivo permanece</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D9</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α + CE + eCG</div><div class="iatf-psub">CE 0,5–1 mg + eCG 300 UI + PGF2α 2ª dose</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D11</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">~48 h após D9</span></div><div class="iatf-psub">GnRH opcional</div></div></div>
+      </div>
+      <div class="iatf-memo"><div class="iatf-memo-label">Resumo</div><div class="iatf-memo-text">D0: P4+BE → D7: PGF → D9: retirada+PGF+CE+eCG → D11: IATF</div></div>
+    </div>
+    <div class="iatf-sp-panel" id="iatf-sp-leite">
+      <div class="iatf-proto">
+        <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 (2 g) + BE 2 mg <span class="iatf-badge iatf-binfo">±GnRH</span></div><div class="iatf-psub">Repro sync 2 g · GnRH no D0 = Double Ovsynch</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α 1ª dose</div><div class="iatf-psub">Dispositivo permanece · luteólise parcial</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D8</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α 2ª dose + CE 0,5 mg</div><div class="iatf-psub">Sem eCG</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D10</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">sem hormônio adicional</span></div><div class="iatf-psub">~48 h após D8</div></div></div>
+      </div>
+      <div class="iatf-memo"><div class="iatf-memo-label">Resumo leite</div><div class="iatf-memo-text">D0: P4(2g)+BE(±GnRH) → D7: PGF → D8: retirada+PGF+CE → D10: IATF</div></div>
+    </div>
+    <div class="iatf-sp-panel" id="iatf-sp-novilha">
+      <div class="iatf-proto">
+        <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 monodose (0,5 g) + BE 2 mg</div><div class="iatf-psub">Repro one 0,5 g (1º uso) ou multidose 1 g (2º+ uso) · 7 dias</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α + eCG + CE</div><div class="iatf-psub">eCG 300 UI · CE 0,5 mg · PGF2α 0,5 mg</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D9</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">~48 h após D7</span></div><div class="iatf-psub">GnRH opcional</div></div></div>
+      </div>
+      <div class="iatf-memo"><div class="iatf-memo-label">Diferenças novilhas vs. vacas</div><div class="iatf-memo-text">P4: 0,5 g monodose · 7 dias (não 8) · CE: 0,5 mg (não 1 mg)</div></div>
+    </div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-ia_ovsynch">
+    <div class="iatf-info-box">Protocolo baseado em GnRH — indicado para Bos taurus e leiteiras. Aplicável onde ésteres de estradiol são proibidos (UE, EUA, Canadá).</div>
+    <div class="iatf-proto">
+      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH <span class="iatf-badge iatf-binfo">buserelina · lecirrelina</span></div><div class="iatf-psub">Ovula folículo dominante → emergência de nova onda sincronizada</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α <span class="iatf-badge iatf-bdanger">cloprostenol · dinoprost</span></div><div class="iatf-psub">Luteólise · ±2ª dose no D8</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D9</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH — ovulação sincronizada</div><div class="iatf-psub">Pico de LH → ovulação do folículo dominante</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D9+16h</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">16–20 h após 2º GnRH</span></div><div class="iatf-psub">Sem detecção de estro</div></div></div>
+    </div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Double Ovsynch — maior resultado em leiteiras</div><div class="iatf-memo-text">D-17: GnRH → D-10: PGF → D-3: GnRH (início Ovsynch) → D0: PGF → D2: GnRH+IATF+16h</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-ia_hormonios">
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Clique em cada hormônio para ver mecanismo, dose e indicação</p>
+    <div class="iatf-horm-grid">
+      <div class="iatf-horm-card" onclick="iatfInfo('h','be')"><div class="iatf-horm-name">BE — benzoato de estradiol</div><div class="iatf-horm-sub">Sincronização da onda folicular · D0</div></div>
+      <div class="iatf-horm-card" onclick="iatfInfo('h','ce')"><div class="iatf-horm-name">CE — cipionato de estradiol</div><div class="iatf-horm-sub">Indutor de ovulação · retirada do dispositivo</div></div>
+      <div class="iatf-horm-card" onclick="iatfInfo('h','pgf')"><div class="iatf-horm-name">PGF2α</div><div class="iatf-horm-sub">Luteólise · cloprostenol · dinoprost</div></div>
+      <div class="iatf-horm-card" onclick="iatfInfo('h','ecg')"><div class="iatf-horm-name">eCG (PMSG)</div><div class="iatf-horm-sub">Bos indicus · anestro · 200–400 UI</div></div>
+      <div class="iatf-horm-card" onclick="iatfInfo('h','gnrh')"><div class="iatf-horm-name">GnRH</div><div class="iatf-horm-sub">Induz LH · ovulação · buserelina</div></div>
+      <div class="iatf-horm-card" onclick="iatfInfo('h','p4')"><div class="iatf-horm-name">P4 — progesterona</div><div class="iatf-horm-sub">CIDR 1,38 g · Repro one 0,5 g · 7–9 dias</div></div>
+    </div>
+    <div class="iatf-info-panel iatf-empty" id="iatf-info-h">Clique em um hormônio.</div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-ia_especies">
+    <table class="iatf-ref-table">
+      <tr><th>Espécie</th><th>Técnica de deposição</th><th>Sinc. do estro</th><th>Observações</th></tr>
+      <tr><td><strong>Bovinos</strong></td><td>Transcervical — corpo do útero</td><td>IATF: P4+E2 ou Ovsynch</td><td>Maior volume do mundo; sêmen sexado popular</td></tr>
+      <tr><td><strong>Equinos</strong></td><td>Transcervical com pipeta ou via endoscopia no corno ipsilateral</td><td>Monitoramento US + hCG/Deslorelina</td><td>FIV convencional não funciona → ICSI é padrão</td></tr>
+      <tr><td><strong>Ovinos/Caprinos</strong></td><td>Transcervical (difícil) ou laparoscopia intrauterina</td><td>Esponja de P4 (14 d) + eCG na retirada</td><td>Laparoscopia: maiores taxas com sêmen congelado</td></tr>
+      <tr><td><strong>Suínos</strong></td><td>Transcervical (cateter espiral) ou pós-cervical</td><td>Desmame das leitoas / detecção de cio</td><td>Dose: 2–3 bilhões espermatozoides; nova dose em 12 h</td></tr>
+      <tr><td><strong>Cães</strong></td><td>Vaginal, transcervical ou cirúrgica intrauterina</td><td>Citologia vaginal + P4 sérica ≥5–10 ng/mL</td><td>Sêmen resfriado: 48–72 h de vida; congelado: intrauterino</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- TE — TRANSFERÊNCIA DE EMBRIÃO -->
+<div class="iatf-panel" id="iatf-panel-te">
+  <div class="iatf-prova-box"><strong>TE — Transferência de Embrião:</strong> permite multiplicar o potencial genético de doadoras de alto valor zootécnico, obtendo 5–10 embriões por coleta vs. 1 bezero/ano pela monta natural. Introduzida na prática bovina em 1951 (Moore & Rowson).</div>
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('te_visao',this)">Visão geral</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('te_super',this)">Superovulação (SOV)</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('te_coleta',this)">Coleta e avaliação</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('te_receptoras',this)">Receptoras</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('te_criopreservacao',this)">Criopreservação</button>
+  </div>
+
+  <div class="iatf-sp-panel active" id="iatf-sp-te_visao">
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Seleção e preparo da doadora</div><div class="iatf-step-sub">Exame ginecológico completo (EG) · ECC 3–3,5 · Ciclando regularmente · Livre de doenças reprodutivas</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Superovulação</div><div class="iatf-step-sub">FSH ou eCG → múltiplos folículos ovulam → múltiplos embriões</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Cobertura / IA</div><div class="iatf-step-sub">Múltiplas IAs com sêmen do touro desejado durante o estro da doadora superovulada</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">4</div><div class="iatf-step-content"><div class="iatf-step-title">Coleta dos embriões (D7)</div><div class="iatf-step-sub">Lavagem uterina não-cirúrgica (transcervical) com solução de Dulbecco · dia 6–8 após o estro</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">5</div><div class="iatf-step-content"><div class="iatf-step-title">Avaliação, classificação e transferência</div><div class="iatf-step-sub">Microscopia · Classificação IETS (graus 1–4) · Transferência fresca ou após criopreservação</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Rendimento médio</div><div class="iatf-memo-text">5–8 embriões transferíveis por coleta · Resposta à SOV imprevisível (grande variação individual)<br>Doadoras "responsivas": 10–15 embriões · Doadoras "refratárias": 0–2</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-te_super">
+    <div class="iatf-info-box">A superovulação induz múltiplas ovulações por estimulação exógena com gonadotrofinas, permitindo coleta de vários embriões por doadora.</div>
+    <div class="iatf-proto">
+      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Sincronização: P4 + BE (ou GnRH)</div><div class="iatf-psub">Igual ao protocolo de IATF — garante nova onda folicular sincronizada</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D4–5</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">FSH — 8 doses decrescentes em 4 dias <span class="iatf-badge iatf-binfo">2x/dia</span></div><div class="iatf-psub">Doses: 5·5·4·4·3·3·2·2 mg (NIH-FSH) ou equivalente · Folltropin, Pluset · meia-vida curta exige 2 aplicações/dia</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α + retirada do dispositivo P4</div><div class="iatf-psub">Luteólise → estro em 24–48 h</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D8–9</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Estro + IA (2–3 IAs com 12 h de intervalo)</div><div class="iatf-psub">Cobrir várias vezes para garantir fertilização de todos os oócitos</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D14–16</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-amber"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Coleta dos embriões</div><div class="iatf-psub">D7 pós-estro · máxima qualidade embrionária (blastocisto)</div></div></div>
+    </div>
+    <div class="iatf-info-box"><strong>eCG como alternativa ao FSH:</strong> dose única (1500–3000 UI) vs. 8 doses de FSH. Maior praticidade, porém risco de formação de anticorpos com uso repetido e menor previsibilidade da resposta. Indicado em pequenos ruminantes e onde FSH não está disponível.</div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-te_coleta">
+    <div class="iatf-info-box">Coleta não-cirúrgica transcervical no D7 pós-estro. Doadora sedada (xilazina ou epidural). Cateter de Foley introduzido por cada corno uterino via via vaginal/cervical.</div>
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Lavagem uterina</div><div class="iatf-step-sub">400–500 mL de PBS ou Dulbecco por corno · 3–4 ciclos de infusão e drenagem por gravidade · Coleta no filtro EmCon (75 µm)</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Pesquisa e avaliação dos embriões</div><div class="iatf-step-sub">Microscópio estereoscópico 10–40x · Classificação morfológica IETS</div></div></div>
+    <table class="iatf-ref-table" style="margin-top:10px">
+      <tr><th>Grau IETS</th><th>Classificação</th><th>Morfologia</th><th>Indicação</th></tr>
+      <tr><td><strong>1</strong></td><td>Excelente/Bom</td><td>Simétrico, compacto, blastômeros uniformes, ZP intacta, &lt;10% debris</td><td>Transferência fresca ou criopreservação</td></tr>
+      <tr><td><strong>2</strong></td><td>Regular</td><td>Defeitos menores; 10–25% debris; leve assimetria</td><td>Transferência fresca (não criopreservar)</td></tr>
+      <tr><td><strong>3</strong></td><td>Ruim</td><td>25–50% material degenerado; irregularidades marcadas</td><td>Transferência fresca apenas se necessário</td></tr>
+      <tr><td><strong>4</strong></td><td>Morto/Inviável</td><td>&gt;50% degenerado; sem sinais de viabilidade</td><td>Descartar</td></tr>
+    </table>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-te_receptoras">
+    <div class="iatf-prova-box"><strong>Sincronização doadora–receptora:</strong> receptora deve estar em D7 do ciclo (CL funcional com P4 ≥1 ng/mL) no mesmo momento em que os embriões são transferidos. Dessincronização de ±24 h: queda significativa na taxa de prenhez.</div>
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Critérios de seleção da receptora</div><div class="iatf-step-sub">Ciclando regularmente · ECC 2,5–3,5 · Sem patologias uterinas · CL visível e palpável ao US no D7 · P4 ≥1 ng/mL</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Técnica de transferência</div><div class="iatf-step-sub">Transcervical com pistola de transferência · Embrião depositado no corno uterino ipsilateral ao CL · Em menos de 10 min após retirada do meio</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Diagnóstico gestacional</div><div class="iatf-step-sub">US: D28–30 após a transferência · P4 sérica D21–24 (confirmatório)</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Taxa de prenhez esperada</div><div class="iatf-memo-text">Embrião grau 1 fresco: 60–70% · Grau 1 congelado: 45–55% · Grau 2 fresco: 45–55%<br>Dessincronização ±1 dia: reduz ~10–15% · ±2 dias: reduz >30%</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-te_criopreservacao">
+    <div class="iatf-info-box">Criopreservação permite armazenamento indefinido de embriões em N₂ líquido (−196 °C), transporte internacional e bancos genéticos.</div>
+    <table class="iatf-ref-table">
+      <tr><th>Método</th><th>Crioprotetor</th><th>Curva de resfriamento</th><th>Descongelamento</th></tr>
+      <tr><td><strong>Convencional (lento)</strong></td><td>Glicerol 1,4 M ou Etilenoglicol 1,5 M</td><td>Programada: −0,3 a −0,5 °C/min até −35 °C, depois N₂</td><td>37 °C em 30 s → diluição em sacarose</td></tr>
+      <tr><td><strong>Vitrificação</strong></td><td>EG + DMSO em altas concentrações (5–8 M)</td><td>Ultrarrápida — mergulho direto em N₂ após exposição breve</td><td>37 °C direto · sem etapa de diluição com sacarose</td></tr>
+    </table>
+    <div class="iatf-info-box">Vitrificação: resultado similar ao método lento para embriões bovinos. Maior facilidade logística (sem máquina de criopreservação). Cada vez mais adotada em laboratórios de FIV/OPU.</div>
+  </div>
+</div>
+
+<!-- OPU — ASPIRAÇÃO FOLICULAR -->
+<div class="iatf-panel" id="iatf-panel-opu">
+  <div class="iatf-prova-box"><strong>OPU — Ovum Pick-Up (Aspiração Folicular):</strong> coleta de oócitos diretamente dos folículos ovarianos por aspiração guiada por US transvaginal. Permite coleta a cada 14 dias da mesma doadora, sem necessidade de superovulação. Base do programa OPU-FIV, hoje dominante no Brasil.</div>
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('opu_tec',this)">Técnica</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('opu_preparo',this)">Preparo da doadora</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('opu_result',this)">Resultados esperados</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('opu_especies',this)">Por espécie</button>
+  </div>
+
+  <div class="iatf-sp-panel active" id="iatf-sp-opu_tec">
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Sedação e anestesia epidural</div><div class="iatf-step-sub">Xilazina IV ou epidural (lidocaína) · Esvaziamento retal · Antissepsia vulvar</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Transdutor US transvaginal + guia de agulha</div><div class="iatf-step-sub">Sonda 5–7,5 MHz · guia de punção acoplado · visualização dos folículos em tempo real</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Aspiração dos folículos ≥3–4 mm</div><div class="iatf-step-sub">Agulha 17–19 G · pressão de aspiração: 40–80 mmHg · aspiração + lavagem do folículo (flush) com PBS</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">4</div><div class="iatf-step-content"><div class="iatf-step-title">Pesquisa dos oócitos no fluido aspirado</div><div class="iatf-step-sub">Filtro de 70 µm · busca microscópica · classificação dos complexos cumulus-oócito (COC)</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">5</div><div class="iatf-step-content"><div class="iatf-step-title">Transporte ao laboratório de FIV</div><div class="iatf-step-sub">Meio HEPES tamponado a 38,5 °C · tempo máximo de transporte: 4–6 h · recipiente térmico</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Classificação dos COCs</div><div class="iatf-memo-text">Grau I: múltiplas camadas de cumulus compacto + citoplasma homogêneo → MIV<br>Grau II: ≥1 camada de cumulus parcialmente expandido → MIV<br>Grau III: sem cumulus (desnudo) ou cumulus expandido → descartar (não matura)</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-opu_preparo">
+    <div class="iatf-info-box">O preparo da doadora visa maximizar o número de folículos aspiráveis. O pool folicular pode ser estimulado com FSH (protocolo de estimulação folicular sem ovulação) ou com FSH + ablação folicular.</div>
+    <div class="iatf-proto">
+      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Ablação folicular (US guiada) + P4 (opcional)</div><div class="iatf-psub">Punção de todos os folículos visíveis ≥5 mm → nova onda folicular sincronizada em 2–3 dias</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D2–3</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">FSH em doses baixas (estimulação sem SOV)</div><div class="iatf-psub">2–4 doses de FSH a partir do surgimento da nova onda → mais folículos na OPU sem ovulação</div></div></div>
+      <div class="iatf-prow"><div class="iatf-pday">D5–7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">OPU — aspiração de todos os folículos ≥3 mm</div><div class="iatf-psub">Imediatamente encaminhar ao laboratório de FIV</div></div></div>
+    </div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Frequência da OPU</div><div class="iatf-memo-text">Sem estimulação: a cada 14 dias · Com estimulação + ablação: pode ser a cada 10–14 dias<br>Gestantes de até 4 meses: OPU possível (sem ablação) · Doadoras pós-parto: aguardar 30 dias</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-opu_result">
+    <table class="iatf-ref-table">
+      <tr><th>Parâmetro</th><th>Bovinos (sem estimulação)</th><th>Bovinos (com FSH)</th></tr>
+      <tr><td>Folículos aspirados/sessão</td><td>8–15</td><td>15–30</td></tr>
+      <tr><td>Taxa de recuperação de oócitos</td><td>60–75%</td><td>65–80%</td></tr>
+      <tr><td>Taxa de competência (grau I+II)</td><td>60–70%</td><td>65–75%</td></tr>
+      <tr><td>Oócitos competentes/sessão</td><td>4–8</td><td>8–20</td></tr>
+      <tr><td>Blastocistos/oócito competente</td><td>30–45%</td><td>35–50%</td></tr>
+      <tr><td>Embriões transferíveis/sessão</td><td>2–4</td><td>4–8</td></tr>
+    </table>
+    <div class="iatf-prova-box"><strong>OPU vs. TE convencional:</strong> OPU tem menor rendimento por sessão, mas a possibilidade de realizar a cada 14 dias e acumular resultado ao longo do ano resulta em maior número total de embriões. Uma doadora com OPU pode gerar 60–100+ embriões/ano vs. 20–30 com TE convencional.</div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-opu_especies">
+    <table class="iatf-ref-table">
+      <tr><th>Espécie</th><th>Abordagem</th><th>Particularidades</th></tr>
+      <tr><td><strong>Bovinos</strong></td><td>Transvaginal guiada por US</td><td>Técnica padrão · sonda 5–7,5 MHz · a cada 14 dias</td></tr>
+      <tr><td><strong>Equinos</strong></td><td>Transvaginal guiada por US</td><td>Oócitos ovulados (pós-hCG) ou de folículos pré-ovulatórios · FIV não funciona → direto para ICSI</td></tr>
+      <tr><td><strong>Ovinos/Caprinos</strong></td><td>Laparoscopia (abordagem transcutânea)</td><td>Anatomia vaginal impede abordagem transvaginal · sedação + laparoscopia ventral</td></tr>
+      <tr><td><strong>Suínos</strong></td><td>Laparoscopia ou cirurgia</td><td>Folículos pequeníssimos · técnica difícil · uso acadêmico/biotecnológico</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- FIV -->
+<div class="iatf-panel" id="iatf-panel-fiv">
+  <div class="iatf-prova-box"><strong>FIV — Fertilização In Vitro:</strong> fertilização do oócito fora do corpo. Em bovinos, inclui 3 etapas in vitro: Maturação (MIV), Fertilização (FIV) e Cultivo (CIV). Brasil é líder mundial em embriões bovinos produzidos por FIV — mais de 400.000 embriões/ano.</div>
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('fiv_miv',this)">1. MIV — Maturação in vitro</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('fiv_fiv',this)">2. FIV — Fertilização in vitro</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('fiv_civ',this)">3. CIV — Cultivo in vitro</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('fiv_especies',this)">Por espécie</button>
+  </div>
+
+  <div class="iatf-sp-panel active" id="iatf-sp-fiv_miv">
+    <div class="iatf-info-box">Oócitos recuperados pela OPU chegam imaturos (vesícula germinativa, estágio GV). A MIV simula in vitro o processo de maturação que normalmente ocorre no folículo pré-ovulatório sob estímulo do pico de LH.</div>
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Seleção dos COCs</div><div class="iatf-step-sub">Lavagem com PBS · seleção de grau I e II (cumulus compacto e múltiplas camadas)</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Meio de MIV</div><div class="iatf-step-sub">TCM-199 tamponado com HEPES + FSH (0,01–0,1 UI/mL) + LH + estradiol (1 µg/mL) + SFB 10% + piruvato + gentamicina</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Condições de cultivo</div><div class="iatf-step-sub">38,5 °C · 5% CO₂ · umidade saturada · 22–24 horas</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">4</div><div class="iatf-step-content"><div class="iatf-step-title">Avaliação da maturação</div><div class="iatf-step-sub">Expansão do cumulus e extrusão do 1º corpúsculo polar → Metáfase II → matura para FIV</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Taxa de maturação esperada</div><div class="iatf-memo-text">Grau I: 80–90% → MII · Grau II: 60–75% → MII · Grau III: &lt;30% → descartar</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-fiv_fiv">
+    <div class="iatf-info-box">O espermatozoide bovino necessita de capacitação in vitro antes da FIV, pois o sêmen congelado não está capacitado naturalmente.</div>
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Capacitação espermática</div><div class="iatf-step-sub">Heparina (10 µg/mL) por 15 min · ou ionóforo de cálcio A23187 (2 µM, 5 min) · ou percoll gradient + capacitação</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Co-cultivo oócito + espermatozoide</div><div class="iatf-step-sub">Meio FERT-TALP ou SOF · concentração: 1–2 × 10⁶ espermatozoides/mL · 18–20 horas · 38,5 °C, 5% CO₂</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Avaliação da fertilização</div><div class="iatf-step-sub">D1 (18–22 h): presença de 2 pró-núcleos (zigoto) ou início de clivagem · taxa de clivagem: 70–90% dos oócitos MII</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Polispermia em suínos — diferença importante</div><div class="iatf-memo-text">Bovinos: FIV convencional eficiente · Equinos: FIV NÃO funciona → usar ICSI<br>Suínos: polispermia fisiológica dificulta FIV padrão → técnicas especiais</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-fiv_civ">
+    <div class="iatf-info-box">O embrião bovino precisa ser cultivado in vitro por 7–8 dias até atingir o estágio de blastocisto, quando pode ser transferido ou criopreservado.</div>
+    <table class="iatf-ref-table">
+      <tr><th>Dia</th><th>Estágio</th><th>Evento chave</th></tr>
+      <tr><td>D0</td><td>Oócito MII / Zigoto</td><td>Fertilização / formação dos pró-núcleos</td></tr>
+      <tr><td>D1–2</td><td>2–4 células</td><td>1ª e 2ª clivagens · EGA em 8–16 células (bovinos)</td></tr>
+      <tr><td>D3–4</td><td>8–16 células → Mórula</td><td>Compactação via E-caderina</td></tr>
+      <tr><td>D5–6</td><td>Blastocisto inicial</td><td>Formação da blastocele · ICM + trofoblasto definidos</td></tr>
+      <tr><td>D7–8</td><td>Blastocisto expandido</td><td>Hatching · pronto para transferência ou criopreservação</td></tr>
+    </table>
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Meios de CIV</div><div class="iatf-step-sub">SOF (Synthetic Oviduct Fluid) · CR1aa · G1/G2 (sequencial) · 38,5 °C · 5% O₂, 5% CO₂, 90% N₂ (trígás) · umidade 100%</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Cocultura ou condição sem células</div><div class="iatf-step-sub">Sistema sem células (sem SOF) é o padrão atual · Cocultura com células de granulosa ou BOEC: uso em declínio</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Taxa de blastocisto esperada</div><div class="iatf-memo-text">Dos oócitos MII fertilizados: 30–50% chegam a blastocisto D7–8<br>Dos oócitos totais aspirados: 15–30% chegam a blastocisto (inclui perdas na MIV e FIV)</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-fiv_especies">
+    <table class="iatf-ref-table">
+      <tr><th>Espécie</th><th>FIV convencional</th><th>Particularidade</th></tr>
+      <tr><td><strong>Bovinos</strong></td><td>Sim — dominante no Brasil</td><td>Heparina para capacitação · SOF/CR1aa · blastocisto D7–8</td></tr>
+      <tr><td><strong>Equinos</strong></td><td><strong>Não funciona</strong></td><td>Capacitação in vitro extremamente difícil · usar ICSI obrigatoriamente</td></tr>
+      <tr><td><strong>Ovinos/Caprinos</strong></td><td>Sim, com adaptações</td><td>SOF + aminoácidos · transferência laparoscópica</td></tr>
+      <tr><td><strong>Suínos</strong></td><td>Difícil (polispermia)</td><td>Polispermia fisiológica → meios especiais anti-poliespermia</td></tr>
+      <tr><td><strong>Felinos</strong></td><td>Sim (pesquisa)</td><td>Conservação de espécies ameaçadas · oócito necessita 48 h de MIV</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ICSI -->
+<div class="iatf-panel" id="iatf-panel-icsi">
+  <div class="iatf-prova-box"><strong>ICSI — Injeção Intracitoplasmática de Espermatozoide:</strong> injeção mecânica de um único espermatozoide diretamente no citoplasma do oócito. Biotecnologia obrigatória em equinos (onde FIV não funciona) e útil em casos de infertilidade masculina grave.</div>
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('icsi_tec',this)">Técnica</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('icsi_indicacoes',this)">Indicações</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('icsi_equinos',this)">ICSI em Equinos</button>
+  </div>
+
+  <div class="iatf-sp-panel active" id="iatf-sp-icsi_tec">
+    <div class="iatf-info-box">A ICSI requer micromanipuladores acoplados a microscópio invertido (400–600x) e agulhas de micropipeta fabricadas com precisão de micrômetros.</div>
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Maturação do oócito (MIV)</div><div class="iatf-step-sub">MIV padrão 22–24 h · para equinos: oócitos maduros coletados do folículo pré-ovulatório pós-hCG (24–30 h)</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Remoção do cumulus</div><div class="iatf-step-sub">Hialuronidase (80 UI/mL, 30–60 s) + pipetagem mecânica gentil · visualização do 1º corpúsculo polar (Metáfase II)</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Imobilização do espermatozoide</div><div class="iatf-step-sub">Pinça mecânica da cauda em meio viscoso (PVP) · imobilização quebra estruturas que inibem ativação do oócito</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">4</div><div class="iatf-step-content"><div class="iatf-step-title">Injeção no oócito</div><div class="iatf-step-sub">Oócito fixado pela pipeta de holding (180° do corpúsculo polar) · agulha ICSI penetra oolemma · injeção do espermatozoide + pequena quantidade de meio</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">5</div><div class="iatf-step-content"><div class="iatf-step-title">Ativação artificial (para equinos)</div><div class="iatf-step-sub">Ionóforo de cálcio + 6-DMAP (6-dimetilaminopurina) → ativa o oócito equino que não ativa espontaneamente pós-ICSI</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">6</div><div class="iatf-step-content"><div class="iatf-step-title">CIV e transferência</div><div class="iatf-step-sub">Cultivo até blastocisto (D7–8 bovinos; D7–9 equinos) · transferência para receptora sincronizada</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Taxas esperadas — ICSI bovino</div><div class="iatf-memo-text">Fertilização (2 pró-núcleos): 70–85% · Blastocisto/oócito MII injetado: 25–40%<br>Taxa de prenhez: similar ao embrião produzido por FIV (45–60%)</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-icsi_indicacoes">
+    <table class="iatf-ref-table">
+      <tr><th>Indicação</th><th>Espécie</th><th>Justificativa</th></tr>
+      <tr><td><strong>FIV inviável</strong></td><td>Equinos</td><td>Capacitação in vitro não funciona na espécie</td></tr>
+      <tr><td><strong>Sêmen de qualidade muito baixa</strong></td><td>Todas</td><td>Azoospermia testicular, oligospermia grave — 1 único espermatozoide suficiente</td></tr>
+      <tr><td><strong>Sêmen em quantidade limitada</strong></td><td>Todas (especialmente silvestres)</td><td>Animais raros, pós-morte (sêmen epididimário), 1 única ejaculação</td></tr>
+      <tr><td><strong>Conservação de espécies</strong></td><td>Felinos selvagens, bubalinos, cervídeos</td><td>Oócitos colhidos post-mortem + sêmen criopreservado</td></tr>
+      <tr><td><strong>Sexagem com amostras pequenas</strong></td><td>Bovinos, equinos</td><td>Sêmen sexado por citometria de fluxo tem número reduzido de células</td></tr>
+    </table>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-icsi_equinos">
+    <div class="iatf-danger-box"><strong>FIV convencional NÃO funciona em equinos</strong> — a espécie não consegue ser fertilizada in vitro por co-cultivo. A ICSI é obrigatória para qualquer programa de produção in vitro de embriões equinos.</div>
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Coleta do oócito</div><div class="iatf-step-sub">OPU transvaginal pós-hCG (24–30 h) de folículo pré-ovulatório (≥35 mm) · ou folículo pré-ovulatório puncionado sem hCG e MIV posterior</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Transporte para laboratório (se não in situ)</div><div class="iatf-step-sub">Oócito em MIV pode ser transportado a 38 °C por até 24 h · sem MIV: transporte em meio HEPES a 37 °C por 2–4 h máximo</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">ICSI + Ativação artificial obrigatória</div><div class="iatf-step-sub">Oócito equino NÃO ativa espontaneamente após a injeção → ionóforo de cálcio + 6-DMAP imediatamente após ICSI</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">4</div><div class="iatf-step-content"><div class="iatf-step-title">CIV e transferência</div><div class="iatf-step-sub">Cultivo D7–9 · transferência cirúrgica ou não-cirúrgica para receptora em D7</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Uso de sêmen sexado em ICSI equina</div><div class="iatf-memo-text">Sêmen sexado (poucos milhões de células) + ICSI = maximização do uso de garanhões de alto valor<br>Taxa de blastocisto ICSI equino: 15–30% dos oócitos injetados</div></div>
+  </div>
+</div>
+
+<!-- SEXAGEM -->
+<div class="iatf-panel" id="iatf-panel-sexagem">
+  <div class="iatf-prova-box"><strong>Sexagem:</strong> tecnologia que permite predeterminar o sexo da prole. Aplicação prática: rebanhos leiteiros (fêmeas) e raças de corte (machos). Baseada na diferença de quantidade de DNA entre cromossomo X (2,8% a mais que Y) e Y.</div>
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('sex_sem',this)">Sexagem de sêmen</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('sex_emb',this)">Sexagem de embriões</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('sex_comp',this)">Comparativo</button>
+  </div>
+
+  <div class="iatf-sp-panel active" id="iatf-sp-sex_sem">
+    <div class="iatf-info-box">Citometria de fluxo com corante fluorescente (Hoechst 33342) identifica a diferença de 2,8% no conteúdo de DNA entre espermatozoides X e Y. Desenvolvida por Johnson (USDA, 1989). Comercialmente: tecnologia XY Inc. / Sexed Ultra (Inguran).</div>
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Coloração com Hoechst 33342</div><div class="iatf-step-sub">Corante intercala no DNA do cabeça do espermatozoide · X: emissão maior (mais DNA) · Y: emissão menor</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Passagem pelo citômetro de fluxo</div><div class="iatf-step-sub">Laser UV (351/364 nm) · 1 espermatozoide por vez · 3.000–5.000 células/s · taxa de separação: ~90% de pureza</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Deflexão eletrostática e coleta</div><div class="iatf-step-sub">Gotícula X carregada negativamente, Y positivamente (ou vice-versa) → campo elétrico separa as populações</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">4</div><div class="iatf-step-content"><div class="iatf-step-title">Envasamento e criopreservação</div><div class="iatf-step-sub">2–5 milhões de espermatozoides/palheta (vs. 20–40 mi convencional) · motilidade pós-processo: reduzida</div></div></div>
+    <table class="iatf-ref-table" style="margin-top:12px">
+      <tr><th>Parâmetro</th><th>Sêmen convencional</th><th>Sêmen sexado</th></tr>
+      <tr><td>Pureza do sexo</td><td>~50% X ou Y</td><td>≥90% do sexo desejado</td></tr>
+      <tr><td>Espermatozoides/dose</td><td>20–40 milhões</td><td>2–5 milhões (IA) · 0,3–1 mi (ICSI)</td></tr>
+      <tr><td>Taxa de concepção IA</td><td>100% (referência)</td><td>~75–85% do convencional</td></tr>
+      <tr><td>Ideal para</td><td>IA convencional em tempo fixo</td><td>Novilhas · animais de alta fertilidade</td></tr>
+    </table>
+    <div class="iatf-memo"><div class="iatf-memo-label">Limitações do sêmen sexado</div><div class="iatf-memo-text">Processo danifica parcialmente as membranas espermáticas → menor motilidade pós-descongelamento<br>Menor dose/palheta → menor margem de erro na deposição uterina<br>Recomendado para deposição intrauterina profunda (IATF ou laparoscopia)</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-sex_emb">
+    <div class="iatf-info-box">A sexagem de embriões identifica o sexo antes da transferência, por meio de biópsia e análise do DNA do trofoderma.</div>
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Biópsia do embrião (blastocisto)</div><div class="iatf-step-sub">Microlâmina ou agulha de biópsia → remoção de 5–10 células do trofoderma · sem dano ao ICM</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Análise por PCR</div><div class="iatf-step-sub">PCR com primers para região SRY (Y) e gene de controle autossômico · resultado em 4–6 horas</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Transferência seletiva</div><div class="iatf-step-sub">Embrião mantido em criopreservação enquanto aguarda resultado · após resultado: transferência do sexo desejado</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Vantagem sobre sêmen sexado</div><div class="iatf-memo-text">100% de precisão no sexo do embrião (vs. 90% no sêmen sexado)<br>Não reduz taxa de concepção (biópsia bem-feita não afeta viabilidade do embrião)<br>Custo maior por embrião — justificado em animais de alto valor genético</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-sex_comp">
+    <table class="iatf-ref-table">
+      <tr><th>Critério</th><th>Sêmen sexado (citometria)</th><th>Sexagem de embrião (PCR)</th></tr>
+      <tr><td>Precisão do sexo</td><td>~90%</td><td>~100%</td></tr>
+      <tr><td>Custo/resultado</td><td>Baixo por dose</td><td>Alto por embrião</td></tr>
+      <tr><td>Impacto na fertilidade</td><td>Reduz 10–15%</td><td>Mínimo se biópsia correta</td></tr>
+      <tr><td>Momento da definição</td><td>Antes da IA</td><td>Após FIV/TE, antes da transferência</td></tr>
+      <tr><td>Tecnologia necessária</td><td>Citômetro de fluxo (laboratório especializado)</td><td>PCR + micromanipulação</td></tr>
+      <tr><td>Melhor indicação</td><td>Escala · programas de IA em massa</td><td>Animais raros · alto valor genético</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- CLONAGEM -->
+<div class="iatf-panel" id="iatf-panel-clonagem">
+  <div class="iatf-prova-box"><strong>Clonagem por SCNT (Somatic Cell Nuclear Transfer):</strong> transferência do núcleo de uma célula somática para um oócito enucleado. Primeiro mamífero clonado: Dolly (ovelha, 1996 — Ian Wilmut, Roslin Institute). No Brasil: primeiro bovino clonado em 2002.</div>
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('clon_tec',this)">Técnica SCNT</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('clon_result',this)">Resultados e limitações</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('clon_aplicacoes',this)">Aplicações práticas</button>
+  </div>
+
+  <div class="iatf-sp-panel active" id="iatf-sp-clon_tec">
+    <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Obtenção do oócito receptor</div><div class="iatf-step-sub">OPU · MIV 22–24 h · remoção do cumulus · verificação da extrusão do 1º corpúsculo polar (MII)</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Enucleação do oócito</div><div class="iatf-step-sub">Biselamento da zona pelúcida + aspiração do material cromossômico (MII) com micropipeta · confirmação por coloração vital com Hoechst sob UV</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Preparo da célula doadora do núcleo</div><div class="iatf-step-sub">Fibroblastos de pele · células granulosas · células epiteliais mammárias (como Dolly) · sincronização em G0/G1 por privação de soro por 2–5 dias</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">4</div><div class="iatf-step-content"><div class="iatf-step-title">Transferência nuclear</div><div class="iatf-step-sub">Injeção direta da célula somática no espaço perivitelino ou injeção do núcleo isolado (como ICSI)</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">5</div><div class="iatf-step-content"><div class="iatf-step-title">Fusão + Ativação</div><div class="iatf-step-sub">Fusão por pulso elétrico (eletrofusão) ou vírus inativado · Ativação: ionóforo de cálcio + 6-DMAP · reprogramação do genoma somático</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">6</div><div class="iatf-step-content"><div class="iatf-step-title">CIV e transferência</div><div class="iatf-step-sub">Cultivo até blastocisto (D7–8) · transferência para receptora sincronizada · taxa de prenhez muito baixa (5–20%)</div></div></div>
+    <div class="iatf-memo"><div class="iatf-memo-label">Reprogramação epigenética — o principal desafio</div><div class="iatf-memo-text">O núcleo somático precisa ter seu epigenoma "reprogramado" para um estado totipotente<br>Reprogramação incompleta → anomalias no desenvolvimento → "Large Offspring Syndrome" (LOS)<br>LOS: neonatos grandes, edema, malformações viscerais, alta mortalidade perinatal</div></div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-clon_result">
+    <div class="iatf-danger-box"><strong>Eficiência da clonagem é muito baixa:</strong> de 100 oócitos reconstruídos, menos de 5 originam animais vivos saudáveis. A principal causa é a reprogramação epigenética incompleta.</div>
+    <table class="iatf-ref-table">
+      <tr><th>Etapa</th><th>Taxa média (bovinos)</th></tr>
+      <tr><td>Oócitos reconstruídos que clivam</td><td>60–80%</td></tr>
+      <tr><td>Clivados que chegam a blastocisto</td><td>20–40%</td></tr>
+      <tr><td>Blastocistos com prenhez confirmada</td><td>20–30%</td></tr>
+      <tr><td>Prenhezes que chegam ao termo</td><td>30–50%</td></tr>
+      <tr><td><strong>Eficiência geral (bezerro vivo/oócito)</strong></td><td><strong>1–5%</strong></td></tr>
+    </table>
+    <div class="iatf-info-box"><strong>Large Offspring Syndrome (LOS):</strong> principal complicação da clonagem por SCNT. Bezerros com peso excessivo ao nascer (até 70 kg vs. 40 kg normal), edema fetal, malformações cardíacas, renais e hepáticas, insuficiência respiratória neonatal. Causa: metilação anormal do DNA e expressão aberrante de genes imprinted (IGF2, H19).</div>
+  </div>
+
+  <div class="iatf-sp-panel" id="iatf-sp-clon_aplicacoes">
+    <table class="iatf-ref-table">
+      <tr><th>Aplicação</th><th>Status</th><th>Exemplo</th></tr>
+      <tr><td>Conservação de animais em extinção</td><td>Em desenvolvimento · resultados parciais</td><td>Bison bonasus, Gaur, Gato-do-deserto</td></tr>
+      <tr><td>Multiplicação de touros superiores post-mortem</td><td>Prático, mas caro</td><td>Touros de alto valor genético com sêmen esgotado</td></tr>
+      <tr><td>Animais transgênicos para pesquisa biomédica</td><td>Consolidado (ratos, camundongos)</td><td>Modelos de doenças humanas</td></tr>
+      <tr><td>Animais produtores de proteínas farmacêuticas</td><td>Aprovado em alguns países</td><td>Ovelha Polly (fator IX hemofilia)</td></tr>
+      <tr><td>Clonagem de animais de estimação</td><td>Comercial (EUA, Coreia do Sul)</td><td>ViaGen Pets · ~$50.000/clone</td></tr>
+    </table>
+    <div class="iatf-memo"><div class="iatf-memo-label">O clone é geneticamente idêntico, mas não é uma cópia exata</div><div class="iatf-memo-text">DNA nuclear: idêntico ao doador · DNA mitocondrial: do oócito receptor (diferente!)<br>Epigenoma: diferente (ambiente de gestação, experiências de vida diferentes)<br>Fenótipo: pode diferir — especialmente na pelagem e comportamento</div></div>
+  </div>
+</div>
   <div class="iatf-prova-box">
     <strong>Protocolo mais usado no Brasil</strong> — base de P4 intravaginal + estradiol. Aplicado em ~91% das IAs bovinas no Brasil em 2023. Indicado especialmente para <span class="iatf-hl">Bos indicus</span> e bovinos de corte.
   </div>
