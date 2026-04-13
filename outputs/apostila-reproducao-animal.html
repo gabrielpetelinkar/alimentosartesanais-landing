@@ -979,6 +979,16 @@
   .btn-primary { padding: 10px 24px; border: none; border-radius: 50px; background: var(--green-600); color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all .2s; }
   .btn-primary:hover { background: var(--green-700); }
 
+  /* === CAP 15 PATOLOGIAS DA GESTAÇÃO === */
+  .pg-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+  .pg-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-card);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+  .pg-tab:hover{background:var(--bg-card)}.pg-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+  .pg-panel{display:none}.pg-panel.active{display:block}
+  .pg-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+  .pg-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-card);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+  .pg-sp-tab:hover{background:var(--bg-card)}.pg-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+  .pg-sp-panel{display:none}.pg-sp-panel.active{display:block}
+
 </style>
 </head>
 <body>
@@ -4828,332 +4838,532 @@ Feto transverso (na prática) → cesariana</div></div>
   icon: '#i-telescope',
   content: `
 <style>
-.and-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
-.and-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-card);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
-.and-tab:hover{background:var(--bg-hover)}.and-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
-.and-panel{display:none}.and-panel.active{display:block}
-.and-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
-.and-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-card);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
-.and-sp-tab:hover{background:var(--bg-hover)}.and-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
-.and-sp-panel{display:none}.and-sp-panel.active{display:block}
-.and-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
-.and-bwarn{background:var(--warn-bg,#fef3db);color:var(--warn-text,#633806)}.and-binfo{background:var(--blue-100);color:var(--blue-700)}
-.and-bsuc{background:var(--success-bg,#eaf3de);color:var(--success-text,#27500a)}.and-bdanger{background:var(--danger-bg,#fce8e8);color:var(--danger-text,#7a1f1f)}
-.and-hl{background:var(--warn-bg,#fef3db);border-radius:3px;padding:1px 4px;font-weight:600}
-.and-prova-box{border-left:3px solid #BA7517;background:var(--warn-bg,#fef3db);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
-.and-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
-.and-suc-box{border-left:3px solid #3B6D11;background:var(--success-bg,#eaf3de);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
-.and-danger-box{border-left:3px solid #A32D2D;background:var(--danger-bg,#fce8e8);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
-.and-card{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card);margin-bottom:8px;cursor:pointer;transition:border-color .15s,background .15s}
-.and-card:hover{border-color:var(--border-hover,#d0cfcc);background:var(--bg-hover)}
-.and-card-title{font-weight:600;font-size:13px;margin-bottom:2px}
-.and-card-sub{font-size:12px;color:var(--text-secondary);line-height:1.4}
-.and-info-panel{background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;margin-top:8px;font-size:13px;line-height:1.65;min-height:56px}
-.and-info-panel.empty{color:var(--text-muted);font-style:italic}
-.and-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px}
-.and-ref-table th{background:var(--bg-secondary);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-card);font-size:11px;color:var(--text-secondary)}
-.and-ref-table td{padding:6px 10px;border:1px solid var(--border-card);vertical-align:top;line-height:1.45}
-.and-ref-table tr:nth-child(even) td{background:var(--bg-secondary)}
-.and-sonda-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-.and-sonda-card{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card);cursor:pointer;transition:border-color .15s,background .15s}
-.and-sonda-card:hover{border-color:var(--border-hover,#d0cfcc);background:var(--bg-hover)}
-.and-sonda-name{font-weight:600;font-size:13px;margin-bottom:2px}
-.and-sonda-alvo{font-size:11px;color:var(--text-secondary);line-height:1.35}
-.and-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-secondary);margin-top:10px;margin-bottom:10px}
-.and-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
-.and-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
-.and-step{display:flex;gap:12px;margin-bottom:8px;align-items:flex-start}
-.and-step-num{min-width:24px;height:24px;border-radius:50%;background:var(--blue-100);color:var(--blue-700);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.and-step-content{flex:1}
-.and-step-title{font-weight:600;font-size:13px;margin-bottom:1px}
-.and-step-sub{font-size:12px;color:var(--text-secondary);line-height:1.4}
-.and-fluor-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
-.and-fluor-card{border-radius:8px;padding:10px 14px;font-size:12px;line-height:1.5}
-.and-fluor-verde{background:#eaf3de;border:1px solid #3B6D11}
-.and-fluor-vermelho{background:#fce8e8;border:1px solid #A32D2D}
-.and-fluor-laranja{background:#fff3e0;border:1px solid #E65100}
-.and-fluor-azul{background:#e8f1fb;border:1px solid #378ADD}
-.and-fluor-label{font-weight:600;font-size:12px;margin-bottom:3px}
-.and-eq-step{border-left:3px solid #378ADD;padding-left:12px;margin-bottom:10px}
-.and-eq-step-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--blue-700);margin-bottom:2px}
-.and-eq-step-title{font-weight:600;font-size:13px;margin-bottom:2px}
-.and-eq-step-sub{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.eac-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.eac-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-card);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+.eac-tab:hover{background:var(--bg-hover)}.eac-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.eac-panel{display:none}.eac-panel.active{display:block}
+.eac-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.eac-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-card);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+.eac-sp-tab:hover{background:var(--bg-hover)}.eac-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.eac-sp-panel{display:none}.eac-sp-panel.active{display:block}
+.eac-hl{background:var(--warn-bg,#fef3db);border-radius:3px;padding:1px 4px;font-weight:600}
+.eac-prova-box{border-left:3px solid #BA7517;background:var(--warn-bg,#fef3db);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.eac-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.eac-suc-box{border-left:3px solid #3B6D11;background:var(--success-bg,#eaf3de);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.eac-danger-box{border-left:3px solid #A32D2D;background:var(--danger-bg,#fce8e8);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.eac-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px}
+.eac-ref-table th{background:var(--bg-secondary);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-card);font-size:11px;color:var(--text-secondary)}
+.eac-ref-table td{padding:6px 10px;border:1px solid var(--border-card);vertical-align:top;line-height:1.5}
+.eac-ref-table tr:nth-child(even) td{background:var(--bg-secondary)}
+.eac-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-secondary);margin-top:10px;margin-bottom:10px}
+.eac-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.eac-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
+.eac-step{display:flex;gap:12px;margin-bottom:8px;align-items:flex-start}
+.eac-step-num{min-width:26px;height:26px;border-radius:50%;background:var(--blue-100);color:var(--blue-700);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.eac-step-content{flex:1}
+.eac-step-title{font-weight:600;font-size:13px;margin-bottom:2px}
+.eac-step-sub{font-size:12px;color:var(--text-secondary);line-height:1.45}
+.eac-class-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.eac-class-card{border-radius:8px;padding:14px;text-align:center}
+.eac-class-apto{background:var(--success-bg,#eaf3de);border:2px solid #3B6D11}
+.eac-class-suspeito{background:var(--warn-bg,#fef3db);border:2px solid #BA7517}
+.eac-class-inapto{background:var(--danger-bg,#fce8e8);border:2px solid #A32D2D}
+.eac-class-label{font-size:15px;font-weight:700;margin-bottom:6px}
+.eac-class-sub{font-size:11px;line-height:1.5}
+.eac-card{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card);margin-bottom:8px;cursor:pointer;transition:border-color .15s,background .15s}
+.eac-card:hover{border-color:var(--border-hover,#d0cfcc);background:var(--bg-hover)}
+.eac-card-title{font-weight:600;font-size:13px;margin-bottom:2px}
+.eac-card-sub{font-size:12px;color:var(--text-secondary);line-height:1.4}
+.eac-info-panel{background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;margin-top:8px;font-size:13px;line-height:1.65;min-height:56px}
+.eac-info-panel.empty{color:var(--text-muted);font-style:italic}
+.eac-anat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.eac-anat-card{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card)}
+.eac-anat-title{font-weight:600;font-size:13px;margin-bottom:3px;color:var(--blue-700)}
+.eac-anat-items{font-size:12px;color:var(--text-secondary);line-height:1.65}
+.eac-def-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.eac-def-maior{border-radius:8px;padding:10px 14px;background:var(--danger-bg,#fce8e8);border:1px solid #D9534F}
+.eac-def-menor{border-radius:8px;padding:10px 14px;background:var(--warn-bg,#fef3db);border:1px solid #BA7517}
+.eac-def-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.eac-def-items{font-size:12px;line-height:1.7}
+.eac-2col{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.eac-2col-box{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card)}
+.eac-2col-label{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.eac-2col-text{font-size:12px;color:var(--text-secondary);line-height:1.7}
 </style>
 
-<div class="and-tabs">
-  <button class="and-tab active" onclick="andSetTab('colheita',this)">Colheita por espécie</button>
-  <button class="and-tab" onclick="andSetTab('micro',this)">Análise macro/micro</button>
-  <button class="and-tab" onclick="andSetTab('dose',this)">Dose inseminante</button>
-  <button class="and-tab" onclick="andSetTab('crioeq',this)">Criopreservação equina</button>
-  <button class="and-tab" onclick="andSetTab('selecao',this)">EquiPure / SLC</button>
-  <button class="and-tab" onclick="andSetTab('patologia',this)">Patologia espermática</button>
-  <button class="and-tab" onclick="andSetTab('fluor',this)">Fluorescência e CASA</button>
+<div class="eac-tabs">
+  <button class="eac-tab active" onclick="eacSetTab('visao',this)">Visão geral</button>
+  <button class="eac-tab" onclick="eacSetTab('clinico',this)">Exame clínico geral</button>
+  <button class="eac-tab" onclick="eacSetTab('externo',this)">Órgãos genitais externos</button>
+  <button class="eac-tab" onclick="eacSetTab('interno',this)">Órgãos genitais internos</button>
+  <button class="eac-tab" onclick="eacSetTab('biometria',this)">Biometria testicular</button>
+  <button class="eac-tab" onclick="eacSetTab('libido',this)">Libido e monta</button>
+  <button class="eac-tab" onclick="eacSetTab('espermograma',this)">Espermograma</button>
+  <button class="eac-tab" onclick="eacSetTab('por_especie',this)">▶ Por espécie</button>
+  <button class="eac-tab" onclick="eacSetTab('classificacao',this)">Classificação final</button>
 </div>
 
-<!-- COLHEITA -->
-<div class="and-panel active" id="and-panel-colheita">
-  <div class="and-info-box">O espermiograma reflete as condições clínico-reprodutivas dos <strong>túbulos seminíferos</strong>, do <strong>epidídimo</strong> durante o trânsito e do <strong>armazenamento na cauda do epidídimo</strong>. Validade: <span class="and-hl">60 dias</span> (um ciclo espermatogênico completo).</div>
-  <table class="and-ref-table">
-    <tr><th>Espécie</th><th>Método</th><th>Volume</th><th>Concentração</th><th>Cor</th></tr>
-    <tr><td><strong>Bovino</strong></td><td>Eletroejaculador (↑ glândulas acessórias)<br>Vagina artificial</td><td>EE: ~16 mL<br>VA: ~8 mL</td><td>1×10⁹/mL</td><td>Branco leitoso</td></tr>
-    <tr><td><strong>Equino</strong></td><td>Vagina artificial Botucatu<br>Ejaculação química (imipramina + xilazina)</td><td>40–70 mL<br>(sem gel)</td><td>100×10⁶/mL</td><td>Branco leitoso</td></tr>
-    <tr><td><strong>Ovino / Caprino</strong></td><td>Vagina artificial<br>Eletroejaculação</td><td>0,1–1,0 mL</td><td>2–4×10⁹/mL</td><td>Pérola/marfim<br><span style="font-size:11px">Amarelo citrino = alimento</span></td></tr>
-    <tr><td><strong>Suíno</strong></td><td>Manipulação digital (reflexo de imobilidade)</td><td>40–300 mL</td><td>200–300×10⁶/mL</td><td>Branco</td></tr>
-    <tr><td><strong>Cão</strong></td><td>Manipulação digital<br>(3 frações — avaliar a 2ª)</td><td>2–80 mL</td><td>4–400×10⁶/mL</td><td>Leitoso (fração 2)</td></tr>
-    <tr><td><strong>Gato</strong></td><td>Eletroejaculador<br>Vagina artificial</td><td>0,01–0,77 mL</td><td>~3×10⁶/mL</td><td>Branco/transparente</td></tr>
-  </table>
-  <div class="and-prova-box"><strong>Coloração anormal:</strong> Esverdeado = pus · Amarelado = pus ou urina · Avermelhado = sangue (hemospermia) · Translúcido = azoospermia / oligospermia grave</div>
-  <div class="and-info-box"><strong>Equino — sinais de ejaculação:</strong> movimento de cauda ("flagging"), contração do períneo, sapateado. VA modelo Botucatu: tubo rígido revestido com mucosa, água 40–45°C, pressão de ar. Filtrar gel imediatamente após coleta.</div>
-  <div class="and-memo"><div class="and-memo-label">Cão — 3 frações do ejaculado</div><div class="and-memo-text">1ª: pré-espermática · prostática · transparente · pequeno volume<br>2ª: ESPERMÁTICA · branco leitoso · AVALIADA no espermograma<br>3ª: pós-espermática · prostática · transparente · longa (até 80 mL)</div></div>
-</div>
-
-<!-- ANÁLISE MACRO + MICRO -->
-<div class="and-panel" id="and-panel-micro">
-  <div class="and-prova-box"><strong>Análises imediatas</strong> (espermatozoides vivos, placa 37°C): motilidade, vigor, turbilhonamento · <strong>Análises mediatas:</strong> concentração, morfologia (não requerem células vivas)</div>
-  <div class="and-sp-tabs">
-    <button class="and-sp-tab active" onclick="andSetSp('macro',this)">Macroscópica</button>
-    <button class="and-sp-tab" onclick="andSetSp('motvig',this)">Motilidade / Vigor</button>
-    <button class="and-sp-tab" onclick="andSetSp('conc',this)">Concentração</button>
-    <button class="and-sp-tab" onclick="andSetSp('morf',this)">Morfologia e defeitos</button>
-  </div>
-  <div class="and-sp-panel active" id="and-sp-macro">
-    <div class="and-card" onclick="andInfo('mac','cor')"><div class="and-card-title">Cor e aspecto</div><div class="and-card-sub">Normal: branco leitoso (bovinos, equinos) · pérola/amarelo citrino (ovinos)</div></div>
-    <div class="and-card" onclick="andInfo('mac','odor')"><div class="and-card-title">Odor</div><div class="and-card-sub">Característico "sui generis" · Anormal = contaminação ou infecção</div></div>
-    <div class="and-card" onclick="andInfo('mac','ph')"><div class="and-card-title">pH</div><div class="and-card-sub">Bovinos: 6,2–6,8 · Equinos: 7,2–7,7 · Suínos: 7,3–7,8 · Cão: 6,3–7,0</div></div>
-    <div class="and-card" onclick="andInfo('mac','turbilhao')"><div class="and-card-title">Turbilhonamento</div><div class="and-card-sub">Ruminantes (ejaculado concentrado) · escala 0–5 · NÃO avaliado em equinos (ejaculado diluído)</div></div>
-    <div class="and-info-panel empty" id="and-info-mac">Clique para ver detalhes.</div>
-  </div>
-  <div class="and-sp-panel" id="and-sp-motvig">
-    <table class="and-ref-table">
-      <tr><th>Espécie</th><th>Motilidade mín.</th><th>Vigor mín.</th><th>Observação</th></tr>
-      <tr><td><strong>Bovinos</strong></td><td>≥70%</td><td>≥3</td><td>Turbilhonamento ≥3</td></tr>
-      <tr><td><strong>Equinos (fresco)</strong></td><td>≥70%</td><td>≥2–3</td><td>CASA preferível; turbilhonamento ausente</td></tr>
-      <tr><td><strong>Equinos (cong. pós-desg.)</strong></td><td>≥30%</td><td>≥3</td><td>Mínimo aceitável para IA com congelado</td></tr>
-      <tr><td><strong>Ovinos</strong></td><td>≥70%</td><td>≥3</td><td>Turbilhonamento importante</td></tr>
-      <tr><td><strong>Suínos</strong></td><td>≥70%</td><td>≥3</td><td>Diluir antes de avaliar</td></tr>
-      <tr><td><strong>Cão</strong></td><td>≥70%</td><td>≥3</td><td>Avaliar fração 2</td></tr>
-    </table>
-  </div>
-  <div class="and-sp-panel" id="and-sp-conc">
-    <div class="and-info-box">Métodos: câmara de Neubauer, espectrofotometria, CASA. Concentração total do ejaculado = conc. × volume × motilidade (%).</div>
-    <div class="and-prova-box"><strong>Câmara de Neubauer — equinos:</strong> diluição 1:20. 19 µL H₂O + 1 µL sêmen. Contar 5 quadrados grandes. Se diferença entre lados >10%: refazer. Resultado × 10⁶ = conc./mL.</div>
-    <table class="and-ref-table">
-      <tr><th>Espécie</th><th>Diluição p/ câmara</th><th>Observação</th></tr>
-      <tr><td>Equinos</td><td>1:20 (19 µL H₂O + 1 µL sêmen)</td><td>Resultado × 10⁶/mL</td></tr>
-      <tr><td>Bovinos</td><td>1:200 (20 µL sêmen em 4 mL H₂O)</td><td>Fator n × 5000 por mm³</td></tr>
-      <tr><td>Ovinos/Caprinos</td><td>1:400</td><td>Ejaculado muito concentrado</td></tr>
-      <tr><td>Cão</td><td>1:20</td><td>Fração 2 apenas</td></tr>
-    </table>
-  </div>
-  <div class="and-sp-panel" id="and-sp-morf">
-    <div class="and-prova-box"><strong>Equinos:</strong> inserção abaxial da cauda é NORMAL — não contar como defeito. <strong>Avaliar 200 células.</strong></div>
-    <div style="font-size:13px;line-height:1.75;margin-bottom:10px">
-      <strong>Defeitos maiores — cabeça:</strong> macrocefalia, microcefalia, piriforme, estreita na base, lanciforme, dupla, decapitado, pouch formation<br>
-      <strong>Defeitos maiores — acrossomo:</strong> ausente, deformado, destacado<br>
-      <strong>Defeitos maiores — peça intermediária:</strong> gota citoplasmática proximal, PI dobrada, abaxial com gota<br>
-      <strong>Defeitos maiores — cauda:</strong> enrolada (dag defect), em chicote, torcida<br>
-      <strong>Defeitos menores:</strong> gota citoplasmática distal, dobrada simples, inserção abaxial simples (normal em equinos)
+<!-- VISÃO GERAL -->
+<div class="eac-panel active" id="eac-panel-visao">
+  <div class="eac-info-box">O exame andrológico avalia o <strong>potencial reprodutivo do macho</strong>. Deve ser realizado antes da estação de monta, na compra/venda de reprodutores, em casos de infertilidade e como rotina preventiva. Validade: <span class="eac-hl">60 dias</span> (um ciclo espermatogênico).</div>
+  <div class="eac-class-grid">
+    <div class="eac-class-card eac-class-apto">
+      <div class="eac-class-label" style="color:#27500a">APTO</div>
+      <div class="eac-class-sub" style="color:#27500a">Atinge ou supera todos os limites mínimos. Sem alterações físicas que comprometam o desempenho reprodutivo.</div>
     </div>
-    <table class="and-ref-table">
-      <tr><th>Espécie</th><th>Normais mín.</th><th>Defeitos totais máx.</th></tr>
-      <tr><td>Bovinos / Ovinos / Suínos / Cão</td><td>≥70%</td><td>≤30%</td></tr>
-      <tr><td>Equinos</td><td>≥60–70%</td><td>≤30–40%</td></tr>
+    <div class="eac-class-card eac-class-suspeito">
+      <div class="eac-class-label" style="color:#633806">SUSPEITO / QUESTIONÁVEL</div>
+      <div class="eac-class-sub" style="color:#633806">Um ou mais parâmetros limítrofes. Reavaliação em 30–60 dias. Prognóstico reservado.</div>
+    </div>
+    <div class="eac-class-card eac-class-inapto">
+      <div class="eac-class-label" style="color:#7a1f1f">INAPTO</div>
+      <div class="eac-class-sub" style="color:#7a1f1f">Não atinge mínimos em um ou mais parâmetros. Improvável melhora. Descartar da reprodução.</div>
+    </div>
+  </div>
+  <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Sequência do exame (CBRA)</div>
+  <div class="eac-step"><div class="eac-step-num">1</div><div class="eac-step-content"><div class="eac-step-title">Identificação e histórico (anamnese)</div><div class="eac-step-sub">Espécie, raça, idade, peso, procedência, histórico reprodutivo, vacinações, doenças anteriores</div></div></div>
+  <div class="eac-step"><div class="eac-step-num">2</div><div class="eac-step-content"><div class="eac-step-title">Exame clínico geral</div><div class="eac-step-sub">ECC, aprumos, sistema locomotor, mucosas, temperatura, condição de saúde geral</div></div></div>
+  <div class="eac-step"><div class="eac-step-num">3</div><div class="eac-step-content"><div class="eac-step-title">Exame dos órgãos genitais externos</div><div class="eac-step-sub">Prepúcio, pênis, testículos, epidídimos, cordão espermático</div></div></div>
+  <div class="eac-step"><div class="eac-step-num">4</div><div class="eac-step-content"><div class="eac-step-title">Exame dos órgãos genitais internos (palpação retal)</div><div class="eac-step-sub">Vesículas seminais, próstata, ampolas (bovinos, equinos, ovinos)</div></div></div>
+  <div class="eac-step"><div class="eac-step-num">5</div><div class="eac-step-content"><div class="eac-step-title">Biometria testicular</div><div class="eac-step-sub">Circunferência escrotal (CE) com fita métrica · correlação com produção espermática diária</div></div></div>
+  <div class="eac-step"><div class="eac-step-num">6</div><div class="eac-step-content"><div class="eac-step-title">Avaliação da libido e capacidade de monta</div><div class="eac-step-sub">Escore 0–5 · interesse sexual · ereção · intromissão · ejaculação</div></div></div>
+  <div class="eac-step"><div class="eac-step-num">7</div><div class="eac-step-content"><div class="eac-step-title">Espermograma</div><div class="eac-step-sub">Coleta → análise macroscópica → análise microscópica → morfologia → testes especiais</div></div></div>
+</div>
+
+<!-- EXAME CLÍNICO GERAL -->
+<div class="eac-panel" id="eac-panel-clinico">
+  <div class="eac-prova-box"><strong>O exame clínico geral vem ANTES do exame genital</strong> — condições sistêmicas afetam diretamente a espermatogênese. Febres, desnutrição, claudicações e parasitoses comprometem a produção espermática com efeito visível no sêmen após 30–60 dias.</div>
+  <div class="eac-sp-tabs">
+    <button class="eac-sp-tab active" onclick="eacSetSp('geral',this)">Parâmetros gerais</button>
+    <button class="eac-sp-tab" onclick="eacSetSp('ecc',this)">ECC e nutrição</button>
+    <button class="eac-sp-tab" onclick="eacSetSp('aprumos',this)">Aprumos e locomoção</button>
+    <button class="eac-sp-tab" onclick="eacSetSp('termoreg',this)">Termorregulação escrotal</button>
+  </div>
+  <div class="eac-sp-panel active" id="eac-sp-geral">
+    <table class="eac-ref-table">
+      <tr><th>Parâmetro</th><th>O que avaliar</th><th>Relevância andrológica</th></tr>
+      <tr><td><strong>Temperatura corporal</strong></td><td>Termometria retal</td><td>Febre &gt;1°C acima do normal por &gt;3 dias compromete a espermatogênese — efeito no sêmen após 30–60 dias</td></tr>
+      <tr><td><strong>Mucosas</strong></td><td>Coloração, TPC, hidratação</td><td>Mucosas pálidas = anemia → testosterona reduzida, produção espermática comprometida</td></tr>
+      <tr><td><strong>Linfonodos</strong></td><td>Tamanho, consistência, mobilidade</td><td>Linfadenomegalia pode indicar processo infeccioso que compromete trato reprodutivo</td></tr>
+      <tr><td><strong>Pele e pelos</strong></td><td>Ectoparasitas, lesões, dermatites</td><td>Sarnas e dermatofitoses graves causam estresse crônico → cortisol ↑ → testosterona ↓</td></tr>
+      <tr><td><strong>Sistema respiratório</strong></td><td>FR, ausculta, secreções</td><td>Pneumonias crônicas = doença debilitante → hipospermia</td></tr>
+      <tr><td><strong>Sistema cardiovascular</strong></td><td>FC, ritmo, sopros</td><td>Cardiopatias graves comprometem perfusão testicular</td></tr>
     </table>
   </div>
-</div>
-
-<!-- DOSE INSEMINANTE -->
-<div class="and-panel" id="and-panel-dose">
-  <div class="and-info-box">A dose inseminante considera espermatozoides <strong>viáveis</strong> (concentração × motilidade). O número de palhetas = concentração total viável ÷ concentração/palheta.</div>
-  <table class="and-ref-table">
-    <tr><th>Estado</th><th>Cavalo</th><th>Bovino</th><th>Ovino/Caprino</th><th>Suíno</th><th>Cão</th></tr>
-    <tr><td><strong>Congelado</strong></td><td>800×10⁶ <br><span style="font-size:11px">(8 palhetas)</span></td><td>30×10⁶<br><span style="font-size:11px">(1 palheta)</span></td><td>50×10⁶<br><span style="font-size:11px">Mot. 60–70%</span></td><td>3000×10⁶<br><span style="font-size:11px">(15 palhetas)</span></td><td>150×10⁶/dose</td></tr>
-    <tr><td><strong>Resfriado</strong></td><td>100×10⁶</td><td>20–50×10⁶ viáveis/mL</td><td>—</td><td>—</td><td>—</td></tr>
-    <tr><td><strong>Fresco</strong></td><td>Sem diluir: 15 min<br>Diluído (1:1): 6 h</td><td>500–1000×10⁶/mL</td><td>—</td><td>—</td><td>—</td></tr>
-    <tr><td><strong>Conc./palheta</strong></td><td><strong>100×10⁶</strong></td><td><strong>30×10⁶</strong></td><td><strong>50×10⁶</strong></td><td><strong>200×10⁶</strong></td><td>150×10⁶</td></tr>
-  </table>
-  <div class="and-memo"><div class="and-memo-label">IA em cães — volume por via</div><div class="and-memo-text">Intravaginal (fundo de vagina): 1 mL (pequeno) · 4 mL (médio) · 8 mL (grande)<br>Laparotômica/cirúrgica: 0,5 mL em cada corno (pequeno) · 2 mL em cada corno (outros)</div></div>
-  <div class="and-prova-box"><strong>Cálculo de doses equino:</strong> Conc. total viável = conc./mL × volume mL × motilidade%. Dividir por 100×10⁶ = nº palhetas. Volume BotuCrio = nº palhetas × 0,5 mL.</div>
-</div>
-
-<!-- CRIOPRESERVAÇÃO EQUINA -->
-<div class="and-panel" id="and-panel-crioeq">
-  <div class="and-info-box"><strong>Criopreservação equina</strong> — protocolo passo a passo. Diluidor base: <span class="and-hl">leite desnatado</span> (≠ bovinos que usam gema de ovo). Crioprotetor: amidas (metilformamida + dimetilformamida) + glicerol baixa concentração.</div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 1</div><div class="and-eq-step-title">Coleta — Vagina artificial modelo Botucatu</div><div class="and-eq-step-sub">Tubo rígido com mucosa · água 40–45°C + ar comprimido · coleta em fêmea em estro ou manequim. Sinais de ejaculação: flagging (movimento de cauda), contração do períneo, sapateado.</div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 2</div><div class="and-eq-step-title">Filtragem — remoção da fração gel</div><div class="and-eq-step-sub">Filtrar com gaze imediatamente. Gel das glândulas vesiculares prejudica motilidade. <em>Bovinos não precisam filtrar.</em></div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 3</div><div class="and-eq-step-title">Análises imediatas</div><div class="and-eq-step-sub">Macro: volume (40–70 mL), cor (branco leitoso), odor (sui generis). Micro: motilidade ≥70%, vigor ≥2–3, concentração (câmara de Neubauer, diluição 1:20).</div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 4</div><div class="and-eq-step-title">Câmara de Neubauer — cálculo da concentração</div><div class="and-eq-step-sub">19 µL H₂O + 1 µL sêmen → contar 5 quadrados grandes. Resultado × 10⁶ = conc./mL. Diferença entre lados >10%: refazer. Conc. total viável = conc. × volume × motilidade%.</div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 5</div><div class="and-eq-step-title">Diluição e centrifugação</div><div class="and-eq-step-sub">Diluir 1:1 com <span class="and-hl">BotuSêmen®</span> (leite desnatado, açúcar, antibiótico). Centrifugar <strong>600 × g por 10 min</strong>. Descartar sobrenadante (plasma seminal). Coletar pellet e medir volume. <em>Ruminantes: não centrifugam.</em></div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 6</div><div class="and-eq-step-title">Ressuspensão com BotuCrio®</div><div class="and-eq-step-sub">Resuspender pellet com <span class="and-hl">BotuCrio®</span> (metilformamida 4% + glicerol 1% + leite). Metade do volume total final = BotuCrio. Outra metade = diluente + pellet. Conc. alvo: 100–200×10⁶/mL na palheta.</div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 7</div><div class="and-eq-step-title">Cálculo das doses</div><div class="and-eq-step-sub">Conc. total viável (ex: 90% × 50 mL × 200×10⁶) = 9000×10⁶ ÷ 100×10⁶ = 90 palhetas → 45 mL BotuCrio + (pellet + diluente para completar). Volume BotuCrio = nº palhetas × 0,5 mL.</div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 8</div><div class="and-eq-step-title">Envasamento</div><div class="and-eq-step-sub">Palhetas 0,5 mL · identificar com dados do garanhão, raça, data, partida · lacrar com álcool polivinílico.</div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 9</div><div class="and-eq-step-title">Estabilização — 5°C por 20 minutos</div><div class="and-eq-step-sub">Grade horizontal em máquina refrigerada (Minitub®, Botutainer®, Equitainer®) ou geladeira a 5°C por 20 min. <em>Bovinos: 4h a 5°C. Suínos: 2h a 15°C + 2h a 5°C.</em></div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 10</div><div class="and-eq-step-title">Resfriamento rápido (vapor de N₂ líquido)</div><div class="and-eq-step-sub">Grade horizontal a <strong>3–6 cm acima do nível do N₂</strong> (~-12°C) em caixa de isopor por <strong>15–20 minutos</strong>.</div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 11</div><div class="and-eq-step-title">Congelação — imersão direta no N₂ líquido (-196°C)</div><div class="and-eq-step-sub">Mergulhar as palhetas. Armazenar em raque em botijão criogênico.</div></div>
-  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 12</div><div class="and-eq-step-title">Descongelação</div><div class="and-eq-step-sub"><strong>Equinos:</strong> banho-maria 46°C por 20 s → 37°C por 1–2 min antes da avaliação. <em>Alt.: 37°C por 30 s.</em> Motilidade pós-descongelamento: ≥30% (mínimo para IA).</div></div>
-  <div class="and-danger-box"><strong>Danos da congelação:</strong> desidratação celular · choque osmótico · formação de gelo intracelular · alterações metabólicas · alterações de MP e acrossomo · peroxidação lipídica</div>
-  <div class="and-memo"><div class="and-memo-label">Diluidores equinos — resumo</div><div class="and-memo-text">BotuSêmen® → refrigeração e centrifugação (base leite desnatado)<br>BotuCrio® → criopreservação (metilformamida 4% + glicerol 1% + leite)<br>Base leite desnatado em equinos ≠ Base gema de ovo em bovinos<br>Pós-descongelamento: motilidade ≥30% · vigor ≥3 → mínimo para IA com congelado</div></div>
-</div>
-
-<!-- SELEÇÃO ESPERMÁTICA -->
-<div class="and-panel" id="and-panel-selecao">
-  <div class="and-info-box"><strong>Seleção espermática por gradiente de densidade coloidal</strong> — seleciona os melhores espermatozoides antes de criopreservar ou inseminar. Especialmente indicada para garanhões subférteis ou ejaculados de baixa qualidade.</div>
-  <div class="and-sp-tabs">
-    <button class="and-sp-tab active" onclick="andSetSp('equipure',this)">EquiPure™</button>
-    <button class="and-sp-tab" onclick="andSetSp('slc',this)">Androcoll-E / SLC</button>
-    <button class="and-sp-tab" onclick="andSetSp('resultado',this)">Princípio e resultados</button>
+  <div class="eac-sp-panel" id="eac-sp-ecc">
+    <div class="eac-info-box"><strong>Escore de Condição Corporal (ECC)</strong> — avaliado em escala de 1 a 5 (bovinos) ou 1 a 9 (Henneke para equinos). Impacto direto na produção hormonal e espermática.</div>
+    <table class="eac-ref-table">
+      <tr><th>ECC</th><th>Condição</th><th>Impacto reprodutivo</th></tr>
+      <tr><td>1–2</td><td>Muito magro / caquético</td><td>↓↓ testosterona · ↓↓ produção espermática · alta % de defeitos · azoospermia possível</td></tr>
+      <tr><td><strong>2,5–3,5</strong></td><td><strong>Ideal para bovinos</strong></td><td>Produção espermática adequada · libido preservada</td></tr>
+      <tr><td>4–5</td><td>Obeso</td><td>Depósito de gordura escrotal → ↑ temperatura testicular → degeneração; ↓ libido</td></tr>
+    </table>
+    <div class="eac-prova-box"><strong>Deficiências nutricionais específicas:</strong> Vitamina A → espermatogênese anormal · Vitamina E + Selênio → ↑ EROs, danos espermáticos · Zinco → envolvido na síntese de testosterona · Proteína bruta → sêmen de baixa qualidade em dietas hipoproteicas</div>
   </div>
-  <div class="and-sp-panel active" id="and-sp-equipure">
-    <div class="and-prova-box"><strong>EquiPure™</strong> (Nidacon / Botupharma) — gradiente de densidade coloidal de sílica revestida. Produto mais usado no mundo para seleção espermática equina e bovina.</div>
-    <div class="and-step"><div class="and-step-num">1</div><div class="and-step-content"><div class="and-step-title">Preparação do tubo (15 mL cônico)</div><div class="and-step-sub">Adicionar 2 mL de EquiPure no FUNDO do tubo (camada mais densa)</div></div></div>
-    <div class="and-step"><div class="and-step-num">2</div><div class="and-step-content"><div class="and-step-title">Adição do sêmen</div><div class="and-step-sub">Pipetear devagar 2 mL de sêmen gel-free por cima do EquiPure (proporção 1:1). Não misturar as camadas.</div></div></div>
-    <div class="and-step"><div class="and-step-num">3</div><div class="and-step-content"><div class="and-step-title">Centrifugação</div><div class="and-step-sub"><strong>400 × g por 20 minutos.</strong> Espermatozoides mais móveis e íntegros atravessam o gradiente e formam pellet no fundo.</div></div></div>
-    <div class="and-step"><div class="and-step-num">4</div><div class="and-step-content"><div class="and-step-title">Coleta e ressuspensão do pellet</div><div class="and-step-sub">Descartar sobrenadante. Resuspender pellet em 1–2 mL de BotuCrio® ou BWW. Avaliar qualidade.</div></div></div>
-    <div class="and-suc-box"><strong>O EquiPure remove:</strong> espermatozoides defeituosos e imóveis · plasma seminal · bactérias · vírus (incluindo EAV — Arterite Viral Equina) · leucócitos · células epiteliais · EROs (espécies reativas de oxigênio)</div>
-  </div>
-  <div class="and-sp-panel" id="and-sp-slc">
-    <div class="and-info-box"><strong>SLC — Single Layer Centrifugation (Androcoll-E™ / Minitube)</strong> — técnica de camada única, mais simples e econômica que o gradiente duplo do EquiPure.</div>
+  <div class="eac-sp-panel" id="eac-sp-aprumos">
+    <div class="eac-info-box">Aprumos são avaliados em estação e em movimento. Defeitos ortopédicos que afetam os membros posteriores são especialmente relevantes — comprometem a capacidade de monta.</div>
     <div style="font-size:13px;line-height:1.8;margin-bottom:10px">
-      <strong>Diferença EquiPure × SLC:</strong><br>
-      EquiPure: gradiente duplo (duas camadas de densidade diferente) → mais complexo<br>
-      SLC: apenas uma camada de coloide → mesmo princípio, mais simples de executar<br><br>
-      <strong>Protocolo SLC:</strong> mesma força e tempo que EquiPure (400 × g / 20 min)<br>
-      <strong>Resultados:</strong> equivalentes ao EquiPure para LIN, STR, BCF e índice de fragmentação de DNA<br><br>
-      <strong>Androcoll-E™ específico para equinos</strong> — Androcoll-B para bovinos — Androcoll-P para suínos
+      <strong>Avaliar em estação:</strong> paralelismo dos membros, ângulo das articulações, prumos dos cascos/unhas, simetria da pelve<br>
+      <strong>Avaliar em movimento:</strong> claudicações, relutância ao movimento, assimetria de passada<br><br>
+      <strong>Lesões que causam inaptidão por comprometimento da monta:</strong><br>
+      · Artrite séptica em membros posteriores<br>
+      · Laminite crônica (equinos, bovinos)<br>
+      · Lesões de casco (digital, interdigital)<br>
+      · Problemas lombossacrais<br>
+      · Fraqueza dos membros posteriores (em touros pesados)
     </div>
-    <div class="and-memo"><div class="and-memo-label">Quando usar vs. não usar seleção por gradiente</div><div class="and-memo-text">USAR: garanhão subfértil · ejaculado ruim · pré-criopreservação de difícil congelamento<br>USAR: quando há contaminação bacteriana · pré-OPU-ICSI<br>NÃO COMPENSAR: garanhões com sêmen de boa qualidade (perda grande de células)<br>Recuperação espermática baixa é a principal desvantagem (pode perder &gt;50% do ejaculado)</div></div>
+    <div class="eac-memo"><div class="eac-memo-label">Atenção</div><div class="eac-memo-text">Um touro com sêmen excelente mas sem capacidade de monta = INAPTO<br>A avaliação da monta deve ser sempre incluída no exame andrológico completo</div></div>
   </div>
-  <div class="and-sp-panel" id="and-sp-resultado">
+  <div class="eac-sp-panel" id="eac-sp-termoreg">
+    <div class="eac-danger-box"><strong>Termorregulação escrotal</strong> — a temperatura testicular deve ser <span class="eac-hl">2–4°C abaixo da temperatura retal</span>. Qualquer aumento compromete a espermatogênese de forma reversível ou irreversível.</div>
     <div style="font-size:13px;line-height:1.8;margin-bottom:10px">
-      <strong>Princípio físico:</strong> espermatozoides com alta motilidade progressiva têm maior força propulsiva → conseguem atravessar o coloide. Células com maior integridade estrutural têm maior densidade → sedimentam no pellet. Células defeituosas e mortas ficam retidas nas camadas superiores.<br><br>
-      <strong>Resultados comprovados após EquiPure/SLC:</strong>
+      <strong>Mecanismos termorreguladores:</strong><br>
+      · Músculo cremaster — sobe/desce os testículos<br>
+      · Músculo dartos — contrai/relaxa a bolsa escrotal<br>
+      · Plexo pampiniforme — troca de calor contracorrente entre artéria/veia espermática<br><br>
+      <strong>Causas de hipertermia testicular:</strong><br>
+      · Obesidade (gordura escrotal) · febre sistêmica · calor ambiental excessivo · orquite · varicocele · hidrocele · pele escrotal espessa
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
-      <div style="border-radius:8px;border:1px solid var(--border-card);padding:10px;background:#eaf3de"><div style="font-weight:600;font-size:12px;color:#27500a;margin-bottom:4px">Melhora (↑)</div><div style="font-size:12px;line-height:1.7">Motilidade progressiva<br>Linearidade (LIN, STR)<br>Morfologia normal<br>Congelabilidade</div></div>
-      <div style="border-radius:8px;border:1px solid var(--border-card);padding:10px;background:#fce8e8"><div style="font-weight:600;font-size:12px;color:#7a1f1f;margin-bottom:4px">Reduz (↓)</div><div style="font-size:12px;line-height:1.7">Fragmentação de DNA (DFI)<br>EROs<br>Bactérias<br>EAV</div></div>
-    </div>
-    <div class="and-danger-box"><strong>Limitação principal:</strong> recuperação espermática baixa — grande parte do ejaculado é descartada. Em garanhões com sêmen de boa qualidade, a perda não compensa. Indicado principalmente em subférteis.</div>
+    <div class="eac-memo"><div class="eac-memo-label">Efeito da hipertermia no sêmen</div><div class="eac-memo-text">Hipertermia testicular &lt;3 dias: defeitos espermáticos transitórios (reversível)<br>Hipertermia 3–5 dias: gota citoplasmática proximal, caudas enroladas<br>Hipertermia &gt;5 dias: degeneração testicular, azoospermia (pode ser irreversível)<br>Efeito visível no sêmen: 30–60 dias após o episódio (tempo do ciclo espermatogênico)</div></div>
   </div>
 </div>
 
-<!-- PATOLOGIA ESPERMÁTICA -->
-<div class="and-panel" id="and-panel-patologia">
-  <div class="and-info-box">Avaliação das estruturas espermáticas: morfologia geral, integridade de membrana plasmática (MP), integridade acrossomal (MA) e integridade do DNA. Cada método tem indicação específica.</div>
-  <div class="and-sp-tabs">
-    <button class="and-sp-tab active" onclick="andSetSp('karras',this)">Karras (equinos)</button>
-    <button class="and-sp-tab" onclick="andSetSp('eosina',this)">Eosina-nigrosina</button>
-    <button class="and-sp-tab" onclick="andSetSp('hipo',this)">Hiposmótico</button>
-    <button class="and-sp-tab" onclick="andSetSp('panotico',this)">Panótico</button>
-    <button class="and-sp-tab" onclick="andSetSp('dna',this)">SCSA / TUNEL</button>
-    <button class="and-sp-tab" onclick="andSetSp('resumo_testes',this)">Resumo comparativo</button>
-  </div>
-  <div class="and-sp-panel active" id="and-sp-karras">
-    <div class="and-prova-box"><strong>Coloração de Karras</strong> — padrão para morfologia + acrossomo em equinos. O acrossomo equino é formado por <span class="and-hl">camadas delgadas → invisível ao contraste de fase</span>. Karras é obrigatório para avaliação acrossomal no garanhão.</div>
-    <div class="and-step"><div class="and-step-num">1</div><div class="and-step-content"><div class="and-step-title">Esfregaço</div><div class="and-step-sub">1 gota de sêmen sobre lâmina → esfregaço fino → secar ao ar</div></div></div>
-    <div class="and-step"><div class="and-step-num">2</div><div class="and-step-content"><div class="and-step-title">Fixação em metanol</div><div class="and-step-sub">Imergir em metanol por 5–10 min</div></div></div>
-    <div class="and-step"><div class="and-step-num">3</div><div class="and-step-content"><div class="and-step-title">Rosa bengala — 2 minutos</div><div class="and-step-sub">Cora citoplasma e componentes celulares em rosa → lavar com água destilada</div></div></div>
-    <div class="and-step"><div class="and-step-num">4</div><div class="and-step-content"><div class="and-step-title">Tanino — 1 minuto</div><div class="and-step-sub">Mordente → intensifica coloração subsequente → lavar</div></div></div>
-    <div class="and-step"><div class="and-step-num">5</div><div class="and-step-content"><div class="and-step-title">Azul vitória — 30 segundos</div><div class="and-step-sub">Cora acrossomo em azul escuro → lavar → secar → laminar</div></div></div>
-    <div class="and-step"><div class="and-step-num">6</div><div class="and-step-content"><div class="and-step-title">Contagem — 200 células</div><div class="and-step-sub">Morfologia completa + acrossomo (azul = íntegro · irregular/ausente = defeituoso)</div></div></div>
-    <div class="and-memo"><div class="and-memo-label">Por que não usar contraste de fase no equino?</div><div class="and-memo-text">Acrossomo equino = camadas delgadas → translúcido ao CF → indetectável<br>Karras cora o acrossomo em azul escuro → defeitos visíveis<br>Bovinos: acrossomo mais espesso → CF pode ser usado</div></div>
-  </div>
-  <div class="and-sp-panel" id="and-sp-eosina">
-    <div class="and-prova-box"><strong>Eosina-nigrosina</strong> — corante supravital. Avalia <span class="and-hl">viabilidade</span> (integridade estrutural da MP). Padrão em todas as espécies.</div>
-    <div class="and-info-box"><strong>Princípio:</strong> MP íntegra <strong>exclui</strong> o corante → branca/incolor = viva. MP lesada <strong>permite entrada</strong> → rosa/vermelha = morta. Nigrosina = fundo escuro para contraste.</div>
-    <div class="and-step"><div class="and-step-num">1</div><div class="and-step-content"><div class="and-step-title">Mistura imediata (TEMPO CRÍTICO)</div><div class="and-step-sub">Sêmen + eosina-nigrosina 1:1 → esfregaço IMEDIATAMENTE. Demora = falso positivo (corante entra passivamente)</div></div></div>
-    <div class="and-step"><div class="and-step-num">2</div><div class="and-step-content"><div class="and-step-title">Secagem rápida</div><div class="and-step-sub">Lâmina aquecida ou soprar para secar</div></div></div>
-    <div class="and-step"><div class="and-step-num">3</div><div class="and-step-content"><div class="and-step-title">Contagem — 200 células</div><div class="and-step-sub">Branco/incolor = vivo · Rosa = morto → calcular % viabilidade</div></div></div>
-    <div class="and-fluor-grid">
-      <div class="and-fluor-card and-fluor-verde"><div class="and-fluor-label">Branco / incolor = VIVO</div>MP íntegra exclui a eosina</div>
-      <div class="and-fluor-card and-fluor-vermelho"><div class="and-fluor-label">Rosa / vermelho = MORTO</div>MP lesada → eosina penetra</div>
+<!-- ÓRGÃOS GENITAIS EXTERNOS -->
+<div class="eac-panel" id="eac-panel-externo">
+  <div class="eac-info-box">Exame por inspeção visual e palpação. Realizado com contenção adequada, em local com boa iluminação. Em bovinos e equinos, examinar o pênis durante a coleta de sêmen.</div>
+  <div class="eac-anat-grid">
+    <div class="eac-anat-card">
+      <div class="eac-anat-title">Prepúcio</div>
+      <div class="eac-anat-items">
+        Avaliar: comprimento, abertura, presença de secreção (esmegma), lesões, edema, fibropapilomas<br>
+        <strong>Patologias:</strong> balanopostite, fimose, parafimose, foliculose prepucial<br>
+        <strong>Bovinos zebuínos:</strong> prepúcio muito penduloso → predispõe a lesões e infecções → critério de descarte
+      </div>
     </div>
-  </div>
-  <div class="and-sp-panel" id="and-sp-hipo">
-    <div class="and-prova-box"><strong>Teste hiposmótico (HOS)</strong> — avalia <span class="and-hl">integridade funcional</span> da MP. Testa se a membrana consegue regular osmose (função ativa) — diferente da eosina que testa apenas estrutura.</div>
-    <div class="and-info-box"><strong>Princípio:</strong> MP funcional → troca água com meio hiposmótico → célula incha → cauda dobra/enrola. MP lesada → não responde → cauda permanece reta.</div>
-    <div class="and-step"><div class="and-step-num">1</div><div class="and-step-content"><div class="and-step-title">Contagem inicial</div><div class="and-step-sub">Contar % caudas dobradas ANTES (controle basal)</div></div></div>
-    <div class="and-step"><div class="and-step-num">2</div><div class="and-step-content"><div class="and-step-title">Incubação em solução hiposmótica</div><div class="and-step-sub">37°C por 30–60 min (água destilada ou 150 mOsmol)</div></div></div>
-    <div class="and-step"><div class="and-step-num">3</div><div class="and-step-content"><div class="and-step-title">Contagem final — 200 células</div><div class="and-step-sub">% caudas dobradas DEPOIS − basal = % MP funcionalmente íntegra</div></div></div>
-    <div class="and-memo"><div class="and-memo-label">Eosina-nigrosina × HOS test</div><div class="and-memo-text">Eosina: integridade ESTRUTURAL da MP<br>HOS: integridade FUNCIONAL da MP<br>São complementares — não se substituem</div></div>
-  </div>
-  <div class="and-sp-panel" id="and-sp-panotico">
-    <div class="and-info-box"><strong>Panótico Rápido (Diff-Quick)</strong> — morfologia geral de rotina. Simples, rápido, disponível em qualquer laboratório. Usado em bovinos, ovinos, suínos e carnívoros. <em>Não específico para acrossomo</em> → equinos usam Karras.</div>
-    <div class="and-step"><div class="and-step-num">1</div><div class="and-step-content"><div class="and-step-title">Esfregaço → secar ao ar</div><div class="and-step-sub">1 gota de sêmen · esfregaço fino</div></div></div>
-    <div class="and-step"><div class="and-step-num">2</div><div class="and-step-content"><div class="and-step-title">3 imersões rápidas (5–10 s cada)</div><div class="and-step-sub">Frasco 1: fixador metanólico → Frasco 2: eosina → Frasco 3: azure/azul de metileno</div></div></div>
-    <div class="and-step"><div class="and-step-num">3</div><div class="and-step-content"><div class="and-step-title">Contagem — 200 células</div><div class="and-step-sub">Avaliar cabeça, peça intermediária, cauda. Classificar defeitos maiores e menores.</div></div></div>
-  </div>
-  <div class="and-sp-panel" id="and-sp-dna">
-    <div class="and-danger-box"><strong>Fragmentação de DNA espermático</strong> — prediz infertilidade em casos com espermograma convencional normal. Alta relevância em equinos antes da criopreservação.</div>
-    <div class="and-card" onclick="andInfo('dna','scsa')"><div class="and-card-title">SCSA — Sperm Chromatin Structure Assay</div><div class="and-card-sub">Laranja de acridina · DFI · método mais validado · citometria de fluxo</div></div>
-    <div class="and-card" onclick="andInfo('dna','tunel')"><div class="and-card-title">TUNEL</div><div class="and-card-sub">Detecção direta de quebras no DNA · nucleotídeos fluorescentes · alta acurácia</div></div>
-    <div class="and-info-panel empty" id="and-info-dna">Clique para ver detalhes.</div>
-    <div class="and-memo" style="margin-top:10px"><div class="and-memo-label">Valores de referência DFI (SCSA)</div><div class="and-memo-text">DFI &lt;15%: normal — fertilidade preservada<br>DFI 15–25%: zona limítrofe<br>DFI &gt;25%: comprometimento por IA/monta natural<br>DFI &gt;50%: comprometimento mesmo por FIV<br>EquiPure/SLC tende a ↓ DFI no pellet selecionado</div></div>
-  </div>
-  <div class="and-sp-panel" id="and-sp-resumo_testes">
-    <table class="and-ref-table">
-      <tr><th>Teste</th><th>Avalia</th><th>Método</th><th>Resultado</th></tr>
-      <tr><td><strong>Karras</strong></td><td>Morfologia + acrossomo</td><td>Coloração (rosa bengala, tanino, azul vitória) · 200 células</td><td>Azul = acrossomo íntegro</td></tr>
-      <tr><td><strong>Panótico (Diff-Quick)</strong></td><td>Morfologia geral</td><td>3 imersões rápidas · 200 células</td><td>Morfologia geral — não avalia acrossomo</td></tr>
-      <tr><td><strong>Eosina-nigrosina</strong></td><td>Viabilidade (MP estrutural)</td><td>Supravital · esfregaço imediato</td><td>Branco = vivo · Rosa = morto</td></tr>
-      <tr><td><strong>HOS test</strong></td><td>MP funcional</td><td>Solução hiposmótica</td><td>Cauda dobrada = MP funcional</td></tr>
-      <tr><td><strong>SYBR-14 / IP</strong></td><td>Viabilidade (MP)</td><td>Citometria de fluxo</td><td>Verde = vivo · Vermelho = morto</td></tr>
-      <tr><td><strong>FITC-PSA + IP</strong></td><td>MP + Acrossomo</td><td>Citometria (4 subpopulações)</td><td>MPAI / MPLAI / MPIAL / MPAL</td></tr>
-      <tr><td><strong>JC-1</strong></td><td>Mitocôndria</td><td>Citometria</td><td>Laranja = alto potencial · Verde = baixo</td></tr>
-      <tr><td><strong>SCSA</strong></td><td>Cromatina / DNA</td><td>Laranja de acridina · citometria</td><td>DFI: verde = íntegro · laranja = fragmentado</td></tr>
-      <tr><td><strong>TUNEL</strong></td><td>DNA (direto)</td><td>Citometria · nucleotídeos fluorescentes</td><td>Marcação direta dos sítios de quebra</td></tr>
-    </table>
-    <div class="and-fluor-grid">
-      <div class="and-fluor-card and-fluor-verde"><div class="and-fluor-label">MP íntegra + Acrossomo íntegro</div>SYBR-14 verde · FITC-PSA verde · = MPAI</div>
-      <div class="and-fluor-card and-fluor-vermelho"><div class="and-fluor-label">MP lesada + Acrossomo lesado</div>IP vermelho · sem FITC-PSA · = MPAL</div>
-      <div class="and-fluor-card and-fluor-azul"><div class="and-fluor-label">MP lesada + Acrossomo íntegro</div>IP vermelho · FITC-PSA verde · = MPLAI</div>
-      <div class="and-fluor-card and-fluor-laranja"><div class="and-fluor-label">DNA fragmentado (SCSA)</div>Laranja de acridina: laranja/vermelho</div>
+    <div class="eac-anat-card">
+      <div class="eac-anat-title">Pênis</div>
+      <div class="eac-anat-items">
+        Avaliar durante a ereção/coleta: tamanho, forma, desvios, lesões na glande, fibropapilomas<br>
+        <strong>Patologias:</strong> desvio espiral/ventral do pênis (touros), hematoma do pênis, lacerações, fratura do pênis (carnívoros), papilomatose
+      </div>
+    </div>
+    <div class="eac-anat-card">
+      <div class="eac-anat-title">Testículos e bolsa escrotal</div>
+      <div class="eac-anat-items">
+        <strong>Inspeção:</strong> simetria, tamanho, posição (descida completa?), pele escrotal<br>
+        <strong>Palpação:</strong> consistência (firme e elástica = normal), mobilidade, sensibilidade, temperatura local<br>
+        <strong>Patologias:</strong> orquite, hipoplasia testicular, degeneração testicular, criptorquidismo, hematocele, hidrocele, varicocele
+      </div>
+    </div>
+    <div class="eac-anat-card">
+      <div class="eac-anat-title">Epidídimos</div>
+      <div class="eac-anat-items">
+        <strong>Palpação:</strong> cabeça (dorsal), corpo e cauda (ventral/caudal)<br>
+        Consistência macia normal · cauda do epidídimo = maior reservatório<br>
+        <strong>Patologias:</strong> epididimite (Brucella em bovinos/carneiros; Actinobacillus em bovinos) → induração, nódulos, assimetria<br>
+        <strong>Equinos:</strong> inserção abaxial da cauda = NORMAL (não é defeito)
+      </div>
+    </div>
+    <div class="eac-anat-card">
+      <div class="eac-anat-title">Cordão espermático</div>
+      <div class="eac-anat-items">
+        Palpável entre a bolsa escrotal e o anel inguinal<br>
+        Avaliar: espessura, consistência, mobilidade<br>
+        <strong>Patologias:</strong> varicocele (dilatação venosa), hérnia inguinal, abscesso, hematoma
+      </div>
+    </div>
+    <div class="eac-anat-card">
+      <div class="eac-anat-title">Criptorquidismo</div>
+      <div class="eac-anat-items">
+        Testículo não desceu ao escroto — pode ser uni ou bilateral<br>
+        <strong>Unilateral:</strong> fértil (lado normal) mas não deve reproduzir (herança genética)<br>
+        <strong>Bilateral:</strong> azoospermia<br>
+        Testículo retido tem temperatura corporal = degenera → ↑ risco neoplasia
+      </div>
     </div>
   </div>
 </div>
 
-<!-- FLUORESCÊNCIA E CASA -->
-<div class="and-panel" id="and-panel-fluor">
-  <div class="and-suc-box"><strong>CASA</strong> — padrão ouro para cinética espermática, especialmente equinos. Analisa >500 células de forma objetiva. <strong>Citometria de fluxo</strong> — avalia >10.000 células com múltiplas sondas simultaneamente.</div>
-  <div class="and-sp-tabs">
-    <button class="and-sp-tab active" onclick="andSetSp('casa',this)">CASA</button>
-    <button class="and-sp-tab" onclick="andSetSp('sondas',this)">Sondas fluorescentes</button>
-    <button class="and-sp-tab" onclick="andSetSp('subpop',this)">Subpopulações</button>
+<!-- ÓRGÃOS GENITAIS INTERNOS -->
+<div class="eac-panel" id="eac-panel-interno">
+  <div class="eac-info-box"><strong>Palpação retal</strong> — realizada em bovinos, equinos e ovinos adultos. Permite avaliar as glândulas acessórias que produzem o plasma seminal.</div>
+  <div class="eac-card" onclick="eacInfo('int','vesicular')"><div class="eac-card-title">Vesículas seminais (glândulas vesiculares)</div><div class="eac-card-sub">Principal glândula acessória nos bovinos · secreta frutose e prostaglandinas · vesiculite = causa comum de infertilidade em touros</div></div>
+  <div class="eac-card" onclick="eacInfo('int','prostata')"><div class="eac-card-title">Próstata</div><div class="eac-card-sub">Presente em todas as espécies · cães: glândula grande e bilobada · bovinos: difusa · hiperplasia prostática benigna em cães velhos</div></div>
+  <div class="eac-card" onclick="eacInfo('int','ampolas')"><div class="eac-card-title">Ampolas do ducto deferente</div><div class="eac-card-sub">Presente em bovinos, equinos, ovinos · armazenamento temporário de espermatozoides · palpáveis por retal em bovinos</div></div>
+  <div class="eac-card" onclick="eacInfo('int','bulbo')"><div class="eac-card-title">Glândulas bulbouretrais (Cowper)</div><div class="eac-card-sub">Secretam fluido pré-ejaculatório · não palpáveis por retal (posição) · suínos: muito desenvolvidas</div></div>
+  <div class="eac-info-panel empty" id="eac-info-int">Clique para ver detalhes.</div>
+  <div class="eac-memo"><div class="eac-memo-label">Vesiculite seminal — o que procurar na palpação retal (bovinos)</div><div class="eac-memo-text">Normal: lobulação simétrica, consistência macia, mobile, sem dor<br>Vesiculite aguda: aumentada, firme, dolorosa à palpação, quente<br>Vesiculite crônica: lobulação irregular, fibrótica, aderida a estruturas vizinhas<br>Consequência: pus no sêmen (piospermia) · infertilidade · transmissão venérea</div></div>
+</div>
+
+<!-- BIOMETRIA TESTICULAR -->
+<div class="eac-panel" id="eac-panel-biometria">
+  <div class="eac-suc-box"><strong>Circunferência escrotal (CE)</strong> — parâmetro mais importante do exame andrológico de touros e carneiros. Correlaciona diretamente com a <span class="eac-hl">produção espermática diária</span>, maturidade sexual e fertilidade. Medida com fita métrica no ponto de maior circunferência.</div>
+  <div class="eac-info-box"><strong>Técnica de mensuração:</strong> animal em estação, contenção tranquila. Apoiar ambos os testículos com as mãos e empurrá-los gentilmente para o fundo da bolsa. Colocar a fita métrica na circunferência máxima. Não pressionar excessivamente. Repetir 2–3 vezes e registrar a média.</div>
+  <table class="eac-ref-table">
+    <tr><th>Espécie / Categoria</th><th>CE mínima (Aptidão)</th><th>Observações</th></tr>
+    <tr><td><strong>Touro taurino — 24 meses</strong></td><td>≥34 cm</td><td>Correlação positiva com % de espermatozoides normais e motilidade</td></tr>
+    <tr><td><strong>Touro taurino — 36 meses</strong></td><td>≥36 cm</td><td>—</td></tr>
+    <tr><td><strong>Touro zebuíno — 24 meses (Nelore)</strong></td><td>≥32 cm</td><td>Zebuínos têm CE ligeiramente menor que taurinos na mesma idade</td></tr>
+    <tr><td><strong>Touro zebuíno — 36 meses (Nelore)</strong></td><td>≥34 cm</td><td>—</td></tr>
+    <tr><td><strong>Carneiro adulto</strong></td><td>≥30 cm</td><td>Varia com raça e estação reprodutiva</td></tr>
+    <tr><td><strong>Garanhão adulto</strong></td><td>Largura 4–8 cm por testículo</td><td>Até 10% de assimetria é tolerada em equinos</td></tr>
+  </table>
+  <div class="eac-prova-box"><strong>CE abaixo do mínimo → classificação "Suspeito" ou "Inapto".</strong> CE é o melhor preditor de produção espermática diária e precocidade sexual. CE correlaciona também com a CE das filhas (maturidade sexual) — caráter com alta herdabilidade.</div>
+  <div class="eac-memo"><div class="eac-memo-label">O que afeta a CE</div><div class="eac-memo-text">↑ CE: boa nutrição, raça precoce, estação reprodutiva favorável, bom ECC<br>↓ CE: subnutrição, doença sistêmica, criptorquidismo, hipoplasia testicular, degeneração testicular, estresse térmico prolongado</div></div>
+  <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;margin-top:14px">Consistência testicular — escala de palpação</div>
+  <table class="eac-ref-table">
+    <tr><th>Escore</th><th>Consistência</th><th>Interpretação</th></tr>
+    <tr><td>1</td><td>Muito flácida</td><td>Degeneração testicular avançada · azoospermia provável</td></tr>
+    <tr><td>2</td><td>Flácida</td><td>Degeneração · sêmen comprometido</td></tr>
+    <tr><td><strong>3</strong></td><td><strong>Firme e elástica (normal)</strong></td><td>Parênquima seminífero íntegro · boa produção esperada</td></tr>
+    <tr><td>4</td><td>Dura</td><td>Fibrose, orquite crônica · produção comprometida</td></tr>
+    <tr><td>5</td><td>Muito dura / pedregosa</td><td>Fibrose severa · mineralização · azoospermia</td></tr>
+  </table>
+</div>
+
+<!-- LIBIDO E MONTA -->
+<div class="eac-panel" id="eac-panel-libido">
+  <div class="eac-info-box"><strong>Avaliação do comportamento sexual</strong> — componente obrigatório do exame andrológico. Um animal com excelente sêmen mas sem libido é inapto para a monta natural. Testada em presença de fêmea em estro.</div>
+  <table class="eac-ref-table">
+    <tr><th>Escore</th><th>Comportamento</th><th>Classificação</th></tr>
+    <tr><td><strong>0</strong></td><td>Sem interesse sexual. Não monta. Ignora a fêmea.</td><td style="color:#7a1f1f;font-weight:600">Inapto</td></tr>
+    <tr><td><strong>1</strong></td><td>Interesse discreto. Olha, fareja a fêmea mas não tenta montar.</td><td style="color:#7a1f1f">Inapto</td></tr>
+    <tr><td><strong>2</strong></td><td>Tenta montar mas sem ereção ou sem ejaculação.</td><td style="color:#633806;font-weight:600">Questionável</td></tr>
+    <tr><td><strong>3</strong></td><td>Monta com ejaculação mas com demora; apenas uma monta em 20 min.</td><td style="color:#633806">Questionável</td></tr>
+    <tr><td><strong>4</strong></td><td>Monta e ejaculação eficientes; 1–2 montas em 20 min.</td><td style="color:#27500a">Apto</td></tr>
+    <tr><td><strong>5</strong></td><td>Alta libido. Múltiplas montas eficientes.</td><td style="color:#27500a;font-weight:600">Apto</td></tr>
+  </table>
+  <div class="eac-prova-box"><strong>Causas de baixo escore de libido:</strong> dor nos membros/articulações (claudicação), isolamento social prolongado, uso excessivo do reprodutor (exaustão), problemas hormonais (hipotireoidismo, deficiência de testosterona), experiências negativas anteriores, excesso de ECC.</div>
+  <div class="eac-memo"><div class="eac-memo-label">Observações importantes</div><div class="eac-memo-text">Touros jovens: escore pode melhorar com experiência → reavaliação<br>Touros com escore ≤2: inaptos para monta natural (podem servir como doadores para IA)<br>Teste deve ser feito com fêmea em estro real para validade do escore<br>Tempo de observação: mínimo 20 minutos para avaliação adequada</div></div>
+</div>
+
+<!-- ESPERMOGRAMA -->
+<div class="eac-panel" id="eac-panel-espermograma">
+  <div class="eac-sp-tabs">
+    <button class="eac-sp-tab active" onclick="eacSetSp('param',this)">Parâmetros (CBRA)</button>
+    <button class="eac-sp-tab" onclick="eacSetSp('defeitos',this)">Patologia espermática</button>
+    <button class="eac-sp-tab" onclick="eacSetSp('criterios',this)">Critérios mínimos</button>
   </div>
-  <div class="and-sp-panel active" id="and-sp-casa">
-    <div style="font-size:13px;line-height:1.9">
-      <strong>VCL</strong> — velocidade curvilínea (µm/s) — velocidade real de deslocamento<br>
-      <strong>VSL</strong> — velocidade em linha reta (µm/s) — deslocamento líquido<br>
-      <strong>VAP</strong> — velocidade média do trajeto (µm/s)<br>
-      <strong>LIN</strong> — linearidade (VSL/VCL)<br>
-      <strong>STR</strong> — retidão (VSL/VAP)<br>
-      <strong>WOB</strong> — oscilação (VAP/VCL)<br>
-      <strong>ALH</strong> — amplitude lateral da cabeça<br>
-      <strong>BCF</strong> — frequência de batimento cruzado do flagelo
-    </div>
-    <div class="and-memo" style="margin-top:10px"><div class="and-memo-label">Por que CASA é essencial em equinos</div><div class="and-memo-text">Avaliação subjetiva tem baixa reprodutibilidade entre avaliadores<br>VCL e LIN correlacionam com penetração no muco cervical e fertilidade pós-IA<br>Garanhões com boa motilidade subjetiva podem ter CASA ruim → falsa aprovação<br>CASA detecta subpopulações de espermatozoides com padrões cinéticos distintos</div></div>
-  </div>
-  <div class="and-sp-panel" id="and-sp-sondas">
-    <div class="and-sonda-grid">
-      <div class="and-sonda-card" onclick="andInfo('son','sybr14')"><div class="and-sonda-name">SYBR-14 + IP</div><div class="and-sonda-alvo">Viabilidade · integridade da membrana plasmática</div></div>
-      <div class="and-sonda-card" onclick="andInfo('son','fitcpsa')"><div class="and-sonda-name">FITC-PSA</div><div class="and-sonda-alvo">Integridade acrossomal</div></div>
-      <div class="and-sonda-card" onclick="andInfo('son','jc1')"><div class="and-sonda-name">JC-1</div><div class="and-sonda-alvo">Potencial de membrana mitocondrial</div></div>
-      <div class="and-sonda-card" onclick="andInfo('son','cfda')"><div class="and-sonda-name">CFDA</div><div class="and-sonda-alvo">Integridade + atividade metabólica da MP</div></div>
-      <div class="and-sonda-card" onclick="andInfo('son','ao')"><div class="and-sonda-name">Laranja de Acridina (SCSA)</div><div class="and-sonda-alvo">Fragmentação de DNA</div></div>
-      <div class="and-sonda-card" onclick="andInfo('son','annexin')"><div class="and-sonda-name">Anexina V-FITC + IP</div><div class="and-sonda-alvo">Apoptose espermática · 4 subpopulações</div></div>
-    </div>
-    <div class="and-info-panel empty" id="and-info-son">Clique em uma sonda para ver detalhes.</div>
-  </div>
-  <div class="and-sp-panel" id="and-sp-subpop">
-    <div class="and-info-box"><strong>4 subpopulações espermáticas</strong> — combinação FITC-PSA + IP por citometria de fluxo avalia membrana plasmática e acrossomo simultaneamente.</div>
-    <table class="and-ref-table">
-      <tr><th>Subpopulação</th><th>MP</th><th>Acrossomo</th><th>Significado</th></tr>
-      <tr><td><strong>MPAI</strong></td><td>Íntegra</td><td>Íntegro</td><td>Viável e funcional → ideal · quanto maior melhor</td></tr>
-      <tr><td><strong>MPLAI</strong></td><td>Lesada</td><td>Íntegro</td><td>Morto com acrossomo preservado</td></tr>
-      <tr><td><strong>MPIAL</strong></td><td>Íntegra</td><td>Lesado</td><td>Acrossomo reagiu/defeituoso → não fertiliza</td></tr>
-      <tr><td><strong>MPAL</strong></td><td>Lesada</td><td>Lesado</td><td>Completamente comprometido</td></tr>
+  <div class="eac-sp-panel active" id="eac-sp-param">
+    <table class="eac-ref-table">
+      <tr><th>Parâmetro</th><th>Método</th><th>Mínimo (CBRA — Bovinos)</th></tr>
+      <tr><td><strong>Volume</strong></td><td>Meniscada na seringa graduada</td><td>Variável por espécie e método de coleta</td></tr>
+      <tr><td><strong>Motilidade progressiva (MP)</strong></td><td>Microscopia · placa aquecida 37°C · 0–100%</td><td>≥60% (sêmen fresco)</td></tr>
+      <tr><td><strong>Vigor</strong></td><td>Escala 0–5</td><td>≥3</td></tr>
+      <tr><td><strong>Turbilhonamento</strong></td><td>Microscopia a fresco · 100× · 0–5</td><td>≥3 (bovinos) · Não desclassificatório isolado</td></tr>
+      <tr><td><strong>Concentração</strong></td><td>Câmara de Neubauer ou fotocolorimétrico</td><td>Espécie-dependente</td></tr>
+      <tr><td><strong>Morfologia</strong></td><td>Esfregaço · Rosa Bengala / Panótico / Karras</td><td>Defeitos totais ≤30% · Maiores ≤20% · Menores ≤10%</td></tr>
+      <tr><td><strong>pH</strong></td><td>Fita reagente ou pHmetro</td><td>6,2–6,8 (bovinos) · varia por espécie</td></tr>
+      <tr><td><strong>Cor</strong></td><td>Inspeção visual</td><td>Branco leitoso a amarelo citrino</td></tr>
     </table>
-    <div class="and-memo"><div class="and-memo-label">Combinação tripla — JC-1 + IP + FITC-PSA</div><div class="and-memo-text">Avalia simultaneamente: MP (IP) + Acrossomo (FITC-PSA) + Mitocôndria (JC-1)<br>Ideal para avaliação completa de sêmen pós-descongelamento<br>MPIAL especialmente relevante após criopreservação — acrossomo sensível ao congelamento</div></div>
   </div>
+  <div class="eac-sp-panel" id="eac-sp-defeitos">
+    <div class="eac-def-grid">
+      <div class="eac-def-maior">
+        <div class="eac-def-label" style="color:#7a1f1f">Defeitos Maiores — comprometem a fertilização</div>
+        <div class="eac-def-items" style="color:#7a1f1f">
+          Acrossomo dobrado ou ausente<br>Cabeça pequena (microcefalia)<br>Cabeça piriforme (em pera)<br>
+          Cabeça gigante (macrocefalia)<br>Cabeça estreita na base<br>Cabeça dupla<br>
+          Inserção anormal/abaxial da PI (com gota prox.)<br>Gota citoplasmática proximal<br>
+          Cauda dobrada fortemente<br>Cauda fortemente espiralada (dag defect)<br>
+          Cabeça solta com botão citoplasmático<br>Pouch formation
+        </div>
+      </div>
+      <div class="eac-def-menor">
+        <div class="eac-def-label" style="color:#633806">Defeitos Menores — menor impacto na fertilidade</div>
+        <div class="eac-def-items" style="color:#633806">
+          Gota citoplasmática distal<br>Cauda espiralada suave<br>Curvatura leve de cauda<br>
+          Cabeça isolada sem botão<br>Célula redonda (espermatócito)<br>
+          Inserção abaxial simples (<strong>normal em equinos</strong>)<br>
+          Cauda dobrada simples<br>Cabeça levemente piriforme
+        </div>
+      </div>
+    </div>
+    <div class="eac-prova-box">
+      <strong>Origem dos defeitos:</strong><br>
+      Hipoplasia / degeneração testicular → pouch formation, cabeças deformadas, acrossomo anormal<br>
+      Hipertermia testicular → gota prox., cauda enrolada, caudas dobradas<br>
+      Epididimite → gota prox. em massa, caudas enroladas<br>
+      Má manipulação do sêmen → cauda dobrada simples (artefato de coleta — defeito menor)
+    </div>
+  </div>
+  <div class="eac-sp-panel" id="eac-sp-criterios">
+    <div class="eac-suc-box"><strong>Critérios mínimos CBRA para classificação de touros</strong></div>
+    <table class="eac-ref-table">
+      <tr><th>Parâmetro</th><th>Mínimo para APTO</th></tr>
+      <tr><td>Motilidade progressiva (fresco)</td><td>≥60%</td></tr>
+      <tr><td>Vigor</td><td>≥3</td></tr>
+      <tr><td>Morfologia — Normais</td><td>≥70%</td></tr>
+      <tr><td>Defeitos maiores</td><td>≤20%</td></tr>
+      <tr><td>Defeitos menores</td><td>≤10%</td></tr>
+      <tr><td>Defeitos totais</td><td>≤30%</td></tr>
+      <tr><td>Circunferência escrotal</td><td>Varia por raça/idade (ver aba biometria)</td></tr>
+      <tr><td>Libido</td><td>≥3</td></tr>
+      <tr><td>Condição corporal</td><td>2,5–3,5</td></tr>
+    </table>
+    <div class="eac-danger-box"><strong>Regra geral:</strong> para ser APTO, o animal deve atingir TODOS os parâmetros mínimos. Um único parâmetro abaixo do mínimo pode classificar o animal como SUSPEITO ou INAPTO, dependendo do grau do desvio.</div>
+  </div>
+</div>
+
+<!-- POR ESPÉCIE -->
+<div class="eac-panel" id="eac-panel-por_especie">
+  <div class="eac-info-box">Cada espécie tem particularidades anatômicas, método de coleta e parâmetros de referência próprios. Esta aba concentra o que diferencia cada exame.</div>
+  <div class="eac-sp-tabs">
+    <button class="eac-sp-tab active" onclick="eacSetSp('esp_bov',this)">Bovinos</button>
+    <button class="eac-sp-tab" onclick="eacSetSp('esp_eq',this)">Equinos</button>
+    <button class="eac-sp-tab" onclick="eacSetSp('esp_rum',this)">Ovinos / Caprinos</button>
+    <button class="eac-sp-tab" onclick="eacSetSp('esp_sui',this)">Suínos</button>
+    <button class="eac-sp-tab" onclick="eacSetSp('esp_carn',this)">Cão / Gato</button>
+  </div>
+
+  <!-- BOVINOS -->
+  <div class="eac-sp-panel active" id="eac-sp-esp_bov">
+    <div class="eac-prova-box"><strong>Bovinos</strong> — exame mais padronizado e amplamente cobrado. Contenção em tronco. Palpação retal obrigatória (glândulas acessórias). CE é o principal critério de aptidão.</div>
+    <div class="eac-2col">
+      <div class="eac-2col-box">
+        <div class="eac-2col-label">Anatomia — particularidades</div>
+        <div class="eac-2col-text">
+          Testículos: eixo longitudinal <strong>vertical</strong><br>
+          Posição: escroto pendular, região inguinal<br>
+          Pênis: <strong>fibroelástico</strong> com flexura sigmoide<br>
+          Prepúcio: taurinos = curto · zebuínos = longo e penduloso (fator de risco)<br>
+          Próstata: <strong>difusa</strong> (dispersa ao redor da uretra)<br>
+          Vesícula seminal: lobulada, palpável por retal<br>
+          Ampola: 8–10 cm, palpável por retal
+        </div>
+      </div>
+      <div class="eac-2col-box">
+        <div class="eac-2col-label">Coleta de sêmen</div>
+        <div class="eac-2col-text">
+          <strong>Eletroejaculador (EE):</strong> estimula glândulas acessórias via eletrodos retais → maior volume, mais plasma seminal · indicado para touros sem treino de VA<br>
+          <strong>Vagina artificial (VA):</strong> volume menor e mais fiel · ideal para touros treinados<br>
+          EE: volume ~16 mL · VA: ~8 mL · concentração ~1×10⁹/mL
+        </div>
+      </div>
+    </div>
+    <table class="eac-ref-table">
+      <tr><th>Parâmetro</th><th>Mínimo — APTO</th><th>Observação</th></tr>
+      <tr><td>CE — touro taurino 24 meses</td><td>≥34 cm</td><td>Fita métrica no ponto de maior circunferência</td></tr>
+      <tr><td>CE — touro taurino 36 meses</td><td>≥36 cm</td><td>—</td></tr>
+      <tr><td>CE — touro zebuíno 24 meses</td><td>≥32 cm</td><td>Zebuínos ligeiramente menor que taurinos</td></tr>
+      <tr><td>Motilidade progressiva (fresco)</td><td>≥60%</td><td>Placa aquecida 37°C</td></tr>
+      <tr><td>Vigor</td><td>≥3</td><td>Escala 0–5</td></tr>
+      <tr><td>Morfologia normais</td><td>≥70%</td><td>Defeitos totais ≤30% · Maiores ≤20%</td></tr>
+    </table>
+    <div class="eac-memo"><div class="eac-memo-label">Atenção — bovinos zebuínos</div><div class="eac-memo-text">Zebuínos (Nelore, Brahman): CE mínima menor que taurinos na mesma idade<br>Prepúcio longo nos zebuínos → risco aumentado de balanopostite · fator de descarte<br>Palpação retal das vesículas seminais: diagnóstico de vesiculite = piospermia no sêmen<br>ECC mínimo recomendado para touros: 2,5–3 na escala 1–5</div></div>
+  </div>
+
+  <!-- EQUINOS -->
+  <div class="eac-sp-panel" id="eac-sp-esp_eq">
+    <div class="eac-prova-box"><strong>Equinos</strong> — testículos em posição oblíqua. Biometria por paquímetro (não fita métrica). Sem turbilhonamento. CASA obrigatório para motilidade. Sazonalidade afeta a qualidade seminal.</div>
+    <div class="eac-2col">
+      <div class="eac-2col-box">
+        <div class="eac-2col-label">Anatomia — particularidades</div>
+        <div class="eac-2col-text">
+          Testículos: eixo longitudinal <strong>oblíquo</strong> (cranial mais dorsal que caudal) — diferente do boi (vertical)<br>
+          Temperatura testicular normal: ~35°C (2–4°C abaixo da temperatura retal)<br>
+          Assimetria testicular: tolerada até <strong>10%</strong><br>
+          Epidídimo: inserção <strong>abaxial</strong> da cauda = <span class="eac-hl">NORMAL no equino</span> (não é defeito espermático)<br>
+          Pênis: <strong>músculo cavernoso</strong> (não fibroelástico) · sem flexura sigmoide · prepúcio dupla camada
+        </div>
+      </div>
+      <div class="eac-2col-box">
+        <div class="eac-2col-label">Coleta de sêmen</div>
+        <div class="eac-2col-text">
+          <strong>VA modelo Botucatu:</strong> tubo rígido com mucosa, água 40–45°C + ar · presença de égua em estro ou manequim<br>
+          <strong>Filtrar gel:</strong> imediatamente com gaze (vesícula seminal → gel prejudica análise)<br>
+          <strong>Sinais de ejaculação:</strong> flagging (batimento de cauda), contração do períneo, sapateado<br>
+          <strong>Ejaculação química:</strong> imipramina + xilazina — para garanhões que não aceitam VA
+        </div>
+      </div>
+    </div>
+    <table class="eac-ref-table">
+      <tr><th>Parâmetro</th><th>Referência equino</th><th>Diferença vs. bovino</th></tr>
+      <tr><td>Biometria testicular</td><td>Largura 4–8 cm · por paquímetro</td><td>Usa paquímetro, não fita métrica</td></tr>
+      <tr><td>Volume (gel-free)</td><td>40–70 mL</td><td>Muito maior que bovinos (3–8 mL)</td></tr>
+      <tr><td>Concentração</td><td>100–300×10⁶/mL</td><td>Muito menor que bovinos (800–2000×10⁶/mL)</td></tr>
+      <tr><td>Motilidade (fresco)</td><td>≥70% — avaliar por <strong>CASA</strong></td><td>Turbilhonamento <strong>NÃO avaliado</strong></td></tr>
+      <tr><td>Motilidade (pós-descongelamento)</td><td>≥30%</td><td>Mínimo aceitável para IA com congelado</td></tr>
+      <tr><td>Morfologia normais</td><td>≥60–70%</td><td>Aceita-se maior percentual de defeitos que em bovinos</td></tr>
+      <tr><td>Coloração Karras</td><td>Obrigatória para acrossomo</td><td>Acrossomo equino: camadas delgadas → invisível ao contraste de fase</td></tr>
+    </table>
+    <div class="eac-danger-box"><strong>Vesiculite seminal equina</strong> — diagnóstica pela coleta fracionada: neutrófilos e bactérias concentram-se na 3ª fração. Tratamento: antibioticoterapia sistêmica prolongada. Coleta apenas da fração A (1º–2º jatos) para IA.</div>
+  </div>
+
+  <!-- OVINOS / CAPRINOS -->
+  <div class="eac-sp-panel" id="eac-sp-esp_rum">
+    <div class="eac-prova-box"><strong>Ovinos e Caprinos</strong> — testículos em escroto bífido. Sêmen muito concentrado. CE em carneiros = ≥30 cm. Epididimite por <em>Brucella ovis</em> e <em>Actinobacillus seminis</em> — causa mais frequente de infertilidade.</div>
+    <div class="eac-2col">
+      <div class="eac-2col-box">
+        <div class="eac-2col-label">Anatomia — particularidades</div>
+        <div class="eac-2col-text">
+          Escroto <strong>bífido</strong> (dividido ao meio) — diferente de bovinos e equinos<br>
+          Pênis: fibroelástico com flexura sigmoide<br>
+          Processo uretral: projeção da uretra além da glande (carneiro e bode) → inspecionar · urolitíase compromete a reprodução
+        </div>
+      </div>
+      <div class="eac-2col-box">
+        <div class="eac-2col-label">Coleta de sêmen</div>
+        <div class="eac-2col-text">
+          <strong>Vagina artificial:</strong> método de eleição · menor que a bovina<br>
+          <strong>Eletroejaculador:</strong> alternativa em animais não treinados<br>
+          Volume muito baixo: 0,1–1,0 mL<br>
+          Concentração muito alta: 2–4×10⁹/mL<br>
+          Turbilhonamento: avaliado e importante (sêmen muito concentrado)
+        </div>
+      </div>
+    </div>
+    <div class="eac-memo"><div class="eac-memo-label">Epididimite — principal causa de infertilidade em ovinos</div><div class="eac-memo-text">Brucella ovis (ovinos): epididimite bilateral · induração da cauda do epidídimo · orquite<br>Actinobacillus seminis (jovens): epididimite aguda · abscesso<br>Diagnóstico: palpação + ELISA para Brucella ovis · cultura<br>Consequência: defeitos espermáticos em massa (gota prox., caudas enroladas) · azoospermia</div></div>
+  </div>
+
+  <!-- SUÍNOS -->
+  <div class="eac-sp-panel" id="eac-sp-esp_sui">
+    <div class="eac-prova-box"><strong>Suínos</strong> — pênis em saca-rolhas. Coleta por manipulação digital aproveitando o reflexo de imobilidade. Volume muito alto (40–300 mL). Filtrar gel obrigatoriamente.</div>
+    <div class="eac-2col">
+      <div class="eac-2col-box">
+        <div class="eac-2col-label">Anatomia — particularidades</div>
+        <div class="eac-2col-text">
+          Pênis: fibroelástico · flexura sigmoide · glande em <strong>espiral (saca-rolhas)</strong><br>
+          Sem ampola do ducto deferente<br>
+          Glândulas bulbouretrais: <strong>enormes</strong> (12 cm × 2,5 cm) → gel seminal<br>
+          Divertículo prepucial: acumula urina, secreções e feromônios → esvaziar antes da coleta
+        </div>
+      </div>
+      <div class="eac-2col-box">
+        <div class="eac-2col-label">Coleta — manipulação digital</div>
+        <div class="eac-2col-text">
+          <strong>Reflexo de imobilidade:</strong> porca em estro + pressão no dorso → posição rígida de aceitação<br>
+          Segurar a glande em espiral com a mão (pressionar suavemente) → garante tração e ejaculação<br>
+          Coletar em copo graduado de 300–500 mL<br>
+          <strong>Filtrar gel continuamente</strong> com filtro de gaze durante toda a coleta
+        </div>
+      </div>
+    </div>
+    <div class="eac-memo"><div class="eac-memo-label">Valores de referência — suíno</div><div class="eac-memo-text">Volume: 40–300 mL · Concentração: 200–300×10⁶/mL · Motilidade: ≥70% · Vigor: ≥3<br>Dose inseminante congelada: 3000×10⁶ (15 palhetas) · dose fresca: 2000–3000×10⁶/dose<br>Gel: filtrar obrigatoriamente — originado nas bulbouretrais gigantes</div></div>
+  </div>
+
+  <!-- CÃO / GATO -->
+  <div class="eac-sp-panel" id="eac-sp-esp_carn">
+    <div class="eac-prova-box"><strong>Cão e Gato</strong> — anatomia muito diferente dos grandes animais. Próstata é a única glândula acessória importante no cão. Sêmen coletado em 3 frações distintas. Gato: volume mínimo, coleta difícil.</div>
+    <div class="eac-2col" style="margin-top:10px">
+      <div class="eac-2col-box">
+        <div class="eac-2col-label">Cão — particularidades</div>
+        <div class="eac-2col-text">
+          Testículos: descida completa até 5 dias após o nascimento<br>
+          Pênis: <strong>músculo cavernoso</strong> · os penis (osso peniano) · bulbo da glande causa o travamento (tie) durante a cópula<br>
+          <strong>Próstata bilobada</strong>: única glândula acessória funcional importante · palpável transabdominalmente<br>
+          Sem vesícula seminal · sem bulbouretral · sem ampola funcional<br>
+          HPB muito comum em cães inteiros acima de 5 anos
+        </div>
+      </div>
+      <div class="eac-2col-box">
+        <div class="eac-2col-label">Gato — particularidades</div>
+        <div class="eac-2col-text">
+          Pênis voltado <strong>caudalmente</strong> em repouso (diferente de todas as outras espécies domésticas)<br>
+          <strong>Espículas penianas:</strong> projeções queratinizadas → estimulam ovulação reflexa na gata<br>
+          Após castração: espículas regridem em 4–6 semanas<br>
+          Coleta: eletroejaculação sob anestesia · coleta farmacológica (medetomidina + cetamina)<br>
+          Volume seminal: 0,01–0,77 mL — minúsculo
+        </div>
+      </div>
+    </div>
+    <table class="eac-ref-table">
+      <tr><th>Parâmetro</th><th>Cão (fração 2)</th><th>Gato</th></tr>
+      <tr><td>Volume</td><td>0,5–3,5 mL</td><td>0,01–0,77 mL</td></tr>
+      <tr><td>Concentração</td><td>100–600×10⁶/mL</td><td>~3×10⁶/mL</td></tr>
+      <tr><td>Motilidade progressiva</td><td>≥70%</td><td>≥70%</td></tr>
+      <tr><td>Morfologia normais</td><td>≥70%</td><td>≥60% (maior aceitação de defeitos)</td></tr>
+    </table>
+    <div class="eac-memo"><div class="eac-memo-label">Medicamentos que afetam a reprodução canina — anamnese obrigatória</div><div class="eac-memo-text">Progestágenos (anticoncepcionais): ↑ risco piometra · neoplasia mamária · HPB<br>Glicocorticoides: ↓ libido, ↓ produção espermática<br>Quimioterápicos: azoospermia temporária ou permanente<br>Anabolizantes: retroalimentação negativa no eixo HPG → oligospermia/azoospermia<br>Sempre perguntar sobre medicamentos em uso nos últimos 60–90 dias</div></div>
+  </div>
+</div>
+
+<!-- CLASSIFICAÇÃO FINAL -->
+<div class="eac-panel" id="eac-panel-classificacao">
+  <div class="eac-info-box">A classificação final integra todos os componentes do exame. A decisão de APTO/SUSPEITO/INAPTO baseia-se no conjunto dos dados — não em um parâmetro isolado.</div>
+  <div class="eac-class-grid">
+    <div class="eac-class-card eac-class-apto">
+      <div class="eac-class-label" style="color:#27500a">APTO</div>
+      <div class="eac-class-sub" style="color:#27500a">Todos os parâmetros ≥ mínimos · Sem alterações físicas comprometedoras · Pode ser utilizado na reprodução</div>
+    </div>
+    <div class="eac-class-card eac-class-suspeito">
+      <div class="eac-class-label" style="color:#633806">SUSPEITO</div>
+      <div class="eac-class-sub" style="color:#633806">Um ou mais parâmetros limítrofes · Reavaliação em 30–60 dias · Uso com cautela · Pode melhorar</div>
+    </div>
+    <div class="eac-class-card eac-class-inapto">
+      <div class="eac-class-label" style="color:#7a1f1f">INAPTO</div>
+      <div class="eac-class-sub" style="color:#7a1f1f">Um ou mais parâmetros abaixo do mínimo · Probabilidade baixa de melhora · Descarte da reprodução</div>
+    </div>
+  </div>
+  <table class="eac-ref-table" style="margin-top:12px">
+    <tr><th>Situação</th><th>Classificação provável</th></tr>
+    <tr><td>Motilidade 55% + defeitos 35% + CE adequada</td><td style="color:#7a1f1f;font-weight:600">INAPTO (defeitos acima do máximo)</td></tr>
+    <tr><td>Motilidade 65% + defeitos 28% + CE 33 cm (24 meses, taurino)</td><td style="color:#633806;font-weight:600">SUSPEITO (CE limítrofe)</td></tr>
+    <tr><td>Motilidade 75% + defeitos 20% + CE 36 cm + libido 4</td><td style="color:#27500a;font-weight:600">APTO</td></tr>
+    <tr><td>Sêmen excelente + claudicação grave que impede monta</td><td style="color:#7a1f1f;font-weight:600">INAPTO para monta natural</td></tr>
+    <tr><td>Criptorquidismo unilateral + sêmen de bom lado normal</td><td style="color:#7a1f1f;font-weight:600">INAPTO (herança — não deve reproduzir)</td></tr>
+  </table>
+  <div class="eac-memo"><div class="eac-memo-label">Causas frequentes de inaptos na rotina</div><div class="eac-memo-text">Bovinos: vesiculite seminal · degeneração testicular · hipoplasia testicular · CE abaixo do mínimo<br>Equinos: ejaculados de baixa motilidade · alta fragmentação de DNA · problemas ortopédicos<br>Carneiros: epididimite por Brucella ovis · CE abaixo do mínimo · hipoplasia testicular</div></div>
 </div>
 `
 },
@@ -5501,8 +5711,395 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
 `
 },
 {
-  id: 'patologias-femea',
+  id: 'patologias-gestacao',
   num: 15,
+  title: 'Patologias da Gestação',
+  icon: '#i-stethoscope',
+  content: `
+<div class="pg-tabs">
+  <button class="pg-tab active" onclick="pgSetTab('liquidos',this)">Líquidos fetais</button>
+  <button class="pg-tab" onclick="pgSetTab('feto_patol',this)">Patologias fetais</button>
+  <button class="pg-tab" onclick="pgSetTab('prolapsos',this)">Prolapsos</button>
+  <button class="pg-tab" onclick="pgSetTab('utero',this)">Útero e distúrbios maternos</button>
+  <button class="pg-tab" onclick="pgSetTab('distocia_mat',this)">Distocias maternas</button>
+  <button class="pg-tab" onclick="pgSetTab('tabela',this)">Tabela geral</button>
+</div>
+
+<!-- LÍQUIDOS FETAIS / HIDROPSIA -->
+<div class="pg-panel active" id="pg-panel-liquidos">
+  <div class="info-box">Acúmulo excessivo de líquido nos anexos placentários, podendo envolver o alantoide (<strong>hidroalantoide</strong>) ou o âmnio (<strong>hidroâmnio</strong>). Patologia predominantemente bovina, porém relatada em éguas, ovelhas e cadelas.</div>
+
+  <div class="pg-sp-tabs">
+    <button class="pg-sp-tab active" onclick="pgSetSp('hidr_al',this)">Hidroalantoide</button>
+    <button class="pg-sp-tab" onclick="pgSetSp('hidr_am',this)">Hidroâmnio</button>
+    <button class="pg-sp-tab" onclick="pgSetSp('hidr_diag',this)">Diagnóstico diferencial</button>
+  </div>
+
+  <div class="pg-sp-panel active" id="pg-sp-hidr_al">
+    <div class="danger-box"><strong>Hidroalantoide</strong> — mais comum (80–95% dos casos de hidropsia em bovinos). Volume pode chegar a 270 L (normal: ~20 L). Evolução progressiva nos últimos 3 meses de gestação. Sempre acompanhado de <span class="hl">retenção de placenta, retardo na involução uterina e metrite</span>.</div>
+
+    <div class="sec-block"><div class="sec-label">Etiologia</div>
+    Déficit circulatório e problemas hepatorrenais do feto · torção/compressão do cordão umbilical → alterações congestivas e edematosas da placenta → transudação de líquido · hidronefrose fetal (aumento excessivo da excreção renal acumulando no alantoide) · má placentação (cotilédones com função normal muito reduzidos) · associação com gestação gemelar · fatores hereditários (raças Jersey e Guernsey têm predisposição)
+    </div>
+
+    <div class="sec-block"><div class="sec-label">Sinais clínicos por gravidade</div>
+    <strong>Leves:</strong> ligeiro aumento bilateral do volume abdominal · animal chega ao fim da gestação<br>
+    <strong>Moderados</strong> (6–7 meses, distensão visível): compressão de vísceras e vasos → taquicardia, taquipneia, dispneia com gemido respiratório, plenitude vascular reduzida, perda de apetite, dificuldade de ruminar, defecar e urinar, declínio do ECC<br>
+    <strong>Graves:</strong> decúbito permanente · desidratação profunda · timpanismo · atonia uterina → aborto, retenção de placenta, pouca contração no parto · morte da fêmea
+    </div>
+
+    <div class="sec-block"><div class="sec-label">Diagnóstico</div>
+    Palpação retal: útero muito distendido, consistência flutuante, <span class="hl">impossível palpar o feto</span> (quantidade excessiva de líquido), cotilédones acessórios palpáveis · US transretal: conteúdo anecóico em excesso + placentomas via transabdominal · Diagnóstico diferencial: ascite, timpanismo ruminal, gestação gemelar, hidro metra
+    </div>
+
+    <div class="sec-block"><div class="sec-label">Tratamento</div>
+    <strong>Se próximo ao parto (&gt;270 dias):</strong> indução com dexametasona (0,2 mg/kg IV) ou flumetasona + ocitocina → parto em 24–48 h<br>
+    <strong>Drenagem controlada:</strong> <span class="hl">LENTA</span> — risco de choque hipovolêmico por descompressão rápida → drenar gradualmente, fluidoterapia IV concomitante<br>
+    <strong>Cesariana:</strong> se estado geral comprometido e parto não ocorre<br>
+    <strong>Recidiva:</strong> sacrifício do animal
+    </div>
+
+    <div class="danger-box"><strong>Complicações frequentes:</strong> retenção de placenta (sempre) · metrite · atonia uterina · prolapso vaginal · ruptura uterina · paraplegia · prognóstico reprodutivo ruim</div>
+  </div>
+
+  <div class="pg-sp-panel" id="pg-sp-hidr_am">
+    <div class="info-box"><strong>Hidroâmnio</strong> — menos comum que o hidroalantoide. Envolve o saco amniótico. Associado a <span class="hl">malformações da musculatura mastigatória fetal ou fenda palatina</span> — feto não consegue deglutir o líquido amniótico, que se acumula. Em ovinos: associado a gêmeos e trigêmeos. Em cadelas: afeta todos os fetos, levando à anasarca.</div>
+
+    <table class="ref-table">
+      <tr><th>Parâmetro</th><th>Hidroalantoide</th><th>Hidroâmnio</th></tr>
+      <tr><td>Frequência</td><td>80–95% dos casos</td><td>5–20% dos casos</td></tr>
+      <tr><td>Volume</td><td>Até 270 L</td><td>Menor que o hidroalantoide</td></tr>
+      <tr><td>Causa principal</td><td>Má placentação · prob. hepatorenal</td><td>Malformação fetal (fenda palatina, musculatura mastigatória)</td></tr>
+      <tr><td>Cotilédones</td><td>Número reduzido · alguns edemaciados</td><td>Normais</td></tr>
+      <tr><td>Feto</td><td>Frequentemente malformado</td><td>Malformação específica da deglutição</td></tr>
+      <tr><td>Bovino "Bulldog"</td><td>Não associado</td><td>Causa genética clássica → hidroâmnio precoce (3–4 meses)</td></tr>
+    </table>
+  </div>
+
+  <div class="pg-sp-panel" id="pg-sp-hidr_diag">
+    <table class="ref-table">
+      <tr><th>Condição</th><th>Como diferenciar</th></tr>
+      <tr><td><strong>Hidropsia (hidroalantoide)</strong></td><td>Feto não palpável · cotilédones palpáveis · progressão lenta · últimos 3 meses · bovinos</td></tr>
+      <tr><td><strong>Ascite</strong></td><td>Feto palpável · sem cotilédones · não exclusivo da gestação · US: líquido abdominal livre fora do útero</td></tr>
+      <tr><td><strong>Gestação gemelar</strong></td><td>Dois fetos palpáveis · volume menor de líquido · diagnóstico precoce por US</td></tr>
+      <tr><td><strong>Hidro metra</strong></td><td>Animal não gestante · sem feto · CL persistente · US confirma</td></tr>
+      <tr><td><strong>Timpanismo ruminal</strong></td><td>Distensão mais cranial e dorsal · rúmen percussível · resposta a sondagem</td></tr>
+      <tr><td><strong>Ruptura de bexiga</strong></td><td>Histórico de obstrução urinária · urina na cavidade peritoneal · não exclusiva da gestação</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATOLOGIAS FETAIS -->
+<div class="pg-panel" id="pg-panel-feto_patol">
+  <div class="info-box">Patologias que afetam o feto in utero: mumificação, enfisema, maceração e molas. Cada uma tem etiologia, patogenia e conduta distintas.</div>
+
+  <div class="pat-card">
+    <div class="pat-header" onclick="pgToggle(this)">
+      <div>
+        <span class="pat-title">Feto mumificado</span>
+        <span class="urgencia urg-moderada">Moderado</span>
+      </div>
+      <div class="pat-tags">
+        <span class="badge bwarn">Bovinos · Suínos · Cão/Gato</span>
+        <span class="pat-arrow">▼</span>
+      </div>
+    </div>
+    <div class="pat-body">
+      <div class="sec-block"><div class="sec-label">Definição e tipos</div>
+      Feto morto no 2º ou último terço da gestação, retido no útero sem contaminação, sofrendo processo asséptico de desidratação. <strong>Tipos:</strong> hemático (bovinos — feto recoberto por secreção viscosa achocolatada) · papiráceo (demais espécies — feto e placenta com aspecto de papiro)
+      </div>
+      <div class="sec-block"><div class="sec-label">Condição necessária</div>
+      Persistência do CL (vaca e égua) OU outros fetos vivos se desenvolvendo ao lado (suínos, cão). Sem abertura da cérvix = sem contaminação = mumificação.
+      </div>
+      <div class="sec-block"><div class="sec-label">Etiologia</div>
+      Torção/compressão do cordão umbilical · torção uterina · defeitos de placentação · BVD, leptospirose (bovinos) · Toxoplasma gondii (suínos) · progesterona exógena em cães · anomalias genéticas
+      </div>
+      <div class="sec-block"><div class="sec-label">Sinais clínicos</div>
+      <strong>Vaca:</strong> prolongamento da gestação (CL persistente) · à palpação: ausência de líquidos fetais, redução do volume uterino, feto de consistência firme sem frêmito arterial<br>
+      <strong>Suínos/Cão/Gato:</strong> feto mumificado é expulso junto com os vivos no parto (sem sintomatologia clínica antes)
+      </div>
+      <div class="sec-block"><div class="sec-label">Diagnóstico</div>
+      Palpação retal (bovinos): útero sem líquidos, feto firme, sem frêmito · RX (pequenos animais): estrutura óssea sem líquidos ao redor · sem placentomas · gestação prolongada
+      </div>
+      <div class="sec-block"><div class="sec-label">Tratamento</div>
+      <strong>Bovinos:</strong> PGF2α ou corticoide → abertura da cérvix → retirada manual da múmia 2–3 dias depois. Se cérvix insuficiente: ECP/estilbestrol (50–100 mg) 1x a cada 2 dias por 4–7 dias. Se feto muito grande: maceração induzida ou cesariana. ATB obrigatório.<br>
+      <strong>Égua:</strong> expulsão espontânea frequente. Se não ocorrer: dilatação manual da cérvix + retirada.<br>
+      <strong>Pequenos animais:</strong> se única fêmea, aguardar parto · se comprometimento sistêmico → OSH
+      </div>
+    </div>
+  </div>
+
+  <div class="pat-card">
+    <div class="pat-header" onclick="pgToggle(this)">
+      <div>
+        <span class="pat-title">Feto enfisematoso</span>
+        <span class="urgencia urg-grave">Urgência</span>
+      </div>
+      <div class="pat-tags">
+        <span class="badge bdanger">Grandes animais · Cadelas</span>
+        <span class="pat-arrow">▼</span>
+      </div>
+    </div>
+    <div class="pat-body">
+      <div class="sec-block"><div class="sec-label">Definição</div>
+      Feto morto em parto distócico com acúmulo de gás produzido por bactérias anaeróbicas nos tecidos fetais. Processo séptico, com abertura de cérvix. Ocorre mais frequentemente no final da gestação em partos distócicos não assistidos.
+      </div>
+      <div class="sec-block"><div class="sec-label">Sinais clínicos</div>
+      Corrimento vaginal fétido · distúrbios do estado geral da mãe · timpanismo · queda de cascos e pelos do feto · feto insinuado com aumento de volume · <span class="hl">crepitação à palpação</span> (gás nos tecidos fetais) · septicemia materna
+      </div>
+      <div class="sec-block"><div class="sec-label">Diagnóstico</div>
+      Clínico + palpação vaginal (crepitação timpânica do feto) · odor pútrido característico · histórico de parto distócico não assistido
+      </div>
+      <div class="sec-block"><div class="sec-label">Tratamento</div>
+      <strong>Grandes animais:</strong> fetotomia (feto morto, tecidos amolecidos facilitam) · lubrificação exagerada obrigatória · ATB sistêmico + AINEs<br>
+      <strong>Equinos:</strong> cesariana se fetotomia inviável · risco de laminite pós-septicemia → ATB + AINE preventivos<br>
+      <strong>Pequenos animais:</strong> cesariana + OSH (suture · não usar fetotomia) · lavagem uterina
+      </div>
+      <div class="danger-box">Risco de septicemia e toxemia maternas. Prognóstico reprodutivo ruim em grandes animais.</div>
+    </div>
+  </div>
+
+  <div class="pat-card">
+    <div class="pat-header" onclick="pgToggle(this)">
+      <div>
+        <span class="pat-title">Maceração fetal</span>
+        <span class="urgencia urg-grave">Urgente</span>
+      </div>
+      <div class="pat-tags">
+        <span class="badge bdanger">Bovinos · Equinos · Peq. animais</span>
+        <span class="pat-arrow">▼</span>
+      </div>
+    </div>
+    <div class="pat-body">
+      <div class="sec-block"><div class="sec-label">Definição</div>
+      Processo séptico após morte fetal com abertura cervical → bactérias aeróbias entram pelo cérvix aberta → liquefação dos tecidos moles fetais (amolecimento, putrefação) → restam apenas ossos. Mais comum após 4 meses (bovinos) ou 100 dias (peq. ruminantes).
+      </div>
+      <div class="sec-block"><div class="sec-label">Etiologia</div>
+      Trichomonas foetus (bovinos) · bactérias aeróbias por via ascendente · parto distócico retido · traumatismos · torção uterina
+      </div>
+      <div class="sec-block"><div class="sec-label">Sinais clínicos</div>
+      Secreção purulenta e fétida pela vulva · comprometimento do estado geral (septicemia) · possível perfuração da parede uterina → peritonite · à palpação retal: crepitação óssea (peças esqueléticas no útero)
+      </div>
+      <div class="sec-block"><div class="sec-label">Tratamento</div>
+      <strong>Bovinos/Equinos:</strong> E2 para abertura da cérvix + PGF2α → retirada dos ossos manualmente ou por histerotomia · lavagem uterina + ATB intrauterino · ATB sistêmico<br>
+      <strong>Equinos:</strong> dilatação manual da cérvix + retirada + ATB local → cuidado com laminite<br>
+      <strong>Pequenos animais:</strong> cesariana + OSH + lavagem uterina · suporte intensivo (fluidos, ATB, corticoides se grave)
+      </div>
+    </div>
+  </div>
+
+  <div class="pat-card">
+    <div class="pat-header" onclick="pgToggle(this)">
+      <div>
+        <span class="pat-title">Molas (vesiculares, hidatiformes, carnosas)</span>
+        <span class="urgencia urg-leve">Moderado</span>
+      </div>
+      <div class="pat-tags">
+        <span class="badge binfo">Ruminantes · Suínos · Cão</span>
+        <span class="pat-arrow">▼</span>
+      </div>
+    </div>
+    <div class="pat-body">
+      <div class="sec-block"><div class="sec-label">Definição</div>
+      Processo patológico placentário com reabsorção embrionária e desenvolvimento anômalo dos anexos fetais, sem feto viável. Etiologia não completamente definida — possível origem tumoral, má formação, trauma ou genética. Observadas em bovinos, caninos e suínos.
+      </div>
+      <div class="sec-block"><div class="sec-label">Tipos</div>
+      <strong>Cística:</strong> estruturas com conteúdo líquido · <strong>Hidatiforme:</strong> vesículas com líquido claro (aspecto de cachos) · <strong>Vilosa:</strong> vilosidades placentárias exuberantes sem feto · <strong>Carnosa/Hemorrágica:</strong> conteúdo sólido achocolatado
+      </div>
+      <div class="sec-block"><div class="sec-label">Diagnóstico</div>
+      Frequentemente sem sintomatologia clínica · à US: útero aumentado sem feto identificável · corrimento hemorrágico durante a gestação pode indicar mola hemorrágica · diagnóstico definitivo: histopatologia
+      </div>
+      <div class="sec-block"><div class="sec-label">Tratamento</div>
+      PGF2α + E2 (vaca) para indução do abortamento · abertura manual da cérvix + PGF2α (égua) + ATB local · cesariana (peq. animais) · ATB sempre
+      </div>
+    </div>
+  </div>
+
+  <div class="pat-card">
+    <div class="pat-header" onclick="pgToggle(this)">
+      <div>
+        <span class="pat-title">Gestação gemelar patológica — equinos</span>
+        <span class="urgencia urg-grave">Urgente em equinos</span>
+      </div>
+      <div class="pat-tags">
+        <span class="badge bdanger">Equinos principalmente</span>
+        <span class="pat-arrow">▼</span>
+      </div>
+    </div>
+    <div class="pat-body">
+      <div class="sec-block"><div class="sec-label">Por que é grave em equinos?</div>
+      A placenta difusa equina não consegue nutrir dois fetos simultaneamente → um deles morre (mumificação) e arrasta o outro (aborto gemelar por volta de 7–9 meses). Em bovinos: complicações mas ambos podem nascer. Em pequenos animais: natural, raras complicações significativas.
+      </div>
+      <div class="sec-block"><div class="sec-label">Conduta em equinos</div>
+      US precoce a partir do D14–16 · identificar gestação dupla antes do D16 (fase de mobilidade) · redução manual de uma vesícula (pinçamento): colocar a menor vesícula na ponta do corno · apertar entre os dedos até romper (destruição mecânica) · se D&gt;16: PGF2α para lisar o CL do corno do embrião menor (Prestes 2017) · manter monitoramento US
+      </div>
+      <div class="danger-box"><strong>Reduzir ANTES do dia 17</strong> — após D17 o embrião fixou no útero e a redução manual é mais difícil. Gêmeos equinos que chegam ao parto: alta mortalidade neonatal e risco materno grave.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROLAPSOS -->
+<div class="pg-panel" id="pg-panel-prolapsos">
+  <div class="pg-sp-tabs">
+    <button class="pg-sp-tab active" onclick="pgSetSp('prol_vag',this)">Prolapso vaginal / cérvix</button>
+    <button class="pg-sp-tab" onclick="pgSetSp('prol_uter',this)">Prolapso uterino</button>
+  </div>
+
+  <div class="pg-sp-panel active" id="pg-sp-prol_vag">
+    <div class="info-box"><strong>Prolapso vaginal</strong> — inversão e extrusão da vagina pela rima vulvar. Mais comum no terço final da gestação em ruminantes. Parcial (só vagina) ou total (vagina + primeiros anéis cervicais). <span class="hl">Recidiva é quase certa em gestações subsequentes</span> — descartar da reprodução.</div>
+
+    <div class="sec-block"><div class="sec-label">Etiologia — multifatorial</div>
+    Hereditariedade (predisposição genética — descartar da reprodução) · afrouxamento dos sistemas de fixação vaginal (idosas, multíparas) · altos níveis de E2 · aumento da pressão intra-abdominal (timpanismo, gestação gemelar, hidropsia) · tenesmo · hipocalcemia · obesidade · confinamento sem exercício
+    </div>
+
+    <div class="sec-block"><div class="sec-label">Sinais clínicos</div>
+    Formação avermelhada/rosada cilíndrica nos lábios vulvares (visível em decúbito ou em estação nos casos graves) · tenesmo · retenção urinária (dobramento da uretra) · prolapso retal secundário ao tenesmo · em casos graves: congestão, edema, necrose da mucosa exposta · comprometimento fetal (contaminação)
+    </div>
+
+    <div class="sec-block"><div class="sec-label">Diagnóstico diferencial</div>
+    Prolapso vaginal × hipoplasia vaginal × neoplasia vaginal × prolapso paravolvar
+    </div>
+
+    <div class="sec-block"><div class="sec-label">Tratamento</div>
+    <strong>Redução do prolapso:</strong> anestesia epidural (lidocaína 2%, 1 mL/100 kgPV) para cessar o tenesmo · limpar e desinfectar · substâncias osmóticas (açúcar, sal) para reduzir edema (remover após 5 min) · reposicionar a vagina<br>
+    <strong>Retenção:</strong> sutura de Bühner (perivulvar em bolsa de tabaco) + sutura de Caslic (vulva) · manter até o parto<br>
+    <strong>Retirada dos pontos antes do parto</strong> para não obstruir a saída do feto<br>
+    <strong>Colpoplastia:</strong> ressecção de parte da vagina nos casos recidivantes · indicada em animais sem gestação atual
+    </div>
+  </div>
+
+  <div class="pg-sp-panel" id="pg-sp-prol_uter">
+    <div class="danger-box"><strong>Prolapso uterino = EMERGÊNCIA</strong><span class="urgencia urg-emergencia">EMERGÊNCIA</span> — invertido e exposto pela vulva, expondo o endométrio. Ocorre nas primeiras horas após o parto. Mais frequente em ruminantes, suínos e cadelas.</div>
+
+    <div class="sec-block"><div class="sec-label">Etiologia</div>
+    Atonia uterina (principal) · retenção de placenta · hipocalcemia pós-parto · tração excessiva do feto · distocia · obesidade · deficiências de Ca, P, Mg · tenesmo · confinamento · predisposição hereditária
+    </div>
+
+    <div class="sec-block"><div class="sec-label">Classificação</div>
+    Parcial: exposição de apenas um corno uterino · Completo: dois cornos expostos · Total: dois cornos + cérvix expostos
+    </div>
+
+    <div class="sec-block"><div class="sec-label">Sinais clínicos</div>
+    Tecido uterino prolapsado pela vulva com carúnculas maternas visíveis (diferencia de prolapso vaginal) · extensão pode chegar ao jarrete em bovinos em estação · tecido edemaciado, arroxeado, com coágulos · inquietação · anorexia · dor abdominal · taquicardia · taquipneia · timpanismo ruminal frequente em bovinos
+    </div>
+
+    <div class="sec-block"><div class="sec-label">Tratamento — protocolo</div>
+    <strong>Medidas imediatas:</strong> envolver o útero em toalha/lençol úmido para evitar trauma e contaminação<br>
+    <strong>Analgesia + anestesia epidural</strong> (lidocaína 2%): cessa o tenesmo, essencial para a reposição<br>
+    <strong>Sedação:</strong> se necessário (acepromazina + xilazina em bovinos)<br>
+    <strong>Redução do edema:</strong> açúcar ou solução hipertônica sobre o útero → remover após 5 min<br>
+    <strong>Assepsia:</strong> clorexidina 1% em toda a superfície exposta<br>
+    <strong>Esvaziar bexiga</strong> se distendida (punção ou cateterismo)<br>
+    <strong>Reposição:</strong> iniciar pela vulva, empurrar gradualmente com as mãos espalmadas · vaca deve estar em estação (se possível) ou decúbito esternal com membros posteriores estendidos caudalmente<br>
+    <strong>Retenção:</strong> sutura de Bühner pós-reposição · retirar em 2–3 dias<br>
+    <strong>Se reposição inviável:</strong> amputação do útero + ATB
+    </div>
+
+    <div class="memo"><div class="memo-label">Diferença prolapso vaginal × prolapso uterino</div><div class="memo-text">
+Prolapso vaginal: ocorre na gestação · sem carúnculas · mucosa vaginal lisa<br>
+Prolapso uterino: ocorre pós-parto · carúnculas maternas VISÍVEIS · endométrio exposto<br>
+Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorragia da artéria mediana uterina)
+    </div></div>
+  </div>
+</div>
+
+<!-- ÚTERO E DISTÚRBIOS MATERNOS -->
+<div class="pg-panel" id="pg-panel-utero">
+  <div class="pg-sp-tabs">
+    <button class="pg-sp-tab active" onclick="pgSetSp('torcao',this)">Torção uterina</button>
+    <button class="pg-sp-tab" onclick="pgSetSp('ruptura',this)">Ruptura uterina</button>
+    <button class="pg-sp-tab" onclick="pgSetSp('placentite',this)">Placentite equina</button>
+    <button class="pg-sp-tab" onclick="pgSetSp('urovagina',this)">Urovagina e lac. perineal</button>
+  </div>
+
+  <div class="pg-sp-panel active" id="pg-sp-torcao">
+    <div class="danger-box"><strong>Torção uterina</strong><span class="urgencia urg-emergencia">EMERGÊNCIA</span> — rotação do útero sobre seu eixo longitudinal, dificultando ou impedindo o parto. Mais frequente em bovinos e equinos, principalmente no terço final da gestação.</div>
+
+    <div style="font-size:13px;line-height:1.8;color:var(--text)">
+      <strong>Sinais:</strong> sinais de cólica (equinos — muito intensos) ou distúrbios digestivos/respiratórios (bovinos) · abdômen tenso · dispneia · taquicardia · ausência de progressão do parto apesar das contrações<br><br>
+      <strong>Diagnóstico:</strong> palpação vaginal — cérvix em espiral (torção para dentro), difícil de introduzir a mão · palpação retal confirma rotação do ligamento uterino<br><br>
+      <strong>Tratamento:</strong><br>
+      · <strong>Manual (bovinos):</strong> rolamento da vaca na direção da torção (método Schäffer) — vaca em decúbito, mantém feto fixo, rola o corpo da vaca sobre o feto<br>
+      · <strong>Trocater (bovinos):</strong> instrumento de torção introduzido pela vagina para detorcer manualmente<br>
+      · <strong>Laparotomia:</strong> se métodos anteriores falharem · cesariana na maioria dos casos equinos (parto equino rápido demais para permitir correção manual)
+    </div>
+  </div>
+
+  <div class="pg-sp-panel" id="pg-sp-ruptura">
+    <div class="danger-box"><strong>Ruptura uterina</strong><span class="urgencia urg-emergencia">EMERGÊNCIA</span> — rompimento da parede uterina. Causas: distocia grave, manipulação obstétrica excessiva, fio serra na fetotomia, desprendimento rápido do corioalantoide (éguas), tração excessiva.</div>
+
+    <div style="font-size:13px;line-height:1.8;color:var(--text)">
+      <strong>Sinais:</strong> cólica intensa (equinos) · hemorragia · peritonite se conteúdo uterino extravasou para a cavidade abdominal · septicemia · choque hipovolêmico<br><br>
+      <strong>Tratamento:</strong> cirúrgico (sutura do local rompido) · ATB + AINEs · fluidoterapia intensiva · transfusão sanguínea se hemorragia grave · prognóstico reservado para equinos
+    </div>
+  </div>
+
+  <div class="pg-sp-panel" id="pg-sp-placentite">
+    <div class="info-box"><strong>Placentite equina</strong> — inflamação placentária, causa importante de aborto e parto prematuro em éguas. Infecção pode ser ascendente (via cérvix) ou hematógena.</div>
+
+    <div style="font-size:13px;line-height:1.8;color:var(--text)">
+      <strong>Agentes:</strong> Streptococcus zooepidemicus · E. coli · Staphylococcus aureus · Aspergillus spp (contaminação materna → lesão permanente na égua)<br><br>
+      <strong>Sinais:</strong> espessamento e edema do alantocório · desenvolvimento precoce do úbere · lactação prematura (sinal clínico mais importante) · abertura da cérvix · corrimento vaginal espesso e amarronzado/purulento · aborto ou parto prematuro · septicemia e morte do potro<br><br>
+      <strong>Diagnóstico:</strong> US da placenta (espessamento, separação) · citologia do corrimento · cultura bacteriana<br><br>
+      <strong>Tratamento:</strong> ATB (sulfa + trimetopim ou penicilina) · antifúngico se Aspergillus (fluconazol) · AINEs (flunixin meglumine) · P4 de longa ação (altrenogest) para manter a gestação · aborto terapêutico com PGF2α ou dexametasona 2,5 mg se prognóstico fetal ruim
+    </div>
+  </div>
+
+  <div class="pg-sp-panel" id="pg-sp-urovagina">
+    <div style="font-size:13px;line-height:1.8;color:var(--text)">
+      <strong>Urovagina:</strong> afrouxamento dos ligamentos do ovário causa inclinação do fundo vaginal → urina se acumula na vagina → infertilidade por infecção crônica da cérvix e útero. Comum em éguas velhas e multíparas.<br>
+      <strong>Diagnóstico:</strong> vaginoscopia (urina visível no fundo da vagina)<br>
+      <strong>Tratamento:</strong> cirúrgico → prolongamento da uretra (uroplastia de Vandeplassche)<br><br>
+      <strong>Laceração perineal:</strong> lesão do períneo durante o parto distócico, especialmente quando membro anterior do feto fica sobre a nuca → casco perfura teto da vagina antes de sair pela vulva → fistula retovaginal.<br>
+      <strong>Tratamento:</strong> cirúrgico em duas etapas (Goetze modificado) · esperar redução do edema antes da primeira sutura
+    </div>
+  </div>
+</div>
+
+<!-- DISTOCIAS MATERNAS -->
+<div class="pg-panel" id="pg-panel-distocia_mat">
+  <div class="info-box">Distocias de causa materna — mais frequentes em <strong>ruminantes e cadelas</strong> (fatores nutricionais, perda de Ca/P). Diferem das distocias fetais — origem na fêmea, não no feto.</div>
+
+  <table class="ref-table">
+    <tr><th>Causa</th><th>Mecanismo</th><th>Tratamento</th><th>Espécie mais afetada</th></tr>
+    <tr><td><strong>Anomalias pélvicas</strong></td><td>Pelve muito pequena ou deformada por fratura prévia</td><td>Cesariana</td><td>Bovinos · Cão (raças braquicefálicas)</td></tr>
+    <tr><td><strong>Anomalias vulvares</strong></td><td>Estenose vulvar, cicatrizes de partos anteriores</td><td>Episiotomia</td><td>Bovinos · Equinos</td></tr>
+    <tr><td><strong>Anomalias vaginais</strong></td><td>Bandas fibrosas, duplicação, estenose</td><td>Dilatação · cesariana</td><td>Bovinos</td></tr>
+    <tr><td><strong>Anomalias cervicais</strong></td><td>Não dilatação cervical (fibrose, cicatrizes)</td><td>Dilatação manual (limitada) · cesariana</td><td>Bovinos · Equinos</td></tr>
+    <tr><td><strong>Atonia uterina primária</strong></td><td>Disfunção hormonal (E2, ocitocina, relaxina) · ausência de receptores de ocitocina · hipoglicemia · torção uterina</td><td>Ca IV + ocitocina</td><td>Bovinos · Cão · Equinos</td></tr>
+    <tr><td><strong>Atonia uterina secundária</strong></td><td>Exaustão da musculatura por esforço excessivo prolongado</td><td>Ca IV + ocitocina + repouso</td><td>Bovinos · Cão</td></tr>
+    <tr><td><strong>Hipertonia (espasmo) uterina</strong></td><td>Contração tetânica sem relaxamento → parto rápido demais ou bloqueio</td><td>Tocolíticos (clenbuterol) · sedação</td><td>Éguas — causa de parto precipitado</td></tr>
+  </table>
+
+  <div class="prova-box"><strong>Atonia uterina em cadelas:</strong> hipocalcemia pós-parto (eclâmpsia) é causa frequente de atonia → gluconato de cálcio IV lento · cadelas de raças pequenas são mais predispostas. Ocitocina só funciona se há receptores — administrar Ca antes da ocitocina quando há suspeita de hipocalcemia.</div>
+</div>
+
+<!-- TABELA GERAL -->
+<div class="pg-panel" id="pg-panel-tabela">
+  <div class="suc-box">Resumo rápido — todas as patologias da gestação</div>
+  <table class="ref-table">
+    <tr><th>Patologia</th><th>Espécie principal</th><th>Sinal clínico chave</th><th>Diagnóstico chave</th><th>Tratamento principal</th></tr>
+    <tr><td><strong>Hidroalantoide</strong></td><td>Bovinos</td><td>Distensão abdominal progressiva · feto não palpável</td><td>Palpação retal + US</td><td>Drenagem lenta + indução/cesariana</td></tr>
+    <tr><td><strong>Hidroâmnio</strong></td><td>Bovinos · Ovinos · Cão</td><td>Menor distensão · malformação fetal</td><td>US · malformação fetal</td><td>Semelhante ao hidroalantoide</td></tr>
+    <tr><td><strong>Feto mumificado</strong></td><td>Bovinos · Suínos · Cão</td><td>Gestação prolongada · feto firme sem líquidos</td><td>Palpação · RX peq. animais</td><td>PGF2α + abertura cérvix + retirada</td></tr>
+    <tr><td><strong>Feto enfisematoso</strong></td><td>Grandes animais</td><td>Corrimento fétido · crepitação</td><td>Clínico · palpação vaginal</td><td>Fetotomia (G.A.) · cesariana (peq.)</td></tr>
+    <tr><td><strong>Maceração fetal</strong></td><td>Bovinos · Equinos</td><td>Corrimento purulento · septicemia</td><td>Crepitação óssea · palpação</td><td>Abertura cérvix + retirada ossos + lavagem</td></tr>
+    <tr><td><strong>Molas</strong></td><td>Bovinos · Cão · Suínos</td><td>Frequentemente assintomático</td><td>US · histopatologia</td><td>PGF2α + E2 · cesariana (peq.)</td></tr>
+    <tr><td><strong>Gestação gemelar</strong></td><td>Equinos (problema grave)</td><td>Aborto gemelar 7–9 meses</td><td>US D14–16</td><td>Redução manual antes D17</td></tr>
+    <tr><td><strong>Placentite</strong></td><td>Equinos</td><td>Lactação prematura · corrimento</td><td>US placenta · cultura</td><td>ATB + P4 + AINE</td></tr>
+    <tr><td><strong>Prolapso vaginal</strong></td><td>Bovinos · Ovinos</td><td>Massa avermelhada na vulva</td><td>Clínico + vaginoscopia</td><td>Redução + Bühner + Caslic</td></tr>
+    <tr><td><strong>Prolapso uterino</strong></td><td>Ruminantes · Suínos · Cão</td><td>Carúnculas expostas pós-parto</td><td>Clínico (inspeção)</td><td>EMERGÊNCIA: redução + Bühner</td></tr>
+    <tr><td><strong>Torção uterina</strong></td><td>Bovinos · Equinos</td><td>Cólica / cérvix em espiral</td><td>Palpação vaginal · retal</td><td>Rolamento (bovinos) · cesariana (equinos)</td></tr>
+    <tr><td><strong>Ruptura uterina</strong></td><td>Equinos · Bovinos</td><td>Hemorragia · cólica grave · peritonite</td><td>Clínico + laparotomia</td><td>EMERGÊNCIA: cirurgia</td></tr>
+    <tr><td><strong>Atonia uterina 1ª</strong></td><td>Bovinos · Cão</td><td>Ausência de contração no parto</td><td>Clínico</td><td>Ca IV + ocitocina</td></tr>
+    <tr><td><strong>Urovagina</strong></td><td>Éguas velhas</td><td>Infertilidade · urina na vagina</td><td>Vaginoscopia</td><td>Uroplastia (Vandeplassche)</td></tr>
+  </table>
+</div>
+`
+},
+{
+  id: 'patologias-femea',
+  num: 16,
   title: 'Patologias da Fêmea',
   icon: '#i-stethoscope',
   content: `
@@ -5555,7 +6152,7 @@ Cisto folicular: >25mm; presente por >10 dias; ausência de CL no ovário ipsila
 },
 {
   id: 'infecciosas',
-  num: 16,
+  num: 17,
   title: 'Doenças Infecciosas da Reprodução',
   icon: '#i-virus',
   content: `
@@ -6097,47 +6694,35 @@ window.glsSetSp = function(sp, el) {
   if (target) target.classList.add('active');
 };
 
-// === CAPÍTULO 12 — EXAME ANDROLÓGICO E AVALIAÇÃO ESPERMÁTICA ===
-var andDb = {
-  mac: {
-    cor: 'Branco leitoso (bovinos, equinos, suínos, cão). Pérola/marfim a amarelo citrino (ovinos/caprinos — alimentação). <strong>Anormal:</strong> esverdeado = pus; amarelado = pus ou urina; avermelhado = sangue (hemospermia); translúcido = azoospermia.',
-    odor: '<strong>Sui generis</strong> em todas as espécies — odor característico e suave. Anormal: forte/desagradável = contaminação bacteriana ou infecção; odor urinoso = contaminação com urina.',
-    ph: 'Bovinos: 6,2–6,8. Equinos: 7,2–7,7 (&gt;7,8 = contaminação urinária ou processo inflamatório). Suínos: 7,3–7,8. Cão: 6,3–7,0. Medido com fita reagente ou pHmetro imediatamente após a coleta.',
-    turbilhao: 'Avaliado a olho nu ou com pequeno aumento em ruminantes (ejaculados muito concentrados). Ondas de movimento visíveis = reflexo de motilidade + concentração. Escala 0–5. <span class="and-hl">Equinos: turbilhonamento ausente — ejaculado diluído, não se avalia.</span>'
-  },
-  dna: {
-    scsa: '<strong>SCSA</strong> — método mais validado para cromatina espermática. Laranja de acridina se liga ao DNA. DNA dupla hélice íntegra → <strong>verde</strong>. DNA desnaturado/fragmentado → <strong>laranja/vermelho</strong>. Parâmetro: <strong>DFI</strong> (DNA Fragmentation Index). Referência: DFI &lt;15% normal · 15–25% limítrofe · &gt;25% fertilidade comprometida. Avaliado por citometria de fluxo.',
-    tunel: '<strong>TUNEL</strong> — detecta <em>diretamente</em> quebras no DNA pela incorporação de nucleotídeos fluorescentes (Br-dUTP) nos sítios fragmentados. Citometria de fluxo totalmente automatizada. Alta acurácia. Detecta fragmentação por estresse oxidativo, falhas na espermatogênese ou apoptose.'
-  },
-  son: {
-    sybr14: '<strong>SYBR-14 + IP:</strong> SYBR-14 permeável → cora DNA de todos em <strong>verde</strong>. IP impermeável à MP íntegra → penetra só em células mortas → <strong>vermelho</strong>. Verde = vivo · Vermelho = morto. &gt;10.000 células em segundos por citometria.',
-    fitcpsa: '<strong>FITC-PSA:</strong> PSA (aglutinina Pisum sativum) liga-se a polissacarídeos do acrossomo. FITC = fluoróforo verde. Combinado com IP: vivo + acrossomo íntegro = verde. Acrossomo reagido = sem fluorescência na cabeça. MP lesada = vermelho (IP). Padrão para subpopulações MPAI/MPLAI/MPIAL/MPAL.',
-    jc1: '<strong>JC-1:</strong> avalia <span class="and-hl">potencial de membrana mitocondrial</span>. Alto potencial (mitocôndria ativa) → agregados <strong>laranja-avermelhados</strong>. Baixo potencial → monômero <strong>verde</strong>. Forte correlação com motilidade progressiva e fertilidade. Muito útil para avaliação pós-descongelamento.',
-    cfda: '<strong>CFDA:</strong> penetra em células com MP íntegra e ativa → enzimas intracelulares geram fluorescência <strong>verde</strong>. Células mortas → sem fluorescência. Frequentemente combinada com IP.',
-    ao: '<strong>Laranja de Acridina (SCSA):</strong> DNA dupla hélice → <strong>verde</strong>. DNA desnaturado/fragmentado → <strong>laranja/vermelho</strong>. Calcula DFI. Relevante para predição de fertilidade quando espermograma convencional é normal.',
-    annexin: '<strong>Anexina V-FITC + IP:</strong> (1) Viáveis: An⁻/IP⁻. (2) Apoptose inicial: An⁺/IP⁻ (fosfatidilserina exposta, MP ainda íntegra). (3) Apoptose tardia: An⁺/IP⁺. (4) Necrose: An⁻/IP⁺. Indica qualidade do processo espermatogênico.'
+// === CAPÍTULO 12 — EXAME ANDROLÓGICO COMPLETO ===
+var eacDb = {
+  int: {
+    vesicular: 'As <strong>vesículas seminais (glândulas vesiculares)</strong> são a principal glândula acessória nos bovinos. Secretam: frutose (substrato energético dos espermatozoides), prostaglandinas, proteínas e bicarbonato. A <span class="eac-hl">vesiculite seminal</span> é uma das principais causas de infertilidade em touros: pode ser causada por <em>Brucella abortus</em>, <em>Actinobacillus seminis</em>, <em>Histophilus somni</em> e outros. Sinal clínico: piospermia (pus no sêmen). Diagnóstico: palpação retal (aumento, fibrose, dor) + exame do sêmen + cultura bacteriana. Tratamento: difícil em infecções crônicas — antibioticoterapia prolongada.',
+    prostata: 'A <strong>próstata</strong> produz componentes do plasma seminal (citrato, zinco, enzimas). Em cães: bilobada, grande, palpável transabdominalmente — <span class="eac-hl">hiperplasia prostática benigna (HPB)</span> muito comum em cães inteiros acima de 5 anos → aumenta e pode comprimir a uretra. Sintomas: tenesmo, disúria, hematuria, corrimento prostático. Em bovinos: glândula prostática difusa (não bem definida). Patologias: prostatite, abscesso, cisto, neoplasia (em cães idosos).',
+    ampolas: 'As <strong>ampolas do ducto deferente</strong> funcionam como reservatório temporário de espermatozoides antes da ejaculação. Palpáveis por retal em bovinos e equinos. Em bovinos: palpação na entrada da pelve, caudalmente às vesículas seminais. Obliteração das ampolas (por Brucella ou trauma) causa azoospermia obstrutiva. Em garanhões: as ampolas são relativamente maiores e mais importantes como reservatório que nos bovinos.',
+    bulbo: 'As <strong>glândulas bulbouretrais (de Cowper)</strong> secretam o fluido pré-ejaculatório, que lubrifica a uretra e neutraliza resíduos de urina antes da passagem do sêmen. Muito desenvolvidas em suínos (chegam a 12 cm × 2,5 cm — contribuem para o gel seminal). Pequenas em bovinos e equinos. Não palpáveis por retal em nenhuma espécie (posição ventral à uretra pélvica).'
   }
 };
-window.andInfo = function(g, k) {
-  var el = document.getElementById('and-info-' + g);
+window.eacInfo = function(g, k) {
+  var el = document.getElementById('eac-info-' + g);
   if (!el) return;
-  el.innerHTML = andDb[g] && andDb[g][k] ? andDb[g][k] : '';
+  el.innerHTML = eacDb[g] && eacDb[g][k] ? eacDb[g][k] : '';
   el.classList.remove('empty');
 };
-window.andSetTab = function(t, el) {
+window.eacSetTab = function(t, el) {
   var body = el.closest('.chapter-body') || document;
-  body.querySelectorAll('.and-tab').forEach(function(x) { x.classList.remove('active'); });
-  body.querySelectorAll('.and-panel').forEach(function(x) { x.classList.remove('active'); });
+  body.querySelectorAll('.eac-tab').forEach(function(x) { x.classList.remove('active'); });
+  body.querySelectorAll('.eac-panel').forEach(function(x) { x.classList.remove('active'); });
   el.classList.add('active');
-  var panel = body.querySelector('#and-panel-' + t);
+  var panel = body.querySelector('#eac-panel-' + t);
   if (panel) panel.classList.add('active');
 };
-window.andSetSp = function(sp, el) {
-  var panel = el.closest('.and-panel') || document.body;
-  panel.querySelectorAll('.and-sp-tab').forEach(function(x) { x.classList.remove('active'); });
-  panel.querySelectorAll('.and-sp-panel').forEach(function(x) { x.classList.remove('active'); });
+window.eacSetSp = function(sp, el) {
+  var panel = el.closest('.eac-panel') || document.body;
+  panel.querySelectorAll('.eac-sp-tab').forEach(function(x) { x.classList.remove('active'); });
+  panel.querySelectorAll('.eac-sp-panel').forEach(function(x) { x.classList.remove('active'); });
   el.classList.add('active');
-  var target = document.getElementById('and-sp-' + sp);
+  var target = document.getElementById('eac-sp-' + sp);
   if (target) target.classList.add('active');
 };
 
@@ -6989,6 +7574,27 @@ function toggleEdit(){
     });
   }
 }
+
+// === CAPÍTULO 15 — PATOLOGIAS DA GESTAÇÃO ===
+window.pgToggle = function(header){
+  var body = header.nextElementSibling;
+  var open = body.classList.toggle('open');
+  header.classList.toggle('open', open);
+};
+window.pgSetTab = function(t, el){
+  var container = el.closest('.chapter-body');
+  container.querySelectorAll('.pg-tab').forEach(function(x){ x.classList.remove('active'); });
+  container.querySelectorAll('.pg-panel').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  container.querySelector('#pg-panel-' + t).classList.add('active');
+};
+window.pgSetSp = function(sp, el){
+  var p = el.closest('.pg-panel');
+  p.querySelectorAll(':scope > .pg-sp-tabs .pg-sp-tab').forEach(function(x){ x.classList.remove('active'); });
+  p.querySelectorAll(':scope > .pg-sp-panel').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  p.querySelector('#pg-sp-' + sp).classList.add('active');
+};
 </script>
 
 </body>
