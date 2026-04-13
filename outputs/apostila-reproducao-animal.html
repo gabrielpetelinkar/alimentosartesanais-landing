@@ -4827,55 +4827,333 @@ Feto transverso (na prática) → cesariana</div></div>
   title: 'Exame Andrológico',
   icon: '#i-telescope',
   content: `
-<h3>10.1 Avaliação Andrológica Completa</h3>
-<p>O exame andrológico avalia o potencial reprodutivo do macho. Resultado: <strong>APTO / INAPTO / SUSPEITO</strong>.</p>
+<style>
+.and-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.and-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-card);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+.and-tab:hover{background:var(--bg-hover)}.and-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.and-panel{display:none}.and-panel.active{display:block}
+.and-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.and-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-card);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+.and-sp-tab:hover{background:var(--bg-hover)}.and-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.and-sp-panel{display:none}.and-sp-panel.active{display:block}
+.and-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+.and-bwarn{background:var(--warn-bg,#fef3db);color:var(--warn-text,#633806)}.and-binfo{background:var(--blue-100);color:var(--blue-700)}
+.and-bsuc{background:var(--success-bg,#eaf3de);color:var(--success-text,#27500a)}.and-bdanger{background:var(--danger-bg,#fce8e8);color:var(--danger-text,#7a1f1f)}
+.and-hl{background:var(--warn-bg,#fef3db);border-radius:3px;padding:1px 4px;font-weight:600}
+.and-prova-box{border-left:3px solid #BA7517;background:var(--warn-bg,#fef3db);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.and-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.and-suc-box{border-left:3px solid #3B6D11;background:var(--success-bg,#eaf3de);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.and-danger-box{border-left:3px solid #A32D2D;background:var(--danger-bg,#fce8e8);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.and-card{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card);margin-bottom:8px;cursor:pointer;transition:border-color .15s,background .15s}
+.and-card:hover{border-color:var(--border-hover,#d0cfcc);background:var(--bg-hover)}
+.and-card-title{font-weight:600;font-size:13px;margin-bottom:2px}
+.and-card-sub{font-size:12px;color:var(--text-secondary);line-height:1.4}
+.and-info-panel{background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;margin-top:8px;font-size:13px;line-height:1.65;min-height:56px}
+.and-info-panel.empty{color:var(--text-muted);font-style:italic}
+.and-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px}
+.and-ref-table th{background:var(--bg-secondary);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-card);font-size:11px;color:var(--text-secondary)}
+.and-ref-table td{padding:6px 10px;border:1px solid var(--border-card);vertical-align:top;line-height:1.45}
+.and-ref-table tr:nth-child(even) td{background:var(--bg-secondary)}
+.and-sonda-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.and-sonda-card{border-radius:8px;border:1px solid var(--border-card);padding:10px 14px;background:var(--bg-card);cursor:pointer;transition:border-color .15s,background .15s}
+.and-sonda-card:hover{border-color:var(--border-hover,#d0cfcc);background:var(--bg-hover)}
+.and-sonda-name{font-weight:600;font-size:13px;margin-bottom:2px}
+.and-sonda-alvo{font-size:11px;color:var(--text-secondary);line-height:1.35}
+.and-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-secondary);margin-top:10px;margin-bottom:10px}
+.and-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.and-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
+.and-step{display:flex;gap:12px;margin-bottom:8px;align-items:flex-start}
+.and-step-num{min-width:24px;height:24px;border-radius:50%;background:var(--blue-100);color:var(--blue-700);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.and-step-content{flex:1}
+.and-step-title{font-weight:600;font-size:13px;margin-bottom:1px}
+.and-step-sub{font-size:12px;color:var(--text-secondary);line-height:1.4}
+.and-fluor-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.and-fluor-card{border-radius:8px;padding:10px 14px;font-size:12px;line-height:1.5}
+.and-fluor-verde{background:#eaf3de;border:1px solid #3B6D11}
+.and-fluor-vermelho{background:#fce8e8;border:1px solid #A32D2D}
+.and-fluor-laranja{background:#fff3e0;border:1px solid #E65100}
+.and-fluor-azul{background:#e8f1fb;border:1px solid #378ADD}
+.and-fluor-label{font-weight:600;font-size:12px;margin-bottom:3px}
+.and-eq-step{border-left:3px solid #378ADD;padding-left:12px;margin-bottom:10px}
+.and-eq-step-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--blue-700);margin-bottom:2px}
+.and-eq-step-title{font-weight:600;font-size:13px;margin-bottom:2px}
+.and-eq-step-sub{font-size:12px;color:var(--text-secondary);line-height:1.5}
+</style>
 
-<h4>Componentes do Exame (CBRA)</h4>
-<ol>
-  <li><strong>Identificação e histórico</strong></li>
-  <li><strong>Exame clínico geral</strong></li>
-  <li><strong>Exame dos órgãos genitais externos:</strong> Prepúcio, pênis, testículos, epidídimos, cordão espermático</li>
-  <li><strong>Exame dos órgãos genitais internos (palpação retal):</strong> Vesícula seminal, próstata, ampolas</li>
-  <li><strong>Avaliação do libido e capacidade de monta</strong></li>
-  <li><strong>Espermograma</strong></li>
-</ol>
+<div class="and-tabs">
+  <button class="and-tab active" onclick="andSetTab('colheita',this)">Colheita por espécie</button>
+  <button class="and-tab" onclick="andSetTab('micro',this)">Análise macro/micro</button>
+  <button class="and-tab" onclick="andSetTab('dose',this)">Dose inseminante</button>
+  <button class="and-tab" onclick="andSetTab('crioeq',this)">Criopreservação equina</button>
+  <button class="and-tab" onclick="andSetTab('selecao',this)">EquiPure / SLC</button>
+  <button class="and-tab" onclick="andSetTab('patologia',this)">Patologia espermática</button>
+  <button class="and-tab" onclick="andSetTab('fluor',this)">Fluorescência e CASA</button>
+</div>
 
-<h3>10.2 Biometria Testicular</h3>
-<p>A circunferência escrotal correlaciona-se com produção espermática diária e maturidade sexual.</p>
-<div class="table-wrap"><table>
-<tr><th>Espécie</th><th>Circunferência Mínima (Aptidão)</th></tr>
-<tr><td>Touro 24 meses</td><td>≥34 cm</td></tr>
-<tr><td>Touro 36 meses</td><td>≥36 cm</td></tr>
-<tr><td>Carneiro adulto</td><td>≥30 cm</td></tr>
-</table></div>
+<!-- COLHEITA -->
+<div class="and-panel active" id="and-panel-colheita">
+  <div class="and-info-box">O espermiograma reflete as condições clínico-reprodutivas dos <strong>túbulos seminíferos</strong>, do <strong>epidídimo</strong> durante o trânsito e do <strong>armazenamento na cauda do epidídimo</strong>. Validade: <span class="and-hl">60 dias</span> (um ciclo espermatogênico completo).</div>
+  <table class="and-ref-table">
+    <tr><th>Espécie</th><th>Método</th><th>Volume</th><th>Concentração</th><th>Cor</th></tr>
+    <tr><td><strong>Bovino</strong></td><td>Eletroejaculador (↑ glândulas acessórias)<br>Vagina artificial</td><td>EE: ~16 mL<br>VA: ~8 mL</td><td>1×10⁹/mL</td><td>Branco leitoso</td></tr>
+    <tr><td><strong>Equino</strong></td><td>Vagina artificial Botucatu<br>Ejaculação química (imipramina + xilazina)</td><td>40–70 mL<br>(sem gel)</td><td>100×10⁶/mL</td><td>Branco leitoso</td></tr>
+    <tr><td><strong>Ovino / Caprino</strong></td><td>Vagina artificial<br>Eletroejaculação</td><td>0,1–1,0 mL</td><td>2–4×10⁹/mL</td><td>Pérola/marfim<br><span style="font-size:11px">Amarelo citrino = alimento</span></td></tr>
+    <tr><td><strong>Suíno</strong></td><td>Manipulação digital (reflexo de imobilidade)</td><td>40–300 mL</td><td>200–300×10⁶/mL</td><td>Branco</td></tr>
+    <tr><td><strong>Cão</strong></td><td>Manipulação digital<br>(3 frações — avaliar a 2ª)</td><td>2–80 mL</td><td>4–400×10⁶/mL</td><td>Leitoso (fração 2)</td></tr>
+    <tr><td><strong>Gato</strong></td><td>Eletroejaculador<br>Vagina artificial</td><td>0,01–0,77 mL</td><td>~3×10⁶/mL</td><td>Branco/transparente</td></tr>
+  </table>
+  <div class="and-prova-box"><strong>Coloração anormal:</strong> Esverdeado = pus · Amarelado = pus ou urina · Avermelhado = sangue (hemospermia) · Translúcido = azoospermia / oligospermia grave</div>
+  <div class="and-info-box"><strong>Equino — sinais de ejaculação:</strong> movimento de cauda ("flagging"), contração do períneo, sapateado. VA modelo Botucatu: tubo rígido revestido com mucosa, água 40–45°C, pressão de ar. Filtrar gel imediatamente após coleta.</div>
+  <div class="and-memo"><div class="and-memo-label">Cão — 3 frações do ejaculado</div><div class="and-memo-text">1ª: pré-espermática · prostática · transparente · pequeno volume<br>2ª: ESPERMÁTICA · branco leitoso · AVALIADA no espermograma<br>3ª: pós-espermática · prostática · transparente · longa (até 80 mL)</div></div>
+</div>
 
-<h3>10.3 Espermograma</h3>
-<h4>Parâmetros Avaliados</h4>
-<div class="table-wrap"><table>
-<tr><th>Parâmetro</th><th>Método</th><th>Mínimo (CBRA — Bovinos)</th></tr>
-<tr><td>Volume do ejaculado</td><td>Meniscada na seringa</td><td>Variável por espécie</td></tr>
-<tr><td>Motilidade Progressiva (MP)</td><td>Microscopia; 0–100%</td><td>≥60% (sêmen fresco)</td></tr>
-<tr><td>Vigor</td><td>Escala 0–5</td><td>≥3</td></tr>
-<tr><td>Concentração</td><td>Câmara de Neubauer ou fotocolorimétrico</td><td>Espécie-dependente</td></tr>
-<tr><td>Morfologia</td><td>Esfregaço (Rosa Bengala/Diferencial)</td><td>Defeitos totais ≤30%; Maiores ≤20%; Menores ≤10%</td></tr>
-<tr><td>Turbilhonamento</td><td>Microscopia a fresco; 0–5</td><td>≥3 (bovinos)</td></tr>
-</table></div>
+<!-- ANÁLISE MACRO + MICRO -->
+<div class="and-panel" id="and-panel-micro">
+  <div class="and-prova-box"><strong>Análises imediatas</strong> (espermatozoides vivos, placa 37°C): motilidade, vigor, turbilhonamento · <strong>Análises mediatas:</strong> concentração, morfologia (não requerem células vivas)</div>
+  <div class="and-sp-tabs">
+    <button class="and-sp-tab active" onclick="andSetSp('macro',this)">Macroscópica</button>
+    <button class="and-sp-tab" onclick="andSetSp('motvig',this)">Motilidade / Vigor</button>
+    <button class="and-sp-tab" onclick="andSetSp('conc',this)">Concentração</button>
+    <button class="and-sp-tab" onclick="andSetSp('morf',this)">Morfologia e defeitos</button>
+  </div>
+  <div class="and-sp-panel active" id="and-sp-macro">
+    <div class="and-card" onclick="andInfo('mac','cor')"><div class="and-card-title">Cor e aspecto</div><div class="and-card-sub">Normal: branco leitoso (bovinos, equinos) · pérola/amarelo citrino (ovinos)</div></div>
+    <div class="and-card" onclick="andInfo('mac','odor')"><div class="and-card-title">Odor</div><div class="and-card-sub">Característico "sui generis" · Anormal = contaminação ou infecção</div></div>
+    <div class="and-card" onclick="andInfo('mac','ph')"><div class="and-card-title">pH</div><div class="and-card-sub">Bovinos: 6,2–6,8 · Equinos: 7,2–7,7 · Suínos: 7,3–7,8 · Cão: 6,3–7,0</div></div>
+    <div class="and-card" onclick="andInfo('mac','turbilhao')"><div class="and-card-title">Turbilhonamento</div><div class="and-card-sub">Ruminantes (ejaculado concentrado) · escala 0–5 · NÃO avaliado em equinos (ejaculado diluído)</div></div>
+    <div class="and-info-panel empty" id="and-info-mac">Clique para ver detalhes.</div>
+  </div>
+  <div class="and-sp-panel" id="and-sp-motvig">
+    <table class="and-ref-table">
+      <tr><th>Espécie</th><th>Motilidade mín.</th><th>Vigor mín.</th><th>Observação</th></tr>
+      <tr><td><strong>Bovinos</strong></td><td>≥70%</td><td>≥3</td><td>Turbilhonamento ≥3</td></tr>
+      <tr><td><strong>Equinos (fresco)</strong></td><td>≥70%</td><td>≥2–3</td><td>CASA preferível; turbilhonamento ausente</td></tr>
+      <tr><td><strong>Equinos (cong. pós-desg.)</strong></td><td>≥30%</td><td>≥3</td><td>Mínimo aceitável para IA com congelado</td></tr>
+      <tr><td><strong>Ovinos</strong></td><td>≥70%</td><td>≥3</td><td>Turbilhonamento importante</td></tr>
+      <tr><td><strong>Suínos</strong></td><td>≥70%</td><td>≥3</td><td>Diluir antes de avaliar</td></tr>
+      <tr><td><strong>Cão</strong></td><td>≥70%</td><td>≥3</td><td>Avaliar fração 2</td></tr>
+    </table>
+  </div>
+  <div class="and-sp-panel" id="and-sp-conc">
+    <div class="and-info-box">Métodos: câmara de Neubauer, espectrofotometria, CASA. Concentração total do ejaculado = conc. × volume × motilidade (%).</div>
+    <div class="and-prova-box"><strong>Câmara de Neubauer — equinos:</strong> diluição 1:20. 19 µL H₂O + 1 µL sêmen. Contar 5 quadrados grandes. Se diferença entre lados >10%: refazer. Resultado × 10⁶ = conc./mL.</div>
+    <table class="and-ref-table">
+      <tr><th>Espécie</th><th>Diluição p/ câmara</th><th>Observação</th></tr>
+      <tr><td>Equinos</td><td>1:20 (19 µL H₂O + 1 µL sêmen)</td><td>Resultado × 10⁶/mL</td></tr>
+      <tr><td>Bovinos</td><td>1:200 (20 µL sêmen em 4 mL H₂O)</td><td>Fator n × 5000 por mm³</td></tr>
+      <tr><td>Ovinos/Caprinos</td><td>1:400</td><td>Ejaculado muito concentrado</td></tr>
+      <tr><td>Cão</td><td>1:20</td><td>Fração 2 apenas</td></tr>
+    </table>
+  </div>
+  <div class="and-sp-panel" id="and-sp-morf">
+    <div class="and-prova-box"><strong>Equinos:</strong> inserção abaxial da cauda é NORMAL — não contar como defeito. <strong>Avaliar 200 células.</strong></div>
+    <div style="font-size:13px;line-height:1.75;margin-bottom:10px">
+      <strong>Defeitos maiores — cabeça:</strong> macrocefalia, microcefalia, piriforme, estreita na base, lanciforme, dupla, decapitado, pouch formation<br>
+      <strong>Defeitos maiores — acrossomo:</strong> ausente, deformado, destacado<br>
+      <strong>Defeitos maiores — peça intermediária:</strong> gota citoplasmática proximal, PI dobrada, abaxial com gota<br>
+      <strong>Defeitos maiores — cauda:</strong> enrolada (dag defect), em chicote, torcida<br>
+      <strong>Defeitos menores:</strong> gota citoplasmática distal, dobrada simples, inserção abaxial simples (normal em equinos)
+    </div>
+    <table class="and-ref-table">
+      <tr><th>Espécie</th><th>Normais mín.</th><th>Defeitos totais máx.</th></tr>
+      <tr><td>Bovinos / Ovinos / Suínos / Cão</td><td>≥70%</td><td>≤30%</td></tr>
+      <tr><td>Equinos</td><td>≥60–70%</td><td>≤30–40%</td></tr>
+    </table>
+  </div>
+</div>
 
-<h3>10.4 Patologia Espermática</h3>
-<h4>Defeitos Maiores (afetam fertilização)</h4>
-<ul>
-  <li>Acrossomo dobrado/ausente; Cabeça pequena ou piriforme; Cabeça gigante; Inserção anormal da peça intermediária; Cauda dobrada fortemente; Cauda fortemente espiralada; Cabeça solta com botão citoplasmático</li>
-</ul>
+<!-- DOSE INSEMINANTE -->
+<div class="and-panel" id="and-panel-dose">
+  <div class="and-info-box">A dose inseminante considera espermatozoides <strong>viáveis</strong> (concentração × motilidade). O número de palhetas = concentração total viável ÷ concentração/palheta.</div>
+  <table class="and-ref-table">
+    <tr><th>Estado</th><th>Cavalo</th><th>Bovino</th><th>Ovino/Caprino</th><th>Suíno</th><th>Cão</th></tr>
+    <tr><td><strong>Congelado</strong></td><td>800×10⁶ <br><span style="font-size:11px">(8 palhetas)</span></td><td>30×10⁶<br><span style="font-size:11px">(1 palheta)</span></td><td>50×10⁶<br><span style="font-size:11px">Mot. 60–70%</span></td><td>3000×10⁶<br><span style="font-size:11px">(15 palhetas)</span></td><td>150×10⁶/dose</td></tr>
+    <tr><td><strong>Resfriado</strong></td><td>100×10⁶</td><td>20–50×10⁶ viáveis/mL</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Fresco</strong></td><td>Sem diluir: 15 min<br>Diluído (1:1): 6 h</td><td>500–1000×10⁶/mL</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Conc./palheta</strong></td><td><strong>100×10⁶</strong></td><td><strong>30×10⁶</strong></td><td><strong>50×10⁶</strong></td><td><strong>200×10⁶</strong></td><td>150×10⁶</td></tr>
+  </table>
+  <div class="and-memo"><div class="and-memo-label">IA em cães — volume por via</div><div class="and-memo-text">Intravaginal (fundo de vagina): 1 mL (pequeno) · 4 mL (médio) · 8 mL (grande)<br>Laparotômica/cirúrgica: 0,5 mL em cada corno (pequeno) · 2 mL em cada corno (outros)</div></div>
+  <div class="and-prova-box"><strong>Cálculo de doses equino:</strong> Conc. total viável = conc./mL × volume mL × motilidade%. Dividir por 100×10⁶ = nº palhetas. Volume BotuCrio = nº palhetas × 0,5 mL.</div>
+</div>
 
-<h4>Defeitos Menores</h4>
-<ul>
-  <li>Gota citoplasmática distal; Cauda espiralada; Curvatura de cauda; Cabeça isolada sem botão; Célula redonda (espermatócito)</li>
-</ul>
+<!-- CRIOPRESERVAÇÃO EQUINA -->
+<div class="and-panel" id="and-panel-crioeq">
+  <div class="and-info-box"><strong>Criopreservação equina</strong> — protocolo passo a passo. Diluidor base: <span class="and-hl">leite desnatado</span> (≠ bovinos que usam gema de ovo). Crioprotetor: amidas (metilformamida + dimetilformamida) + glicerol baixa concentração.</div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 1</div><div class="and-eq-step-title">Coleta — Vagina artificial modelo Botucatu</div><div class="and-eq-step-sub">Tubo rígido com mucosa · água 40–45°C + ar comprimido · coleta em fêmea em estro ou manequim. Sinais de ejaculação: flagging (movimento de cauda), contração do períneo, sapateado.</div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 2</div><div class="and-eq-step-title">Filtragem — remoção da fração gel</div><div class="and-eq-step-sub">Filtrar com gaze imediatamente. Gel das glândulas vesiculares prejudica motilidade. <em>Bovinos não precisam filtrar.</em></div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 3</div><div class="and-eq-step-title">Análises imediatas</div><div class="and-eq-step-sub">Macro: volume (40–70 mL), cor (branco leitoso), odor (sui generis). Micro: motilidade ≥70%, vigor ≥2–3, concentração (câmara de Neubauer, diluição 1:20).</div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 4</div><div class="and-eq-step-title">Câmara de Neubauer — cálculo da concentração</div><div class="and-eq-step-sub">19 µL H₂O + 1 µL sêmen → contar 5 quadrados grandes. Resultado × 10⁶ = conc./mL. Diferença entre lados >10%: refazer. Conc. total viável = conc. × volume × motilidade%.</div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 5</div><div class="and-eq-step-title">Diluição e centrifugação</div><div class="and-eq-step-sub">Diluir 1:1 com <span class="and-hl">BotuSêmen®</span> (leite desnatado, açúcar, antibiótico). Centrifugar <strong>600 × g por 10 min</strong>. Descartar sobrenadante (plasma seminal). Coletar pellet e medir volume. <em>Ruminantes: não centrifugam.</em></div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 6</div><div class="and-eq-step-title">Ressuspensão com BotuCrio®</div><div class="and-eq-step-sub">Resuspender pellet com <span class="and-hl">BotuCrio®</span> (metilformamida 4% + glicerol 1% + leite). Metade do volume total final = BotuCrio. Outra metade = diluente + pellet. Conc. alvo: 100–200×10⁶/mL na palheta.</div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 7</div><div class="and-eq-step-title">Cálculo das doses</div><div class="and-eq-step-sub">Conc. total viável (ex: 90% × 50 mL × 200×10⁶) = 9000×10⁶ ÷ 100×10⁶ = 90 palhetas → 45 mL BotuCrio + (pellet + diluente para completar). Volume BotuCrio = nº palhetas × 0,5 mL.</div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 8</div><div class="and-eq-step-title">Envasamento</div><div class="and-eq-step-sub">Palhetas 0,5 mL · identificar com dados do garanhão, raça, data, partida · lacrar com álcool polivinílico.</div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 9</div><div class="and-eq-step-title">Estabilização — 5°C por 20 minutos</div><div class="and-eq-step-sub">Grade horizontal em máquina refrigerada (Minitub®, Botutainer®, Equitainer®) ou geladeira a 5°C por 20 min. <em>Bovinos: 4h a 5°C. Suínos: 2h a 15°C + 2h a 5°C.</em></div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 10</div><div class="and-eq-step-title">Resfriamento rápido (vapor de N₂ líquido)</div><div class="and-eq-step-sub">Grade horizontal a <strong>3–6 cm acima do nível do N₂</strong> (~-12°C) em caixa de isopor por <strong>15–20 minutos</strong>.</div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 11</div><div class="and-eq-step-title">Congelação — imersão direta no N₂ líquido (-196°C)</div><div class="and-eq-step-sub">Mergulhar as palhetas. Armazenar em raque em botijão criogênico.</div></div>
+  <div class="and-eq-step"><div class="and-eq-step-num">Etapa 12</div><div class="and-eq-step-title">Descongelação</div><div class="and-eq-step-sub"><strong>Equinos:</strong> banho-maria 46°C por 20 s → 37°C por 1–2 min antes da avaliação. <em>Alt.: 37°C por 30 s.</em> Motilidade pós-descongelamento: ≥30% (mínimo para IA).</div></div>
+  <div class="and-danger-box"><strong>Danos da congelação:</strong> desidratação celular · choque osmótico · formação de gelo intracelular · alterações metabólicas · alterações de MP e acrossomo · peroxidação lipídica</div>
+  <div class="and-memo"><div class="and-memo-label">Diluidores equinos — resumo</div><div class="and-memo-text">BotuSêmen® → refrigeração e centrifugação (base leite desnatado)<br>BotuCrio® → criopreservação (metilformamida 4% + glicerol 1% + leite)<br>Base leite desnatado em equinos ≠ Base gema de ovo em bovinos<br>Pós-descongelamento: motilidade ≥30% · vigor ≥3 → mínimo para IA com congelado</div></div>
+</div>
 
-<div class="alert alert-tip">
-<strong>💡 Defeito Maior vs. Menor</strong><br>
-Defeitos <strong>Maiores</strong> = comprometem fertilização (estruturas essenciais alteradas)<br>
-Defeitos <strong>Menores</strong> = comprometem motilidade ou não afetam fertilização diretamente
+<!-- SELEÇÃO ESPERMÁTICA -->
+<div class="and-panel" id="and-panel-selecao">
+  <div class="and-info-box"><strong>Seleção espermática por gradiente de densidade coloidal</strong> — seleciona os melhores espermatozoides antes de criopreservar ou inseminar. Especialmente indicada para garanhões subférteis ou ejaculados de baixa qualidade.</div>
+  <div class="and-sp-tabs">
+    <button class="and-sp-tab active" onclick="andSetSp('equipure',this)">EquiPure™</button>
+    <button class="and-sp-tab" onclick="andSetSp('slc',this)">Androcoll-E / SLC</button>
+    <button class="and-sp-tab" onclick="andSetSp('resultado',this)">Princípio e resultados</button>
+  </div>
+  <div class="and-sp-panel active" id="and-sp-equipure">
+    <div class="and-prova-box"><strong>EquiPure™</strong> (Nidacon / Botupharma) — gradiente de densidade coloidal de sílica revestida. Produto mais usado no mundo para seleção espermática equina e bovina.</div>
+    <div class="and-step"><div class="and-step-num">1</div><div class="and-step-content"><div class="and-step-title">Preparação do tubo (15 mL cônico)</div><div class="and-step-sub">Adicionar 2 mL de EquiPure no FUNDO do tubo (camada mais densa)</div></div></div>
+    <div class="and-step"><div class="and-step-num">2</div><div class="and-step-content"><div class="and-step-title">Adição do sêmen</div><div class="and-step-sub">Pipetear devagar 2 mL de sêmen gel-free por cima do EquiPure (proporção 1:1). Não misturar as camadas.</div></div></div>
+    <div class="and-step"><div class="and-step-num">3</div><div class="and-step-content"><div class="and-step-title">Centrifugação</div><div class="and-step-sub"><strong>400 × g por 20 minutos.</strong> Espermatozoides mais móveis e íntegros atravessam o gradiente e formam pellet no fundo.</div></div></div>
+    <div class="and-step"><div class="and-step-num">4</div><div class="and-step-content"><div class="and-step-title">Coleta e ressuspensão do pellet</div><div class="and-step-sub">Descartar sobrenadante. Resuspender pellet em 1–2 mL de BotuCrio® ou BWW. Avaliar qualidade.</div></div></div>
+    <div class="and-suc-box"><strong>O EquiPure remove:</strong> espermatozoides defeituosos e imóveis · plasma seminal · bactérias · vírus (incluindo EAV — Arterite Viral Equina) · leucócitos · células epiteliais · EROs (espécies reativas de oxigênio)</div>
+  </div>
+  <div class="and-sp-panel" id="and-sp-slc">
+    <div class="and-info-box"><strong>SLC — Single Layer Centrifugation (Androcoll-E™ / Minitube)</strong> — técnica de camada única, mais simples e econômica que o gradiente duplo do EquiPure.</div>
+    <div style="font-size:13px;line-height:1.8;margin-bottom:10px">
+      <strong>Diferença EquiPure × SLC:</strong><br>
+      EquiPure: gradiente duplo (duas camadas de densidade diferente) → mais complexo<br>
+      SLC: apenas uma camada de coloide → mesmo princípio, mais simples de executar<br><br>
+      <strong>Protocolo SLC:</strong> mesma força e tempo que EquiPure (400 × g / 20 min)<br>
+      <strong>Resultados:</strong> equivalentes ao EquiPure para LIN, STR, BCF e índice de fragmentação de DNA<br><br>
+      <strong>Androcoll-E™ específico para equinos</strong> — Androcoll-B para bovinos — Androcoll-P para suínos
+    </div>
+    <div class="and-memo"><div class="and-memo-label">Quando usar vs. não usar seleção por gradiente</div><div class="and-memo-text">USAR: garanhão subfértil · ejaculado ruim · pré-criopreservação de difícil congelamento<br>USAR: quando há contaminação bacteriana · pré-OPU-ICSI<br>NÃO COMPENSAR: garanhões com sêmen de boa qualidade (perda grande de células)<br>Recuperação espermática baixa é a principal desvantagem (pode perder &gt;50% do ejaculado)</div></div>
+  </div>
+  <div class="and-sp-panel" id="and-sp-resultado">
+    <div style="font-size:13px;line-height:1.8;margin-bottom:10px">
+      <strong>Princípio físico:</strong> espermatozoides com alta motilidade progressiva têm maior força propulsiva → conseguem atravessar o coloide. Células com maior integridade estrutural têm maior densidade → sedimentam no pellet. Células defeituosas e mortas ficam retidas nas camadas superiores.<br><br>
+      <strong>Resultados comprovados após EquiPure/SLC:</strong>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+      <div style="border-radius:8px;border:1px solid var(--border-card);padding:10px;background:#eaf3de"><div style="font-weight:600;font-size:12px;color:#27500a;margin-bottom:4px">Melhora (↑)</div><div style="font-size:12px;line-height:1.7">Motilidade progressiva<br>Linearidade (LIN, STR)<br>Morfologia normal<br>Congelabilidade</div></div>
+      <div style="border-radius:8px;border:1px solid var(--border-card);padding:10px;background:#fce8e8"><div style="font-weight:600;font-size:12px;color:#7a1f1f;margin-bottom:4px">Reduz (↓)</div><div style="font-size:12px;line-height:1.7">Fragmentação de DNA (DFI)<br>EROs<br>Bactérias<br>EAV</div></div>
+    </div>
+    <div class="and-danger-box"><strong>Limitação principal:</strong> recuperação espermática baixa — grande parte do ejaculado é descartada. Em garanhões com sêmen de boa qualidade, a perda não compensa. Indicado principalmente em subférteis.</div>
+  </div>
+</div>
+
+<!-- PATOLOGIA ESPERMÁTICA -->
+<div class="and-panel" id="and-panel-patologia">
+  <div class="and-info-box">Avaliação das estruturas espermáticas: morfologia geral, integridade de membrana plasmática (MP), integridade acrossomal (MA) e integridade do DNA. Cada método tem indicação específica.</div>
+  <div class="and-sp-tabs">
+    <button class="and-sp-tab active" onclick="andSetSp('karras',this)">Karras (equinos)</button>
+    <button class="and-sp-tab" onclick="andSetSp('eosina',this)">Eosina-nigrosina</button>
+    <button class="and-sp-tab" onclick="andSetSp('hipo',this)">Hiposmótico</button>
+    <button class="and-sp-tab" onclick="andSetSp('panotico',this)">Panótico</button>
+    <button class="and-sp-tab" onclick="andSetSp('dna',this)">SCSA / TUNEL</button>
+    <button class="and-sp-tab" onclick="andSetSp('resumo_testes',this)">Resumo comparativo</button>
+  </div>
+  <div class="and-sp-panel active" id="and-sp-karras">
+    <div class="and-prova-box"><strong>Coloração de Karras</strong> — padrão para morfologia + acrossomo em equinos. O acrossomo equino é formado por <span class="and-hl">camadas delgadas → invisível ao contraste de fase</span>. Karras é obrigatório para avaliação acrossomal no garanhão.</div>
+    <div class="and-step"><div class="and-step-num">1</div><div class="and-step-content"><div class="and-step-title">Esfregaço</div><div class="and-step-sub">1 gota de sêmen sobre lâmina → esfregaço fino → secar ao ar</div></div></div>
+    <div class="and-step"><div class="and-step-num">2</div><div class="and-step-content"><div class="and-step-title">Fixação em metanol</div><div class="and-step-sub">Imergir em metanol por 5–10 min</div></div></div>
+    <div class="and-step"><div class="and-step-num">3</div><div class="and-step-content"><div class="and-step-title">Rosa bengala — 2 minutos</div><div class="and-step-sub">Cora citoplasma e componentes celulares em rosa → lavar com água destilada</div></div></div>
+    <div class="and-step"><div class="and-step-num">4</div><div class="and-step-content"><div class="and-step-title">Tanino — 1 minuto</div><div class="and-step-sub">Mordente → intensifica coloração subsequente → lavar</div></div></div>
+    <div class="and-step"><div class="and-step-num">5</div><div class="and-step-content"><div class="and-step-title">Azul vitória — 30 segundos</div><div class="and-step-sub">Cora acrossomo em azul escuro → lavar → secar → laminar</div></div></div>
+    <div class="and-step"><div class="and-step-num">6</div><div class="and-step-content"><div class="and-step-title">Contagem — 200 células</div><div class="and-step-sub">Morfologia completa + acrossomo (azul = íntegro · irregular/ausente = defeituoso)</div></div></div>
+    <div class="and-memo"><div class="and-memo-label">Por que não usar contraste de fase no equino?</div><div class="and-memo-text">Acrossomo equino = camadas delgadas → translúcido ao CF → indetectável<br>Karras cora o acrossomo em azul escuro → defeitos visíveis<br>Bovinos: acrossomo mais espesso → CF pode ser usado</div></div>
+  </div>
+  <div class="and-sp-panel" id="and-sp-eosina">
+    <div class="and-prova-box"><strong>Eosina-nigrosina</strong> — corante supravital. Avalia <span class="and-hl">viabilidade</span> (integridade estrutural da MP). Padrão em todas as espécies.</div>
+    <div class="and-info-box"><strong>Princípio:</strong> MP íntegra <strong>exclui</strong> o corante → branca/incolor = viva. MP lesada <strong>permite entrada</strong> → rosa/vermelha = morta. Nigrosina = fundo escuro para contraste.</div>
+    <div class="and-step"><div class="and-step-num">1</div><div class="and-step-content"><div class="and-step-title">Mistura imediata (TEMPO CRÍTICO)</div><div class="and-step-sub">Sêmen + eosina-nigrosina 1:1 → esfregaço IMEDIATAMENTE. Demora = falso positivo (corante entra passivamente)</div></div></div>
+    <div class="and-step"><div class="and-step-num">2</div><div class="and-step-content"><div class="and-step-title">Secagem rápida</div><div class="and-step-sub">Lâmina aquecida ou soprar para secar</div></div></div>
+    <div class="and-step"><div class="and-step-num">3</div><div class="and-step-content"><div class="and-step-title">Contagem — 200 células</div><div class="and-step-sub">Branco/incolor = vivo · Rosa = morto → calcular % viabilidade</div></div></div>
+    <div class="and-fluor-grid">
+      <div class="and-fluor-card and-fluor-verde"><div class="and-fluor-label">Branco / incolor = VIVO</div>MP íntegra exclui a eosina</div>
+      <div class="and-fluor-card and-fluor-vermelho"><div class="and-fluor-label">Rosa / vermelho = MORTO</div>MP lesada → eosina penetra</div>
+    </div>
+  </div>
+  <div class="and-sp-panel" id="and-sp-hipo">
+    <div class="and-prova-box"><strong>Teste hiposmótico (HOS)</strong> — avalia <span class="and-hl">integridade funcional</span> da MP. Testa se a membrana consegue regular osmose (função ativa) — diferente da eosina que testa apenas estrutura.</div>
+    <div class="and-info-box"><strong>Princípio:</strong> MP funcional → troca água com meio hiposmótico → célula incha → cauda dobra/enrola. MP lesada → não responde → cauda permanece reta.</div>
+    <div class="and-step"><div class="and-step-num">1</div><div class="and-step-content"><div class="and-step-title">Contagem inicial</div><div class="and-step-sub">Contar % caudas dobradas ANTES (controle basal)</div></div></div>
+    <div class="and-step"><div class="and-step-num">2</div><div class="and-step-content"><div class="and-step-title">Incubação em solução hiposmótica</div><div class="and-step-sub">37°C por 30–60 min (água destilada ou 150 mOsmol)</div></div></div>
+    <div class="and-step"><div class="and-step-num">3</div><div class="and-step-content"><div class="and-step-title">Contagem final — 200 células</div><div class="and-step-sub">% caudas dobradas DEPOIS − basal = % MP funcionalmente íntegra</div></div></div>
+    <div class="and-memo"><div class="and-memo-label">Eosina-nigrosina × HOS test</div><div class="and-memo-text">Eosina: integridade ESTRUTURAL da MP<br>HOS: integridade FUNCIONAL da MP<br>São complementares — não se substituem</div></div>
+  </div>
+  <div class="and-sp-panel" id="and-sp-panotico">
+    <div class="and-info-box"><strong>Panótico Rápido (Diff-Quick)</strong> — morfologia geral de rotina. Simples, rápido, disponível em qualquer laboratório. Usado em bovinos, ovinos, suínos e carnívoros. <em>Não específico para acrossomo</em> → equinos usam Karras.</div>
+    <div class="and-step"><div class="and-step-num">1</div><div class="and-step-content"><div class="and-step-title">Esfregaço → secar ao ar</div><div class="and-step-sub">1 gota de sêmen · esfregaço fino</div></div></div>
+    <div class="and-step"><div class="and-step-num">2</div><div class="and-step-content"><div class="and-step-title">3 imersões rápidas (5–10 s cada)</div><div class="and-step-sub">Frasco 1: fixador metanólico → Frasco 2: eosina → Frasco 3: azure/azul de metileno</div></div></div>
+    <div class="and-step"><div class="and-step-num">3</div><div class="and-step-content"><div class="and-step-title">Contagem — 200 células</div><div class="and-step-sub">Avaliar cabeça, peça intermediária, cauda. Classificar defeitos maiores e menores.</div></div></div>
+  </div>
+  <div class="and-sp-panel" id="and-sp-dna">
+    <div class="and-danger-box"><strong>Fragmentação de DNA espermático</strong> — prediz infertilidade em casos com espermograma convencional normal. Alta relevância em equinos antes da criopreservação.</div>
+    <div class="and-card" onclick="andInfo('dna','scsa')"><div class="and-card-title">SCSA — Sperm Chromatin Structure Assay</div><div class="and-card-sub">Laranja de acridina · DFI · método mais validado · citometria de fluxo</div></div>
+    <div class="and-card" onclick="andInfo('dna','tunel')"><div class="and-card-title">TUNEL</div><div class="and-card-sub">Detecção direta de quebras no DNA · nucleotídeos fluorescentes · alta acurácia</div></div>
+    <div class="and-info-panel empty" id="and-info-dna">Clique para ver detalhes.</div>
+    <div class="and-memo" style="margin-top:10px"><div class="and-memo-label">Valores de referência DFI (SCSA)</div><div class="and-memo-text">DFI &lt;15%: normal — fertilidade preservada<br>DFI 15–25%: zona limítrofe<br>DFI &gt;25%: comprometimento por IA/monta natural<br>DFI &gt;50%: comprometimento mesmo por FIV<br>EquiPure/SLC tende a ↓ DFI no pellet selecionado</div></div>
+  </div>
+  <div class="and-sp-panel" id="and-sp-resumo_testes">
+    <table class="and-ref-table">
+      <tr><th>Teste</th><th>Avalia</th><th>Método</th><th>Resultado</th></tr>
+      <tr><td><strong>Karras</strong></td><td>Morfologia + acrossomo</td><td>Coloração (rosa bengala, tanino, azul vitória) · 200 células</td><td>Azul = acrossomo íntegro</td></tr>
+      <tr><td><strong>Panótico (Diff-Quick)</strong></td><td>Morfologia geral</td><td>3 imersões rápidas · 200 células</td><td>Morfologia geral — não avalia acrossomo</td></tr>
+      <tr><td><strong>Eosina-nigrosina</strong></td><td>Viabilidade (MP estrutural)</td><td>Supravital · esfregaço imediato</td><td>Branco = vivo · Rosa = morto</td></tr>
+      <tr><td><strong>HOS test</strong></td><td>MP funcional</td><td>Solução hiposmótica</td><td>Cauda dobrada = MP funcional</td></tr>
+      <tr><td><strong>SYBR-14 / IP</strong></td><td>Viabilidade (MP)</td><td>Citometria de fluxo</td><td>Verde = vivo · Vermelho = morto</td></tr>
+      <tr><td><strong>FITC-PSA + IP</strong></td><td>MP + Acrossomo</td><td>Citometria (4 subpopulações)</td><td>MPAI / MPLAI / MPIAL / MPAL</td></tr>
+      <tr><td><strong>JC-1</strong></td><td>Mitocôndria</td><td>Citometria</td><td>Laranja = alto potencial · Verde = baixo</td></tr>
+      <tr><td><strong>SCSA</strong></td><td>Cromatina / DNA</td><td>Laranja de acridina · citometria</td><td>DFI: verde = íntegro · laranja = fragmentado</td></tr>
+      <tr><td><strong>TUNEL</strong></td><td>DNA (direto)</td><td>Citometria · nucleotídeos fluorescentes</td><td>Marcação direta dos sítios de quebra</td></tr>
+    </table>
+    <div class="and-fluor-grid">
+      <div class="and-fluor-card and-fluor-verde"><div class="and-fluor-label">MP íntegra + Acrossomo íntegro</div>SYBR-14 verde · FITC-PSA verde · = MPAI</div>
+      <div class="and-fluor-card and-fluor-vermelho"><div class="and-fluor-label">MP lesada + Acrossomo lesado</div>IP vermelho · sem FITC-PSA · = MPAL</div>
+      <div class="and-fluor-card and-fluor-azul"><div class="and-fluor-label">MP lesada + Acrossomo íntegro</div>IP vermelho · FITC-PSA verde · = MPLAI</div>
+      <div class="and-fluor-card and-fluor-laranja"><div class="and-fluor-label">DNA fragmentado (SCSA)</div>Laranja de acridina: laranja/vermelho</div>
+    </div>
+  </div>
+</div>
+
+<!-- FLUORESCÊNCIA E CASA -->
+<div class="and-panel" id="and-panel-fluor">
+  <div class="and-suc-box"><strong>CASA</strong> — padrão ouro para cinética espermática, especialmente equinos. Analisa >500 células de forma objetiva. <strong>Citometria de fluxo</strong> — avalia >10.000 células com múltiplas sondas simultaneamente.</div>
+  <div class="and-sp-tabs">
+    <button class="and-sp-tab active" onclick="andSetSp('casa',this)">CASA</button>
+    <button class="and-sp-tab" onclick="andSetSp('sondas',this)">Sondas fluorescentes</button>
+    <button class="and-sp-tab" onclick="andSetSp('subpop',this)">Subpopulações</button>
+  </div>
+  <div class="and-sp-panel active" id="and-sp-casa">
+    <div style="font-size:13px;line-height:1.9">
+      <strong>VCL</strong> — velocidade curvilínea (µm/s) — velocidade real de deslocamento<br>
+      <strong>VSL</strong> — velocidade em linha reta (µm/s) — deslocamento líquido<br>
+      <strong>VAP</strong> — velocidade média do trajeto (µm/s)<br>
+      <strong>LIN</strong> — linearidade (VSL/VCL)<br>
+      <strong>STR</strong> — retidão (VSL/VAP)<br>
+      <strong>WOB</strong> — oscilação (VAP/VCL)<br>
+      <strong>ALH</strong> — amplitude lateral da cabeça<br>
+      <strong>BCF</strong> — frequência de batimento cruzado do flagelo
+    </div>
+    <div class="and-memo" style="margin-top:10px"><div class="and-memo-label">Por que CASA é essencial em equinos</div><div class="and-memo-text">Avaliação subjetiva tem baixa reprodutibilidade entre avaliadores<br>VCL e LIN correlacionam com penetração no muco cervical e fertilidade pós-IA<br>Garanhões com boa motilidade subjetiva podem ter CASA ruim → falsa aprovação<br>CASA detecta subpopulações de espermatozoides com padrões cinéticos distintos</div></div>
+  </div>
+  <div class="and-sp-panel" id="and-sp-sondas">
+    <div class="and-sonda-grid">
+      <div class="and-sonda-card" onclick="andInfo('son','sybr14')"><div class="and-sonda-name">SYBR-14 + IP</div><div class="and-sonda-alvo">Viabilidade · integridade da membrana plasmática</div></div>
+      <div class="and-sonda-card" onclick="andInfo('son','fitcpsa')"><div class="and-sonda-name">FITC-PSA</div><div class="and-sonda-alvo">Integridade acrossomal</div></div>
+      <div class="and-sonda-card" onclick="andInfo('son','jc1')"><div class="and-sonda-name">JC-1</div><div class="and-sonda-alvo">Potencial de membrana mitocondrial</div></div>
+      <div class="and-sonda-card" onclick="andInfo('son','cfda')"><div class="and-sonda-name">CFDA</div><div class="and-sonda-alvo">Integridade + atividade metabólica da MP</div></div>
+      <div class="and-sonda-card" onclick="andInfo('son','ao')"><div class="and-sonda-name">Laranja de Acridina (SCSA)</div><div class="and-sonda-alvo">Fragmentação de DNA</div></div>
+      <div class="and-sonda-card" onclick="andInfo('son','annexin')"><div class="and-sonda-name">Anexina V-FITC + IP</div><div class="and-sonda-alvo">Apoptose espermática · 4 subpopulações</div></div>
+    </div>
+    <div class="and-info-panel empty" id="and-info-son">Clique em uma sonda para ver detalhes.</div>
+  </div>
+  <div class="and-sp-panel" id="and-sp-subpop">
+    <div class="and-info-box"><strong>4 subpopulações espermáticas</strong> — combinação FITC-PSA + IP por citometria de fluxo avalia membrana plasmática e acrossomo simultaneamente.</div>
+    <table class="and-ref-table">
+      <tr><th>Subpopulação</th><th>MP</th><th>Acrossomo</th><th>Significado</th></tr>
+      <tr><td><strong>MPAI</strong></td><td>Íntegra</td><td>Íntegro</td><td>Viável e funcional → ideal · quanto maior melhor</td></tr>
+      <tr><td><strong>MPLAI</strong></td><td>Lesada</td><td>Íntegro</td><td>Morto com acrossomo preservado</td></tr>
+      <tr><td><strong>MPIAL</strong></td><td>Íntegra</td><td>Lesado</td><td>Acrossomo reagiu/defeituoso → não fertiliza</td></tr>
+      <tr><td><strong>MPAL</strong></td><td>Lesada</td><td>Lesado</td><td>Completamente comprometido</td></tr>
+    </table>
+    <div class="and-memo"><div class="and-memo-label">Combinação tripla — JC-1 + IP + FITC-PSA</div><div class="and-memo-text">Avalia simultaneamente: MP (IP) + Acrossomo (FITC-PSA) + Mitocôndria (JC-1)<br>Ideal para avaliação completa de sêmen pós-descongelamento<br>MPIAL especialmente relevante após criopreservação — acrossomo sensível ao congelamento</div></div>
+  </div>
 </div>
 `
 },
@@ -5470,6 +5748,50 @@ window.impSetSp = function(sp, el) {
   el.classList.add('active');
   var t = panel.querySelector('#imp-sp-' + sp);
   if (t) t.classList.add('active');
+};
+
+// === CAPÍTULO 12 — EXAME ANDROLÓGICO E AVALIAÇÃO ESPERMÁTICA ===
+var andDb = {
+  mac: {
+    cor: 'Branco leitoso (bovinos, equinos, suínos, cão). Pérola/marfim a amarelo citrino (ovinos/caprinos — alimentação). <strong>Anormal:</strong> esverdeado = pus; amarelado = pus ou urina; avermelhado = sangue (hemospermia); translúcido = azoospermia.',
+    odor: '<strong>Sui generis</strong> em todas as espécies — odor característico e suave. Anormal: forte/desagradável = contaminação bacteriana ou infecção; odor urinoso = contaminação com urina.',
+    ph: 'Bovinos: 6,2–6,8. Equinos: 7,2–7,7 (&gt;7,8 = contaminação urinária ou processo inflamatório). Suínos: 7,3–7,8. Cão: 6,3–7,0. Medido com fita reagente ou pHmetro imediatamente após a coleta.',
+    turbilhao: 'Avaliado a olho nu ou com pequeno aumento em ruminantes (ejaculados muito concentrados). Ondas de movimento visíveis = reflexo de motilidade + concentração. Escala 0–5. <span class="and-hl">Equinos: turbilhonamento ausente — ejaculado diluído, não se avalia.</span>'
+  },
+  dna: {
+    scsa: '<strong>SCSA</strong> — método mais validado para cromatina espermática. Laranja de acridina se liga ao DNA. DNA dupla hélice íntegra → <strong>verde</strong>. DNA desnaturado/fragmentado → <strong>laranja/vermelho</strong>. Parâmetro: <strong>DFI</strong> (DNA Fragmentation Index). Referência: DFI &lt;15% normal · 15–25% limítrofe · &gt;25% fertilidade comprometida. Avaliado por citometria de fluxo.',
+    tunel: '<strong>TUNEL</strong> — detecta <em>diretamente</em> quebras no DNA pela incorporação de nucleotídeos fluorescentes (Br-dUTP) nos sítios fragmentados. Citometria de fluxo totalmente automatizada. Alta acurácia. Detecta fragmentação por estresse oxidativo, falhas na espermatogênese ou apoptose.'
+  },
+  son: {
+    sybr14: '<strong>SYBR-14 + IP:</strong> SYBR-14 permeável → cora DNA de todos em <strong>verde</strong>. IP impermeável à MP íntegra → penetra só em células mortas → <strong>vermelho</strong>. Verde = vivo · Vermelho = morto. &gt;10.000 células em segundos por citometria.',
+    fitcpsa: '<strong>FITC-PSA:</strong> PSA (aglutinina Pisum sativum) liga-se a polissacarídeos do acrossomo. FITC = fluoróforo verde. Combinado com IP: vivo + acrossomo íntegro = verde. Acrossomo reagido = sem fluorescência na cabeça. MP lesada = vermelho (IP). Padrão para subpopulações MPAI/MPLAI/MPIAL/MPAL.',
+    jc1: '<strong>JC-1:</strong> avalia <span class="and-hl">potencial de membrana mitocondrial</span>. Alto potencial (mitocôndria ativa) → agregados <strong>laranja-avermelhados</strong>. Baixo potencial → monômero <strong>verde</strong>. Forte correlação com motilidade progressiva e fertilidade. Muito útil para avaliação pós-descongelamento.',
+    cfda: '<strong>CFDA:</strong> penetra em células com MP íntegra e ativa → enzimas intracelulares geram fluorescência <strong>verde</strong>. Células mortas → sem fluorescência. Frequentemente combinada com IP.',
+    ao: '<strong>Laranja de Acridina (SCSA):</strong> DNA dupla hélice → <strong>verde</strong>. DNA desnaturado/fragmentado → <strong>laranja/vermelho</strong>. Calcula DFI. Relevante para predição de fertilidade quando espermograma convencional é normal.',
+    annexin: '<strong>Anexina V-FITC + IP:</strong> (1) Viáveis: An⁻/IP⁻. (2) Apoptose inicial: An⁺/IP⁻ (fosfatidilserina exposta, MP ainda íntegra). (3) Apoptose tardia: An⁺/IP⁺. (4) Necrose: An⁻/IP⁺. Indica qualidade do processo espermatogênico.'
+  }
+};
+window.andInfo = function(g, k) {
+  var el = document.getElementById('and-info-' + g);
+  if (!el) return;
+  el.innerHTML = andDb[g] && andDb[g][k] ? andDb[g][k] : '';
+  el.classList.remove('empty');
+};
+window.andSetTab = function(t, el) {
+  var body = el.closest('.chapter-body') || document;
+  body.querySelectorAll('.and-tab').forEach(function(x) { x.classList.remove('active'); });
+  body.querySelectorAll('.and-panel').forEach(function(x) { x.classList.remove('active'); });
+  el.classList.add('active');
+  var panel = body.querySelector('#and-panel-' + t);
+  if (panel) panel.classList.add('active');
+};
+window.andSetSp = function(sp, el) {
+  var panel = el.closest('.and-panel') || document.body;
+  panel.querySelectorAll('.and-sp-tab').forEach(function(x) { x.classList.remove('active'); });
+  panel.querySelectorAll('.and-sp-panel').forEach(function(x) { x.classList.remove('active'); });
+  el.classList.add('active');
+  var target = document.getElementById('and-sp-' + sp);
+  if (target) target.classList.add('active');
 };
 
 // === CAPÍTULO 11 — ESTÁTICA FETAL E DISTOCIA ===
