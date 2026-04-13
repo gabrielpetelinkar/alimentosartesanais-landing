@@ -6479,62 +6479,98 @@ Feto transverso (na prática) → cesariana</div></div>
   icon: '#i-medical',
   content: `
 <style>
-.pm-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
 .pm-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
 .pm-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
-.pm-tab:hover{background:var(--bg-hover)}.pm-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.pm-tab:hover{background:var(--bg-card-alt)}.pm-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
 .pm-panel{display:none}.pm-panel.active{display:block}
 .pm-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .pm-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
-.pm-sp-tab:hover{background:var(--bg-hover)}.pm-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.pm-sp-tab:hover{background:var(--bg-card-alt)}.pm-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
 .pm-sp-panel{display:none}.pm-sp-panel.active{display:block}
-.pm-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
-.pm-danger-box{border-left:3px solid #A32D2D;background:var(--red-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
-.pm-danger-box strong{color:#7a1f1f}
-.pm-prova-box{border-left:3px solid #BA7517;background:var(--amber-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pm-hl{background:var(--amber-100);border-radius:3px;padding:1px 4px;font-weight:600}
+.pm-prova-box{border-left:3px solid #BA7517;background:var(--amber-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
 .pm-prova-box strong{color:#633806}
-.pm-suc-box{border-left:3px solid #3B6D11;background:var(--green-50);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
-.pm-sec-block{background:var(--bg-card-alt);border-radius:8px;padding:12px 14px;margin-bottom:8px;border:1px solid var(--border-card)}
-.pm-sec-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:5px}
-.pm-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-card);margin-top:10px;margin-bottom:10px}
-.pm-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
-.pm-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
+.pm-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.pm-suc-box{border-left:3px solid #3B6D11;background:var(--green-50);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.pm-danger-box{border-left:3px solid #A32D2D;background:var(--red-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
 .pm-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px}
-.pm-ref-table th{background:var(--bg-card-alt);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-light);font-size:11px;color:var(--text-secondary)}
-.pm-ref-table td{padding:6px 10px;border:1px solid var(--border-light);vertical-align:top;line-height:1.5}
+.pm-ref-table th{background:var(--bg-card-alt);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-card);font-size:11px;color:var(--text-secondary)}
+.pm-ref-table td{padding:6px 10px;border:1px solid var(--border-card);vertical-align:top;line-height:1.5}
 .pm-ref-table tr:nth-child(even) td{background:var(--bg-card-alt)}
+.pm-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-card-alt);margin-top:10px;margin-bottom:10px}
+.pm-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.pm-memo-text{font-size:13px;font-family:monospace;line-height:1.9}
 .pm-pat-card{border-radius:8px;border:1px solid var(--border-card);margin-bottom:10px;overflow:hidden}
 .pm-pat-header{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg-card);transition:background .15s}
 .pm-pat-header:hover{background:var(--bg-card-alt)}
 .pm-pat-title{font-weight:600;font-size:13px}
-.pm-pat-tags{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
-.pm-pat-body{display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.65}
+.pm-pat-tags{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.pm-pat-body{display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.7}
 .pm-pat-body.open{display:block}
-.pm-pat-arrow{font-size:11px;color:var(--text-muted);transition:transform .2s}
+.pm-pat-arrow{font-size:11px;color:var(--text-muted);transition:transform .2s;flex-shrink:0}
 .pm-pat-header.open .pm-pat-arrow{transform:rotate(180deg)}
-.pm-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+.pm-sec-block{background:var(--bg-card);border-radius:6px;padding:10px 14px;margin-bottom:8px;border:1px solid var(--border-card)}
+.pm-sec-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:4px}
+.pm-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600}
 .pm-bwarn{background:var(--amber-100);color:#633806}.pm-binfo{background:var(--blue-100);color:var(--blue-700)}
-.pm-bsuc{background:var(--green-50);color:#27500a}.pm-bdanger{background:var(--red-100);color:#7a1f1f}
-.pm-hl{background:var(--amber-100);border-radius:3px;padding:1px 4px;font-weight:600}
-.pm-urgencia{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700;letter-spacing:.05em;vertical-align:middle;margin-left:6px}
-.pm-urg-emergencia{background:#A32D2D;color:#fff}
-.pm-urg-grave{background:#D85A30;color:#fff}
-.pm-urg-moderada{background:#BA7517;color:#fff}
-.pm-urg-leve{background:#378ADD;color:#fff}
-.pm-flow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:12px}
-.pm-flow-item{background:var(--bg-card-alt);border:1px solid var(--border-light);border-radius:6px;padding:5px 10px;font-weight:500}
-.pm-flow-arrow{color:var(--text-muted);font-size:13px}
+.pm-bsuc{background:var(--green-50);color:var(--green-700)}.pm-bdanger{background:var(--red-100);color:#7a1f1f}
+.pm-urgencia{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700;letter-spacing:.04em;vertical-align:middle;margin-left:5px}
+.pm-urg-emergencia{background:#A32D2D;color:#fff}.pm-urg-urgente{background:#D85A30;color:#fff}
+.pm-urg-moderada{background:#BA7517;color:#fff}.pm-urg-leve{background:#378ADD;color:#fff}
 </style>
-<p class="pm-label">Andrologia — Patologia</p>
-<h2>Patologias Reprodutivas do Macho</h2>
 
 <div class="pm-tabs">
   <button class="pm-tab active" onclick="pmSetTab('penis_prepucio',this)">Pênis e Prepúcio</button>
   <button class="pm-tab" onclick="pmSetTab('testiculo',this)">Testículo e Epidídimo</button>
   <button class="pm-tab" onclick="pmSetTab('prostata',this)">Próstata (cão)</button>
   <button class="pm-tab" onclick="pmSetTab('neoplasias',this)">Neoplasias testiculares</button>
-  <button class="pm-tab" onclick="pmSetTab('infecciosas_m',this)">Patologias infecciosas</button>
-  <button class="pm-tab" onclick="pmSetTab('tabela_m',this)">Tabela geral</button>
+  <button class="pm-tab" onclick="pmSetTab('infecciosas',this)">Patologias infecciosas</button>
+  <button class="pm-tab" onclick="pmSetTab('castracao',this)">⚠️ Castração — timing</button>
+  <button class="pm-tab" onclick="pmSetTab('tabela',this)">Tabela geral</button>
+</div>
+
+<!-- CASTRAÇÃO TIMING MACHO -->
+<div class="pm-panel" id="pm-panel-castracao">
+  <div class="pm-prova-box"><strong>⚠️ Atualização — Literatura atual (Hart et al. 2020; Duarte &amp; Schran 2024):</strong><br>
+  A castração antes dos 12 meses de idade em cães machos está associada a riscos ortopédicos, neoplásicos e do desenvolvimento genital que antes eram subestimados. A recomendação atual é <span class="pm-hl">individualizar o timing conforme porte, raça e objetivo</span> — não existe uma idade universal "segura" para todos os cães.
+  </div>
+
+  <div class="pm-info-box">No macho, ao contrário da fêmea, <strong>não há benefício oncológico equivalente ao tumor mamário</strong> que justifique a castração precoce. Os principais motivos para castrar machos são: controle populacional, HPB, sertolioma, prostatite recorrente, comportamento sexual indesejado e criptorquidismo. Todos esses indicam castração terapêutica — não preventiva precoce.</div>
+
+  <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Riscos da castração precoce — cão macho (&lt;12 meses)</div>
+
+  <table class="pm-ref-table">
+    <tr><th>Risco</th><th>Mecanismo</th><th>Raças / Situações mais afetadas</th></tr>
+    <tr><td><strong>Pênis e prepúcio infantis</strong></td><td>O tecido que conecta o pênis ao prepúcio é androgênio-dependente. Castração precoce → carência de testosterona → o tecido não regride completamente → incapacidade de expor o pênis (fimose funcional) · prepúcio subdesenvolvido · os penis com desenvolvimento incompleto</td><td>Qualquer raça castrada antes de 6–8 meses</td></tr>
+    <tr><td><strong>Displasia coxofemoral (DCF)</strong></td><td>Hormônios gonadais controlam o fechamento das epífises dos ossos longos. Castração precoce → fechamento tardio/anormal → crescimento ósseo excessivo → ângulo articular alterado → ↑ carga na articulação coxofemoral</td><td>Raças grandes e gigantes: Golden Retriever, Labrador, Pastor Alemão, Rottweiler, Boxer · castração &lt;6 meses = 1,5× mais risco</td></tr>
+    <tr><td><strong>Ruptura do ligamento cruzado cranial (RLCC)</strong></td><td>Mesmo mecanismo da DCF — alteração do ângulo tibial proximal (APT &gt;35°) → sobrecarga do LCC. Cães castrados &lt;6 meses têm 3× mais chance de APT aumentado.</td><td>Raças grandes; especialmente Golden, Labrador, Pastor Alemão</td></tr>
+    <tr><td><strong>Displasia de cotovelo</strong></td><td>Crescimento ósseo prolongado e assimétrico após remoção dos hormônios gonadais</td><td>Labrador, Rottweiler, Golden, Pastor Alemão</td></tr>
+    <tr><td><strong>Hérnia de disco intervertebral (HDIV)</strong></td><td>Mecanismo não totalmente esclarecido — possível relação com alteração da mineralização discal sem efeito protetor hormonal</td><td>Dachshund castrado precocemente = risco significativamente maior</td></tr>
+    <tr><td><strong>Osteossarcoma</strong></td><td>Castração antes de 1 ano → crescimento ósseo prolongado → maior área de osso em divisão → predisposição em raças com risco basal elevado. Estrógeno tem papel protetor sobre o metabolismo ósseo.</td><td>Rottweiler: castrados &lt;1 ano têm 4× mais risco. Raças grandes e gigantes em geral.</td></tr>
+    <tr><td><strong>Linfoma, hemangiossarcoma, tumor de mastócitos</strong></td><td>Estrógeno teria papel protetor sobre células precursoras desses tumores. Castração → ↓ estrógeno → ↑ risco de alguns tipos.</td><td>Raças predispostas a cada neoplasia específica</td></tr>
+    <tr><td><strong>Obesidade</strong></td><td>↓ testosterona → ↓ massa muscular e metabolismo basal → ↑ acúmulo de gordura.</td><td>Todas as raças — controlável com dieta adequada</td></tr>
+    <tr><td><strong>Hipotireoidismo</strong></td><td>Associação descrita entre castração e aumento do risco de hipotireoidismo</td><td>Qualquer raça</td></tr>
+  </table>
+
+  <div class="pm-memo"><div class="pm-memo-label">Recomendação atual — quando castrar o cão macho</div><div class="pm-memo-text">
+CONTROLE POPULACIONAL / sem outro objetivo: após maturidade sexual (~6–12 meses)
+RAÇAS PEQUENAS (&lt;15 kg): após 6 meses — risco ortopédico menor
+RAÇAS MÉDIAS (15–25 kg): após 9–12 meses
+RAÇAS GRANDES / GIGANTES (&gt;25 kg): aguardar 12–18 meses para fechamento epifisário
+INDICAÇÕES TERAPÊUTICAS (HPB, prostatite, sertolioma, TVT, criptorquidismo): castrar independente da idade
+INDICAÇÕES COMPORTAMENTAIS (marcação, agressividade): eficácia maior antes dos 12 meses
+  </div></div>
+
+  <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;margin-top:14px">Benefícios da castração no macho — que continuam válidos</div>
+  <table class="pm-ref-table">
+    <tr><th>Benefício</th><th>Observação</th></tr>
+    <tr><td>Elimina risco de neoplasias testiculares</td><td>Especialmente relevante em criptorquidismo (risco ↑↑ de neoplasia)</td></tr>
+    <tr><td>Resolve e previne HPB</td><td>Redução de 50% do volume prostático em 3 semanas</td></tr>
+    <tr><td>Previne prostatite recorrente</td><td>Elimina substrato hormonal da infecção</td></tr>
+    <tr><td>Reduz comportamentos indesejados</td><td>Marcação de território, fuga, monta inapropriada — mais eficaz antes dos 12 meses</td></tr>
+    <tr><td>Controle populacional</td><td>Único método definitivo sem medicamentos</td></tr>
+    <tr><td>Elimina risco de TVT (por cobertura)</td><td>Remove a via de transmissão principal</td></tr>
+  </table>
 </div>
 
 <!-- PÊNIS E PREPÚCIO -->
@@ -6544,94 +6580,92 @@ Feto transverso (na prática) → cesariana</div></div>
   <div class="pm-pat-card">
     <div class="pm-pat-header" onclick="pmToggle(this)">
       <div><span class="pm-pat-title">Balanopostite</span><span class="pm-urgencia pm-urg-moderada">Moderado</span></div>
-      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Todas as espécies</span><span class="pm-pat-arrow">&#9660;</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Todas as espécies</span><span class="pm-pat-arrow">▼</span></div>
     </div>
     <div class="pm-pat-body">
-      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>Inflamação conjunta do prepúcio (postite) e glande peniana (balanite). Geralmente iniciada por lesão primária (trauma, corpo estranho, fimose) seguida de colonização bacteriana oportunista.</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Etiologia</div>Traumas · Trichomonas fetus · Herpesvírus bovino · Campylobacter fetus · Corpos estranhos · Lambedura excessiva · Fimose prévia · Prepúcio longo e penduloso (zebuínos)</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>Inflamação conjunta do prepúcio (postite) e glande peniana (balanite). Geralmente a inflamação é iniciada por lesão primária (trauma, corpo estranho, fimose) seguida de colonização bacteriana oportunista.</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Etiologia</div>Traumas · Infecções: Trichomonas fetus, Herpesvírus bovino, Campylobacter fetus · Corpos estranhos · Lambedura excessiva · Fimose prévia · Prepúcio longo e penduloso (zebuínos)</div>
       <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Corrimento prepucial purulento (amarelado, esverdeado) · odor fétido · dor à ereção e monta · em casos graves: necrose, abscessos, laceração</div>
       <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
       <strong>Casos leves:</strong> duchas com clorexidina · ATB tópico · AINEs<br>
-      <strong>Casos moderados:</strong> ATB sistêmico (sulfa + trimetoprim, enrofloxacina, cloranfenicol) · AINEs<br>
-      <strong>Casos graves:</strong> desbridamento cirúrgico · penectomia parcial com uretrostomia se necrose</div>
+      <strong>Casos moderados:</strong> ATB sistêmico (sulfa + trimetoprim, enrofloxacina) · AINEs<br>
+      <strong>Casos graves:</strong> desbridamento cirúrgico · penectomia parcial com uretrostomia (se necrose)</div>
     </div>
   </div>
 
   <div class="pm-pat-card">
     <div class="pm-pat-header" onclick="pmToggle(this)">
       <div><span class="pm-pat-title">Fimose (acropostite-fimose em bovinos)</span><span class="pm-urgencia pm-urg-moderada">Moderado</span></div>
-      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Bovinos · Cão · Equinos</span><span class="pm-pat-arrow">&#9660;</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Bovinos · Cão · Equinos</span><span class="pm-pat-arrow">▼</span></div>
     </div>
     <div class="pm-pat-body">
-      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>Estenose do óstio prepucial impedindo a exteriorização normal do pênis. Pode ser congênita ou adquirida (fibrose pós-trauma ou infecção). Em bovinos: acropostite-fimose por prolapso crônico do prepúcio + inflamação + fibrose.</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>Estenose do óstio prepucial impedindo a exteriorização normal do pênis. Pode ser congênita ou adquirida (fibrose cicatricial pós-trauma ou infecção). Em bovinos: acropostite-fimose ocorre por prolapso crônico do prepúcio + inflamação + fibrose.</div>
       <div class="pm-sec-block"><div class="pm-sec-label">Etiologia</div>Congênita (predisposição genética — raças zebuínas com prepúcio longo) · traumatismos · balanopostite crônica · fibrose cicatricial · abscessos prepuciais</div>
       <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Incapacidade de expor o pênis · dificuldade/incapacidade de copular · acúmulo de urina na cavidade prepucial · balanopostite secundária recorrente</div>
       <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
       <strong>Leve:</strong> duchas, ATB tópico, AINEs · redução manual<br>
-      <strong>Cirúrgico:</strong> postioplastia (ampliação do óstio prepucial) · circuncisão parcial em bovinos (Padrão Wolf)</div>
+      <strong>Cirúrgico:</strong> postioplastia (ampliação do óstio prepucial) · circuncisão parcial em bovinos (amputação do prepúcio com remoção da área fibrótica — Padrão Wolf)
+      </div>
     </div>
   </div>
 
   <div class="pm-pat-card">
     <div class="pm-pat-header" onclick="pmToggle(this)">
-      <div><span class="pm-pat-title">Parafimose</span><span class="pm-urgencia pm-urg-grave">URGÊNCIA</span></div>
-      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Cão · Equinos · Bovinos</span><span class="pm-pat-arrow">&#9660;</span></div>
+      <div><span class="pm-pat-title">Parafimose</span><span class="pm-urgencia pm-urg-urgente">URGÊNCIA</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Cão · Equinos · Bovinos</span><span class="pm-pat-arrow">▼</span></div>
     </div>
     <div class="pm-pat-body">
       <div class="pm-danger-box">Emergência — o pênis exposto com estrangulamento da circulação evolui para isquemia, trombose, ulceração e <span class="pm-hl">necrose/gangrena</span> se não tratado rapidamente.</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>Incapacidade de retrair o pênis para o interior do prepúcio após exteriorização. O anel fimótico estrangula a base do pênis → congestão venosa → edema progressivo → ciclo vicioso.</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Etiologia</div>Fraqueza do músculo retrator do pênis · balanopostite crônica · traumas · hematoma peniano · TVT (cão) · fibrose pós-trauma (equinos) · <span class="pm-hl">acepromazina/fenotiazínicos</span> em equinos (relaxamento do retrator)</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos por gravidade</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>Incapacidade de retrair o pênis para o interior do prepúcio após exteriorização. O anel fimótico estrangula a base do pênis → congestão venosa → edema progressivo → piora o estrangulamento (ciclo vicioso).</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Etiologia</div>Fraqueza do músculo retrator do pênis · balanopostite crônica · traumas · hipoplasia prepucial · TVT (cão) · fibrose pós-trauma (equinos) · uso de acepromazina/fenotiazinícos (relaxamento do retrator)</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Sinais por gravidade</div>
       <strong>Inicial:</strong> pênis exteriorizado, mucosa rósea, sem edema grave<br>
       <strong>Moderado:</strong> mucosa eritematosa, seca, edematosa · dor · risco de automutilação<br>
       <strong>Grave:</strong> trombose vascular · ulceração · necrose · gangrena</div>
       <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
-      <strong>Leve:</strong> lubrificação abundante · compressas frias · substâncias hiperosmóticas (açúcar) para reduzir edema · redução manual<br>
+      <strong>Leve:</strong> lubrificação (vaselina, KY) · compressas frias · redução manual · substâncias hiperosmóticas (açúcar) para reduzir edema<br>
       <strong>Moderado:</strong> sedação + manobra manual + ATB + AINEs + suspensório temporário<br>
       <strong>Grave:</strong> prepuciotomia · falopexia · penectomia + uretrostomia se necrose irreversível</div>
-      <div class="pm-prova-box"><strong>Cuidado com acepromazina em equinos:</strong> causa parafimose por paralisia do músculo retrator. Equinos machos = contraindicação relativa a fenotiazínicos.</div>
     </div>
   </div>
 
   <div class="pm-pat-card">
     <div class="pm-pat-header" onclick="pmToggle(this)">
-      <div><span class="pm-pat-title">Priapismo</span><span class="pm-urgencia pm-urg-emergencia">EMERGÊNCIA</span></div>
-      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Equinos — acepromazina!</span><span class="pm-pat-arrow">&#9660;</span></div>
+      <div><span class="pm-pat-title">Priapismo</span><span class="pm-urgencia pm-urg-urgente">URGÊNCIA</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Cão principalmente</span><span class="pm-pat-arrow">▼</span></div>
     </div>
     <div class="pm-pat-body">
-      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>Ereção persistente involuntária sem estímulo sexual. Difere da parafimose — no priapismo o problema é a ereção mantida, não o estrangulamento mecânico.</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Causa principal em equinos</div><span class="pm-hl">Acepromazina (fenotiazínico)</span> → bloqueio α-adrenérgico → vasodilatação periférica → incapacidade de retração. <strong>CONTRAINDICADA em garanhões.</strong></div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento de emergência</div>
-      &gt;4 horas → risco de fibrose irreversível dos corpos cavernosos → impotência permanente<br>
-      <strong>Detumescência farmacológica:</strong> fenilefrina (agonista alfa) injetada nos corpos cavernosos · Terbutalina SC<br>
-      <strong>Shunt cavernoso-esponjoso:</strong> cirurgia para desvio do sangue represado · Se irreversível: falossectomia</div>
-      <div class="pm-danger-box"><strong>Regra de ouro:</strong> priapismo &gt;4h em equinos = emergência cirúrgica. Jamais usar acepromazina em garanhões.</div>
-    </div>
-  </div>
-
-  <div class="pm-pat-card">
-    <div class="pm-pat-header" onclick="pmToggle(this)">
-      <div><span class="pm-pat-title">Fratura de pênis (hematoma)</span><span class="pm-urgencia pm-urg-grave">URGÊNCIA</span></div>
-      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Bovinos · Equinos</span><span class="pm-pat-arrow">&#9660;</span></div>
-    </div>
-    <div class="pm-pat-body">
-      <div class="pm-sec-block"><div class="pm-sec-label">Mecanismo</div>Trauma na flexura sigmoide de bovinos — durante monta forçada ou sodomia. Ruptura da albugínea → extravasamento de sangue → hematoma peniano. Em equinos: ruptura do tecido cavernoso.</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Aumento de volume peniano e prepucial súbito após cobertura · dor intensa · pênis não retrai · hematoma palpável · desvio do pênis para o lado da ruptura</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico</div>Clínico + US (identifica local da ruptura e extensão do hematoma)</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>Ereção persistente e involuntária sem estímulo sexual. Difere da parafimose — no priapismo o problema é a ereção mantida, não o estrangulamento mecânico. Pode evoluir para parafimose se o edema progredir.</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Etiologia</div>Lesão do músculo retrator do pênis · estenose peniana · lesão medular · anomalias nos nervos pudendos · raiva (bovinos) · idiopático (cão) · complicação de castração · cobertura muito agressiva</div>
       <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
-      <strong>Inicial:</strong> repouso sexual mínimo 3 meses · ATB + AINEs · crioterapia local nas primeiras 24h<br>
-      <strong>Cirúrgico:</strong> drenagem do hematoma + sutura da albugínea com fio absorvível monofilamentar</div>
+      <strong>Cão:</strong> castração (se ainda jovem) · progestágenos (acetato de megestrol) · sedação + esvaziamento manual dos corpos cavernosos (punção aspiração) · penectomia + uretrostomia perineal nos graves com isquemia<br>
+      <strong>DD:</strong> parafimose (no priapismo o prepúcio está normal, não estrangula)</div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Fratura de pênis (hematoma)</span><span class="pm-urgencia pm-urg-urgente">URGÊNCIA</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Bovinos · Equinos</span><span class="pm-pat-arrow">▼</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Mecanismo</div>Trauma na flexura sigmoide ("S" peniano) de bovinos — durante monta forçada, sodomia (macho-macho) ou queda. Ruptura da albugínea → extravasamento de sangue → hematoma peniano. Em equinos: ruptura do tecido cavernoso.</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Aumento de volume peniano e prepucial súbito após cobertura · dor intensa · pênis não retrai · hematoma palpável · desvio do pênis (para o lado da ruptura)</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      <strong>Inicial:</strong> repouso sexual prolongado (mínimo 3 meses) · ATB + AINEs · crioterapia local (primeiras 24 h) + termoterapia após 48–72 h<br>
+      <strong>Cirúrgico:</strong> drenagem do hematoma + sutura da albugínea · indicado quando hematoma grande ou desvio grave
+      </div>
     </div>
   </div>
 
   <div class="pm-pat-card">
     <div class="pm-pat-header" onclick="pmToggle(this)">
       <div><span class="pm-pat-title">Persistência de frênulo prepucial</span><span class="pm-urgencia pm-urg-leve">Leve</span></div>
-      <div class="pm-pat-tags"><span class="pm-badge pm-binfo">Bovinos · Cão</span><span class="pm-pat-arrow">&#9660;</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-binfo">Bovinos · Cão</span><span class="pm-pat-arrow">▼</span></div>
     </div>
     <div class="pm-pat-body">
-      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>Tecido que normalmente deve se desfazer no desenvolvimento neonatal persiste ligando o pênis ao prepúcio — retenção do pênis. Congênito em touros jovens.</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Incapacidade de exteriorizar completamente o pênis · desvio lateral · pode causar hemospermia se o frênulo rasgar durante a monta</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>Tecido que normalmente deve se desfazer no desenvolvimento neonatal persiste ligando o pênis à porção proximal do prepúcio. Congênito em touros jovens.</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Incapacidade de exteriorizar completamente o pênis · desvio lateral ao tentar copular · pode causar hemospermia se o frênulo rasgar durante a monta</div>
       <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>Cirúrgico — secção do frênulo sob anestesia local + ATB. Simples e curativo.</div>
     </div>
   </div>
@@ -6639,49 +6673,50 @@ Feto transverso (na prática) → cesariana</div></div>
   <div class="pm-pat-card">
     <div class="pm-pat-header" onclick="pmToggle(this)">
       <div><span class="pm-pat-title">Habronematose genital</span><span class="pm-urgencia pm-urg-moderada">Moderado</span></div>
-      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Equinos</span><span class="pm-pat-arrow">&#9660;</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Equinos</span><span class="pm-pat-arrow">▼</span></div>
     </div>
     <div class="pm-pat-body">
-      <div class="pm-sec-block"><div class="pm-sec-label">Agente e patogenia</div><em>Habronema spp</em> — larvas depositadas por moscas em feridas abertas → reação granulomatosa intensa → "tecido de granulação exuberante" na glande e prepúcio.</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Lesões pruriginosas e piogranulomatosas na glande e prepúcio · tecido de granulação exuberante (vermelho, friável, úmido) · prurido intenso → automutilação</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico diferencial</div>Pitiose · Sarcóide · Tecido de granulação traumático · Carcinoma de células escamosas · Papilomatose</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>Organofosforado (Neguvon) tópico · Ivermectina SC · Remoção cirúrgica do granuloma · Corticoides · Controle de moscas</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Agente e patogenia</div><em>Habronema spp</em> — larvas depositadas por moscas em feridas abertas → reação granulomatosa intensa → "tecido de granulação exuberante" na glande, prepúcio, pele do pênis.</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Lesões pruriginosas e piogranulomatosas na glande e prepúcio · tecido de granulação exuberante (lesão vermelha, friável, úmida) · prurido intenso → automutilação</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">DD</div>Pitiose · Sarcóide · Tecido de granulação exuberante traumático · Carcinoma de células escamosas · Papilomatose</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>Organofosforado (triclorfon) tópico · Ivermectina SC · Remoção cirúrgica do tecido granulomatoso · Corticoides · Controle de moscas</div>
     </div>
   </div>
 
   <div class="pm-pat-card">
     <div class="pm-pat-header" onclick="pmToggle(this)">
       <div><span class="pm-pat-title">Exantema coital (pustular)</span></div>
-      <div class="pm-pat-tags"><span class="pm-badge pm-binfo">Equinos · Bovinos</span><span class="pm-pat-arrow">&#9660;</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-binfo">Equinos · Bovinos</span><span class="pm-pat-arrow">▼</span></div>
     </div>
     <div class="pm-pat-body">
       <div class="pm-sec-block"><div class="pm-sec-label">Agente</div><strong>Equinos:</strong> Herpesvírus equino tipo 3 (EHV-3) · <strong>Bovinos:</strong> Herpesvírus bovino tipo 1 (IBR/IPV)</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Pápulas/vesículas/pústulas no pênis e prepúcio · lesões na vulva da fêmea · transmitido no ato sexual</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>Isolamento · repouso sexual até cura completa · ATB tópico para prevenir infecção secundária · cicatrização espontânea em 2–3 semanas</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Vermelhidão e pápulas/vesículas/pústulas no pênis e prepúcio · lesões na vulva da fêmea · transmitido no ato sexual</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>Isolamento · repouso sexual até cura completa · ATB tópico (eritromicina, sulfa) para evitar infecção secundária · cicatrização espontânea em 2–3 semanas</div>
     </div>
   </div>
 
   <div class="pm-pat-card">
     <div class="pm-pat-header" onclick="pmToggle(this)">
       <div><span class="pm-pat-title">Hemospermia</span><span class="pm-urgencia pm-urg-moderada">Moderado</span></div>
-      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Equinos · Bovinos · Cão</span><span class="pm-pat-arrow">&#9660;</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Equinos · Bovinos · Cão</span><span class="pm-pat-arrow">▼</span></div>
     </div>
     <div class="pm-pat-body">
-      <div class="pm-sec-block"><div class="pm-sec-label">Etiologia</div>Uretrite · fístula uretral (traumática — porção ventral) · lesões na glande · Habronema · defeitos uretrais congênitos · trauma pós-cobertura</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Etiologia</div>Uretrite · fístula uretral (origem traumática) · lesões na glande · feridas por Habronema · defeitos uretrais congênitos · trauma pós-cobertura</div>
       <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico</div>Exame andrológico (sangue no ejaculado) + endoscopia uretral + US</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>Tratar causa primária · repouso sexual · fístula uretral: cauterização, cirurgia, ATB + Albocresil</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>Tratar a causa primária · repouso sexual · para fístula uretral: cauterização, cirurgia, ATB + Albocresil</div>
     </div>
   </div>
 
   <div class="pm-pat-card">
     <div class="pm-pat-header" onclick="pmToggle(this)">
-      <div><span class="pm-pat-title">Durina (Trypanosoma equiperdum)</span><span class="pm-urgencia pm-urg-grave">Notificação obrigatória</span></div>
-      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Equinos</span><span class="pm-pat-arrow">&#9660;</span></div>
+      <div><span class="pm-pat-title">Durina (Tripanosoma equiperdum)</span><span class="pm-urgencia pm-urg-urgente">Notificação obrigatória</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Equinos</span><span class="pm-pat-arrow">▼</span></div>
     </div>
     <div class="pm-pat-body">
-      <div class="pm-sec-block"><div class="pm-sec-label">Agente e transmissão</div><em>Trypanosoma equiperdum</em> — transmitido exclusivamente via sexual (coito). DST dos equídeos. Notificação obrigatória no Brasil.</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Edema de prepúcio e pênis (parafimose) · edema de escroto · corrimento uretral · plaquetas urticariformes no flanco ("dólares de prata") · emagrecimento · paralisia dos membros posteriores (fase tardia)</div>
-      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico e tratamento</div>ELISA · imunofluorescência indireta · Derivados da piramidina (diminazeno 3 mg/kg SC) · Controle: abate sanitário dos positivos</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Agente e transmissão</div><em>Trypanosoma equiperdum</em> — transmitido exclusivamente por via sexual. DST dos equídeos. Notificação obrigatória no Brasil.</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>Edema de prepúcio e pênis (com parafimose) · edema de escroto · corrimento uretral · plaquetas urticariformes no flanco e dorso ("dólares de prata") · emagrecimento · paralisia dos membros posteriores (fase tardia)</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico</div>ELISA · imunofluorescência indireta (IF) · clínico epidemiológico</div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>Derivados da piramidina (diminazeno 3 mg/kg SC) · Anfotericina B + gentamicina em casos graves · abate sanitário dos animais positivos em muitos países</div>
     </div>
   </div>
 </div>
@@ -6698,46 +6733,46 @@ Feto transverso (na prática) → cesariana</div></div>
   </div>
 
   <div class="pm-sp-panel active" id="pm-sp-orquite">
-    <div class="pm-danger-box"><strong>Orquite</strong> — inflamação testicular. A hipertermia testicular causa dano irreversível ao epitélio seminífero se persistente. Frequentemente coexiste com epididimite.</div>
+    <div class="pm-danger-box"><strong>Orquite</strong> — inflamação testicular. Frequentemente coexiste com epididimite. A hipertermia testicular resultante causa dano irreversível ao epitélio seminífero se persistente.</div>
     <div style="font-size:13px;line-height:1.8">
-      <strong>Etiologia:</strong> Brucella abortus (bovinos/cão) · <span class="pm-hl">Brucella ovis (ovinos — 90% das lesões na cauda do epidídimo)</span> · E. coli · Mycoplasma · traumatismos · sodomia (macho-macho)<br><br>
-      <strong>Sinais clínicos:</strong> Agudo — dor, calor, aumento de volume do escroto, locomoção com membros afastados, febre, piospermia · Crônico — fibrose, endurecimento, atrofia<br><br>
-      <strong>Diagnóstico:</strong> Clínico + US escrotal + bacteriológico (cultura do sêmen) · Sorologia Brucella (SAT, ELISA, 2-ME)<br><br>
-      <strong>Tratamento:</strong> ATB sistêmico (sulfa + trimetoprim, enrofloxacina) + AINEs · Orquiectomia unilateral se crônico · <strong>Brucella: descarte + notificação obrigatória (zoonose)</strong>
+      <strong>Etiologia:</strong> Brucella abortus (bovinos/cão) · Brucella ovis (ovinos) · Mycobacterium tuberculosis · E. coli · Mycoplasma · traumatismos · sodomia (macho-macho)<br><br>
+      <strong>Sinais clínicos:</strong> Agudo — dor, calor, aumento de volume do escroto, locomoção com membros afastados, febre, piospermia ao exame andrológico · Crônico — fibrose, endurecimento, atrofia<br><br>
+      <strong>Diagnóstico:</strong> Clínico + US + bacteriológico (cultura do sêmen)<br><br>
+      <strong>Tratamento:</strong> ATB sistêmico (sulfa + trimetoprim, enrofloxacina) + AINEs · casos graves ou crônicos: orquiectomia · <span class="pm-hl">Em ovinos: 90% das lesões na cauda do epidídimo por B. ovis</span> → fibrose → obstrução → granuloma
     </div>
   </div>
 
   <div class="pm-sp-panel" id="pm-sp-hipoplasia">
     <div style="font-size:13px;line-height:1.8">
-      <strong>Hipoplasia testicular</strong> — diminuição do tamanho testicular uni ou bilateral. Percebida apenas na maturidade sexual. <span class="pm-hl">Hereditária (gene recessivo de penetrância incompleta) — descartar da reprodução.</span><br><br>
+      <strong>Hipoplasia testicular</strong> — diminuição do tamanho testicular uni ou bilateral. Percebida apenas na maturidade sexual. Hereditária (gene recessivo de penetrância incompleta) — descartar da reprodução.<br><br>
       <strong>Patogenia:</strong> diminui a produção de espermatogônias · déficit de migração de células germinativas do saco vitelínico para a gônada primordial<br><br>
       <strong>Achados no espermograma:</strong> ↓ concentração espermática · ↑ % defeitos · possível azoospermia (bilateral grave)<br><br>
       <strong>Diagnóstico:</strong> histórico + qualidade do sêmen + histológico (células multinucleadas, escassez de espermatogônias)<br><br>
-      <strong>Conduta:</strong> Afastar da reprodução · orquiectomia (bilateral = azoospermia)
+      <strong>Tratamento:</strong> Afastar da reprodução · orquiectomia
     </div>
   </div>
 
   <div class="pm-sp-panel" id="pm-sp-criptorquidismo">
-    <div class="pm-danger-box"><strong>Criptorquidismo</strong> — testículo(s) não desceram ao escroto. Hereditário — não deve reproduzir. Testículo retido tem temperatura corporal → degeneração + <span class="pm-hl">risco elevado de neoplasia</span> (seminoma, sertolioma, teratoma, carcinoma).</div>
+    <div class="pm-danger-box"><strong>Criptorquidismo</strong> — testículo(s) não desceram ao escroto. Hereditário — não deve reproduzir (mesmo o unilateral é fértil mas transmite o defeito). Testículo retido tem temperatura corporal → degeneração + risco elevado de neoplasia (seminoma, sertolioma, teratoma, carcinoma).</div>
     <div style="font-size:13px;line-height:1.8">
       <strong>Patogenia:</strong> ineficiência na ação do gubernáculo testis · deficiência de testosterona · herança genética<br><br>
-      <strong>Sinais clínicos:</strong> Animal mais agressivo (testosterona produzida mas sem espermatogênese) · esterilidade (bilateral) · ausência de um ou dois testículos na bolsa escrotal<br><br>
-      <strong>Diagnóstico:</strong> Clínico (palpação) + Teste com HCG: 600–1000 UI HCG IV · colher sangue 30 min e 60 min depois · se testosterona aumentar = testículo criptorquídico presente e funcionante<br><br>
-      <strong>Tratamento:</strong> Orquiectomia bilateral obrigatória · Em animais jovens: tentativa com eCG ou GnRH → HCG 4x/semana por 1 semana para induzir descida
+      <strong>Sinais clínicos:</strong> Animal mais agressivo (testosterona produzida mas sem espermatogênese) · esterilidade (bilateral) · ausência de testículo(s) na bolsa escrotal · predisposição a neoplasias<br><br>
+      <strong>Diagnóstico:</strong> Clínico (palpação) + dosagem de testosterona: aplicar 600–1000 UI HCG IV · colher sangue 30 min (1ª coleta) e 60 min (2ª coleta) · se testosterona aumentar = testículo criptorquídico presente e funcionante<br><br>
+      <strong>Tratamento:</strong> Orquiectomia (bilateral obrigatória) · Em animais jovens: tentar fazer o testículo descer com ECG ou GnRH → HCG 4x/semana por 1 semana
     </div>
   </div>
 
   <div class="pm-sp-panel" id="pm-sp-deg_test">
     <div style="font-size:13px;line-height:1.8">
-      <strong>Degeneração testicular</strong> — <span class="pm-hl">causa mais comum de subfertilidade adquirida em reprodutores.</span> Lesão do epitélio seminífero por causa reversível ou irreversível.<br><br>
-      <strong>Causas:</strong> alterações na termorregulação escrotal (hérnia inguino-escrotal, varicocele, criptorquidismo, orquite, hidrocele) · febre sistêmica · desnutrição · toxinas · estresse crônico · deficiência de Vitamina A, E, Zn<br><br>
-      <strong>Achados no espermograma:</strong> aumento de motilidade reduzida + gota citoplasmática proximal + defeitos maiores (cabeças deformadas) · em casos graves: azoospermia<br><br>
-      <strong>Tratamento:</strong> Remoção da causa + abstinência sexual · <span class="pm-hl">Tempo mínimo de 60 dias</span> para reavaliação (1 ciclo espermatogênico) · antioxidantes (Vit E, Selênio, Zn)
+      <strong>Degeneração testicular</strong> — lesão do epitélio seminífero por causa reversível ou irreversível. Causa mais comum de subfertilidade adquirida em reprodutores.<br><br>
+      <strong>Causas:</strong> alterações na termorregulação escrotal (hérnia inguino-escrotal, varicocele, criptorquidismo, orquite, hidrocele) · febre sistêmica · desnutrição · toxinas · estresse crônico<br><br>
+      <strong>Achados no espermograma:</strong> aumento de motilidade reduzida + gota citoplasmática proximal + defeitos maiores (cabeças deformadas, DAG defect) · em casos graves: azoospermia<br><br>
+      <strong>Tratamento:</strong> Remoção da causa + abstinência sexual · tempo mínimo de 60 dias para reavaliação (1 ciclo espermatogênico) · prognóstico depende da extensão do dano
     </div>
     <div class="pm-memo"><div class="pm-memo-label">Classificação da consistência testicular na degeneração</div><div class="pm-memo-text">
-Normal: firme e elástico (escore 3)<br>
-Degeneração inicial: amolecimento (escore 1–2) — lesão reversível provável<br>
-Degeneração avançada: dureza, calcificação, fibrose (escore 4–5) — irreversível<br>
+Normal: firme e elástico (escore 3)
+Degeneração inicial: amolecimento (escore 1–2) — lesão reversível provável
+Degeneração avançada: dureza, calcificação, fibrose (escore 4–5) — irreversível
 Atrofia: redução de volume + dureza = fibrose avançada
     </div></div>
   </div>
@@ -6745,10 +6780,10 @@ Atrofia: redução de volume + dureza = fibrose avançada
   <div class="pm-sp-panel" id="pm-sp-torcao_test">
     <div class="pm-danger-box"><strong>Torção testicular</strong><span class="pm-urgencia pm-urg-emergencia">EMERGÊNCIA</span> — rotação do testículo sobre o cordão espermático causando isquemia. A partir de 45° com comprometimento circulatório já é emergência. 360° = isquemia total.</div>
     <div style="font-size:13px;line-height:1.8">
-      <strong>Diferença:</strong> Rotação testicular (0–180°, sem comprometimento vascular) = benigna. Torção testicular (&gt;45°, comprometimento circulatório) = emergência.<br><br>
-      <strong>Sinais clínicos:</strong> dor aguda intensa · aumento de volume da bolsa escrotal · calor local · animal em decúbito<br><br>
+      <strong>Diferença:</strong> Rotação testicular (0–180°, sem comprometimento vascular) = benigna. Torção testicular (&gt;45–360°, comprometimento circulatório) = emergência.<br><br>
+      <strong>Sinais clínicos:</strong> dor aguda intensa · aumento de volume da bolsa escrotal e testículo · calor local · animal em decúbito<br><br>
       <strong>DD:</strong> hérnia inguino-escrotal · trauma escrotal · cólica (equinos)<br><br>
-      <strong>Tratamento:</strong> Cirúrgico — desfazer a torção se viável + pexia · orquiectomia se isquemia irreversível
+      <strong>Tratamento:</strong> Cirúrgico — desfazer a torção se viável + pexia · orquiectomia se isquemia irreversível (testículo necrótico)
     </div>
   </div>
 
@@ -6757,17 +6792,18 @@ Atrofia: redução de volume + dureza = fibrose avançada
       <strong>Aplasia segmentar:</strong> todo ou parte do epidídimo, vasos deferentes ou vesículas seminais ausentes. Congênito → azoospermia obstrutiva.<br><br>
       <strong>Granuloma espermático:</strong> obstrução congênita dos ductos → acúmulo de espermatozoides → reação granulomatosa na cabeça do epidídimo.<br><br>
       <strong>Espermatocele:</strong> dilatação cística do conduto epididimário com acúmulo de espermatozoides. Oclusão congênita ou adquirida → progride para granuloma. Conteúdo amarelado/caseoso = infecção por <em>Corynebacterium spp</em>.<br><br>
-      <strong>Epididimite:</strong> ↓ motilidade · ↑ defeitos espermáticos · coexiste com orquite. Aguda: dor, calor, tumefação. Crônica: fibrose, nódulos no conduto deferente → obliteração → azoospermia (bilateral).<br>
-      <strong>Agentes:</strong> Strep-β hemolítico · P. aeruginosa · Klebsiella · B. abortus · Mycoplasma · Brucella ovis (ovinos — principal).<br>
+      <strong>Epididimite:</strong> ↓ motilidade · ↑ defeitos espermáticos · coexiste com orquite. Aguda: dor, calor, sensibilidade, tumefação da cauda. Crônica: fibrose, endurecimento, nódulos no conduto deferente → obliteração → azoospermia (se bilateral).<br>
+      <strong>Agentes:</strong> Strep-β hemolítico · P. aeruginosa · Klebsiella pneumoniae · B. abortus · Mycoplasma · Ureaplasma · Chlamydia.<br>
+      <strong>Ovinos:</strong> 90% das lesões na cauda do epidídimo por <em>Brucella ovis</em>.<br>
       <strong>Tratamento:</strong> sulfa + trimetoprim, cloranfenicol · orquiectomia/epididimoectomia nos crônicos.<br><br>
-      <strong>Espermiostasia:</strong> azoospermia de origem excretora por obliteração total das vias espermáticas. Cabeça do epidídimo espessa; cauda distendida. Material caseoso branco ao corte. Espermofagia → esterilidade em 1–2 anos. Prognóstico negativo → castração.
+      <strong>Espermiostasia:</strong> azoospermia de origem excretora por obliteração total/parcial das vias espermáticas. Material caseoso branco ao corte. Espermofagia → esterilidade em 1–2 anos. Prognóstico negativo → castração.
     </div>
   </div>
 </div>
 
-<!-- PRÓSTATA -->
+<!-- PRÓSTATA (CÃO) -->
 <div class="pm-panel" id="pm-panel-prostata">
-  <div class="pm-info-box">A próstata é a única glândula acessória importante no cão. Patologias prostáticas afetam o volume e qualidade seminal e causam sinais urinários/digestivos pela compressão anatômica.</div>
+  <div class="pm-info-box">A próstata é a única glândula acessória importante no cão. Patologias prostáticas afetam o volume e qualidade seminal (especialmente a 3ª fração) e causam sinais urinários/digestivos pela compressão anatômica.</div>
 
   <div class="pm-sp-tabs">
     <button class="pm-sp-tab active" onclick="pmSetSp('hpb',this)">HPB</button>
@@ -6777,46 +6813,45 @@ Atrofia: redução de volume + dureza = fibrose avançada
   </div>
 
   <div class="pm-sp-panel active" id="pm-sp-hpb">
-    <div class="pm-info-box"><strong>Hiperplasia Prostática Benigna (HPB)</strong> — condição mais comum em cães inteiros acima de 5 anos. A DHT (diidrotestosterona) estimula o aumento em número e tamanho das células prostáticas.</div>
+    <div class="pm-info-box"><strong>Hiperplasia Prostática Benigna (HPB)</strong> — condição mais comum em cães inteiros acima de 5 anos. A diidrotestosterona (DHT) estimula o aumento em número e tamanho das células prostáticas.</div>
     <div style="font-size:13px;line-height:1.8">
-      <strong>Patogenia:</strong> Idade + ↑ DHT (testosterona convertida pela 5α-redutase) → glândula aumentada comprime uretra e/ou reto<br><br>
-      <strong>Sinais clínicos:</strong> secreção sanguinolenta pela uretra · hematúria · fezes em fita (compressão retal) · disúria · aumento da próstata à palpação (<span class="pm-hl">simétrica, não dolorosa</span>)<br><br>
-      <strong>Diagnóstico:</strong> Palpação transabdominal e transretal + US + urografia · PSA canino (pesquisa)<br><br>
+      <strong>Patogenia:</strong> Idade + ↑ DHT (testosterona convertida pela 5α-redutase) → células prostáticas aumentam → glândula aumentada comprime uretra e/ou reto<br><br>
+      <strong>Sinais clínicos:</strong> secreção sanguinolenta pela uretra peniana (hemospermia) · hematúria · fezes em fita (compressão retal) · disúria · aumento da próstata à palpação transabdominal (bilobada, simétrica, indolor)<br><br>
+      <strong>Diagnóstico:</strong> Hemograma + cultura do líquido prostático + palpação digital (transabdominal e transretal) + RX + US + uretrocistografia + biópsia se necessário<br><br>
       <strong>Tratamento:</strong><br>
-      · <strong>Castração</strong> = tratamento definitivo → redução de 50% do volume em 3 semanas<br>
-      · <strong>Finasterida</strong> (inibidor da 5α-redutase): 5 mg/cão SID por 5–8 semanas<br>
-      · <strong>Deslorelina</strong> (agonista GnRH de longa ação): supressão eficaz, temporária<br>
-      · Progestina (medroxiprogesterona) — supressão hormonal temporária
+      · Castração = tratamento definitivo → redução de 50% do volume em 3 semanas<br>
+      · Progestina (medroxiprogesterona) — supressão hormonal temporária<br>
+      · Finasterida (inibidor da 5α-redutase): 5 mg/cão SID por 5–8 semanas<br>
+      · Deslorelina (agonista GnRH de longa ação — implante): supressão eficaz, temporária
     </div>
   </div>
 
   <div class="pm-sp-panel" id="pm-sp-prostatite">
     <div class="pm-danger-box"><strong>Prostatite aguda</strong> — infecção bacteriana da próstata, pode cursar com abscesso → ruptura → peritonite → choque séptico e morte.</div>
     <div style="font-size:13px;line-height:1.8">
-      <strong>Etiologia:</strong> E. coli (mais comum) · <strong>Brucella canis</strong> (zoonose — RSAT para diagnóstico) · Staphylococcus · Klebsiella<br><br>
-      <strong>Sinais — aguda:</strong> anorexia · febre · dor pélvica (<span class="pm-hl">próstata dolorosa</span> ao toque retal) · poliúria/hematúria · secreção uretral purulenta · fertilidade reduzida<br><br>
-      <strong>Sinais — crônica:</strong> assintomática frequentemente · corrimento uretral intermitente · infertilidade inexplicada<br><br>
+      <strong>Vias de infecção:</strong> ascendente (flora uretral/vaginal) · epidídimo → testículo → hematógena<br><br>
+      <strong>Sinais clínicos — aguda:</strong> anorexia · apatia · hipertermia · dor na região pélvica · poliúria/hematúria · secreção uretral purulenta · libido e fertilidade reduzidas<br><br>
+      <strong>Sinais clínicos — crônica:</strong> assintomática frequentemente · corrimento uretral intermitente · infertilidade inexplicada<br><br>
       <strong>Tratamento:</strong><br>
-      · ATB de longa duração (2–8 semanas) — ATB que atravessam a barreira hematoepitelial: <strong>fluoroquinolonas</strong> (enrofloxacina, marbofloxacina) · cloranfenicol · trimetoprim-sulfa<br>
+      · ATB de longa duração (2–3 semanas a 2 meses) — fluoroquinolonas (marbofloxacina, enrofloxacina) · cloranfenicol · trimetoprim<br>
       · Castração + drenagem de abscessos<br>
-      · <span class="pm-hl">NÃO biopsiar</span> na suspeita de infecção → realizar cultura do líquido prostático + antibiograma + urinálise<br>
-      · Brucella canis: eutanásia recomendada + notificação + rastreio dos contatos humanos
+      · <span class="pm-hl">NÃO realizar biópsia prostática na suspeita de infecção</span> → realizar cultura do líquido prostático + antibiograma + urinálise
     </div>
   </div>
 
   <div class="pm-sp-panel" id="pm-sp-neoplas_pros">
     <div style="font-size:13px;line-height:1.8">
       <strong>Tipos:</strong> Adenocarcinoma prostático (mais comum) · Carcinoma indiferenciado · Carcinoma de células de transição · Carcinoma de células escamosas<br><br>
-      <strong>Importante:</strong> neoplasia prostática no cão <span class="pm-hl">NÃO é hormônio-dependente</span> — castração não protege e não é curativa. Ocorre em cães inteiros e castrados.<br><br>
+      <strong>Importante:</strong> neoplasia prostática no cão <span class="pm-hl">não é hormônio-dependente</span> — castração não protege e não é curativa. Ocorre em cães inteiros e castrados.<br><br>
       <strong>Sinais clínicos:</strong> hematúria · disúria · tenesmo · constipação · fezes em fita · dor · metástase (linfonodos, pulmões, ossos)<br><br>
-      <strong>Tratamento:</strong> Prostatectomia parcial ou total + radioterapia + quimioterapia · Prognóstico reservado a grave
+      <strong>Tratamento:</strong> Cirúrgico (prostatectomia parcial ou total) + radioterapia + quimioterapia · prognóstico reservado a grave
     </div>
   </div>
 
   <div class="pm-sp-panel" id="pm-sp-metaplasia">
     <div style="font-size:13px;line-height:1.8">
-      <strong>Metaplasia escamosa prostática</strong> — transformação do epitélio glandular cúbico em epitélio escamoso. Principal causa: <span class="pm-hl">Sertolioma</span> (produz estrógeno → metaplasia escamosa da próstata).<br><br>
-      <strong>Sinais clínicos:</strong> síndrome da feminilização (ginecomastia, atrofia do testículo contralateral) · tenesmo · hematúria · dificuldade de locomoção<br><br>
+      <strong>Metaplasia escamosa prostática</strong> — transformação do epitélio glandular cúbico em epitélio escamoso. Principal causa: <span class="pm-hl">sertolioma</span> (produz estrógeno → metaplasia escamosa da próstata).<br><br>
+      <strong>Sinais clínicos:</strong> síndrome da feminilização (ginecomastia, atrofia do testículo contralateral) · tenesmo ou constipação · hematúria/corrimento uretral sanguinolento<br><br>
       <strong>Tratamento:</strong> Retirar a fonte de estrógeno (orquiectomia do testículo com sertolioma) → regressão da metaplasia
     </div>
   </div>
@@ -6824,7 +6859,7 @@ Atrofia: redução de volume + dureza = fibrose avançada
 
 <!-- NEOPLASIAS TESTICULARES -->
 <div class="pm-panel" id="pm-panel-neoplasias">
-  <div class="pm-info-box">Neoplasias testiculares são comuns especialmente em cães idosos inteiros e em testículos retidos. As 4 principais têm características e repercussões sistêmicas distintas.</div>
+  <div class="pm-info-box">Neoplasias testiculares são comuns especialmente em cães idosos inteiros e em testículos retidos (criptorquidismo). As 4 principais têm características e repercussões sistêmicas distintas.</div>
 
   <table class="pm-ref-table">
     <tr><th>Neoplasia</th><th>Célula de origem</th><th>Espécie</th><th>Aspecto/características</th><th>Repercussão sistêmica</th><th>Tratamento</th></tr>
@@ -6834,21 +6869,21 @@ Atrofia: redução de volume + dureza = fibrose avançada
       <td>Cão · Bovino (raro)</td>
       <td>Massa sólida, firme, branca-acinzentada; pode ser grande</td>
       <td>Geralmente nenhuma — raramente produz hormônios</td>
-      <td>Orquiectomia unilateral. Prognóstico bom.</td>
+      <td>Orquiectomia unilateral. Prognóstico bom se não há metástase.</td>
     </tr>
     <tr>
       <td><strong>Sertolioma (Sertoli cell tumor)</strong></td>
       <td>Células de Sértoli</td>
       <td>Cão (mais comum)</td>
-      <td>Lobulado, firme; contralateral hipoplásico/atrófico</td>
-      <td><span class="pm-hl">Produz estrógeno</span> → síndrome da feminilização (ginecomastia, atrofia prostática, alopecia bilateral simétrica, atrai outros machos, metaplasia escamosa prostática, <strong>anemia aplásica grave</strong>)</td>
-      <td>Orquiectomia bilateral. Regressão da síndrome após retirada.</td>
+      <td>Lobulado, firme; testículo aumentado; contralateral hipoplásico/atrófico</td>
+      <td><span class="pm-hl">Produz estrógeno</span> → síndrome da feminilização (ginecomastia, atrofia prostática, lesão de pele bilateral simétrica, atrai outros machos, metaplasia escamosa prostática, anemia aplásica grave)</td>
+      <td>Orquiectomia bilateral. Regressão da síndrome de feminilização após retirada.</td>
     </tr>
     <tr>
       <td><strong>Leydigocitoma (Interstitial cell tumor)</strong></td>
       <td>Células de Leydig</td>
       <td>Cão</td>
-      <td>Aspecto similar ao CL · nodular · pequeno · geralmente incidental</td>
+      <td>Aspecto similar ao corpo lúteo (CL) · nodular · pequeno · geralmente incidental</td>
       <td>Pode causar atrofia do testículo contralateral · raramente produz testosterona em excesso</td>
       <td>Orquiectomia. Geralmente benigno.</td>
     </tr>
@@ -6858,40 +6893,41 @@ Atrofia: redução de volume + dureza = fibrose avançada
       <td>Cão · Equinos · Bovinos</td>
       <td>Tecidos heterogêneos (osso, cartilagem, pele, pelos) · aspecto multiloculado</td>
       <td>Geralmente nenhuma</td>
-      <td>Orquiectomia unilateral.</td>
+      <td>Orquiectomia ou ovariectomia unilateral.</td>
     </tr>
   </table>
 
-  <div class="pm-prova-box"><strong>TVT — Tumor Venéreo Transmissível</strong> — transmitido por contato direto no ato sexual. Células tumorais transplantadas. Aspecto friável e sanguinolento na glande/vagina/lábios vulvares. Diagnóstico: citologia (células redondas com vacúolos). Tratamento: <span class="pm-hl">vincristina</span> (0,5 mg/m² IV, 1x/semana por 4–8 semanas) — sulfato de vincristina é o tratamento de eleição.</div>
+  <div class="pm-prova-box"><strong>TVT — Tumor Venéreo Transmissível</strong> — transmitido por contato direto no ato sexual (lambedura, mordida). Células tumorais transplantadas. Aspecto friável e sanguinolento na glande/vagina/lábios vulvares. Diagnóstico: citologia (células redondas com vacúolos). Tratamento: <span class="pm-hl">vincristina</span> (0,5 mg/m² IV, 1x/semana por 4–8 semanas). Cirúrgico como complemento.</div>
 </div>
 
 <!-- PATOLOGIAS INFECCIOSAS -->
-<div class="pm-panel" id="pm-panel-infecciosas_m">
+<div class="pm-panel" id="pm-panel-infecciosas">
   <div class="pm-info-box">Principais agentes que causam aborto e patologias reprodutivas — afetam tanto machos quanto fêmeas. O macho pode ser vetor assintomático de muitos agentes.</div>
 
   <table class="pm-ref-table">
     <tr><th>Patologia/Agente</th><th>Espécie</th><th>Fase do aborto</th><th>Patogenia</th><th>Diagnóstico</th><th>Tratamento</th></tr>
     <tr><td><strong>Brucella spp</strong></td><td>Bovinos · ruminantes · cão</td><td>1/3 final da gestação · orquite em ovinos/bovinos</td><td>Tropismo por eritritol (cotilédones, testículos) → placentite necrótica</td><td>Cultura · soroaglutinação</td><td>ATB (tetraciclina) · sacrifício em bovinos</td></tr>
-    <tr><td><strong>Leptospira spp</strong></td><td>Bovinos · ruminantes · caninos</td><td>Aborto 1/3 final</td><td>Leptospiremia → placentite · feto morre 24–48h antes de ser expelido</td><td>Cultura · soroaglutinação microscópica</td><td>ATB (penicilina, estreptomicina)</td></tr>
+    <tr><td><strong>Leptospira spp</strong></td><td>Bovinos · ruminantes · caninos</td><td>Aborto 1/3 final</td><td>Leptospiremia → placentite · feto morre 24–48 h antes de ser expelido</td><td>Cultura · soroaglutinação microscópica</td><td>ATB (penicilina, estreptomicina)</td></tr>
     <tr><td><strong>Herpesvírus</strong></td><td>Equinos (EHV-1) · bovinos</td><td>Égua: 9–10 meses · bovinos: 5–8 meses</td><td>Viremia → placentite · feto expulso 3–5 dias pós-morte</td><td>Cultura viral · PCR</td><td>Suporte · vacina preventiva (EHV)</td></tr>
+    <tr><td><strong>Salmonella spp</strong></td><td>Bovinos · equinos</td><td>Final da gestação</td><td>Via hematógena → placentite</td><td>Cultura</td><td>ATB</td></tr>
     <tr><td><strong>Pestivírus (BVD)</strong></td><td>Bovinos</td><td>1/3 inicial (embrião) · 1/3 final (feto)</td><td>Imunodeficiência fetal · feto persistentemente infectado (PI)</td><td>Cultura · PCR</td><td>Vacinação · descarte do PI</td></tr>
     <tr><td><strong>Parvovírus</strong></td><td>Suínos</td><td>1/3 final · mumificação fetal</td><td>Morte fetal sem abertura de cérvix → mumificação papiráceo</td><td>PCR</td><td>Vacinação</td></tr>
-    <tr><td><strong>Toxoplasma gondii</strong></td><td>Ovelhas · cabras · gatas</td><td>3–8 meses</td><td>Transplacentária → necrose placentária e fetal</td><td>Identificação · sorologia</td><td>Sulfonamidas</td></tr>
-    <tr><td><strong>Neospora caninum</strong></td><td>Bovinos</td><td>3–8 meses · aborto repetido</td><td>Transmissão transplacentária e pelo colostro · <span class="pm-hl">principal causa de aborto bovino no Brasil</span></td><td>PCR · sorologia</td><td>Não há tratamento eficaz · descarte de fêmeas repetidoras</td></tr>
+    <tr><td><strong>Toxoplasma gondii</strong></td><td>Ovelhas · cabras · gatas</td><td>3–8 meses</td><td>Transplacentária → necrose placentária e fetal</td><td>Identificação · sorologia</td><td>Sulfonamidas (tratamento)</td></tr>
+    <tr><td><strong>Neospora caninum</strong></td><td>Bovinos</td><td>3–8 meses · aborto repetido</td><td>Transmissão transplacentária e pelo colostro · principal causa de aborto bovino no Brasil</td><td>PCR · sorologia</td><td>Não há tratamento eficaz · descarte de fêmeas repetidoras</td></tr>
   </table>
 
-  <div class="pm-prova-box"><strong>Campylobacteriose bovina</strong> (Campylobacter fetus subsp. venerealis): IST do touro → infertilidade temporária na vaca → repetição de cio · diagnóstico por cultura do esmegma prepucial · tratamento do touro: ducha prepucial + ATB local (estreptomicina) · vacinação preventiva.</div>
+  <div class="pm-prova-box"><strong>Campylobacteriose</strong> (Campylobacter fetus subsp. venerealis — bovinos): IST do touro → infertilidade temporária na vaca → repetição de cio · diagnóstico por cultura do esmegma prepucial · tratamento do touro: ducha prepucial + ATB local (estreptomicina) · vacinação preventiva.</div>
 </div>
 
 <!-- TABELA GERAL -->
-<div class="pm-panel" id="pm-panel-tabela_m">
+<div class="pm-panel" id="pm-panel-tabela">
   <div class="pm-suc-box">Tabela rápida de referência — patologias do macho</div>
   <table class="pm-ref-table">
     <tr><th>Patologia</th><th>Sinal clínico chave</th><th>Espécie principal</th><th>Diagnóstico</th><th>Tratamento</th></tr>
     <tr><td><strong>Balanopostite</strong></td><td>Corrimento prepucial purulento</td><td>Todas</td><td>Clínico</td><td>Ducha + ATB + AINEs</td></tr>
     <tr><td><strong>Fimose</strong></td><td>Não exterioriza o pênis</td><td>Bovinos · Cão</td><td>Clínico</td><td>Cirúrgico (postioplastia)</td></tr>
     <tr><td><strong>Parafimose</strong></td><td>Pênis não retrai → edema → necrose</td><td>Cão · Equinos</td><td>Clínico</td><td>URGÊNCIA: redução manual → cirurgia</td></tr>
-    <tr><td><strong>Priapismo</strong></td><td>Ereção persistente sem estímulo</td><td>Equinos (acepromazina)</td><td>Clínico</td><td>EMERGÊNCIA: fenilefrina IC · shunt cavernoso</td></tr>
+    <tr><td><strong>Priapismo</strong></td><td>Ereção persistente sem estímulo</td><td>Cão</td><td>Clínico</td><td>Castração · progestágenos · cirurgia</td></tr>
     <tr><td><strong>Fratura de pênis</strong></td><td>Hematoma súbito pós-cobertura</td><td>Bovinos · Equinos</td><td>Clínico + US</td><td>Repouso + cirurgia (drenagem + sutura)</td></tr>
     <tr><td><strong>Hemospermia</strong></td><td>Sangue no ejaculado</td><td>Equinos · Bovinos</td><td>Endoscopia uretral</td><td>Tratar causa + repouso</td></tr>
     <tr><td><strong>Habronematose</strong></td><td>Granuloma pruriente na glande</td><td>Equinos</td><td>Clínico · biópsia</td><td>Ivermectina + cirurgia</td></tr>
@@ -6899,11 +6935,11 @@ Atrofia: redução de volume + dureza = fibrose avançada
     <tr><td><strong>Hipoplasia testicular</strong></td><td>Testículo pequeno · ↑ defeitos</td><td>Todas</td><td>Histológico</td><td>Afastar da reprodução</td></tr>
     <tr><td><strong>Degeneração testicular</strong></td><td>Testículo flácido · ↑ defeitos</td><td>Todas</td><td>Espermograma + consistência</td><td>Remover causa · 60 dias repouso</td></tr>
     <tr><td><strong>Torção testicular</strong></td><td>Dor aguda · aumento escrotal</td><td>Todas</td><td>Clínico</td><td>EMERGÊNCIA: cirurgia</td></tr>
-    <tr><td><strong>Sertolioma</strong></td><td>Feminilização · ginecomastia · anemia aplásica</td><td>Cão</td><td>Citologia · histopatologia</td><td>Orquiectomia bilateral urgente</td></tr>
+    <tr><td><strong>Sertolioma</strong></td><td>Feminilização · ginecomastia</td><td>Cão</td><td>Citologia · histopatologia</td><td>Orquiectomia bilateral</td></tr>
     <tr><td><strong>TVT</strong></td><td>Tumor friável e sanguinolento</td><td>Cão</td><td>Citologia</td><td>Vincristina IV semanal</td></tr>
-    <tr><td><strong>HPB</strong></td><td>Hemospermia · fezes em fita · disúria</td><td>Cão &gt;5 anos</td><td>US + palpação (simétrica, indolor)</td><td>Castração · finasterida</td></tr>
-    <tr><td><strong>Prostatite aguda</strong></td><td>Febre · dor pélvica · corrimento uretral</td><td>Cão</td><td>Cultura + antibiograma</td><td>Fluoroquinolonas 6–8 semanas + castração</td></tr>
-    <tr><td><strong>Durina</strong></td><td>Edema peniano · dólares de prata · paralisia MP</td><td>Equinos</td><td>ELISA · IF</td><td>Diminazeno · notificação obrigatória</td></tr>
+    <tr><td><strong>HPB</strong></td><td>Hemospermia · fezes em fita · disúria</td><td>Cão &gt;5 anos</td><td>US + palpação + PSA</td><td>Castração · finasterida</td></tr>
+    <tr><td><strong>Prostatite aguda</strong></td><td>Febre · dor pélvica · corrimento uretral</td><td>Cão</td><td>Cultura + antibiograma</td><td>Fluoroquinolonas 2–8 semanas + castração</td></tr>
+    <tr><td><strong>Durina</strong></td><td>Edema peniano · paralisia MP</td><td>Equinos</td><td>ELISA · IF</td><td>Diminazeno · notificação obrigatória</td></tr>
   </table>
 </div>
 `
@@ -7348,54 +7384,48 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
   icon: '#i-stethoscope',
   content: `
 <style>
-.pf-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
 .pf-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
 .pf-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
-.pf-tab:hover{background:var(--bg-hover)}.pf-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.pf-tab:hover{background:var(--bg-card-alt)}.pf-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
 .pf-panel{display:none}.pf-panel.active{display:block}
 .pf-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .pf-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
-.pf-sp-tab:hover{background:var(--bg-hover)}.pf-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.pf-sp-tab:hover{background:var(--bg-card-alt)}.pf-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
 .pf-sp-panel{display:none}.pf-sp-panel.active{display:block}
-.pf-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
-.pf-danger-box{border-left:3px solid #A32D2D;background:var(--red-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
-.pf-danger-box strong{color:#7a1f1f}
-.pf-prova-box{border-left:3px solid #BA7517;background:var(--amber-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
-.pf-prova-box strong{color:#633806}
-.pf-suc-box{border-left:3px solid #3B6D11;background:var(--green-50);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
-.pf-sec-block{background:var(--bg-card-alt);border-radius:8px;padding:12px 14px;margin-bottom:8px;border:1px solid var(--border-card)}
-.pf-sec-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:5px}
-.pf-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-card);margin-top:10px;margin-bottom:10px}
-.pf-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
-.pf-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
-.pf-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px}
-.pf-ref-table th{background:var(--bg-card-alt);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-light);font-size:11px;color:var(--text-secondary)}
-.pf-ref-table td{padding:6px 10px;border:1px solid var(--border-light);vertical-align:top;line-height:1.5}
-.pf-ref-table tr:nth-child(even) td{background:var(--bg-card-alt)}
-.pf-card{border-radius:8px;border:1px solid var(--border-card);margin-bottom:10px;overflow:hidden}
-.pf-card-header{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg-card);transition:background .15s}
-.pf-card-header:hover{background:var(--bg-card-alt)}
-.pf-card-title{font-weight:600;font-size:13px}
-.pf-card-tags{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
-.pf-card-body{display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.65}
-.pf-card-body.open{display:block}
-.pf-card-arrow{font-size:11px;color:var(--text-muted);transition:transform .2s}
-.pf-card-header.open .pf-card-arrow{transform:rotate(180deg)}
-.pf-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
-.pf-bwarn{background:var(--amber-100);color:#633806}.pf-binfo{background:var(--blue-100);color:var(--blue-700)}
-.pf-bsuc{background:var(--green-50);color:#27500a}.pf-bdanger{background:var(--red-100);color:#7a1f1f}
 .pf-hl{background:var(--amber-100);border-radius:3px;padding:1px 4px;font-weight:600}
-.pf-urgencia{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700;letter-spacing:.05em;vertical-align:middle;margin-left:6px}
-.pf-urg-emergencia{background:#A32D2D;color:#fff}
-.pf-urg-grave{background:#D85A30;color:#fff}
-.pf-urg-moderada{background:#BA7517;color:#fff}
-.pf-urg-leve{background:#378ADD;color:#fff}
+.pf-prova-box{border-left:3px solid #BA7517;background:var(--amber-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.pf-prova-box strong{color:#633806}
+.pf-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.pf-suc-box{border-left:3px solid #3B6D11;background:var(--green-50);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.pf-danger-box{border-left:3px solid #A32D2D;background:var(--red-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.pf-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px}
+.pf-ref-table th{background:var(--bg-card-alt);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-card);font-size:11px;color:var(--text-secondary)}
+.pf-ref-table td{padding:6px 10px;border:1px solid var(--border-card);vertical-align:top;line-height:1.5}
+.pf-ref-table tr:nth-child(even) td{background:var(--bg-card-alt)}
+.pf-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-card-alt);margin-top:10px;margin-bottom:10px}
+.pf-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.pf-memo-text{font-size:13px;font-family:monospace;line-height:1.9}
+.pf-pat-card{border-radius:8px;border:1px solid var(--border-card);margin-bottom:10px;overflow:hidden}
+.pf-pat-header{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg-card);transition:background .15s}
+.pf-pat-header:hover{background:var(--bg-card-alt)}
+.pf-pat-title{font-weight:600;font-size:13px}
+.pf-pat-tags{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.pf-pat-body{display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.7}
+.pf-pat-body.open{display:block}
+.pf-pat-arrow{font-size:11px;color:var(--text-muted);transition:transform .2s;flex-shrink:0}
+.pf-pat-header.open .pf-pat-arrow{transform:rotate(180deg)}
+.pf-sec-block{background:var(--bg-card);border-radius:6px;padding:10px 14px;margin-bottom:8px;border:1px solid var(--border-card)}
+.pf-sec-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:4px}
+.pf-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600}
+.pf-bwarn{background:var(--amber-100);color:#633806}.pf-binfo{background:var(--blue-100);color:var(--blue-700)}
+.pf-bsuc{background:var(--green-50);color:var(--green-700)}.pf-bdanger{background:var(--red-100);color:#7a1f1f}
+.pf-urgencia{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700;letter-spacing:.04em;vertical-align:middle;margin-left:5px}
+.pf-urg-emergencia{background:#A32D2D;color:#fff}.pf-urg-urgente{background:#D85A30;color:#fff}
+.pf-urg-moderada{background:#BA7517;color:#fff}.pf-urg-leve{background:#378ADD;color:#fff}
 .pf-flow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:12px}
 .pf-flow-item{background:var(--bg-card-alt);border:1px solid var(--border-light);border-radius:6px;padding:5px 10px;font-weight:500}
 .pf-flow-arrow{color:var(--text-muted);font-size:13px}
 </style>
-<p class="pf-label">Ginecologia — Patologia</p>
-<h2>Patologias Reprodutivas da Fêmea</h2>
 
 <div class="pf-tabs">
   <button class="pf-tab active" onclick="pfSetTab('utero',this)">Útero</button>
@@ -7403,7 +7433,84 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
   <button class="pf-tab" onclick="pfSetTab('vagina',this)">Vagina e vulva</button>
   <button class="pf-tab" onclick="pfSetTab('mama',this)">Glândula mamária</button>
   <button class="pf-tab" onclick="pfSetTab('disturbios_cio',this)">Distúrbios do cio (cadela)</button>
-  <button class="pf-tab" onclick="pfSetTab('tabela_f',this)">Tabela geral</button>
+  <button class="pf-tab" onclick="pfSetTab('castracao',this)">⚠️ Castração — timing</button>
+  <button class="pf-tab" onclick="pfSetTab('tabela',this)">Tabela geral</button>
+</div>
+
+<!-- CASTRAÇÃO TIMING FÊMEA -->
+<div class="pf-panel" id="pf-panel-castracao">
+  <div class="pf-prova-box"><strong>⚠️ Atualização — Literatura atual (Cassali et al. 2020; Duarte &amp; Schran 2024):</strong><br>
+  A recomendação clássica de "castrar antes do 1º cio para risco de tumor mamário de 0,05%" permanece numericamente correta, mas o Consenso Brasileiro (2020) passou a recomendar castração <span class="pf-hl">entre o 1º e o 2º cio</span> quando o objetivo é prevenção de neoplasia — levando em conta os riscos reais da castração pré-púbere que antes eram ignorados.
+  </div>
+
+  <div class="pf-sp-tabs">
+    <button class="pf-sp-tab active" onclick="pfSetSp('cast_femea',this)">Cadela — riscos e timing</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('cast_macho_resumo',this)">Cão macho — resumo</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('cast_gata',this)">Gata</button>
+  </div>
+
+  <div class="pf-sp-panel active" id="pf-sp-cast_femea">
+    <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Risco de tumor mamário × momento da castração</div>
+    <table class="pf-ref-table">
+      <tr><th>Momento</th><th>Risco tumor mamário</th><th>Recomendação atual</th></tr>
+      <tr><td>Antes do 1º cio</td><td>~0,05%</td><td>Válido para <strong>controle populacional</strong> e prevenção de piometra · para prevenção de neoplasia isolada, Cassali 2020 prefere aguardar o 1º cio</td></tr>
+      <tr><td><strong>Entre 1º e 2º cio</strong></td><td>~8%</td><td><span class="pf-hl">Recomendado pelo Consenso Cassali 2020</span> para prevenção de neoplasia mamária — melhor balanço risco-benefício</td></tr>
+      <tr><td>Após o 2º cio</td><td>~26%</td><td>Proteção ainda presente mas reduzida</td></tr>
+      <tr><td>Após 2,5 anos</td><td>Sem benefício preventivo</td><td>Tumor não mais hormônio-dependente — castração indicada por outras razões</td></tr>
+    </table>
+
+    <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;margin-top:12px">Riscos da castração precoce na cadela (&lt;1º cio)</div>
+    <table class="pf-ref-table">
+      <tr><th>Risco</th><th>Mecanismo</th><th>Observação</th></tr>
+      <tr><td><strong>Vulva infantil (recuada)</strong></td><td>Desenvolvimento vulvar incompleto sem E2 → prega perivulvar → dermatite + infecção perivulvar recorrente + urovagina predisposta</td><td>Muito frequente · resolvível com vulvoplastia, mas evitável aguardando o 1º cio</td></tr>
+      <tr><td><strong>Incontinência urinária</strong></td><td>↓ E2 → ↓ tônus do esfíncter uretral externo. Para cada mês de atraso na castração em cadelas &gt;25 kg, risco de IU reduz significativamente.</td><td>Mais frequente em cadelas &gt;25 kg castradas &lt;6 meses · tratamento: fenilpropanolamina ou estriol</td></tr>
+      <tr><td><strong>Displasia coxofemoral e RLCC</strong></td><td>Hormônios sexuais controlam fechamento epifisário. Castração precoce → fechamento tardio/anormal → conformação articular alterada</td><td>Raças grandes: Golden, Labrador, Pastor Alemão · castração &lt;12 meses</td></tr>
+      <tr><td><strong>Hemangiossarcoma, linfoma, tumor de mastócitos</strong></td><td>E2 teria efeito protetor sobre precursores dessas neoplasias. Castração precoce → ↑ risco desses tumores específicos</td><td>Paradoxo: protege de tumor mamário mas pode ↑ risco de outros tumores</td></tr>
+      <tr><td><strong>Obesidade</strong></td><td>↓ E2 e P4 → ↓ metabolismo basal → ↑ apetite (via leptina)</td><td>Controlável com dieta e exercício</td></tr>
+    </table>
+
+    <div class="pf-memo"><div class="pf-memo-label">Recomendação atual — quando castrar a cadela</div><div class="pf-memo-text">
+CONTROLE POPULACIONAL / PIOMETRA: antes do 1º cio (qualquer tamanho)
+PREVENÇÃO DE NEOPLASIA MAMÁRIA: entre o 1º e o 2º cio (Cassali 2020)
+RAÇAS GRANDES (&gt;25 kg): aguardar ao menos o 1º cio (~8–12 meses) para ↓ risco ortopédico e IU
+RAÇAS PEQUENAS (&lt;15 kg): risco ortopédico menor — timing mais flexível
+APÓS 2,5 ANOS: castração não reduz risco de tumor mamário
+INDICAÇÃO TERAPÊUTICA (piometra, cisto, tumor): castrar independente da idade
+    </div></div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-cast_macho_resumo">
+    <div class="pf-info-box">No macho não há benefício oncológico equivalente ao tumor mamário que justifique castração preventiva precoce. Indicações são predominantemente terapêuticas.</div>
+    <table class="pf-ref-table">
+      <tr><th>Risco da castração precoce — macho</th><th>Mecanismo resumido</th></tr>
+      <tr><td><strong>Pênis e prepúcio infantis</strong></td><td>Tecido pênis-prepúcio é androgênio-dependente → sem testosterona não regride → fimose funcional · os penis subdesenvolvido</td></tr>
+      <tr><td><strong>Displasia coxofemoral / RLCC / cotovelo</strong></td><td>Fechamento epifisário tardio/anormal sem testosterona → conformação articular alterada</td></tr>
+      <tr><td><strong>Osteossarcoma</strong></td><td>Rottweiler castrado &lt;1 ano: 4× mais risco. Raças grandes em geral.</td></tr>
+      <tr><td><strong>Linfoma, hemangiossarcoma, tumor de mastócitos</strong></td><td>↓ estrógeno (sim, machos também produzem) → ↑ risco nesses tumores específicos</td></tr>
+      <tr><td><strong>Hérnia de disco (Dachshund)</strong></td><td>Castração precoce = risco significativamente maior nessa raça</td></tr>
+    </table>
+    <div class="pf-memo"><div class="pf-memo-label">Timing no macho</div><div class="pf-memo-text">
+Raças pequenas: após 6 meses
+Raças médias: após 9–12 meses
+Raças grandes/gigantes: após 12–18 meses (fechamento epifisário)
+Indicações terapêuticas: qualquer idade — benefício supera risco
+    </div></div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-cast_gata">
+    <div class="pf-suc-box">Na gata, a recomendação de castração precoce permanece mais consensual — os riscos ortopédicos e endócrinos são significativamente menores que no cão.</div>
+    <table class="pf-ref-table">
+      <tr><th>Momento</th><th>Efeito sobre neoplasia mamária</th></tr>
+      <tr><td>Antes de 6 meses</td><td>↓ risco de carcinoma mamário em 91%</td></tr>
+      <tr><td>Entre 6–12 meses</td><td>↓ risco em 86%</td></tr>
+      <tr><td>Entre 13–24 meses</td><td>↓ risco em apenas 11%</td></tr>
+      <tr><td>Após 2 anos</td><td>Sem benefício preventivo</td></tr>
+    </table>
+    <div style="font-size:13px;line-height:1.75">
+      85% dos tumores mamários em gatas são malignos (vs. 50% em cadelas) → justifica intervenção precoce mais agressiva.<br>
+      Risco de obstrução uretral em gatos machos castrados precocemente também deve ser considerado — desenvolvimento incompleto da uretra e os penis.
+    </div>
+  </div>
 </div>
 
 <!-- ÚTERO -->
@@ -7430,19 +7537,19 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
     <div class="pf-info-box"><strong>Endometrite em éguas</strong> — principal causa de infertilidade na espécie. Pode ser fisiológica (pós-cobertura) ou patológica (infecção bacteriana).</div>
     <div style="font-size:13px;line-height:1.8">
       <strong>Fisiopatologia:</strong><br>
-      · Espermatozoide = corpo estranho → resposta inflamatória normal pós-cobertura → PMNs fazem a limpeza uterina em 12–24h via drenagem linfática + contrações cervicais + fagocitose<br>
+      · Espermatozoide = corpo estranho → resposta inflamatória normal pós-cobertura → PMNs fazem a limpeza uterina em 12–24 h via drenagem linfática + contrações cervicais + fagocitose<br>
       · Éguas "suscetíveis" têm deficiência nessa limpeza → endometrite persistente pós-cobertura<br><br>
       <strong>Agentes infecciosos:</strong> Taylorella equigenitalis (metrite contagiosa equina — não isolada no Brasil) · Streptococcus zooepidemicus · E. coli · Pseudomonas aeruginosa<br><br>
       <strong>Diagnóstico:</strong> Palpação retal + US (acúmulo de fluido intrauterino) + citologia uterina (≥2% PMNs = endometrite) + cultura + biópsia uterina<br><br>
       <strong>Tratamento:</strong><br>
-      <strong>Pré-cobertura:</strong> lavagem uterina (1–2 L ringer lactato) para remover exsudato<br>
-      <strong>Pós-cobertura:</strong> 1h antes da IA: dexametasona IV (reduz inflamação) · 6–12h após IA: lavagem com ringer + ocitocina (auxilia drenagem linfática) + PGF2α<br>
+      <strong>Pré-cobertura:</strong> lavagem uterina (1–2 L ringer lactato ou soro fisiológico) para remover exsudato<br>
+      <strong>Pós-cobertura:</strong> 1 h antes da IA: dexametasona IV (reduz inflamação) · 6–12 h após IA: lavagem com ringer + ocitocina (auxilia drenagem linfática + contrações cervicais) + PGF2α<br>
       <strong>Crônico:</strong> lavagem + ampicilina intrauterina + ATB sistêmico (ceftiofur, sulfa)
     </div>
     <div class="pf-memo"><div class="pf-memo-label">Protocolo pós-cobertura em éguas suscetíveis</div><div class="pf-memo-text">
-1h antes IA: Dexametasona IV (↓ inflamação)<br>
-6–12h após IA: Lavagem uterina (ringer) + Ocitocina 20–25 UI IM<br>
-Opcional: PGF2α (contrai miométrio, drena exsudato)<br>
+1h antes IA: Dexametasona IV (↓ inflamação)
+6–12h após IA: Lavagem uterina (ringer) + Ocitocina 20–25 UI IM (auxilia drenagem)
+Opcional: PGF2α (contrai miométrio, drena exsudato)
 Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
     </div></div>
   </div>
@@ -7454,11 +7561,13 @@ Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
     <div class="pf-flow">
       <div class="pf-flow-item">Diestro prolongado (P4 alta)</div>
       <div class="pf-flow-arrow">→</div>
-      <div class="pf-flow-item">HCE (Hiperplasia Cística do Endométrio)</div>
+      <div class="pf-flow-item">Hiperplasia cística do endométrio (HCE)</div>
       <div class="pf-flow-arrow">→</div>
-      <div class="pf-flow-item">↓ imunidade local · ↓ contratilidade</div>
+      <div class="pf-flow-item">↓ imunidade local · ↓ contratilidade miométrio</div>
       <div class="pf-flow-arrow">→</div>
-      <div class="pf-flow-item">E. coli coloniza o endométrio</div>
+      <div class="pf-flow-item">Abertura da cérvix no próximo cio</div>
+      <div class="pf-flow-arrow">→</div>
+      <div class="pf-flow-item">E. coli (flora vaginal) coloniza endométrio</div>
       <div class="pf-flow-arrow">→</div>
       <div class="pf-flow-item">Piometra</div>
     </div>
@@ -7466,20 +7575,23 @@ Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
     </div>
 
     <div class="pf-sec-block"><div class="pf-sec-label">Sinais clínicos</div>
-    Distensão abdominal · secreção vaginal (aberta) · depressão · anorexia · <span class="pf-hl">poliúria/polidipsia</span> (endotoxinas → defeito na ADH → diabetes insipidus nefrogênico) · septicemia · vômito
+    Distensão abdominal · secreção vaginal (aberta) · depressão · anorexia · poliúria/polidipsia (endotoxinas → defeito na ADH → diabetes insipidus nefrogênico) · septicemia · vômito · diarreia (casos graves)
     </div>
 
     <div class="pf-sec-block"><div class="pf-sec-label">Diagnóstico</div>
-    Clínico + US (útero dilatado, paredes espessas, conteúdo ecogênico) + Hemograma: anemia normocítica normocrômica + leucocitose com desvio à esquerda · Bioquímico: ↑ ALT, creatinina<br>
-    <strong>DD:</strong> Gestação · Mucometra · HCE sem piometra · Vaginite · Piometra de coto · TVT · Ascite
+    Clínico + US (útero dilatado, paredes espessas, conteúdo ecogênico) + Hemograma: anemia normocítica normocrômica + leucocitose com desvio à esquerda · Bioquímico: ↑ ALT, creatinina, proteínas totais · Urinálise
+    </div>
+
+    <div class="pf-sec-block"><div class="pf-sec-label">Diagnóstico diferencial</div>
+    Gestação · Mucometra · HCE sem piometra · Vaginite · Piometra de coto (ovário remanescente) · Falência renal primária · TVT · Ascite
     </div>
 
     <div class="pf-sec-block"><div class="pf-sec-label">Tratamento</div>
-    <strong>Cirúrgico (padrão):</strong> OSH — definitivo, sem risco de recidiva. Único tratamento para piometra fechada.<br>
+    <strong>Cirúrgico (padrão):</strong> OSH — definitivo, seguro, sem risco de recidiva. Único tratamento para piometra fechada.<br>
     <strong>Clínico (apenas fêmeas jovens, reprodutoras valiosas, piometra aberta, estáveis):</strong><br>
-    · Aglepristone (Alizin®) 0,33 mL/kg SC por 2 dias consecutivos — antagonista da P4 → abertura cervical<br>
-    · PGF2α 1–3 mcg/kg SC a cada 12–24h — cautela: contração uterina forte pode causar ruptura<br>
-    · ATB sistêmico (ceftiofur, amoxicilina-clavulanato)<br>
+    · Aglepristone (Alizin®, Virbac) 0,33 mL/kg SC por 2 dias consecutivos — antagonista da P4 → abertura cervical · taxa de resolução até 100% em casos selecionados<br>
+    · PGF2α 1–3 mcg/kg SC a cada 12–24 h — cautela: contração uterina forte pode causar ruptura<br>
+    · ATB sistêmico (ceftiofur, amoxicilina-clavulanato, baseado na cultura)<br>
     · ⚠️ Após tratamento clínico: emprenhar em todos os cios subsequentes — risco de recidiva altíssimo
     </div>
   </div>
@@ -7487,7 +7599,7 @@ Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
   <div class="pf-sp-panel" id="pf-sp-hce">
     <div style="font-size:13px;line-height:1.8">
       <strong>Hiperplasia Cística do Endométrio (HCE)</strong> — condição pré-piometra em cadelas. Longa exposição endometrial à P4 no diestro → proliferação glandular + formação de cistos → acúmulo de líquido → ↓ imunidade local → predispõe infecção.<br><br>
-      <strong>Em vacas:</strong> longa exposição à P4 (cisto luteal, CL persistente) → HCE + mucometra<br><br>
+      <strong>Em vacas:</strong> longa exposição à P4 (cisto luteal, CL persistente) → HCE + mucometra (acúmulo de muco)<br><br>
       <strong>Diagnóstico:</strong> US (espessamento endometrial, cistos intramurais) · biópsia uterina (histopatologia)<br><br>
       <strong>Tratamento:</strong> OSH (cadela) · Resolução da causa hormonal (vaca) · ATB se infecção secundária
     </div>
@@ -7501,17 +7613,17 @@ Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
     <button class="pf-sp-tab" onclick="pfSetSp('cisto_lut',this)">Cisto luteal</button>
     <button class="pf-sp-tab" onclick="pfSetSp('tumor_gran',this)">Tumor da granulosa</button>
     <button class="pf-sp-tab" onclick="pfSetSp('ovario_rem',this)">Ovário remanescente</button>
-    <button class="pf-sp-tab" onclick="pfSetSp('hiper_vag_ov',this)">Hiperplasia vaginal (cadela)</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('hiper_vag',this)">Hiperplasia vaginal (cadela)</button>
   </div>
 
   <div class="pf-sp-panel active" id="pf-sp-cisto_fol">
     <div class="pf-info-box"><strong>Cisto folicular</strong> — folículo que não ovula e persiste além de 10 dias, com parede delgada. Déficit de LH impede a ovulação. Frequente em vacas leiteiras e cadelas.</div>
     <div style="font-size:13px;line-height:1.8">
-      <strong>Características:</strong> Únicos (vacas) · Parede delgada · LH insuficiente para ovulação · Produz E2 → ninfomania (cio prolongado, irregular)<br><br>
+      <strong>Características:</strong> Únicos (vacas) · Parede delgada · LH insuficiente para ovulação · Produz E2 → ninfomania (cio prolongado, irregular, atração pelo macho sem aceitação)<br><br>
       <strong>Sinais clínicos:</strong> Irregularidade do ciclo estral · estro e proestro prolongados · edema vulvar · atração pelo macho sem aceitação · pode evoluir para piometra (cadela) ou mucometra (vaca)<br><br>
-      <strong>Diagnóstico:</strong> US (&gt;25 mm na vaca, &gt;8 mm na cadela, parede fina, sem CL associado) + citologia vaginal + histórico<br><br>
+      <strong>Diagnóstico:</strong> US (estrutura &gt;25 mm na vaca, &gt;8 mm na cadela, parede fina, sem CL associado) + citologia vaginal + histórico. Na vaca: repetir o exame após 10 dias — se persistir sem CL = cisto folicular.<br><br>
       <strong>Tratamento:</strong><br>
-      · <strong>Bovinos:</strong> GnRH (gonadorelina, cistorelina) — induz pico de LH → ovulação ou luteinização · HCG 1500–5000 UI IV · PGF2α 14 dias após GnRH<br>
+      · <strong>Bovinos:</strong> GnRH (gonadorelina, cistorelina) — induz pico de LH → ovulação ou luteinização · HCG 1500–5000 UI IV · PGF2α 14 dias após GnRH (para lisar o CL formado)<br>
       · <strong>Cadela:</strong> GnRH (buserelina) · HCG · OSH se não reprodutora
     </div>
     <div class="pf-prova-box"><strong>Diferença cisto folicular × luteal:</strong> Folicular = parede delgada · produz E2 · ninfomania. Luteal = parede espessa · produz P4 · anestro e diestro prolongados.</div>
@@ -7521,7 +7633,7 @@ Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
     <div style="font-size:13px;line-height:1.8">
       <strong>Cisto luteal</strong> — LH suficiente para luteinizar o folículo mas não para promover a ovulação completa → parede espessa, produz P4. Múltiplos (diferente do folicular que é único em vacas).<br><br>
       <strong>Sinais clínicos:</strong> Anestro e diestro prolongados · pode causar piometra (cadela) e mucometra (vaca)<br><br>
-      <strong>Diagnóstico:</strong> US: parede espessa, estrutura &gt;25 mm (vaca), &gt;8 mm (cadela). Diferencia do CL ativo por persistência além do normal.<br><br>
+      <strong>Diagnóstico:</strong> US: parede espessa, estrutura &gt;25 mm (vaca), &gt;8 mm (cadela). Diferenciar do CL ativo: cisto luteal persiste além da duração normal do CL.<br><br>
       <strong>Tratamento:</strong> PGF2α → luteólise · OSH (cadela não reprodutora)
     </div>
   </div>
@@ -7535,7 +7647,7 @@ Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
       Ovário afetado: grande, multilobulado (mel-de-abelha ao US) · Ovário contralateral: atrófico (supressão do eixo HPG)<br><br>
       <strong>Cadela:</strong> Idade ~7 anos · ascite + aumento de volume abdominal<br><br>
       <strong>Diagnóstico:</strong> Clínico + US + palpação retal (égua) · RX abdominal (cadela) · citologia vaginal · histopatologia<br><br>
-      <strong>Cirurgia:</strong> <span class="pf-hl">&lt;15 cm → flanco em estação; &gt;15 cm → linha alba</span> · OSH (cadela) ou ovariectomia unilateral (égua se contralateral normal)
+      <strong>Cirurgia (ovário afetado):</strong> <span class="pf-hl">&lt;15 cm → flanco em estação; &gt;15 cm → linha alba</span> · OSH (cadela) ou ovariectomia unilateral (égua se contralateral normal)
     </div>
   </div>
 
@@ -7543,25 +7655,22 @@ Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
     <div style="font-size:13px;line-height:1.8">
       <strong>Síndrome do ovário remanescente</strong> — fêmeas castradas que apresentam sinais de cio. Tecido ovariano residual permanece após OSH incorreta.<br><br>
       <strong>Clínica:</strong> reaparecimento do cio 5 meses a 3 anos após castração · comportamento estral · aceitação de macho<br><br>
-      <strong>Diagnóstico diferencial:</strong> vaginite · piometra de coto · neoplasias vaginais · TVT<br><br>
+      <strong>Diagnóstico diferencial:</strong> vaginite · piometra de coto · neoplasias vaginais · coagulopatias · TVT<br><br>
       <strong>Diagnóstico:</strong> Dosagem de P4 (&gt;2 ng/mL indica atividade ovariana) · US · estimulação com GnRH/HCG para confirmação<br><br>
       <strong>Tratamento:</strong> Laparotomia exploratória para localizar e remover o tecido ovariano residual
     </div>
   </div>
 
-  <div class="pf-sp-panel" id="pf-sp-hiper_vag_ov">
+  <div class="pf-sp-panel" id="pf-sp-hiper_vag">
     <div style="font-size:13px;line-height:1.8">
       <strong>Hiperplasia vaginal</strong> — edema exacerbado da mucosa vaginal durante o proestro e estro por hipersensibilidade ao E2. Mais comum em raças grandes e braquicefálicas.<br><br>
       <strong>Aspecto:</strong> massa avermelhada/rósea saindo pela vulva (diferente do prolapso vaginal — não é toda a vagina, é apenas o assoalho anterior)<br><br>
       <strong>Diagnóstico diferencial:</strong> Prolapso vaginal · TVT · Hematoma · Pólipo · Leiomioma<br><br>
-      <strong>Graus clínicos:</strong><br>
-      Grau I: edema interno; detectável apenas por vaginoscopia<br>
-      Grau II: mucosa protusa visível pela vulva em decúbito<br>
-      Grau III: massa volumosa exteriorizada continuamente; risco de necrose<br><br>
       <strong>Tratamento:</strong><br>
-      · Graus I-II: conservativo — lubrificação, colar elizabetano, evitar automutilação · regride no diestro<br>
-      · Grau III: colpoplastia (ressecção da mucosa excedente)<br>
-      · OSH: previne recorrência (remove estímulo estrogênico)
+      · Conservativo (proestro/estro): lavagem, lubrificação, evitar automutilação<br>
+      · Aguarda término do ciclo: involui com queda do E2 no diestro<br>
+      · Cirúrgico: ressecção da hiperplasia (não realizar no estro por risco de sangramento)<br>
+      · OSH: previne recidiva nos próximos ciclos
     </div>
   </div>
 </div>
@@ -7569,31 +7678,20 @@ Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
 <!-- VAGINA E VULVA -->
 <div class="pf-panel" id="pf-panel-vagina">
   <div style="font-size:13px;line-height:1.8;margin-bottom:12px">
-    <strong>Vaginite</strong> — inflamação vaginal. Primária (bacteriana, viral) ou secundária (corpo estranho, pneumovagina). Em cadelas jovens pré-púberes: vaginite do cachorrinho (fisiológica, resolve na puberdade). Em adultas: associada a infecções bacterianas.<br><br>
+    <strong>Vaginite</strong> — inflamação vaginal. Pode ser primária (bacteriana, viral) ou secundária (corpo estranho, pneumovagina). Em cadelas jovens pré-púberes: vaginite do cachorrinho (fisiológica, resolve na puberdade). Em adultas: associada a infecções bacterianas.<br><br>
     <strong>Diagnóstico:</strong> Vaginoscopia + citologia vaginal (PMNs em excesso em qualquer fase do ciclo) + cultura<br><br>
-    <strong>Tratamento:</strong> ATB tópico · lavagem vaginal com clorexidina diluída · ATB sistêmico se necessário
+    <strong>Tratamento:</strong> ATB tópico (infusão intrauterina ou vaginal) · lavagem vaginal com clorexidina diluída · ATB sistêmico se necessário
   </div>
 
-  <div class="pf-card">
-    <div class="pf-card-header" onclick="pfToggle(this)">
-      <span class="pf-card-title">Pneumovagina e vulvoplastia (Caslick)</span>
-      <div class="pf-card-tags"><span class="pf-badge pf-binfo">Éguas · Bovinos</span><span class="pf-card-arrow">&#9660;</span></div>
+  <div class="pf-pat-card">
+    <div class="pf-pat-header" onclick="pfToggle(this)">
+      <div><span class="pf-pat-title">Pneumovagina e vulvoplastia (Caslic)</span></div>
+      <div class="pf-pat-tags"><span class="pf-badge pf-binfo">Éguas · Bovinos</span><span class="pf-pat-arrow">▼</span></div>
     </div>
-    <div class="pf-card-body">
+    <div class="pf-pat-body">
       <div class="pf-sec-block"><div class="pf-sec-label">Definição</div>Conformação inadequada da vulva — lábios vulvares afunilam para dentro → aspiração de ar e contaminação fecal para a vagina → vaginite, cervicite, endometrite → infertilidade.</div>
       <div class="pf-sec-block"><div class="pf-sec-label">Etiologia</div>Fêmeas magras com afundamento do ânus acima do nível da vulva · lesões perineais pós-parto · conformação genética</div>
-      <div class="pf-sec-block"><div class="pf-sec-label">Tratamento</div><strong>Vulvoplastia de Caslick:</strong> sutura dos 2/3 superiores da rima vulvar, deixando apenas a abertura inferior para urina. <span class="pf-hl">Abrir antes do parto</span> para permitir passagem do potro/feto.</div>
-    </div>
-  </div>
-
-  <div class="pf-card">
-    <div class="pf-card-header" onclick="pfToggle(this)">
-      <span class="pf-card-title">Laceração perineal e urovagina (éguas)</span>
-      <div class="pf-card-tags"><span class="pf-badge pf-bwarn">Éguas</span><span class="pf-card-arrow">&#9660;</span></div>
-    </div>
-    <div class="pf-card-body">
-      <div class="pf-sec-block"><div class="pf-sec-label">Urovagina</div>Afrouxamento dos ligamentos ovarianos → inclinação caudal do assoalho vaginal → acúmulo de urina na vagina → endometrite crônica → infertilidade. Mais em éguas velhas/multíparas. Diag: vaginoscopia (urina visível). Trat: uroplastia de Vandeplassche.</div>
-      <div class="pf-sec-block"><div class="pf-sec-label">Laceração perineal</div>Parto distócico: membro anterior do potro fica sobre a nuca → casco perfura o teto da vagina → fístula retovaginal. Trat: cirúrgico em 2 etapas (técnica de Goetze modificada) — aguardar redução do edema antes da 1ª sutura.</div>
+      <div class="pf-sec-block"><div class="pf-sec-label">Tratamento</div><strong>Vulvoplastia de Caslic (Caslick):</strong> sutura dos 2/3 superiores da rima vulvar, deixando apenas a abertura inferior para urina. Procedimento simples e curativo. <span class="pf-hl">Abrir antes do parto</span> para permitir passagem do potro/feto.</div>
     </div>
   </div>
 </div>
@@ -7606,27 +7704,41 @@ Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
   </div>
 
   <div class="pf-sp-panel active" id="pf-sp-mastite_cl">
-    <div class="pf-info-box"><strong>Mastite</strong> — inflamação da glândula mamária. Grande impacto econômico em bovinos leiteiros. Também acomete pequenos animais.</div>
+    <div class="pf-info-box"><strong>Mastite</strong> — inflamação da glândula mamária. Aumento de volume, calor, dor e secreção alterada. Causa de grande impacto econômico em bovinos leiteiros e ocorre também em pequenos animais.</div>
     <div style="font-size:13px;line-height:1.8">
       <strong>Agentes:</strong> E. coli · Streptococcus agalactiae e uberis · Staphylococcus aureus<br><br>
-      <strong>Classificação:</strong> Subclínica (sem sinais visíveis, detectada por CMT) · Clínica leve (secreção alterada) · Clínica moderada (quarto edemaciado, secreção purulenta) · Grave (sistêmica — febre, prostração, agalaxia)<br><br>
+      <strong>Classificação:</strong> Subclínica (sem sinais visíveis, detectada por CMT) · Clínica leve (secreção alterada, leve aumento) · Clínica moderada (quarto edemaciado, secreção purulenta) · Grave (sistêmica — febre, prostração, agalaxia)<br><br>
       <strong>Diagnóstico:</strong><br>
       · Exame clínico da glândula (inspeção + palpação de todos os quartos)<br>
-      · <strong>CMT — California Mastitis Test:</strong> hidróxido de sódio + leite → gel = ↑ células somáticas<br>
+      · CMT — California Mastitis Test: reagente de hidróxido de sódio + leite → gel = ↑ células somáticas<br>
       · Contagem de células somáticas (CCS) — padrão industrial<br>
       · Citologia da secreção + exame microbiológico com antibiograma<br><br>
       <strong>Tratamento bovinos:</strong><br>
-      · Tratar feridas nos tetos · secar o teto infectado · infusão intramamária de ATB (penicilina, cefalosporina) · ATB sistêmico nas graves<br><br>
+      · Tratar feridas nos tetos (porta de entrada) · secar o teto infectado (vaca seca: bisnaga de longa ação) · infusão intramamária de ATB (penicilina, cefalosporina) · ATB sistêmico nas graves<br><br>
       <strong>Tratamento cão/gato:</strong><br>
-      · ATB sistêmico · Antiprolactínico (metergolina, cabergolina) para reduzir secreção · Drenar abscessos · Mastectomia em necrose grave
+      · ATB sistêmico · antifúngico se fungos · Antiprolactínico (metergolina, cabergolina, bromocriptina) para reduzir secreção · Drenar abscessos · Mastectomia em necrose grave
     </div>
   </div>
 
   <div class="pf-sp-panel" id="pf-sp-tumor_mama">
-    <div class="pf-info-box"><strong>Tumor de glândula mamária</strong> — neoplasia mais comum em cadelas inteiras. Hormônio-dependente (E2 e P4). <span class="pf-hl">Castração antes do 1º cio reduz o risco para 0,05%.</span></div>
+    <div class="pf-info-box"><strong>Tumor de glândula mamária</strong> — neoplasia mais comum em cadelas inteiras (~25–50% de todos os tumores caninos). Hormônio-dependente (E2 e P4). 50% são malignos em cadelas; 85% em gatas.</div>
+
+    <div class="pf-prova-box"><strong>⚠️ Atualização — Literatura atual (Cassali et al., 2020):</strong><br>
+    O Consenso Brasileiro de Tumor Mamário Canino (2020) passou a recomendar que a castração, quando o objetivo é <em>prevenção de neoplasia mamária</em>, seja realizada <span class="pf-hl">entre o 1º e o 2º cio</span> — e não mais obrigatoriamente antes do 1º cio — levando em conta os riscos da castração pré-púbere.
+    </div>
+
+    <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Risco de tumor mamário × momento da castração</div>
+    <table class="pf-ref-table">
+      <tr><th>Momento da castração</th><th>Risco de tumor mamário</th><th>Observação</th></tr>
+      <tr><td>Antes do 1º cio</td><td>~0,05%</td><td>Proteção máxima contra tumor mamário · mas com maiores riscos da castração precoce</td></tr>
+      <tr><td><strong>Entre o 1º e o 2º cio</strong></td><td>~8%</td><td><span class="pf-hl">Recomendado pelo Consenso Cassali 2020</span> para prevenção de neoplasia em fêmeas não reprodutoras</td></tr>
+      <tr><td>Após o 2º cio</td><td>~26%</td><td>Proteção reduzida · mas ainda melhor que não castrar</td></tr>
+      <tr><td>Após 2,5 anos</td><td>Sem benefício preventivo</td><td>Tumor deixa de ser hormônio-dependente</td></tr>
+    </table>
+
+    <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;margin-top:12px">Tipos e estadiamento</div>
     <div style="font-size:13px;line-height:1.8">
-      <strong>Tipos:</strong> Epiteliais (adenoma/adenocarcinoma/fibroma) — mais comuns. Taxa de metástase 48–50%. Tumor misto. Carcinossarcoma.<br><br>
-      <strong>Diagnóstico e estadiamento:</strong>
+      <strong>Tipos:</strong> Epiteliais (adenoma/adenocarcinoma/fibroma) — mais comuns, taxa de metástase 48–50% · Tumor misto · Carcinossarcoma
     </div>
     <table class="pf-ref-table" style="margin-top:8px">
       <tr><th>Parâmetro</th><th>Critério</th><th>Grau</th></tr>
@@ -7635,17 +7747,19 @@ Casos crônicos: lavagem + ATB intrauterino (ampicilina) + ATB sistêmico
       <tr><td>10–15 cm</td><td>Grau 3</td></tr>
       <tr><td>&gt;15 cm</td><td>Grau 4</td></tr>
       <tr><td><strong>Linfonodos</strong></td><td>Não evidentes / Ipsilateral / Contralateral / Contralateral fixo</td><td>N0–N3</td></tr>
-      <tr><td><strong>Metástase</strong></td><td>Sim / Não (pulmão, linfonodos)</td><td>M0/M1</td></tr>
+      <tr><td><strong>Metástase</strong></td><td>Sim / Não (pulmão, linfonodos regionais)</td><td>M0/M1</td></tr>
     </table>
     <div style="font-size:13px;line-height:1.8;margin-top:8px">
-      <strong>Diagnóstico:</strong> Exame físico + Biópsia + Citologia aspirativa + Rx de tórax (metástase pulmonar) + US abdominal<br><br>
+      <strong>Diagnóstico:</strong> Exame físico + Biópsia + Citologia aspirativa + Exames laboratoriais + Rx de tórax (metástase pulmonar) + US abdominal<br><br>
       <strong>Tratamento:</strong> Mastectomia parcial (nódulo único, pequeno) ou total (múltiplos, grandes) ± OSH · Quimioterapia (doxorrubicina, ciclofosfamida) em tumores malignos avançados
     </div>
-    <div class="pf-memo"><div class="pf-memo-label">Impacto da castração no risco de tumor mamário</div><div class="pf-memo-text">
-Antes do 1º cio: risco 0,05% (quase zero)<br>
-Após o 1º cio: risco 8%<br>
-Após o 2º cio: risco 26%<br>
-Após o 2º ano: sem benefício da castração no risco (tumor não mais hormônio-dependente)
+
+    <div class="pf-memo"><div class="pf-memo-label">Recomendação atual — quando castrar para prevenção de tumor mamário (Cassali 2020)</div><div class="pf-memo-text">
+CONTROLE POPULACIONAL / PIOMETRA: castração antes do 1º cio (qualquer tamanho/raça)
+PREVENÇÃO DE NEOPLASIA MAMÁRIA: castrar ENTRE o 1º e o 2º cio (balanço risco-benefício)
+RAÇAS GRANDES (&gt;25 kg): considerar castração após os 12 meses para ↓ risco ortopédico
+APÓS 2,5 ANOS: castração não reduz risco de tumor mamário — indicação por outras razões
+Gatas: castrar antes de 6–12 meses → risco carcinoma mamário cai 86–90%
     </div></div>
   </div>
 </div>
@@ -7671,19 +7785,19 @@ Após o 2º ano: sem benefício da castração no risco (tumor não mais hormôn
     <tr>
       <td><strong>Proestro curto</strong></td>
       <td>Proestro dura 3 dias (normal: 9 dias) · parece ter falhado mas estro ocorre normalmente</td>
-      <td>Citologia sequencial + dosar P4 (&gt;2 ng/mL indica pré-ovulação)</td>
+      <td>Citologia sequencial (identificar estro) + dosar P4 (&gt;2 ng/mL indica pré-ovulação)</td>
       <td>Não é infertilidade real — apenas timing diferente. Monitorar.</td>
     </tr>
     <tr>
       <td><strong>Proestro prolongado</strong></td>
       <td>Proestro &gt;18 dias · folículo grande (&gt;8 mm) pode indicar cisto</td>
-      <td>US folicular + citologia + P4</td>
+      <td>US folicular (tamanho + estrutura) + citologia + P4</td>
       <td>Cisto folicular → GnRH/HCG · Manejo de cobertura</td>
     </tr>
     <tr>
       <td><strong>Ausência de ovulação</strong></td>
-      <td>Raro. Comportamento + citologia normais mas não ovula. Deficiência de LH.</td>
-      <td>P4 permanece baixa · US: folículos sem corpo lúteo formado</td>
+      <td>Raro. Comportamento + citologia normais mas não ovula. Folículos podem regredir ou ovular 1 semana depois. Deficiência de LH.</td>
+      <td>P4 permanece baixa durante o "estro" · US: folículos sem corpo lúteo formado</td>
       <td>Próximo ciclo: HCG 500 UI IV no pico de LH</td>
     </tr>
     <tr>
@@ -7695,16 +7809,16 @@ Após o 2º ano: sem benefício da castração no risco (tumor não mais hormôn
   </table>
 
   <div class="pf-memo"><div class="pf-memo-label">Timing de fertilidade — cadela</div><div class="pf-memo-text">
-D0 = pico de LH (não mensurável na prática → estimado pelo P4)<br>
-P4 2–5 ng/mL = pré-ovulação → IA com sêmen fresco possível<br>
-P4 &gt;5 ng/mL = pós-ovulação → inseminar 2–4 dias depois (oócito maduro)<br>
-Período de maior fertilidade: D4–D7 (contado a partir do pico de LH)<br>
+D0 = pico de LH (não mensurável na prática → estimado pelo P4)
+P4 2–5 ng/mL = pré-ovulação → IA com sêmen fresco possível
+P4 &gt;5 ng/mL = pós-ovulação → inseminar 2–4 dias depois (oócito maduro)
+Período de maior fertilidade: D4–D7 (contado a partir do pico de LH)
 Espermatozoide dura: 6–7 dias · oócito fértil: 2–3 dias pós-ovulação
   </div></div>
 </div>
 
 <!-- TABELA GERAL -->
-<div class="pf-panel" id="pf-panel-tabela_f">
+<div class="pf-panel" id="pf-panel-tabela">
   <div class="pf-suc-box">Tabela de referência rápida — patologias reprodutivas da fêmea</div>
   <table class="pf-ref-table">
     <tr><th>Patologia</th><th>Espécie</th><th>Sinal clínico chave</th><th>Diagnóstico chave</th><th>Tratamento principal</th></tr>
@@ -7719,10 +7833,16 @@ Espermatozoide dura: 6–7 dias · oócito fértil: 2–3 dias pós-ovulação
     <tr><td><strong>Ovário remanescente</strong></td><td>Cadela castrada</td><td>Cio após OSH</td><td>P4 + GnRH/HCG test</td><td>Laparotomia exploratória</td></tr>
     <tr><td><strong>Mastite clínica</strong></td><td>Bovinos · Cão</td><td>Quarto quente, dolorido, secreção alterada</td><td>CMT + cultura</td><td>ATB intramamário + sistêmico</td></tr>
     <tr><td><strong>Tumor mamário</strong></td><td>Cadela &gt;6 anos</td><td>Nódulo mamário duro</td><td>Biópsia + estadiamento TNM</td><td>Mastectomia ± OSH · quimio em malignos</td></tr>
-    <tr><td><strong>Pneumovagina</strong></td><td>Éguas</td><td>Infertilidade + vaginite recorrente</td><td>Inspeção + vaginoscopia</td><td>Caslick (vulvoplastia)</td></tr>
+    <tr><td><strong>Pneumovagina</strong></td><td>Éguas</td><td>Infertilidade + vaginite recorrente</td><td>Inspeção + vaginoscopia</td><td>Caslic (vulvoplastia)</td></tr>
     <tr><td><strong>Split cio</strong></td><td>Cadela</td><td>Estro "curto" → pausa → novo estro</td><td>Citologia sequencial</td><td>Monitorar — 2º ciclo é o fértil</td></tr>
   </table>
 </div>
+
+<script>
+function pfToggle(h){const b=h.nextElementSibling;const o=b.classList.toggle('open');h.classList.toggle('open',o)}
+function pfSetTab(t,el){el.closest('.chapter-content').querySelectorAll('.pf-tab').forEach(x=>x.classList.remove('active'));el.closest('.chapter-content').querySelectorAll('.pf-panel').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('pf-panel-'+t).classList.add('active')}
+function pfSetSp(sp,el){const p=el.closest('.pf-panel');p.querySelectorAll(':scope>.pf-sp-tabs .pf-sp-tab').forEach(x=>x.classList.remove('active'));p.querySelectorAll(':scope>.pf-sp-panel').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('pf-sp-'+sp).classList.add('active')}
+</script>
 `
 },
 {
@@ -9818,6 +9938,27 @@ function toggleEdit(){
     });
   }
 }
+
+// === CAPÍTULO 14 — PATOLOGIAS DO MACHO ===
+window.pmToggle = function(header){
+  var body = header.nextElementSibling;
+  var open = body.classList.toggle('open');
+  header.classList.toggle('open', open);
+};
+window.pmSetTab = function(t, el){
+  var container = el.closest('.chapter-body');
+  container.querySelectorAll('.pm-tab').forEach(function(x){ x.classList.remove('active'); });
+  container.querySelectorAll('.pm-panel').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  container.querySelector('#pm-panel-' + t).classList.add('active');
+};
+window.pmSetSp = function(sp, el){
+  var p = el.closest('.pm-panel');
+  p.querySelectorAll(':scope > .pm-sp-tabs .pm-sp-tab').forEach(function(x){ x.classList.remove('active'); });
+  p.querySelectorAll(':scope > .pm-sp-panel').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  p.querySelector('#pm-sp-' + sp).classList.add('active');
+};
 
 // === CAPÍTULO 15 — PATOLOGIAS DA GESTAÇÃO ===
 window.pgToggle = function(header){
