@@ -1730,10 +1730,123 @@
 <section class="interactive-section" id="secGames">
   <div class="chapter-header"><span class="ch-icon"><svg class="icon" style="width:28px;height:28px"><use href="#i-puzzle"/></svg></span><div><div class="ch-num">Jogos</div><h2>Games</h2></div></div>
   <div class="chapter-body">
-    <h3 style="margin-bottom:16px">&#127919; Jogo de Associação</h3>
-    <div id="matchGame" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px"></div>
-    <div id="matchScore" style="text-align:center;margin:12px 0;font-weight:700;color:var(--green-700)"></div>
-    <button onclick="initMatch()" class="btn-secondary" style="display:block;margin:0 auto 32px">&#128260; Novo Jogo</button>
+
+    <!-- Seletor de jogo -->
+    <div id="gameSelector" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px">
+      <button onclick="switchGame('sprint')" id="btnSprint" class="btn-primary" style="flex:1;min-width:140px;padding:12px 16px;font-size:14px;font-weight:700;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px">
+        &#9889; Sprint Quiz
+      </button>
+      <button onclick="switchGame('match')" id="btnMatch" class="btn-secondary" style="flex:1;min-width:140px;padding:12px 16px;font-size:14px;font-weight:700;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px">
+        &#127919; Associação
+      </button>
+      <button onclick="switchGame('fill')" id="btnFill" class="btn-secondary" style="flex:1;min-width:140px;padding:12px 16px;font-size:14px;font-weight:700;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px">
+        &#9997;&#65039; Completar
+      </button>
+    </div>
+
+    <!-- ===== SPRINT QUIZ ===== -->
+    <div id="gameSprint" style="display:block">
+      <style>
+      .sg-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:14px;padding:22px 20px;margin-bottom:16px}
+      .sg-question{font-size:16px;font-weight:700;line-height:1.45;color:var(--text-primary);margin-bottom:18px}
+      .sg-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+      @media(max-width:480px){.sg-options{grid-template-columns:1fr}}
+      .sg-opt{background:var(--bg-card-alt);border:2px solid var(--border-card);border-radius:10px;padding:11px 14px;font-size:13px;font-weight:600;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit;color:var(--text-primary);line-height:1.35}
+      .sg-opt:hover:not([disabled]){background:var(--blue-100);border-color:var(--blue-700);color:var(--blue-700)}
+      .sg-opt.correct{background:#eaf3de;border-color:#3B6D11;color:#27500a}
+      .sg-opt.wrong{background:var(--red-100);border-color:#A32D2D;color:#7a1f1f}
+      .sg-opt.reveal{background:var(--bg-card-alt);border-color:#3B6D11;color:#3B6D11}
+      .sg-timer-bar{height:6px;border-radius:3px;background:var(--border-card);margin-bottom:14px;overflow:hidden}
+      .sg-timer-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#2e7d32,#81c784);transition:width .1s linear}
+      .sg-timer-fill.danger{background:linear-gradient(90deg,#A32D2D,#e57373)}
+      .sg-hud{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-size:13px;font-weight:700}
+      .sg-score-badge{background:linear-gradient(135deg,var(--green-700),var(--green-500));color:#fff;padding:4px 12px;border-radius:20px;font-size:13px}
+      .sg-streak{color:var(--green-700);font-size:14px}
+      .sg-feedback{text-align:center;font-size:13px;font-weight:700;min-height:24px;margin-top:10px;padding:6px 12px;border-radius:8px}
+      .sg-feedback.ok{background:#eaf3de;color:#27500a}
+      .sg-feedback.err{background:var(--red-100);color:#7a1f1f}
+      .sg-result{text-align:center;padding:32px 20px}
+      .sg-result-score{font-size:48px;font-weight:900;color:var(--green-700);line-height:1}
+      .sg-result-label{font-size:16px;color:var(--text-secondary);margin-top:8px}
+      .sg-result-msg{font-size:14px;font-weight:600;margin:16px 0;padding:12px;border-radius:10px;background:var(--bg-card-alt)}
+      </style>
+
+      <div class="sg-hud">
+        <span id="sgProgress" style="color:var(--text-muted);font-size:12px">Pergunta 1 / 10</span>
+        <span class="sg-score-badge" id="sgScore">0 pts</span>
+        <span class="sg-streak" id="sgStreak"></span>
+      </div>
+      <div class="sg-timer-bar"><div class="sg-timer-fill" id="sgTimerFill" style="width:100%"></div></div>
+
+      <div class="sg-card" id="sgCard">
+        <div class="sg-question" id="sgQuestion">Carregando...</div>
+        <div class="sg-options" id="sgOptions"></div>
+        <div class="sg-feedback" id="sgFeedback"></div>
+      </div>
+
+      <div id="sgResult" style="display:none">
+        <div class="sg-result">
+          <div class="sg-result-score" id="sgFinalScore">0</div>
+          <div class="sg-result-label">pontos de 100</div>
+          <div class="sg-result-msg" id="sgFinalMsg"></div>
+          <button onclick="startSprint()" class="btn-primary" style="margin-top:16px;padding:12px 32px;font-size:15px;font-weight:800;border-radius:10px">&#128260; Jogar novamente</button>
+        </div>
+      </div>
+
+      <div id="sgStart" style="text-align:center;padding:20px 0">
+        <p style="color:var(--text-secondary);font-size:14px;margin-bottom:16px">10 perguntas · 15 segundos cada · máximo 100 pontos</p>
+        <button onclick="startSprint()" class="btn-primary" style="padding:14px 36px;font-size:15px;font-weight:800;border-radius:10px">&#9889; Iniciar Sprint</button>
+      </div>
+    </div>
+
+    <!-- ===== JOGO DE ASSOCIAÇÃO ===== -->
+    <div id="gameMatch" style="display:none">
+      <style>
+      .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+      @media(max-width:420px){.match-grid{grid-template-columns:1fr}}
+      .match-card{background:var(--bg-card-alt);border:2px solid var(--border-card);border-radius:10px;padding:10px 13px;font-size:13px;font-weight:600;cursor:pointer;text-align:center;line-height:1.35;min-height:52px;display:flex;align-items:center;justify-content:center;transition:all .18s;color:var(--text-primary)}
+      .match-card.term{background:var(--blue-100);border-color:var(--blue-700);color:var(--blue-700)}
+      .match-card.selected{box-shadow:0 0 0 3px var(--green-700);border-color:var(--green-700);transform:scale(1.03)}
+      .match-card.matched{background:#eaf3de;border-color:#3B6D11;color:#27500a;cursor:default;opacity:.75}
+      .match-card.wrong-flash{animation:wrongFlash .35s}
+      @keyframes wrongFlash{0%,100%{background:var(--bg-card-alt)}50%{background:var(--red-100);border-color:#A32D2D}}
+      .match-progress{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
+      .match-dot{width:12px;height:12px;border-radius:50%;background:var(--border-card);transition:background .2s}
+      .match-dot.done{background:var(--green-700)}
+      </style>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <span style="font-size:13px;font-weight:700;color:var(--text-muted)" id="matchInfo">Selecione um termo e depois sua definição</span>
+        <button onclick="initMatch()" class="btn-secondary" style="font-size:12px;padding:6px 14px;border-radius:8px">&#128260; Novo</button>
+      </div>
+      <div class="match-progress" id="matchProgress"></div>
+      <div class="match-grid" id="matchGame"></div>
+      <div id="matchScore" style="text-align:center;font-weight:700;color:var(--green-700);font-size:15px;min-height:24px"></div>
+    </div>
+
+    <!-- ===== COMPLETAR LACUNA ===== -->
+    <div id="gameFill" style="display:none">
+      <style>
+      .fill-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:14px;padding:20px;margin-bottom:14px}
+      .fill-q{font-size:15px;font-weight:600;line-height:1.6;color:var(--text-primary);margin-bottom:14px}
+      .fill-blank{display:inline-block;min-width:120px;border-bottom:2px solid var(--green-700);color:var(--green-700);font-weight:800;text-align:center;padding:0 6px}
+      .fill-opts{display:flex;gap:8px;flex-wrap:wrap}
+      .fill-opt{background:var(--bg-card-alt);border:2px solid var(--border-card);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--text-primary);transition:all .15s}
+      .fill-opt:hover:not([disabled]){background:var(--blue-100);border-color:var(--blue-700);color:var(--blue-700)}
+      .fill-opt.correct{background:#eaf3de;border-color:#3B6D11;color:#27500a}
+      .fill-opt.wrong{background:var(--red-100);border-color:#A32D2D;color:#7a1f1f}
+      .fill-result{font-size:12px;font-weight:700;margin-top:8px;min-height:18px}
+      .fill-result.ok{color:#27500a}.fill-result.err{color:#7a1f1f}
+      </style>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <span style="font-size:13px;color:var(--text-muted)" id="fillInfo">Complete a frase — escolha a opção correta</span>
+        <button onclick="initFill()" class="btn-secondary" style="font-size:12px;padding:6px 14px;border-radius:8px">&#128260; Novo</button>
+      </div>
+      <div id="fillCards"></div>
+      <div id="fillScore" style="text-align:center;font-weight:700;color:var(--green-700);font-size:15px;min-height:24px;margin-top:8px"></div>
+    </div>
+
   </div>
 </section>
 
@@ -9050,17 +9163,157 @@ function filterFC(val){
 })();
 showFC();
 
-// === MATCH GAME ===
-var matchState={selected:null,matched:0};
+// === GAME SWITCHER ===
+function switchGame(which){
+  ['sprint','match','fill'].forEach(function(g){
+    document.getElementById('game'+g.charAt(0).toUpperCase()+g.slice(1)).style.display = g===which?'block':'none';
+    var btn = document.getElementById('btn'+g.charAt(0).toUpperCase()+g.slice(1));
+    if(btn){ btn.className = g===which?'btn-primary':'btn-secondary'; btn.style.cssText=btn.style.cssText; }
+  });
+  document.getElementById('btnSprint').style.cssText='flex:1;min-width:140px;padding:12px 16px;font-size:14px;font-weight:700;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px';
+  document.getElementById('btnMatch').style.cssText='flex:1;min-width:140px;padding:12px 16px;font-size:14px;font-weight:700;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px';
+  document.getElementById('btnFill').style.cssText='flex:1;min-width:140px;padding:12px 16px;font-size:14px;font-weight:700;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px';
+  if(which==='match') initMatch();
+  if(which==='fill') initFill();
+}
+
+// === SPRINT QUIZ ===
+var SPRINT_QS = [
+  {q:'Qual hormônio é produzido pelas taças endometriais da égua?',opts:['eCG / PMSG','FSH','LH','Progesterona'],a:0},
+  {q:'Qual o sinal clínico mais específico de piometra fechada em cadelas?',opts:['Distensão abdominal sem corrimento','Corrimento purulento','Anorexia','Poliúria'],a:0},
+  {q:'O IFN-τ (tau) é o fator de reconhecimento materno da gestação em qual espécie?',opts:['Bovinos / Ovinos','Equinos','Suínos','Cadelas'],a:0},
+  {q:'Qual patologia é causa mais comum de subfertilidade adquirida em touros?',opts:['Degeneração testicular','Hipoplasia','Criptorquidismo','Vesiculite'],a:0},
+  {q:'Tratamento de eleição para TVT em cães:',opts:['Vincristina IV semanal','Doxorrubicina','Cirurgia','Radioterapia'],a:0},
+  {q:'Qual espécie tem ovulação na fossa ovulatória (exclusivo)?',opts:['Égua','Vaca','Ovelha','Cadela'],a:0},
+  {q:'Em carneiros, a epididimite granulomatosa é causada principalmente por:',opts:['Brucella ovis','Brucella abortus','E. coli','Mycoplasma'],a:0},
+  {q:'Priapismo em garanhões é contraindição de qual fármaco?',opts:['Acepromazina','Xilazina','Butorfanol','Cetamina'],a:0},
+  {q:'Qual o período mínimo de repouso após degeneração testicular para reavaliação?',opts:['60 dias','30 dias','15 dias','90 dias'],a:0},
+  {q:'Castração antes do 1º cio reduz o risco de tumor mamário em cadelas para:',opts:['0,05%','8%','26%','50%'],a:0},
+  {q:'Qual agente causa aborto "tufão" em éguas (surto em galpão)?',opts:['EHV-1','Leptospira','Brucella','Neospora'],a:0},
+  {q:'O exsudato achocolatado fétido pós-parto na vaca indica:',opts:['Metrite','Endometrite','Piometra','Mastite'],a:0},
+  {q:'Qual hormônio é o tratamento de cisto folicular na vaca?',opts:['GnRH','PGF2α','Progesterona','FSH'],a:0},
+  {q:'Neospora caninum — principal causa de aborto bovino no Brasil. Hospedeiro definitivo:',opts:['Cão','Gato','Bovino','Humano'],a:0},
+  {q:'Toxoplasma gondii — hospedeiro definitivo:',opts:['Gato','Cão','Ovelha','Suíno'],a:0},
+  {q:'Qual a duração normal da gestação em éguas?',opts:['335–342 dias','280 dias','114 dias','150 dias'],a:0},
+  {q:'Síndrome da feminilização em cão (ginecomastia, alopecia bilateral) é causada por:',opts:['Sertolioma','Seminoma','HPB','Leydigocitoma'],a:0},
+  {q:'Para diagnóstico de endometrite em éguas, a citologia uterina usa qual limiar de PMNs?',opts:['≥2% PMNs','≥10% PMNs','≥20% PMNs','≥5% PMNs'],a:0},
+  {q:'Qual o agente etiológico principal da metrite pós-parto tardia na vaca?',opts:['Arcanobacterium pyogenes','E. coli','Streptococcus','Leptospira'],a:0},
+  {q:'Piometra aberta vs fechada: qual é emergência imediata?',opts:['Fechada','Aberta','Ambas igual','Depende da raça'],a:0},
+  {q:'Circunferência escrotal mínima para touro de 24 meses é:',opts:['≥34 cm','≥30 cm','≥28 cm','≥36 cm'],a:0},
+  {q:'Qual placenta é exclusiva dos equinos?',opts:['Difusa epiteliocorial adeciduada','Cotiledonária','Zonária','Discóide'],a:0},
+  {q:'PPV (Parvovírus Suíno) causa:',opts:['SMEDI em porcas','Aborto equino','Epididimite','Mastite'],a:0},
+  {q:'Qual hormônio contrai o miométrio e auxilia na drenagem linfática uterina pós-IA em éguas suscetíveis?',opts:['Ocitocina','GnRH','Progesterona','FSH'],a:0},
+  {q:'CMT (California Mastitis Test) é utilizado para diagnosticar:',opts:['Mastite subclínica','Piometra','Endometrite','Orquite'],a:0},
+];
+
+var sprintState={};
+function shuffle(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+function startSprint(){
+  document.getElementById('sgStart').style.display='none';
+  document.getElementById('sgResult').style.display='none';
+  document.getElementById('sgCard').style.display='block';
+  var qs=shuffle(SPRINT_QS).slice(0,10);
+  sprintState={qs:qs,idx:0,score:0,streak:0,timer:null};
+  showSprintQ();
+}
+
+function showSprintQ(){
+  var s=sprintState;
+  if(s.idx>=s.qs.length){endSprint();return;}
+  var q=s.qs[s.idx];
+  document.getElementById('sgProgress').textContent='Pergunta '+(s.idx+1)+' / '+s.qs.length;
+  document.getElementById('sgScore').textContent=s.score+' pts';
+  document.getElementById('sgStreak').textContent=s.streak>=2?'🔥 x'+s.streak:'';
+  document.getElementById('sgFeedback').textContent='';
+  document.getElementById('sgFeedback').className='sg-feedback';
+  document.getElementById('sgQuestion').textContent=q.q;
+  var opts=document.getElementById('sgOptions');opts.innerHTML='';
+  // embaralhar opções mantendo rastreio da correta
+  var idxs=[0,1,2,3];shuffle(idxs);
+  var correctShuffledPos=idxs.indexOf(q.a);
+  idxs.forEach(function(oi,pos){
+    var b=document.createElement('button');
+    b.className='sg-opt';
+    b.textContent=q.opts[oi];
+    b.setAttribute('data-pos',pos);
+    b.setAttribute('data-correct',pos===correctShuffledPos?'1':'0');
+    b.onclick=function(){answerSprint(b,correctShuffledPos,pos);};
+    opts.appendChild(b);
+  });
+  // timer 15s
+  clearInterval(s.timer);
+  var tStart=Date.now(), dur=15000;
+  var fill=document.getElementById('sgTimerFill');
+  fill.style.width='100%'; fill.className='sg-timer-fill';
+  s.timer=setInterval(function(){
+    var elapsed=Date.now()-tStart;
+    var pct=Math.max(0,100*(1-elapsed/dur));
+    fill.style.width=pct+'%';
+    if(pct<30) fill.className='sg-timer-fill danger';
+    if(elapsed>=dur){
+      clearInterval(s.timer);
+      document.querySelectorAll('.sg-opt').forEach(function(b){b.disabled=true;if(b.getAttribute('data-correct')==='1')b.classList.add('reveal');});
+      document.getElementById('sgFeedback').textContent='⏱ Tempo esgotado!';
+      document.getElementById('sgFeedback').className='sg-feedback err';
+      sprintState.streak=0;
+      setTimeout(function(){sprintState.idx++;showSprintQ();},1200);
+    }
+  },80);
+}
+
+function answerSprint(el,correctPos,chosenPos){
+  clearInterval(sprintState.timer);
+  document.querySelectorAll('.sg-opt').forEach(function(b){b.disabled=true;});
+  var ok=chosenPos===correctPos;
+  if(ok){
+    el.classList.add('correct');
+    sprintState.streak++;
+    var bonus=sprintState.streak>=3?2:1;
+    var timeLeft=parseFloat(document.getElementById('sgTimerFill').style.width)/100;
+    var pts=Math.round(10*timeLeft*bonus);
+    sprintState.score+=pts;
+    document.getElementById('sgFeedback').textContent='✓ Correto! +'+pts+(bonus>1?' (bônus x'+bonus+')':'');
+    document.getElementById('sgFeedback').className='sg-feedback ok';
+  } else {
+    el.classList.add('wrong');
+    sprintState.streak=0;
+    document.querySelectorAll('.sg-opt').forEach(function(b){if(b.getAttribute('data-correct')==='1')b.classList.add('reveal');});
+    document.getElementById('sgFeedback').textContent='✗ Incorreto!';
+    document.getElementById('sgFeedback').className='sg-feedback err';
+  }
+  document.getElementById('sgScore').textContent=sprintState.score+' pts';
+  document.getElementById('sgStreak').textContent=sprintState.streak>=2?'🔥 x'+sprintState.streak:'';
+  setTimeout(function(){sprintState.idx++;showSprintQ();},1100);
+}
+
+function endSprint(){
+  document.getElementById('sgCard').style.display='none';
+  var el=document.getElementById('sgResult');el.style.display='block';
+  var s=sprintState.score;
+  document.getElementById('sgFinalScore').textContent=s;
+  var msg=s>=80?'🏆 Excelente! Você domina reprodução animal!':s>=50?'👍 Bom desempenho! Revise os temas com erro.':'📚 Continue estudando — você consegue!';
+  document.getElementById('sgFinalMsg').textContent=msg;
+}
+
+// === MATCH GAME (ASSOCIAÇÃO) ===
+var matchState={selected:null,matched:0,total:0};
+var MATCH_N=8;
+
 function initMatch(){
-  matchState={selected:null,matched:0};
-  var g=document.getElementById('matchGame');g.innerHTML='';
+  matchState={selected:null,matched:0,total:MATCH_N};
+  var chosen=shuffle(MATCH_PAIRS).slice(0,MATCH_N);
   var items=[];
-  MATCH_PAIRS.forEach(function(p,i){
+  chosen.forEach(function(p,i){
     items.push({type:'term',idx:i,text:p.term});
     items.push({type:'def',idx:i,text:p.def});
   });
-  for(var i=items.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=items[i];items[i]=items[j];items[j]=t}
+  items=shuffle(items);
+  var g=document.getElementById('matchGame');g.innerHTML='';
+  var prog=document.getElementById('matchProgress');prog.innerHTML='';
+  for(var i=0;i<MATCH_N;i++){
+    var dot=document.createElement('div');dot.className='match-dot';dot.id='matchDot'+i;prog.appendChild(dot);
+  }
   items.forEach(function(item){
     var d=document.createElement('div');
     d.className='match-card '+item.type;
@@ -9070,25 +9323,82 @@ function initMatch(){
     d.onclick=function(){selectMatch(d)};
     g.appendChild(d);
   });
-  document.getElementById('matchScore').textContent='0/'+MATCH_PAIRS.length;
+  document.getElementById('matchScore').textContent='';
+  document.getElementById('matchInfo').textContent='Selecione um termo depois a definição correspondente';
 }
+
 function selectMatch(el){
   if(el.classList.contains('matched')) return;
   if(!matchState.selected){
     el.classList.add('selected');matchState.selected=el;
   } else {
     var prev=matchState.selected;
-    if(prev===el){prev.classList.remove('selected');matchState.selected=null;return}
+    if(prev===el){prev.classList.remove('selected');matchState.selected=null;return;}
     if(prev.getAttribute('data-idx')===el.getAttribute('data-idx')&&prev.getAttribute('data-type')!==el.getAttribute('data-type')){
       prev.classList.remove('selected');prev.classList.add('matched');el.classList.add('matched');
+      var di=document.getElementById('matchDot'+prev.getAttribute('data-idx'));if(di)di.classList.add('done');
       matchState.matched++;matchState.selected=null;
-      document.getElementById('matchScore').textContent=matchState.matched+'/'+MATCH_PAIRS.length;
-      if(matchState.matched>=MATCH_PAIRS.length) document.getElementById('matchScore').textContent+=' \u{1F389} Completo!';
+      document.getElementById('matchScore').textContent=matchState.matched+'/'+matchState.total+(matchState.matched>=matchState.total?' 🎉 Completo!':'');
     } else {
-      prev.classList.remove('selected');el.classList.add('selected');matchState.selected=el;
+      prev.classList.add('wrong-flash');el.classList.add('wrong-flash');
+      setTimeout(function(){prev.classList.remove('wrong-flash','selected');el.classList.remove('wrong-flash');},380);
+      matchState.selected=null;
     }
   }
 }
+
+// === COMPLETAR LACUNA ===
+var FILL_QS = [
+  {q:'Na égua, a citologia uterina indica endometrite quando há ≥ ___% de PMNs.',blanks:['2%','5%','10%','15%'],a:0,exp:'≥2% de PMNs = endometrite em égua'},
+  {q:'O tratamento de piometra fechada em cadelas é exclusivamente ___.',blanks:['Cirúrgico (OSH)','Aglepristone','PGF2α','ATB oral'],a:0,exp:'Piometra fechada = risco de ruptura = OSH obrigatória'},
+  {q:'A degeneração testicular é avaliada com reavaliação após ___ dias de repouso.',blanks:['60','30','90','15'],a:0,exp:'Um ciclo espermatogênico completo leva ~60 dias'},
+  {q:'Neospora caninum tem o cão como hospedeiro ___ e o bovino como hospedeiro intermediário.',blanks:['definitivo','intermediário','acidental','paratênico'],a:0,exp:'Cão = hospedeiro definitivo; bovino = intermediário'},
+  {q:'O CMT (California Mastitis Test) detecta mastite por reação entre hidróxido de sódio e o leite, indicando aumento de ___.',blanks:['células somáticas','proteínas','lactose','gordura'],a:0,exp:'Células somáticas elevadas = inflamação da glândula mamária'},
+  {q:'Acepromazina é contraindicada em garanhões porque causa ___ por bloqueio alfa-adrenérgico.',blanks:['Priapismo','Parafimose','Orquite','Hipoplasia'],a:0,exp:'Bloqueio alfa → vasodilatação → pênis não retrai = priapismo'},
+  {q:'O sinal mais importante de placentite equina é ___.',blanks:['Lactação prematura','Aborto imediato','Corrimento purulento','Cólica grave'],a:0,exp:'Lactação prematura é o sinal clínico mais precoce e específico'},
+  {q:'Sertolioma produz excesso de ___, causando síndrome de feminilização no cão.',blanks:['Estrógeno','Testosterona','LH','FSH'],a:0,exp:'Células de Sertoli neoplásicas produzem estrógeno em excesso'},
+];
+
+var fillState={};
+function initFill(){
+  fillState={score:0,total:FILL_QS.length,done:0};
+  var qs=shuffle(FILL_QS).slice(0,6);
+  fillState.total=qs.length;
+  var html='';
+  qs.forEach(function(q,i){
+    var opts='';
+    shuffle([0,1,2,3]).forEach(function(oi){
+      opts+='<button class="fill-opt" onclick="answerFill(this,'+oi+','+q.a+','+i+')" data-qi="'+i+'">'+q.blanks[oi]+'</button>';
+    });
+    html+='<div class="fill-card" id="fillCard'+i+'"><div class="fill-q">'+q.q.replace('___','<span class="fill-blank">?</span>')+'</div><div class="fill-opts">'+opts+'</div><div class="fill-result" id="fillRes'+i+'"></div></div>';
+  });
+  document.getElementById('fillCards').innerHTML=html;
+  document.getElementById('fillScore').textContent='';
+  document.getElementById('fillInfo').textContent='Complete a frase — escolha a opção correta';
+  fillState.qs=qs;
+}
+
+function answerFill(el,chosen,correct,qi){
+  var card=document.getElementById('fillCard'+qi);
+  card.querySelectorAll('.fill-opt').forEach(function(b){b.disabled=true;});
+  var res=document.getElementById('fillRes'+qi);
+  if(chosen===correct){
+    el.classList.add('correct');
+    res.textContent='✓ Correto! '+fillState.qs[qi].exp;
+    res.className='fill-result ok';
+    fillState.score++;
+  } else {
+    el.classList.add('wrong');
+    card.querySelectorAll('.fill-opt').forEach(function(b){if(parseInt(b.textContent)===correct||b.textContent===fillState.qs[qi].blanks[correct])b.classList.add('correct');});
+    res.textContent='✗ Incorreto — '+fillState.qs[qi].exp;
+    res.className='fill-result err';
+  }
+  fillState.done++;
+  if(fillState.done>=fillState.total){
+    document.getElementById('fillScore').textContent='Resultado: '+fillState.score+'/'+fillState.total+(fillState.score>=fillState.total*0.8?' 🏆':'');
+  }
+}
+
 initMatch();
 
 // === MORFOLOGIA ESPERMÁTICA ===
@@ -9668,13 +9978,13 @@ window.infSetSp = function(sp, el){
 }
 </style>
 
-<!-- FAB -->
-<button id="tocFab" onclick="openTocDrawer()" aria-label="Abrir sumário" style="position:fixed;bottom:24px;right:20px;z-index:99999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1b5e20,#388e3c);border:none;color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(27,94,32,.5),0 2px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:inherit;padding:0;outline:none;">
-  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;display:block;">
+<!-- FAB — aba lateral esquerda, sempre visível em qualquer scroll -->
+<button id="tocFab" onclick="openTocDrawer()" aria-label="Abrir sumário" style="position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:99999;width:36px;height:96px;border-radius:0 10px 10px 0;background:linear-gradient(180deg,#1b5e20,#2e7d32,#388e3c);border:none;color:#fff;cursor:pointer;box-shadow:3px 0 18px rgba(27,94,32,.55),1px 0 6px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;font-family:inherit;padding:0;outline:none;">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex-shrink:0;">
     <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
     <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
   </svg>
-  <span style="font-size:9px;font-weight:800;letter-spacing:.5px;margin-top:2px;color:#fff;text-transform:uppercase;">Menu</span>
+  <span style="font-size:8px;font-weight:900;letter-spacing:.6px;color:#fff;text-transform:uppercase;writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);line-height:1;">ÍNDICE</span>
 </button>
 
 <!-- Overlay -->
