@@ -4167,7 +4167,8 @@ var CHAPTERS = [
   <h3 class="iatf-title">Biotecnologias da Reprodução Animal</h3>
 </div>
 <div class="iatf-tabs">
-  <button class="iatf-tab active" onclick="iatfSetTab('ia',this)">IA / IATF</button>
+  <button class="iatf-tab active" onclick="iatfSetTab('ia',this)">IA</button>
+  <button class="iatf-tab" onclick="iatfSetTab('iatf',this)">IATF</button>
   <button class="iatf-tab" onclick="iatfSetTab('te',this)">TE <span class="iatf-badge iatf-binfo">Transferência de embrião</span></button>
   <button class="iatf-tab" onclick="iatfSetTab('opu',this)">OPU <span class="iatf-badge iatf-bsuc">Aspiração folicular</span></button>
   <button class="iatf-tab" onclick="iatfSetTab('fiv',this)">FIV</button>
@@ -4176,15 +4177,12 @@ var CHAPTERS = [
   <button class="iatf-tab" onclick="iatfSetTab('clonagem',this)">Clonagem</button>
 </div>
 
-<!-- IA / IATF -->
+<!-- IA -->
 <div class="iatf-panel active" id="iatf-panel-ia">
-  <div class="iatf-prova-box"><strong>IA — Inseminação Artificial:</strong> técnica de maior impacto na reprodução animal. Permite uso de sêmen sexado, congelado e transporte internacional de genética. IATF (Tempo Fixo) elimina detecção de cio — Brasil lidera o mundo em IATF bovina com ~15 milhões de doses/ano.</div>
+  <div class="iatf-prova-box"><strong>IA — Inseminação Artificial:</strong> técnica de maior impacto na reprodução animal. Permite uso de sêmen sexado, congelado e transporte internacional de genética. Um único touro elite pode gerar centenas de milhares de doses por ano.</div>
   <div class="iatf-sp-tabs">
-    <button class="iatf-sp-tab active" onclick="iatfSetSp('ia_fund',this)">Fundamentos da IA</button>
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('ia_fund',this)">Fundamentos</button>
     <button class="iatf-sp-tab" onclick="iatfSetSp('ia_semen',this)">Sêmen e parâmetros</button>
-    <button class="iatf-sp-tab" onclick="iatfSetSp('ia_p4e2',this)">Protocolo P4+E2 <span class="iatf-badge iatf-bsuc">Brasil</span></button>
-    <button class="iatf-sp-tab" onclick="iatfSetSp('ia_ovsynch',this)">Ovsynch / Double Ovsynch</button>
-    <button class="iatf-sp-tab" onclick="iatfSetSp('ia_hormonios',this)">Hormônios</button>
     <button class="iatf-sp-tab" onclick="iatfSetSp('ia_especies',this)">Por espécie</button>
   </div>
 
@@ -4193,7 +4191,7 @@ var CHAPTERS = [
     <div class="iatf-step"><div class="iatf-step-num">1</div><div class="iatf-step-content"><div class="iatf-step-title">Coleta e avaliação do sêmen</div><div class="iatf-step-sub">Vagina artificial (padrão) ou eletroejaculação. Parâmetros: motilidade, vigor, morfologia, concentração</div></div></div>
     <div class="iatf-step"><div class="iatf-step-num">2</div><div class="iatf-step-content"><div class="iatf-step-title">Processamento e criopreservação</div><div class="iatf-step-sub">Diluidores (Tris, leite, gema de ovo) → envasamento em palhetas 0,25 mL ou 0,5 mL → curva de resfriamento → nitrogênio líquido (−196 °C)</div></div></div>
     <div class="iatf-step"><div class="iatf-step-num">3</div><div class="iatf-step-content"><div class="iatf-step-title">Descongelamento e deposição</div><div class="iatf-step-sub">37–38 °C por 30–45 s. Deposição transcervical no corpo do útero (bovinos) ou no corno uterino ipsilateral ao folículo dominante (equinos: via endoscopia)</div></div></div>
-    <div class="iatf-step"><div class="iatf-step-num">4</div><div class="iatf-step-content"><div class="iatf-step-title">Sincronização do estro / IATF</div><div class="iatf-step-sub">IA convencional: detecção de estro + IA 12–18 h após. IATF: protocolo hormonal → IA em tempo fixo sem detecção de estro</div></div></div>
+    <div class="iatf-step"><div class="iatf-step-num">4</div><div class="iatf-step-content"><div class="iatf-step-title">Timing: detecção de cio ou IATF</div><div class="iatf-step-sub">IA convencional: detecção de estro + IA 12–18 h após. IATF: protocolo hormonal → IA em tempo fixo sem detecção de estro (ver aba IATF)</div></div></div>
     <div class="iatf-memo"><div class="iatf-memo-label">Vantagens da IA</div><div class="iatf-memo-text">Disseminação de genética superior · Controle de DSTs venéreas · 1 touro = centenas de doses<br>Rastreabilidade genética · Sêmen sexado (até 90% do sexo desejado)</div></div>
   </div>
 
@@ -4212,8 +4210,32 @@ var CHAPTERS = [
     <div class="iatf-memo"><div class="iatf-memo-label">Classificação dos defeitos espermáticos</div><div class="iatf-memo-text">MAIORES (afetam fertilização): cabeça piriforme, acrossomo dobrado, cauda dobrada com gota, inserção anormal da PI<br>MENORES (menor impacto): gota citoplasmática distal, cauda simples dobrada</div></div>
   </div>
 
-  <div class="iatf-sp-panel" id="iatf-sp-ia_p4e2">
-    <div class="iatf-info-box">Protocolo mais usado no Brasil — base de P4 intravaginal + estradiol. Aplicado em ~91% das IAs bovinas no Brasil em 2023. Indicado especialmente para <span class="iatf-hl">Bos indicus</span> e bovinos de corte.</div>
+  <div class="iatf-sp-panel" id="iatf-sp-ia_especies">
+    <table class="iatf-ref-table">
+      <tr><th>Espécie</th><th>Técnica de deposição</th><th>Sinc. do estro</th><th>Observações</th></tr>
+      <tr><td><strong>Bovinos</strong></td><td>Transcervical — corpo do útero</td><td>IATF: P4+E2 ou Ovsynch</td><td>Maior volume do mundo; sêmen sexado popular</td></tr>
+      <tr><td><strong>Equinos</strong></td><td>Transcervical com pipeta ou via endoscopia no corno ipsilateral</td><td>Monitoramento US + hCG/Deslorelina</td><td>FIV convencional não funciona → ICSI é padrão</td></tr>
+      <tr><td><strong>Ovinos/Caprinos</strong></td><td>Transcervical (difícil) ou laparoscopia intrauterina</td><td>Esponja de P4 (14 d) + eCG na retirada</td><td>Laparoscopia: maiores taxas com sêmen congelado</td></tr>
+      <tr><td><strong>Suínos</strong></td><td>Transcervical (cateter espiral) ou pós-cervical</td><td>Desmame das leitoas / detecção de cio</td><td>Dose: 2–3 bilhões espermatozoides; nova dose em 12 h</td></tr>
+      <tr><td><strong>Cães</strong></td><td>Vaginal, transcervical ou cirúrgica intrauterina</td><td>Citologia vaginal + P4 sérica ≥5–10 ng/mL</td><td>Sêmen resfriado: 48–72 h de vida; congelado: intrauterino</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- IATF — conteúdo original restaurado -->
+<div class="iatf-panel" id="iatf-panel-iatf">
+  <div class="iatf-prova-box"><strong>IATF — Inseminação Artificial em Tempo Fixo:</strong> protocolo hormonal que permite inseminar todo o lote em hora marcada, sem detecção de cio. Brasil lidera o mundo com ~15 milhões de doses/ano. Indicado especialmente para <span class="iatf-hl">Bos indicus</span> e bovinos de corte.</div>
+  <div class="iatf-sp-tabs">
+    <button class="iatf-sp-tab active" onclick="iatfSetSp('iatf_p4e2',this)">Protocolo P4+E2 <span class="iatf-badge iatf-bsuc">Brasil</span></button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('iatf_ovsynch',this)">Ovsynch / Double Ovsynch</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('iatf_hormonios',this)">Hormônios</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('iatf_categorias',this)">Categorias animais</button>
+    <button class="iatf-sp-tab" onclick="iatfSetSp('iatf_inducao',this)">Indução de puberdade</button>
+  </div>
+
+  <!-- P4+E2 -->
+  <div class="iatf-sp-panel active" id="iatf-sp-iatf_p4e2">
+    <div class="iatf-prova-box"><strong>Protocolo mais usado no Brasil</strong> — base de P4 intravaginal + estradiol. Aplicado em ~91% das IAs bovinas no Brasil em 2023.</div>
     <div class="iatf-sp-tabs" style="margin-top:8px">
       <button class="iatf-sp-tab active" onclick="iatfSetSp('corte3',this)">Corte — 3 manejos</button>
       <button class="iatf-sp-tab" onclick="iatfSetSp('corte4',this)">Corte — 4 manejos</button>
@@ -4221,6 +4243,7 @@ var CHAPTERS = [
       <button class="iatf-sp-tab" onclick="iatfSetSp('novilha',this)">Novilhas</button>
     </div>
     <div class="iatf-sp-panel active" id="iatf-sp-corte3">
+      <div class="iatf-info-box">3 manejos: D0, D8 e D10. Protocolo padrão recomendado — menos estresse animal, menor custo de mão de obra.</div>
       <div class="iatf-proto">
         <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 intravaginal + BE <span class="iatf-badge iatf-binfo">2 mg IM</span></div><div class="iatf-psub">CIDR (1,38 g) ou Repro one/neo · BE induz atresia folicular e sincroniza nova onda · Opcional: PGF2α se CL presente</div></div></div>
         <div class="iatf-prow"><div class="iatf-pday">D8</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α + eCG + CE</div><div class="iatf-psub">PGF2α 0,5 mg · eCG 300 UI · CE 1 mg — luteólise + crescimento folicular + indução de ovulação</div></div></div>
@@ -4229,6 +4252,7 @@ var CHAPTERS = [
       <div class="iatf-memo"><div class="iatf-memo-label">Resumo</div><div class="iatf-memo-text">D0: P4 + BE → D8: retirada + PGF + eCG + CE → D10: IATF (±GnRH)</div></div>
     </div>
     <div class="iatf-sp-panel" id="iatf-sp-corte4">
+      <div class="iatf-info-box">4 manejos: D0, D7, D9 e D11. Indicado quando há alta proporção de CL no lote.</div>
       <div class="iatf-proto">
         <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 + BE 2 mg</div><div class="iatf-psub">Mesmo que protocolo de 3 manejos</div></div></div>
         <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α <span class="iatf-badge iatf-bwarn">1ª dose — luteólise antecipada</span></div><div class="iatf-psub">Dinoprost ou cloprostenol · dispositivo permanece</div></div></div>
@@ -4238,36 +4262,65 @@ var CHAPTERS = [
       <div class="iatf-memo"><div class="iatf-memo-label">Resumo</div><div class="iatf-memo-text">D0: P4+BE → D7: PGF → D9: retirada+PGF+CE+eCG → D11: IATF</div></div>
     </div>
     <div class="iatf-sp-panel" id="iatf-sp-leite">
+      <div class="iatf-info-box">Vacas leiteiras de alta produção: dispositivo 2 g, sem eCG, PGF2α dupla (D7+D8). GnRH no D0 é o Double Ovsynch — maior evidência de benefício nessa categoria.</div>
       <div class="iatf-proto">
         <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 (2 g) + BE 2 mg <span class="iatf-badge iatf-binfo">±GnRH</span></div><div class="iatf-psub">Repro sync 2 g · GnRH no D0 = Double Ovsynch</div></div></div>
         <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α 1ª dose</div><div class="iatf-psub">Dispositivo permanece · luteólise parcial</div></div></div>
-        <div class="iatf-prow"><div class="iatf-pday">D8</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α 2ª dose + CE 0,5 mg</div><div class="iatf-psub">Sem eCG</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D8</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α 2ª dose + CE 0,5 mg</div><div class="iatf-psub">Sem eCG · CE 0,5 mg</div></div></div>
         <div class="iatf-prow"><div class="iatf-pday">D10</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">sem hormônio adicional</span></div><div class="iatf-psub">~48 h após D8</div></div></div>
       </div>
       <div class="iatf-memo"><div class="iatf-memo-label">Resumo leite</div><div class="iatf-memo-text">D0: P4(2g)+BE(±GnRH) → D7: PGF → D8: retirada+PGF+CE → D10: IATF</div></div>
     </div>
     <div class="iatf-sp-panel" id="iatf-sp-novilha">
+      <div class="iatf-info-box">Novilhas têm menor massa lútea e respondem melhor a dispositivos de menor concentração de P4 e menor duração.</div>
       <div class="iatf-proto">
         <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 monodose (0,5 g) + BE 2 mg</div><div class="iatf-psub">Repro one 0,5 g (1º uso) ou multidose 1 g (2º+ uso) · 7 dias</div></div></div>
-        <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α + eCG + CE</div><div class="iatf-psub">eCG 300 UI · CE 0,5 mg · PGF2α 0,5 mg</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α + eCG + CE</div><div class="iatf-psub">eCG 300 UI · CE 0,5 mg (metade da dose de vacas) · PGF2α 0,5 mg</div></div></div>
         <div class="iatf-prow"><div class="iatf-pday">D9</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">~48 h após D7</span></div><div class="iatf-psub">GnRH opcional</div></div></div>
       </div>
-      <div class="iatf-memo"><div class="iatf-memo-label">Diferenças novilhas vs. vacas</div><div class="iatf-memo-text">P4: 0,5 g monodose · 7 dias (não 8) · CE: 0,5 mg (não 1 mg)</div></div>
+      <div class="iatf-memo"><div class="iatf-memo-label">Diferenças novilhas vs. vacas</div><div class="iatf-memo-text">P4: 0,5 g monodose (não 1,38 g) · 7 dias (não 8)<br>CE: 0,5 mg (não 1 mg) · protocolo 2 dias mais curto</div></div>
     </div>
   </div>
 
-  <div class="iatf-sp-panel" id="iatf-sp-ia_ovsynch">
-    <div class="iatf-info-box">Protocolo baseado em GnRH — indicado para Bos taurus e leiteiras. Aplicável onde ésteres de estradiol são proibidos (UE, EUA, Canadá).</div>
-    <div class="iatf-proto">
-      <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH <span class="iatf-badge iatf-binfo">buserelina · lecirrelina</span></div><div class="iatf-psub">Ovula folículo dominante → emergência de nova onda sincronizada</div></div></div>
-      <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α <span class="iatf-badge iatf-bdanger">cloprostenol · dinoprost</span></div><div class="iatf-psub">Luteólise · ±2ª dose no D8</div></div></div>
-      <div class="iatf-prow"><div class="iatf-pday">D9</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH — ovulação sincronizada</div><div class="iatf-psub">Pico de LH → ovulação do folículo dominante</div></div></div>
-      <div class="iatf-prow"><div class="iatf-pday">D9+16h</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">16–20 h após 2º GnRH</span></div><div class="iatf-psub">Sem detecção de estro</div></div></div>
+  <!-- Ovsynch -->
+  <div class="iatf-sp-panel" id="iatf-sp-iatf_ovsynch">
+    <div class="iatf-sp-tabs">
+      <button class="iatf-sp-tab active" onclick="iatfSetSp('ovsynch_std',this)">Ovsynch padrão</button>
+      <button class="iatf-sp-tab" onclick="iatfSetSp('double',this)">Double Ovsynch</button>
+      <button class="iatf-sp-tab" onclick="iatfSetSp('variacoes',this)">Outras variações</button>
     </div>
-    <div class="iatf-memo"><div class="iatf-memo-label">Double Ovsynch — maior resultado em leiteiras</div><div class="iatf-memo-text">D-17: GnRH → D-10: PGF → D-3: GnRH (início Ovsynch) → D0: PGF → D2: GnRH+IATF+16h</div></div>
+    <div class="iatf-sp-panel active" id="iatf-sp-ovsynch_std">
+      <div class="iatf-info-box">Protocolo baseado em GnRH — indicado para Bos taurus e leiteiras. Aplicável onde ésteres de estradiol são proibidos (UE, EUA, Canadá).</div>
+      <div class="iatf-proto">
+        <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH <span class="iatf-badge iatf-binfo">buserelina · lecirrelina</span></div><div class="iatf-psub">Ovula folículo dominante → emergência de nova onda sincronizada</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D7</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α <span class="iatf-badge iatf-bdanger">cloprostenol · dinoprost</span></div><div class="iatf-psub">Luteólise · ±2ª dose no D8 garante luteólise em até 25% das não respondedoras</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D9</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH — ovulação sincronizada</div><div class="iatf-psub">Pico de LH → ovulação do folículo dominante da onda sincronizada</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D9+16h</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">IATF <span class="iatf-badge iatf-bsuc">16–20 h após 2º GnRH</span></div><div class="iatf-psub">Sem detecção de estro</div></div></div>
+      </div>
+      <div class="iatf-memo"><div class="iatf-memo-label">Resumo</div><div class="iatf-memo-text">D0: GnRH → D7: PGF(±D8) → D9: GnRH → D9+16h: IATF</div></div>
+    </div>
+    <div class="iatf-sp-panel" id="iatf-sp-double">
+      <div class="iatf-prova-box"><strong>Double Ovsynch</strong> — maior taxa de prenhez em vacas leiteiras de alta produção. Adiciona pré-sincronizador antes do Ovsynch padrão.</div>
+      <div class="iatf-proto">
+        <div class="iatf-prow"><div class="iatf-pday">D-17</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-gray"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH <span class="iatf-badge iatf-binfo">pré-sincronizador</span></div><div class="iatf-psub">Ovula folículo dominante · inicia nova onda controlada</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D-10</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α</div><div class="iatf-psub">Luteólise do CL formado após o 1º GnRH</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D-3</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH — início do Ovsynch</div><div class="iatf-psub">Vaca entra no D0 do Ovsynch padronizada no D6–7 do ciclo</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">PGF2α</div><div class="iatf-psub">Luteólise</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D2</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">GnRH → IATF +16 h</div><div class="iatf-psub">Ovulação sincronizada</div></div></div>
+      </div>
+    </div>
+    <div class="iatf-sp-panel" id="iatf-sp-variacoes">
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Clique para ver detalhes</p>
+      <div class="iatf-card" onclick="iatfInfo('var','cosynch')"><div class="iatf-card-title">CO-Synch</div><div class="iatf-card-sub">IATF no momento do 2º GnRH · reduz um manejo</div></div>
+      <div class="iatf-card" onclick="iatfInfo('var','presynch')"><div class="iatf-card-title">Pre-Synch</div><div class="iatf-card-sub">2 doses de PGF2α antes do Ovsynch · vacas ciclando</div></div>
+      <div class="iatf-card" onclick="iatfInfo('var','selectsynch')"><div class="iatf-card-title">Select Synch</div><div class="iatf-card-sub">GnRH + PGF2α apenas · detecção de estro pós-PGF2α</div></div>
+      <div class="iatf-card" onclick="iatfInfo('var','cidrsynch')"><div class="iatf-card-title">Ovsynch + CIDR <span class="iatf-badge iatf-binfo">anestro</span></div><div class="iatf-card-sub">P4 exógena durante protocolo · vacas sem CL</div></div>
+      <div class="iatf-info-panel iatf-empty" id="iatf-info-var">Clique em uma variação.</div>
+    </div>
   </div>
 
-  <div class="iatf-sp-panel" id="iatf-sp-ia_hormonios">
+  <!-- Hormônios -->
+  <div class="iatf-sp-panel" id="iatf-sp-iatf_hormonios">
     <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Clique em cada hormônio para ver mecanismo, dose e indicação</p>
     <div class="iatf-horm-grid">
       <div class="iatf-horm-card" onclick="iatfInfo('h','be')"><div class="iatf-horm-name">BE — benzoato de estradiol</div><div class="iatf-horm-sub">Sincronização da onda folicular · D0</div></div>
@@ -4280,15 +4333,39 @@ var CHAPTERS = [
     <div class="iatf-info-panel iatf-empty" id="iatf-info-h">Clique em um hormônio.</div>
   </div>
 
-  <div class="iatf-sp-panel" id="iatf-sp-ia_especies">
-    <table class="iatf-ref-table">
-      <tr><th>Espécie</th><th>Técnica de deposição</th><th>Sinc. do estro</th><th>Observações</th></tr>
-      <tr><td><strong>Bovinos</strong></td><td>Transcervical — corpo do útero</td><td>IATF: P4+E2 ou Ovsynch</td><td>Maior volume do mundo; sêmen sexado popular</td></tr>
-      <tr><td><strong>Equinos</strong></td><td>Transcervical com pipeta ou via endoscopia no corno ipsilateral</td><td>Monitoramento US + hCG/Deslorelina</td><td>FIV convencional não funciona → ICSI é padrão</td></tr>
-      <tr><td><strong>Ovinos/Caprinos</strong></td><td>Transcervical (difícil) ou laparoscopia intrauterina</td><td>Esponja de P4 (14 d) + eCG na retirada</td><td>Laparoscopia: maiores taxas com sêmen congelado</td></tr>
-      <tr><td><strong>Suínos</strong></td><td>Transcervical (cateter espiral) ou pós-cervical</td><td>Desmame das leitoas / detecção de cio</td><td>Dose: 2–3 bilhões espermatozoides; nova dose em 12 h</td></tr>
-      <tr><td><strong>Cães</strong></td><td>Vaginal, transcervical ou cirúrgica intrauterina</td><td>Citologia vaginal + P4 sérica ≥5–10 ng/mL</td><td>Sêmen resfriado: 48–72 h de vida; congelado: intrauterino</td></tr>
-    </table>
+  <!-- Categorias -->
+  <div class="iatf-sp-panel" id="iatf-sp-iatf_categorias">
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Clique para ver particularidades do protocolo em cada categoria</p>
+    <div class="iatf-card" onclick="iatfInfo('cat','vacas_cria')"><div class="iatf-card-title">Vacas de cria (primíparas e multíparas lactantes)</div><div class="iatf-card-sub">Anestro pós-parto · ECC · eCG essencial</div></div>
+    <div class="iatf-card" onclick="iatfInfo('cat','novilhas')"><div class="iatf-card-title">Novilhas (ciclando)</div><div class="iatf-card-sub">P4 0,5 g · CE 0,5 mg · 7 dias · avaliação ginecológica prévia</div></div>
+    <div class="iatf-card" onclick="iatfInfo('cat','vacas_solteiras')"><div class="iatf-card-title">Vacas solteiras (sem bezerro ao pé)</div><div class="iatf-card-sub">Alta proporção de CL · 4 manejos indicado</div></div>
+    <div class="iatf-card" onclick="iatfInfo('cat','leiteiras')"><div class="iatf-card-title">Vacas leiteiras de alta produção</div><div class="iatf-card-sub">P4 2 g · sem eCG · Double Ovsynch · PGF dupla</div></div>
+    <div class="iatf-card" onclick="iatfInfo('cat','bos_indicus')"><div class="iatf-card-title">Bos indicus (Nelore e cruzados) <span class="iatf-badge iatf-bsuc">Brasil</span></div><div class="iatf-card-sub">P4+E2 · eCG 300 UI obrigatório · 4 ondas foliculares</div></div>
+    <div class="iatf-info-panel iatf-empty" id="iatf-info-cat">Clique em uma categoria.</div>
+  </div>
+
+  <!-- Indução de puberdade -->
+  <div class="iatf-sp-panel" id="iatf-sp-iatf_inducao">
+    <div class="iatf-info-box">Novilhas pré-púberes ou em transição precisam de protocolo de indução antes da IATF. Avaliar: peso (≥65% do peso adulto), ECC, sanidade, útero e ovários à US.</div>
+    <div class="iatf-sp-tabs">
+      <button class="iatf-sp-tab active" onclick="iatfSetSp('aval',this)">Avaliação prévia</button>
+      <button class="iatf-sp-tab" onclick="iatfSetSp('proto_inducao',this)">Protocolo de indução</button>
+    </div>
+    <div class="iatf-sp-panel active" id="iatf-sp-aval">
+      <div class="iatf-card" onclick="iatfInfo('ind','ciclica')"><div class="iatf-card-title">Novilha cíclica</div><div class="iatf-card-sub">CL presente · útero desenvolvido · inicia protocolo padrão</div></div>
+      <div class="iatf-card" onclick="iatfInfo('ind','transicao')"><div class="iatf-card-title">Novilha em transição</div><div class="iatf-card-sub">Folículos >8 mm · útero >1,5 cm · pré-ovulatória</div></div>
+      <div class="iatf-card" onclick="iatfInfo('ind','prepubere')"><div class="iatf-card-title">Novilha pré-púbere</div><div class="iatf-card-sub">Folículos pequenos · útero <1,5 cm · indução obrigatória</div></div>
+      <div class="iatf-info-panel iatf-empty" id="iatf-info-ind">Clique em uma categoria.</div>
+    </div>
+    <div class="iatf-sp-panel" id="iatf-sp-proto_inducao">
+      <div class="iatf-proto">
+        <div class="iatf-prow"><div class="iatf-pday">D0</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-purple"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Dispositivo P4 (0,5–1 g) + BE 2 mg</div><div class="iatf-psub">7–8 dias de uso</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D7–8</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-coral"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Retirada dispositivo + PGF2α</div><div class="iatf-psub">Luteólise se houver CL formado</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D30–40</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-blue"></div><div class="iatf-pline"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Reavaliação ginecológica</div><div class="iatf-psub">Novilhas ciclando iniciam protocolo padrão</div></div></div>
+        <div class="iatf-prow"><div class="iatf-pday">D40+</div><div class="iatf-pspine"><div class="iatf-pdot iatf-d-teal"></div></div><div class="iatf-pcard"><div class="iatf-ptitle">Protocolo padrão de IATF</div><div class="iatf-psub">Resposta equivalente a novilhas naturalmente cíclicas</div></div></div>
+      </div>
+      <div class="iatf-memo"><div class="iatf-memo-label">Quando iniciar</div><div class="iatf-memo-text">Ideal: 30–40 dias antes da estação de monta<br>Mínimo: 12 dias entre indução e protocolo de IATF</div></div>
+    </div>
   </div>
 </div>
 
@@ -9651,12 +9728,12 @@ window.infSetSp = function(sp, el){
 </style>
 
 <!-- FAB -->
-<button class="toc-fab" id="tocFab" onclick="openTocDrawer()" aria-label="Abrir sumário">
-  <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+<button id="tocFab" onclick="openTocDrawer()" aria-label="Abrir sumário" style="position:fixed;bottom:24px;right:20px;z-index:99999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1b5e20,#388e3c);border:none;color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(27,94,32,.5),0 2px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:inherit;padding:0;outline:none;">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;display:block;">
     <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
     <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
   </svg>
-  <span class="toc-fab-tooltip">Sumário</span>
+  <span style="font-size:9px;font-weight:800;letter-spacing:.5px;margin-top:2px;color:#fff;text-transform:uppercase;">Menu</span>
 </button>
 
 <!-- Overlay -->
@@ -9749,24 +9826,7 @@ window.infSetSp = function(sp, el){
     });
   }
 
-  // Show/hide FAB based on scroll position (hidden while cover is visible)
-  function updateFabVisibility() {
-    var fab = document.getElementById('tocFab');
-    if (!fab) return;
-    var visible = window.scrollY > 300;
-    fab.style.opacity = visible ? '1' : '0';
-    fab.style.transform = visible ? 'scale(1)' : 'scale(0.8)';
-    fab.style.pointerEvents = visible ? 'auto' : 'none';
-  }
-  window.addEventListener('scroll', updateFabVisibility, { passive: true });
-  // Set initial state immediately (don't rely on DOMContentLoaded)
-  (function() {
-    var fab = document.getElementById('tocFab');
-    if (fab) {
-      fab.style.transition = 'transform .25s, box-shadow .2s, opacity .25s';
-      updateFabVisibility();
-    }
-  })();
+  // FAB is always visible — no hide/show logic needed
 })();
 </script>
 
