@@ -1,5 +1,9 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/lp-47", "destination": "/lp-47.html" },
+    { "source": "/lp-57", "destination": "/lp-57.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
