@@ -5688,25 +5688,439 @@ Feto transverso (na prática) → cesariana</div></div>
   title: 'Patologias do Macho',
   icon: '#i-medical',
   content: `
-<h3>11.1 Tabela de Patologias do Aparelho Reprodutor Masculino</h3>
-<div class="table-wrap"><table>
-<tr><th>Patologia</th><th>Definição</th><th>Causa Principal</th><th>Sinais Clínicos</th><th>Tratamento</th></tr>
-<tr><td><strong>Orquite</strong></td><td>Inflamação do testículo</td><td>Brucella, trauma, Leptospira, T. foetus</td><td>Aumento, calor, dor, atrofia posterior</td><td>Antibiótico + AINE; orquiectomia se grave</td></tr>
-<tr><td><strong>Epididimite</strong></td><td>Inflamação do epidídimo</td><td>Brucella ovis (carneiro!), B. abortus, trauma</td><td>Endurecimento do epidídimo, espermiostase</td><td>ABX; descarte se crônico</td></tr>
-<tr><td><strong>Vesiculite Seminal</strong></td><td>Inflamação das vesículas seminais</td><td>Brucella, Arcanobacterium, E. coli</td><td>Pus no sêmen, libido reduzida, dor palpação retal</td><td>ABX intrauterino/sistêmico; exudar ao parto</td></tr>
-<tr><td><strong>Balanite / Postite</strong></td><td>Inflamação do pênis/prepúcio</td><td>Ovinos: Corynebacterium; Bovinos: Herpesvírus-1 (IBR)</td><td>Descarga, eritema, vesículas/úlceras</td><td>Limpeza + ABX tópico; isolamento</td></tr>
-<tr><td><strong>Fimose</strong></td><td>Incapacidade de extrusão do pênis</td><td>Congênita; cicatrizes</td><td>Incapacidade de montar</td><td>Cirúrgico (postioplastia)</td></tr>
-<tr><td><strong>Parafimose</strong></td><td>Pênis extruído não retrai</td><td>Edema, trauma, paresia</td><td>Pênis pendente edemaciado</td><td>Redução manual + enfaixamento; uretrostomia se grave</td></tr>
-<tr><td><strong>Priapismo</strong></td><td>Ereção persistente sem desejo sexual</td><td>Paralisia nervosa (cavalos: fenotiazínicos!); lesão medular</td><td>Pênis rígido, edema, trombose</td><td>Emergência; cirúrgico (shunt cavernoso)</td></tr>
-<tr><td><strong>HPB (Hiperplasia Prostática Benigna)</strong></td><td>Aumento difuso da próstata</td><td>Estrógeno/DHT; comum em cães velhos não castrados</td><td>Constipação, hematúria, infertilidade</td><td>Castração; finasterida</td></tr>
-<tr><td><strong>Criptorquidismo</strong></td><td>Testículo não descido ao escroto</td><td>Congênito; pode ser uni ou bilateral</td><td>Testículo intra-abdominal ou inguinal; infertilidade se bilateral</td><td>Orquiectomia (risco de neoplasia); não reproduzir</td></tr>
-<tr><td><strong>Hipoplasia Testicular</strong></td><td>Desenvolvimento insuficiente do testículo</td><td>Congênita; nutricional; cariotípica</td><td>Testículo pequeno; oligospermia</td><td>Descarte do animal</td></tr>
-<tr><td><strong>Neoplasias Testiculares</strong></td><td>Tumores — Sertolíoma, seminoma, célula intersticial</td><td>Criptorquidismo (fator de risco); idiopático</td><td>Assimetria testicular; feminilização (Sertolíoma)</td><td>Orquiectomia</td></tr>
-</table></div>
+<style>
+.pm-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.pm-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.pm-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+.pm-tab:hover{background:var(--bg-hover)}.pm-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.pm-panel{display:none}.pm-panel.active{display:block}
+.pm-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.pm-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+.pm-sp-tab:hover{background:var(--bg-hover)}.pm-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.pm-sp-panel{display:none}.pm-sp-panel.active{display:block}
+.pm-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pm-danger-box{border-left:3px solid #A32D2D;background:var(--red-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pm-danger-box strong{color:#7a1f1f}
+.pm-prova-box{border-left:3px solid #BA7517;background:var(--amber-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pm-prova-box strong{color:#633806}
+.pm-suc-box{border-left:3px solid #3B6D11;background:var(--green-50);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pm-sec-block{background:var(--bg-card-alt);border-radius:8px;padding:12px 14px;margin-bottom:8px;border:1px solid var(--border-card)}
+.pm-sec-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:5px}
+.pm-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-card);margin-top:10px;margin-bottom:10px}
+.pm-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.pm-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
+.pm-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px}
+.pm-ref-table th{background:var(--bg-card-alt);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-light);font-size:11px;color:var(--text-secondary)}
+.pm-ref-table td{padding:6px 10px;border:1px solid var(--border-light);vertical-align:top;line-height:1.5}
+.pm-ref-table tr:nth-child(even) td{background:var(--bg-card-alt)}
+.pm-pat-card{border-radius:8px;border:1px solid var(--border-card);margin-bottom:10px;overflow:hidden}
+.pm-pat-header{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg-card);transition:background .15s}
+.pm-pat-header:hover{background:var(--bg-card-alt)}
+.pm-pat-title{font-weight:600;font-size:13px}
+.pm-pat-tags{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.pm-pat-body{display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.65}
+.pm-pat-body.open{display:block}
+.pm-pat-arrow{font-size:11px;color:var(--text-muted);transition:transform .2s}
+.pm-pat-header.open .pm-pat-arrow{transform:rotate(180deg)}
+.pm-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+.pm-bwarn{background:var(--amber-100);color:#633806}.pm-binfo{background:var(--blue-100);color:var(--blue-700)}
+.pm-bsuc{background:var(--green-50);color:#27500a}.pm-bdanger{background:var(--red-100);color:#7a1f1f}
+.pm-hl{background:var(--amber-100);border-radius:3px;padding:1px 4px;font-weight:600}
+.pm-urgencia{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700;letter-spacing:.05em;vertical-align:middle;margin-left:6px}
+.pm-urg-emergencia{background:#A32D2D;color:#fff}
+.pm-urg-grave{background:#D85A30;color:#fff}
+.pm-urg-moderada{background:#BA7517;color:#fff}
+.pm-urg-leve{background:#378ADD;color:#fff}
+</style>
+<p class="pm-label">Andrologia — Patologia</p>
+<h2>Patologias do Macho</h2>
 
-<div class="alert alert-exam">
-<strong>🎯 Priapismo e Fenotiazínicos em Equinos</strong><br>
-Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-adrenérgico, impedindo a retração peniana. É contraindicada em garanhões. O priapismo prolongado (>4h) causa fibrose e impotência permanente — emergência clínica!
+<div class="pm-tabs">
+  <button class="pm-tab active" onclick="pmSetTab('visao-geral',this)">Visão geral</button>
+  <button class="pm-tab" onclick="pmSetTab('testiculo',this)">Testículo e epidídimo</button>
+  <button class="pm-tab" onclick="pmSetTab('penis',this)">Pênis e prepúcio</button>
+  <button class="pm-tab" onclick="pmSetTab('prostata',this)">Próstata</button>
+  <button class="pm-tab" onclick="pmSetTab('vesiculite',this)">Glândulas acessórias</button>
+  <button class="pm-tab" onclick="pmSetTab('por-especie',this)">&#9654; Por espécie</button>
+</div>
+
+<!-- VISÃO GERAL -->
+<div class="pm-panel active" id="pm-panel-visao-geral">
+  <div class="pm-suc-box">Resumo rápido — todas as patologias do aparelho reprodutor masculino</div>
+  <table class="pm-ref-table">
+    <tr><th>Patologia</th><th>Espécie principal</th><th>Agente / Causa</th><th>Sinal chave</th><th>Tratamento</th></tr>
+    <tr><td><strong>Orquite</strong></td><td>Bovinos, ovinos</td><td>Brucella abortus, B. ovis, trauma, BoHV-1</td><td>Calor, aumento, dor; atrofia posterior</td><td>ATB + AINE; orquiectomia unilateral; descarte se Brucella</td></tr>
+    <tr><td><strong>Epididimite</strong></td><td>Carneiros (Brucella ovis)</td><td>B. ovis (esp.), B. abortus, trauma</td><td>Endurecimento, espermiostase, obstrução</td><td>ATB; descarte se crônico ou bilateral</td></tr>
+    <tr><td><strong>Degeneração testicular</strong></td><td>Bovinos (touros)</td><td>Estresse térmico, def. vit A/E/Zn, febre</td><td>CE reduzida, morfologia comprometida</td><td>Remover causa; antioxidantes; repouso</td></tr>
+    <tr><td><strong>Hipoplasia testicular</strong></td><td>Todas</td><td>Hereditária (autossômico recessivo)</td><td>Biometria reduzida, oligospermia/azoospermia</td><td>Descarte</td></tr>
+    <tr><td><strong>Criptorquidismo</strong></td><td>Todas</td><td>Congênito (uni ou bilateral)</td><td>Testículo não palpável no escroto</td><td>Orquiectomia; não reproduzir</td></tr>
+    <tr><td><strong>Neoplasias testiculares</strong></td><td>Cães (principalmente)</td><td>Idiopático; criptorquidismo = fator de risco</td><td>Feminilização (Sertolíoma), assimetria</td><td>Orquiectomia + ablação escrotal</td></tr>
+    <tr><td><strong>Balanite/postite</strong></td><td>Bovinos (BoHV-1), ovinos</td><td>BoHV-1 (IPV), Corynebacterium, E. coli</td><td>Descarga prepucial, pústulas/úlceras</td><td>Limpeza + ATB tópico; isolamento</td></tr>
+    <tr><td><strong>Fimose</strong></td><td>Bovinos, cães</td><td>Congênita; cicatrizes</td><td>Pênis não extrusável</td><td>Postioplastia</td></tr>
+    <tr><td><strong>Parafimose</strong></td><td>Equinos, cães</td><td>Trauma, paralisia, pós-monta</td><td>Pênis edemaciado extruído</td><td>Redução manual + osmóticos; penectomia se necrose</td></tr>
+    <tr><td><strong>Priapismo</strong></td><td>Equinos</td><td>Acepromazina (bloqueio alfa)</td><td>Ereção persistente involuntária</td><td>EMERGÊNCIA: shunt cavernoso; detumescência</td></tr>
+    <tr><td><strong>HPB</strong></td><td>Cão inteiro &gt;6 anos</td><td>DHT / estrogênio acumulado</td><td>Constipação, tenesmo, hematúria</td><td>Castração (eleição); finasterida</td></tr>
+    <tr><td><strong>Prostatite</strong></td><td>Cão</td><td>E. coli, Brucella canis</td><td>Dor abdominal, febre, descarga uretral</td><td>ATB (fluoroquinolonas) 6–8 semanas + castração</td></tr>
+    <tr><td><strong>Vesiculite seminal</strong></td><td>Bovinos, equinos</td><td>Arcanobacterium, Pseudomonas (equinos)</td><td>Piospermia, hemospermia, dor retal</td><td>ATB sistêmico; endoscopia + lavagem (equino)</td></tr>
+  </table>
+</div>
+
+<!-- TESTÍCULO E EPIDÍDIMO -->
+<div class="pm-panel" id="pm-panel-testiculo">
+  <div class="pm-info-box">Patologias testiculares e do epidídimo — as mais relevantes para o exame andrológico e para o descarte de reprodutores.</div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Degeneração testicular</span><span class="pm-urgencia pm-urg-moderada">Causa mais comum de infertilidade em touros</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Bovinos principal</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição e importância</div>
+      Degeneração do epitélio germinativo por agressão. <span class="pm-hl">CAUSA MAIS COMUM DE INFERTILIDADE EM TOUROS</span>. Pode ser reversível (leve/moderada) ou irreversível (grave, crônica).
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Causas</div>
+      <strong>Principal no Brasil:</strong> estresse térmico — temperatura escrotal elevada → hipóxia → degeneração do epitélio germinativo<br>
+      Outras: deficiência de Vitamina A, Vitamina E, Zinco, Selênio · febre &gt;39°C sustentada · intoxicações (mycotoxinas) · irradiação · orquite crônica · varicocele escrotal · estresse nutricional grave
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico</div>
+      Biometria: circunferência escrotal (CE) reduzida para a idade/raça · Espermograma: morfologia comprometida (formas patológicas em excesso — cabeças soltas, caudas enroladas, gotas citoplasmáticas) · Consistência testicular alterada (amolecida ou endurecida) · Motilidade reduzida
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento e prognóstico</div>
+      Remover a causa · Repouso reprodutivo · Antioxidantes (Vit E, Selênio) · Suplementação mineral (Zn, Cu) · Reavaliação após 60–90 dias (tempo de uma espermatogênese) · <span class="pm-hl">Prognóstico variável</span> — reversível se leve e causa removida; irreversível se crônico
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Orquite</span><span class="pm-urgencia pm-urg-grave">Urgente</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Bovinos · Ovinos</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição e etiologia</div>
+      Inflamação do testículo. Causas: <strong>Brucella abortus</strong> (bovinos — NOTIFICAÇÃO OBRIGATÓRIA) · <strong>Brucella ovis</strong> (ovinos) · Arcanobacterium pyogenes · trauma · BoHV-1 (herpesvírus)
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>
+      Aumento de volume · calor · dor à palpação · assimetria · atrofia testicular posterior (fibrose pós-inflamação) · comprometimento da espermatogênese
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico</div>
+      Exame andrológico + palpação · Sorologia (Brucella — SAT, ELISA, 2-ME) · Ultrassonografia (US) escrotal — conteúdo heterogêneo, calcificações · Espermograma: piospermia, morfologia comprometida
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      ATB + AINE (anti-inflamatório não esteroidal) · Orquiectomia unilateral se unilateral e reprodutor valioso · <strong>Descarte se Brucella</strong> (zoonose, notificação, abate sanitário)
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Epididimite granulomatosa (Brucella ovis)</span><span class="pm-urgencia pm-urg-grave">Carneiros</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Ovinos — espécie-específica</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Importância</div>
+      <span class="pm-hl">B. ovis é a principal causa de epididimite em carneiros</span> — patologia reprodutiva mais importante nos ovinos machos. Epididimite granulomatosa unilateral ou bilateral. Não infecta bovinos. Zoonose de baixa relevância para humanos.
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Sinais e diagnóstico</div>
+      Endurecimento (espessamento nodular) da cabeça/cauda do epidídimo · espermiostase · obstrução · azoospermia em casos bilaterais · Diag: palpação + US escrotal + sorologia (ELISA indireto, imunodifusão em gel de ágar)
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      ATB sistêmico (tetraciclina, oxitetraciclina) com resultados limitados · <strong>Descarte se crônico ou bilateral</strong> · Sem vacina comercial disponível no Brasil · Controle: exame andrológico periódico do rebanho · Isolamento de positivos
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Hipoplasia testicular</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-binfo">Todas as espécies</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>
+      Desenvolvimento insuficiente do epitélio germinativo testicular. Hereditária (gene autossômico recessivo em algumas raças). Uni ou bilateral; leve a grave. Pode ser confundida com degeneração testicular — biópsia diferencia.
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico</div>
+      Biometria: CE muito reduzida para a idade · Espermograma: oligospermia grave ou azoospermia · Histologia: epitélio germinativo ausente ou muito escasso · Sem alteração inflamatória
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Conduta</div>
+      Sem tratamento efetivo. <strong>Descarte do animal</strong>. Não utilizar parentais com histórico da condição (hereditária).
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Criptorquidismo</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Todas — hereditário</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>
+      Falha na descida do(s) testículo(s) ao escroto — pode permanecer intra-abdominal ou inguinal. Unilateral (mais comum) ou bilateral. Bilateral = infértil. Em equinos: unilateral inguinal é mais frequente.
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Risco principal</div>
+      <span class="pm-hl">Risco aumentado de neoplasia testicular</span> no testículo retido (temperatura abdominal &gt; escrotal → degeneração + transformação neoplásica). Em cães criptorquídeos: Sertolíoma e seminoma são comuns.
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      Orquiectomia (remoção do testículo retido + escrotal) · <strong>NUNCA reproduzir</strong> — condição hereditária
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Neoplasias testiculares (cão)</span><span class="pm-urgencia pm-urg-moderada">Cuidado com Sertolíoma</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Cães principalmente</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Os 3 tipos principais</div>
+      <strong>Seminoma:</strong> origem nas células germinativas; pode metastatizar (~15%); aspecto homogêneo ao US<br>
+      <strong>Sertolíoma (células de Sertoli):</strong> hormonalmente ativo — secreta estrogênio → <span class="pm-hl">FEMINILIZAÇÃO</span> (ginecomastia, atração de machos, alopecia bilateral simétrica, anemia aplásica). Mais frequente em testículos retidos.<br>
+      <strong>Leydigocitoma (células intersticiais):</strong> geralmente benigno, baixa malignidade; aspecto nodular pequeno
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico</div>
+      US escrotal (heterogeneidade, nódulo) · Histopatologia (diagnóstico definitivo) · Hemograma (Sertolíoma: anemia aplásica, pancitopenia — urgência!)
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      Orquiectomia bilateral + ablação escrotal · Quimioterapia se metástase (seminoma) · Prognóstico bom para Leydigocitoma e Sertolíoma sem metástase · Monitorar 6 meses pós-cirurgia
+      </div>
+      <div class="pm-danger-box"><strong>Sertolíoma + anemia aplásica:</strong> emergência hematológica. Pancitopenia grave por hiperestrogenismo — orquiectomia urgente + suporte transfusional.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PÊNIS E PREPÚCIO -->
+<div class="pm-panel" id="pm-panel-penis">
+  <div class="pm-info-box">Patologias do pênis e prepúcio — relevantes em todas as espécies, com particularidades importantes por espécie.</div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Balanite e Postite</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-binfo">Bovinos · Ovinos · Cão</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>
+      <strong>Balanite:</strong> inflamação do pênis (glande). <strong>Postite:</strong> inflamação do prepúcio. Frequentemente coexistem (balanopostite).
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Etiologia por espécie</div>
+      <strong>Bovinos:</strong> BoHV-1 subtipo genital (IPV — vulvovaginite/balanopostite pustulosa) → pústulas nos genitais · Corynebacterium renale (ovinos) · Herpesvírus bovino<br>
+      <strong>Ovinos:</strong> Corynebacterium renale, Fusobacterium necrophorum<br>
+      <strong>Cão:</strong> E. coli, Pseudomonas aeruginosa, Staphylococcus · descarga prepucial mucopurulenta é achado comum e frequentemente fisiológico em cães
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico e tratamento</div>
+      Clínico (descarga, hiperemia, vesículas, úlceras) · Cultura bacteriana · Sorologia/PCR para vírus · Trat: limpeza + ATB tópico (pomada de cloranfenicol) · Isolamento se BoHV-1 · Sem uso reprodutivo durante tratamento
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Fimose</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-binfo">Bovinos · Cão</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição e causas</div>
+      Orifício prepucial muito estreito impedindo a extrusão do pênis. <strong>Congênita</strong> (defeito de desenvolvimento) ou <strong>adquirida</strong> (cicatrizes por trauma, infecção, cirurgia prévia).
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      <strong>Postioplastia:</strong> ampliação cirúrgica do orifício prepucial · Prognóstico bom para casos não complicados · Avaliar capacidade reprodutiva pós-cirurgia
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Parafimose</span><span class="pm-urgencia pm-urg-grave">Urgência progressiva</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Equinos · Cão</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição e urgência</div>
+      Pênis extruído que não retrai ao prepúcio. Progressiva: edema → dificuldade de retração → mais edema → <span class="pm-hl">isquemia → necrose irreversível</span>. Quanto mais tempo, pior o prognóstico.
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Causas</div>
+      Trauma durante monta · Paralisia do músculo retrator do pênis · Pós-sedação (acepromazina em equinos) · Edema de qualquer origem
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      Redução manual gentil · Bandagem compressiva sobre o pênis (reduz edema) · Agentes osmóticos (açúcar, manitol, glicerina) aplicados sobre o pênis edemaciado para reduzir edema · Lubrificação e reposicionamento · Se necrose instalada: <strong>penectomia parcial ou total</strong> (animal para reprodução natural descartado)
+      </div>
+      <div class="pm-prova-box"><strong>Cuidado com acepromazina em equinos:</strong> causa parafimose por paralisia do músculo retrator. Equinos machos = contraindicação relativa a fenotiazínicos.</div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Priapismo</span><span class="pm-urgencia pm-urg-emergencia">EMERGÊNCIA</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Equinos — acepromazina!</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Definição</div>
+      Ereção persistente involuntária, sem excitação sexual, por acúmulo de sangue nos corpos cavernosos sem retorno venoso adequado.
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Causa principal em equinos</div>
+      <span class="pm-hl">Acepromazina (fenotiazínico)</span> → bloqueio α-adrenérgico → vasodilatação periférica → incapacidade de retração do pênis. <strong>CONTRAINDICADA em garanhões.</strong>
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento de emergência</div>
+      &gt;4 horas → risco de fibrose irreversível dos corpos cavernosos → impotência permanente<br>
+      <strong>Detumescência farmacológica:</strong> fenilefrina (agonista alfa) injetada nos corpos cavernosos · Terbutalina SC<br>
+      <strong>Shunt cavernoso-esponjoso:</strong> cirurgia para desvio do sangue represado · Se irreversível: falossectomia (descarte reprodutivo)
+      </div>
+      <div class="pm-danger-box"><strong>Regra de ouro:</strong> priapismo &gt;4h em equinos = emergência cirúrgica. Cada hora aumenta o risco de fibrose permanente. Jamais usar acepromazina em garanhões.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRÓSTATA -->
+<div class="pm-panel" id="pm-panel-prostata">
+  <div class="pm-info-box">Patologias prostáticas — principalmente em cões inteiros. A próstata do cão é a única glândula acessória funcional nessa espécie.</div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">HPB — Hiperplasia Prostática Benigna</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Cão &gt;6 anos inteiro</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Fisiopatologia</div>
+      Acúmulo de DHT (di-hidrotestosterona) e estrogênio na próstata com o envelhecimento → hiperplasia glandular e estromal difusa e simétrica. Mais de 80% dos cães inteiros com &gt;6 anos têm algum grau de HPB.
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Sinais clínicos</div>
+      <strong>Constipação</strong> (compressão do reto) · tenesmo · hematúria · infecções urinárias recorrentes · hematospermia · disúria · secreção sanguinolenta uretral esporânea sem sinais sistêmicos
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico</div>
+      Toque retal: próstata aumentada, <span class="pm-hl">simétrica, não dolorosa</span> (diferencial de prostatite = dolorosa) · US abdominal: aumento homogêneo ou heterogêneo (cistos intraprostáticos frequentes) · Urografia · PSA canino (pesquisa)
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      <strong>Castração cirúrgica</strong> (eleição — involução em 4–6 semanas) · <strong>Finasterida/dutasterida</strong> (inibidor da 5α-redutase) — opção médica em reprodutores · <strong>Progestágenos</strong> (acetato de megestrol) — uso temporário (risco de piometra e DM) · Castração química (deslorelina) — opção
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Prostatite bacteriana</span><span class="pm-urgencia pm-urg-grave">Importante: Brucella canis</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Cão — zoonose</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Etiologia</div>
+      <strong>E. coli</strong> (mais comum) · <strong>Brucella canis</strong> (importante — zoonose!) · Staphylococcus, Streptococcus, Klebsiella · Infecção ascendente da uretra ou hematógena
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Sinais e diagnóstico</div>
+      Dor abdominal caudal e retal · febre · descarga uretral hemorrágica ou purulenta · leucocitose · dificuldade locomotora (posição cifótica) · Toque retal: <span class="pm-hl">próstata dolorosa</span> · US: heterogeneidade e dor · Cultura: urina + sêmen + lavado prostático · Sorologia Brucella canis (RSAT)
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      ATB de alta penetração prostática: <strong>fluoroquinolonas</strong> (enrofloxacina, marbofloxacina) ou trimetopim-sulfa · Duração: 6–8 semanas · Castração reduz recorrência · Brucella: eutanásia recomendada + notificação + rastreio dos contatos humanos
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Abscesso prostático</span><span class="pm-urgencia pm-urg-grave">Urgente</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Cão</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Evolução e conduta</div>
+      Complicação grave da prostatite crônica — loculação de pus intraprostático. Risco de ruptura → peritonite séptica grave. <br>
+      Diag: US (área anecoica/hipoecoica intraprostática) · Tratamento: drenagem cirúrgica (marsupialização ou omentalização) + ATB sistêmico + castração · Prognóstico reservado se peritonite estabelecida.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GLÂNDULAS ACESSÓRIAS -->
+<div class="pm-panel" id="pm-panel-vesiculite">
+  <div class="pm-info-box">Vesiculite seminal — inflamação das glândulas vesiculares. Relevante principalmente em bovinos (andrologia) e equinos (reprodução).</div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Vesiculite seminal bovina</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bwarn">Bovinos</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Etiologia</div>
+      <strong>Arcanobacterium pyogenes</strong> (principal) · E. coli · Brucella abortus · Pseudomonas aeruginosa · Streptococcus spp · Herpesvírus bovino
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Diagnóstico</div>
+      Palpação retal: glândulas vesiculares assimétricas, consistência anormal (endurecidas ou amolecidas), dor · US retal: confirma alterações de tamanho e ecogenicidade · <strong>Espermograma:</strong> piospermia (neutrófilos no sêmen — achado principal), hemospermia, morfologia comprometida · Cultura do sêmen
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      ATB sistêmico (penicilina, ceftiofur, oxitetraciclina) · ATB intrauterino complementar · <strong>Pseudomonas:</strong> ácidos cáusticos (ácido metacresolsulfônico) em infusão intrauretral + fluoroquinolonas · Prognóstico <span class="pm-hl">reservado</span> para casos crônicos · Descarte se bilateral ou bilateral grave
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-pat-card">
+    <div class="pm-pat-header" onclick="pmToggle(this)">
+      <div><span class="pm-pat-title">Vesiculite seminal em garanhões (Pseudomonas)</span></div>
+      <div class="pm-pat-tags"><span class="pm-badge pm-bdanger">Equinos</span><span class="pm-pat-arrow">&#9660;</span></div>
+    </div>
+    <div class="pm-pat-body">
+      <div class="pm-sec-block"><div class="pm-sec-label">Agente e diagnóstico</div>
+      <strong>Pseudomonas aeruginosa</strong> é o principal agente em garanhões. Alta resistência a ATB convencionais. Diagnóstico: <span class="pm-hl">endoscopia transuretral</span> (visualiza abertura dos ductos ejaculatórios) + cultivo do sêmen + lavado vesicular
+      </div>
+      <div class="pm-sec-block"><div class="pm-sec-label">Tratamento</div>
+      ATB sistêmico segundo antibiograma (polimixina B, imipeném para Pseudomonas) · Lavagem local via endoscopia · <strong>Recorrência frequente</strong> — garanhões de alto valor genético podem necessitar de manejo continuado · IA com sêmen submetido a tratamento bactericida (diluidores com ATB) · Prognóstico reprodutivo reservado
+      </div>
+    </div>
+  </div>
+
+  <div class="pm-memo">
+    <div class="pm-memo-label">Resumo diagnóstico de vesiculite</div>
+    <div class="pm-memo-text">
+Palpação retal → glândulas assimétricas / endurecidas / dolorosas<br>
+US retal → confirma (echogenicidade anormal)<br>
+Espermograma → piospermia (PMN no sêmen) + hemospermia<br>
+Cultura do sêmen → identifica o agente<br>
+Pseudomonas em equinos → endoscopia transuretral (padrão-ouro)
+    </div>
+  </div>
+</div>
+
+<!-- POR ESPÉCIE -->
+<div class="pm-panel" id="pm-panel-por-especie">
+  <div class="pm-sp-tabs">
+    <button class="pm-sp-tab active" onclick="pmSetSp('sp-bov',this)">Bovinos</button>
+    <button class="pm-sp-tab" onclick="pmSetSp('sp-eq',this)">Equinos</button>
+    <button class="pm-sp-tab" onclick="pmSetSp('sp-ov',this)">Ovinos</button>
+    <button class="pm-sp-tab" onclick="pmSetSp('sp-cao',this)">Cães</button>
+  </div>
+
+  <div class="pm-sp-panel active" id="pm-sp-sp-bov">
+    <div class="pm-sec-block"><div class="pm-sec-label">Patologias prioritárias em bovinos</div>
+    <strong>Degeneração testicular</strong> — causa mais comum de infertilidade em touros; principal causa no Brasil: estresse térmico. Diagnóstico: biometria + espermograma.<br><br>
+    <strong>Vesiculite seminal</strong> — Arcanobacterium pyogenes principal. Palpação retal obrigatória no exame andrológico. Piospermia como indicador.<br><br>
+    <strong>Orquite (Brucella abortus)</strong> — notificação obrigatória. Zoonose. Aborto na fêmea concomitante. SAT, ELISA, 2-ME para diagnóstico.<br><br>
+    <strong>Balanite/postite (BoHV-1 IPV)</strong> — pústulas genitais. Controle por vacinação. Isolamento de animais afetados.<br><br>
+    <strong>Maceração fetal / infertilidade por Tritrichomonas foetus</strong> — transmissão venérea, touro portador assintomático. Controle: IA.
+    </div>
+  </div>
+
+  <div class="pm-sp-panel" id="pm-sp-sp-eq">
+    <div class="pm-sec-block"><div class="pm-sec-label">Patologias prioritárias em equinos</div>
+    <strong>Priapismo (acepromazina!)</strong> — <span class="pm-hl">CONTRAINDICADA em garanhões</span>. Bloqueio alfa-adrenérgico → pênis não retrai. &gt;4h → fibrose irreversível.<br><br>
+    <strong>Parafimose</strong> — urgência. Causa frequente: trauma pós-monta ou sedação. Redução manual + osmóticos.<br><br>
+    <strong>Vesiculite seminal (Pseudomonas)</strong> — alta resistência. Diagnóstico: endoscopia transuretral. Recorrência frequente.<br><br>
+    <strong>Criptorquidismo inguinal</strong> — frequente em equinos. Testículo não desce ao escroto. Orquiectomia obrigatória (risco de neoplasia + hereditário).<br><br>
+    <strong>Tumor de célula de Sertoli</strong> — em testículo retido. Feminilização do garanhão.
+    </div>
+  </div>
+
+  <div class="pm-sp-panel" id="pm-sp-sp-ov">
+    <div class="pm-sec-block"><div class="pm-sec-label">Patologias prioritárias em ovinos</div>
+    <strong>Epididimite por Brucella ovis</strong> — <span class="pm-hl">MAIS IMPORTANTE patologia reprodutiva do carneiro</span>. Epididimite granulomatosa. Diagnóstico: ELISA indireto + imunodifusão. Sem vacina. Descarte.<br><br>
+    <strong>Orquite por Brucella abortus</strong> — menos frequente que B. ovis, mas possível. Zoonose.<br><br>
+    <strong>Balanite/postite (Corynebacterium renale, Fusobacterium)</strong> — úlceras prepuciais. ATB tópico.<br><br>
+    <strong>Criptorquidismo</strong> — hereditário. Não reproduzir.
+    </div>
+  </div>
+
+  <div class="pm-sp-panel" id="pm-sp-sp-cao">
+    <div class="pm-sec-block"><div class="pm-sec-label">Patologias prioritárias em cães</div>
+    <strong>HPB (Hiperplasia Prostática Benigna)</strong> — cão inteiro &gt;6 anos. Simétrica, não dolorosa. Tratamento: castração (eleição).<br><br>
+    <strong>Prostatite (E. coli, Brucella canis)</strong> — dolorosa, febre, leucocitose. Brucella canis: zoonose, diagnóstico por RSAT, eutanásia frequentemente recomendada.<br><br>
+    <strong>Neoplasias testiculares</strong> — Sertolíoma (feminilização, anemia aplásica), Seminoma, Leydigocitoma. Sertolíoma em criptorquídeo = mais agressivo.<br><br>
+    <strong>Balanite (Pseudomonas, E. coli)</strong> — descarga prepucial mucopurulenta. ATB tópico. Avaliar se patológica ou fisiológica.<br><br>
+    <strong>Criptorquidismo</strong> — hereditário. Orquiectomia. Risco aumentado de neoplasia.
+    </div>
+  </div>
 </div>
 `
 },
@@ -5716,6 +6130,52 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
   title: 'Patologias da Gestação',
   icon: '#i-stethoscope',
   content: `
+<style>
+.pg-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.pg-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.pg-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+.pg-tab:hover{background:var(--bg-hover)}.pg-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.pg-panel{display:none}.pg-panel.active{display:block}
+.pg-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.pg-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+.pg-sp-tab:hover{background:var(--bg-hover)}.pg-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.pg-sp-panel{display:none}.pg-sp-panel.active{display:block}
+.pg-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pg-danger-box{border-left:3px solid #A32D2D;background:var(--red-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pg-danger-box strong{color:#7a1f1f}
+.pg-prova-box{border-left:3px solid #BA7517;background:var(--amber-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pg-prova-box strong{color:#633806}
+.pg-suc-box{border-left:3px solid #3B6D11;background:var(--green-50);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pg-sec-block{background:var(--bg-card-alt);border-radius:8px;padding:12px 14px;margin-bottom:8px;border:1px solid var(--border-card)}
+.pg-sec-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:5px}
+.pg-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-card);margin-top:10px;margin-bottom:10px}
+.pg-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.pg-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
+.pg-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px}
+.pg-ref-table th{background:var(--bg-card-alt);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-light);font-size:11px;color:var(--text-secondary)}
+.pg-ref-table td{padding:6px 10px;border:1px solid var(--border-light);vertical-align:top;line-height:1.5}
+.pg-ref-table tr:nth-child(even) td{background:var(--bg-card-alt)}
+.pg-pat-card{border-radius:8px;border:1px solid var(--border-card);margin-bottom:10px;overflow:hidden}
+.pg-pat-header{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg-card);transition:background .15s}
+.pg-pat-header:hover{background:var(--bg-card-alt)}
+.pg-pat-title{font-weight:600;font-size:13px}
+.pg-pat-tags{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.pg-pat-body{display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.65}
+.pg-pat-body.open{display:block}
+.pg-pat-arrow{font-size:11px;color:var(--text-muted);transition:transform .2s}
+.pg-pat-header.open .pg-pat-arrow{transform:rotate(180deg)}
+.pg-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+.pg-bwarn{background:var(--amber-100);color:#633806}.pg-binfo{background:var(--blue-100);color:var(--blue-700)}
+.pg-bsuc{background:var(--green-50);color:#27500a}.pg-bdanger{background:var(--red-100);color:#7a1f1f}
+.pg-hl{background:var(--amber-100);border-radius:3px;padding:1px 4px;font-weight:600}
+.pg-urgencia{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700;letter-spacing:.05em;vertical-align:middle;margin-left:6px}
+.pg-urg-emergencia{background:#A32D2D;color:#fff}
+.pg-urg-grave{background:#D85A30;color:#fff}
+.pg-urg-moderada{background:#BA7517;color:#fff}
+.pg-urg-leve{background:#378ADD;color:#fff}
+</style>
+<p class="pg-label">Obstetrícia — Patologia</p>
+<h2>Patologias da Gestação</h2>
 <div class="pg-tabs">
   <button class="pg-tab active" onclick="pgSetTab('liquidos',this)">Líquidos fetais</button>
   <button class="pg-tab" onclick="pgSetTab('feto_patol',this)">Patologias fetais</button>
@@ -5727,7 +6187,7 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
 
 <!-- LÍQUIDOS FETAIS / HIDROPSIA -->
 <div class="pg-panel active" id="pg-panel-liquidos">
-  <div class="info-box">Acúmulo excessivo de líquido nos anexos placentários, podendo envolver o alantoide (<strong>hidroalantoide</strong>) ou o âmnio (<strong>hidroâmnio</strong>). Patologia predominantemente bovina, porém relatada em éguas, ovelhas e cadelas.</div>
+  <div class="pg-info-box">Acúmulo excessivo de líquido nos anexos placentários, podendo envolver o alantoide (<strong>hidroalantoide</strong>) ou o âmnio (<strong>hidroâmnio</strong>). Patologia predominantemente bovina, porém relatada em éguas, ovelhas e cadelas.</div>
 
   <div class="pg-sp-tabs">
     <button class="pg-sp-tab active" onclick="pgSetSp('hidr_al',this)">Hidroalantoide</button>
@@ -5736,36 +6196,36 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
   </div>
 
   <div class="pg-sp-panel active" id="pg-sp-hidr_al">
-    <div class="danger-box"><strong>Hidroalantoide</strong> — mais comum (80–95% dos casos de hidropsia em bovinos). Volume pode chegar a 270 L (normal: ~20 L). Evolução progressiva nos últimos 3 meses de gestação. Sempre acompanhado de <span class="hl">retenção de placenta, retardo na involução uterina e metrite</span>.</div>
+    <div class="pg-danger-box"><strong>Hidroalantoide</strong> — mais comum (80–95% dos casos de hidropsia em bovinos). Volume pode chegar a 270 L (normal: ~20 L). Evolução progressiva nos últimos 3 meses de gestação. Sempre acompanhado de <span class="pg-hl">retenção de placenta, retardo na involução uterina e metrite</span>.</div>
 
-    <div class="sec-block"><div class="sec-label">Etiologia</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Etiologia</div>
     Déficit circulatório e problemas hepatorrenais do feto · torção/compressão do cordão umbilical → alterações congestivas e edematosas da placenta → transudação de líquido · hidronefrose fetal (aumento excessivo da excreção renal acumulando no alantoide) · má placentação (cotilédones com função normal muito reduzidos) · associação com gestação gemelar · fatores hereditários (raças Jersey e Guernsey têm predisposição)
     </div>
 
-    <div class="sec-block"><div class="sec-label">Sinais clínicos por gravidade</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Sinais clínicos por gravidade</div>
     <strong>Leves:</strong> ligeiro aumento bilateral do volume abdominal · animal chega ao fim da gestação<br>
     <strong>Moderados</strong> (6–7 meses, distensão visível): compressão de vísceras e vasos → taquicardia, taquipneia, dispneia com gemido respiratório, plenitude vascular reduzida, perda de apetite, dificuldade de ruminar, defecar e urinar, declínio do ECC<br>
     <strong>Graves:</strong> decúbito permanente · desidratação profunda · timpanismo · atonia uterina → aborto, retenção de placenta, pouca contração no parto · morte da fêmea
     </div>
 
-    <div class="sec-block"><div class="sec-label">Diagnóstico</div>
-    Palpação retal: útero muito distendido, consistência flutuante, <span class="hl">impossível palpar o feto</span> (quantidade excessiva de líquido), cotilédones acessórios palpáveis · US transretal: conteúdo anecóico em excesso + placentomas via transabdominal · Diagnóstico diferencial: ascite, timpanismo ruminal, gestação gemelar, hidro metra
+    <div class="pg-sec-block"><div class="pg-sec-label">Diagnóstico</div>
+    Palpação retal: útero muito distendido, consistência flutuante, <span class="pg-hl">impossível palpar o feto</span> (quantidade excessiva de líquido), cotilédones acessórios palpáveis · US transretal: conteúdo anecóico em excesso + placentomas via transabdominal · Diagnóstico diferencial: ascite, timpanismo ruminal, gestação gemelar, hidro metra
     </div>
 
-    <div class="sec-block"><div class="sec-label">Tratamento</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Tratamento</div>
     <strong>Se próximo ao parto (&gt;270 dias):</strong> indução com dexametasona (0,2 mg/kg IV) ou flumetasona + ocitocina → parto em 24–48 h<br>
-    <strong>Drenagem controlada:</strong> <span class="hl">LENTA</span> — risco de choque hipovolêmico por descompressão rápida → drenar gradualmente, fluidoterapia IV concomitante<br>
+    <strong>Drenagem controlada:</strong> <span class="pg-hl">LENTA</span> — risco de choque hipovolêmico por descompressão rápida → drenar gradualmente, fluidoterapia IV concomitante<br>
     <strong>Cesariana:</strong> se estado geral comprometido e parto não ocorre<br>
     <strong>Recidiva:</strong> sacrifício do animal
     </div>
 
-    <div class="danger-box"><strong>Complicações frequentes:</strong> retenção de placenta (sempre) · metrite · atonia uterina · prolapso vaginal · ruptura uterina · paraplegia · prognóstico reprodutivo ruim</div>
+    <div class="pg-danger-box"><strong>Complicações frequentes:</strong> retenção de placenta (sempre) · metrite · atonia uterina · prolapso vaginal · ruptura uterina · paraplegia · prognóstico reprodutivo ruim</div>
   </div>
 
   <div class="pg-sp-panel" id="pg-sp-hidr_am">
-    <div class="info-box"><strong>Hidroâmnio</strong> — menos comum que o hidroalantoide. Envolve o saco amniótico. Associado a <span class="hl">malformações da musculatura mastigatória fetal ou fenda palatina</span> — feto não consegue deglutir o líquido amniótico, que se acumula. Em ovinos: associado a gêmeos e trigêmeos. Em cadelas: afeta todos os fetos, levando à anasarca.</div>
+    <div class="pg-info-box"><strong>Hidroâmnio</strong> — menos comum que o hidroalantoide. Envolve o saco amniótico. Associado a <span class="pg-hl">malformações da musculatura mastigatória fetal ou fenda palatina</span> — feto não consegue deglutir o líquido amniótico, que se acumula. Em ovinos: associado a gêmeos e trigêmeos. Em cadelas: afeta todos os fetos, levando à anasarca.</div>
 
-    <table class="ref-table">
+    <table class="pg-ref-table">
       <tr><th>Parâmetro</th><th>Hidroalantoide</th><th>Hidroâmnio</th></tr>
       <tr><td>Frequência</td><td>80–95% dos casos</td><td>5–20% dos casos</td></tr>
       <tr><td>Volume</td><td>Até 270 L</td><td>Menor que o hidroalantoide</td></tr>
@@ -5777,7 +6237,7 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
   </div>
 
   <div class="pg-sp-panel" id="pg-sp-hidr_diag">
-    <table class="ref-table">
+    <table class="pg-ref-table">
       <tr><th>Condição</th><th>Como diferenciar</th></tr>
       <tr><td><strong>Hidropsia (hidroalantoide)</strong></td><td>Feto não palpável · cotilédones palpáveis · progressão lenta · últimos 3 meses · bovinos</td></tr>
       <tr><td><strong>Ascite</strong></td><td>Feto palpável · sem cotilédones · não exclusivo da gestação · US: líquido abdominal livre fora do útero</td></tr>
@@ -5791,37 +6251,37 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
 
 <!-- PATOLOGIAS FETAIS -->
 <div class="pg-panel" id="pg-panel-feto_patol">
-  <div class="info-box">Patologias que afetam o feto in utero: mumificação, enfisema, maceração e molas. Cada uma tem etiologia, patogenia e conduta distintas.</div>
+  <div class="pg-info-box">Patologias que afetam o feto in utero: mumificação, enfisema, maceração e molas. Cada uma tem etiologia, patogenia e conduta distintas.</div>
 
-  <div class="pat-card">
-    <div class="pat-header" onclick="pgToggle(this)">
+  <div class="pg-pat-card">
+    <div class="pg-pat-header" onclick="pgToggle(this)">
       <div>
-        <span class="pat-title">Feto mumificado</span>
-        <span class="urgencia urg-moderada">Moderado</span>
+        <span class="pg-pat-title">Feto mumificado</span>
+        <span class="pg-urgencia pg-urg-moderada">Moderado</span>
       </div>
-      <div class="pat-tags">
-        <span class="badge bwarn">Bovinos · Suínos · Cão/Gato</span>
-        <span class="pat-arrow">▼</span>
+      <div class="pg-pat-tags">
+        <span class="pg-badge pg-bwarn">Bovinos · Suínos · Cão/Gato</span>
+        <span class="pg-pat-arrow">▼</span>
       </div>
     </div>
-    <div class="pat-body">
-      <div class="sec-block"><div class="sec-label">Definição e tipos</div>
+    <div class="pg-pat-body">
+      <div class="pg-sec-block"><div class="pg-sec-label">Definição e tipos</div>
       Feto morto no 2º ou último terço da gestação, retido no útero sem contaminação, sofrendo processo asséptico de desidratação. <strong>Tipos:</strong> hemático (bovinos — feto recoberto por secreção viscosa achocolatada) · papiráceo (demais espécies — feto e placenta com aspecto de papiro)
       </div>
-      <div class="sec-block"><div class="sec-label">Condição necessária</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Condição necessária</div>
       Persistência do CL (vaca e égua) OU outros fetos vivos se desenvolvendo ao lado (suínos, cão). Sem abertura da cérvix = sem contaminação = mumificação.
       </div>
-      <div class="sec-block"><div class="sec-label">Etiologia</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Etiologia</div>
       Torção/compressão do cordão umbilical · torção uterina · defeitos de placentação · BVD, leptospirose (bovinos) · Toxoplasma gondii (suínos) · progesterona exógena em cães · anomalias genéticas
       </div>
-      <div class="sec-block"><div class="sec-label">Sinais clínicos</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Sinais clínicos</div>
       <strong>Vaca:</strong> prolongamento da gestação (CL persistente) · à palpação: ausência de líquidos fetais, redução do volume uterino, feto de consistência firme sem frêmito arterial<br>
       <strong>Suínos/Cão/Gato:</strong> feto mumificado é expulso junto com os vivos no parto (sem sintomatologia clínica antes)
       </div>
-      <div class="sec-block"><div class="sec-label">Diagnóstico</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Diagnóstico</div>
       Palpação retal (bovinos): útero sem líquidos, feto firme, sem frêmito · RX (pequenos animais): estrutura óssea sem líquidos ao redor · sem placentomas · gestação prolongada
       </div>
-      <div class="sec-block"><div class="sec-label">Tratamento</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Tratamento</div>
       <strong>Bovinos:</strong> PGF2α ou corticoide → abertura da cérvix → retirada manual da múmia 2–3 dias depois. Se cérvix insuficiente: ECP/estilbestrol (50–100 mg) 1x a cada 2 dias por 4–7 dias. Se feto muito grande: maceração induzida ou cesariana. ATB obrigatório.<br>
       <strong>Égua:</strong> expulsão espontânea frequente. Se não ocorrer: dilatação manual da cérvix + retirada.<br>
       <strong>Pequenos animais:</strong> se única fêmea, aguardar parto · se comprometimento sistêmico → OSH
@@ -5829,58 +6289,58 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
     </div>
   </div>
 
-  <div class="pat-card">
-    <div class="pat-header" onclick="pgToggle(this)">
+  <div class="pg-pat-card">
+    <div class="pg-pat-header" onclick="pgToggle(this)">
       <div>
-        <span class="pat-title">Feto enfisematoso</span>
-        <span class="urgencia urg-grave">Urgência</span>
+        <span class="pg-pat-title">Feto enfisematoso</span>
+        <span class="pg-urgencia pg-urg-grave">Urgência</span>
       </div>
-      <div class="pat-tags">
-        <span class="badge bdanger">Grandes animais · Cadelas</span>
-        <span class="pat-arrow">▼</span>
+      <div class="pg-pat-tags">
+        <span class="pg-badge pg-bdanger">Grandes animais · Cadelas</span>
+        <span class="pg-pat-arrow">▼</span>
       </div>
     </div>
-    <div class="pat-body">
-      <div class="sec-block"><div class="sec-label">Definição</div>
+    <div class="pg-pat-body">
+      <div class="pg-sec-block"><div class="pg-sec-label">Definição</div>
       Feto morto em parto distócico com acúmulo de gás produzido por bactérias anaeróbicas nos tecidos fetais. Processo séptico, com abertura de cérvix. Ocorre mais frequentemente no final da gestação em partos distócicos não assistidos.
       </div>
-      <div class="sec-block"><div class="sec-label">Sinais clínicos</div>
-      Corrimento vaginal fétido · distúrbios do estado geral da mãe · timpanismo · queda de cascos e pelos do feto · feto insinuado com aumento de volume · <span class="hl">crepitação à palpação</span> (gás nos tecidos fetais) · septicemia materna
+      <div class="pg-sec-block"><div class="pg-sec-label">Sinais clínicos</div>
+      Corrimento vaginal fétido · distúrbios do estado geral da mãe · timpanismo · queda de cascos e pelos do feto · feto insinuado com aumento de volume · <span class="pg-hl">crepitação à palpação</span> (gás nos tecidos fetais) · septicemia materna
       </div>
-      <div class="sec-block"><div class="sec-label">Diagnóstico</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Diagnóstico</div>
       Clínico + palpação vaginal (crepitação timpânica do feto) · odor pútrido característico · histórico de parto distócico não assistido
       </div>
-      <div class="sec-block"><div class="sec-label">Tratamento</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Tratamento</div>
       <strong>Grandes animais:</strong> fetotomia (feto morto, tecidos amolecidos facilitam) · lubrificação exagerada obrigatória · ATB sistêmico + AINEs<br>
       <strong>Equinos:</strong> cesariana se fetotomia inviável · risco de laminite pós-septicemia → ATB + AINE preventivos<br>
       <strong>Pequenos animais:</strong> cesariana + OSH (suture · não usar fetotomia) · lavagem uterina
       </div>
-      <div class="danger-box">Risco de septicemia e toxemia maternas. Prognóstico reprodutivo ruim em grandes animais.</div>
+      <div class="pg-danger-box">Risco de septicemia e toxemia maternas. Prognóstico reprodutivo ruim em grandes animais.</div>
     </div>
   </div>
 
-  <div class="pat-card">
-    <div class="pat-header" onclick="pgToggle(this)">
+  <div class="pg-pat-card">
+    <div class="pg-pat-header" onclick="pgToggle(this)">
       <div>
-        <span class="pat-title">Maceração fetal</span>
-        <span class="urgencia urg-grave">Urgente</span>
+        <span class="pg-pat-title">Maceração fetal</span>
+        <span class="pg-urgencia pg-urg-grave">Urgente</span>
       </div>
-      <div class="pat-tags">
-        <span class="badge bdanger">Bovinos · Equinos · Peq. animais</span>
-        <span class="pat-arrow">▼</span>
+      <div class="pg-pat-tags">
+        <span class="pg-badge pg-bdanger">Bovinos · Equinos · Peq. animais</span>
+        <span class="pg-pat-arrow">▼</span>
       </div>
     </div>
-    <div class="pat-body">
-      <div class="sec-block"><div class="sec-label">Definição</div>
+    <div class="pg-pat-body">
+      <div class="pg-sec-block"><div class="pg-sec-label">Definição</div>
       Processo séptico após morte fetal com abertura cervical → bactérias aeróbias entram pelo cérvix aberta → liquefação dos tecidos moles fetais (amolecimento, putrefação) → restam apenas ossos. Mais comum após 4 meses (bovinos) ou 100 dias (peq. ruminantes).
       </div>
-      <div class="sec-block"><div class="sec-label">Etiologia</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Etiologia</div>
       Trichomonas foetus (bovinos) · bactérias aeróbias por via ascendente · parto distócico retido · traumatismos · torção uterina
       </div>
-      <div class="sec-block"><div class="sec-label">Sinais clínicos</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Sinais clínicos</div>
       Secreção purulenta e fétida pela vulva · comprometimento do estado geral (septicemia) · possível perfuração da parede uterina → peritonite · à palpação retal: crepitação óssea (peças esqueléticas no útero)
       </div>
-      <div class="sec-block"><div class="sec-label">Tratamento</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Tratamento</div>
       <strong>Bovinos/Equinos:</strong> E2 para abertura da cérvix + PGF2α → retirada dos ossos manualmente ou por histerotomia · lavagem uterina + ATB intrauterino · ATB sistêmico<br>
       <strong>Equinos:</strong> dilatação manual da cérvix + retirada + ATB local → cuidado com laminite<br>
       <strong>Pequenos animais:</strong> cesariana + OSH + lavagem uterina · suporte intensivo (fluidos, ATB, corticoides se grave)
@@ -5888,52 +6348,52 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
     </div>
   </div>
 
-  <div class="pat-card">
-    <div class="pat-header" onclick="pgToggle(this)">
+  <div class="pg-pat-card">
+    <div class="pg-pat-header" onclick="pgToggle(this)">
       <div>
-        <span class="pat-title">Molas (vesiculares, hidatiformes, carnosas)</span>
-        <span class="urgencia urg-leve">Moderado</span>
+        <span class="pg-pat-title">Molas (vesiculares, hidatiformes, carnosas)</span>
+        <span class="pg-urgencia pg-urg-leve">Moderado</span>
       </div>
-      <div class="pat-tags">
-        <span class="badge binfo">Ruminantes · Suínos · Cão</span>
-        <span class="pat-arrow">▼</span>
+      <div class="pg-pat-tags">
+        <span class="pg-badge pg-binfo">Ruminantes · Suínos · Cão</span>
+        <span class="pg-pat-arrow">▼</span>
       </div>
     </div>
-    <div class="pat-body">
-      <div class="sec-block"><div class="sec-label">Definição</div>
+    <div class="pg-pat-body">
+      <div class="pg-sec-block"><div class="pg-sec-label">Definição</div>
       Processo patológico placentário com reabsorção embrionária e desenvolvimento anômalo dos anexos fetais, sem feto viável. Etiologia não completamente definida — possível origem tumoral, má formação, trauma ou genética. Observadas em bovinos, caninos e suínos.
       </div>
-      <div class="sec-block"><div class="sec-label">Tipos</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Tipos</div>
       <strong>Cística:</strong> estruturas com conteúdo líquido · <strong>Hidatiforme:</strong> vesículas com líquido claro (aspecto de cachos) · <strong>Vilosa:</strong> vilosidades placentárias exuberantes sem feto · <strong>Carnosa/Hemorrágica:</strong> conteúdo sólido achocolatado
       </div>
-      <div class="sec-block"><div class="sec-label">Diagnóstico</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Diagnóstico</div>
       Frequentemente sem sintomatologia clínica · à US: útero aumentado sem feto identificável · corrimento hemorrágico durante a gestação pode indicar mola hemorrágica · diagnóstico definitivo: histopatologia
       </div>
-      <div class="sec-block"><div class="sec-label">Tratamento</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Tratamento</div>
       PGF2α + E2 (vaca) para indução do abortamento · abertura manual da cérvix + PGF2α (égua) + ATB local · cesariana (peq. animais) · ATB sempre
       </div>
     </div>
   </div>
 
-  <div class="pat-card">
-    <div class="pat-header" onclick="pgToggle(this)">
+  <div class="pg-pat-card">
+    <div class="pg-pat-header" onclick="pgToggle(this)">
       <div>
-        <span class="pat-title">Gestação gemelar patológica — equinos</span>
-        <span class="urgencia urg-grave">Urgente em equinos</span>
+        <span class="pg-pat-title">Gestação gemelar patológica — equinos</span>
+        <span class="pg-urgencia pg-urg-grave">Urgente em equinos</span>
       </div>
-      <div class="pat-tags">
-        <span class="badge bdanger">Equinos principalmente</span>
-        <span class="pat-arrow">▼</span>
+      <div class="pg-pat-tags">
+        <span class="pg-badge pg-bdanger">Equinos principalmente</span>
+        <span class="pg-pat-arrow">▼</span>
       </div>
     </div>
-    <div class="pat-body">
-      <div class="sec-block"><div class="sec-label">Por que é grave em equinos?</div>
+    <div class="pg-pat-body">
+      <div class="pg-sec-block"><div class="pg-sec-label">Por que é grave em equinos?</div>
       A placenta difusa equina não consegue nutrir dois fetos simultaneamente → um deles morre (mumificação) e arrasta o outro (aborto gemelar por volta de 7–9 meses). Em bovinos: complicações mas ambos podem nascer. Em pequenos animais: natural, raras complicações significativas.
       </div>
-      <div class="sec-block"><div class="sec-label">Conduta em equinos</div>
+      <div class="pg-sec-block"><div class="pg-sec-label">Conduta em equinos</div>
       US precoce a partir do D14–16 · identificar gestação dupla antes do D16 (fase de mobilidade) · redução manual de uma vesícula (pinçamento): colocar a menor vesícula na ponta do corno · apertar entre os dedos até romper (destruição mecânica) · se D&gt;16: PGF2α para lisar o CL do corno do embrião menor (Prestes 2017) · manter monitoramento US
       </div>
-      <div class="danger-box"><strong>Reduzir ANTES do dia 17</strong> — após D17 o embrião fixou no útero e a redução manual é mais difícil. Gêmeos equinos que chegam ao parto: alta mortalidade neonatal e risco materno grave.</div>
+      <div class="pg-danger-box"><strong>Reduzir ANTES do dia 17</strong> — após D17 o embrião fixou no útero e a redução manual é mais difícil. Gêmeos equinos que chegam ao parto: alta mortalidade neonatal e risco materno grave.</div>
     </div>
   </div>
 </div>
@@ -5946,21 +6406,21 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
   </div>
 
   <div class="pg-sp-panel active" id="pg-sp-prol_vag">
-    <div class="info-box"><strong>Prolapso vaginal</strong> — inversão e extrusão da vagina pela rima vulvar. Mais comum no terço final da gestação em ruminantes. Parcial (só vagina) ou total (vagina + primeiros anéis cervicais). <span class="hl">Recidiva é quase certa em gestações subsequentes</span> — descartar da reprodução.</div>
+    <div class="pg-info-box"><strong>Prolapso vaginal</strong> — inversão e extrusão da vagina pela rima vulvar. Mais comum no terço final da gestação em ruminantes. Parcial (só vagina) ou total (vagina + primeiros anéis cervicais). <span class="pg-hl">Recidiva é quase certa em gestações subsequentes</span> — descartar da reprodução.</div>
 
-    <div class="sec-block"><div class="sec-label">Etiologia — multifatorial</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Etiologia — multifatorial</div>
     Hereditariedade (predisposição genética — descartar da reprodução) · afrouxamento dos sistemas de fixação vaginal (idosas, multíparas) · altos níveis de E2 · aumento da pressão intra-abdominal (timpanismo, gestação gemelar, hidropsia) · tenesmo · hipocalcemia · obesidade · confinamento sem exercício
     </div>
 
-    <div class="sec-block"><div class="sec-label">Sinais clínicos</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Sinais clínicos</div>
     Formação avermelhada/rosada cilíndrica nos lábios vulvares (visível em decúbito ou em estação nos casos graves) · tenesmo · retenção urinária (dobramento da uretra) · prolapso retal secundário ao tenesmo · em casos graves: congestão, edema, necrose da mucosa exposta · comprometimento fetal (contaminação)
     </div>
 
-    <div class="sec-block"><div class="sec-label">Diagnóstico diferencial</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Diagnóstico diferencial</div>
     Prolapso vaginal × hipoplasia vaginal × neoplasia vaginal × prolapso paravolvar
     </div>
 
-    <div class="sec-block"><div class="sec-label">Tratamento</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Tratamento</div>
     <strong>Redução do prolapso:</strong> anestesia epidural (lidocaína 2%, 1 mL/100 kgPV) para cessar o tenesmo · limpar e desinfectar · substâncias osmóticas (açúcar, sal) para reduzir edema (remover após 5 min) · reposicionar a vagina<br>
     <strong>Retenção:</strong> sutura de Bühner (perivulvar em bolsa de tabaco) + sutura de Caslic (vulva) · manter até o parto<br>
     <strong>Retirada dos pontos antes do parto</strong> para não obstruir a saída do feto<br>
@@ -5969,21 +6429,21 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
   </div>
 
   <div class="pg-sp-panel" id="pg-sp-prol_uter">
-    <div class="danger-box"><strong>Prolapso uterino = EMERGÊNCIA</strong><span class="urgencia urg-emergencia">EMERGÊNCIA</span> — invertido e exposto pela vulva, expondo o endométrio. Ocorre nas primeiras horas após o parto. Mais frequente em ruminantes, suínos e cadelas.</div>
+    <div class="pg-danger-box"><strong>Prolapso uterino = EMERGÊNCIA</strong><span class="pg-urgencia pg-urg-emergencia">EMERGÊNCIA</span> — invertido e exposto pela vulva, expondo o endométrio. Ocorre nas primeiras horas após o parto. Mais frequente em ruminantes, suínos e cadelas.</div>
 
-    <div class="sec-block"><div class="sec-label">Etiologia</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Etiologia</div>
     Atonia uterina (principal) · retenção de placenta · hipocalcemia pós-parto · tração excessiva do feto · distocia · obesidade · deficiências de Ca, P, Mg · tenesmo · confinamento · predisposição hereditária
     </div>
 
-    <div class="sec-block"><div class="sec-label">Classificação</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Classificação</div>
     Parcial: exposição de apenas um corno uterino · Completo: dois cornos expostos · Total: dois cornos + cérvix expostos
     </div>
 
-    <div class="sec-block"><div class="sec-label">Sinais clínicos</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Sinais clínicos</div>
     Tecido uterino prolapsado pela vulva com carúnculas maternas visíveis (diferencia de prolapso vaginal) · extensão pode chegar ao jarrete em bovinos em estação · tecido edemaciado, arroxeado, com coágulos · inquietação · anorexia · dor abdominal · taquicardia · taquipneia · timpanismo ruminal frequente em bovinos
     </div>
 
-    <div class="sec-block"><div class="sec-label">Tratamento — protocolo</div>
+    <div class="pg-sec-block"><div class="pg-sec-label">Tratamento — protocolo</div>
     <strong>Medidas imediatas:</strong> envolver o útero em toalha/lençol úmido para evitar trauma e contaminação<br>
     <strong>Analgesia + anestesia epidural</strong> (lidocaína 2%): cessa o tenesmo, essencial para a reposição<br>
     <strong>Sedação:</strong> se necessário (acepromazina + xilazina em bovinos)<br>
@@ -5995,7 +6455,7 @@ Acepromazina (fenotiazínico) pode causar priapismo em equinos por bloqueio α-a
     <strong>Se reposição inviável:</strong> amputação do útero + ATB
     </div>
 
-    <div class="memo"><div class="memo-label">Diferença prolapso vaginal × prolapso uterino</div><div class="memo-text">
+    <div class="pg-memo"><div class="pg-memo-label">Diferença prolapso vaginal × prolapso uterino</div><div class="pg-memo-text">
 Prolapso vaginal: ocorre na gestação · sem carúnculas · mucosa vaginal lisa<br>
 Prolapso uterino: ocorre pós-parto · carúnculas maternas VISÍVEIS · endométrio exposto<br>
 Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorragia da artéria mediana uterina)
@@ -6013,7 +6473,7 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
   </div>
 
   <div class="pg-sp-panel active" id="pg-sp-torcao">
-    <div class="danger-box"><strong>Torção uterina</strong><span class="urgencia urg-emergencia">EMERGÊNCIA</span> — rotação do útero sobre seu eixo longitudinal, dificultando ou impedindo o parto. Mais frequente em bovinos e equinos, principalmente no terço final da gestação.</div>
+    <div class="pg-danger-box"><strong>Torção uterina</strong><span class="pg-urgencia pg-urg-emergencia">EMERGÊNCIA</span> — rotação do útero sobre seu eixo longitudinal, dificultando ou impedindo o parto. Mais frequente em bovinos e equinos, principalmente no terço final da gestação.</div>
 
     <div style="font-size:13px;line-height:1.8;color:var(--text)">
       <strong>Sinais:</strong> sinais de cólica (equinos — muito intensos) ou distúrbios digestivos/respiratórios (bovinos) · abdômen tenso · dispneia · taquicardia · ausência de progressão do parto apesar das contrações<br><br>
@@ -6026,7 +6486,7 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
   </div>
 
   <div class="pg-sp-panel" id="pg-sp-ruptura">
-    <div class="danger-box"><strong>Ruptura uterina</strong><span class="urgencia urg-emergencia">EMERGÊNCIA</span> — rompimento da parede uterina. Causas: distocia grave, manipulação obstétrica excessiva, fio serra na fetotomia, desprendimento rápido do corioalantoide (éguas), tração excessiva.</div>
+    <div class="pg-danger-box"><strong>Ruptura uterina</strong><span class="pg-urgencia pg-urg-emergencia">EMERGÊNCIA</span> — rompimento da parede uterina. Causas: distocia grave, manipulação obstétrica excessiva, fio serra na fetotomia, desprendimento rápido do corioalantoide (éguas), tração excessiva.</div>
 
     <div style="font-size:13px;line-height:1.8;color:var(--text)">
       <strong>Sinais:</strong> cólica intensa (equinos) · hemorragia · peritonite se conteúdo uterino extravasou para a cavidade abdominal · septicemia · choque hipovolêmico<br><br>
@@ -6035,7 +6495,7 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
   </div>
 
   <div class="pg-sp-panel" id="pg-sp-placentite">
-    <div class="info-box"><strong>Placentite equina</strong> — inflamação placentária, causa importante de aborto e parto prematuro em éguas. Infecção pode ser ascendente (via cérvix) ou hematógena.</div>
+    <div class="pg-info-box"><strong>Placentite equina</strong> — inflamação placentária, causa importante de aborto e parto prematuro em éguas. Infecção pode ser ascendente (via cérvix) ou hematógena.</div>
 
     <div style="font-size:13px;line-height:1.8;color:var(--text)">
       <strong>Agentes:</strong> Streptococcus zooepidemicus · E. coli · Staphylococcus aureus · Aspergillus spp (contaminação materna → lesão permanente na égua)<br><br>
@@ -6058,9 +6518,9 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
 
 <!-- DISTOCIAS MATERNAS -->
 <div class="pg-panel" id="pg-panel-distocia_mat">
-  <div class="info-box">Distocias de causa materna — mais frequentes em <strong>ruminantes e cadelas</strong> (fatores nutricionais, perda de Ca/P). Diferem das distocias fetais — origem na fêmea, não no feto.</div>
+  <div class="pg-info-box">Distocias de causa materna — mais frequentes em <strong>ruminantes e cadelas</strong> (fatores nutricionais, perda de Ca/P). Diferem das distocias fetais — origem na fêmea, não no feto.</div>
 
-  <table class="ref-table">
+  <table class="pg-ref-table">
     <tr><th>Causa</th><th>Mecanismo</th><th>Tratamento</th><th>Espécie mais afetada</th></tr>
     <tr><td><strong>Anomalias pélvicas</strong></td><td>Pelve muito pequena ou deformada por fratura prévia</td><td>Cesariana</td><td>Bovinos · Cão (raças braquicefálicas)</td></tr>
     <tr><td><strong>Anomalias vulvares</strong></td><td>Estenose vulvar, cicatrizes de partos anteriores</td><td>Episiotomia</td><td>Bovinos · Equinos</td></tr>
@@ -6071,13 +6531,13 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
     <tr><td><strong>Hipertonia (espasmo) uterina</strong></td><td>Contração tetânica sem relaxamento → parto rápido demais ou bloqueio</td><td>Tocolíticos (clenbuterol) · sedação</td><td>Éguas — causa de parto precipitado</td></tr>
   </table>
 
-  <div class="prova-box"><strong>Atonia uterina em cadelas:</strong> hipocalcemia pós-parto (eclâmpsia) é causa frequente de atonia → gluconato de cálcio IV lento · cadelas de raças pequenas são mais predispostas. Ocitocina só funciona se há receptores — administrar Ca antes da ocitocina quando há suspeita de hipocalcemia.</div>
+  <div class="pg-prova-box"><strong>Atonia uterina em cadelas:</strong> hipocalcemia pós-parto (eclâmpsia) é causa frequente de atonia → gluconato de cálcio IV lento · cadelas de raças pequenas são mais predispostas. Ocitocina só funciona se há receptores — administrar Ca antes da ocitocina quando há suspeita de hipocalcemia.</div>
 </div>
 
 <!-- TABELA GERAL -->
 <div class="pg-panel" id="pg-panel-tabela">
-  <div class="suc-box">Resumo rápido — todas as patologias da gestação</div>
-  <table class="ref-table">
+  <div class="pg-suc-box">Resumo rápido — todas as patologias da gestação</div>
+  <table class="pg-ref-table">
     <tr><th>Patologia</th><th>Espécie principal</th><th>Sinal clínico chave</th><th>Diagnóstico chave</th><th>Tratamento principal</th></tr>
     <tr><td><strong>Hidroalantoide</strong></td><td>Bovinos</td><td>Distensão abdominal progressiva · feto não palpável</td><td>Palpação retal + US</td><td>Drenagem lenta + indução/cesariana</td></tr>
     <tr><td><strong>Hidroâmnio</strong></td><td>Bovinos · Ovinos · Cão</td><td>Menor distensão · malformação fetal</td><td>US · malformação fetal</td><td>Semelhante ao hidroalantoide</td></tr>
@@ -6103,51 +6563,435 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
   title: 'Patologias da Fêmea',
   icon: '#i-stethoscope',
   content: `
-<h3>12.1 Patologias Uterinas</h3>
-<div class="table-wrap"><table>
-<tr><th>Patologia</th><th>Definição</th><th>Causa</th><th>Diagnóstico</th><th>Tratamento</th></tr>
-<tr><td><strong>Metrite Puerperal</strong></td><td>Inflamação uterina pós-parto envolvendo todas as camadas; fase aguda</td><td>Retenção de placenta, distócia, partos gemelares; E. coli, Arcanobacterium, Fusobacterium</td><td>Descarga fétida; febre; toxemia; US: fluido uterino</td><td>Ocitocina + PGF2α; ABX sistêmico (ampicilina/ceftiofur); suporte</td></tr>
-<tr><td><strong>Endometrite Clínica</strong></td><td>Inflamação do endométrio com corrimento purulento</td><td>Contaminação pós-parto; má involução</td><td>Corrimento muco-purulento visível</td><td>PGF2α; ABX intrauterino (cefapirina)</td></tr>
-<tr><td><strong>Endometrite Subclínica</strong></td><td>Inflamação sem corrimento visível; >18% PMN no lavado</td><td>Subclínica persistente</td><td>Citologia uterina (>18% PMN) ou biópsia</td><td>Cefapirina intrauterina; PGF2α</td></tr>
-<tr><td><strong>Piometra</strong></td><td>Acúmulo de pus no útero com cérvix fechada</td><td>CL persistente (P4 alta); infecção por E. coli; endometrite crônica</td><td>US: útero dilatado com conteúdo ecogênico; ausência de estro</td><td>PGF2α (luteólise) + ABX; ovário-histerectomia em cadelas/gatas</td></tr>
-<tr><td><strong>Mucometra</strong></td><td>Acúmulo de muco/fluido seroso no útero</td><td>Obstrução cervical; cistos</td><td>US: útero distendido, conteúdo anecóico</td><td>Drenagem + tratamento da causa</td></tr>
-</table></div>
+<style>
+.pf-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.pf-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.pf-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+.pf-tab:hover{background:var(--bg-hover)}.pf-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.pf-panel{display:none}.pf-panel.active{display:block}
+.pf-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.pf-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+.pf-sp-tab:hover{background:var(--bg-hover)}.pf-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.pf-sp-panel{display:none}.pf-sp-panel.active{display:block}
+.pf-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pf-danger-box{border-left:3px solid #A32D2D;background:var(--red-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pf-danger-box strong{color:#7a1f1f}
+.pf-prova-box{border-left:3px solid #BA7517;background:var(--amber-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pf-prova-box strong{color:#633806}
+.pf-suc-box{border-left:3px solid #3B6D11;background:var(--green-50);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.pf-sec-block{background:var(--bg-card-alt);border-radius:8px;padding:12px 14px;margin-bottom:8px;border:1px solid var(--border-card)}
+.pf-sec-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:5px}
+.pf-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-card);margin-top:10px;margin-bottom:10px}
+.pf-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.pf-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
+.pf-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px}
+.pf-ref-table th{background:var(--bg-card-alt);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-light);font-size:11px;color:var(--text-secondary)}
+.pf-ref-table td{padding:6px 10px;border:1px solid var(--border-light);vertical-align:top;line-height:1.5}
+.pf-ref-table tr:nth-child(even) td{background:var(--bg-card-alt)}
+.pf-card{border-radius:8px;border:1px solid var(--border-card);margin-bottom:10px;overflow:hidden}
+.pf-card-header{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg-card);transition:background .15s}
+.pf-card-header:hover{background:var(--bg-card-alt)}
+.pf-card-title{font-weight:600;font-size:13px}
+.pf-card-tags{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.pf-card-body{display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.65}
+.pf-card-body.open{display:block}
+.pf-card-arrow{font-size:11px;color:var(--text-muted);transition:transform .2s}
+.pf-card-header.open .pf-card-arrow{transform:rotate(180deg)}
+.pf-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+.pf-bwarn{background:var(--amber-100);color:#633806}.pf-binfo{background:var(--blue-100);color:var(--blue-700)}
+.pf-bsuc{background:var(--green-50);color:#27500a}.pf-bdanger{background:var(--red-100);color:#7a1f1f}
+.pf-hl{background:var(--amber-100);border-radius:3px;padding:1px 4px;font-weight:600}
+</style>
 
-<h3>12.2 Cistos Ovarianos</h3>
-<div class="table-wrap"><table>
-<tr><th>Tipo</th><th>Origem</th><th>Hormônios</th><th>Sinais</th><th>Tratamento</th></tr>
-<tr><td><strong>Cisto Folicular</strong></td><td>Folículo não ovulado; >25mm; parede fina</td><td>E2 alto ou normal; P4 baixa</td><td>Ninfomania (vaca) ou anestro</td><td>GnRH (leuprorrelin) ou hCG</td></tr>
-<tr><td><strong>Cisto Luteal</strong></td><td>Folículo que sofre luteinização sem ovular</td><td>P4 moderadamente alta</td><td>Anestro; US: parede >3mm</td><td>PGF2α (luteólise)</td></tr>
-</table></div>
+<p class="pf-label">Patologia da Reprodução</p>
+<h2>Patologias da Fêmea</h2>
 
-<div class="alert alert-exam">
-<strong>🎯 DIAGNÓSTICO DIFERENCIAL: Cisto vs. Folículo</strong><br>
-Cisto folicular: >25mm; presente por >10 dias; ausência de CL no ovário ipsilateral; diagnóstico definitivo com US + histórico clínico.
+<div class="pf-tabs">
+  <button class="pf-tab active" onclick="pfSetTab('visao',this)">Visão geral</button>
+  <button class="pf-tab" onclick="pfSetTab('utero',this)">Útero</button>
+  <button class="pf-tab" onclick="pfSetTab('ovarios',this)">Ovários</button>
+  <button class="pf-tab" onclick="pfSetTab('vulvavag',this)">Vulva e vagina</button>
+  <button class="pf-tab" onclick="pfSetTab('mama',this)">Glândula mamária</button>
+  <button class="pf-tab" onclick="pfSetTab('ciclo',this)">Alterações do ciclo</button>
+  <button class="pf-tab" onclick="pfSetTab('porsp',this)">▶ Por espécie</button>
 </div>
 
-<h3>12.3 Mastite</h3>
-<h4>Classificação</h4>
-<ul>
-  <li><strong>Clínica:</strong> Alterações visíveis no leite (coágulos, aguado) + glândula (edema, dor)</li>
-  <li><strong>Subclínica:</strong> Sem sinais visíveis; detectada por CMT (Contagem de Células Somáticas) ou CCS</li>
-  <li><strong>Crônica:</strong> Fibrose, dureza do tecido; recorrente</li>
-  <li><strong>Gangrenosa:</strong> Isquemia e necrose do tecido mamário; Staphylococcus aureus + toxinas; emergência</li>
-</ul>
+<!-- VISÃO GERAL -->
+<div class="pf-panel active" id="pf-panel-visao">
+  <div class="pf-suc-box">Resumo das principais patologias reprodutivas da fêmea — cobradas em residência veterinária</div>
+  <table class="pf-ref-table">
+    <tr><th>Patologia</th><th>Espécie principal</th><th>Sinal chave</th><th>Diagnóstico</th><th>Tratamento principal</th></tr>
+    <tr><td><strong>Metrite puerperal</strong></td><td>Bovinos</td><td>Secreção fétida + febre &lt;21d pós-parto</td><td>Vaginoscopia + US</td><td>ABX sistêmico (ceftiofur) + PGF2α</td></tr>
+    <tr><td><strong>Endometrite clínica</strong></td><td>Bovinos · Equinos</td><td>Corrimento muco-purulento ≥21d</td><td>Vaginoscopia / metricheck</td><td>PGF2α + ATB intrauterino (cefapirina)</td></tr>
+    <tr><td><strong>Endometrite subclínica</strong></td><td>Bovinos · Equinos</td><td>Infertilidade sem corrimento</td><td>Citologia (&gt;18% PMN)</td><td>PGF2α ou ATB intrauterino</td></tr>
+    <tr><td><strong>Piometra</strong></td><td>Cadelas · Gatas · Vacas</td><td>PU/PD · distensão · secreção vaginal</td><td>US + leucocitose</td><td>OSH (eleição) / aglepristone + ATB</td></tr>
+    <tr><td><strong>Cisto folicular</strong></td><td>Bovinos leiteiros</td><td>Ninfomania ou anestro · parede fina</td><td>US (&gt;25mm, &gt;10d, sem CL)</td><td>GnRH ou hCG</td></tr>
+    <tr><td><strong>Cisto luteal</strong></td><td>Bovinos leiteiros</td><td>Anestro · parede espessa (&gt;3mm)</td><td>US + P4 moderada</td><td>PGF2α</td></tr>
+    <tr><td><strong>Tumor da granulosa</strong></td><td>Éguas · Cadelas</td><td>Ninfomania → masculinização</td><td>US + inibina · testosterona</td><td>Ovariectomia</td></tr>
+    <tr><td><strong>Mastite clínica</strong></td><td>Bovinos</td><td>Leite alterado + glândula inflamada</td><td>CMT + cultura</td><td>ATB intramamário ± sistêmico</td></tr>
+    <tr><td><strong>Tumor mamário</strong></td><td>Cadelas · Gatas</td><td>Nódulo mamário; gata: &gt;90% maligno</td><td>Histopatologia + TNM</td><td>Mastectomia ± quimioterapia</td></tr>
+    <tr><td><strong>Prolapso vaginal</strong></td><td>Bovinos · Ovinos</td><td>Massa pré-parto na vulva</td><td>Inspeção clínica</td><td>Epidural + reposição + Bühner</td></tr>
+    <tr><td><strong>Hiperplasia vaginal</strong></td><td>Cadelas</td><td>Mucosa lisa no estro (sem carúnculas)</td><td>Vaginoscopia</td><td>Conservativo; castração previne</td></tr>
+    <tr><td><strong>SOR</strong></td><td>Cadelas · Gatas</td><td>Cio após castração</td><td>Citologia + E2/P4</td><td>Laparotomia exploratória</td></tr>
+  </table>
+</div>
 
-<h4>Agentes Etiológicos</h4>
-<div class="table-wrap"><table>
-<tr><th>Tipo</th><th>Agente</th><th>Característica</th></tr>
-<tr><td>Contagiosa</td><td>Staphylococcus aureus, Streptococcus agalactiae</td><td>Vaca para vaca via equipamento de ordenha</td></tr>
-<tr><td>Ambiental</td><td>E. coli, Streptococcus uberis, Klebsiella</td><td>Ambiente contaminado; comum pós-parto</td></tr>
-<tr><td>Oportunista</td><td>Staphylococcus coagulase-neg., Mycoplasma</td><td>Subclínica; difícil tratamento</td></tr>
-</table></div>
+<!-- ÚTERO -->
+<div class="pf-panel" id="pf-panel-utero">
+  <div class="pf-sp-tabs">
+    <button class="pf-sp-tab active" onclick="pfSetSp('metrite',this)">Metrite</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('endometrite',this)">Endometrite</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('piometra',this)">Piometra</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('cem',this)">CEM (Equinos)</button>
+  </div>
 
-<h3>12.4 Outros</h3>
-<ul>
-  <li><strong>Prolapso Uterino:</strong> Eversão completa do útero para fora da vulva; emergência; mais comum em bovinos e ovinos pós-parto. Redução manual urgente + ocitocina + puxa posterior com sutura de Bühner.</li>
-  <li><strong>Prolapso Vaginal:</strong> Prolapse parcial do assoalho vaginal; proestro ou pré-parto; mais em bovinos e ovinos (raças Brangus). Redução + sutura de retenção.</li>
-  <li><strong>Morte Embrionária:</strong> Precoce (antes de 42d) ou tardia (após 42d). Causas: infecciosas (IBR, DVB, Trichomonas), nutricionais, genéticas, endócrinas.</li>
-</ul>
+  <div class="pf-sp-panel active" id="pf-sp-metrite">
+    <div class="pf-info-box"><strong>Metrite puerperal</strong> — inflamação pós-parto envolvendo todas as camadas uterinas. Ocorre nos <span class="pf-hl">primeiros 21 dias</span> após o parto. Mais grave que endometrite. Pode evoluir para septicemia.</div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Causas e fatores predisponentes</div>
+    <strong>Fatores:</strong> retenção de placenta, distócia, gestação gemelar, hipocalcemia, acetonemia, aborto<br>
+    <strong>Agentes:</strong> E. coli (precoce — primeiras 24-72h), Arcanobacterium pyogenes, Fusobacterium necrophorum, Streptococcus spp., Trueperella pyogenes (fase tardia)
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Sinais clínicos</div>
+    Descarga uterina aquosa, achocolatada ou marrom-avermelhada, com odor fétido · febre (&gt;39,5°C) · toxemia · taquicardia · queda de produção leiteira · decúbito nos casos graves
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Diagnóstico</div>
+    Exame vaginal + vaginoscopia · US (espessamento, fluido uterino) · cultura do conteúdo uterino
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Tratamento</div>
+    <strong>ABX sistêmico:</strong> ceftiofur (1-2mg/kg IM, 5 dias) ou ampicilina · PGF2α para luteólise e contração uterina · ocitocina para drenagem · suporte: fluidoterapia se toxemia<br>
+    <strong>NÃO realizar lavagem uterina</strong> na metrite aguda — risco de bacteremia
+    </div>
+    <div class="pf-prova-box"><strong>Ponto de prova:</strong> Metrite ≠ Endometrite. Metrite: todas as camadas, &lt;21 dias pós-parto, secreção fétida aquosa + febre + toxemia. Endometrite: só endométrio, &gt;21 dias, corrimento muco-purulento, sem febre sistêmica.</div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-endometrite">
+    <div class="pf-info-box"><strong>Endometrite</strong> — inflamação do endométrio após 21 dias do parto. Causa silenciosa de infertilidade bovina. Ocorre também em equinos (forma crônica) e cadelas (parte do complexo HCE).</div>
+    <table class="pf-ref-table">
+      <tr><th>Tipo</th><th>Definição</th><th>Diagnóstico</th><th>Tratamento</th></tr>
+      <tr><td><strong>Clínica grau 1</strong></td><td>Corrimento purulento visível na vulva ≥21d pós-parto</td><td>Vaginoscopia: escore 3 (purulento)</td><td>PGF2α se CL presente + ATB intrauterino</td></tr>
+      <tr><td><strong>Clínica grau 2</strong></td><td>Corrimento muco-purulento (&lt;50% pus) ≥26d pós-parto</td><td>Vaginoscopia: escore 2 ou Metricheck positivo</td><td>Idem grau 1</td></tr>
+      <tr><td><strong>Subclínica</strong></td><td>Sem corrimento visível; &gt;18% PMN no lavado ou &gt;5% na biópsia</td><td>Citologia (cytobrush ou lavado baixo volume)</td><td>PGF2α OU cefapirina intrauterina</td></tr>
+    </table>
+    <div class="pf-sec-block"><div class="pf-sec-label">Endometrite em éguas</div>
+    Mais comum em éguas velhas/multíparas com má conformação perineal. Causa: contaminação ascendente (fezes, ar, cobertura). <strong>Resposta inflamatória pós-cobertura:</strong> fisiológica — ocorre em toda égua; limpa-se em 12-24h por contrações + drenagem linfática. <strong>Patológica:</strong> égua "suscetível" — acúmulo de fluido intrauterino (&gt;2cm) após 24h da IA → infertilidade. Diag: US (fluido), citologia (PMN&gt;5%), biópsia (grad. I-IIIb). Trat: ocitocina + prostaglandina (6-12h pós IA) para drenagem; lavagem uterina pré-cobertura; ATB (ceftiofur, sulfa) nos crônicos; vulvoplastia (Caslick) se má conformação.
+    </div>
+    <div class="pf-prova-box"><strong>Dexametasona pré-cobertura em éguas:</strong> reduz a resposta inflamatória exacerbada pós-sêmen em éguas suscetíveis. Administrada 1h antes da IA.</div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-piometra">
+    <div class="pf-danger-box"><strong>Piometra em cadelas</strong> — acúmulo de pus no útero. Emergência médico-cirúrgica. Resultado final do Complexo Hiperplasia Endometrial Cística (HCE). Mais comum após os 5 anos, nulíparas ou com uso de anticoncepcionais.</div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Patogenia — sequência HCE → Piometra</div>
+    Diestro prolongado (P4 alta) → hiperplasia glandular cística do endométrio → acúmulo de secreções → imunidade uterina reduzida → entrada de bactérias (E. coli predominante — de flora vaginal/urinária) → proliferação no lúmen uterino → piometra<br>
+    <strong>Anticoncepcionais com E2:</strong> aumentam receptores endometriais de P4 → aceleram o processo → podem causar piometra em fêmeas jovens
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Classificação</div>
+    <strong>Aberta (85%):</strong> cérvix aberta → secreção vaginal visível (purulenta/hemorrágica) · menos grave<br>
+    <strong>Fechada (15%):</strong> cérvix fechada → acúmulo intrauterino → distensão abdominal · risco de ruptura → peritonite → morte
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Sinais clínicos</div>
+    Poliúria/polidipsia (toxinas de E. coli inibem ADH nos túbulos renais) · depressão · anorexia · vômito · distensão abdominal · secreção vaginal (se aberta) · febre (nem sempre) · desidratação
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Diagnóstico</div>
+    US abdominal (útero distendido, conteúdo anecóico/heterogêneo) · leucocitose com desvio à esquerda · azotemia pré-renal (desidratação) · hiperproteinemia · hemograma (anemia normocítica normocrômica)
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Tratamento</div>
+    <strong>Cirúrgico (eleição):</strong> OSH — mais seguro; útero frágil; cuidado com manipulação<br>
+    <strong>CONTRAINDICADO no estro/proestro</strong> — risco de hemorragia por vascularização aumentada<br>
+    <strong>Clínico (reprodutoras):</strong> aglepristone (antagonista de P4, 10mg/kg SC, D1+D2+D8) + ABX largo espectro (enrofloxacina) + PGF2α (abre cérvix e contrai útero); monitorar com US · recidiva frequente (~50-70%)
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Piometra em vacas</div>
+    CL persistente mantém P4 alta → cérvix fechada → acúmulo de pus. Diag: US retal. Trat: PGF2α (luteólise → abre cérvix) + ocitocina + lavagem uterina + ATB intrauterino
+    </div>
+    <div class="pf-memo"><div class="pf-memo-label">Diagnóstico diferencial piometra em cadela</div><div class="pf-memo-text">Piometra aberta × vaginite × neoplasia vaginal × TVT × mucometra × gestação × piometra de coto (ovário remanescente após castração prévia)</div></div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-cem">
+    <div class="pf-info-box"><strong>CEM — Metrite Contagiosa Equina</strong> (Taylorella equigenitalis). Doença de transmissão sexual. <span class="pf-hl">NÃO isolada no Brasil</span>. Barreira para comércio internacional de equinos.</div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Características</div>
+    Garanhões: <strong>portadores assintomáticos</strong> (colonizam fossa da glande e prepúcio). Éguas: 2-10 dias pós-cobertura → descarga vaginal purulenta + infertilidade. Éguas podem se tornar portadoras crônicas (fóssulas clitoriais).
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Diagnóstico e tratamento</div>
+    Diag: cultura do fóssil clitoriano/prepúcio; PCR; prova de monta em égua-teste aumenta sensibilidade em machos portadores.<br>
+    Trat: penicilina procaína + gentamicina sistêmico + lavagem local com clorexidina + ATB tópico prepucial/clitoriano por 5-7 dias
+    </div>
+  </div>
+</div>
+
+<!-- OVÁRIOS -->
+<div class="pf-panel" id="pf-panel-ovarios">
+  <div class="pf-sp-tabs">
+    <button class="pf-sp-tab active" onclick="pfSetSp('cistos',this)">Cistos ovarianos</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('granulosa',this)">Tumor da granulosa</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('sor',this)">SOR</button>
+  </div>
+
+  <div class="pf-sp-panel active" id="pf-sp-cistos">
+    <div class="pf-info-box">Cistos ovarianos = estruturas foliculares &gt;25mm que persistem &gt;10 dias sem ovular e sem CL associado. Mais comuns em bovinos leiteiros de alta produção (metabolismo acelerado consome LH).</div>
+    <table class="pf-ref-table">
+      <tr><th></th><th>Cisto Folicular</th><th>Cisto Luteal</th></tr>
+      <tr><td><strong>Parede</strong></td><td>FINA (&lt;3mm)</td><td>ESPESSA (&gt;3mm)</td></tr>
+      <tr><td><strong>Hormônios</strong></td><td>E2 alto ou normal · P4 baixa</td><td>P4 moderada</td></tr>
+      <tr><td><strong>Sinais</strong></td><td>Ninfomania (vaca toureando) ou anestro · ciclos irregulares</td><td>Anestro prolongado · intervalos interestros longos</td></tr>
+      <tr><td><strong>Número</strong></td><td>Únicos (às vezes múltiplos)</td><td>Múltiplos frequentemente</td></tr>
+      <tr><td><strong>Diagnóstico</strong></td><td>US + sem CL + repetir em 10 dias</td><td>US (parede espessa) + P4 sérica</td></tr>
+      <tr><td><strong>Tratamento</strong></td><td>GnRH (buserelina, gonadorelina, cistorelina) → causa luteinização → PGF2α 7d depois · ou hCG</td><td>PGF2α (tem tecido luteal → funciona)</td></tr>
+    </table>
+    <div class="pf-memo"><div class="pf-memo-label">Regra de ouro — cistos bovinos</div><div class="pf-memo-text">Parede FINA + ninfomania → FOLICULAR → GnRH
+Parede ESPESSA + anestro → LUTEAL → PGF2α
+PGF2α NÃO funciona no folicular (sem CL para lisar!)</div></div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Cistos ovarianos em cadelas</div>
+    ~10% das cadelas sadias apresentam cistos foliculares ao exame de rotina. Frequentemente assintomáticos. Se causam hiperestrogenismo prolongado: aplasia medular (grave!). Trat: OSH ou ovariectomia unilateral; aspiração guiada por US (50-70% de sucesso, alta recorrência).
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Cisto luteal</div>
+    Em cadelas: pode causar piometra ou mucometra. Diferencial de tumor da granulosa pelo US e dosagem hormonal.
+    </div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-granulosa">
+    <div class="pf-info-box"><strong>Tumor de células da granulosa (TCG)</strong> — neoplasia ovariana mais comum em éguas. Geralmente unilateral, benigno, hormonalmente ativo. Ovário contralateral atrofiado (inibina suprime FSH).</div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Comportamento clínico em éguas — fases</div>
+    <strong>Fase 1 — Hiperfunção da aromatase:</strong> converte andrógenos em E2 → ninfomania (comportamento de estro exacerbado e contínuo), agressividade<br>
+    <strong>Fase 2 — Hipofunção da aromatase:</strong> acúmulo de andrógenos → masculinização (comportamento de garanhão, montada em outras fêmeas, vocalização, hipertrofia clitoriana)<br>
+    <strong>Fase 3 — Anestro:</strong> inibina alta suprime FSH → sem desenvolvimento folicular contralateral
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Diagnóstico</div>
+    US ovariano: aspecto em <span class="pf-hl">"favo de mel" ou "queijo suíço"</span> (multilocular) · ovário contralateral atrofiado · inibina sérica elevada · testosterona elevada (útil na fase masculinizante)
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Tratamento e prognóstico</div>
+    Ovariectomia unilateral (laparotomia pelo flanco se &lt;15cm; linha alba se &gt;15cm) · após cirurgia: ovário contralateral recupera atividade em 6-12 meses · prognóstico reprodutivo bom
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">TCG em cadelas</div>
+    Hiperestrogenismo → estro contínuo, edema vulvar, alopecia bilateral simétrica, hiperpigmentação, HCE, piometra. Complicação mais grave: <strong>aplasia medular óssea</strong> (pancitopenia → risco de vida). Diag: US + biópsia + hemograma. Trat: OSH urgente se aplasia medular.
+    </div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-sor">
+    <div class="pf-info-box"><strong>SOR — Síndrome do Ovário Remanescente</strong> — fêmeas previamente castradas que voltam a demonstrar sinais de cio. Erro de técnica cirúrgica (fragmento ovariano permanece na cavidade ou cai e vasculariza).</div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Aspectos clínicos</div>
+    Cadelas: retorno do cio pode ocorrer de 5 meses a 3 anos após a castração · Gatas: comportamento de estro, vocalização, lordose<br>
+    <strong>Localização preferencial do remanescente:</strong> pedículo ovariano direito (mais cranial e profundo — maior risco cirúrgico)
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Diagnóstico</div>
+    Citologia vaginal (padrão de estro — células cornificadas) · dosagem de E2 e P4 sérica · teste de estimulação com GnRH ou hCG (↑LH/FSH se tecido ovariano ativo) · US abdominal (localizar o remanescente)
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Diagnóstico diferencial</div>
+    Vaginite · piometra de coto (útero remanescente) · TVT (tumor venéreo transmissível) · neoplasia vaginal · coagulopatia (secreção hemorrágica)
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Tratamento</div>
+    Laparotomia exploratória (ou laparoscopia) na fase de estro (ovário mais vascularizado e visível) · exérese completa de todo tecido ovariano residual
+    </div>
+  </div>
+</div>
+
+<!-- VULVA E VAGINA -->
+<div class="pf-panel" id="pf-panel-vulvavag">
+  <div class="pf-sp-tabs">
+    <button class="pf-sp-tab active" onclick="pfSetSp('prol_vag_pf',this)">Prolapso vaginal</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('hiper_vag',this)">Hiperplasia vaginal</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('outras_vag',this)">Urovagina / Lacerações</button>
+  </div>
+
+  <div class="pf-sp-panel active" id="pf-sp-prol_vag_pf">
+    <div class="pf-info-box"><strong>Prolapso vaginal</strong> — extrusão da vagina pela rima vulvar. Ocorre no pré-parto (ruminantes). Hereditário → descartar da reprodução. Recidiva quase certa nas gestações futuras.</div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Etiologia — multifatorial</div>
+    Hereditariedade · afrouxamento ligamentos vaginais (multíparas, idosas) · E2 alto no pré-parto · pressão intra-abdominal aumentada (hidropsia, gemelar, timpanismo) · hipocalcemia · obesidade · confinamento
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Tratamento</div>
+    <strong>1.</strong> Epidural baixa: lidocaína 2%, 1mL/100kgPV → cessa o tenesmo<br>
+    <strong>2.</strong> Osmóticos (açúcar): reduzir edema da mucosa exposta → remover após 5 min<br>
+    <strong>3.</strong> Assepsia com clorexidina + lubrificante<br>
+    <strong>4.</strong> Reposição manual cuidadosa<br>
+    <strong>5.</strong> Retenção: sutura de Bühner (perivulvar em bolsa de tabaco) + sutura de Caslic (vulva)<br>
+    <strong>6.</strong> Remover suturas antes do parto!<br>
+    <strong>Colpoplastia:</strong> ressecção de vagina excedente — em casos recidivantes sem gestação atual
+    </div>
+    <div class="pf-memo"><div class="pf-memo-label">Diferencial — prolapso vaginal vs. prolapso uterino</div><div class="pf-memo-text">Prolapso vaginal: pré-parto · mucosa lisa · SEM carúnculas
+Prolapso uterino: pós-parto · carúnculas maternas VISÍVEIS · emergência grave
+(carúnculas = definitivo de prolapso uterino)</div></div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-hiper_vag">
+    <div class="pf-info-box"><strong>Hiperplasia vaginal em cadelas</strong> — edema exagerado da mucosa vaginal em resposta ao E2 no proestro/estro. NÃO é prolapso verdadeiro. Mucosa lisa, sem carúnculas. Resolve espontaneamente no diestro.</div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Graus clínicos</div>
+    <strong>Grau I:</strong> edema interno; detectável apenas por vaginoscopia<br>
+    <strong>Grau II:</strong> mucosa protusa visível pela vulva em decúbito<br>
+    <strong>Grau III:</strong> massa volumosa exteriorizada continuamente; risco de necrose
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Tratamento</div>
+    Graus I-II: conservativo (lubrificação, colar elizabetano, evitar automutilação) — regride no diestro<br>
+    Grau III: colpoplastia (ressecção da mucosa excedente)<br>
+    <strong>Castração:</strong> previne recorrência (remove estímulo estrogênico)
+    </div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-outras_vag">
+    <div class="pf-sec-block"><div class="pf-sec-label">Urovagina (éguas)</div>
+    Afrouxamento dos ligamentos ovarianos → inclinação caudal do assoalho vaginal → acúmulo de urina na vagina → endometrite crônica → infertilidade. Mais em éguas velhas/multíparas. Diag: vaginoscopia (urina visível). Trat: uroplastia de Vandeplassche (prolongamento cirúrgico da uretra).
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Laceração perineal (éguas)</div>
+    Parto distócico: membro anterior do potro fica sobre a nuca → casco perfura o teto da vagina antes de sair pela vulva → fístula retovaginal. Trat: cirúrgico em 2 etapas (técnica de Goetze modificada) — aguardar redução do edema antes da 1ª sutura.
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Conformação perineal e vulvoplastia (Caslick)</div>
+    Má conformação da vulva (inclinação horizontal &gt;50°) → contaminação pneumovaginal → endometrite recorrente em éguas. Operação de Caslick: sutura dos lábios vulvares no terço dorsal → barreira física. Reabrir antes do parto!
+    </div>
+  </div>
+</div>
+
+<!-- GLÂNDULA MAMÁRIA -->
+<div class="pf-panel" id="pf-panel-mama">
+  <div class="pf-sp-tabs">
+    <button class="pf-sp-tab active" onclick="pfSetSp('mastite',this)">Mastite bovina</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('tumor_mama',this)">Tumor mamário</button>
+  </div>
+
+  <div class="pf-sp-panel active" id="pf-sp-mastite">
+    <div class="pf-info-box"><strong>Mastite</strong> — inflamação da glândula mamária, geralmente de origem infecciosa. Principal causa de descarte em vacas leiteiras. Perdas por queda de produção + custo de tratamento + descarte precoce.</div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Classificação clínica</div>
+    <strong>Subclínica:</strong> sem sinais visíveis; CCS elevada; diagnóstico por CMT ou cultura<br>
+    <strong>Clínica leve:</strong> alterações no leite (grumos, aquoso, sanguíneo) sem comprometimento sistêmico<br>
+    <strong>Clínica moderada:</strong> alteração do leite + edema, dor e calor na glândula<br>
+    <strong>Clínica grave:</strong> sistêmica (febre, toxemia, inapetência, queda de produção intensa)<br>
+    <strong>Gangrenosa:</strong> necrose isquêmica do tecido (S. aureus + toxinas); emergência — amputação do quarto afetado
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Agentes e epidemiologia</div>
+    <strong>Contagiosos</strong> (vaca-a-vaca via ordenhador/equipamento): Staphylococcus aureus, Streptococcus agalactiae, Mycoplasma spp.<br>
+    <strong>Ambientais</strong> (solo/fezes → teto): E. coli, Streptococcus uberis, Klebsiella spp., Streptococcus dysgalactiae<br>
+    <strong>Oportunistas:</strong> Staphylococcus coagulase-negativo, Corynebacterium bovis
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">California Mastitis Test (CMT)</div>
+    2 mL de leite + 2 mL de reagente (detergente aniônico neutro) · reagente rompe membranas celulares → libera DNA → aumenta viscosidade<br>
+    <strong>Leitura:</strong> negativo (fluido) → traço → 1+ → 2+ → 3+ (gel espesso = muitos leucócitos)<br>
+    Método de triagem (rastreamento) — deve ser confirmado por cultura para identificar agente e sensibilidade
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Tratamento</div>
+    <strong>Clínica leve-moderada:</strong> ATB intramamário (beta-lactâmicos: cefapirina, cloxacilina; penicilina + neomicina) por 3-5 dias<br>
+    <strong>Clínica grave:</strong> ATB sistêmico (ceftiofur, enrofloxacina) + AINEs (flunixin) + fluidoterapia<br>
+    <strong>Terapia do período seco (TPS):</strong> ATB intramamário de longa ação em todos os quartos no momento da secagem → maior eficácia, previne novas infecções no período seco
+    </div>
+    <div class="pf-memo"><div class="pf-memo-label">Pontos de prova — mastite</div><div class="pf-memo-text">CMT: detecta mastite subclínica · viscoSidade = leucócitos (DNA)
+S. agalactiae: contagioso, erradicável, ATB intramamário
+S. aureus: contagioso, difícil erradicar (biofilme intracelular)
+E. coli: ambiental, gram-negativo, endotoxemia → mais grave sistemicamente
+Mycoplasma: sem tratamento eficaz → descarte</div></div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-tumor_mama">
+    <div class="pf-info-box"><strong>Tumor mamário</strong> — 2ª neoplasia mais comum em cadelas (atrás de pele). Hormônio-dependente (E2 e P4). Castração antes do 1º cio: risco cai para <span class="pf-hl">0,05%</span>. Gatas: &gt;90% malignos — mais agressivos.</div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Estadiamento clínico (sistema OMS adaptado)</div>
+    <strong>T — tumor primário:</strong> T1 &lt;3cm · T2 3-5cm · T3 &gt;5cm (alguns usam &lt;5cm, 5-10cm, &gt;10cm)<br>
+    <strong>N — linfonodos:</strong> N0 não palpáveis · N1 ipsilateral aumentado · N2 bilateral ou contralateral<br>
+    <strong>M — metástases:</strong> M0 ausentes · M1 presentes (pulmão: 3 projeções de tórax obrigatórias)
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Tipos histológicos (ordem de frequência)</div>
+    Carcinoma tubular (mais comum) · carcinoma sólido · carcinoma papilífero · carcinoma cribiforme · <strong>carcinoma inflamatório (pior prognóstico)</strong> · sarcoma (raro)<br>
+    50% dos tumores mamários em cadelas são malignos
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Tratamento cirúrgico</div>
+    <strong>Lumpectomia:</strong> nódulo isolado &lt;0,5cm (margens limpas)<br>
+    <strong>Mastectomia simples:</strong> 1 glândula afetada<br>
+    <strong>Mastectomia regional:</strong> glândulas 1-2 ou 4-5 (drenagem linfática em comum)<br>
+    <strong>Mastectomia unilateral:</strong> múltiplos nódulos ipsilaterais<br>
+    <strong>Mastectomia bilateral:</strong> 2 tempos cirúrgicos separados (risco de tensão)<br>
+    <strong>OSH simultânea:</strong> controversa quanto à sobrevida, mas reduz risco de piometra
+    </div>
+    <div class="pf-sec-block"><div class="pf-sec-label">Quimioterapia adjuvante</div>
+    Indicada se: linfonodos acometidos, invasão vascular, margens comprometidas, metástases<br>
+    Fármacos: doxorrubicina, carboplatina (gatas: ciclofosfamida + 5-FU contraindicados)
+    </div>
+    <div class="pf-prova-box"><strong>Carcinoma inflamatório:</strong> eritema difuso, edema cutâneo em casca de laranja, sem massa palpável — cirurgia CONTRAINDICADA (linfonodos e vasos obstruídos por êmbolos tumorais). Prognóstico grave — sobrevida média &lt;2 meses.</div>
+  </div>
+</div>
+
+<!-- ALTERAÇÕES DO CICLO -->
+<div class="pf-panel" id="pf-panel-ciclo">
+  <div class="pf-info-box">Alterações do ciclo estral em cadelas — causas frequentes de infertilidade aparente que NÃO são infertilidade verdadeira. Diagnóstico: citologia vaginal + dosagem de P4.</div>
+  <div class="pf-card" style="border-radius:8px;border:1px solid var(--border-card);margin-bottom:10px;overflow:hidden">
+    <div class="pf-card-header" onclick="pfToggle(this)" style="padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg-card)">
+      <span class="pf-card-title">Cio silencioso</span>
+      <span class="pf-card-arrow">▼</span>
+    </div>
+    <div class="pf-card-body" style="display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.65">
+      Ciclo endocrinologicamente normal, sem manifestações externas de estro. Cadela ovula mas não demonstra comportamento de aceitação. Diagnóstico: citologia vaginal (células cornificadas = estro) + P4 sérica (&gt;2ng/mL = pós-ovulação). Monitorar: citologia semanal + P4 por 1 ano.
+    </div>
+  </div>
+  <div class="pf-card" style="border-radius:8px;border:1px solid var(--border-card);margin-bottom:10px;overflow:hidden">
+    <div class="pf-card-header" onclick="pfToggle(this)" style="padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg-card)">
+      <span class="pf-card-title">Split heat (cio intercortado)</span>
+      <span class="pf-card-arrow">▼</span>
+    </div>
+    <div class="pf-card-body" style="display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.65">
+      Cadela exibe sinais de proestro/estro (sangramento vulvar, edema) por ~7 dias, depois para abruptamente SEM ovulação. Após 2-8 semanas: retorna com ciclo normal com ovulação. Mais comum em cadelas jovens (1º ou 2º ciclo) e no início da estação reprodutiva. Diag: citologia (estro) + P4 (baixa — sem ovulação) + US (folículos sem ovular). Manejo: monitorar e aguardar o próximo ciclo completo.
+    </div>
+  </div>
+  <div class="pf-card" style="border-radius:8px;border:1px solid var(--border-card);margin-bottom:10px;overflow:hidden">
+    <div class="pf-card-header" onclick="pfToggle(this)" style="padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg-card)">
+      <span class="pf-card-title">Proestro curto e proestro prolongado</span>
+      <span class="pf-card-arrow">▼</span>
+    </div>
+    <div class="pf-card-body" style="display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.65">
+      <strong>Proestro curto</strong> (&lt;3 dias; normal: ~9 dias): tutor não percebe o estro. Diag: citologia sequencial para identificar estro + dosar P4 (2ng/mL = 48h antes do pico de LH). D0 do pico de LH = ponto de referência; fertilidade máxima D4-D7.<br><br>
+      <strong>Proestro prolongado</strong> (&gt;27 dias): se folículo &gt;8mm → suspeitar de cisto folicular. Trat: manejo de cobertura + US para monitorar.
+    </div>
+  </div>
+  <div class="pf-card" style="border-radius:8px;border:1px solid var(--border-card);margin-bottom:10px;overflow:hidden">
+    <div class="pf-card-header" onclick="pfToggle(this)" style="padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg-card)">
+      <span class="pf-card-title">Ausência de ovulação e pseudociese</span>
+      <span class="pf-card-arrow">▼</span>
+    </div>
+    <div class="pf-card-body" style="display:none;padding:12px 14px;border-top:1px solid var(--border-card);background:var(--bg-card-alt);font-size:13px;line-height:1.65">
+      <strong>Ausência de ovulação:</strong> rara em cadelas. Comportamento e citologia normais, mas não ovula. Folículos regredem ou ovulam tardiamente. Causa: déficit de LH. Trat: próximo ciclo → 500 UI hCG quando citologia indicar estro.<br><br>
+      <strong>Pseudociese (gestação psicológica):</strong> fisiológica em cadelas — o diestro dura 60-90 dias independente da gestação; progesterona decai → prolactina sobe → lactação, comportamento materno, ganho de peso. Trat: antilactogênicos (cabergolina, metergolina, bromocriptina); nunca ordenhar (piora).
+    </div>
+  </div>
+  <div class="pf-memo"><div class="pf-memo-label">Cronologia útil — citologia cadela</div><div class="pf-memo-text">Proestro: hemácias + células intermediárias nucleadas
+Estro: &gt;80% células superficiais anucleadas (cornificadas)
+D0 = pico LH · D2 = ovulação · D4-D7 = máxima fertilidade
+P4 &gt;2 ng/mL = 48h antes pico LH → momento ideal para IA</div></div>
+</div>
+
+<!-- POR ESPÉCIE -->
+<div class="pf-panel" id="pf-panel-porsp">
+  <div class="pf-sp-tabs">
+    <button class="pf-sp-tab active" onclick="pfSetSp('sp_bov_f',this)">Bovinos</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('sp_eq_f',this)">Equinos</button>
+    <button class="pf-sp-tab" onclick="pfSetSp('sp_cad_f',this)">Cadelas / Gatas</button>
+  </div>
+
+  <div class="pf-sp-panel active" id="pf-sp-sp_bov_f">
+    <div class="pf-sec-block"><div class="pf-sec-label">Principais patologias reprodutivas da fêmea bovina</div>
+    <strong>Metrite puerperal</strong> (&lt;21d pós-parto): E. coli precoce, A. pyogenes tardio · ABX + PGF2α · NÃO lavar<br>
+    <strong>Endometrite</strong> (≥21d): citologia &gt;18% PMN · PGF2α se CL + cefapirina intrauterina<br>
+    <strong>Piometra</strong>: CL persistente + E. coli · PGF2α + OCT + lavagem + ATB<br>
+    <strong>Cistos foliculares</strong>: parede fina, ninfomania, GnRH → PGF2α 7d depois<br>
+    <strong>Cistos luteais</strong>: parede espessa, anestro, PGF2α<br>
+    <strong>Mastite</strong>: CMT + cultura + ATB intramamário; terapia seco<br>
+    <strong>Prolapso vaginal</strong>: pré-parto, hereditário, epidural + Bühner + Caslic
+    </div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-sp_eq_f">
+    <div class="pf-sec-block"><div class="pf-sec-label">Principais patologias reprodutivas da fêmea equina</div>
+    <strong>Endometrite aguda/crônica</strong>: OCT + PGF2α pós-IA; lavagem pré-cobertura; ATB crônicos; dexametasona pré-IA nas suscetíveis<br>
+    <strong>CEM (Taylorella)</strong>: não no Brasil; portador assintomático = garanhão; penicilina + gentamicina<br>
+    <strong>Tumor da granulosa</strong>: ovariano unilateral, ninfomania→masculinização; ovariectomia pelo flanco (&lt;15cm) ou linha alba (&gt;15cm)<br>
+    <strong>Urovagina</strong>: éguas velhas; uroplastia de Vandeplassche<br>
+    <strong>Caslick (vulvoplastia)</strong>: má conformação vulvar; sutura dorsal; reabrir antes do parto<br>
+    <strong>Laceração perineal</strong>: distocia; fístula retovaginal; Goetze modificada em 2 etapas
+    </div>
+  </div>
+
+  <div class="pf-sp-panel" id="pf-sp-sp_cad_f">
+    <div class="pf-sec-block"><div class="pf-sec-label">Principais patologias reprodutivas de cadelas e gatas</div>
+    <strong>Piometra</strong>: HCE → E. coli; 85% aberta; PU/PD; OSH (eleição); aglepristone (reprodutoras); NUNCA no estro<br>
+    <strong>Tumor mamário</strong>: cadela: 50% malignos; gata: &gt;90% malignos; TNM; mastectomia ± QT<br>
+    <strong>Cistos ovarianos</strong>: frequentemente assintomáticos; aplasia medular se hiperestrogenismo prolongado<br>
+    <strong>TCG</strong>: aplasia medular = emergência; OSH urgente<br>
+    <strong>SOR</strong>: cio pós-castração; laparotomia exploratória no estro<br>
+    <strong>Hiperplasia vaginal</strong>: estro; mucosa lisa sem carúnculas; graus I-III; Caslick previne<br>
+    <strong>Split heat, proestro curto, cio silencioso</strong>: citologia + P4 para diagnóstico
+    </div>
+  </div>
+</div>
 `
 },
 {
@@ -6156,31 +7000,330 @@ Cisto folicular: >25mm; presente por >10 dias; ausência de CL no ovário ipsila
   title: 'Doenças Infecciosas da Reprodução',
   icon: '#i-virus',
   content: `
-<h3>13.1 Principais Doenças Infecciosas Reprodutivas</h3>
-<div class="table-wrap"><table>
-<tr><th>Agente</th><th>Espécies</th><th>Sinais Reprodutivos</th><th>Diagnóstico</th><th>Controle</th></tr>
-<tr><td><strong>Brucella abortus</strong></td><td>Bovinos (principal), equinos</td><td>Aborto 5–8 meses; retenção de placenta; orquite/epididimite no macho</td><td>SAR/SAT/2-ME; ELISA; Cultura; PCR</td><td>Vacinação (B19 fêmeas 3–8m; RB51); Abate sanitário; Zoonose!</td></tr>
-<tr><td><strong>Brucella ovis</strong></td><td>Ovinos</td><td>Epididimite carneiro; abortos tardios; mortalidade neonatal</td><td>ELISA indireto; Imunodifusão</td><td>Sem vacina comercial; descarte</td></tr>
-<tr><td><strong>Brucella melitensis</strong></td><td>Caprinos e ovinos</td><td>Abortos; mastite; artrite</td><td>ELISA; FPA</td><td>Vacinação Rev.1; Zoonose grave!</td></tr>
-<tr><td><strong>Brucella canis</strong></td><td>Cães</td><td>Aborto (45–55d); mortalidade neonatal; epididimite; linfadenite</td><td>RSAT; ELISA; Hemocultivo</td><td>Eutanásia recomendada; Zoonose!</td></tr>
-<tr><td><strong>Leptospira spp.</strong></td><td>Todas; bovinos, suínos, equinos</td><td>Aborto tardio; natimortos; infertilidade; "milk drop"</td><td>MAT (micro-aglutinação); PCR</td><td>Vacinação bivalente/pentavalente; controle de roedores</td></tr>
-<tr><td><strong>Herpesvírus Bovino-1 (IBR/IPV)</strong></td><td>Bovinos</td><td>IBR: rinite; IPV: vesículas genitais; aborto 5–8m; morte embrionária</td><td>Isolamento viral; ELISA; PCR</td><td>Vacina MLV ou inativada; separação animais doentes</td></tr>
-<tr><td><strong>Diarreia Viral Bovina (BVDV)</strong></td><td>Bovinos</td><td>Aborto; vitelos PI (persistentemente infectados); mortalidade; malformações</td><td>ELISA antígeno; isolamento; PCR</td><td>Identificar e eliminar PI; vacinação</td></tr>
-<tr><td><strong>Neospora caninum</strong></td><td>Bovinos (principal); cão (hospedeiro definitivo)</td><td>Aborto endêmico ou epidêmico; 3–8 meses; recorrente</td><td>ELISA; IFAT; PCR; histopatologia</td><td>Sem vacina; controlar acesso de cães; não dar fetos e placentas a cães</td></tr>
-<tr><td><strong>Trichomonas foetus</strong></td><td>Bovinos</td><td>Morte embrionária precoce (1–3m); infertilidade; piometra</td><td>Cultura em Diamond; PCR</td><td>IA; descarte touros velhos; notificação obrigatória</td></tr>
-<tr><td><strong>Campylobacter fetus</strong></td><td>Bovinos, ovinos</td><td>Morte embrionária; infertilidade; aborto esporádico</td><td>Cultura; PCR; IF</td><td>IA; vacinação (valência em bacterinas)</td></tr>
-<tr><td><strong>Herpesvírus Equino-1 (EHV-1)</strong></td><td>Equinos</td><td>Aborto "tufão" (8–11m); paralisia; rinopneumonite</td><td>Isolamento viral; PCR; sorologia</td><td>Vacinação (meses 5, 7, 9 da gestação)</td></tr>
-<tr><td><strong>Arterite Viral Equina (AVE)</strong></td><td>Equinos</td><td>Aborto; edema (pernas, prepúcio); conjuntivite; garanhão portador assintomático</td><td>Neutralização viral; PCR</td><td>Vacinação garanhões; isolamento</td></tr>
-<tr><td><strong>Parvovírus Suíno (PPV)</strong></td><td>Suínos</td><td>SMEDI: Stillbirth, Mummification, Embryonic Death, Infertility</td><td>HI; ELISA; PCR</td><td>Vacinação obrigatória pré-cobrição</td></tr>
-</table></div>
+<style>
+.inf-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.inf-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.inf-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+.inf-tab:hover{background:var(--bg-hover)}.inf-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.inf-panel{display:none}.inf-panel.active{display:block}
+.inf-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.inf-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+.inf-sp-tab:hover{background:var(--bg-hover)}.inf-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.inf-sp-panel{display:none}.inf-sp-panel.active{display:block}
+.inf-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.inf-danger-box{border-left:3px solid #A32D2D;background:var(--red-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.inf-danger-box strong{color:#7a1f1f}
+.inf-prova-box{border-left:3px solid #BA7517;background:var(--amber-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.inf-prova-box strong{color:#633806}
+.inf-suc-box{border-left:3px solid #3B6D11;background:var(--green-50);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.inf-sec-block{background:var(--bg-card-alt);border-radius:8px;padding:12px 14px;margin-bottom:8px;border:1px solid var(--border-card)}
+.inf-sec-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:5px}
+.inf-memo{border-radius:8px;border:1px solid var(--border-card);padding:12px 16px;background:var(--bg-card);margin-top:10px;margin-bottom:10px}
+.inf-memo-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.inf-memo-text{font-size:13px;font-family:monospace;line-height:1.9;color:var(--text-primary)}
+.inf-ref-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px}
+.inf-ref-table th{background:var(--bg-card-alt);font-weight:600;text-align:left;padding:7px 10px;border:1px solid var(--border-light);font-size:11px;color:var(--text-secondary)}
+.inf-ref-table td{padding:6px 10px;border:1px solid var(--border-light);vertical-align:top;line-height:1.5}
+.inf-ref-table tr:nth-child(even) td{background:var(--bg-card-alt)}
+.inf-badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+.inf-bdanger{background:var(--red-100);color:#7a1f1f}
+.inf-bwarn{background:var(--amber-100);color:#633806}
+.inf-binfo{background:var(--blue-100);color:var(--blue-700)}
+.inf-bsuc{background:var(--green-50);color:#27500a}
+.inf-hl{background:var(--amber-100);border-radius:3px;padding:1px 4px;font-weight:600}
+</style>
 
-<div class="alert alert-exam">
-<strong>🎯 ZOONOSES NA REPRODUÇÃO — Obrigatório saber!</strong><br>
-• <strong>Brucella:</strong> abortus, melitensis, canis, suis — TODAS ZOONOSES<br>
-• <strong>Leptospira:</strong> Zoonose via contato com urina<br>
-• <strong>Clamídia (Chlamydophila abortus):</strong> Aborto ovino → risco em grávidas humanas<br>
-• <strong>Listeria monocytogenes:</strong> Aborto + encefalite<br>
-Notificação obrigatória: Brucelose, Leptospirose, Febre Aftosa, Raiva.
+<p class="inf-label">Patologia da Reprodução</p>
+<h2>Doenças Infecciosas da Reprodução</h2>
+
+<div class="inf-tabs">
+  <button class="inf-tab active" onclick="infSetTab('bacterias',this)">Bactérias</button>
+  <button class="inf-tab" onclick="infSetTab('virus',this)">Vírus</button>
+  <button class="inf-tab" onclick="infSetTab('protozoa',this)">Protozoários</button>
+  <button class="inf-tab" onclick="infSetTab('tabela',this)">Tabela geral</button>
+  <button class="inf-tab" onclick="infSetTab('prova',this)">🎯 Pontos de prova</button>
+</div>
+
+<!-- BACTÉRIAS -->
+<div class="inf-panel active" id="inf-panel-bacterias">
+  <div class="inf-sp-tabs">
+    <button class="inf-sp-tab active" onclick="infSetSp('brucella',this)">Brucella spp.</button>
+    <button class="inf-sp-tab" onclick="infSetSp('leptospira',this)">Leptospira</button>
+    <button class="inf-sp-tab" onclick="infSetSp('cem_inf',this)">CEM (Taylorella)</button>
+    <button class="inf-sp-tab" onclick="infSetSp('campylo',this)">Campylobacter</button>
+  </div>
+
+  <div class="inf-sp-panel active" id="inf-sp-brucella">
+    <div class="inf-danger-box"><strong>ZOONOSE</strong> — Todas as espécies de Brucella são zoonoses. Transmissão ao humano: contato com material de aborto, leite cru, aerossol. <strong>Brucella abortus: notificação obrigatória ao SVO.</strong></div>
+    <table class="inf-ref-table">
+      <tr><th>Espécie</th><th>Hospedeiro principal</th><th>Sinais reprodutivos</th><th>Diagnóstico</th><th>Controle</th></tr>
+      <tr><td><strong>B. abortus</strong></td><td>Bovinos</td><td>Aborto 5-8 meses (tropismo pelo eritritol placentário) · retenção de placenta · orquite/epididimite no macho · redução de fertilidade</td><td>AAT (triagem) + 2-ME ou FPA (confirmatório) · ELISA · Cultura · PCR</td><td>Vacina B19 (fêmeas 3-8m) ou RB51 (adultas) · Abate sanitário dos positivos · NOTIFICAÇÃO OBRIGATÓRIA</td></tr>
+      <tr><td><strong>B. ovis</strong></td><td>Ovinos</td><td>Epididimite granulomatosa no carneiro (patologia mais importante!) · abortos tardios · mortalidade neonatal · orquite</td><td>ELISA indireto · imunodifusão em gel · palpação do epidídimo (endurecimento)</td><td>Sem vacina comercial no BR · Descarte dos positivos · Isolamento</td></tr>
+      <tr><td><strong>B. melitensis</strong></td><td>Caprinos / Ovinos</td><td>Aborto tardio · mastite · artrite · orquite em machos</td><td>ELISA · FPA · Rosa Bengala</td><td>Vacina Rev.1 · Zoonose de alta virulência para humanos</td></tr>
+      <tr><td><strong>B. canis</strong></td><td>Cães</td><td>Aborto 45-55 dias · mortalidade neonatal · epididimite · linfadenite generalizada · infertilidade</td><td>RSAT (triagem) · ELISA · Hemocultivo (isolamento) · PCR</td><td>Eutanásia recomendada (cura difícil) · ATB: minociclina + gentamicina por 4-6 semanas · Zoonose (menos virulenta para humanos)</td></tr>
+      <tr><td><strong>B. suis</strong></td><td>Suínos</td><td>Aborto · orquite · artrite · espondilite</td><td>ELISA · Rosa Bengala · Cultura</td><td>Abate sanitário · Zoonose</td></tr>
+    </table>
+    <div class="inf-sec-block"><div class="inf-sec-label">B. abortus — detalhes patogênicos</div>
+    Tropismo pelo <span class="inf-hl">eritritol</span> (açúcar presente na placenta bovina em altas concentrações) → multiplicação massiva nos cotilédones → placentite necrótica → aborto. Feto: autólise, pulmões com broncopneumonia supurativa. Touros: orquite, epididimite, infertilidade. CL persistente mantém gestação mesmo com placentite → aborto tardio.
+    </div>
+    <div class="inf-memo"><div class="inf-memo-label">Vacinas para B. abortus</div><div class="inf-memo-text">B19: cepa lisa atenuada · fêmeas 3-8 meses · 1 dose SC · proteção duradoura
+RB51: cepa rugosa atenuada · qualquer idade · sem interferência em diagnóstico sorológico
+Machos: NUNCA vacinar (orquite)</div></div>
+  </div>
+
+  <div class="inf-sp-panel" id="inf-sp-leptospira">
+    <div class="inf-info-box"><strong>Leptospira spp.</strong> — Zoonose de amplo espectro. Aborto tardio, natimortos, infertilidade. Reservatório: roedores. Transmissão: contato com urina contaminada ou água/solo.</div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Principais sorovares e espécies afetadas</div>
+    <strong>Bovinos:</strong> Hardjo (sorovar bovino por excelência) → milk drop syndrome (queda abrupta de produção) + aborto tardio + infertilidade · Pomona, Grippotyphosa<br>
+    <strong>Equinos:</strong> Icterohaemorrhagiae (mais prevalente) · Hardjo · Pomona → aborto no 3º trimestre · uveíte recorrente equina (URE = "doença do olho periódico") — sequela crônica<br>
+    <strong>Suínos:</strong> Pomona, Bratislava → SMEDI-like, abortos, natimortos<br>
+    <strong>Cães:</strong> Icterohaemorrhagiae, Canicola → insuficiência renal aguda + hepatite hemorrágica (forma clínica diferente da reprodutiva)
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Diagnóstico</div>
+    <strong>MAT (microaglutinação microscópica):</strong> padrão ouro · identifica sorovar · campo escuro · título ≥200 = positivo (ou 4x de aumento entre amostras pareadas)<br>
+    PCR urinário: alta sensibilidade na fase leptospirêmica<br>
+    Histopatologia (rim fetal/placenta): Warthin-Starry revela a bactéria
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Tratamento e controle</div>
+    Penicilina G procaína (fase bacterêmica) · doxiciclina (fase leptospirúrica — elimina portadores) · estreptomicina (1x/6 meses em portadores)<br>
+    Vacinação: bivalente ou pentavalente; anual; cão: protocolo específico para sorovares locais
+    </div>
+  </div>
+
+  <div class="inf-sp-panel" id="inf-sp-cem_inf">
+    <div class="inf-info-box"><strong>CEM — Metrite Contagiosa Equina</strong> (Taylorella equigenitalis) — doença venérea equina de notificação internacional (OIE/WOAH). <span class="inf-hl">NÃO isolada no Brasil.</span> Barreira sanitária no comércio de equinos.</div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Epidemiologia e transmissão</div>
+    Transmissão exclusivamente venérea (monta natural ou IA com sêmen contaminado)<br>
+    <strong>Garanhões:</strong> portadores assintomáticos — colonizam a fossa da glande, prepúcio e uretra. Não desenvolvem doença mas transmitem.<br>
+    <strong>Éguas:</strong> doença clínica — descarga vaginal cinza-esbranquiçada/purulenta em 2-10 dias pós-cobertura + infertilidade. Éguas podem tornar-se portadoras crônicas (fóssulas clitoriais).
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Diagnóstico e tratamento</div>
+    Diag: cultura em meios especiais (Eugon, CSBA) do fóssil clitoriano + prepúcio + uretra · PCR (mais sensível)<br>
+    Teste da prova de monta: aumenta a sensibilidade em garanhões portadores (exposição à égua-teste = maior carga)<br>
+    Trat: penicilina procaína + gentamicina sistêmico por 7 dias + lavagem local com clorexidina + ATB tópico (neomicina) em prepúcio/fóssulas clitoriais
+    </div>
+  </div>
+
+  <div class="inf-sp-panel" id="inf-sp-campylo">
+    <div class="inf-info-box"><strong>Campylobacter fetus</strong> — causa de aborto e infertilidade. Transmissão venérea. Touro = portador assintomático.</div>
+    <table class="inf-ref-table">
+      <tr><th>Subespécie</th><th>Hospedeiro</th><th>Via de transmissão</th><th>Doença</th></tr>
+      <tr><td><strong>C. fetus venerealis</strong></td><td>Bovinos</td><td>Venérea exclusiva (touro → vaca)</td><td>Morte embrionária precoce, infertilidade, aborto esporádico</td></tr>
+      <tr><td><strong>C. fetus fetus</strong></td><td>Ovinos, bovinos</td><td>Oral-fecal</td><td>Aborto no 3º trimestre em ovinos</td></tr>
+      <tr><td><strong>C. jejuni</strong></td><td>Ovinos, aves</td><td>Oral-fecal</td><td>Aborto ovino, zoonose alimentar</td></tr>
+    </table>
+    <div class="inf-sec-block"><div class="inf-sec-label">Diagnóstico e controle</div>
+    Cultura (microaerofilia) do muco prepucial/vaginal · PCR · IF direta<br>
+    Trat: ATB sistêmico (tetraciclinas) + intrauterino<br>
+    Controle: IA (evita transmissão venérea) · vacinação (bacterinas com valência Campylobacter) · descarte de touros velhos positivos
+    </div>
+  </div>
+</div>
+
+<!-- VÍRUS -->
+<div class="inf-panel" id="inf-panel-virus">
+  <div class="inf-sp-tabs">
+    <button class="inf-sp-tab active" onclick="infSetSp('bohv',this)">BoHV-1 (IBR/IPV)</button>
+    <button class="inf-sp-tab" onclick="infSetSp('bvd',this)">BVD (Pestivírus)</button>
+    <button class="inf-sp-tab" onclick="infSetSp('ehv',this)">EHV equino</button>
+    <button class="inf-sp-tab" onclick="infSetSp('ppv',this)">PPV suíno</button>
+    <button class="inf-sp-tab" onclick="infSetSp('avias',this)">AVE / Outros</button>
+  </div>
+
+  <div class="inf-sp-panel active" id="inf-sp-bohv">
+    <div class="inf-info-box"><strong>BoHV-1 — Herpesvírus Bovino tipo 1</strong>. Causa IBR (forma respiratória) e IPV/BAP (forma genital). Importante causa de aborto bovino.</div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Subtipos e formas clínicas</div>
+    <strong>BoHV-1.1:</strong> IBR — rinotraqueíte infecciosa bovina · rinite, conjuntivite, traqueíte, febre alta<br>
+    <strong>BoHV-1.2a / 1.2b:</strong> IPV (vulvovaginite pustulosa infecciosa) e BAP (balanopostite) · pústulas, vesículas e úlceras genitais · dor, descarga, tenesmo<br>
+    <strong>Aborto:</strong> qualquer subtipo · ocorre até 100 dias após a infecção · qualquer estágio de gestação · ~25% das fêmeas infectadas abortam · feto com necrose hepática multifocal (patognomônico)
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Diagnóstico</div>
+    Isolamento viral (oronasal ou genital) · PCR (mais sensível) · ELISA (sorology) · histopatologia fetal (corpúsculos de inclusão intranucleares)
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Controle e vacinação</div>
+    Vacinas MLV (atenuadas) ou inativadas · MLV: não usar em gestantes · inativadas: seguras em gestantes<br>
+    Separação de animais doentes · período de latência (vírus persiste no gânglio trigêmeo/sacral → reativação por estresse)
+    </div>
+  </div>
+
+  <div class="inf-sp-panel" id="inf-sp-bvd">
+    <div class="inf-info-box"><strong>BVD — Diarreia Viral Bovina</strong> (Pestivírus bovino tipo 1 e 2). Impacto reprodutivo enorme. O animal <span class="inf-hl">PI (Persistentemente Infectado)</span> é o principal reservatório e fonte de infecção do rebanho.</div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Consequências reprodutivas por fase da gestação</div>
+    <strong>D0-24 (pré-implantação):</strong> morte embrionária precoce → retorno ao cio (ciclo mais longo)<br>
+    <strong>D25-125 (imunotolerância fetal):</strong> <span class="inf-hl">feto PI</span> — nasce sorologicamente negativo, excreta vírus por toda a vida em todas as secreções; pode parecer saudável por meses antes de desenvolver doença das mucosas<br>
+    <strong>D100-180:</strong> aborto, malformações (hipoplasia cerebelar, opacidade de córnea, microftalmia, braquignatia)<br>
+    <strong>&gt;D180:</strong> aborto · vitelo imunocompetente → doença clínica (diarreia, respiratório) ou infecção subclínica
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Doença das mucosas (Mucosal Disease)</div>
+    PI infectado por biótipo citopatogênico (superinfecção ou mutação) → úlceras oral/esofágica/intestinal → diarreia hemorrágica profusa → morte em dias a semanas. 100% letal.
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Diagnóstico</div>
+    <strong>Identificar PI:</strong> ELISA antígeno (Ag NS3/p80) em sangue total ou orelha (punch) → MÉTODO DE ESCOLHA para rastreamento de rebanho · Isolamento viral · PCR qRT<br>
+    Animais PI: ELISA positivo em 2 amostras com intervalo de 21 dias (para diferenciar de infecção aguda transitória)
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Controle</div>
+    Identificar e eliminar animais PI (prioritário) · vacinação do rebanho negativo · biosseguridade · triagem de animais novos antes de introduzir no rebanho
+    </div>
+  </div>
+
+  <div class="inf-sp-panel" id="inf-sp-ehv">
+    <div class="inf-sec-block"><div class="inf-sec-label">EHV-1 — Herpesvírus Equino tipo 1</div>
+    Principal causa viral de aborto em éguas. Aborto tardio (7-11 meses), súbito, sem sinais premonitórios → chamado "aborto em tufão" quando vários animais abortam em sequência. Feto: autólise, hemorragias, inclusões intranucleares.<br>
+    <strong>Mieloencefalite herpética equina (EHM):</strong> forma neurológica grave — ataxia, paresia, incontinência urinária, decúbito. Não necessariamente em éguas gestantes.<br>
+    Diag: PCR (swab nasal, sangue, tecidos fetais) · isolamento viral · histopatologia fetal.<br>
+    Vacinação: meses 5, 7, 9 da gestação (vacinas inativadas) · reduz aborto mas não previne totalmente EHM.
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">EHV-4 — Herpesvírus Equino tipo 4</div>
+    Principalmente respiratório (rinopneumonite) · raramente aborto · mais comum em potros · vacina disponível (combinada EHV-1+4).
+    </div>
+  </div>
+
+  <div class="inf-sp-panel" id="inf-sp-ppv">
+    <div class="inf-info-box"><strong>Parvovirose Suína (PPV1)</strong> — principal causa viral de falhas reprodutivas em suínos. Mnemônico: <span class="inf-hl">SMEDI</span> = Stillbirths + Mumification + Embryonic Death + Infertility.</div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Patogenia e apresentação clínica</div>
+    Porcas primíparas NÃO vacinadas são as mais afetadas · vírus atravessa a barreira placentária após viremia materna · fetos são afetados em diferentes momentos → fetos mumificados de TAMANHOS DIFERENTES na mesma leitegada (mumificação escalonada = patognomônico)<br>
+    <strong>D1-35:</strong> morte embrionária → reabsorção → infertilidade · ninhada reduzida<br>
+    <strong>D35-70:</strong> morte fetal + mumificação<br>
+    <strong>&gt;D70:</strong> fetos imunocompetentes → natimortos ou nascimento de leitões fracos com viremia
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Diagnóstico e controle</div>
+    Diag: hemaglutinação (HA) em suspensão de órgãos fetais · imunofluorescência em cortes · PCR · ELISA<br>
+    <strong>Não há tratamento específico</strong><br>
+    Vacinação obrigatória: porcas e varrões antes da cobrição · protocolo: 2 doses pré-cobrição; reforço anual<br>
+    Vírus resistente no ambiente → difícil erradicar da granja
+    </div>
+  </div>
+
+  <div class="inf-sp-panel" id="inf-sp-avias">
+    <div class="inf-sec-block"><div class="inf-sec-label">AVE — Arterite Viral Equina</div>
+    Arterivírus equino. Garanhões: portadores assintomáticos (vírus persiste nas células epididimárias secretórias). Fêmeas e castrados: infecção transitória.<br>
+    Sinais: aborto súbito (qualquer trimestre) · edema de membros, prepúcio, escroto · conjuntivite · rinite · urticária<br>
+    Diag: neutralização viral · PCR. Vacinação de garanhões (vacina atenuada modificada) previne portadores.
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Pestvírus de pequenos ruminantes — BDV</div>
+    Border Disease Virus (BDV) em ovinos: malformação fetal (velo anormal = "fuzzy lamb"), tremores musculares. BVD bovino pode infectar ovinos/caprinos → aborto, malformações.
+    </div>
+  </div>
+</div>
+
+<!-- PROTOZOÁRIOS -->
+<div class="inf-panel" id="inf-panel-protozoa">
+  <div class="inf-sp-tabs">
+    <button class="inf-sp-tab active" onclick="infSetSp('neospora',this)">Neospora caninum</button>
+    <button class="inf-sp-tab" onclick="infSetSp('toxoplasma',this)">Toxoplasma gondii</button>
+    <button class="inf-sp-tab" onclick="infSetSp('tricho',this)">Tritrichomonas foetus</button>
+  </div>
+
+  <div class="inf-sp-panel active" id="inf-sp-neospora">
+    <div class="inf-danger-box"><strong>Neospora caninum</strong> — principal causa protozoária de aborto bovino no mundo. Impacto econômico enorme. Cão = hospedeiro definitivo (elimina oocistos nas fezes).</div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Ciclo biológico e transmissão</div>
+    <strong>Hospedeiro definitivo:</strong> cão (e coiote) — oocistos não esporulados nas fezes → esporulam no ambiente em 24-72h<br>
+    <strong>Hospedeiro intermediário:</strong> bovinos (principal), ovinos, caprinos, cervídeos, bubalinos<br>
+    <strong>Transmissão horizontal:</strong> ingestão de oocistos (água/pastagem contaminada por fezes de cão)<br>
+    <strong>Transmissão vertical (transplacentária):</strong> a mais importante em bovinos — vaca soropositiva → transmite ao feto em cada gestação (~80-90% dos casos)
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Apresentação clínica</div>
+    Aborto entre 3-8 meses de gestação (mais frequente 5-6 meses) · duas formas:<br>
+    <strong>Endêmica:</strong> baixa taxa constante (&lt;5%/ano) · transmissão vertical predomina<br>
+    <strong>Epidêmica:</strong> surtos com alta taxa (10-30% em semanas) · transmissão horizontal (contaminação de pastagem/silagem por cão)
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Diagnóstico</div>
+    ELISA IgG em soro de vacas · IFAT (imunofluorescência indireta) · PCR (tecidos fetais — cérebro, coração) · Histopatologia fetal: encefalite não supurativa com cistos teciduais (patognomônico)
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Controle</div>
+    <strong>Sem vacina disponível no Brasil</strong> · Não dar placenta/feto abortado a cães · cobrir silagem (evitar fezes de cão) · controle da população de cães · descartar fêmeas soropositivas com histórico de aborto recorrente
+    </div>
+    <div class="inf-memo"><div class="inf-memo-label">Neospora vs. Toxoplasma — diferença crítica</div><div class="inf-memo-text">Neospora: cão = definitivo · bovinos = principal afetado · aborto bovino
+Toxoplasma: gato = definitivo · ovinos/caprinos/suínos/gatas = mais afetados
+Em bovinos: Neospora causa aborto; Toxoplasma geralmente NÃO</div></div>
+  </div>
+
+  <div class="inf-sp-panel" id="inf-sp-toxoplasma">
+    <div class="inf-info-box"><strong>Toxoplasma gondii</strong> — Zoonose. Gato = único hospedeiro definitivo (elimina oocistos nas fezes). Infecção em humanos: risco em gestantes (toxoplasmose congênita).</div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Espécies mais afetadas (reprodução)</div>
+    <strong>Ovinos/Caprinos:</strong> aborto (feto mumificado), natimortos, morte perinatal · rebanhos ingênuos + exposição a gatos = surtos<br>
+    <strong>Suínos:</strong> aborto, mortalidade neonatal<br>
+    <strong>Gatas:</strong> aborto, morte embrionária<br>
+    <strong>Bovinos:</strong> infecção frequente (sorologia alta) mas aborto clínico raro — menos suscetíveis que ovinos<br>
+    <strong>Cão:</strong> doença sistêmica (pneumonia, encefalite, miosite) — aborto menos relevante
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Diagnóstico e tratamento</div>
+    Sorologia (ELISA, IFAT, MAT) · PCR · Histopatologia (cistos teciduais — bradizoítos)<br>
+    Trat (cão/gato): clindamicina 25-50mg/kg/dia VO por 4 semanas · pirimetamina + sulfadiazina · trimetoprim-sulfa
+    </div>
+  </div>
+
+  <div class="inf-sp-panel" id="inf-sp-tricho">
+    <div class="inf-danger-box"><strong>Tritrichomonas foetus</strong> — doença venérea bovina. Touro = portador assintomático (protozoário na fossa peniana/prepúcio). NOTIFICAÇÃO OBRIGATÓRIA em alguns estados.</div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Patogenia e sinais clínicos</div>
+    Transmissão venérea exclusiva: touro → vaca na monta natural<br>
+    Vaca: morte embrionária (30-50 dias pós-cobertura) → retorno ao cio · piometra transitória (14 dias, com secreção mucopurulenta pela vulva) · maceração fetal · aborto até 4 meses<br>
+    Touro: sem sinais clínicos · protozoário habita as criptas da fossa peniana e prepúcio
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Diagnóstico</div>
+    <strong>Touro:</strong> raspagem/lavagem do smegma prepucial + fossa peniana com solução fisiológica → cultura em meio de Diamond (InPouch TF) · PCR (mais sensível e específico)<br>
+    Coleta ideal: período de abstinência sexual de 7-10 dias (aumenta sensibilidade)<br>
+    3 amostras negativas com intervalo de 1-2 semanas para confirmar negativo
+    </div>
+    <div class="inf-sec-block"><div class="inf-sec-label">Controle</div>
+    <strong>IA obrigatória:</strong> elimina transmissão venérea (principal medida)<br>
+    Descarte de touros velhos infectados (impossível curar efetivamente em animais com mais de 3-4 anos)<br>
+    Touros jovens (&lt;3 anos): mais resistentes, podem ser tratados (dimetridazol, ipronidazol — uso extralabel)<br>
+    Vacina (bacterina-toxoide): reduz infecção na vaca mas não elimina portadores
+    </div>
+  </div>
+</div>
+
+<!-- TABELA GERAL -->
+<div class="inf-panel" id="inf-panel-tabela">
+  <div class="inf-suc-box">Resumo geral — todas as principais doenças infecciosas reprodutivas</div>
+  <table class="inf-ref-table">
+    <tr><th>Agente</th><th>Espécie</th><th>Estágio do aborto</th><th>Diagnóstico chave</th><th>Controle/Trat</th><th>Zoonose</th></tr>
+    <tr><td><strong>B. abortus</strong></td><td>Bovinos</td><td>5-8 meses</td><td>AAT + 2-ME; ELISA; cultura</td><td>B19/RB51; abate; notificação</td><td><span class="inf-badge inf-bdanger">Sim</span></td></tr>
+    <tr><td><strong>B. ovis</strong></td><td>Ovinos</td><td>Tardio; epididimite</td><td>ELISA; imunodifusão</td><td>Descarte; sem vacina</td><td><span class="inf-badge inf-bwarn">Baixa</span></td></tr>
+    <tr><td><strong>B. melitensis</strong></td><td>Caprinos</td><td>Tardio</td><td>ELISA; FPA</td><td>Rev.1; abate</td><td><span class="inf-badge inf-bdanger">Alta</span></td></tr>
+    <tr><td><strong>B. canis</strong></td><td>Cães</td><td>45-55 dias</td><td>RSAT; hemocultivo</td><td>Eutanásia; minociclina+genta</td><td><span class="inf-badge inf-bwarn">Moderada</span></td></tr>
+    <tr><td><strong>Leptospira</strong></td><td>Todas</td><td>Tardio</td><td>MAT; PCR urina</td><td>Vacinação; controle roedores; doxiciclina</td><td><span class="inf-badge inf-bdanger">Sim</span></td></tr>
+    <tr><td><strong>CEM (Taylorella)</strong></td><td>Equinos</td><td>Precoce; infertilidade</td><td>Cultura; PCR</td><td>Pen+genta; lavagem local</td><td>Não</td></tr>
+    <tr><td><strong>Campylobacter fetus</strong></td><td>Bovinos</td><td>Morte embrionária</td><td>Cultura muco prepucial</td><td>IA; vacinação; ATB</td><td><span class="inf-badge inf-bwarn">C. jejuni</span></td></tr>
+    <tr><td><strong>BoHV-1</strong></td><td>Bovinos</td><td>Qualquer (até 100d após infecção)</td><td>PCR; isolamento viral</td><td>MLV ou inativada</td><td>Não</td></tr>
+    <tr><td><strong>BVD/BVDV</strong></td><td>Bovinos</td><td>Qualquer; PI = D25-125</td><td>ELISA Ag (punch orelha); PCR</td><td>Eliminar PI; vacinação</td><td>Não</td></tr>
+    <tr><td><strong>EHV-1</strong></td><td>Equinos</td><td>7-11 meses (tufão)</td><td>PCR; histopat fetal</td><td>Vacina D5/7/9 gestação</td><td>Não</td></tr>
+    <tr><td><strong>PPV</strong></td><td>Suínos</td><td>D1-70 (SMEDI)</td><td>HA; PCR; IF em fetos</td><td>Vacinação pré-cobrição</td><td>Não</td></tr>
+    <tr><td><strong>Neospora caninum</strong></td><td>Bovinos</td><td>3-8 meses</td><td>ELISA IgG; PCR fetal; histopat</td><td>Sem vacina BR; controle cães</td><td>Não</td></tr>
+    <tr><td><strong>Toxoplasma gondii</strong></td><td>Ovinos/Suínos</td><td>Qualquer</td><td>IFAT; PCR; histopat</td><td>Clindamicina (cão/gato)</td><td><span class="inf-badge inf-bdanger">Sim</span></td></tr>
+    <tr><td><strong>T. foetus</strong></td><td>Bovinos</td><td>30-50d (morte embrionária)</td><td>Cultura Diamond; PCR</td><td>IA; descarte touros velhos</td><td>Não</td></tr>
+    <tr><td><strong>AVE</strong></td><td>Equinos</td><td>Qualquer</td><td>Neutralização; PCR</td><td>Vacinação garanhões</td><td>Não</td></tr>
+  </table>
+</div>
+
+<!-- PONTOS DE PROVA -->
+<div class="inf-panel" id="inf-panel-prova">
+  <div class="inf-prova-box"><strong>Tópicos mais cobrados em residência — doenças infecciosas da reprodução</strong></div>
+  <div class="inf-memo"><div class="inf-memo-label">Zoonoses obrigatórias</div><div class="inf-memo-text">Brucella: abortus · ovis (baixa) · melitensis (alta) · canis (moderada) · suis
+Leptospira: contato com urina · MAT = padrão ouro
+Toxoplasma: gato definitivo · ovinos/suínos = afetados · humanos: gestantes em risco
+Chlamydophila abortus (ovino): aborto enzoótico ovino · ZOONOSE em grávidas humanas!
+Listeria monocytogenes: aborto + encefalite · silagem mal fermentada
+Notificação obrigatória no Brasil: Brucelose bovina/bubalina · Leptospirose · Febre Aftosa · Raiva</div></div>
+  <div class="inf-memo"><div class="inf-memo-label">Estágio do aborto — tabela rápida</div><div class="inf-memo-text">1/3 inicial (0-90d): T. foetus (morte embrionária 30-50d) · BVD (D0-24 morte embrionária) · PPV (D1-35)
+1/3 médio (90-180d): Neospora (3-8m) · BVD (malformações D100-180) · Leptospira · BoHV-1
+1/3 final (&gt;180d): Brucella abortus (5-8m) · EHV-1 (7-11m tufão) · Salmonella abortus equi · Leptospira
+Morte embrionária sem aborto: T. foetus · PPV · BVD · C. fetus venerealis</div></div>
+  <div class="inf-memo"><div class="inf-memo-label">Hospedeiros definitivos de protozoários</div><div class="inf-memo-text">Neospora caninum → CÃO (e coiote) definitivo · bovino intermediário principal
+Toxoplasma gondii → GATO (único definitivo) · ovinos/suínos/humanos = intermediários
+T. foetus → sem hospedeiro definitivo (parasita obrigatório da mucosa genital bovina)</div></div>
+  <div class="inf-memo"><div class="inf-memo-label">Animal PI — BVD</div><div class="inf-memo-text">PI = Persistentemente Infectado
+Infectado entre D25-125 de gestação (imunotolerância fetal)
+Nasce soronegativo · excreta vírus por toda a vida
+Principal reservatório do vírus no rebanho
+Diagnóstico: ELISA Ag (punch de orelha) + confirmar com 2ª amostra 21 dias depois
+Doença das mucosas: PI + biótipo citopatogênico = 100% letal</div></div>
+  <div class="inf-memo"><div class="inf-memo-label">Portadores assintomáticos — doenças venéreas</div><div class="inf-memo-text">T. foetus: touro (prepúcio/fossa peniana) — fêmea tem piometra transitória
+C. fetus venerealis: touro — doença na fêmea
+CEM (Taylorella): garanhão (prepúcio/glande) — metrite na égua
+AVE: garanhão (epidídimo) — aborto/doença sistêmica na égua
+B. canis: macho (orquiepididimite) e fêmea (aborto) — ambos excretam</div></div>
 </div>
 `
 }
@@ -7594,6 +8737,43 @@ window.pgSetSp = function(sp, el){
   p.querySelectorAll(':scope > .pg-sp-panel').forEach(function(x){ x.classList.remove('active'); });
   el.classList.add('active');
   p.querySelector('#pg-sp-' + sp).classList.add('active');
+};
+
+// === CAPÍTULO 16 — PATOLOGIAS DA FÊMEA ===
+window.pfToggle = function(header){
+  var body = header.nextElementSibling;
+  var open = body.classList.toggle('open');
+  header.classList.toggle('open', open);
+};
+window.pfSetTab = function(t, el){
+  var container = el.closest('.chapter-body');
+  container.querySelectorAll('.pf-tab').forEach(function(x){ x.classList.remove('active'); });
+  container.querySelectorAll('.pf-panel').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  container.querySelector('#pf-panel-' + t).classList.add('active');
+};
+window.pfSetSp = function(sp, el){
+  var p = el.closest('.pf-panel');
+  p.querySelectorAll(':scope > .pf-sp-tabs .pf-sp-tab').forEach(function(x){ x.classList.remove('active'); });
+  p.querySelectorAll(':scope > .pf-sp-panel').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  p.querySelector('#pf-sp-' + sp).classList.add('active');
+};
+
+// === CAPÍTULO 17 — DOENÇAS INFECCIOSAS ===
+window.infSetTab = function(t, el){
+  var container = el.closest('.chapter-body');
+  container.querySelectorAll('.inf-tab').forEach(function(x){ x.classList.remove('active'); });
+  container.querySelectorAll('.inf-panel').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  container.querySelector('#inf-panel-' + t).classList.add('active');
+};
+window.infSetSp = function(sp, el){
+  var p = el.closest('.inf-panel');
+  p.querySelectorAll(':scope > .inf-sp-tabs .inf-sp-tab').forEach(function(x){ x.classList.remove('active'); });
+  p.querySelectorAll(':scope > .inf-sp-panel').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  p.querySelector('#inf-sp-' + sp).classList.add('active');
 };
 </script>
 
