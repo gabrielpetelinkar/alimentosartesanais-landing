@@ -7838,11 +7838,6 @@ Espermatozoide dura: 6–7 dias · oócito fértil: 2–3 dias pós-ovulação
   </table>
 </div>
 
-<script>
-function pfToggle(h){const b=h.nextElementSibling;const o=b.classList.toggle('open');h.classList.toggle('open',o)}
-function pfSetTab(t,el){el.closest('.chapter-content').querySelectorAll('.pf-tab').forEach(x=>x.classList.remove('active'));el.closest('.chapter-content').querySelectorAll('.pf-panel').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('pf-panel-'+t).classList.add('active')}
-function pfSetSp(sp,el){const p=el.closest('.pf-panel');p.querySelectorAll(':scope>.pf-sp-tabs .pf-sp-tab').forEach(x=>x.classList.remove('active'));p.querySelectorAll(':scope>.pf-sp-panel').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('pf-sp-'+sp).classList.add('active')}
-</script>
 `
 },
 {
@@ -9896,6 +9891,16 @@ function mmToggle(id) {
   if (!el) return;
   el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
 }
+
+// Patologias Macho (pm-) functions
+function pmToggle(h){var b=h.nextElementSibling;var o=b.classList.toggle('open');h.classList.toggle('open',o)}
+function pmSetTab(t,el){var wrap=el.closest('[data-chapter]')||el.closest('.chapter-body')||document;wrap.querySelectorAll('.pm-tab').forEach(function(x){x.classList.remove('active')});wrap.querySelectorAll('.pm-panel').forEach(function(x){x.classList.remove('active')});el.classList.add('active');document.getElementById('pm-panel-'+t).classList.add('active')}
+function pmSetSp(sp,el){var p=el.closest('.pm-panel');p.querySelectorAll(':scope>.pm-sp-tabs .pm-sp-tab').forEach(function(x){x.classList.remove('active')});p.querySelectorAll(':scope>.pm-sp-panel').forEach(function(x){x.classList.remove('active')});el.classList.add('active');document.getElementById('pm-sp-'+sp).classList.add('active')}
+
+// Patologias Femea (pf-) functions
+function pfToggle(h){var b=h.nextElementSibling;var o=b.classList.toggle('open');h.classList.toggle('open',o)}
+function pfSetTab(t,el){var wrap=el.closest('[data-chapter]')||el.closest('.chapter-body')||document;wrap.querySelectorAll('.pf-tab').forEach(function(x){x.classList.remove('active')});wrap.querySelectorAll('.pf-panel').forEach(function(x){x.classList.remove('active')});el.classList.add('active');document.getElementById('pf-panel-'+t).classList.add('active')}
+function pfSetSp(sp,el){var p=el.closest('.pf-panel');p.querySelectorAll(':scope>.pf-sp-tabs .pf-sp-tab').forEach(function(x){x.classList.remove('active')});p.querySelectorAll(':scope>.pf-sp-panel').forEach(function(x){x.classList.remove('active')});el.classList.add('active');document.getElementById('pf-sp-'+sp).classList.add('active')}
 
 // Add "Mapas Mentais" nav link
 (function() {
