@@ -1809,9 +1809,9 @@
       window.addEventListener('touchend', () => { dragging = false; });
     })();
 
-    // COUNTDOWN — Evergreen 48h per visitor
+    // COUNTDOWN — Evergreen 15min per visitor
     (() => {
-      const KEY = 'aa_countdown_end';
+      const KEY = 'aa_countdown_end_v2';
       const MINUTES = 15;
       let end = localStorage.getItem(KEY);
       if (!end) {
