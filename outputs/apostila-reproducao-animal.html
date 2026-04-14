@@ -8172,6 +8172,373 @@ AVE: garanhão (epidídimo) — aborto/doença sistêmica na égua
 B. canis: macho (orquiepididimite) e fêmea (aborto) — ambos excretam</div></div>
 </div>
 `
+},
+{
+  id: 'casos-clinicos',
+  num: 18,
+  title: 'Casos Clínicos e Questões de Residência',
+  icon: '#i-clipboard',
+  content: `
+<style>
+.cc-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.cc-tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .18s;font-family:inherit}
+.cc-tab:hover{background:var(--bg-card-alt)}.cc-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.cc-panel{display:none}.cc-panel.active{display:block}
+.cc-sp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.cc-sp-tab{padding:5px 12px;border-radius:16px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+.cc-sp-tab:hover{background:var(--bg-card-alt)}.cc-sp-tab.active{background:var(--blue-100);color:var(--blue-700);border-color:transparent;font-weight:600}
+.cc-sp-panel{display:none}.cc-sp-panel.active{display:block}
+.cc-hl{background:var(--amber-100);border-radius:3px;padding:1px 4px;font-weight:600}
+.cc-info-box{border-left:3px solid #378ADD;background:var(--blue-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.55}
+.cc-caso{border-radius:8px;border:1px solid var(--border-card);margin-bottom:16px;overflow:hidden}
+.cc-caso-header{padding:12px 16px;background:var(--bg-card-alt);border-bottom:1px solid var(--border-card)}
+.cc-caso-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:3px}
+.cc-caso-title{font-size:14px;font-weight:600}
+.cc-caso-tags{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.cc-tag{display:inline-block;font-size:10.5px;padding:1px 8px;border-radius:10px;font-weight:600;background:var(--bg-card-alt);color:var(--text-secondary);border:1px solid var(--border-light)}
+.cc-tag-eq{background:var(--blue-100);color:var(--blue-700);border-color:var(--blue-100)}
+.cc-tag-bov{background:var(--green-50);color:var(--green-700);border-color:var(--green-100)}
+.cc-tag-carn{background:var(--amber-100);color:#633806;border-color:var(--amber-100)}
+.cc-tag-emer{background:var(--red-100);color:#7a1f1f;border-color:var(--red-100)}
+.cc-caso-body{padding:14px 16px}
+.cc-enunciado{font-size:13px;line-height:1.75;margin-bottom:14px;background:var(--bg-card-alt);border-radius:6px;padding:12px 14px;border-left:3px solid var(--border-light)}
+.cc-pergunta{font-size:13px;font-weight:600;margin-bottom:8px}
+.cc-gab-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:20px;border:1px solid var(--border-light);background:transparent;cursor:pointer;font-size:12px;color:var(--text-secondary);font-family:inherit;transition:all .15s;margin-bottom:10px}
+.cc-gab-btn:hover{background:var(--green-50);color:var(--green-700);border-color:var(--green-700)}
+.cc-gab-btn.revealed{background:var(--green-50);color:var(--green-700);border-color:var(--green-700)}
+.cc-gabarito{display:none;border-radius:8px;border:1px solid var(--green-100);background:var(--green-50);padding:12px 16px;font-size:13px;line-height:1.75}
+.cc-gabarito.show{display:block}
+.cc-gabarito-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green-700);margin-bottom:6px}
+.cc-questao{border-radius:8px;border:1px solid var(--border-card);margin-bottom:14px;overflow:hidden}
+.cc-questao-header{padding:10px 16px;background:var(--bg-card-alt);border-bottom:1px solid var(--border-card);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.cc-questao-num{font-size:11px;font-weight:700;color:var(--text-muted)}
+.cc-questao-fonte{font-size:10.5px;color:var(--text-muted);font-style:italic}
+.cc-questao-body{padding:14px 16px}
+.cc-questao-enunciado{font-size:13px;line-height:1.75;margin-bottom:12px}
+.cc-opcoes{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.cc-opcao{display:flex;gap:8px;align-items:flex-start;padding:8px 12px;border-radius:6px;border:1px solid var(--border-card);cursor:pointer;font-size:13px;line-height:1.5;transition:all .15s;background:var(--bg-card)}
+.cc-opcao:hover{background:var(--bg-card-alt);border-color:var(--border-light)}
+.cc-opcao.cc-correta{background:var(--green-50);border-color:var(--green-700);color:var(--green-700)}
+.cc-opcao.cc-errada{background:var(--red-100);border-color:#A32D2D;color:#7a1f1f}
+.cc-opcao-letra{font-weight:700;font-size:12px;min-width:18px;flex-shrink:0;margin-top:1px}
+.cc-questao-gab{display:none;border-radius:6px;background:var(--green-50);border:1px solid var(--green-100);padding:10px 14px;font-size:12px;line-height:1.65;margin-top:8px}
+.cc-questao-gab.show{display:block}
+.cc-questao-gab-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green-700);margin-bottom:4px}
+.cc-score-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg-card-alt);border-radius:8px;border:1px solid var(--border-card);margin-bottom:16px}
+.cc-score-num{font-size:24px;font-weight:700;color:var(--blue-700)}
+.cc-score-label{font-size:12px;color:var(--text-secondary)}
+</style>
+
+<div class="cc-tabs">
+  <button class="cc-tab active" onclick="ccSetTab('casos',this)">Casos Clinicos</button>
+  <button class="cc-tab" onclick="ccSetTab('questoes',this)">Questoes de Residencia</button>
+</div>
+
+<!-- CASOS CLINICOS -->
+<div class="cc-panel active" id="cc-panel-casos">
+  <div class="cc-sp-tabs">
+    <button class="cc-sp-tab active" onclick="ccSetSp('grandes',this)">Grandes Animais</button>
+    <button class="cc-sp-tab" onclick="ccSetSp('pequenos',this)">Pequenos Animais</button>
+  </div>
+
+  <!-- GRANDES ANIMAIS -->
+  <div class="cc-sp-panel active" id="cc-sp-grandes">
+
+    <div class="cc-caso">
+      <div class="cc-caso-header">
+        <div class="cc-caso-num">Caso 1</div>
+        <div class="cc-caso-title">Egua com distensao abdominal progressiva aos 8 meses de gestacao</div>
+        <div class="cc-caso-tags"><span class="cc-tag cc-tag-eq">Equino</span><span class="cc-tag">Gestacao</span><span class="cc-tag cc-tag-emer">Urgente</span></div>
+      </div>
+      <div class="cc-caso-body">
+        <div class="cc-enunciado">Uma egua Quarto de Milha, 7 anos, pluripara, com 8 meses de gestacao, e atendida em emergencia. A proprietaria relata aumento progressivo do volume abdominal nos ultimos 15 dias. Ao exame clinico: mucosas levemente congestionadas, FC 52 bpm, FR 20 mrm, TPC 2 s, animal com postura em cavalete, edema ventral extenso da regiao mamaria ao xifoide. Ao US transabdominal: grande quantidade de conteudo anecoico no interior do utero. A palpacao retal: utero hiperdistendido com intensa flutuacao, impossivel palpar o feto.</div>
+        <div class="cc-pergunta">1. Qual o diagnostico mais provavel? Qual o tipo mais comum nessa especie?</div>
+        <div class="cc-pergunta">2. Qual exame complementar confirmaria o diagnostico?</div>
+        <div class="cc-pergunta">3. Descreva o tratamento de emergencia. Qual o risco da conduta incorreta?</div>
+        <div class="cc-pergunta">4. Quais complicacoes sao esperadas neste caso?</div>
+        <button class="cc-gab-btn" onclick="ccToggleGab(this)">Ver gabarito comentado</button>
+        <div class="cc-gabarito">
+          <div class="cc-gabarito-label">Gabarito comentado</div>
+          <strong>1. Diagnostico:</strong> Hidropsia dos envoltorios fetais, <span class="cc-hl">hidroalantoide</span> (80 a 95% dos casos equinos). Distincao: hidroalantoide = deficit circulatorio placentario + disturbios hepatorrenais fetais levando a acumulo no alantoide. Hidroamnio = malformacao fetal (fenda palatina) fazendo com que o feto nao degluta o liquido amniotico.<br><br>
+          <strong>2. Diagnostico complementar:</strong> US transretal confirma conteudo anecoico excessivo + placentomas. US transabdominal: identifica os placentomas (cotilédones). A impossibilidade de palpar o feto a palpacao retal e sinal patognomonico de hidroalantoide (vs. hidroamnio onde o feto e palpavel).<br><br>
+          <strong>3. Tratamento:</strong><br>
+          Estabilizacao hemodinamica imediata: fluidoterapia IV (coloide ou solucao hipertonica a 7,2% 4 mL/kg), preparar para o choque hipovolemico<br>
+          Ruptura da membrana alantocorionica por via cervical (introducao manual atraves da cervix dilatada), libera o liquido<br>
+          <span class="cc-hl">DRENAGEM LENTA e controlada</span>, esvaziamento rapido causa choque hipovolemico por redistribuicao brusca do sangue<br>
+          Monitoracao continua (FC, PAS, TPC) durante toda a drenagem<br>
+          Ocitocina apos drenagem para expulsao fetal + ATB sistemico (penicilina + gentamicina)<br>
+          <strong>ERRO FATAL:</strong> drenar rapidamente causa choque distributivo/hipovolemico, podendo levar a morte da egua.<br><br>
+          <strong>4. Complicacoes esperadas:</strong> retencao de placenta (SEMPRE), metrite, laminite (complicacao grave em eguas apos septicemia), atonia uterina, ruptura uterina se manejo inadequado, prognostico reprodutivo reservado
+        </div>
+      </div>
+    </div>
+
+    <div class="cc-caso">
+      <div class="cc-caso-header">
+        <div class="cc-caso-num">Caso 2</div>
+        <div class="cc-caso-title">Vaca com corrimento vaginal fetido 3 dias apos parto distocico</div>
+        <div class="cc-caso-tags"><span class="cc-tag cc-tag-bov">Bovino</span><span class="cc-tag">Puerperio</span><span class="cc-tag cc-tag-emer">Urgente</span></div>
+      </div>
+      <div class="cc-caso-body">
+        <div class="cc-enunciado">Vaca Holandesa, 5 anos, atendida 3 dias apos parto distocico assistido por tratores de feto. Apresenta corrimento vaginal espesso, achocolatado e de odor fetido. Ao exame: depressao, anorexia, T 39,9C, taquicardia leve. A palpacao retal: utero aumentado, paredes espessas, conteudo flutuante. A placenta nao foi eliminada.</div>
+        <div class="cc-pergunta">1. Qual o diagnostico? Quais os fatores predisponentes presentes no caso?</div>
+        <div class="cc-pergunta">2. A lavagem uterina e indicada nesse momento? Justifique.</div>
+        <div class="cc-pergunta">3. Descreva o tratamento.</div>
+        <div class="cc-pergunta">4. Qual a diferenca entre metrite e endometrite?</div>
+        <button class="cc-gab-btn" onclick="ccToggleGab(this)">Ver gabarito comentado</button>
+        <div class="cc-gabarito">
+          <div class="cc-gabarito-label">Gabarito comentado</div>
+          <strong>1. Diagnostico:</strong> Metrite puerperal aguda. Fatores predisponentes no caso: retencao de placenta (nao foi eliminada) + distocia + manipulacao obstetrica (tratores de feto aumentam contaminacao bacteriana).<br><br>
+          <strong>2. Lavagem uterina:</strong> <span class="cc-hl">NAO e indicada na metrite aguda</span>. A lavagem com solucao aquosa na fase aguda pode: (a) favorecer absorcao de endotoxinas levando a bacteremia/endotoxemia; (b) remover as defesas locais (PMNs); (c) macerar tecido ja comprometido. ATB intrauterino pode ser considerado apos 2 a 3 semanas se evolucao para endometrite cronica.<br><br>
+          <strong>3. Tratamento:</strong><br>
+          ATB sistemico de primeira escolha: ceftiofur 2,2 mg/kg IM SID por 3 a 5 dias (ou penicilina procaina + gentamicina; sulfa + trimetoprim)<br>
+          AINE (flunixin meglumine 1,1 mg/kg IV) para controle da toxemia e analgesia<br>
+          Suporte hidrico IV se necessario (desidratacao)<br>
+          Calcio IV se hipocalcemia (frequente nessa fase)<br>
+          PGF2a pode ser usada para auxiliar a involucao uterina (contrai miometrio, auxilia drenagem)<br>
+          Manejo da retencao de placenta: <span class="cc-hl">NUNCA forcar a remocao manual na metrite aguda</span>, esperar desprendimento espontaneo<br><br>
+          <strong>4. Diferenca:</strong> Metrite = inflamacao de toda a parede uterina (endometrio + miometrio + perimetrio), pos-parto, sinais sistemicos, exsudato achocolatado fetido, emergencia. Endometrite = inflamacao superficial do endometrio, mais cronica, sem sinal sistemico grave, em eguas: principal causa de infertilidade.
+        </div>
+      </div>
+    </div>
+
+    <div class="cc-caso">
+      <div class="cc-caso-header">
+        <div class="cc-caso-num">Caso 3</div>
+        <div class="cc-caso-title">Touro com achados ao exame andrologico</div>
+        <div class="cc-caso-tags"><span class="cc-tag cc-tag-bov">Bovino</span><span class="cc-tag">Andrologia</span></div>
+      </div>
+      <div class="cc-caso-body">
+        <div class="cc-enunciado">Touro Nelore, 30 meses, e submetido a exame andrologico antes da estacao de monta. Achados: ECC 3,0; circunferencia escrotal (CE) 31 cm; consistencia testicular firme e elastica (escore 3); espermograma: volume 5 mL (VA), motilidade progressiva 65%, vigor 3, defeitos maiores 18%, defeitos menores 8%, defeitos totais 26%. Palpacao retal: vesicula seminal esquerda aumentada, firme, levemente dolorosa.</div>
+        <div class="cc-pergunta">1. Classifique o touro como APTO, SUSPEITO ou INAPTO. Justifique parametro a parametro.</div>
+        <div class="cc-pergunta">2. O achado na palpacao retal sugere qual patologia? O que explicaria o achado no espermograma?</div>
+        <div class="cc-pergunta">3. Quais exames complementares seriam solicitados?</div>
+        <button class="cc-gab-btn" onclick="ccToggleGab(this)">Ver gabarito comentado</button>
+        <div class="cc-gabarito">
+          <div class="cc-gabarito-label">Gabarito comentado</div>
+          <strong>1. Classificacao: SUSPEITO</strong><br>
+          ECC 3,0: adequado<br>
+          CE 31 cm: zebuino 24 meses minimo 32 cm; 36 meses 34 cm. Com 30 meses esta abaixo do minimo, entao SUSPEITO isoladamente<br>
+          Consistencia: adequada<br>
+          MP 65%: adequada (minimo 60%)<br>
+          Vigor 3: adequado<br>
+          Defeitos maiores 18%: adequado (maximo 20%)<br>
+          Defeitos menores 8%: adequado (maximo 10%)<br>
+          Defeitos totais 26%: adequado (maximo 30%)<br>
+          <strong>Conclusao:</strong> A CE abaixo do minimo para a idade/raca classifica o touro como SUSPEITO, independente dos demais parametros estarem dentro do limite. Reavaliacao em 30 a 60 dias.<br><br>
+          <strong>2. Vesiculite seminal esquerda.</strong> A vesicula aumentada, firme e dolorosa indica processo inflamatorio (vesiculite). Isso explica a presenca de defeitos espermaticos no espermograma: a inflamacao da vesicula lanca leucocitos (PMNs) no plasma seminal levando a piospermia. Os PMNs liberam EROs causando danos a membrana plasmatica e acrossomal dos espermatozoides, aumentando defeitos.<br><br>
+          <strong>3. Complementares:</strong> Cultura bacteriologica do semen (swab da vesicula por retal ou lavado), US transretal da vesicula seminal, hemograma (leucocitose indica infeccao ativa), sorologia para Brucella abortus (causa comum de vesiculite)
+        </div>
+      </div>
+    </div>
+
+    <div class="cc-caso">
+      <div class="cc-caso-header">
+        <div class="cc-caso-num">Caso 4</div>
+        <div class="cc-caso-title">Vaca com prolapso pos-parto</div>
+        <div class="cc-caso-tags"><span class="cc-tag cc-tag-bov">Bovino</span><span class="cc-tag">Obstetricia</span><span class="cc-tag cc-tag-emer">Emergencia</span></div>
+      </div>
+      <div class="cc-caso-body">
+        <div class="cc-enunciado">Vaca Jersey, 4 anos, atendida 2 horas apos o parto. Proprietario relata que o "utero saiu todo" pela vulva. Ao exame: animal em estacao, tecido uterino projetado pela vulva ate o nivel do jarrete, superficie com carunculas maternas visiveis, tecido edemaciado e levemente arroxeado, sem necrose visivel. Placenta ainda aderida ao tecido prolapso.</div>
+        <div class="cc-pergunta">1. Diagnostico. Como diferenciar do prolapso vaginal?</div>
+        <div class="cc-pergunta">2. Descreva o protocolo de tratamento passo a passo.</div>
+        <div class="cc-pergunta">3. Por que a sutura de Buhner e removida em 2 a 3 dias e nao mantida indefinidamente?</div>
+        <div class="cc-pergunta">4. Quais fatores predisponentes podem ter contribuido neste caso?</div>
+        <button class="cc-gab-btn" onclick="ccToggleGab(this)">Ver gabarito comentado</button>
+        <div class="cc-gabarito">
+          <div class="cc-gabarito-label">Gabarito comentado</div>
+          <strong>1. Prolapso uterino.</strong> Diferenciacao: prolapso vaginal = mucosa vaginal lisa (sem carunculas), ocorre na gestacao, massa menor. Prolapso uterino = <span class="cc-hl">carunculas maternas VISIVEIS</span> (endometrio exposto), ocorre pos-parto imediato, extensao maior.<br><br>
+          <strong>2. Protocolo:</strong><br>
+          a) Contencao: tronco ou decubito esternal com membros posteriores estendidos caudalmente<br>
+          b) Anestesia epidural baixa (lidocaina 2%, 1 mL/100 kgPV no espaco sacrococcigio), cessa o tenesmo<br>
+          c) Sedacao leve se necessario (xilazina 0,05 mg/kg IV)<br>
+          d) Cobrir o utero com pano umido limpo para protecao<br>
+          e) Assepsia com clorexidina 0,5 a 1% em toda a superficie exposta<br>
+          f) Verificar e esvaziar a bexiga se distendida (puncao ou cateterismo)<br>
+          g) Reducao do edema: acucar granulado espalhado sobre o tecido por 5 min, remove fluido por osmose, retirar antes de reposicionar<br>
+          h) Reposicao: iniciar pela porcao mais proxima a vulva, empurrar com maos espalmadas progressivamente, avancar cada segmento com o punho fechado introduzido no lumen uterino<br>
+          i) Confirmacao da reposicao: introduzir o braco para verificar que os cornos estao corretamente posicionados<br>
+          j) Sutura de Buhner (perivulvar, bolsa de tabaco) + ATB sistemico + AINE<br>
+          k) Ocitocina 10 a 20 UI IM para aumentar tonicidade uterina<br><br>
+          <strong>3.</strong> A sutura de Buhner e removida em 2 a 3 dias para permitir a descarga loquial normal (involucao uterina) e para nao obstruir o proximo cio. Se mantida indefinidamente: (a) obstrui a saida de loquios causando metrite; (b) causa lesao vulvar.<br><br>
+          <strong>4. Fatores predisponentes:</strong> hipocalcemia (raca Jersey tem predisposicao) levando a atonia uterina e prolapso; parto distocico com tracao excessiva; raca de alta producao leiteira; dieta com deficit de Ca/P/Mg no pre-parto; confinamento sem exercicio.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PEQUENOS ANIMAIS -->
+  <div class="cc-sp-panel" id="cc-sp-pequenos">
+
+    <div class="cc-caso">
+      <div class="cc-caso-header">
+        <div class="cc-caso-num">Caso 5</div>
+        <div class="cc-caso-title">Cadela com distensao abdominal e poliuria no diestro</div>
+        <div class="cc-caso-tags"><span class="cc-tag cc-tag-carn">Canino</span><span class="cc-tag">Utero</span><span class="cc-tag cc-tag-emer">Emergencia</span></div>
+      </div>
+      <div class="cc-caso-body">
+        <div class="cc-enunciado">Cadela Rottweiler, 8 anos, nao castrada, e trazida com distensao abdominal progressiva ha 10 dias, anorexia, poliuria/polidipsia e prostracao. Ultima vacinacao com anticoncepcional a base de progesterona ha 4 meses. Ao exame: mucosas normocoradas, T 39,1C, abdomen tenso. Nao ha corrimento vulvar. Exames: hemograma com leucocitose (28.000/uL) com desvio a esquerda, creatinina 1,8 mg/dL. US: cornos uterinos muito distendidos (>4 cm de diametro) com conteudo ecogenico e paredes espessadas.</div>
+        <div class="cc-pergunta">1. Diagnostico. Por que ha poliuria/polidipsia nesse caso?</div>
+        <div class="cc-pergunta">2. Qual a classificacao desta piometra? E mais grave que a aberta? Por que?</div>
+        <div class="cc-pergunta">3. Qual o tratamento de eleicao? O tratamento clinico seria indicado?</div>
+        <div class="cc-pergunta">4. Qual a relacao entre o anticoncepcional a base de progesterona e o desenvolvimento dessa patologia?</div>
+        <button class="cc-gab-btn" onclick="ccToggleGab(this)">Ver gabarito comentado</button>
+        <div class="cc-gabarito">
+          <div class="cc-gabarito-label">Gabarito comentado</div>
+          <strong>1. Piometra fechada.</strong> A PU/PD ocorre porque as endotoxinas de E. coli (principal agente) prejudicam a acao do ADH nos tubulos renais levando a diabetes insipidus nefrogenico, o que causa poliuria compensatoria com polidipsia. O aumento da creatinina indica comprometimento renal por imunocomplexos (nefrite).<br><br>
+          <strong>2. Piometra fechada</strong> (cervix fechada, sem corrimento). <span class="cc-hl">E mais grave</span>: o pus acumula no interior do utero sem saida, com risco de ruptura uterina levando a peritonite, sepse e morte. A piometra aberta drena espontaneamente, possibilitando diagnostico mais precoce e melhor monitoracao.<br><br>
+          <strong>3. Tratamento de eleicao: OSH (ovariossalpingohisterectomia) imediata.</strong><br>
+          Estabilizacao pre-operatoria: fluidoterapia IV (corrigir desidratacao e azotemia) + ATB IV (ampicilina-sulbactam ou cefazolina)<br>
+          ATB pos-operatorio por 7 a 14 dias<br>
+          <strong>Tratamento clinico (aglepristone com ou sem PGF2a):</strong> contraindicado nesse caso. Piometra fechada e contraindicacao absoluta ao tratamento clinico (risco de ruptura com abertura cervical induzida). O tratamento clinico so e considerado em piometra aberta + cadela jovem, reprodutora de alto valor + estavel hemodinamicamente.<br><br>
+          <strong>4.</strong> O anticoncepcional a base de progesterona (progestagenos) age na hipofise bloqueando o FSH/LH (sem cio), mas ao mesmo tempo: aumenta receptores de P4 no endometrio levando a hiperplasia cistica do endometrio (HCE), diminui atividade do miometrio, acumula secrecao glandular, cria ambiente propicio para proliferacao bacteriana (E. coli ascendente da flora vaginal). O uso prolongado aumenta o risco de piometra em ate 50%.
+        </div>
+      </div>
+    </div>
+
+    <div class="cc-caso">
+      <div class="cc-caso-header">
+        <div class="cc-caso-num">Caso 6</div>
+        <div class="cc-caso-title">Cao com testiculo nao descido e feminilizacao</div>
+        <div class="cc-caso-tags"><span class="cc-tag cc-tag-carn">Canino</span><span class="cc-tag">Andrologia</span><span class="cc-tag">Neoplasia</span></div>
+      </div>
+      <div class="cc-caso-body">
+        <div class="cc-enunciado">Cao Dachshund, 9 anos, inteiro, e trazido por alopecia bilateral simetrica progressiva, ginecomastia e atracao de outros machos. Ao exame: bolsa escrotal com apenas um testiculo (direito, tamanho normal), testiculo esquerdo ausente na bolsa. Palpacao: massa de ~3 cm no canal inguinal esquerdo. Prostata aumentada a palpacao abdominal. Hemograma: anemia normocitica normocromica leve.</div>
+        <div class="cc-pergunta">1. Qual neoplasia e mais provavel no testiculo retido? Por que?</div>
+        <div class="cc-pergunta">2. O que explica a sindrome de feminilizacao?</div>
+        <div class="cc-pergunta">3. Qual a relacao entre esse tumor e a prostata aumentada?</div>
+        <div class="cc-pergunta">4. Qual o tratamento? O testiculo contralateral normal deve ser removido tambem?</div>
+        <button class="cc-gab-btn" onclick="ccToggleGab(this)">Ver gabarito comentado</button>
+        <div class="cc-gabarito">
+          <div class="cc-gabarito-label">Gabarito comentado</div>
+          <strong>1. Sertolioma (tumor de celulas de Sertoli).</strong> Testiculos retidos tem temperatura corporal (nao escrotal), levando a degeneracao do epitelio germinativo: nao produz espermatozoides, mas as celulas de Sertoli sao mais resistentes e continuam produzindo estrogenio em excesso. O sertolioma e a neoplasia mais comum em testiculos criptorquidicos.<br><br>
+          <strong>2. Sindrome de feminilizacao</strong> = excesso de estrogenio produzido pelo sertolioma causando feedback negativo sobre o eixo HPG, levando a diminuicao de FSH/LH e atrofia testicular contralateral. O estrogenio causa: alopecia bilateral simetrica (padrao hormonal) + ginecomastia + atrofia do testiculo contralateral + atracao de outros machos (feromonios estrogenicos). A anemia pode ser aplasica em casos graves (estrogenio e mielossupressor).<br><br>
+          <strong>3.</strong> O estrogenio produzido em excesso causa <span class="cc-hl">metaplasia escamosa da prostata</span>: o epitelio glandular cubico se transforma em escamoso, levando a acumulo de cistos + aumento de volume prostatico + compressao de uretra/reto + tenesmo/disuria. Diferente da HPB (androgenio-dependente), a metaplasia escamosa e estrogenio-dependente.<br><br>
+          <strong>4. Tratamento: orquiectomia bilateral</strong> (remover o testiculo criptorquidico + o contralateral). O testiculo contralateral deve ser removido porque: (a) pode ter degenerado por supressao hormonal (infertil); (b) o criptorquidismo e hereditario e o animal nao deve reproduzir; (c) remove a fonte de androgenios que alimenta futuras neoplasias. Expectativa: regressao da sindrome de feminilizacao e da metaplasia prostatica em semanas a meses.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- QUESTOES DE RESIDENCIA -->
+<div class="cc-panel" id="cc-panel-questoes">
+  <div id="cc-score-area" style="display:none" class="cc-score-bar">
+    <div class="cc-score-num" id="cc-score-num">0</div>
+    <div><div style="font-weight:600;font-size:13px">acertos</div><div class="cc-score-label" id="cc-score-total">de 0 questoes respondidas</div></div>
+  </div>
+
+  <div class="cc-info-box">Clique em uma alternativa para ver a resposta. O gabarito comentado aparece automaticamente.</div>
+
+  <div class="cc-questao" id="ccq1">
+    <div class="cc-questao-header"><span class="cc-questao-num">Questao 1: Reproducao Equina</span><span class="cc-questao-fonte">Estilo UNESP/USP</span></div>
+    <div class="cc-questao-body">
+      <div class="cc-questao-enunciado">Uma egua com 7 meses de gestacao apresenta desenvolvimento precoce do ubere com producao de leite, associado a corrimento vaginal espesso e amarronzado. Ao ultrassom, observa-se espessamento do alantocorio. Qual o diagnostico mais provavel e o sinal clinico considerado o mais importante para suspeitar dessa afeccao?</div>
+      <div class="cc-opcoes" data-correta="C">
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq1','A')"><span class="cc-opcao-letra">A</span>Hidropsia dos envoltorios fetais: impossibilidade de palpar o feto</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq1','B')"><span class="cc-opcao-letra">B</span>Gestacao gemelar: aumento do volume abdominal</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq1','C')"><span class="cc-opcao-letra">C</span>Placentite equina: lactacao prematura</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq1','D')"><span class="cc-opcao-letra">D</span>Torcao uterina: sinais de colica</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq1','E')"><span class="cc-opcao-letra">E</span>Ruptura do tendao pre-pubico: edema ventral exuberante</div>
+      </div>
+      <div class="cc-questao-gab" id="cc-gab-ccq1"><div class="cc-questao-gab-label">Gabarito: C: Placentite equina</div>A <strong>lactacao prematura</strong> e o sinal clinico mais importante da placentite equina, representando desenvolvimento mamario e producao de leite antes do termo, indicando comprometimento da unidade feto-placentaria. Outros sinais: espessamento e edema do alantocorio ao US, corrimento vaginal espesso, abertura precoce da cervix, aborto ou parto prematuro. Agentes: Streptococcus zooepidemicus, E. coli, Aspergillus. Tratamento: ATB + P4 de longa acao (altrenogest) + AINEs (flunixin).</div>
+    </div>
+  </div>
+
+  <div class="cc-questao" id="ccq2">
+    <div class="cc-questao-header"><span class="cc-questao-num">Questao 2: Andrologia Bovina</span><span class="cc-questao-fonte">Estilo UFRRJ</span></div>
+    <div class="cc-questao-body">
+      <div class="cc-questao-enunciado">Um touro Nelore de 24 meses e submetido a exame andrologico. A circunferencia escrotal minima para que ele seja classificado como APTO, de acordo com o CBRA, e:</div>
+      <div class="cc-opcoes" data-correta="B">
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq2','A')"><span class="cc-opcao-letra">A</span>30 cm ou mais</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq2','B')"><span class="cc-opcao-letra">B</span>32 cm ou mais</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq2','C')"><span class="cc-opcao-letra">C</span>34 cm ou mais</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq2','D')"><span class="cc-opcao-letra">D</span>36 cm ou mais</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq2','E')"><span class="cc-opcao-letra">E</span>38 cm ou mais</div>
+      </div>
+      <div class="cc-questao-gab" id="cc-gab-ccq2"><div class="cc-questao-gab-label">Gabarito: B: 32 cm ou mais</div>Segundo o CBRA: Touros taurinos 24 meses 34 cm ou mais. Touros zebuinos (Nelore) 24 meses <span class="cc-hl">32 cm ou mais</span>. Taurinos 36 meses 36 cm ou mais. Zebuinos 36 meses 34 cm ou mais. A CE correlaciona-se diretamente com a producao espermatica diaria. Zebuinos tem CE ligeiramente menor que taurinos na mesma idade, por isso o valor diferenciado.</div>
+    </div>
+  </div>
+
+  <div class="cc-questao" id="ccq3">
+    <div class="cc-questao-header"><span class="cc-questao-num">Questao 3: Piometra Canina</span><span class="cc-questao-fonte">Estilo UFMG/UnB</span></div>
+    <div class="cc-questao-body">
+      <div class="cc-questao-enunciado">Sobre a fisiopatologia da piometra em cadelas, assinale a afirmativa INCORRETA:</div>
+      <div class="cc-opcoes" data-correta="D">
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq3','A')"><span class="cc-opcao-letra">A</span>A progesterona aumentada no diestro estimula a proliferacao glandular do endometrio e reduz a atividade do miometrio, facilitando o acumulo de secrecoes.</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq3','B')"><span class="cc-opcao-letra">B</span>O agente bacteriano mais frequentemente isolado e Escherichia coli, proveniente da flora vaginal, que ascende pela cervix aberta no cio.</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq3','C')"><span class="cc-opcao-letra">C</span>As endotoxinas de E. coli prejudicam a acao do ADH nos tubulos renais, causando diabetes insipidus nefrogenico e, consequentemente, poliuria e polidipsia.</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq3','D')"><span class="cc-opcao-letra">D</span>A piometra fechada apresenta melhor prognostico que a aberta, pois a cervix fechada impede a contaminacao ascendente e limita a progressao da infeccao.</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq3','E')"><span class="cc-opcao-letra">E</span>O uso prolongado de anticoncepcionais a base de progestagenos pode aumentar o risco de desenvolvimento da piometra em cadelas.</div>
+      </div>
+      <div class="cc-questao-gab" id="cc-gab-ccq3"><div class="cc-questao-gab-label">Gabarito: D: INCORRETA</div>A piometra <strong>fechada e mais grave</strong> que a aberta, nao o contrario. Na piometra fechada, a cervix fechada impede a drenagem do conteudo purulento, levando a acumulo progressivo, com risco de ruptura uterina causando peritonite septica e morte. Na piometra aberta, o corrimento pela vulva permite identificacao precoce e a cadela esta geralmente menos comprometida sistemicamente. A piometra fechada e contraindicacao ao tratamento clinico e indica OSH de emergencia.</div>
+    </div>
+  </div>
+
+  <div class="cc-questao" id="ccq4">
+    <div class="cc-questao-header"><span class="cc-questao-num">Questao 4: Citologia Vaginal</span><span class="cc-questao-fonte">Estilo USP</span></div>
+    <div class="cc-questao-body">
+      <div class="cc-questao-enunciado">Sobre a fase do ciclo estral da cadela caracterizada pela predominancia de celulas superficiais anucleadas (queratinizadas) no esfregaco vaginal, ausencia de neutrofilos e receptividade sexual, e CORRETO afirmar:</div>
+      <div class="cc-opcoes" data-correta="E">
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq4','A')"><span class="cc-opcao-letra">A</span>Trata-se do proestro, fase em que os altos niveis de estrogenio causam a cornificacao maxima do epitelio vaginal.</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq4','B')"><span class="cc-opcao-letra">B</span>Nessa fase, a progesterona esta em sua concentracao minima e o LH ainda nao sofreu seu pico pre-ovulatorio.</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq4','C')"><span class="cc-opcao-letra">C</span>A ovulacao na cadela ocorre 48 horas apos o inicio dessa fase, com os oocitos ja completamente maduros e prontos para fertilizacao imediata.</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq4','D')"><span class="cc-opcao-letra">D</span>O indice de cornificacao (IC) nessa fase e inferior a 40%, indicando baixo estimulo estrogenico sobre o epitelio vaginal.</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq4','E')"><span class="cc-opcao-letra">E</span>Trata-se do estro, e a inseminacao ideal ocorre quando a progesterona serica esta acima de 5 ng/mL, indicando que a ovulacao ja ocorreu e o oocito esta se maturando.</div>
+      </div>
+      <div class="cc-questao-gab" id="cc-gab-ccq4"><div class="cc-questao-gab-label">Gabarito: E: Estro, P4 >5 ng/mL = pos-ovulacao</div>A fase descrita e o <strong>estro</strong>: 80 a 90% celulas superficiais anucleadas, ausencia de neutrofilos, receptividade sexual. A ovulacao ocorre ~24 h apos o pico de P4 pre-ovulatorio. P4 >5 ng/mL indica que a ovulacao ocorreu. O oocito canino leva 2 a 3 dias para maturar (oocito primario para secundario) e apos maduro permanece fertil por 2 a 3 dias. Portanto, o momento ideal para IA com semen congelado e quando P4 esta entre 5 a 20 ng/mL (oocito maduro + dentro da janela fertil).</div>
+    </div>
+  </div>
+
+  <div class="cc-questao" id="ccq5">
+    <div class="cc-questao-header"><span class="cc-questao-num">Questao 5: Patologias Fetais</span><span class="cc-questao-fonte">Estilo UFRPE</span></div>
+    <div class="cc-questao-body">
+      <div class="cc-questao-enunciado">Uma vaca de 8 meses de gestacao apresenta prolongamento do periodo gestacional. A palpacao retal, o utero mostra reducao do volume, ausencia de liquidos fetais e feto de consistencia firme sem fremito. Nao ha sinais de infeccao sistemica. Qual a condicao que OBRIGATORIAMENTE deve estar presente para que esse quadro se desenvolva?</div>
+      <div class="cc-opcoes" data-correta="B">
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq5','A')"><span class="cc-opcao-letra">A</span>Abertura da cervix com contaminacao por bacterias anaerobicas</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq5','B')"><span class="cc-opcao-letra">B</span>Persistencia do corpo luteo (CL) ou presenca de outros fetos vivos no utero</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq5','C')"><span class="cc-opcao-letra">C</span>Bacterias aerobicas que causam liquefacao dos tecidos moles fetais</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq5','D')"><span class="cc-opcao-letra">D</span>Hidronefrose fetal com acumulo excessivo de liquido no alantoide</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq5','E')"><span class="cc-opcao-letra">E</span>Ma placentacao com cotilédones em numero reduzido</div>
+      </div>
+      <div class="cc-questao-gab" id="cc-gab-ccq5"><div class="cc-questao-gab-label">Gabarito: B: Persistencia do CL ou fetos vivos ao lado</div>O quadro descrito e de <strong>mumificacao fetal</strong>. Para ocorrer mumificacao e obrigatorio que: (1) nao haja abertura da cervix (sem contaminacao bacteriana, processo asseptico) e (2) haja <span class="cc-hl">CL persistente</span> (vaca e egua) que mantenha a P4 alta impedindo a luteolise e o parto, OU que outros fetos vivos se desenvolvam ao lado (suinos, cao) mantendo a gestacao. Sem CL persistente, o feto morto seria expulso normalmente.</div>
+    </div>
+  </div>
+
+  <div class="cc-questao" id="ccq6">
+    <div class="cc-questao-header"><span class="cc-questao-num">Questao 6: Criopreservacao Equina</span><span class="cc-questao-fonte">Estilo UNESP Botucatu</span></div>
+    <div class="cc-questao-body">
+      <div class="cc-questao-enunciado">Na criopreservacao de semen equino pelo protocolo BotuCrio/BotuSemen, assinale a sequencia CORRETA de eventos apos a coleta e filtragem do gel:</div>
+      <div class="cc-opcoes" data-correta="C">
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq6','A')"><span class="cc-opcao-letra">A</span>Avaliacao, Envasamento, Centrifugacao, Estabilizacao a 5C, Vapor N2, Imersao N2</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq6','B')"><span class="cc-opcao-letra">B</span>Avaliacao, Diluicao 1:1 BotuCrio, Centrifugacao, Estabilizacao a 15C, Vapor N2, Imersao N2</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq6','C')"><span class="cc-opcao-letra">C</span>Avaliacao, Diluicao 1:1 BotuSemen, Centrifugacao (600g/10min), Ressuspensao com BotuCrio, Envasamento, Estabilizacao 5C/20min, Vapor N2 3 a 6cm/15 a 20min, Imersao N2</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq6','D')"><span class="cc-opcao-letra">D</span>Avaliacao, Diluicao 1:1 BotuSemen, Envasamento direto, Estabilizacao 4C/4h, Vapor N2, Imersao N2</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq6','E')"><span class="cc-opcao-letra">E</span>Avaliacao, Centrifugacao, Diluicao 1:1 BotuSemen, Ressuspensao com BotuCrio, Envasamento, Imersao direta em N2</div>
+      </div>
+      <div class="cc-questao-gab" id="cc-gab-ccq6"><div class="cc-questao-gab-label">Gabarito: C: Sequencia correta</div>Protocolo completo: Coleta (VA Botucatu), Filtragem do gel, Avaliacao macro/micro, Diluicao 1:1 com <strong>BotuSemen</strong> (nao BotuCrio), Centrifugacao 600xg/10 min, Retirar sobrenadante, Medir pellet, Ressuspender com <strong>BotuCrio</strong> (metilformamida 4% + glicerol 1%), Calcular doses, Envasar (0,5 mL), Identificar, Estabilizacao 5C/20 min, Resfriamento rapido em vapor N2 a 3 a 6 cm acima do nivel/15 a 20 min, Imersao direta no N2 (menos 196C), Armazenar. Descongelacao: 46C/20 s seguido de 37C/1 a 2 min.</div>
+    </div>
+  </div>
+
+  <div class="cc-questao" id="ccq7">
+    <div class="cc-questao-header"><span class="cc-questao-num">Questao 7: Hidroalantoide Bovino</span><span class="cc-questao-fonte">Estilo UFMG</span></div>
+    <div class="cc-questao-body">
+      <div class="cc-questao-enunciado">Em relacao ao hidroalantoide em bovinos, analise as afirmativas e assinale a alternativa correta:<br>I. O hidroalantoide e sempre acompanhado de retencao de placenta e retardo na involucao uterina.<br>II. Ao contrario do hidroamnio, no hidroalantoide o feto pode ser palpado facilmente a palpacao retal.<br>III. O tratamento consiste em drenagem rapida do liquido para reduzir a pressao intrauterina o mais brevemente possivel.<br>IV. O volume do liquido alantoide pode atingir ate 270 litros em casos graves.</div>
+      <div class="cc-opcoes" data-correta="D">
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq7','A')"><span class="cc-opcao-letra">A</span>Apenas I e IV estao corretas</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq7','B')"><span class="cc-opcao-letra">B</span>Apenas II e III estao corretas</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq7','C')"><span class="cc-opcao-letra">C</span>I, II e IV estao corretas</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq7','D')"><span class="cc-opcao-letra">D</span>Apenas I e IV estao corretas, pois II e III sao falsas</div>
+        <div class="cc-opcao" onclick="ccResponder(this,'ccq7','E')"><span class="cc-opcao-letra">E</span>Todas as afirmativas estao corretas</div>
+      </div>
+      <div class="cc-questao-gab" id="cc-gab-ccq7"><div class="cc-questao-gab-label">Gabarito: D: Apenas I e IV corretas</div><strong>I: VERDADEIRA:</strong> Todos os casos de hidroalantoide sao acompanhados de retencao de placenta e retardo na involucao uterina, consequencia inevitavel da ma placentacao.<br><strong>II: FALSA:</strong> No hidroalantoide o feto <span class="cc-hl">nao e palpavel</span> (caracteristica diagnostica), excesso de liquido impede o contato digital com o feto. No hidroamnio o feto geralmente e palpavel.<br><strong>III: FALSA:</strong> A drenagem deve ser LENTA e controlada. Drenagem rapida causa choque hipovolemico distributivo pela redistribuicao subita do sangue.<br><strong>IV: VERDADEIRA:</strong> Volume normal do liquido alantoide e ~20 L. Em casos graves de hidroalantoide pode atingir ate 270 L.</div>
+    </div>
+  </div>
+
+</div>
+`
 }
 ];
 
@@ -9901,6 +10268,13 @@ function pmSetSp(sp,el){var p=el.closest('.pm-panel');p.querySelectorAll(':scope
 function pfToggle(h){var b=h.nextElementSibling;var o=b.classList.toggle('open');h.classList.toggle('open',o)}
 function pfSetTab(t,el){var wrap=el.closest('[data-chapter]')||el.closest('.chapter-body')||document;wrap.querySelectorAll('.pf-tab').forEach(function(x){x.classList.remove('active')});wrap.querySelectorAll('.pf-panel').forEach(function(x){x.classList.remove('active')});el.classList.add('active');document.getElementById('pf-panel-'+t).classList.add('active')}
 function pfSetSp(sp,el){var p=el.closest('.pf-panel');p.querySelectorAll(':scope>.pf-sp-tabs .pf-sp-tab').forEach(function(x){x.classList.remove('active')});p.querySelectorAll(':scope>.pf-sp-panel').forEach(function(x){x.classList.remove('active')});el.classList.add('active');document.getElementById('pf-sp-'+sp).classList.add('active')}
+
+// Casos Clinicos (cc-) functions
+var ccScores={correct:0,total:0};
+function ccSetTab(t,el){var wrap=el.closest('[data-chapter]')||el.closest('.chapter-body')||document;wrap.querySelectorAll('.cc-tab').forEach(function(x){x.classList.remove('active')});wrap.querySelectorAll('.cc-panel').forEach(function(x){x.classList.remove('active')});el.classList.add('active');document.getElementById('cc-panel-'+t).classList.add('active')}
+function ccSetSp(sp,el){var p=el.closest('.cc-panel');p.querySelectorAll(':scope>.cc-sp-tabs .cc-sp-tab').forEach(function(x){x.classList.remove('active')});p.querySelectorAll(':scope>.cc-sp-panel').forEach(function(x){x.classList.remove('active')});el.classList.add('active');document.getElementById('cc-sp-'+sp).classList.add('active')}
+function ccToggleGab(btn){var gab=btn.nextElementSibling;var isOpen=gab.classList.toggle('show');btn.classList.toggle('revealed',isOpen);btn.textContent=isOpen?'Ocultar gabarito':'Ver gabarito comentado'}
+function ccResponder(opcao,qId,letra){var questao=document.getElementById(qId);if(questao.dataset.respondida)return;questao.dataset.respondida='1';var correta=questao.querySelector('.cc-opcoes').dataset.correta;questao.querySelectorAll('.cc-opcao').forEach(function(op){var l=op.querySelector('.cc-opcao-letra').textContent;if(l===correta)op.classList.add('cc-correta');else if(l===letra&&letra!==correta)op.classList.add('cc-errada')});document.getElementById('cc-gab-'+qId).classList.add('show');ccScores.total++;if(letra===correta)ccScores.correct++;var sa=document.getElementById('cc-score-area');if(sa){sa.style.display='flex';document.getElementById('cc-score-num').textContent=ccScores.correct;document.getElementById('cc-score-total').textContent='de '+ccScores.total+' questao'+(ccScores.total!==1?'es':'')+' respondida'+(ccScores.total!==1?'s':'')}}
 
 // Add "Mapas Mentais" nav link
 (function() {
