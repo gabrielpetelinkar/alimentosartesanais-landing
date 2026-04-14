@@ -11323,18 +11323,18 @@ window.infSetSp = function(sp, el){
 .toc-drawer {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   width: 300px;
   max-width: 90vw;
   z-index: 8002;
   background: var(--bg-card);
-  box-shadow: -4px 0 32px rgba(0,0,0,.18);
+  box-shadow: 4px 0 32px rgba(0,0,0,.18);
   display: flex;
   flex-direction: column;
-  transform: translateX(110%);
+  transform: translateX(-110%);
   transition: transform .28s cubic-bezier(.4,0,.2,1);
-  border-left: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-light);
 }
 .toc-drawer.open { transform: translateX(0); }
 
