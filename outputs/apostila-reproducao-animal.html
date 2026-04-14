@@ -774,7 +774,7 @@
     background: var(--bg-card-alt);
   }
   .mm-svg {
-    width: 100%; min-width: 860px; height: auto;
+    width: 100%; min-width: 700px; height: auto;
     display: block; padding: 12px;
   }
   .mm-node rect, .mm-node ellipse { transition: opacity .15s; }
@@ -1181,112 +1181,112 @@
         </defs>
 
         <!-- Title -->
-        <text x="430" y="32" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text-primary)" font-family="inherit">Eixo Hipotálamo – Hipófise – Gônadas</text>
+        <text x="430" y="32" text-anchor="middle" font-size="8" font-weight="800" fill="var(--text-primary)" font-family="inherit">Eixo Hipotálamo – Hipófise – Gônadas</text>
 
         <!-- === HIPOTALAMO === -->
         <g class="mm-node" onclick="mmToggle('hpg-gnrh')" style="cursor:pointer">
           <rect x="300" y="50" width="260" height="64" rx="14" fill="#1b5e20" filter="url(#glow)"/>
-          <text x="430" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="inherit">HIPOTÁLAMO</text>
-          <text x="430" y="96" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)" font-family="inherit">Secreção pulsátil de GnRH</text>
+          <text x="430" y="76" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" font-family="inherit">HIPOTÁLAMO</text>
+          <text x="430" y="96" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)" font-family="inherit">Secreção pulsátil de GnRH</text>
           <text x="550" y="82" font-size="16" fill="rgba(255,255,255,.6)">+</text>
         </g>
 
         <!-- GnRH detail box -->
         <g id="hpg-gnrh" style="display:none">
           <rect x="10" y="44" width="200" height="76" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="110" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">GnRH (decapeptídeo)</text>
-          <text x="20" y="82" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Pulsos a cada 60-90 min (folicular)</text>
-          <text x="20" y="97" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Pulsos a cada 3-4h (lútea)</text>
-          <text x="20" y="112" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Kisspeptina amplifica pulsatilidade</text>
+          <text x="110" y="64" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">GnRH (decapeptídeo)</text>
+          <text x="20" y="82" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Pulsos a cada 60-90 min (folicular)</text>
+          <text x="20" y="97" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Pulsos a cada 3-4h (lútea)</text>
+          <text x="20" y="112" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Kisspeptina amplifica pulsatilidade</text>
           <line x1="210" y1="82" x2="300" y2="82" stroke="var(--green-400)" stroke-width="1.5" stroke-dasharray="4,3"/>
         </g>
 
         <!-- Hipot → Hipof arrow -->
         <line x1="430" y1="114" x2="430" y2="158" stroke="#388e3c" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="447" y="142" font-size="10" fill="var(--green-700)" font-family="inherit">GnRH</text>
+        <text x="447" y="142" font-size="8.5" fill="var(--green-700)" font-family="inherit">GnRH</text>
 
         <!-- === HIPOFISE === -->
         <g class="mm-node" onclick="mmToggle('hpg-hipof')" style="cursor:pointer">
           <rect x="300" y="158" width="260" height="64" rx="14" fill="#2e7d32"/>
-          <text x="430" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="inherit">HIPÓFISE ANTERIOR</text>
-          <text x="430" y="204" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)" font-family="inherit">Gonadotrofos → FSH e LH</text>
+          <text x="430" y="184" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" font-family="inherit">HIPÓFISE ANTERIOR</text>
+          <text x="430" y="204" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)" font-family="inherit">Gonadotrofos → FSH e LH</text>
           <text x="550" y="192" font-size="16" fill="rgba(255,255,255,.6)">+</text>
         </g>
 
         <!-- Hipofise detail -->
         <g id="hpg-hipof" style="display:none">
           <rect x="10" y="150" width="210" height="82" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="115" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">FSH vs LH</text>
-          <text x="20" y="188" font-size="10" fill="var(--text-secondary)" font-family="inherit">• FSH: glicoproteína, t½ longo (~5h)</text>
-          <text x="20" y="203" font-size="10" fill="var(--text-secondary)" font-family="inherit">• LH: glicoproteína, t½ curto (~1h)</text>
-          <text x="20" y="218" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Pico de LH → ovulação/espermatog.</text>
+          <text x="115" y="170" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">FSH vs LH</text>
+          <text x="20" y="188" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• FSH: glicoproteína, t½ longo (~5h)</text>
+          <text x="20" y="203" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• LH: glicoproteína, t½ curto (~1h)</text>
+          <text x="20" y="218" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Pico de LH → ovulação/espermatog.</text>
           <line x1="220" y1="190" x2="300" y2="190" stroke="var(--green-400)" stroke-width="1.5" stroke-dasharray="4,3"/>
         </g>
 
         <!-- Hipof → Gonade arrows -->
         <line x1="390" y1="222" x2="240" y2="310" stroke="#388e3c" stroke-width="2" marker-end="url(#arr)"/>
         <line x1="470" y1="222" x2="620" y2="310" stroke="#388e3c" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="285" y="270" font-size="10" fill="var(--green-700)" font-family="inherit">FSH+LH</text>
-        <text x="510" y="270" font-size="10" fill="var(--green-700)" font-family="inherit">FSH+LH</text>
+        <text x="285" y="270" font-size="8.5" fill="var(--green-700)" font-family="inherit">FSH+LH</text>
+        <text x="510" y="270" font-size="8.5" fill="var(--green-700)" font-family="inherit">FSH+LH</text>
 
         <!-- === OVARIO === -->
         <g class="mm-node" onclick="mmToggle('hpg-ovario')" style="cursor:pointer">
           <rect x="100" y="310" width="280" height="64" rx="14" fill="#388e3c"/>
-          <text x="240" y="336" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="inherit">OVÁRIO</text>
-          <text x="240" y="356" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)" font-family="inherit">Foliculogênese, Ovulação, CL</text>
+          <text x="240" y="336" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" font-family="inherit">OVÁRIO</text>
+          <text x="240" y="356" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)" font-family="inherit">Foliculogênese, Ovulação, CL</text>
           <text x="365" y="344" font-size="16" fill="rgba(255,255,255,.6)">+</text>
         </g>
 
         <!-- Ovário detail -->
         <g id="hpg-ovario" style="display:none">
           <rect x="30" y="385" width="260" height="96" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="160" y="405" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">Células-alvo ovarianas</text>
-          <text x="40" y="423" font-size="10" fill="var(--text-secondary)" font-family="inherit">• FSH → Cél. granulosa → Estradiol (E2)</text>
-          <text x="40" y="438" font-size="10" fill="var(--text-secondary)" font-family="inherit">• LH → Cél. teca → Androgênios</text>
-          <text x="40" y="453" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Pico LH → ovulação e luteinização</text>
-          <text x="40" y="468" font-size="10" fill="var(--text-secondary)" font-family="inherit">• CL → Progesterona (P4)</text>
+          <text x="160" y="405" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">Células-alvo ovarianas</text>
+          <text x="40" y="423" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• FSH → Cél. granulosa → Estradiol (E2)</text>
+          <text x="40" y="438" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• LH → Cél. teca → Androgênios</text>
+          <text x="40" y="453" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Pico LH → ovulação e luteinização</text>
+          <text x="40" y="468" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• CL → Progesterona (P4)</text>
         </g>
 
         <!-- === TESTÍCULO === -->
         <g class="mm-node" onclick="mmToggle('hpg-testic')" style="cursor:pointer">
           <rect x="480" y="310" width="280" height="64" rx="14" fill="#43a047"/>
-          <text x="620" y="336" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="inherit">TESTÍCULO</text>
-          <text x="620" y="356" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)" font-family="inherit">Espermatogênese, Leydig, Sertoli</text>
+          <text x="620" y="336" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" font-family="inherit">TESTÍCULO</text>
+          <text x="620" y="356" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)" font-family="inherit">Espermatogênese, Leydig, Sertoli</text>
           <text x="745" y="344" font-size="16" fill="rgba(255,255,255,.6)">+</text>
         </g>
 
         <!-- Testículo detail -->
         <g id="hpg-testic" style="display:none">
           <rect x="568" y="385" width="272" height="96" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="704" y="405" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">Células-alvo testiculares</text>
-          <text x="578" y="423" font-size="10" fill="var(--text-secondary)" font-family="inherit">• LH → Cél. Leydig → Testosterona</text>
-          <text x="578" y="438" font-size="10" fill="var(--text-secondary)" font-family="inherit">• FSH → Cél. Sertoli → Inibina B</text>
-          <text x="578" y="453" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Testosterona → espermatogênese</text>
-          <text x="578" y="468" font-size="10" fill="var(--text-secondary)" font-family="inherit">• DHT: ação periférica androgênica</text>
+          <text x="704" y="405" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">Células-alvo testiculares</text>
+          <text x="578" y="423" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• LH → Cél. Leydig → Testosterona</text>
+          <text x="578" y="438" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• FSH → Cél. Sertoli → Inibina B</text>
+          <text x="578" y="453" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Testosterona → espermatogênese</text>
+          <text x="578" y="468" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• DHT: ação periférica androgênica</text>
         </g>
 
         <!-- Feedback negativo E2/P4 → hipot/hipof -->
         <path d="M 100 342 Q 60 240 300 190" stroke="#c62828" stroke-width="1.8" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-red)"/>
-        <text x="52" y="280" font-size="10" fill="#c62828" font-family="inherit" transform="rotate(-60,52,280)">FB− E2/P4</text>
+        <text x="52" y="280" font-size="8.5" fill="#c62828" font-family="inherit" transform="rotate(-60,52,280)">FB− E2/P4</text>
 
         <!-- Feedback negativo T → hipot/hipof -->
         <path d="M 760 342 Q 820 240 560 190" stroke="#c62828" stroke-width="1.8" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-red)"/>
-        <text x="798" y="255" font-size="10" fill="#c62828" font-family="inherit" transform="rotate(60,798,255)">FB− T/Inib</text>
+        <text x="798" y="255" font-size="8.5" fill="#c62828" font-family="inherit" transform="rotate(60,798,255)">FB− T/Inib</text>
 
         <!-- Feedback positivo E2 → pré-ovulatório -->
         <path d="M 100 325 Q 44 200 302 168" stroke="#1565c0" stroke-width="1.5" fill="none" stroke-dasharray="3,4" marker-end="url(#arr-gray)"/>
-        <text x="22" y="240" font-size="9" fill="#1565c0" font-family="inherit" transform="rotate(-72,22,240)">FB+ E2</text>
+        <text x="22" y="240" font-size="8" fill="#1565c0" font-family="inherit" transform="rotate(-72,22,240)">FB+ E2</text>
 
         <!-- Legend -->
         <rect x="10" y="500" width="840" height="48" rx="8" fill="var(--gray-100)" opacity=".8"/>
         <line x1="26" y1="520" x2="56" y2="520" stroke="#388e3c" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="62" y="524" font-size="10" fill="var(--text-secondary)" font-family="inherit">Estimulação</text>
+        <text x="62" y="524" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Estimulação</text>
         <line x1="140" y1="520" x2="170" y2="520" stroke="#c62828" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arr-red)"/>
-        <text x="176" y="524" font-size="10" fill="var(--text-secondary)" font-family="inherit">Feedback negativo</text>
+        <text x="176" y="524" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Feedback negativo</text>
         <line x1="310" y1="520" x2="340" y2="520" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="3,4" marker-end="url(#arr-gray)"/>
-        <text x="346" y="524" font-size="10" fill="var(--text-secondary)" font-family="inherit">Feedback positivo (pré-ovulatório)</text>
-        <text x="600" y="524" font-size="10" fill="var(--text-muted)" font-family="inherit">CL = corpo lúteo, DHT = diidrotestosterona</text>
-        <text x="430" y="543" text-anchor="middle" font-size="9" fill="var(--text-muted)" font-family="inherit">Clique nos nós para ver detalhes</text>
+        <text x="346" y="524" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Feedback positivo (pré-ovulatório)</text>
+        <text x="600" y="524" font-size="8.5" fill="var(--text-muted)" font-family="inherit">CL = corpo lúteo, DHT = diidrotestosterona</text>
+        <text x="430" y="543" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">Clique nos nós para ver detalhes</text>
       </svg>
       </div>
     </div>
@@ -1296,93 +1296,93 @@
       <p class="mm-hint">Gametogênese comparada — espermatogênese vs. oogênese</p>
       <div class="mm-scroll-wrap">
       <svg class="mm-svg" viewBox="0 0 860 520" id="svgGamet">
-        <text x="430" y="32" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text-primary)" font-family="inherit">Gametogênese Comparada</text>
+        <text x="430" y="32" text-anchor="middle" font-size="8" font-weight="800" fill="var(--text-primary)" font-family="inherit">Gametogênese Comparada</text>
 
         <!-- ESPERMATOGÊNESE -->
-        <text x="215" y="64" text-anchor="middle" font-size="13" font-weight="700" fill="#1b5e20" font-family="inherit">ESPERMATOGÊNESE</text>
-        <text x="215" y="80" text-anchor="middle" font-size="10" fill="var(--text-muted)" font-family="inherit">Testículo, contínua pós-puberdade</text>
+        <text x="215" y="64" text-anchor="middle" font-size="8" font-weight="700" fill="#1b5e20" font-family="inherit">ESPERMATOGÊNESE</text>
+        <text x="215" y="80" text-anchor="middle" font-size="8.5" fill="var(--text-muted)" font-family="inherit">Testículo, contínua pós-puberdade</text>
 
         <!-- boxes esper -->
         <rect x="60" y="96" width="310" height="40" rx="10" fill="#1b5e20"/>
-        <text x="215" y="120" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">Espermatogônia (2n), tipo A e B</text>
+        <text x="215" y="120" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">Espermatogônia (2n), tipo A e B</text>
 
         <line x1="215" y1="136" x2="215" y2="156" stroke="#388e3c" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="230" y="150" font-size="9" fill="var(--text-muted)" font-family="inherit">Mitose</text>
+        <text x="230" y="150" font-size="8" fill="var(--text-muted)" font-family="inherit">Mitose</text>
 
         <rect x="80" y="156" width="270" height="36" rx="10" fill="#2e7d32"/>
-        <text x="215" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">Espermatócito I (2n)</text>
+        <text x="215" y="178" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">Espermatócito I (2n)</text>
 
         <line x1="215" y1="192" x2="215" y2="212" stroke="#388e3c" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="230" y="206" font-size="9" fill="var(--text-muted)" font-family="inherit">Meiose I</text>
+        <text x="230" y="206" font-size="8" fill="var(--text-muted)" font-family="inherit">Meiose I</text>
 
         <rect x="80" y="212" width="270" height="36" rx="10" fill="#388e3c"/>
-        <text x="215" y="234" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">Espermatócito II (n)</text>
+        <text x="215" y="234" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">Espermatócito II (n)</text>
 
         <line x1="215" y1="248" x2="215" y2="268" stroke="#388e3c" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="230" y="262" font-size="9" fill="var(--text-muted)" font-family="inherit">Meiose II</text>
+        <text x="230" y="262" font-size="8" fill="var(--text-muted)" font-family="inherit">Meiose II</text>
 
         <rect x="80" y="268" width="270" height="36" rx="10" fill="#43a047"/>
-        <text x="215" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">Espermátide (n)</text>
+        <text x="215" y="290" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">Espermátide (n)</text>
 
         <line x1="215" y1="304" x2="215" y2="324" stroke="#66bb6a" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="230" y="318" font-size="9" fill="var(--text-muted)" font-family="inherit">Espermiogênese</text>
+        <text x="230" y="318" font-size="8" fill="var(--text-muted)" font-family="inherit">Espermiogênese</text>
 
         <rect x="80" y="324" width="270" height="40" rx="10" fill="#66bb6a"/>
-        <text x="215" y="348" text-anchor="middle" font-size="12" font-weight="700" fill="#1b5e20" font-family="inherit">Espermatozoide (n) ✓</text>
+        <text x="215" y="348" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1b5e20" font-family="inherit">Espermatozoide (n) ✓</text>
 
         <!-- detalhe células Sertoli -->
         <rect x="10" y="390" width="400" height="52" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-        <text x="210" y="410" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">Suporte: Células de Sertoli</text>
-        <text x="20" y="427" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Barreira hematotesticular, nutrem espermátides</text>
-        <text x="20" y="442" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Secretam inibina B, ABP, AMH, ativina</text>
+        <text x="210" y="410" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">Suporte: Células de Sertoli</text>
+        <text x="20" y="427" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Barreira hematotesticular, nutrem espermátides</text>
+        <text x="20" y="442" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Secretam inibina B, ABP, AMH, ativina</text>
 
         <!-- Duração -->
         <rect x="10" y="452" width="190" height="30" rx="8" fill="var(--amber-50)" stroke="var(--amber-600)" stroke-width="1"/>
-        <text x="105" y="471" text-anchor="middle" font-size="10" fill="var(--amber-700)" font-family="inherit">Duração: ~54d (bovino), ~74d (humano)</text>
+        <text x="105" y="471" text-anchor="middle" font-size="8.5" fill="var(--amber-700)" font-family="inherit">Duração: ~54d (bovino), ~74d (humano)</text>
 
         <!-- Divisor -->
         <line x1="430" y1="56" x2="430" y2="510" stroke="var(--border-light)" stroke-width="1.5" stroke-dasharray="6,4"/>
 
         <!-- OOGÊNESE -->
-        <text x="645" y="64" text-anchor="middle" font-size="13" font-weight="700" fill="#4a148c" font-family="inherit">OOGÊNESE</text>
-        <text x="645" y="80" text-anchor="middle" font-size="10" fill="var(--text-muted)" font-family="inherit">Ovário, bloqueios em diplóteno e MII</text>
+        <text x="645" y="64" text-anchor="middle" font-size="8" font-weight="700" fill="#4a148c" font-family="inherit">OOGÊNESE</text>
+        <text x="645" y="80" text-anchor="middle" font-size="8.5" fill="var(--text-muted)" font-family="inherit">Ovário, bloqueios em diplóteno e MII</text>
 
         <rect x="490" y="96" width="310" height="40" rx="10" fill="#4a148c"/>
-        <text x="645" y="120" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">Ovogônia (2n), fase fetal</text>
+        <text x="645" y="120" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">Ovogônia (2n), fase fetal</text>
 
         <line x1="645" y1="136" x2="645" y2="156" stroke="#6a1b9a" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="660" y="150" font-size="9" fill="var(--text-muted)" font-family="inherit">Mitose + início meiose</text>
+        <text x="660" y="150" font-size="8" fill="var(--text-muted)" font-family="inherit">Mitose + início meiose</text>
 
         <rect x="510" y="156" width="270" height="36" rx="10" fill="#6a1b9a"/>
-        <text x="645" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">Ovócito I (2n) — bloqueio diplóteno</text>
+        <text x="645" y="178" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">Ovócito I (2n) — bloqueio diplóteno</text>
 
         <line x1="645" y1="192" x2="645" y2="212" stroke="#6a1b9a" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="660" y="206" font-size="9" fill="var(--text-muted)" font-family="inherit">Pico LH → retoma meiose</text>
+        <text x="660" y="206" font-size="8" fill="var(--text-muted)" font-family="inherit">Pico LH → retoma meiose</text>
 
         <rect x="510" y="212" width="270" height="36" rx="10" fill="#7b1fa2"/>
-        <text x="645" y="234" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">Ovócito II (n) + 1º glóbulo polar</text>
+        <text x="645" y="234" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">Ovócito II (n) + 1º glóbulo polar</text>
 
         <line x1="645" y1="248" x2="645" y2="268" stroke="#8e24aa" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="660" y="262" font-size="9" fill="var(--text-muted)" font-family="inherit">Bloqueio em MII → ovulação</text>
+        <text x="660" y="262" font-size="8" fill="var(--text-muted)" font-family="inherit">Bloqueio em MII → ovulação</text>
 
         <rect x="510" y="268" width="270" height="36" rx="10" fill="#ab47bc"/>
-        <text x="645" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">Ovócito II (n) — aguarda fertiliz.</text>
+        <text x="645" y="290" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">Ovócito II (n) — aguarda fertiliz.</text>
 
         <line x1="645" y1="304" x2="645" y2="324" stroke="#ba68c8" stroke-width="2" marker-end="url(#arr)"/>
-        <text x="660" y="318" font-size="9" fill="var(--text-muted)" font-family="inherit">Penetração do sptz</text>
+        <text x="660" y="318" font-size="8" fill="var(--text-muted)" font-family="inherit">Penetração do sptz</text>
 
         <rect x="510" y="324" width="270" height="40" rx="10" fill="#ce93d8"/>
-        <text x="645" y="348" text-anchor="middle" font-size="12" font-weight="700" fill="#4a148c" font-family="inherit">Zigoto (2n) — meiose II completa ✓</text>
+        <text x="645" y="348" text-anchor="middle" font-size="8.5" font-weight="700" fill="#4a148c" font-family="inherit">Zigoto (2n) — meiose II completa ✓</text>
 
         <!-- Células foliculares -->
         <rect x="440" y="390" width="400" height="52" rx="10" fill="#f3e5f5" stroke="#ab47bc" stroke-width="1.5"/>
-        <text x="640" y="410" text-anchor="middle" font-size="11" font-weight="700" fill="#4a148c" font-family="inherit">Suporte: Células da Granulosa + Teca</text>
-        <text x="450" y="427" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Granulosa: FSH-dependente, produz E2 e inibina</text>
-        <text x="450" y="442" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Teca interna: LH-dependente, produz androgênios</text>
+        <text x="640" y="410" text-anchor="middle" font-size="8" font-weight="700" fill="#4a148c" font-family="inherit">Suporte: Células da Granulosa + Teca</text>
+        <text x="450" y="427" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Granulosa: FSH-dependente, produz E2 e inibina</text>
+        <text x="450" y="442" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Teca interna: LH-dependente, produz androgênios</text>
 
         <!-- Reserva oocitária -->
         <rect x="440" y="452" width="230" height="30" rx="8" fill="var(--amber-50)" stroke="var(--amber-600)" stroke-width="1"/>
-        <text x="555" y="471" text-anchor="middle" font-size="10" fill="var(--amber-700)" font-family="inherit">Reserva: ~200k folículos ao nascer (bovino)</text>
+        <text x="555" y="471" text-anchor="middle" font-size="8.5" fill="var(--amber-700)" font-family="inherit">Reserva: ~200k folículos ao nascer (bovino)</text>
       </svg>
       </div>
     </div>
@@ -1392,85 +1392,85 @@
       <p class="mm-hint">Ciclo estral — fases, hormônios dominantes e eventos reprodutivos</p>
       <div class="mm-scroll-wrap">
       <svg class="mm-svg" viewBox="0 0 860 560" id="svgCiclo">
-        <text x="430" y="30" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text-primary)" font-family="inherit">Ciclo Estral — Fases e Hormônios</text>
+        <text x="430" y="30" text-anchor="middle" font-size="8" font-weight="800" fill="var(--text-primary)" font-family="inherit">Ciclo Estral — Fases e Hormônios</text>
 
         <!-- Círculo central -->
         <circle cx="430" cy="290" r="100" fill="none" stroke="var(--green-200)" stroke-width="2"/>
-        <text x="430" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text-primary)" font-family="inherit">CICLO</text>
-        <text x="430" y="298" text-anchor="middle" font-size="11" fill="var(--text-muted)" font-family="inherit">ESTRAL</text>
+        <text x="430" y="282" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--text-primary)" font-family="inherit">CICLO</text>
+        <text x="430" y="298" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">ESTRAL</text>
 
         <!-- PRÓ-ESTRO — topo -->
         <g class="mm-node" onclick="mmToggle('ce-proestro')" style="cursor:pointer">
           <rect x="330" y="50" width="200" height="52" rx="12" fill="#1b5e20"/>
-          <text x="430" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">PRÓ-ESTRO</text>
-          <text x="430" y="89" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Crescimento folicular, ↑E2</text>
+          <text x="430" y="72" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">PRÓ-ESTRO</text>
+          <text x="430" y="89" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Crescimento folicular, ↑E2</text>
         </g>
         <line x1="430" y1="102" x2="430" y2="190" stroke="#388e3c" stroke-width="1.5" stroke-dasharray="4,3"/>
         <g id="ce-proestro" style="display:none">
           <rect x="540" y="44" width="210" height="68" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="645" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">Pró-estro (bovino ~3d)</text>
-          <text x="550" y="82" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Regressão CL, ↓P4</text>
-          <text x="550" y="97" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Folículo dominante cresce</text>
-          <text x="550" y="112" font-size="10" fill="var(--text-secondary)" font-family="inherit">• E2 ↑ → comportamento pré-estral</text>
+          <text x="645" y="64" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">Pró-estro (bovino ~3d)</text>
+          <text x="550" y="82" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Regressão CL, ↓P4</text>
+          <text x="550" y="97" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Folículo dominante cresce</text>
+          <text x="550" y="112" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• E2 ↑ → comportamento pré-estral</text>
         </g>
 
         <!-- ESTRO — direita -->
         <g class="mm-node" onclick="mmToggle('ce-estro')" style="cursor:pointer">
           <rect x="598" y="230" width="200" height="52" rx="12" fill="#e65100"/>
-          <text x="698" y="252" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">ESTRO</text>
-          <text x="698" y="269" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Receptividade, pico LH, ovulação</text>
+          <text x="698" y="252" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">ESTRO</text>
+          <text x="698" y="269" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Receptividade, pico LH, ovulação</text>
         </g>
         <line x1="598" y1="256" x2="530" y2="290" stroke="#e65100" stroke-width="1.5" stroke-dasharray="4,3"/>
         <g id="ce-estro" style="display:none">
           <rect x="640" y="300" width="210" height="78" rx="10" fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
-          <text x="745" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="#e65100" font-family="inherit">Estro — duração variável</text>
-          <text x="650" y="338" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Bovino: 12-18h (madrugada)</text>
-          <text x="650" y="353" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Égua: 4-7d, Ovelha: 24-36h</text>
-          <text x="650" y="368" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Pico de LH 6-12h antes ovulação</text>
+          <text x="745" y="320" text-anchor="middle" font-size="8" font-weight="700" fill="#e65100" font-family="inherit">Estro — duração variável</text>
+          <text x="650" y="338" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Bovino: 12-18h (madrugada)</text>
+          <text x="650" y="353" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Égua: 4-7d, Ovelha: 24-36h</text>
+          <text x="650" y="368" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Pico de LH 6-12h antes ovulação</text>
         </g>
 
         <!-- PÓS-ESTRO/METAESTRO — direita baixo -->
         <g class="mm-node" onclick="mmToggle('ce-metaestro')" style="cursor:pointer">
           <rect x="558" y="390" width="200" height="52" rx="12" fill="#388e3c"/>
-          <text x="658" y="412" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">METAESTRO</text>
-          <text x="658" y="429" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Luteinização, formação CL</text>
+          <text x="658" y="412" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">METAESTRO</text>
+          <text x="658" y="429" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Luteinização, formação CL</text>
         </g>
         <line x1="558" y1="416" x2="490" y2="360" stroke="#388e3c" stroke-width="1.5" stroke-dasharray="4,3"/>
         <g id="ce-metaestro" style="display:none">
           <rect x="390" y="460" width="210" height="68" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="495" y="480" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">Metaestro (~3-5d bovino)</text>
-          <text x="400" y="498" font-size="10" fill="var(--text-secondary)" font-family="inherit">• CL em formação, P4 começa ↑</text>
-          <text x="400" y="513" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Ovulação concluída, oviduto ativo</text>
+          <text x="495" y="480" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">Metaestro (~3-5d bovino)</text>
+          <text x="400" y="498" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• CL em formação, P4 começa ↑</text>
+          <text x="400" y="513" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Ovulação concluída, oviduto ativo</text>
         </g>
 
         <!-- DIESTRO — esquerda baixo -->
         <g class="mm-node" onclick="mmToggle('ce-diestro')" style="cursor:pointer">
           <rect x="100" y="390" width="200" height="52" rx="12" fill="#43a047"/>
-          <text x="200" y="412" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">DIESTRO</text>
-          <text x="200" y="429" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">CL ativo, domínio P4</text>
+          <text x="200" y="412" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">DIESTRO</text>
+          <text x="200" y="429" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">CL ativo, domínio P4</text>
         </g>
         <line x1="300" y1="416" x2="360" y2="370" stroke="#43a047" stroke-width="1.5" stroke-dasharray="4,3"/>
         <g id="ce-diestro" style="display:none">
           <rect x="10" y="300" width="220" height="78" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="120" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">Diestro — mais longo</text>
-          <text x="20" y="338" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Bovino: ~13-15d</text>
-          <text x="20" y="353" font-size="10" fill="var(--text-secondary)" font-family="inherit">• P4 alta: inibe eixo HPG</text>
-          <text x="20" y="368" font-size="10" fill="var(--text-secondary)" font-family="inherit">• PGF2α endometrial → luteólise</text>
+          <text x="120" y="320" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">Diestro — mais longo</text>
+          <text x="20" y="338" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Bovino: ~13-15d</text>
+          <text x="20" y="353" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• P4 alta: inibe eixo HPG</text>
+          <text x="20" y="368" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• PGF2α endometrial → luteólise</text>
         </g>
 
         <!-- ANESTRO — esquerda -->
         <g class="mm-node" onclick="mmToggle('ce-anestro')" style="cursor:pointer">
           <rect x="62" y="230" width="200" height="52" rx="12" fill="#9e9e9e"/>
-          <text x="162" y="252" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">ANESTRO</text>
-          <text x="162" y="269" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Inatividade cíclica sazonal/lactacional</text>
+          <text x="162" y="252" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">ANESTRO</text>
+          <text x="162" y="269" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Inatividade cíclica sazonal/lactacional</text>
         </g>
         <line x1="262" y1="256" x2="330" y2="290" stroke="#9e9e9e" stroke-width="1.5" stroke-dasharray="4,3"/>
         <g id="ce-anestro" style="display:none">
           <rect x="10" y="140" width="230" height="82" rx="10" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="1.5"/>
-          <text x="125" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-primary)" font-family="inherit">Causas de anestro</text>
-          <text x="20" y="178" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Sazonal: fotoperíodo (égua, ovelha)</text>
-          <text x="20" y="193" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Lactacional: dopamina inibe GnRH</text>
-          <text x="20" y="208" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Nutricional: BEN suprime pulsatilidade</text>
+          <text x="125" y="160" text-anchor="middle" font-size="8" font-weight="700" fill="var(--text-primary)" font-family="inherit">Causas de anestro</text>
+          <text x="20" y="178" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Sazonal: fotoperíodo (égua, ovelha)</text>
+          <text x="20" y="193" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Lactacional: dopamina inibe GnRH</text>
+          <text x="20" y="208" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Nutricional: BEN suprime pulsatilidade</text>
         </g>
 
         <!-- Seta ciclo indicador -->
@@ -1478,15 +1478,15 @@
 
         <!-- Duração por espécie -->
         <rect x="10" y="498" width="840" height="52" rx="8" fill="var(--gray-100)" opacity=".9"/>
-        <text x="430" y="516" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-primary)" font-family="inherit">Duração do ciclo por espécie</text>
-        <text x="70" y="537" font-size="10" fill="var(--text-secondary)" font-family="inherit">Bovino: 21d</text>
-        <text x="185" y="537" font-size="10" fill="var(--text-secondary)" font-family="inherit">Égua: 21d</text>
-        <text x="290" y="537" font-size="10" fill="var(--text-secondary)" font-family="inherit">Ovelha: 17d</text>
-        <text x="400" y="537" font-size="10" fill="var(--text-secondary)" font-family="inherit">Cabra: 21d</text>
-        <text x="500" y="537" font-size="10" fill="var(--text-secondary)" font-family="inherit">Cadela: 7 meses</text>
-        <text x="618" y="537" font-size="10" fill="var(--text-secondary)" font-family="inherit">Gata: induzida</text>
-        <text x="720" y="537" font-size="10" fill="var(--text-secondary)" font-family="inherit">Porca: 21d</text>
-        <text x="430" y="548" text-anchor="middle" font-size="9" fill="var(--text-muted)" font-family="inherit">Clique nos nós para detalhes de cada fase</text>
+        <text x="430" y="516" text-anchor="middle" font-size="8" font-weight="700" fill="var(--text-primary)" font-family="inherit">Duração do ciclo por espécie</text>
+        <text x="70" y="537" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Bovino: 21d</text>
+        <text x="185" y="537" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Égua: 21d</text>
+        <text x="290" y="537" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Ovelha: 17d</text>
+        <text x="400" y="537" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Cabra: 21d</text>
+        <text x="500" y="537" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Cadela: 7 meses</text>
+        <text x="618" y="537" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Gata: induzida</text>
+        <text x="720" y="537" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Porca: 21d</text>
+        <text x="430" y="548" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">Clique nos nós para detalhes de cada fase</text>
       </svg>
       </div>
     </div>
@@ -1496,13 +1496,13 @@
       <p class="mm-hint">Reconhecimento Materno da Gestação — mecanismos por espécie</p>
       <div class="mm-scroll-wrap">
       <svg class="mm-svg" viewBox="0 0 860 520">
-        <text x="430" y="30" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text-primary)" font-family="inherit">Reconhecimento Materno da Gestação (RMG)</text>
-        <text x="430" y="50" text-anchor="middle" font-size="11" fill="var(--text-muted)" font-family="inherit">Mecanismo que sinaliza a presença do embrião e impede a luteólise</text>
+        <text x="430" y="30" text-anchor="middle" font-size="8" font-weight="800" fill="var(--text-primary)" font-family="inherit">Reconhecimento Materno da Gestação (RMG)</text>
+        <text x="430" y="50" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">Mecanismo que sinaliza a presença do embrião e impede a luteólise</text>
 
         <!-- Central concept -->
         <rect x="290" y="68" width="280" height="50" rx="14" fill="#1b5e20"/>
-        <text x="430" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">Objetivo: Manutenção do CL</text>
-        <text x="430" y="107" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Bloquear PGF2α luteolítica do endométrio</text>
+        <text x="430" y="90" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">Objetivo: Manutenção do CL</text>
+        <text x="430" y="107" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Bloquear PGF2α luteolítica do endométrio</text>
 
         <!-- Arrows to species -->
         <line x1="430" y1="118" x2="150" y2="178" stroke="#388e3c" stroke-width="1.8" marker-end="url(#arr)"/>
@@ -1512,61 +1512,61 @@
 
         <!-- RUMINANTES -->
         <rect x="40" y="178" width="220" height="44" rx="12" fill="#2e7d32"/>
-        <text x="150" y="197" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">RUMINANTES</text>
-        <text x="150" y="213" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Bovino, Ovino, Caprino</text>
+        <text x="150" y="197" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">RUMINANTES</text>
+        <text x="150" y="213" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Bovino, Ovino, Caprino</text>
         <!-- detail -->
         <rect x="30" y="232" width="240" height="116" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-        <text x="150" y="252" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">Sinal: IFN-τ (Interferon tau)</text>
-        <text x="40" y="270" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Secretado pelo trofoblasto</text>
-        <text x="40" y="285" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Dia 15-16 (bovino), 12-13 (ovino)</text>
-        <text x="40" y="300" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Suprime OTR endometrial</text>
-        <text x="40" y="315" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Reduz síntese de PGF2α</text>
-        <text x="40" y="330" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Ação local (parácrina/intrauterina)</text>
-        <text x="40" y="345" font-size="10" fill="var(--text-secondary)" font-family="inherit">• NÃO entra na circulação sistêmica</text>
+        <text x="150" y="252" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">Sinal: IFN-τ (Interferon tau)</text>
+        <text x="40" y="270" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Secretado pelo trofoblasto</text>
+        <text x="40" y="285" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Dia 15-16 (bovino), 12-13 (ovino)</text>
+        <text x="40" y="300" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Suprime OTR endometrial</text>
+        <text x="40" y="315" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Reduz síntese de PGF2α</text>
+        <text x="40" y="330" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Ação local (parácrina/intrauterina)</text>
+        <text x="40" y="345" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• NÃO entra na circulação sistêmica</text>
 
         <!-- PORCA -->
         <rect x="270" y="178" width="170" height="44" rx="12" fill="#43a047"/>
-        <text x="355" y="197" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">PORCA</text>
-        <text x="355" y="213" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Sus scrofa</text>
+        <text x="355" y="197" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">PORCA</text>
+        <text x="355" y="213" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Sus scrofa</text>
         <rect x="258" y="232" width="194" height="116" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-        <text x="355" y="252" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">Sinal: Estrogênio</text>
-        <text x="268" y="270" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Embrião → ↑ estrógenos</text>
-        <text x="268" y="285" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Dia 10-12 pós-cópula</text>
-        <text x="268" y="300" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Redireciona PGF2α ao lúmen</text>
-        <text x="268" y="315" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Mecanismo: exócrino → não liseólítico</text>
-        <text x="268" y="330" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Mínimo 4 embriões necessários</text>
-        <text x="268" y="345" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Abaixo: pseudogestação/luteólise</text>
+        <text x="355" y="252" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">Sinal: Estrogênio</text>
+        <text x="268" y="270" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Embrião → ↑ estrógenos</text>
+        <text x="268" y="285" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Dia 10-12 pós-cópula</text>
+        <text x="268" y="300" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Redireciona PGF2α ao lúmen</text>
+        <text x="268" y="315" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Mecanismo: exócrino → não liseólítico</text>
+        <text x="268" y="330" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Mínimo 4 embriões necessários</text>
+        <text x="268" y="345" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Abaixo: pseudogestação/luteólise</text>
 
         <!-- ÉGUA -->
         <rect x="460" y="178" width="170" height="44" rx="12" fill="#66bb6a"/>
-        <text x="545" y="197" text-anchor="middle" font-size="12" font-weight="700" fill="#1b5e20" font-family="inherit">ÉGUA</text>
-        <text x="545" y="213" text-anchor="middle" font-size="10" fill="#1b5e20" opacity=".8" font-family="inherit">Equus caballus</text>
+        <text x="545" y="197" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1b5e20" font-family="inherit">ÉGUA</text>
+        <text x="545" y="213" text-anchor="middle" font-size="8.5" fill="#1b5e20" opacity=".8" font-family="inherit">Equus caballus</text>
         <rect x="454" y="232" width="183" height="116" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-        <text x="545" y="252" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green-800)" font-family="inherit">Sinal: Mobilidade embrionária</text>
-        <text x="464" y="270" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Embrião migra pelo útero</text>
-        <text x="464" y="285" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Dia 9-16 pós-ovulação</text>
-        <text x="464" y="300" font-size="10" fill="var(--text-secondary)" font-family="inherit">• ↑ Contato com endométrio</text>
-        <text x="464" y="315" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Suprime liberação de OT/PGF2α</text>
-        <text x="464" y="330" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Cessa ~dia 16 (fixação)</text>
-        <text x="464" y="345" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Progesterona embrionária (menor)</text>
+        <text x="545" y="252" text-anchor="middle" font-size="8" font-weight="700" fill="var(--green-800)" font-family="inherit">Sinal: Mobilidade embrionária</text>
+        <text x="464" y="270" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Embrião migra pelo útero</text>
+        <text x="464" y="285" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Dia 9-16 pós-ovulação</text>
+        <text x="464" y="300" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• ↑ Contato com endométrio</text>
+        <text x="464" y="315" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Suprime liberação de OT/PGF2α</text>
+        <text x="464" y="330" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Cessa ~dia 16 (fixação)</text>
+        <text x="464" y="345" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Progesterona embrionária (menor)</text>
 
         <!-- CADELA/GATA -->
         <rect x="640" y="178" width="190" height="44" rx="12" fill="#9e9e9e"/>
-        <text x="735" y="197" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">CADELA / GATA</text>
-        <text x="735" y="213" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Carnívoros</text>
+        <text x="735" y="197" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">CADELA / GATA</text>
+        <text x="735" y="213" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Carnívoros</text>
         <rect x="632" y="232" width="206" height="116" rx="10" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="1.5"/>
-        <text x="735" y="252" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-primary)" font-family="inherit">CL Espontâneo, Independente</text>
-        <text x="642" y="270" font-size="10" fill="var(--text-secondary)" font-family="inherit">• CL se mantém por ~2 meses</text>
-        <text x="642" y="285" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Com ou sem gestação (cadela)</text>
-        <text x="642" y="300" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Pseudogestação fisiológica comum</text>
-        <text x="642" y="315" font-size="10" fill="var(--text-secondary)" font-family="inherit">• RMG "passivo" — CL resiste naturalmente</text>
-        <text x="642" y="330" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Prolactina luteotrófica (cadela)</text>
-        <text x="642" y="345" font-size="10" fill="var(--text-secondary)" font-family="inherit">• LH luteotrófico (gata)</text>
+        <text x="735" y="252" text-anchor="middle" font-size="8" font-weight="700" fill="var(--text-primary)" font-family="inherit">CL Espontâneo, Independente</text>
+        <text x="642" y="270" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• CL se mantém por ~2 meses</text>
+        <text x="642" y="285" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Com ou sem gestação (cadela)</text>
+        <text x="642" y="300" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Pseudogestação fisiológica comum</text>
+        <text x="642" y="315" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• RMG "passivo" — CL resiste naturalmente</text>
+        <text x="642" y="330" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Prolactina luteotrófica (cadela)</text>
+        <text x="642" y="345" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• LH luteotrófico (gata)</text>
 
         <!-- Bottom note -->
         <rect x="10" y="462" width="840" height="46" rx="8" fill="var(--amber-50)" stroke="var(--amber-600)" stroke-width="1"/>
-        <text x="430" y="480" text-anchor="middle" font-size="11" font-weight="700" fill="var(--amber-700)" font-family="inherit">Importância clínica</text>
-        <text x="430" y="498" text-anchor="middle" font-size="10" fill="var(--text-secondary)" font-family="inherit">Falha no RMG = morte embrionaria precoce. Considerar o periodo critico de sinalizacao de cada especie.</text>
+        <text x="430" y="480" text-anchor="middle" font-size="8" font-weight="700" fill="var(--amber-700)" font-family="inherit">Importância clínica</text>
+        <text x="430" y="498" text-anchor="middle" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Falha no RMG = morte embrionaria precoce. Considerar o periodo critico de sinalizacao de cada especie.</text>
       </svg>
       </div>
     </div>
@@ -1576,121 +1576,121 @@
       <p class="mm-hint">Biotecnologias reprodutivas — principais técnicas e aplicações</p>
       <div class="mm-scroll-wrap">
       <svg class="mm-svg" viewBox="0 0 860 540">
-        <text x="430" y="30" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text-primary)" font-family="inherit">Biotecnologias da Reprodução Animal</text>
+        <text x="430" y="30" text-anchor="middle" font-size="8" font-weight="800" fill="var(--text-primary)" font-family="inherit">Biotecnologias da Reprodução Animal</text>
 
         <!-- Centro -->
         <ellipse cx="430" cy="270" rx="90" ry="60" fill="#1b5e20"/>
-        <text x="430" y="263" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">BIOTEC.</text>
-        <text x="430" y="279" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)" font-family="inherit">REPRODUTIVAS</text>
+        <text x="430" y="263" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">BIOTEC.</text>
+        <text x="430" y="279" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)" font-family="inherit">REPRODUTIVAS</text>
 
         <!-- IA -->
         <g class="mm-node" onclick="mmToggle('bt-ia')" style="cursor:pointer">
           <rect x="20" y="52" width="180" height="44" rx="12" fill="#2e7d32"/>
-          <text x="110" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">IA — Inseminação</text>
-          <text x="110" y="87" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Artificial</text>
+          <text x="110" y="70" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">IA — Inseminação</text>
+          <text x="110" y="87" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Artificial</text>
         </g>
         <line x1="200" y1="74" x2="345" y2="240" stroke="#388e3c" stroke-width="1.5" stroke-dasharray="5,3"/>
         <g id="bt-ia" style="display:none">
           <rect x="10" y="106" width="210" height="96" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="115" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="var(--green-800)" font-family="inherit">Inseminação Artificial</text>
-          <text x="20" y="144" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Sêmen fresco, resfriado ou congelado</text>
-          <text x="20" y="159" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Bovino: 6-8M sptz/dose (congelado)</text>
-          <text x="20" y="174" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Égua: 500M sptz progressivos</text>
-          <text x="20" y="189" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Sincronização aumenta eficiência</text>
+          <text x="115" y="126" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--green-800)" font-family="inherit">Inseminação Artificial</text>
+          <text x="20" y="144" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Sêmen fresco, resfriado ou congelado</text>
+          <text x="20" y="159" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Bovino: 6-8M sptz/dose (congelado)</text>
+          <text x="20" y="174" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Égua: 500M sptz progressivos</text>
+          <text x="20" y="189" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Sincronização aumenta eficiência</text>
         </g>
 
         <!-- IATF -->
         <g class="mm-node" onclick="mmToggle('bt-iatf')" style="cursor:pointer">
           <rect x="20" y="180" width="180" height="44" rx="12" fill="#388e3c"/>
-          <text x="110" y="198" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">IATF</text>
-          <text x="110" y="215" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Tempo Fixo</text>
+          <text x="110" y="198" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">IATF</text>
+          <text x="110" y="215" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Tempo Fixo</text>
         </g>
         <line x1="200" y1="202" x2="340" y2="265" stroke="#388e3c" stroke-width="1.5" stroke-dasharray="5,3"/>
         <g id="bt-iatf" style="display:none">
           <rect x="10" y="232" width="220" height="86" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="120" y="252" text-anchor="middle" font-size="10" font-weight="700" fill="var(--green-800)" font-family="inherit">IATF — Bovino</text>
-          <text x="20" y="270" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Protocolos: Ovsynch, CIDR, Crestar</text>
-          <text x="20" y="285" font-size="10" fill="var(--text-secondary)" font-family="inherit">• GnRH + PGF2α + GnRH + IA 16-18h</text>
-          <text x="20" y="300" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Facilita manejo em larga escala</text>
+          <text x="120" y="252" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--green-800)" font-family="inherit">IATF — Bovino</text>
+          <text x="20" y="270" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Protocolos: Ovsynch, CIDR, Crestar</text>
+          <text x="20" y="285" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• GnRH + PGF2α + GnRH + IA 16-18h</text>
+          <text x="20" y="300" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Facilita manejo em larga escala</text>
         </g>
 
         <!-- TE/MOTE -->
         <g class="mm-node" onclick="mmToggle('bt-te')" style="cursor:pointer">
           <rect x="20" y="310" width="180" height="44" rx="12" fill="#43a047"/>
-          <text x="110" y="328" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">TE / MOTE</text>
-          <text x="110" y="345" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Transferência de Embriões</text>
+          <text x="110" y="328" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">TE / MOTE</text>
+          <text x="110" y="345" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Transferência de Embriões</text>
         </g>
         <line x1="200" y1="332" x2="345" y2="295" stroke="#43a047" stroke-width="1.5" stroke-dasharray="5,3"/>
         <g id="bt-te" style="display:none">
           <rect x="10" y="364" width="220" height="96" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="120" y="384" text-anchor="middle" font-size="10" font-weight="700" fill="var(--green-800)" font-family="inherit">TE / MOTE (bovino)</text>
-          <text x="20" y="402" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Superovulação: FSH ou eCG</text>
-          <text x="20" y="417" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Coleta: dia 6-8 (não-cirúrgico)</text>
-          <text x="20" y="432" font-size="10" fill="var(--text-secondary)" font-family="inherit">• MOTE: múltiplas ovulações/TE</text>
-          <text x="20" y="447" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Brasil: líder mundial em TE bovina</text>
+          <text x="120" y="384" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--green-800)" font-family="inherit">TE / MOTE (bovino)</text>
+          <text x="20" y="402" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Superovulação: FSH ou eCG</text>
+          <text x="20" y="417" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Coleta: dia 6-8 (não-cirúrgico)</text>
+          <text x="20" y="432" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• MOTE: múltiplas ovulações/TE</text>
+          <text x="20" y="447" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Brasil: líder mundial em TE bovina</text>
         </g>
 
         <!-- FIV / PIV -->
         <g class="mm-node" onclick="mmToggle('bt-fiv')" style="cursor:pointer">
           <rect x="660" y="52" width="180" height="44" rx="12" fill="#0d47a1"/>
-          <text x="750" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">FIV / PIV</text>
-          <text x="750" y="87" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Produção in vitro</text>
+          <text x="750" y="70" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">FIV / PIV</text>
+          <text x="750" y="87" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Produção in vitro</text>
         </g>
         <line x1="660" y1="74" x2="515" y2="240" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="5,3"/>
         <g id="bt-fiv" style="display:none">
           <rect x="638" y="106" width="212" height="96" rx="10" fill="var(--blue-50)" stroke="var(--blue-100)" stroke-width="1.5"/>
-          <text x="744" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="var(--blue-700)" font-family="inherit">FIV Bovina / Equina</text>
-          <text x="648" y="144" font-size="10" fill="var(--text-secondary)" font-family="inherit">• OPU (ovum pick-up) guiada por US</text>
-          <text x="648" y="159" font-size="10" fill="var(--text-secondary)" font-family="inherit">• MIV → FIV → CIV (6-7 dias)</text>
-          <text x="648" y="174" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Criopreservação de blastocistos</text>
-          <text x="648" y="189" font-size="10" fill="var(--text-secondary)" font-family="inherit">• ICSI equina: 70-80% blastocisto</text>
+          <text x="744" y="126" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--blue-700)" font-family="inherit">FIV Bovina / Equina</text>
+          <text x="648" y="144" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• OPU (ovum pick-up) guiada por US</text>
+          <text x="648" y="159" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• MIV → FIV → CIV (6-7 dias)</text>
+          <text x="648" y="174" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Criopreservação de blastocistos</text>
+          <text x="648" y="189" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• ICSI equina: 70-80% blastocisto</text>
         </g>
 
         <!-- SEXAGEM -->
         <g class="mm-node" onclick="mmToggle('bt-sex')" style="cursor:pointer">
           <rect x="660" y="180" width="180" height="44" rx="12" fill="#1565c0"/>
-          <text x="750" y="198" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">SEXAGEM</text>
-          <text x="750" y="215" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Sêmen sexado, Biópsia embrionária</text>
+          <text x="750" y="198" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">SEXAGEM</text>
+          <text x="750" y="215" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Sêmen sexado, Biópsia embrionária</text>
         </g>
         <line x1="660" y1="202" x2="520" y2="265" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="5,3"/>
         <g id="bt-sex" style="display:none">
           <rect x="636" y="234" width="214" height="86" rx="10" fill="var(--blue-50)" stroke="var(--blue-100)" stroke-width="1.5"/>
-          <text x="743" y="254" text-anchor="middle" font-size="10" font-weight="700" fill="var(--blue-700)" font-family="inherit">Sexagem de sêmen</text>
-          <text x="646" y="272" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Citometria de fluxo (SexedULTRA)</text>
-          <text x="646" y="287" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Precisão: ~90% X ou Y</text>
-          <text x="646" y="302" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Fertilidade: ~85% do convencional</text>
+          <text x="743" y="254" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--blue-700)" font-family="inherit">Sexagem de sêmen</text>
+          <text x="646" y="272" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Citometria de fluxo (SexedULTRA)</text>
+          <text x="646" y="287" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Precisão: ~90% X ou Y</text>
+          <text x="646" y="302" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Fertilidade: ~85% do convencional</text>
         </g>
 
         <!-- CLONAGEM -->
         <g class="mm-node" onclick="mmToggle('bt-clon')" style="cursor:pointer">
           <rect x="660" y="310" width="180" height="44" rx="12" fill="#37474f"/>
-          <text x="750" y="328" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="inherit">CLONAGEM / SCNT</text>
-          <text x="750" y="345" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)" font-family="inherit">Transferência nuclear</text>
+          <text x="750" y="328" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="inherit">CLONAGEM / SCNT</text>
+          <text x="750" y="345" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)" font-family="inherit">Transferência nuclear</text>
         </g>
         <line x1="660" y1="332" x2="520" y2="295" stroke="#546e7a" stroke-width="1.5" stroke-dasharray="5,3"/>
         <g id="bt-clon" style="display:none">
           <rect x="636" y="364" width="214" height="96" rx="10" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="1.5"/>
-          <text x="743" y="384" text-anchor="middle" font-size="10" font-weight="700" fill="var(--text-primary)" font-family="inherit">SCNT / Clonagem somática</text>
-          <text x="646" y="402" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Enucleação do oócito receptor</text>
-          <text x="646" y="417" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Inserção de célula somática do doador</text>
-          <text x="646" y="432" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Baixa eficiência: 1-5% nascimentos</text>
-          <text x="646" y="447" font-size="10" fill="var(--text-secondary)" font-family="inherit">• Aplicação: preservação genética</text>
+          <text x="743" y="384" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--text-primary)" font-family="inherit">SCNT / Clonagem somática</text>
+          <text x="646" y="402" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Enucleação do oócito receptor</text>
+          <text x="646" y="417" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Inserção de célula somática do doador</text>
+          <text x="646" y="432" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Baixa eficiência: 1-5% nascimentos</text>
+          <text x="646" y="447" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">• Aplicação: preservação genética</text>
         </g>
 
         <!-- OPU (centro-baixo) -->
         <g class="mm-node" onclick="mmToggle('bt-opu')" style="cursor:pointer">
           <rect x="332" y="400" width="196" height="44" rx="12" fill="#66bb6a"/>
-          <text x="430" y="418" text-anchor="middle" font-size="12" font-weight="700" fill="#1b5e20" font-family="inherit">OPU — Coleta a fresco</text>
-          <text x="430" y="435" text-anchor="middle" font-size="10" fill="#1b5e20" opacity=".8" font-family="inherit">Ovum Pick-Up transvaginal</text>
+          <text x="430" y="418" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1b5e20" font-family="inherit">OPU — Coleta a fresco</text>
+          <text x="430" y="435" text-anchor="middle" font-size="8.5" fill="#1b5e20" opacity=".8" font-family="inherit">Ovum Pick-Up transvaginal</text>
         </g>
         <line x1="430" y1="400" x2="430" y2="330" stroke="#66bb6a" stroke-width="1.5" stroke-dasharray="5,3"/>
         <g id="bt-opu" style="display:none">
           <rect x="260" y="454" width="340" height="56" rx="10" fill="var(--green-50)" stroke="var(--green-300)" stroke-width="1.5"/>
-          <text x="430" y="474" text-anchor="middle" font-size="10" font-weight="700" fill="var(--green-800)" font-family="inherit">OPU — frequência 2x/semana (bovino)</text>
-          <text x="270" y="492" font-size="10" fill="var(--text-secondary)" font-family="inherit">Sem superovulacao, guiada por US, aspiracao folicular</text>
+          <text x="430" y="474" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--green-800)" font-family="inherit">OPU — frequência 2x/semana (bovino)</text>
+          <text x="270" y="492" font-size="8.5" fill="var(--text-secondary)" font-family="inherit">Sem superovulacao, guiada por US, aspiracao folicular</text>
         </g>
 
-        <text x="430" y="530" text-anchor="middle" font-size="9" fill="var(--text-muted)" font-family="inherit">Clique nos nós para detalhes de cada biotecnologia</text>
+        <text x="430" y="530" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">Clique nos nós para detalhes de cada biotecnologia</text>
       </svg>
       </div>
     </div>
