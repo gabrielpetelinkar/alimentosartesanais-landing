@@ -2461,8 +2461,8 @@ Bulbo da glande: travamento copulatório (cão)
 
 <div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap" id="gametTabs">
   <button class="diff-tab active" onclick="setGametTab('oogenese',this)">Oogênese</button>
+  <button class="diff-tab" onclick="setGametTab('oocito',this)">Oócito</button>
   <button class="diff-tab" onclick="setGametTab('espermat',this)">Espermatogênese</button>
-  <button class="diff-tab" onclick="setGametTab('hormonal',this)">Regulação hormonal</button>
   <button class="diff-tab" onclick="setGametTab('estrutura',this)">Estrutura do sptz</button>
 </div>
 
@@ -2500,6 +2500,9 @@ Bulbo da glande: travamento copulatório (cão)
     </div>
   </div>
   <div class="diff-info empty" id="gamet-info-oog">Clique em uma fase acima para ver a explicação detalhada.</div>
+  <div class="sp-info" style="margin-top:14px">
+    <strong>🔗 Regulação hormonal (resumo):</strong> retomada da meiose depende do <span class="hl">pico de LH</span> · crescimento folicular inicial dirigido por FSH. <em>Detalhes do eixo HPG no capítulo de Neuroendocrinologia.</em>
+  </div>
   <div class="diff-memo">
     <div class="diff-memo-label">Mnemônico</div>
     <div class="diff-memo-text">Oogônia → Oócito I (bloq. Prófase I · AMPc)<br>LH↑ → AMPc↓ → Meiose I → Oócito II (bloq. Met. II)<br>Sptz penetra → Meiose II → Ovum + 2º CP</div>
@@ -2542,6 +2545,10 @@ Bulbo da glande: travamento copulatório (cão)
     </div>
   </div>
   <div class="diff-info empty" id="gamet-info-esp">Clique em uma fase acima para ver a explicação detalhada.</div>
+
+  <div class="sp-info" style="margin-top:14px">
+    <strong>🔗 Regulação hormonal (resumo):</strong> processo dependente de <span class="hl">FSH (nas células de Sertoli)</span> e <span class="hl">testosterona (LH → células de Leydig)</span>. <em>Detalhes do eixo HPG no capítulo de Neuroendocrinologia.</em>
+  </div>
 
   <p style="font-size:calc(12px * var(--font-scale));font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin:16px 0 10px">Duração total por espécie</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px">
@@ -2680,40 +2687,54 @@ Bulbo da glande: travamento copulatório (cão)
   </div>
 </div>
 
-<!-- REGULAÇÃO HORMONAL -->
-<div class="gamet-panel" id="gamet-hormonal">
-  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada nível do eixo para ver detalhes</p>
+<!-- OÓCITO -->
+<div class="gamet-panel" id="gamet-oocito">
+  <div class="alert alert-exam" style="margin-bottom:14px">
+    <strong>🎯 Muito cobrado em provas:</strong> o oócito ovulado encontra-se em <span class="hl">Metáfase II</span> e somente completa a meiose após a fecundação.
+  </div>
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada estrutura para ver detalhes</p>
   <div style="display:flex;flex-direction:column">
 
-    <div class="diff-step" data-gamet="hpg" data-key="hipotalamo">
+    <div class="diff-step" data-gamet="ooc" data-key="primario">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Oócito primário (2n)</div><div class="diff-sub">Parado em Prófase I (dictioteno) desde a vida fetal</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="ooc" data-key="secundario">
       <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
-      <div class="diff-card"><div class="diff-title">Hipotálamo</div><div class="diff-sub">GnRH pulsátil · a pulsatilidade é essencial para o eixo</div></div>
+      <div class="diff-card"><div class="diff-title">Oócito secundário (n) <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">estágio ovulado</span></div><div class="diff-sub">Parado em Metáfase II · aguarda fecundação</div></div>
     </div>
 
-    <div class="diff-step" data-gamet="hpg" data-key="hipofise">
-      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
-      <div class="diff-card"><div class="diff-title">Hipófise anterior</div><div class="diff-sub">LH + FSH em resposta ao GnRH</div></div>
-    </div>
-
-    <div class="diff-step" data-gamet="hpg" data-key="lh">
-      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
-      <div class="diff-card"><div class="diff-title">LH → Células de Leydig → Testosterona</div><div class="diff-sub">T: feedback negativo sobre hipotálamo e hipófise</div></div>
-    </div>
-
-    <div class="diff-step" data-gamet="hpg" data-key="fsh">
+    <div class="diff-step" data-gamet="ooc" data-key="zp">
       <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
-      <div class="diff-card"><div class="diff-title">FSH → Células de Sertoli → Inibina B</div><div class="diff-sub">Inibina B: feedback negativo seletivo sobre FSH</div></div>
+      <div class="diff-card"><div class="diff-title">Zona Pelúcida</div><div class="diff-sub">Matriz glicoproteica (ZP1-4) · ligação com sptz + bloqueio polispermia</div></div>
     </div>
 
-    <div class="diff-step" data-gamet="hpg" data-key="sertoli2">
-      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
-      <div class="diff-card"><div class="diff-title">Células de Sertoli · funções adicionais</div><div class="diff-sub">BTB, nutrição, AMH, ABP, fatores parácrinos</div></div>
+    <div class="diff-step" data-gamet="ooc" data-key="cumulus">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Corona radiata / Cumulus oophorus</div><div class="diff-sub">Células da granulosa · nutrição, suporte e sinalização</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="ooc" data-key="citop">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div></div>
+      <div class="diff-card"><div class="diff-title">Citoplasma (ooplasma)</div><div class="diff-sub">Rico em organelas · reserva para o desenvolvimento inicial do embrião</div></div>
     </div>
   </div>
-  <div class="diff-info empty" id="gamet-info-hpg">Clique em um nível acima para ver a explicação detalhada.</div>
+  <div class="diff-info empty" id="gamet-info-ooc">Clique em uma estrutura acima para ver a explicação detalhada.</div>
+
+  <div style="margin-top:16px;padding:14px 16px;border-radius:var(--radius-sm);background:var(--blue-50);border-left:3px solid var(--blue-600)">
+    <div style="font-size:calc(12px * var(--font-scale));font-weight:700;color:var(--blue-700);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">🔗 Conexões rápidas</div>
+    <ul style="margin:0;padding-left:18px;font-size:calc(14px * var(--font-scale));line-height:1.7">
+      <li><strong>LH</strong> → retoma a meiose (derruba bloqueio da Prófase I)</li>
+      <li><strong>Fertilização</strong> → completa a Meiose II (via influxo de Ca²⁺ → inativa CSF)</li>
+      <li><strong>Zona pelúcida</strong> → interação espécie-específica com espermatozoide (ZP3/ZP2)</li>
+      <li><strong>Cumulus</strong> → relevante em biotecnologias: <span class="hl">OPU, FIV, ICSI</span></li>
+    </ul>
+  </div>
+
   <div class="diff-memo" style="margin-top:16px">
     <div class="diff-memo-label">Mnemônico</div>
-    <div class="diff-memo-text">GnRH (pulsátil) → LH + FSH<br>LH → Leydig → T (feedback − hipotálamo/hipófise)<br>FSH → Sertoli → Inibina B (feedback − seletivo p/ FSH)</div>
+    <div class="diff-memo-text">Primário (2n) → Prófase I (dictioteno)<br>Secundário (n) → Metáfase II (ovulado) → fecundação completa meiose II<br>ZP = interação sptz + bloqueio polispermia | Cumulus = nutrição + biotec</div>
   </div>
 </div>
 
@@ -13460,12 +13481,12 @@ var GAMET_DB = {
     espmiog: 'A <strong>espermiogênese</strong> envolve: formação do <span class="hl">acrossomo</span> (complexo de Golgi), desenvolvimento do <span class="hl">flagelo</span> (centríolos), compactação do DNA (histonas → protaminas), eliminação do excesso de citoplasma (corpo residual fagocitado pelas células de Sertoli) e migração das mitocôndrias para a peça intermediária.',
     sptz: 'O espermatozóide recém-liberado dos túbulos tem motilidade progressiva fraca e não fertiliza. Adquire <span class="hl">motilidade progressiva e capacidade fertilizante no epidídimo</span> (~10-14 dias): modificações na membrana plasmática (colesterol, glicoproteínas) e modificações proteicas. O reservatório principal é a <span class="hl">cauda do epidídimo</span>.'
   },
-  hpg: {
-    hipotalamo: 'O <strong>hipotálamo</strong> secreta GnRH de forma <span class="hl">pulsátil</span> · essencial para o funcionamento do eixo. A administração contínua de GnRH paradoxalmente suprime o eixo (downregulation dos receptores), explorado em protocolos de sincronização. Os neurônios de GnRH são modulados por kisspeptina, dopamina, opioides endógenos e retroalimentação esteroidal.',
-    hipofise: 'A <strong>hipófise anterior</strong> libera <span class="hl">LH e FSH</span> em resposta ao GnRH. A frequência e amplitude dos pulsos de GnRH determinam a razão LH:FSH · frequência alta favorece LH, frequência baixa favorece FSH.',
-    lh: 'O <strong>LH</strong> age nas <span class="hl">células de Leydig</span>, estimulando síntese de testosterona via AMPc/PKA. A testosterona exerce <span class="hl">feedback negativo</span> no hipotálamo (reduz frequência de pulsos de GnRH) e na hipófise (reduz resposta ao GnRH). Também é convertida em estradiol (aromatase nas células de Sertoli) e em DHT (5α-redutase).',
-    fsh: 'O <strong>FSH</strong> age nas <span class="hl">células de Sertoli</span>, que produzem <span class="hl">Inibina B</span> · feedback negativo seletivo sobre o FSH sem afetar o LH. Isso torna a Inibina B um marcador clínico da função das células de Sertoli. Níveis baixos indicam comprometimento do epitélio seminífero.',
-    sertoli2: 'As <strong>células de Sertoli</strong> formam a <span class="hl">barreira hemato-testicular (BTB)</span> via tight junctions; produzem <span class="hl">ABP</span> (concentra testosterona no lúmen tubular); secretam fatores parácrinos para cada etapa da espermatogênese; fagocitam corpos residuais das espermátides; e no feto produzem AMH. São não-divisíveis na vida adulta · sua perda é irreversível.'
+  ooc: {
+    primario: 'O <strong>oócito primário (2n)</strong> fica <span class="hl">parado em Prófase I (estágio dictioteno)</span> desde a vida fetal. O bloqueio é mantido pelo AMPc elevado, fornecido pelas células do cumulus via gap junctions. Pode durar anos até que o folículo seja recrutado num ciclo ovulatório.',
+    secundario: 'O <strong>oócito secundário (n)</strong> é o <span class="hl">estágio ovulado na maioria dos mamíferos domésticos</span>. Está bloqueado em Metáfase II (pelo CSF) e somente completa a meiose após a fecundação. Exceções: égua ovula em Prófase I (dictioteno) e cadela ovula como oócito primário.',
+    zp: 'A <strong>zona pelúcida (ZP)</strong> é uma matriz glicoproteica composta por <span class="hl">ZP1, ZP2, ZP3 e ZP4</span> (composição varia entre espécies). Funções: (1) ligação espécie-específica com o espermatozoide (ZP3/ZP2); (2) indução da reação acrossômica; (3) <span class="hl">bloqueio da polispermia</span> após a fecundação via reação de zona.',
+    cumulus: 'As <strong>células da granulosa</strong> formam a <span class="hl">corona radiata</span> (camada mais interna, radial) e o <span class="hl">cumulus oophorus</span> (estrato externo). Funções: nutrição do oócito (gap junctions), manutenção do bloqueio meiótico (via AMPc), expansão em resposta ao LH (hialuronato). Cruciais em <strong>biotecnologias reprodutivas (OPU, FIV, ICSI)</strong>.',
+    citop: 'O <strong>citoplasma (ooplasma)</strong> é excepcionalmente rico em organelas: mitocôndrias, ribossomos, grânulos corticais, RNAs e proteínas maternas. Esse estoque é a <span class="hl">reserva que sustenta o desenvolvimento embrionário inicial</span> até a ativação do genoma embrionário.'
   },
   str: {
     cabeca: 'A <strong>cabeça</strong> contém o <span class="hl">núcleo haplóide</span> com DNA compactado por protaminas e o <span class="hl">acrossomo</span>, cobrindo 2/3 da superfície anterior nuclear. O acrossomo contém enzimas hidrolíticas: hialuronidase, acrosina e outras. A morfologia da cabeça varia entre espécies · critério fundamental na morfologia espermática clínica.',
@@ -14147,6 +14168,13 @@ window.infSetSp = function(sp, el){
       epid: 'O trânsito no <strong>epidídimo</strong> dura <span class="hl">~10-14 dias</span>. A <span class="hl">cauda do epidídimo</span> é o principal reservatório.',
       capac: 'A <strong>capacitação</strong> ocorre no trato reprodutivo feminino. <span class="hl">Em equinos, a FIV convencional não funciona · o método de escolha é o ICSI.</span>',
       acros: 'A <strong>reação acrossômica</strong> ocorre após ligação à <span class="hl">zona pelúcida</span> (ZP3/ZP2). É um evento único e irreversível.'
+    },
+    ooc: {
+      primario: 'O <strong>oócito primário (2n)</strong> fica <span class="hl">parado em Prófase I (estágio dictioteno)</span> desde a vida fetal. O bloqueio é mantido pelo AMPc elevado, fornecido pelas células do cumulus via gap junctions. Pode durar anos até que o folículo seja recrutado num ciclo ovulatório.',
+      secundario: 'O <strong>oócito secundário (n)</strong> é o <span class="hl">estágio ovulado na maioria dos mamíferos domésticos</span>. Está bloqueado em Metáfase II (pelo CSF) e somente completa a meiose após a fecundação. Exceções: égua ovula em Prófase I (dictioteno) e cadela ovula como oócito primário.',
+      zp: 'A <strong>zona pelúcida (ZP)</strong> é uma matriz glicoproteica composta por <span class="hl">ZP1, ZP2, ZP3 e ZP4</span> (a composição varia entre espécies). Funções: (1) ligação espécie-específica com o espermatozoide (ZP3/ZP2); (2) indução da reação acrossômica; (3) <span class="hl">bloqueio da polispermia</span> após a fecundação via reação de zona.',
+      cumulus: 'As <strong>células da granulosa</strong> formam a <span class="hl">corona radiata</span> (camada mais interna, radial) e o <span class="hl">cumulus oophorus</span> (estrato externo). Funções: nutrição do oócito (gap junctions), manutenção do bloqueio meiótico (via AMPc), expansão em resposta ao LH (hialuronato). São cruciais em <strong>biotecnologias reprodutivas (OPU, FIV, ICSI)</strong>.',
+      citop: 'O <strong>citoplasma (ooplasma)</strong> do oócito é excepcionalmente rico em organelas: mitocôndrias, ribossomos, grânulos corticais, RNAs e proteínas maternas. Esse estoque é a <span class="hl">reserva que sustenta o desenvolvimento embrionário inicial</span> até a ativação do genoma embrionário (momento que varia entre espécies).'
     }
   };
   var DIFF = {
