@@ -2365,32 +2365,32 @@ Bulbo da glande: travamento copulatório (cão)
   <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa para ver detalhes</p>
   <div style="display:flex;flex-direction:column">
 
-    <div class="diff-step" onclick="diffInfo('xy','sry')">
+    <div class="diff-step" data-diff="xy" data-key="sry">
       <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Gene SRY <span class="diff-badge">cromossomo Y</span></div><div class="diff-sub">Ativado na gônada indiferenciada · gatilho da via masculina</div></div>
     </div>
 
-    <div class="diff-step" onclick="diffInfo('xy','sox9')">
+    <div class="diff-step" data-diff="xy" data-key="sox9">
       <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">SRY ativa SOX9</div><div class="diff-sub">Fator de transcrição que direciona a diferênciação das células de Sertoli</div></div>
     </div>
 
-    <div class="diff-step" onclick="diffInfo('xy','sertoli')">
+    <div class="diff-step" data-diff="xy" data-key="sertoli">
       <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Células de Sertoli → AMH</div><div class="diff-sub">Hormônio Anti-Mülleriano induz regressão dos ductos de Müller</div></div>
     </div>
 
-    <div class="diff-step" onclick="diffInfo('xy','leydig')">
+    <div class="diff-step" data-diff="xy" data-key="leydig">
       <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Células de Leydig → Testosterona</div><div class="diff-sub">Mantém e diferencia os ductos de Wolff</div></div>
     </div>
 
-    <div class="diff-step" onclick="diffInfo('xy','wolff')">
+    <div class="diff-step" data-diff="xy" data-key="wolff">
       <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Ductos de Wolff persistem</div><div class="diff-sub">Epidídimo, canal deferente, vesícula seminal</div></div>
     </div>
 
-    <div class="diff-step" onclick="diffInfo('xy','dht')">
+    <div class="diff-step" data-diff="xy" data-key="dht">
       <div class="diff-spine"><div class="diff-dot" style="background:#D85A30"></div></div>
       <div class="diff-card"><div class="diff-title">DHT (di-hidrotestosterona)</div><div class="diff-sub">5α-redutase converte T → DHT → genitália externa masculina</div></div>
     </div>
@@ -2407,22 +2407,22 @@ Bulbo da glande: travamento copulatório (cão)
   <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">A via ovariana é o caminho "padrão" na ausência de SRY</p>
   <div style="display:flex;flex-direction:column">
 
-    <div class="diff-step" onclick="diffInfo('xx','nosry')">
+    <div class="diff-step" data-diff="xx" data-key="nosry">
       <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Ausência de SRY</div><div class="diff-sub">A cascata masculina não é iniciada · via ovariana se instala</div></div>
     </div>
 
-    <div class="diff-step" onclick="diffInfo('xx','rspo')">
+    <div class="diff-step" data-diff="xx" data-key="rspo">
       <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">RSPO1 + WNT4 ativos</div><div class="diff-sub">Suprimem SOX9 e mantêm ativamente o fenótipo ovariano</div></div>
     </div>
 
-    <div class="diff-step" onclick="diffInfo('xx','muller')">
+    <div class="diff-step" data-diff="xx" data-key="muller">
       <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Ductos de Müller persistem</div><div class="diff-sub">Trompas de Falópio, útero, cérvix, vagina cranial</div></div>
     </div>
 
-    <div class="diff-step" onclick="diffInfo('xx','wolff')">
+    <div class="diff-step" data-diff="xx" data-key="wolff">
       <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div></div>
       <div class="diff-card"><div class="diff-title">Ductos de Wolff regridem</div><div class="diff-sub">Regridem por falta de estímulo androgênico</div></div>
     </div>
@@ -2474,27 +2474,27 @@ Bulbo da glande: travamento copulatório (cão)
   <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada fase para ver detalhes</p>
   <div style="display:flex;flex-direction:column">
 
-    <div class="diff-step" onclick="gametInfo('oog','oogonia')">
+    <div class="diff-step" data-gamet="oog" data-key="oogonia">
       <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Oogônia (2n)</div><div class="diff-sub">Multiplicação por mitose · vida fetal exclusivamente</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('oog','oocito1')">
+    <div class="diff-step" data-gamet="oog" data-key="oocito1">
       <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Oócito primário (2n) <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">bloqueio Prófase I</span></div><div class="diff-sub">Dictioteno · mantido pelo AMPc das células do cumulus</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('oog','meiose1')">
+    <div class="diff-step" data-gamet="oog" data-key="meiose1">
       <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Conclusão da Meiose I <span class="diff-badge">gatilho: pico de LH</span></div><div class="diff-sub">LH reduz AMPc → retomada da meiose pouco antes da ovulação</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('oog','oocito2')">
+    <div class="diff-step" data-gamet="oog" data-key="oocito2">
       <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Oócito secundário (n) + 1º CP <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">bloqueio Metáfase II</span></div><div class="diff-sub">Estágio ovulado na maioria dos mamíferos domésticos</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('oog','fert')">
+    <div class="diff-step" data-gamet="oog" data-key="fert">
       <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
       <div class="diff-card"><div class="diff-title">Ovum (n) + 2º CP <span class="diff-badge" style="background:var(--green-50);color:var(--green-700)">gatilho: fecundação</span></div><div class="diff-sub">Penetração do sptz → ativação → conclusão da Meiose II</div></div>
     </div>
@@ -2511,32 +2511,32 @@ Bulbo da glande: travamento copulatório (cão)
   <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada fase para ver detalhes</p>
   <div style="display:flex;flex-direction:column">
 
-    <div class="diff-step" onclick="gametInfo('esp','espgonia')">
+    <div class="diff-step" data-gamet="esp" data-key="espgonia">
       <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Espermatogônia (2n)</div><div class="diff-sub">Células-tronco; renovação contínua após a puberdade</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('esp','esp1')">
+    <div class="diff-step" data-gamet="esp" data-key="esp1">
       <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Espermatócito I (2n)</div><div class="diff-sub">Meiose I · fase mais longa; crossing-over na Prófase I</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('esp','esp2')">
+    <div class="diff-step" data-gamet="esp" data-key="esp2">
       <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Espermatócito II (n)</div><div class="diff-sub">Meiose II rápida → duas espermátides cada</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('esp','esptide')">
+    <div class="diff-step" data-gamet="esp" data-key="esptide">
       <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Espermátide (n)</div><div class="diff-sub">Haplóide redonda · sem mais divisões; inicia diferênciação</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('esp','espmiog')">
+    <div class="diff-step" data-gamet="esp" data-key="espmiog">
       <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Espermiogênese <span class="diff-badge">diferênciação, sem divisão</span></div><div class="diff-sub">Formação do acrossomo, flagelo, compactação do DNA</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('esp','sptz')">
+    <div class="diff-step" data-gamet="esp" data-key="sptz">
       <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div></div>
       <div class="diff-card"><div class="diff-title">Espermatozóide (n)</div><div class="diff-sub">Motilidade progressiva adquirida no epidídimo (~10-14 dias)</div></div>
     </div>
@@ -2685,27 +2685,27 @@ Bulbo da glande: travamento copulatório (cão)
   <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada nível do eixo para ver detalhes</p>
   <div style="display:flex;flex-direction:column">
 
-    <div class="diff-step" onclick="gametInfo('hpg','hipotalamo')">
+    <div class="diff-step" data-gamet="hpg" data-key="hipotalamo">
       <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Hipotálamo</div><div class="diff-sub">GnRH pulsátil · a pulsatilidade é essencial para o eixo</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('hpg','hipofise')">
+    <div class="diff-step" data-gamet="hpg" data-key="hipofise">
       <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">Hipófise anterior</div><div class="diff-sub">LH + FSH em resposta ao GnRH</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('hpg','lh')">
+    <div class="diff-step" data-gamet="hpg" data-key="lh">
       <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">LH → Células de Leydig → Testosterona</div><div class="diff-sub">T: feedback negativo sobre hipotálamo e hipófise</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('hpg','fsh')">
+    <div class="diff-step" data-gamet="hpg" data-key="fsh">
       <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
       <div class="diff-card"><div class="diff-title">FSH → Células de Sertoli → Inibina B</div><div class="diff-sub">Inibina B: feedback negativo seletivo sobre FSH</div></div>
     </div>
 
-    <div class="diff-step" onclick="gametInfo('hpg','sertoli2')">
+    <div class="diff-step" data-gamet="hpg" data-key="sertoli2">
       <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
       <div class="diff-card"><div class="diff-title">Células de Sertoli · funções adicionais</div><div class="diff-sub">BTB, nutrição, AMH, ABP, fatores parácrinos</div></div>
     </div>
@@ -2721,12 +2721,12 @@ Bulbo da glande: travamento copulatório (cão)
 <div class="gamet-panel" id="gamet-estrutura">
   <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada compartimento para ver detalhes</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:4px">
-    <div class="diff-card" style="cursor:pointer" onclick="gametInfo('str','cabeca')"><div class="diff-title">Cabeça</div><div class="diff-sub">Acrossomo + núcleo haplóide</div></div>
-    <div class="diff-card" style="cursor:pointer" onclick="gametInfo('str','peca')"><div class="diff-title">Peça intermediária</div><div class="diff-sub">Mitocôndrias em espiral</div></div>
-    <div class="diff-card" style="cursor:pointer" onclick="gametInfo('str','cauda')"><div class="diff-title">Cauda (flagelo)</div><div class="diff-sub">Axonema 9+2</div></div>
-    <div class="diff-card" style="cursor:pointer" onclick="gametInfo('str','epid')"><div class="diff-title">Epidídimo</div><div class="diff-sub">Maturação e reservatório</div></div>
-    <div class="diff-card" style="cursor:pointer" onclick="gametInfo('str','capac')"><div class="diff-title">Capacitação</div><div class="diff-sub">Trato reprodutivo feminino</div></div>
-    <div class="diff-card" style="cursor:pointer" onclick="gametInfo('str','acros')"><div class="diff-title">Reação acrossômica</div><div class="diff-sub">Fusão com zona pelúcida</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="cabeca"><div class="diff-title">Cabeça</div><div class="diff-sub">Acrossomo + núcleo haplóide</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="peca"><div class="diff-title">Peça intermediária</div><div class="diff-sub">Mitocôndrias em espiral</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="cauda"><div class="diff-title">Cauda (flagelo)</div><div class="diff-sub">Axonema 9+2</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="epid"><div class="diff-title">Epidídimo</div><div class="diff-sub">Maturação e reservatório</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="capac"><div class="diff-title">Capacitação</div><div class="diff-sub">Trato reprodutivo feminino</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="acros"><div class="diff-title">Reação acrossômica</div><div class="diff-sub">Fusão com zona pelúcida</div></div>
   </div>
   <div class="diff-info empty" id="gamet-info-str">Clique em um compartimento acima para ver detalhes.</div>
 </div>
@@ -13417,17 +13417,23 @@ function setGametTab(tab, btn) {
 }
 window.setGametTab = setGametTab;
 
-// Event delegation fallback para cliques nas fases da gametogênese
+// Event delegation para cliques nas fases (gametogênese + diferenciação gonadal)
 document.addEventListener('click', function(e) {
-  var step = e.target.closest('.diff-step[onclick]');
-  if (step) {
-    var onclickAttr = step.getAttribute('onclick');
-    if (onclickAttr && onclickAttr.indexOf('gametInfo') !== -1) {
-      try { (new Function(onclickAttr))(); } catch(err) {}
-    }
-    if (onclickAttr && onclickAttr.indexOf('diffInfo') !== -1) {
-      try { (new Function(onclickAttr))(); } catch(err) {}
-    }
+  // Gametogênese: data-gamet + data-key
+  var gametEl = e.target.closest('[data-gamet]');
+  if (gametEl) {
+    var group = gametEl.getAttribute('data-gamet');
+    var key = gametEl.getAttribute('data-key');
+    if (group && key) gametInfo(group, key);
+    return;
+  }
+  // Diferenciação gonadal: data-diff + data-key
+  var diffEl = e.target.closest('[data-diff]');
+  if (diffEl) {
+    var sex = diffEl.getAttribute('data-diff');
+    var key2 = diffEl.getAttribute('data-key');
+    if (sex && key2) diffInfo(sex, key2);
+    return;
   }
 });
 
