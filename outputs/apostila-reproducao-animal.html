@@ -2382,7 +2382,7 @@ Bulbo da glande: travamento copulatório (cão)
 
     <div class="diff-step" onclick="diffInfo('xy','leydig')">
       <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
-      <div class="diff-card"><div class="diff-title">Células de Leydig → Testosterona</div><div class="diff-sub">Estabiliza e desenvolve os ductos de Wolff ipsilaterais</div></div>
+      <div class="diff-card"><div class="diff-title">Células de Leydig → Testosterona</div><div class="diff-sub">Mantém e diferencia os ductos de Wolff</div></div>
     </div>
 
     <div class="diff-step" onclick="diffInfo('xy','wolff')">
@@ -2424,7 +2424,7 @@ Bulbo da glande: travamento copulatório (cão)
 
     <div class="diff-step" onclick="diffInfo('xx','wolff')">
       <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div></div>
-      <div class="diff-card"><div class="diff-title">Ductos de Wolff regridem</div><div class="diff-sub">Sem testosterona local → apoptose da estrutura</div></div>
+      <div class="diff-card"><div class="diff-title">Ductos de Wolff regridem</div><div class="diff-sub">Regridem por falta de estímulo androgênico</div></div>
     </div>
   </div>
   <div class="diff-info empty" id="diff-info-xx">Clique em uma etapa acima para ver a explicação detalhada.</div>
@@ -2446,14 +2446,14 @@ Bulbo da glande: travamento copulatório (cão)
       <tr><td>Gene determinante</td><td>SRY (crom. Y)</td><td>Ausência de SRY</td></tr>
       <tr><td>Fator de transcrição</td><td>SOX9 ativo</td><td>SOX9 suprimido (RSPO1/WNT4)</td></tr>
       <tr><td>Células gonadais chave</td><td>Sertoli + Leydig</td><td>Granulosa + Teca</td></tr>
-      <tr><td>Hormônio crítico</td><td>AMH + T + DHT</td><td>Nenhum necessário</td></tr>
+      <tr><td>Hormônio crítico</td><td>AMH + T + DHT</td><td>Ausência de AMH e T (via ovariana ativa por RSPO1/WNT4/FOXL2)</td></tr>
       <tr><td>Ductos de Müller</td><td>Regridem (via AMH)</td><td>Persistem → útero, trompas</td></tr>
       <tr><td>Ductos de Wolff</td><td>Persistem → epidídimo, deferente</td><td>Regridem (sem T)</td></tr>
       <tr><td>Genitália externa</td><td>DHT → masculina</td><td>Padrão feminino</td></tr>
     </tbody>
   </table></div>
   <div class="alert alert-tip" style="margin-top:14px">
-    <strong>Atenção:</strong> A visão clássica de que a via feminina é "por omissão/passiva" está <strong>desatualizada desde 2006</strong>. Genes como RSPO1, WNT4 e FOXL2 são expressos <em>ativamente</em> para suprimir o programa masculino (SOX9/FGF9) e manter a identidade ovariana ao longo de toda a vida. Fêmeas XX com perda de função de RSPO1 ou WNT4 desenvolvem ovotestis · evidência direta de que a feminização requer sinalização ativa contínua. A via masculina também é ativa · depende de AMH, testosterona e DHT em momentos distintos.
+    <strong>Atenção:</strong> A via feminina não depende de hormônios testiculares, mas é ativamente regulada por genes específicos (RSPO1, WNT4, FOXL2) que suprimem o programa masculino (SOX9/FGF9) e mantêm a identidade ovariana ao longo de toda a vida. Fêmeas XX com perda de função de RSPO1 ou WNT4 desenvolvem ovotestis, evidência direta de que a diferenciação ovariana requer sinalização ativa contínua.
   </div>
 </div>
 
@@ -13414,18 +13414,18 @@ function setGametTab(tab, btn) {
 // === DIFERENCIAÇÃO GONADAL ===
 var DIFF_DB = {
   xy: {
-    sry: '<strong>Gene SRY</strong> · localizado no cromossomo Y, é o <span class="hl">determinante primário</span> do sexo masculino. Sua expressão ocorre por volta da 6ª semana de desenvolvimento embrionário. Sem SRY, a via masculina nunca é iniciada.',
+    sry: '<strong>Gene SRY</strong> · localizado no cromossomo Y, é o <span class="hl">determinante primário</span> do sexo masculino. Sua expressão ocorre na fase inicial do desenvolvimento embrionário (varia entre espécies). Sem SRY, a via masculina nunca é iniciada.',
     sox9: '<strong>SOX9</strong> é ativado diretamente pelo SRY e instrui as células progenitoras a se tornarem <span class="hl">células de Sertoli</span>. Nas fêmeas, RSPO1 e WNT4 suprimem o SOX9 · a manutenção do fenótipo ovariano também é ativa, não apenas passiva.',
     sertoli: '<strong>Células de Sertoli</strong> produzem o <span class="hl">AMH</span>, que age nos ductos de Müller provocando sua regressão ativa. Sem esse sinal, os ductos persistiriam e formariam o útero. A síndrome do ducto de Müller persistente ocorre por deficiência de AMH ou de seu receptor.',
-    leydig: '<strong>Células de Leydig</strong>, estimuladas pelo hCG placentário, produzem <span class="hl">testosterona</span> que age paracrínamente estabilizando os ductos de Wolff ipsilaterais. Também é convertida em DHT pela 5α-redutase tipo 2 nos tecidos-alvo.',
+    leydig: '<strong>Células de Leydig</strong>, estimuladas pelo hCG placentário, produzem <span class="hl">testosterona</span> que atua principalmente de forma parácrina na estabilização e diferenciação dos ductos de Wolff. Também é convertida em DHT pela 5α-redutase tipo 2 nos tecidos-alvo.',
     wolff: 'Os <strong>ductos de Wolff</strong> dependem de testosterona local para persistir, diferenciando-se em: <span class="hl">epidídimo, canal deferente e vesícula seminal</span>. A orquiectomia experimental antes desse estágio impede sua formação.',
-    dht: 'A <strong>DHT</strong> é produzida pela conversão de testosterona via <span class="hl">5α-redutase tipo 2</span>, sendo responsável pela virilização da genitália externa: pênis, escroto e próstata. Deficiência de 5α-redutase resulta em genitália externa feminina com gônadas masculinas internas.'
+    dht: 'A <strong>DHT</strong> é produzida pela conversão de testosterona via <span class="hl">5α-redutase tipo 2</span>, sendo responsável pela virilização da genitália externa (pênis e escroto) e próstata (diferenciação andrógeno-dependente). Deficiência de 5α-redutase resulta em genitália externa feminina com gônadas masculinas internas.'
   },
   xx: {
     nosry: 'Na ausência do gene SRY, <span class="hl">nenhum sinal ativo</span> é necessário para iniciar a via ovariana. Isso não significa passividade: genes como RSPO1, WNT4 e FOXL2 são expressos ativamente para garantir e manter o fenótipo ovariano.',
     rspo: '<strong>RSPO1</strong> e <strong>WNT4</strong> formam um eixo que <span class="hl">suprime o SOX9</span> e ativa vias pró-ovarianas. Mutações nesses genes em indivíduos 46,XX podem causar disgenesia gonadal com virilização · evidenciando que o fenótipo ovariano é ativamente mantido.',
     muller: 'Na ausência de AMH, os <strong>ductos de Müller persistem</strong> e diferenciam-se em: <span class="hl">trompas de Falópio, útero, cérvix e porção cranial da vagina</span>. A vagina caudal tem origem no seio urogenital · não nos ductos de Müller.',
-    wolff: 'Sem testosterona local, os <strong>ductos de Wolff regridem</strong> por apoptose. Podem persistir resíduos vestigiais: o <span class="hl">ducto de Gärtner</span> (parede vaginal lateral) é o principal exemplo clínico, geralmente assintomático.'
+    wolff: 'Sem testosterona local, os <strong>ductos de Wolff regridem</strong> por falta de estímulo androgênico. Podem persistir resíduos vestigiais: o <span class="hl">ducto de Gärtner</span> (parede vaginal lateral) é o principal exemplo clínico, geralmente assintomático.'
   }
 };
 function diffInfo(sex, key) {
@@ -13435,7 +13435,8 @@ function diffInfo(sex, key) {
   el.classList.remove('empty');
 }
 function setDiffTab(tab, btn) {
-  document.querySelectorAll('.diff-tab').forEach(function(t) { t.classList.remove('active'); });
+  var container = btn.closest('#diffTabs') || btn.parentElement;
+  container.querySelectorAll('.diff-tab').forEach(function(t) { t.classList.remove('active'); });
   document.querySelectorAll('.diff-panel').forEach(function(p) { p.classList.remove('active'); });
   btn.classList.add('active');
   var panel = document.getElementById('diff-' + tab);
