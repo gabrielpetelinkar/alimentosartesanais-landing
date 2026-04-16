@@ -2775,182 +2775,345 @@ Bulbo da glande: travamento copulatório (cão)
   content: `
 
 <div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap" id="neuroTabs">
-  <button class="diff-tab active" data-neurotab="foto">Fotoperíodismo</button>
-  <button class="diff-tab" data-neurotab="macho">Efeito Macho</button>
+  <button class="diff-tab active" data-neurotab="hpg">Eixo HPG</button>
+  <button class="diff-tab" data-neurotab="femea">Fêmea</button>
+  <button class="diff-tab" data-neurotab="macho">Macho</button>
+  <button class="diff-tab" data-neurotab="foto">Fotoperíodismo</button>
+  <button class="diff-tab" data-neurotab="efmacho">Efeito Macho</button>
   <button class="diff-tab" data-neurotab="anestro">Anestro Lactacional</button>
 </div>
 
-<!-- FOTOPERÍODISMO -->
-<div class="neuro-panel active" id="neuro-foto">
-
-<h4>Fotoperíodismo e Controle da Sazonalidade Reprodutiva</h4>
-
-<p>O fotoperíodo é o principal zeitgeber (sincronizador ambiental) da atividade reprodutiva em espécies sazonais.</p>
-
-<p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa da via neural para ver detalhes</p>
-<div style="display:flex;flex-direction:column">
-
-  <div class="diff-step" data-neuro="foto" data-key="retina">
-    <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">Fotorreceptores retinianos</div><div class="diff-sub">Células ganglionares com melanopsina (não cones/bastonetes)</div></div>
+<!-- EIXO HPG -->
+<div class="neuro-panel active" id="neuro-hpg">
+  <div class="alert alert-exam" style="margin-bottom:14px">
+    <strong>🎯 Muito cobrado em provas:</strong> o eixo HPG depende de <span class="hl">GnRH pulsátil</span>. Administração contínua suprime o eixo (downregulation) · base dos implantes de deslorelina. Frequência alta de pulsos → LH; frequência baixa → FSH.
   </div>
 
-  <div class="diff-step" data-neuro="foto" data-key="nsq">
-    <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">Núcleo Supraquiasmático (NSQ)</div><div class="diff-sub">Trato retino-hipotalâmico → "relógio biológico"</div></div>
-  </div>
+  <p>O eixo hipotálamo–hipófise–gônadas é o sistema central de controle da reprodução. A descoberta mais importante da última década foi a dos <strong>neurônios KNDy</strong> (Kisspeptina + Neurocinina B + Dinorfina A) no núcleo arqueado, que são o <em>gerador de pulso</em> do GnRH.</p>
 
-  <div class="diff-step" data-neuro="foto" data-key="pineal">
-    <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">Glândula Pineal → Melatonina</div><div class="diff-sub">Síntese exclusiva no escuro · duração codifica comprimento do dia</div></div>
-  </div>
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa para ver detalhes</p>
+  <div style="display:flex;flex-direction:column">
 
-  <div class="diff-step" data-neuro="foto" data-key="kiss">
-    <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">Melatonina → Kisspeptina → GnRH</div><div class="diff-sub">Pars tuberalis + tanícitos · modulação da pulsatilidade de GnRH</div></div>
-  </div>
+    <div class="diff-step" data-neuro="hpg" data-key="nkb">
+      <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Neurocinina B (NKB) <span class="diff-badge">inicia o pulso</span></div><div class="diff-sub">Receptor NK3R · sincroniza os neurônios KNDy entre si</div></div>
+    </div>
 
-  <div class="diff-step" data-neuro="foto" data-key="classif">
-    <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div></div>
-    <div class="diff-card"><div class="diff-title">Classificação reprodutiva sazonal <span class="diff-badge">espécies</span></div><div class="diff-sub">Dias curtos (ovinos/caprinos) × Dias longos (equinos) × Não-sazonal (bovinos)</div></div>
+    <div class="diff-step" data-neuro="hpg" data-key="kiss">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Kisspeptina → GnRH <span class="diff-badge">propagação</span></div><div class="diff-sub">Receptor GPR54/Kiss1R nos neurônios de GnRH · output principal do KNDy</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="hpg" data-key="dyn">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Dinorfina A <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">termina o pulso</span></div><div class="diff-sub">Receptor κ-opióide (KOR) · a P4 amplifica este sinal → FB negativo</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="hpg" data-key="gnrh">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">GnRH → Hipófise → LH + FSH</div><div class="diff-sub">Fase folicular: pulsos 60-90 min (↑LH) · fase lútea: 3-4h (↑FSH) · macho: ~60-120 min (tônico)</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="hpg" data-key="arc_rp3v">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div></div>
+      <div class="diff-card"><div class="diff-title">ARC vs. RP3V · duas populações de kisspeptina</div><div class="diff-sub">ARC = pulso tônico (ambos os sexos) · RP3V = surge pré-ovulatório (fêmea apenas)</div></div>
+    </div>
+  </div>
+  <div class="diff-info empty" id="neuro-info-hpg">Clique em uma etapa acima para ver a explicação detalhada.</div>
+
+  <div class="table-wrap" style="margin-top:16px"><table>
+    <thead><tr><th>Característica</th><th>ARC (Núcleo arqueado)</th><th>RP3V (Pré-óptico rostral)</th></tr></thead>
+    <tbody>
+      <tr><td>Neuropeptídeos</td><td>Kisspeptina + NKB + Dinorfina (KNDy)</td><td>Apenas Kisspeptina</td></tr>
+      <tr><td>Função</td><td>Pulso tônico de GnRH</td><td>Surge pré-ovulatório de LH</td></tr>
+      <tr><td>Resposta ao E2</td><td>Inibe Kiss1 (FB negativo)</td><td>Estimula Kiss1 (FB positivo)</td></tr>
+      <tr><td>Dimorfismo sexual</td><td>Presente em ambos os sexos</td><td>Proeminente em fêmeas · reduzido em machos</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sp-prova" style="margin-top:14px"><strong>Ponto de prova:</strong> Por que GnRH contínuo (agonista) suprime o eixo? Downregulation dos receptores de GnRH nos gonadotrofos. Pulsátil → ativa; contínuo → inativa. Base da deslorelina para supressão reprodutiva e, em pulso único, para indução de ovulação em égua.</div>
+
+  <div class="diff-memo" style="margin-top:16px">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">KNDy = Kiss + NKB + Dinorfina · núcleo ARC<br>NKB (NK3R) inicia → Kiss (GPR54) propaga → Dinorfina (KOR) termina<br>ARC = pulso tônico · RP3V = surge pré-ovulatório (fêmea)<br>Frequência alta → LH · baixa → FSH · P4 amplifica dinorfina → ↓ pulsos</div>
   </div>
 </div>
-<div class="diff-info empty" id="neuro-info-foto">Clique em uma etapa acima para ver a explicação detalhada.</div>
 
-<div class="table-wrap" style="margin-top:16px"><table>
-<thead><tr><th>Classificação</th><th>Estímulo ativador</th><th>Melatonina</th><th>Espécies</th><th>Estação (hemisfério sul)</th></tr></thead>
-<tbody>
-<tr><td>Poliéstrica estacional de dias curtos</td><td>Dias curtos (fotoperíodo decrescente)</td><td>Alta estimula eixo reprodutivo</td><td>Ovinos, caprinos, búfalos</td><td>Outono/inverno (março–agosto)</td></tr>
-<tr><td>Poliéstrica estacional de dias longos</td><td>Dias longos (fotoperíodo crescente)</td><td>Baixa estimula eixo reprodutivo</td><td>Equinos (égua), felinos (gata)</td><td>Primavera/verão (setembro–fevereiro)</td></tr>
-<tr><td>Poliéstrica não estacional</td><td>Baixa influência do fotoperíodo</td><td>Sem efeito dominante</td><td>Bovinos, suínos</td><td>Ano todo</td></tr>
-<tr><td>Monoéstrica não estacional</td><td>Independente do fotoperíodo</td><td>Sem influência relevante</td><td>Caninos (cadela)</td><td>Ano todo</td></tr>
-</tbody>
-</table></div>
+<!-- FÊMEA -->
+<div class="neuro-panel" id="neuro-femea">
+  <div class="alert alert-exam" style="margin-bottom:14px">
+    <strong>🎯 Muito cobrado em provas:</strong> o estradiol precisa de <span class="hl">duas células e dois hormônios</span> (two-cell, two-gonadotropin). Sem LH não há substrato andrógeno; sem FSH não há aromatase.
+  </div>
 
-<div class="sp-info" style="margin-top:12px"><strong>Observação:</strong> Felinos são espécies <span class="hl">poliéstricas estacionais de dias longos</span>, apresentando atividade reprodutiva dependente do fotoperíodo. Em contraste, caninos são <span class="hl">monoéstricos não estacionais</span>, com ciclo reprodutivo independente da variação luminosa. Essa diferença é fundamental na clínica e frequentemente explorada em provas.</div>
+  <p>A produção de estradiol pelo folículo ovariano requer cooperação obrigatória entre as <strong>células da teca interna</strong> (LH) e as <strong>células da granulosa</strong> (FSH). Uma célula sozinha não sintetiza E2 a partir do colesterol.</p>
 
-<p style="margin-top:16px"><strong>Aplicações práticas:</strong></p>
-<ul>
-  <li><strong>Implante de melatonina (ovinos/caprinos):</strong> implante subcutâneo auricular → simula dias curtos → antecipa estação reprodutiva em 6–8 semanas. Protocolo: 30–40 dias antes da estação desejada</li>
-  <li><strong>Programa de luz artificial (éguas):</strong> 14,5–16h de luz/dia → antecipa ciclicidade em 6–10 semanas. Pode ser luz contínua ou pulso ("flash")</li>
-  <li><strong>Alternância dia longo/dia curto (carneiros):</strong> 2–3 meses de dias longos artificiais seguidos de dias curtos → estimula espermatogênese e libido fora da estação</li>
-</ul>
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa para ver detalhes</p>
+  <div style="display:flex;flex-direction:column">
 
-<div class="sp-prova"><strong>Ponto clássico de prova:</strong> Ovinos/caprinos → melatonina (simula dias curtos). Éguas → luz artificial (simula dias longos). NÃO confundir: melatonina estimula pequenos ruminantes mas NÃO ativa equinos.</div>
+    <div class="diff-step" data-neuro="femea" data-key="teca">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">LH → Teca interna → Androstenediona</div><div class="diff-sub">AMPc/PKA ativa StAR · colesterol → pregnenolona → androstenediona (exportada para granulosa)</div></div>
+    </div>
 
+    <div class="diff-step" data-neuro="femea" data-key="granulosa">
+      <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">FSH → Granulosa → Aromatase → E2</div><div class="diff-sub">FSH induz aromatase (CYP19A1) que converte androstenediona em estradiol</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="femea" data-key="fb_neg">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D85A30"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">FB negativo (diestro) <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">inibição tônica</span></div><div class="diff-sub">E2 basal + P4 elevada → ↓ Kiss1 no ARC → ↓ pulsos de GnRH</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="femea" data-key="fb_pos">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">FB positivo (proestro/estro) <span class="diff-badge" style="background:var(--green-50);color:var(--green-700)">surge pré-ovulatório</span></div><div class="diff-sub">E2 ALTO e sustentado → ↑ Kiss1 no RP3V → surge de LH → ovulação</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="femea" data-key="inibina">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Inibina B da granulosa <span class="diff-badge">seletivo FSH</span></div><div class="diff-sub">FB negativo que atua apenas sobre FSH na hipófise · LH não é afetado</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="femea" data-key="ovul">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div></div>
+      <div class="diff-card"><div class="diff-title">Ovulação · mecanismo molecular</div><div class="diff-sub">Pico de LH → COX-2 → PGs → colagenases → estigma · LH também retoma a meiose via ↓ AMPc</div></div>
+    </div>
+  </div>
+  <div class="diff-info empty" id="neuro-info-femea">Clique em uma etapa acima para ver a explicação detalhada.</div>
+
+  <div class="sp-prova" style="margin-top:14px"><strong>Dominância folicular:</strong> ocorre quando o folículo dominante adquire <span class="hl">receptores de LH na granulosa</span>, tornando-se autossuficiente · a partir daí, não depende mais do FSH e inibe o crescimento dos subordinados via inibina + estradiol.</div>
+
+  <div class="diff-memo" style="margin-top:16px">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">Two-cell: LH → Teca → Androstenediona → Granulosa (FSH) → Aromatase → E2<br>FB negativo: E2 basal + P4 → ↓ ARC Kiss1 → ↓ GnRH<br>FB positivo: E2 ALTO sustentado → ↑ RP3V Kiss1 → surge LH → ovulação<br>Inibina B da granulosa → FB seletivo só para FSH<br>Ovulação: LH → COX-2 → PGs → colagenases → estigma · retoma meiose</div>
+  </div>
+</div>
+
+<!-- MACHO -->
+<div class="neuro-panel" id="neuro-macho">
+  <div class="alert alert-exam" style="margin-bottom:14px">
+    <strong>🎯 Muito cobrado em provas:</strong> o macho <span class="hl">não tem surge pré-ovulatório</span> porque não possui a população RP3V funcionalmente proeminente. O eixo opera em modo tônico contínuo.
+  </div>
+
+  <p>No macho o eixo HPG é permanente e tônico: sustenta a espermatogênese e a esteroidogênese sem oscilações cíclicas. A inibina B é marcador clínico da função das células de Sertoli.</p>
+
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa para ver detalhes</p>
+  <div style="display:flex;flex-direction:column">
+
+    <div class="diff-step" data-neuro="macho" data-key="lh_ley">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">LH → Células de Leydig → Testosterona</div><div class="diff-sub">AMPc/PKA → StAR → colesterol → T · concentra no túbulo via ABP (20-100× plasma)</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="macho" data-key="t_fbk">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D85A30"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Testosterona · feedback negativo <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">inibição</span></div><div class="diff-sub">↓ frequência de GnRH (hipotálamo) + ↓ resposta ao GnRH (hipófise) · também convertida em DHT e E2</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="macho" data-key="fsh_ser">
+      <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">FSH → Células de Sertoli</div><div class="diff-sub">ABP, nutrição das espermátides, barreira hematotesticular, inibina B, AMH (no feto)</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="macho" data-key="inh_b">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Inibina B · feedback seletivo só para FSH <span class="diff-badge">marcador clínico</span></div><div class="diff-sub">Nível baixo → comprometimento do epitélio seminífero · útil no diagnóstico de infertilidade</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="macho" data-key="e2_macho">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
+      <div class="diff-card"><div class="diff-title">E2 no macho · via aromatase</div><div class="diff-sub">Sertoli e periferia aromatizam T → E2 · FB negativo adicional via ERα hipotalâmico</div></div>
+    </div>
+  </div>
+  <div class="diff-info empty" id="neuro-info-macho">Clique em uma etapa acima para ver a explicação detalhada.</div>
+
+  <div class="table-wrap" style="margin-top:16px"><table>
+    <thead><tr><th>Característica</th><th>Fêmea</th><th>Macho</th></tr></thead>
+    <tbody>
+      <tr><td>Padrão de GnRH</td><td>Tônico + surge pré-ovulatório</td><td>Tônico contínuo (sem surge)</td></tr>
+      <tr><td>RP3V funcional</td><td>Proeminente → media surge</td><td>Reduzido / ausente</td></tr>
+      <tr><td>Feedback positivo de E2</td><td>Presente → pico de LH → ovulação</td><td>Ausente</td></tr>
+      <tr><td>Hormônio chave da gônada</td><td>E2 (folicular) / P4 (lútea)</td><td>Testosterona</td></tr>
+      <tr><td>FB seletivo FSH</td><td>Inibina B (granulosa)</td><td>Inibina B (Sertoli)</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="diff-memo" style="margin-top:16px">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">LH → Leydig → T → FB negativo (hipotálamo + hipófise)<br>FSH → Sertoli → Inibina B → FB SELETIVO só para FSH<br>T → DHT (5α-redutase) + E2 (aromatase, Sertoli)<br>Macho: sem RP3V → sem surge → padrão tônico contínuo<br>Inibina B baixa = dano ao epitélio seminífero</div>
+  </div>
+</div>
+
+<!-- FOTOPERÍODISMO -->
+<div class="neuro-panel" id="neuro-foto">
+  <p>O fotoperíodo é o principal <em>zeitgeber</em> (sincronizador ambiental) da atividade reprodutiva em espécies sazonais · age via melatonina sobre os neurônios KNDy do ARC.</p>
+
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa da via neural para ver detalhes</p>
+  <div style="display:flex;flex-direction:column">
+
+    <div class="diff-step" data-neuro="foto" data-key="retina">
+      <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Fotorreceptores retinianos</div><div class="diff-sub">Células ganglionares com melanopsina (não cones/bastonetes)</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="foto" data-key="nsq">
+      <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Núcleo Supraquiasmático (NSQ)</div><div class="diff-sub">Trato retino-hipotalâmico → "relógio biológico"</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="foto" data-key="pineal">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Glândula Pineal → Melatonina</div><div class="diff-sub">Síntese exclusiva no escuro · duração codifica comprimento do dia</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="foto" data-key="kiss">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Melatonina → Kisspeptina (ARC) → GnRH</div><div class="diff-sub">Pars tuberalis + tanícitos · modulação da pulsatilidade de GnRH</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="foto" data-key="classif">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div></div>
+      <div class="diff-card"><div class="diff-title">Classificação reprodutiva sazonal <span class="diff-badge">espécies</span></div><div class="diff-sub">Dias curtos (ovinos/caprinos) × Dias longos (equinos/felinos) × Não-sazonal (bovinos/suínos)</div></div>
+    </div>
+  </div>
+  <div class="diff-info empty" id="neuro-info-foto">Clique em uma etapa acima para ver a explicação detalhada.</div>
+
+  <div class="table-wrap" style="margin-top:16px"><table>
+    <thead><tr><th>Classificação</th><th>Estímulo ativador</th><th>Melatonina</th><th>Espécies</th><th>Estação (HS)</th></tr></thead>
+    <tbody>
+      <tr><td>Poliéstrica estacional de dias curtos</td><td>Dias curtos (fotoperíodo decrescente)</td><td>Alta estimula eixo reprodutivo</td><td>Ovinos, caprinos, búfalos</td><td>Outono/inverno (mar-ago)</td></tr>
+      <tr><td>Poliéstrica estacional de dias longos</td><td>Dias longos (fotoperíodo crescente)</td><td>Baixa estimula eixo reprodutivo</td><td>Equinos, felinos</td><td>Primavera/verão (set-fev)</td></tr>
+      <tr><td>Poliéstrica não estacional</td><td>Baixa influência do fotoperíodo</td><td>Sem efeito dominante</td><td>Bovinos, suínos</td><td>Ano todo</td></tr>
+      <tr><td>Monoéstrica não estacional</td><td>Independente do fotoperíodo</td><td>Sem influência relevante</td><td>Caninos (cadela)</td><td>Ano todo</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sp-info" style="margin-top:12px"><strong>Observação:</strong> Felinos são <span class="hl">poliéstricos estacionais de dias longos</span>. Caninos são <span class="hl">monoéstricos não estacionais</span>. Essa diferença é fundamental na clínica e frequentemente explorada em provas.</div>
+
+  <p style="margin-top:16px"><strong>Aplicações práticas:</strong></p>
+  <ul>
+    <li><strong>Implante de melatonina (ovinos/caprinos):</strong> simula dias curtos → antecipa estação 6-8 semanas · 30-40 dias antes da estação desejada.</li>
+    <li><strong>Luz artificial (éguas):</strong> 14,5-16 h/dia → antecipa ciclicidade 6-10 semanas · pode ser pulso único noturno ("flash").</li>
+    <li><strong>Alternância dia longo/curto (carneiros):</strong> 2-3 meses dias longos → dias curtos → estimula espermatogênese fora da estação.</li>
+  </ul>
+
+  <div class="sp-prova"><strong>Ponto clássico de prova:</strong> melatonina estimula pequenos ruminantes mas NÃO ativa equinos · ovinos/caprinos = dias curtos · égua/gata = dias longos · caninos = monoéstricos não estacionais.</div>
+
+  <div class="diff-memo" style="margin-top:16px">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">Retina (melanopsina) → NSQ → Pineal → Melatonina (só no escuro)<br>Duração do pulso de melatonina = comprimento da noite<br>Melatonina → Kiss1 (ARC) → GnRH → LH/FSH<br>Dias curtos ATIVAM ovinos/caprinos · Dias longos ATIVAM equinos/felinos<br>Bovinos/suínos não estacionais · Cadela monoéstrica não estacional</div>
+  </div>
 </div>
 
 <!-- EFEITO MACHO -->
-<div class="neuro-panel" id="neuro-macho">
+<div class="neuro-panel" id="neuro-efmacho">
+  <p>Fenômeno neuroendócrino em que a <strong>introdução súbita de um macho</strong> em fêmeas em anestro sazonal induz ovulação e retorno à ciclicidade · ativação dos neurônios KNDy via estímulos olfatórios.</p>
 
-<h4>Efeito Macho (Male Effect / Ram Effect / Buck Effect)</h4>
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa para ver detalhes</p>
+  <div style="display:flex;flex-direction:column">
 
-<p>Fenômeno neuroendócrino em que a <strong>introdução súbita de um macho</strong> em fêmeas em anestro sazonal induz ovulação e retorno à ciclicidade.</p>
+    <div class="diff-step" data-neuro="efmacho" data-key="fero">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Feromônios do macho</div><div class="diff-sub">16-androstenos e ácidos graxos ramificados → órgão vomeronasal (Jacobson)</div></div>
+    </div>
 
-<p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa para ver detalhes</p>
-<div style="display:flex;flex-direction:column">
+    <div class="diff-step" data-neuro="efmacho" data-key="gnrh">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Hipotálamo → KNDy → GnRH → pico de LH</div><div class="diff-sub">Estímulos sensoriais ativam KNDy → ↑ pulsatilidade de GnRH → pico de LH em 12-48h</div></div>
+    </div>
 
-  <div class="diff-step" data-neuro="macho" data-key="fero">
-    <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">Feromônios do macho</div><div class="diff-sub">16-androstenos, ácidos graxos ramificados → órgão vomeronasal</div></div>
+    <div class="diff-step" data-neuro="efmacho" data-key="ov1">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">1ª ovulação <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">silenciosa</span></div><div class="diff-sub">Sem estro · CL de vida curta (~5-6 dias) · luteólise precoce por PGF2α (sem priming de P4)</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="efmacho" data-key="ov2">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">2ª ovulação (~17-24 dias)</div><div class="diff-sub">Estro variável · CL pode ser normal ou curto</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="efmacho" data-key="ov3">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
+      <div class="diff-card"><div class="diff-title">3ª ovulação → ciclo normal <span class="diff-badge" style="background:var(--green-50);color:var(--green-700)">fértil</span></div><div class="diff-sub">Estro evidente · CL funcional · sincronização em ~18-21 dias</div></div>
+    </div>
   </div>
+  <div class="diff-info empty" id="neuro-info-efmacho">Clique em uma etapa acima para ver a explicação detalhada.</div>
 
-  <div class="diff-step" data-neuro="macho" data-key="gnrh">
-    <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">Hipotálamo → GnRH → pico de LH</div><div class="diff-sub">Estímulos sensoriais → aumento da pulsatilidade de GnRH → LH em 24–48h</div></div>
+  <div class="table-wrap" style="margin-top:14px"><table>
+    <thead><tr><th>Espécie</th><th>Eficiência</th><th>Observação</th></tr></thead>
+    <tbody>
+      <tr><td>Ovinos</td><td>Muito eficiente (60-80% ovulam)</td><td>Base dos protocolos de sincronização natural</td></tr>
+      <tr><td>Caprinos</td><td>Muito eficiente</td><td>Odor hircino especialmente potente</td></tr>
+      <tr><td>Equinos</td><td>Limitado / inconsistente</td><td>Não substituiu protocolos hormonais</td></tr>
+      <tr><td>Bovinos</td><td>Bioestimulatório moderado</td><td>Reduz intervalo pós-parto em alguns sistemas</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="diff-memo" style="margin-top:16px">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">Isolamento ≥3 semanas → macho intacto → feromônios → KNDy → GnRH → LH → ovulação<br>1ª ovulação SILENCIOSA (CL curto 5-6d) · 2ª variável · 3ª fértil<br>Vasectomizado 17-21d antes dos férteis = sincronização natural<br>1ª ovulação silenciosa: sem priming de P4 → PGF2α precoce → CL curto</div>
   </div>
-
-  <div class="diff-step" data-neuro="macho" data-key="ov1">
-    <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">1ª ovulação <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">silenciosa</span></div><div class="diff-sub">Sem estro · CL de vida curta (~5–6 dias) · luteólise precoce por PGF2α</div></div>
-  </div>
-
-  <div class="diff-step" data-neuro="macho" data-key="ov2">
-    <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">2ª ovulação (~17–24 dias)</div><div class="diff-sub">Estro variável · CL pode ser normal</div></div>
-  </div>
-
-  <div class="diff-step" data-neuro="macho" data-key="ov3">
-    <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
-    <div class="diff-card"><div class="diff-title">3ª ovulação → ciclo normal <span class="diff-badge" style="background:var(--green-50);color:var(--green-700)">fértil</span></div><div class="diff-sub">Estro evidente · CL funcional · sincronização em ~18–21 dias</div></div>
-  </div>
-</div>
-<div class="diff-info empty" id="neuro-info-macho">Clique em uma etapa acima para ver a explicação detalhada.</div>
-
-<p style="font-size:calc(12px * var(--font-scale));font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin:16px 0 10px">Eficiência por espécie</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px">
-  <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));font-weight:700;margin-bottom:4px">Ovinos</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">Muito eficiente</div><div style="font-size:calc(11px * var(--font-scale));color:var(--green-600);font-weight:600">60-80% ovulam</div></div>
-  <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));font-weight:700;margin-bottom:4px">Caprinos</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">Muito eficiente</div><div style="font-size:calc(11px * var(--font-scale));color:var(--green-600);font-weight:600">Odor hircino potente</div></div>
-  <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));font-weight:700;margin-bottom:4px">Equinos</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">Limitado</div><div style="font-size:calc(11px * var(--font-scale));color:var(--amber-600);font-weight:600">Inconsistente</div></div>
-  <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));font-weight:700;margin-bottom:4px">Bovinos</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">Bioestimulatório</div><div style="font-size:calc(11px * var(--font-scale));color:var(--amber-600);font-weight:600">Reduz intervalo PP</div></div>
-</div>
-
-<div class="sp-memo" style="margin-top:16px"><div class="sp-memo-label">Você precisa saber</div><div class="sp-memo-text">Isolamento &ge;3 semanas → macho intacto → feromônios → GnRH → LH → ovulação<br>1ª ovulação SILENCIOSA (CL curto 5-6d) → 2ª variável → 3ª fértil<br>Prática: vasectomizado 17-21d antes dos férteis = sincronização natural</div></div>
-
 </div>
 
 <!-- ANESTRO LACTACIONAL -->
 <div class="neuro-panel" id="neuro-anestro">
+  <p>Quiescência reprodutiva pós-parto associada à lactação · estratégia fisiológica de priorização metabólica · a sucção suprime a pulsatilidade de GnRH via opióides endógenos (reforçam a dinorfina KNDy).</p>
 
-<h4>Anestro Lactacional</h4>
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada mecanismo para ver detalhes</p>
+  <div style="display:flex;flex-direction:column">
 
-<p>Período de quiescência reprodutiva pós-parto associado à lactação. Estratégia fisiológica: prioridade metabólica direcionada para produção de leite e cuidado parental.</p>
+    <div class="diff-step" data-neuro="anestro" data-key="succao">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Sucção / Amamentação</div><div class="diff-sub">Estímulos aferentes do mamilo → hipotálamo · gatilho central</div></div>
+    </div>
 
-<p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada mecanismo para ver detalhes</p>
-<div style="display:flex;flex-direction:column">
+    <div class="diff-step" data-neuro="anestro" data-key="opioides">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Opióides endógenos + dopamina <span class="diff-badge">principal mecanismo</span></div><div class="diff-sub">β-endorfina reforça dinorfina KNDy → ↓ pulsatilidade de GnRH</div></div>
+    </div>
 
-  <div class="diff-step" data-neuro="anestro" data-key="succao">
-    <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">Sucção / Amamentação</div><div class="diff-sub">Estímulos aferentes do mamilo → hipotálamo</div></div>
+    <div class="diff-step" data-neuro="anestro" data-key="lh">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">LH basal → sem ovulação</div><div class="diff-sub">FSH menos afetado · folículos crescem mas não maturam</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="anestro" data-key="ben">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D85A30"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Balanço Energético Negativo (BEN) <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">amplificador</span></div><div class="diff-sub">Leptina↓, IGF-I↓, insulina↓ → reforçam inibição de GnRH</div></div>
+    </div>
+
+    <div class="diff-step" data-neuro="anestro" data-key="manejo">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
+      <div class="diff-card"><div class="diff-title">Manejo para retomada <span class="diff-badge" style="background:var(--green-50);color:var(--green-700)">soluções</span></div><div class="diff-sub">Desmame, separação 48h, IATF com P4+E2, flushing nutricional</div></div>
+    </div>
   </div>
+  <div class="diff-info empty" id="neuro-info-anestro">Clique em um mecanismo acima para ver a explicação detalhada.</div>
 
-  <div class="diff-step" data-neuro="anestro" data-key="opioides">
-    <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">Opióides endógenos + Dopamina <span class="diff-badge">principal mecanismo</span></div><div class="diff-sub">β-endorfina inibe pulsatilidade de GnRH</div></div>
+  <div class="table-wrap" style="margin-top:14px"><table>
+    <thead><tr><th>Espécie</th><th>Duração</th><th>Prolongam</th><th>Reduzem</th></tr></thead>
+    <tbody>
+      <tr><td>Vaca leiteira</td><td>40-60 dias</td><td>BEN severo, ECC &lt;2,5, alta produção</td><td>Manejo nutricional, ECC ≥3,0</td></tr>
+      <tr><td>Vaca de corte</td><td>90-120+ dias</td><td>Amamentação contínua, primípara</td><td>Desmame precoce, separação 48h</td></tr>
+      <tr><td>Égua</td><td>Variável</td><td>Lactação + anestro sazonal</td><td>"Cio do potro" (5-12d pós-parto)</td></tr>
+      <tr><td>Porca</td><td>5-7 dias pós-desmame</td><td>Perda &gt;10% peso, primípara</td><td>Desmame 21-28d, contato com varrão</td></tr>
+      <tr><td>Cadela</td><td>Meses</td><td>Ninhada grande, lactação prolongada</td><td>Retorno variável (4-12 meses)</td></tr>
+      <tr><td>Ovelha / Cabra</td><td>Sobreposto à sazonalidade</td><td>Lactação + fotoperíodo crescente</td><td>Desmame precoce + efeito macho</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sp-prova" style="margin-top:14px"><strong>Questão típica:</strong> "Vaca Nelore primípara, ECC 2,0, amamentando continuamente, 120 dias pós-parto sem ciclicidade. Principal mecanismo?" → sucção → β-endorfina → ↓ GnRH/LH + BEN (leptina↓/IGF-I↓) → anovulação. Manejo: IATF + flushing + separação temporária do bezerro.</div>
+
+  <div class="diff-memo" style="margin-top:16px">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">Sucção → β-endorfina → reforça dinorfina KNDy → ↓ GnRH → LH basal → SEM ovulação<br>BEN amplifica: leptina↓ + IGF-I↓ → hipotálamo "sem energia para gestar"<br>Vaca corte 90-120d · Vaca leite 40-60d · Porca 5-7d pós-desmame<br>IATF com P4+E2 funciona em anestro profundo · desmame/separação 48h acelera</div>
   </div>
-
-  <div class="diff-step" data-neuro="anestro" data-key="lh">
-    <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">LH basal → sem ovulação</div><div class="diff-sub">FSH menos afetado · folículos crescem mas não completam maturação</div></div>
-  </div>
-
-  <div class="diff-step" data-neuro="anestro" data-key="ben">
-    <div class="diff-spine"><div class="diff-dot" style="background:#D85A30"></div><div class="diff-line"></div></div>
-    <div class="diff-card"><div class="diff-title">Balanço Energético Negativo (BEN) <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">amplificador</span></div><div class="diff-sub">Leptina↓, IGF-I↓, insulina↓ → reforçam inibição de GnRH</div></div>
-  </div>
-
-  <div class="diff-step" data-neuro="anestro" data-key="manejo">
-    <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
-    <div class="diff-card"><div class="diff-title">Manejo para retomada <span class="diff-badge" style="background:var(--green-50);color:var(--green-700)">soluções</span></div><div class="diff-sub">Desmame, separação 48h, IATF com P4+E2, flushing nutricional</div></div>
-  </div>
-</div>
-<div class="diff-info empty" id="neuro-info-anestro">Clique em um mecanismo acima para ver a explicação detalhada.</div>
-
-<p style="font-size:calc(12px * var(--font-scale));font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin:16px 0 10px">Duração por espécie</p>
-<div class="table-wrap"><table>
-<thead><tr><th>Espécie</th><th>Duração típica</th><th>Fatores que prolongam</th><th>Fatores que reduzem</th></tr></thead>
-<tbody>
-<tr><td>Vaca leiteira</td><td>40–60 dias</td><td>BEN severo, ECC &lt;2,5, alta produção</td><td>Manejo nutricional, ECC &ge;3,0</td></tr>
-<tr><td>Vaca de corte</td><td>90–120+ dias</td><td>Amamentação contínua, baixa nutrição, primípara</td><td>Desmame precoce, separação 48h</td></tr>
-<tr><td>Égua</td><td>Variável</td><td>Lactação + anestro sazonal sobrepostos</td><td>"Cio do potro" (5–12d pós-parto)</td></tr>
-<tr><td>Porca</td><td>5–7 dias pós-desmame</td><td>Perda &gt;10% peso, primípara</td><td>Desmame 21–28d, contato com varrão</td></tr>
-<tr><td>Cadela</td><td>Meses</td><td>Ninhada grande, lactação prolongada</td><td>Retorno variável (4–12 meses)</td></tr>
-<tr><td>Ovelha/Cabra</td><td>Sobreposto à sazonalidade</td><td>Lactação + fotoperíodo crescente</td><td>Desmame precoce + efeito macho</td></tr>
-</tbody>
-</table></div>
-
-<div class="sp-prova" style="margin-top:14px"><strong>Pergunta típica:</strong> "Vaca Nelore primípara, ECC 2,0, amamentando continuamente, 120 dias pós-parto sem ciclicidade. Qual o principal mecanismo do anestro?" → Sucção contínua suprime GnRH/LH via opióides endógenos + BEN reduz leptina/IGF-I. Manejo: IATF + melhoria nutricional + separação temporária do bezerro.</div>
-
-<div class="sp-memo" style="margin-top:14px"><div class="sp-memo-label">Você precisa saber</div><div class="sp-memo-text">Sucção → opióides → ↓GnRH → LH basal → SEM ovulação<br>BEN amplifica: leptina↓ + IGF-I↓ → hipotálamo "sem energia para gestar"<br>Vaca corte: 90-120d | Vaca leite: 40-60d | Porca: 5-7d pós-desmame<br>IATF com P4+E2 funciona em anestro profundo | Desmame/separação 48h acelera</div></div>
-
 </div>
 
 <style>
 .neuro-panel { display: none; }
 .neuro-panel.active { display: block; }
 </style>
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
 
 `
 },
@@ -14220,26 +14383,48 @@ window.infSetSp = function(sp, el){
     }
   };
   var NEURO = {
-    foto: {
-      retina: 'Os <strong>fotorreceptores retinianos</strong> envolvidos na regulação do fotoperíodo NÃO são os cones ou bastonetes, mas sim <span class="hl">células ganglionares especializadas contendo melanopsina</span>. Estas projetam fibras pelo trato retino-hipotalâmico até o NSQ, transmitindo informação sobre a duração do dia independentemente da visão formal.',
-      nsq: 'O <strong>Núcleo Supraquiasmático (NSQ)</strong> é o "relógio biológico" central · principal oscilador circadiano dos mamíferos. Envia projeções ao núcleo paraventricular → medula espinhal (coluna intermédio-lateral) → gânglio cervical superior → <span class="hl">glândula pineal</span>, controlando a secreção de melatonina de acordo com o ciclo claro/escuro.',
-      pineal: 'A <strong>melatonina</strong> é sintetizada pela pineal <span class="hl">exclusivamente durante o período escuro</span> (N-acetil-5-metoxitriptamina). Dias curtos = noites longas = <span class="hl">duração prolongada</span> da secreção. Dias longos = noites curtas = duração curta. A DURAÇÃO do pulso de melatonina é o sinal que codifica o comprimento do dia (não a amplitude).',
-      kiss: 'A melatonina modula o eixo HPG <span class="hl">indiretamente</span>, via pars tuberalis (TSH) e mecanismos hipotalâmicos locais (tanícitos → regulação de T3/T4). Essas vias influenciam os <strong>neurônios de kisspeptina</strong> no núcleo arcuato, que são o <span class="hl">principal estimulador dos neurônios de GnRH</span>, regulando pulsatilidade de GnRH → LH/FSH.',
-      classif: '<strong>Poliéstricas de dias curtos</strong> (ovinos, caprinos, búfalos): melatonina alta ATIVA o eixo. <strong>Poliéstricas de dias longos</strong> (equinos): melatonina baixa ativa o eixo. <strong>Não-estacionais</strong> (bovinos, suínos, caninos): fotoperíodo tem pouca influência. <span class="hl">Ponto de prova: melatonina estimula pequenos ruminantes mas NÃO ativa equinos.</span>'
+    hpg: {
+      nkb: 'A <strong>Neurocinina B (NKB)</strong> é o sinal de INÍCIO do pulso de GnRH. Age via receptor NK3R (acoplado a Gq) nos próprios neurônios KNDy, disparando potenciais de ação sincronizados em toda a população. <span class="hl">Mutações em TAC3 ou TAC3R causam hipogonadismo hipogonadotrófico em humanos</span>, confirmando o papel essencial.',
+      kiss: 'A <strong>kisspeptina</strong> é o output principal dos neurônios KNDy. Após a sincronização pelo NKB, os axônios KNDy liberam kisspeptina nos dendritos dos neurônios de GnRH (receptor GPR54/Kiss1R) → <span class="hl">pulso de GnRH</span> liberado na circulação porta-hipofisária. Inativação de Kiss1 ou Kiss1R → ausência de puberdade e infertilidade.',
+      dyn: 'A <strong>dinorfina A</strong> age via receptor κ-opióide (KOR) e TERMINA o pulso ao inibir a atividade sincronizada dos KNDy com curto retardo → cessa a liberação de Kiss e NKB → intervalo refratário até o próximo pulso. <span class="hl">A P4 (fase lútea, gestação, anestro lactacional) amplifica o sinal dinorfínico</span> → aumenta o intervalo entre pulsos → ↓ frequência GnRH/LH.',
+      gnrh: 'O <strong>GnRH</strong> chega à hipófise anterior via circulação porta-hipofisária e age nas células gonadotróficas (GnRHR). A razão LH:FSH é determinada pela frequência: alta (~60-90 min, folicular) → <span class="hl">favorece LH</span>; baixa (~3-4h, lútea) → <span class="hl">favorece FSH</span>. LH t½ ~1h; FSH t½ ~5h. Isso explica por que FSH começa a subir no final do diestro antes do LH.',
+      arc_rp3v: 'Há <strong>duas populações de neurônios kisspeptínicos</strong>: <span class="hl">ARC</span> (núcleo arqueado) contém os KNDy completos e faz o pulso tônico · E2 inibe (FB negativo). <span class="hl">RP3V</span> (área pré-óptica rostral) contém apenas kisspeptina e media o surge pré-ovulatório · E2 estimula (FB positivo). O RP3V é proeminente em fêmeas e reduzido em machos → explica por que o macho não tem surge.'
+    },
+    femea: {
+      teca: 'O <strong>LH age nas células da teca interna</strong> via receptor acoplado a AMPc → ativação da StAR (transporta colesterol para a mitocôndria). Via esteroidogênica: colesterol → pregnenolona → progesterona → <span class="hl">androstenediona</span>. A androstenediona é exportada para a célula da granulosa adjacente (não há aromatase na teca).',
+      granulosa: 'O <strong>FSH age nas células da granulosa</strong> via FSHR. Induz e upregula a enzima <span class="hl">aromatase (CYP19A1)</span>, que converte a androstenediona (vinda da teca) em <strong>estradiol (E2)</strong>. O E2 é liberado para a circulação e para o líquido folicular. Sem LH não há substrato; sem FSH não há aromatase.',
+      fb_neg: '<strong>Feedback negativo tônico</strong> no diestro: E2 em concentração basal + P4 elevada agem nos neurônios KNDy do ARC (via ERα e PR) <span class="hl">suprimindo a expressão de Kiss1</span> e reduzindo a frequência dos pulsos de GnRH. Freio fisiológico do eixo durante a fase lútea. P4 age amplificando o sinal dinorfínico. Base dos protocolos com CIDR/P4 em IATF.',
+      fb_pos: '<strong>Feedback positivo pré-ovulatório:</strong> quando E2 atinge concentração <span class="hl">alta E sustentada</span> (≥24-36h no bovino), o efeito inverte → estimula Kiss1 no <span class="hl">RP3V</span> e reduz a inibição do ARC. Resultado: grande pulso de GnRH → surge de LH → ovulação. O dimorfismo sexual é chave: fêmeas têm RP3V proeminente; machos não.',
+      inibina: 'A <strong>inibina B</strong> é produzida pelas células da granulosa em resposta ao FSH. Age na hipófise exercendo <span class="hl">feedback negativo seletivo sobre FSH</span>, sem afetar o LH. Isso permite que o LH suba (pico pré-ovulatório) enquanto o FSH é suprimido. Na clínica, inibina B baixa indica comprometimento da granulosa.',
+      ovul: 'Pico de LH → receptor LHCGR na granulosa → AMPc/PKA → cascata ovulatória: (1) <span class="hl">COX-2 → PGs (PGE₂, PGF₂α)</span> → vasodilatação + contração muscular; (2) <span class="hl">colagenases (MMPs) + plasmina</span> → degradação da parede folicular → estigma; (3) P4 local → expansão do cumulus (hialuronato); (4) <span class="hl">↓ AMPc no oócito</span> via fechamento de gap junctions → ativa MPF → retoma Meiose I → oócito II em Metáfase II.'
     },
     macho: {
-      fero: 'O macho libera <strong>feromônios</strong> (principalmente 16-androstenos e ácidos graxos ramificados do velo/pelo). Em caprinos, o <span class="hl">odor hircino</span> é particularmente potente. Detecção pelo <strong>órgão vomeronasal (Jacobson)</strong> + mucosa olfatória → vias aferentes ao hipotálamo.',
-      gnrh: 'Estímulos sensoriais (olfatórios + visuais + auditivos) → hipotálamo → <span class="hl">liberação pulsátil aguda de GnRH</span> → pico pré-ovulatório de LH em <span class="hl">12–48h após a introdução do macho</span> → ovulação. É um exemplo notável de como sinais sensoriais externos podem disparar eventos endócrinos rápidos.',
-      ov1: 'A <strong>1ª ovulação é SILENCIOSA</strong> (sem estro comportamental) e forma um <span class="hl">CL de vida curta (5–6 dias)</span>. Há luteólise precoce mediada por PGF2α uterina devido à ausência de priming progesterônico adequado. <span class="hl">Importante ponto de prova.</span>',
-      ov2: 'A <strong>2ª ovulação</strong> ocorre ~17–24 dias após o estímulo do macho. O estro pode ou não estar presente; o CL pode ser de vida curta ou normal. É uma fase de transição antes do ciclo totalmente normal.',
-      ov3: 'A <strong>3ª ovulação</strong> apresenta <span class="hl">estro evidente + CL funcional + ciclo fértil</span>. O resultado final é uma sincronização das fêmeas do lote em aproximadamente 18–21 dias após a introdução do macho · base dos protocolos naturais de sincronização com machos vasectomizados.'
+      lh_ley: 'O <strong>LH</strong> liga ao receptor LHCGR nas <span class="hl">células de Leydig</span> (interstício testicular) → AMPc/PKA → ativação da StAR → colesterol chega à mitocôndria interna → pregnenolona (CYP11A1) → <strong>testosterona</strong>. A T difunde para o lúmen do túbulo seminífero, onde atinge concentrações <span class="hl">20-100× maiores que no plasma</span> (via ABP/Sertoli) — essencial para a espermatogênese.',
+      t_fbk: 'A <strong>testosterona</strong> exerce feedback negativo em dois níveis: (1) <span class="hl">Hipotálamo</span> → AR nos KNDy do ARC → ↓ frequência de GnRH; (2) <span class="hl">Hipófise</span> → AR nas gonadotróficas → ↓ resposta ao GnRH. A T é substrato de duas enzimas periféricas: 5α-redutase → <strong>DHT</strong> (virilização genitália externa, próstata) · aromatase → <strong>E2</strong> (feedback negativo adicional, densidade óssea).',
+      fsh_ser: 'O <strong>FSH</strong> age via FSHR apenas nas <span class="hl">células de Sertoli</span> (único tipo celular no túbulo seminífero que o expressa). Funções induzidas: (1) <strong>ABP</strong> (androgen-binding protein) concentra T no lúmen; (2) nutrição e suporte das espermátides; (3) barreira hematotesticular (tight junctions); (4) produção de <strong>inibina B</strong>; (5) AMH no feto (regressão dos ductos de Müller).',
+      inh_b: 'A <strong>inibina B</strong> é glicoproteína dimérica secretada pelas Sertoli em resposta ao FSH. Exerce <span class="hl">feedback negativo seletivo apenas sobre FSH</span>, sem afetar o LH. Clinicamente, <span class="hl">inibina B baixa = comprometimento do epitélio seminífero</span> · útil no diagnóstico de azoospermia e infertilidade masculina em cães, garanhões e touros.',
+      e2_macho: 'Parte da <strong>testosterona é aromatizada em E2</strong> pelas células de Sertoli e tecidos periféricos (fígado, gordura, cérebro). O E2 no macho exerce <span class="hl">feedback negativo via ERα</span> no hipotálamo e hipófise — quantitativamente comparável ao efeito da própria T. Em touros e garanhões, o E2 também participa da espermatogênese (ER nos espermatócitos).'
+    },
+    foto: {
+      retina: 'Os <strong>fotorreceptores retinianos</strong> envolvidos na regulação do fotoperíodo NÃO são cones ou bastonetes, mas sim <span class="hl">células ganglionares especializadas contendo melanopsina</span>. Projetam pelo trato retino-hipotalâmico até o NSQ, transmitindo informação sobre a duração do dia independentemente da visão formal.',
+      nsq: 'O <strong>Núcleo Supraquiasmático (NSQ)</strong> é o "relógio biológico" central. Envia projeções ao núcleo paraventricular → medula espinhal → gânglio cervical superior → <span class="hl">glândula pineal</span>. A via noradrenérgica do GCS inibe a pineal de dia e ativa à noite.',
+      pineal: 'A <strong>melatonina</strong> é sintetizada pela pineal <span class="hl">exclusivamente no escuro</span>. A DURAÇÃO do pulso de melatonina codifica o comprimento da noite — e portanto da estação. Dias curtos = noites longas = pulso longo. Dias longos = noites curtas = pulso curto.',
+      kiss: 'A melatonina modula o eixo HPG <span class="hl">indiretamente</span>, via pars tuberalis (TSH) e tanícitos hipotalâmicos (regulação local de T3/T4). Essas vias convergem para modular os <strong>neurônios KNDy do ARC</strong>. Receptores MT1R e MT2R estão presentes nos KNDy.',
+      classif: '<strong>Poliéstricas de dias curtos</strong> (ovinos, caprinos, búfalos): melatonina alta ATIVA o eixo. <strong>Poliéstricas de dias longos</strong> (equinos, felinos): melatonina baixa ativa o eixo. <strong>Não-estacionais</strong> (bovinos, suínos): fotoperíodo sem influência dominante. <strong>Monoéstricos não-estacionais</strong> (cadela): independente da variação luminosa.'
+    },
+    efmacho: {
+      fero: 'O macho libera <strong>feromônios</strong> (16-androstenos, ácidos graxos ramificados do velo). Em caprinos, o <span class="hl">odor hircino</span> é especialmente potente. Detecção pelo <strong>órgão vomeronasal (Jacobson)</strong> + mucosa olfatória → vias aferentes ao hipotálamo. Os sinais olfatórios ativam os neurônios KNDy do ARC → ↑ pulsatilidade de GnRH.',
+      gnrh: 'Estímulos sensoriais (olfatórios + visuais + auditivos) → hipotálamo → <span class="hl">ativação dos neurônios KNDy → liberação pulsátil aguda de GnRH</span> → pico pré-ovulatório de LH em 12-48h → ovulação. Exemplo de como sinais sensoriais externos disparam eventos endócrinos via kisspeptina.',
+      ov1: 'A <strong>1ª ovulação é SILENCIOSA</strong> (sem estro) e forma um <span class="hl">CL de vida curta (5-6 dias)</span>. A ausência de priming progesterônico prévio leva à luteólise precoce mediada por PGF2α uterina. Sem P4 prévia, os receptores de ocitocina do endométrio não são suprimidos → PGF2α precoce → CL regride. <span class="hl">Clássico ponto de prova.</span>',
+      ov2: 'A <strong>2ª ovulação</strong> (~17-24 dias) já tem algum priming por P4 do CL curto anterior → CL pode ser mais duradouro. Estro pode ou não estar presente. Fase de transição.',
+      ov3: 'A <strong>3ª ovulação</strong> tem <span class="hl">estro evidente + CL funcional + ciclo fértil</span>. O priming por P4 da 2ª ovulação foi suficiente para suprimir os receptores de ocitocina → PGF2α no tempo correto (d15-17). Resultado: sincronização em ~18-21 dias → base dos protocolos com machos vasectomizados.'
     },
     anestro: {
-      succao: 'O estímulo da <strong>sucção/amamentação</strong> é percebido por vias aferentes sensoriais do mamilo, que ascendem ao hipotálamo. Este é o gatilho central do anestro lactacional: sem sucção, o mecanismo se desfaz rapidamente (como se vê no desmame precoce).',
-      opioides: 'A sucção aumenta <span class="hl">β-endorfina (opióide endógeno)</span> e modula a transmissão dopaminérgica no hipotálamo. Os opióides <strong>inibem a pulsatilidade de GnRH</strong>, reduzindo a frequência dos pulsos de LH para níveis insuficientes para o crescimento folicular final e ovulação. Em suínos e caninos, a <span class="hl">prolactina elevada</span> também contribui.',
-      lh: 'O <strong>LH permanece em níveis basais</strong> (pulsatilidade suprimida). O FSH é menos afetado, permitindo crescimento folicular inicial, mas os folículos não completam a maturação sem os pulsos adequados de LH. Resultado: <span class="hl">anovulação persistente</span> enquanto a sucção continuar.',
-      ben: 'O <strong>Balanço Energético Negativo (BEN)</strong> pós-parto reforça o anestro: <span class="hl">leptina↓, IGF-I↓, insulina↓</span> sinalizam para o hipotálamo que as reservas energéticas são insuficientes para nova gestação. Amplifica a supressão de GnRH já imposta pelos opióides. Comum em vacas de alta produção e primíparas com ECC baixo.',
-      manejo: 'Opções de manejo: <strong>Desmame precoce</strong> (retorno ao estro em 4–10 dias); <strong>Separação temporária 48–72h</strong> (~60% retornam ao cio); <strong>Amamentação 1x/dia</strong> durante IATF; <strong>Flushing nutricional</strong> pré-parto (ECC ≥3,0); <strong>IATF com P4+E2</strong> — a progesterona exógena "reinicia" o eixo; sua retirada mimetiza luteólise → pico de LH → ovulação. <span class="hl">Funciona mesmo em anestro profundo.</span>'
+      succao: 'O estímulo da <strong>sucção/amamentação</strong> é percebido por vias aferentes do mamilo, que ascendem via medula espinhal ao hipotálamo. É o gatilho central do anestro lactacional: sem sucção, o mecanismo se desfaz rapidamente (desmame → retorno ao cio em 4-10 dias em vacas).',
+      opioides: 'A sucção aumenta <span class="hl">β-endorfina (opioide endógeno)</span> no hipotálamo. Os opioides reforçam a ação da dinorfina sobre os KNDy → ampliam o intervalo entre pulsos de GnRH → LH insuficiente. Em suínos e caninos, a <span class="hl">prolactina elevada</span> também contribui para a supressão do eixo.',
+      lh: 'O <strong>LH permanece basal</strong> (pulsatilidade suprimida). O FSH é menos afetado, permitindo crescimento folicular inicial — mas os folículos não completam a maturação sem pulsos adequados de LH. <span class="hl">Anovulação persistente</span> enquanto a sucção continuar. Folículos crescem até 8-12 mm mas não ovulam.',
+      ben: 'O <strong>BEN pós-parto</strong> reforça o anestro: <span class="hl">leptina↓, IGF-I↓, insulina↓</span> sinalizam aos neurônios KNDy que reservas energéticas são insuficientes para nova gestação. Leptina age diretamente nos KNDy (LepR) estimulando Kiss1 — quando leptina cai, Kiss1 cai → menos GnRH. Relevante em vacas de alta produção (BEN severo nos primeiros 30-60 dias pós-parto).',
+      manejo: 'Opções: <strong>Desmame precoce</strong> (retorno em 4-10 dias); <strong>Separação 48-72h</strong> (~60% retornam ao cio); <strong>Amamentação 1×/dia</strong> durante IATF; <strong>Flushing nutricional</strong> pré-parto (ECC ≥3,0); <strong>IATF com P4+E2</strong> — P4 exógena reinicia o eixo; sua retirada mimetiza luteólise → pico de LH. <span class="hl">Funciona mesmo em anestro profundo.</span>'
     }
   };
 
