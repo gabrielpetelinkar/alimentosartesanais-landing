@@ -2345,14 +2345,13 @@ Bulbo da glande: travamento copulatório (cão)
 `
 },
 {
-  id: 'gametogenese',
+  id: 'diferenciacao-gonadal',
   num: 2,
-  title: 'Gametogênese',
-  icon: '#i-microscope',
+  title: 'Diferenciação Gonadal',
+  icon: '#i-embryo',
   content: `
 
-<h3>1.1 Diferênciação Gonadal</h3>
-<p>A gônada indiferenciada origina-se da crista genital e possui dois potenciais de diferênciação: testículo ou ovário. O cromossomo sexual determina o destino gonadal durante o desenvolvimento embrionário.</p>
+<p>A gônada indiferenciada origina-se da crista genital e possui dois potenciais de diferenciação: testículo ou ovário. O cromossomo sexual determina o destino gonadal durante o desenvolvimento embrionário.</p>
 
 <div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap" id="diffTabs">
   <button class="diff-tab active" onclick="setDiffTab('xy',this)">Macho (XY)</button>
@@ -2457,7 +2456,14 @@ Bulbo da glande: travamento copulatório (cão)
   </div>
 </div>
 
-<h3>1.2 Gametogênese</h3>
+`
+},
+{
+  id: 'gametogenese',
+  num: 3,
+  title: 'Gametogênese',
+  icon: '#i-microscope',
+  content: `
 
 <div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap" id="gametTabs">
   <button class="diff-tab active" onclick="setGametTab('oogenese',this)">Oogênese</button>
@@ -2763,7 +2769,7 @@ Bulbo da glande: travamento copulatório (cão)
 },
 {
   id: 'neuroendocrinologia',
-  num: 3,
+  num: 4,
   title: 'Neuroendocrinologia da Reprodução',
   icon: '#i-flask',
   content: `
@@ -2954,7 +2960,7 @@ Bulbo da glande: travamento copulatório (cão)
 },
 {
   id: 'ciclo-estral',
-  num: 4,
+  num: 5,
   title: 'Ciclo Estral Comparado',
   icon: '#i-sync',
   content: `
@@ -3409,7 +3415,7 @@ Bulbo da glande: travamento copulatório (cão)
 },
 {
   id: 'fertilização',
-  num: 5,
+  num: 6,
   title: 'Fertilização e Desenvolvimento Embrionário',
   icon: '#i-egg',
   content: `
@@ -3637,7 +3643,7 @@ Bulbo da glande: travamento copulatório (cão)
 },
 {
   id: 'rmg',
-  num: 6,
+  num: 7,
   title: 'Reconhecimento Materno da Gestação',
   icon: '#i-handshake',
   content: `
@@ -3823,7 +3829,7 @@ Bulbo da glande: travamento copulatório (cão)
 },
 {
   id: 'implantação-placentação',
-  num: 7,
+  num: 8,
   title: 'Implantação, Placentação e Anexos Fetais',
   icon: '#i-pregnant',
   content: `
@@ -4506,7 +4512,7 @@ Bulbo da glande: travamento copulatório (cão)
 },
 {
   id: 'gestação',
-  num: 8,
+  num: 9,
   title: 'Gestação: Diagnóstico, Período e Fisiologia',
   icon: '#i-calendar',
   content: `
@@ -4912,7 +4918,7 @@ Bulbo da glande: travamento copulatório (cão)
 },
 {
   id: 'pelviologia-higiene',
-  num: 9,
+  num: 10,
   title: 'Pelviologia e Higiene da Gestação e Parto',
   icon: '#i-clipboard',
   content: `
@@ -5097,7 +5103,7 @@ Bulbo da glande: travamento copulatório (cão)
 },
 {
   id: 'parto',
-  num: 10,
+  num: 11,
   title: 'Parto: Fisiologia, Estática Fetal e Higiene',
   icon: '#i-baby',
   content: `
@@ -5370,7 +5376,7 @@ Cadela: E2 antes D22 = embriotóxico · aglepristone = melhor opção · efeitos
 },
 {
   id: 'distocias',
-  num: 11,
+  num: 12,
   title: 'Distocias e Auxílio ao Parto',
   icon: '#i-alert',
   content: `
@@ -5633,7 +5639,7 @@ Feto transverso (na prática) → cesariana</div></div>
 },
 {
   id: 'puerpério',
-  num: 12,
+  num: 13,
   title: 'Puerpério, Involução Uterina e Neonato',
   icon: '#i-heart',
   content: `
@@ -5722,7 +5728,7 @@ Os enterocitos neonatais possuem capacidade de absorção de macromoleculas inta
 },
 {
   id: 'andrológico',
-  num: 13,
+  num: 14,
   title: 'Exame Andrológico e Espermiograma',
   icon: '#i-microscope',
   content: `
@@ -6570,7 +6576,7 @@ Os enterocitos neonatais possuem capacidade de absorção de macromoleculas inta
 },
 {
   id: 'patologias-macho',
-  num: 14,
+  num: 15,
   title: 'Patologias do Macho e Impotências',
   icon: '#i-alert',
   content: `
@@ -7314,7 +7320,7 @@ Atrofia: redução de volume + dureza = fibrose avançada
 },
 {
   id: 'patologias-fêmea',
-  num: 15,
+  num: 16,
   title: 'Patologias da Fêmea e Exame Ginecológico',
   icon: '#i-stethoscope',
   content: `
@@ -8065,7 +8071,7 @@ Espermatozóide dura: 6-7 dias · oócito fértil: 2-3 dias pós-ovulação
 },
 {
   id: 'patologias-gestação',
-  num: 16,
+  num: 17,
   title: 'Patologias da Gestação',
   icon: '#i-virus',
   content: `
@@ -8718,7 +8724,7 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
 },
 {
   id: 'infecciosas',
-  num: 17,
+  num: 18,
   title: 'Doenças Infecciosas da Reprodução',
   icon: '#i-virus',
   content: `
@@ -9053,7 +9059,7 @@ B. canis: macho (orquiepididimite) e fêmea (aborto) · ambos excretam</div></di
 },
 {
   id: 'freemartinismo',
-  num: 18,
+  num: 19,
   title: 'Freemartinismo e Anomalias Congênitas',
   icon: '#i-ban',
   content: `
@@ -9166,7 +9172,7 @@ B. canis: macho (orquiepididimite) e fêmea (aborto) · ambos excretam</div></di
 },
 {
   id: 'fisiologia-mamaria',
-  num: 19,
+  num: 20,
   title: 'Fisiologia da Glândula Mamária',
   icon: '#i-heart',
   content: `
@@ -9310,7 +9316,7 @@ B. canis: macho (orquiepididimite) e fêmea (aborto) · ambos excretam</div></di
 },
 {
   id: 'biotecnologias',
-  num: 20,
+  num: 21,
   title: 'Biotecnologias da Reprodução',
   icon: '#i-settings',
   content: `
@@ -10391,7 +10397,7 @@ Diluir para 25-50 x 10<sup>6</sup> sptz moveis/mL (concentração ideal para tra
 },
 {
   id: 'casos-clinicos',
-  num: 21,
+  num: 22,
   title: 'Casos Clínicos e Questões de Residência',
   icon: '#i-clipboard',
   content: `
@@ -10898,7 +10904,7 @@ Diluir para 25-50 x 10<sup>6</sup> sptz moveis/mL (concentração ideal para tra
 },
 {
   id: 'saude-publica',
-  num: 22,
+  num: 23,
   title: 'Saúde Pública Veterinária',
   icon: '#i-hospital',
   content: `
@@ -11259,7 +11265,7 @@ Diluir para 25-50 x 10<sup>6</sup> sptz moveis/mL (concentração ideal para tra
 },
 {
   id: 'conhecimentos-gerais',
-  num: 23,
+  num: 24,
   title: 'Conhecimentos Gerais em Med. Vet.',
   icon: '#i-stethoscope',
   content: `
@@ -11489,9 +11495,9 @@ var FLASHCARDS = [
 // Cap 1 - Gametogênese
 {cat:'gametogenese',q:'Em qual fase da meiose o oócito primário fica bloqueado desde a vida fetal?',a:'Prófase I · estágio dictioteno (diplóteno). O bloqueio é mantido por AMPc elevado produzido pelas células do cumulus.',extra:'O pico de LH derruba esse bloqueio → Meiose I completa → novo bloqueio em Metáfase II'},
 {cat:'gametogenese',q:'Em qual fase da meiose o oócito secundário fica bloqueado até a fertilização?',a:'Metáfase II. A penetração do espermatozóide ativa a conclusão da Meiose II e a expulsão do 2º corpúsculo polar.',extra:'Óvulo = oócito que completou a Meiose II (após fertilização)'},
-{cat:'gametogenese',q:'Qual gene é o determinante primário da diferênciação testicular?',a:'Gene SRY (Sex-determining Region Y), localizado no cromossomo Y. Ativa SOX9 → diferênciação das células de Sertoli.',extra:'Conceito ATUALIZADO: O "antígeno H-Y" é teoria desatualizada abandonada nos anos 1990.'},
-{cat:'gametogenese',q:'Qual hormônio produzido pelas células de Sertoli promove regressão dos ductos de Müller?',a:'AMH · Hormônio Anti-Mülleriano (também chamado MIS: Müllerian Inhibiting Substance). Produzido desde a diferênciação testicular fetal.',extra:'Sem AMH (fêmea): ductos de Müller persistem → útero, tubas, vagina cranial.'},
-{cat:'gametogenese',q:'Quais estruturas derivam dos ductos de Wolff?',a:'Epidídimo, duto deferente, vesícula seminal, ducto ejaculatório. Dependem de TESTOSTERONA para persistir.',extra:'Sem testosterona (fêmea): ductos de Wolff regridem.'},
+{cat:'diferenciacao-gonadal',q:'Qual gene é o determinante primário da diferênciação testicular?',a:'Gene SRY (Sex-determining Region Y), localizado no cromossomo Y. Ativa SOX9 → diferênciação das células de Sertoli.',extra:'Conceito ATUALIZADO: O "antígeno H-Y" é teoria desatualizada abandonada nos anos 1990.'},
+{cat:'diferenciacao-gonadal',q:'Qual hormônio produzido pelas células de Sertoli promove regressão dos ductos de Müller?',a:'AMH · Hormônio Anti-Mülleriano (também chamado MIS: Müllerian Inhibiting Substance). Produzido desde a diferênciação testicular fetal.',extra:'Sem AMH (fêmea): ductos de Müller persistem → útero, tubas, vagina cranial.'},
+{cat:'diferenciacao-gonadal',q:'Quais estruturas derivam dos ductos de Wolff?',a:'Epidídimo, duto deferente, vesícula seminal, ducto ejaculatório. Dependem de TESTOSTERONA para persistir.',extra:'Sem testosterona (fêmea): ductos de Wolff regridem.'},
 {cat:'gametogenese',q:'Qual é a duração da espermatogênese em bovinos?',a:'~61 dias. Cada espécie tem duração específica: equinos ~57d, suínos ~34d, cães ~62d, ovinos ~49d.',extra:'A apostila cita "60 dias" genericamente · valor impreciso. Use dados por espécie.'},
 {cat:'gametogenese',q:'Qual é a função do acrossomo?',a:'Contém enzimas hidrolíticas (acrosina, hialuronidase, neuraminidase) liberadas na reação acrossomal para penetrar a zona pelúcida do oócito.',extra:'Acrossomo = lisossomo especializado derivado do complexo de Golgi'},
 {cat:'gametogenese',q:'Onde ocorre a maturação espermática e aquisição de motilidade progressiva?',a:'Epidídimo (especialmente cauda do epidídimo). Duração: 10-14 dias.',extra:'Epidídimo = local de armazenamento + maturação. Capacitação ocorre no TGF da fêmea.'},
@@ -11621,7 +11627,7 @@ var FLASHCARDS = [
 {cat:'rmg',q:'Qual é a janela crítica do RMG em ovinos?',a:'Dias 12-13 pós-ovulação. O IFN-τ ovino é secretado mais precocemente que o bovino (D14-17). Período menor exige RMG precoce.',extra:'O IFN-τ tem ação parácrina · não entra na circulação sistêmica em quantidade relevante.'},
 {cat:'placentação',q:'O que é o placentoma em ruminantes?',a:'Estrutura formada pela união do COTILÉDONE FETAL (vilosidades coriônicas) com a CARÚNCULA MATERNA (projeção endometrial). É a unidade funcional de troca materno-fetal.',extra:'Vaca: 70-120 placentomas. Ovelha: ~80-90. Carúnculas persistem após o parto.'},
 {cat:'andrológico',q:'Quais são os métodos de coleta de sêmen em touros?',a:'1) Vagina Artificial (padrão): simula cópula natural. 2) Eletroejaculação: estimulação elétrica do nervo pélvico (touros calmos ou com lesão locomotora). 3) Massagem ampular (menos usado).',extra:'Vagina artificial: melhor qualidade. Eletroejaculação: volume maior, concentração menor.'},
-{cat:'gametogenese',q:'Quais genes são importantes na diferênciação ovariana?',a:'RSPO1 e WNT4 · ativos no ovário fetal, suprimem SOX9 e mantêm a diferênciação ovariana. Sem eles: XX com tendência masculinizante.',extra:'A diferênciação ovariana era considerada "passiva" (ausência de SRY). Atualmente sabe-se que genes ovarianis ativos são necessários.'},
+{cat:'diferenciacao-gonadal',q:'Quais genes são importantes na diferênciação ovariana?',a:'RSPO1 e WNT4 · ativos no ovário fetal, suprimem SOX9 e mantêm a diferênciação ovariana. Sem eles: XX com tendência masculinizante.',extra:'A diferênciação ovariana era considerada "passiva" (ausência de SRY). Atualmente sabe-se que genes ovarianos ativos são necessários.'},
 {cat:'ciclo-estral',q:'Qual é a duração do ciclo estral em ovelhas e quando ocorre a ovulação?',a:'Ciclo: 17 dias (14-19d). Estro: 24-36h. Ovulação: 24-30h após início do estro. Número de ovulações: 1-3.',extra:'Raças leiteiras (Lacaune, East Friesian): mais prolíficas (2-3 ovulações). Santa Inês: 1-2.'},
 {cat:'fertilização',q:'Quais enzimas são liberadas na Reação Acrossomal?',a:'Acrosina (principal), hialuronidase, neuraminidase, fosfatases ácidas. Permitem a penetração da zona pelúcida.',extra:'A RA é EXOCITOSE do acrossomo induzida pela ligação às ZPs. ATENÇÃO: ZP3 como indutor exclusivo foi descrito em camundongos. Em bovinos participam também ZP4; em equinos, ZP2 é o ligante primário · o papel da ZP3 não é universal em espécies domésticas.'},
 {cat:'patologias-fêmea',q:'Quais são os critérios diagnósticos de endometrite subclínica em vacas?',a:'Dois critérios complementares: (1) LAVADO UTERINO de baixo volume: >18% PMN · Sheldon et al., 2006; (2) CITOBRUSH (citologia endometrial por escova): ≥5% PMN · LeBlanc et al., 2011. Sem corrimento visível. Ambos avaliados entre 40-60 dias pós-parto.',extra:'Para prova: a questão pode especificar a técnica. Lavado: 18%; Citobrush: 5%. Impacto significativo na fertilidade.'},
@@ -12498,10 +12504,19 @@ function scrollToFlashcards() {
 // === MICRO-RESUMOS (Sprint 3 · item 14) ===
 (function addMicroResumos() {
   var resumos = {
+    'diferenciacao-gonadal': [
+      'Gene <strong>SRY</strong> (cromossomo Y) ativa SOX9 → células de Sertoli → AMH (regride Müller)',
+      'Células de Leydig → Testosterona → mantém ductos de Wolff → epidídimo, deferente, vesícula seminal',
+      'DHT (5α-redutase tipo 2) → virilização da genitália externa e próstata',
+      'Ausência de SRY: RSPO1 + WNT4 + FOXL2 suprimem SOX9 → manutenção ATIVA do fenótipo ovariano',
+      'Sem AMH: Müller persiste → trompas, útero, cérvix, vagina cranial | Sem T: Wolff regride'
+    ],
     'gametogenese': [
-      'Gene <strong>SRY</strong> ativa SOX9 → Sertoli → AMH (regride Müller). Leydig → T → Wolff + DHT → genitália masculina',
-      'Oócito I bloqueado em <strong>Prófase I</strong> (AMPc). Pico de LH derruba bloqueio. Oócito II bloqueado em <strong>Metáfase II</strong> até fecundação',
-      'Espermatogênese é contínua pós-puberdade. Espermiogênese = diferênciação sem divisão. Maturação no epidídimo (~10-14 dias)'
+      'Oócito I bloqueado em <strong>Prófase I</strong> (dictioteno · AMPc). Pico de LH derruba bloqueio → Oócito II',
+      'Oócito II bloqueado em <strong>Metáfase II</strong> (CSF) até fecundação · estágio ovulado na maioria das espécies',
+      'Espermatogênese é contínua pós-puberdade · Sertoli (FSH) + testosterona (LH→Leydig)',
+      'Espermiogênese = diferenciação sem divisão · acrossomo, flagelo, compactação do DNA',
+      'Maturação espermática no epidídimo (~10-14 dias) · cauda do epidídimo = reservatório principal'
     ],
     'ciclo-estral': [
       'Bovinos: poliéstricos anuais, 21 dias. Equinos: poliéstricos estacionais (fotoperíodo longo). Caninos: monoéstricos, 2 ciclos/ano',
@@ -12952,6 +12967,7 @@ function filterFC(val){
   var sel=document.getElementById('fcFilter');
   if(!sel)return;
   var cats=[
+    {v:'diferenciacao-gonadal',l:'Diferenciação Gonadal'},
     {v:'gametogenese',l:'Gametogênese'},
     {v:'ciclo-estral',l:'Ciclo Estral'},
     {v:'fertilização',l:'Fertilização'},
