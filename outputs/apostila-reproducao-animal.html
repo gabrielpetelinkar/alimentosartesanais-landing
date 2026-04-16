@@ -14038,5 +14038,87 @@ window.infSetSp = function(sp, el){
 })();
 </script>
 
+<script>
+// === FALLBACK: Event delegation independente (script separado para garantir execução) ===
+(function() {
+  var GAMET = {
+    oog: {
+      oogonia: 'As <strong>oogônias</strong> são as células germinativas diplóides (2n) que se multiplicam por <span class="hl">mitose exclusivamente durante a vida fetal</span>. Após o nascimento, não há mais oogônias na maioria dos mamíferos domésticos · o pool de oócitos primários formado na vida fetal é fixo e não renovável.',
+      oocito1: 'O <strong>oócito primário</strong> inicia a Meiose I mas para no <span class="hl">estágio dictioteno da Prófase I</span>. O bloqueio é mantido pelo <span class="hl">AMPc elevado</span> dentro do oócito, produzido pelas células do cumulus via gap junctions.',
+      meiose1: 'O <strong>pico pré-ovulatório de LH</strong> age nas células da granulosa, que reduzem o fornecimento de AMPc ao oócito. A queda do AMPc ativa o <span class="hl">MPF (M-phase Promoting Factor)</span>, retomando a meiose. Gera o <strong>oócito secundário</strong> e o <strong>1º corpúsculo polar</strong>.',
+      oocito2: 'O <strong>oócito secundário</strong> é o estágio ovulado na maioria dos mamíferos domésticos. O bloqueio na Metáfase II é mantido pelo <span class="hl">CSF (Cytostatic Factor)</span>. Exceções: a égua ovula em dictioteno e a cadela ovula como oócito primário.',
+      fert: 'A penetração do espermatozóide libera <span class="hl">Ca²⁺ intracelular</span> em ondas, que inativa o CSF e permite a conclusão da Meiose II, gerando o <strong>ovum maduro</strong> e o <strong>2º corpúsculo polar</strong>.'
+    },
+    esp: {
+      espgonia: 'As <strong>espermatogônias</strong> são as células-tronco da linhagem germinativa masculina, na membrana basal dos túbulos seminíferos. Tipo A (renovação do pool) e Tipo B (comprometidas com a diferenciação).',
+      esp1: 'O <strong>espermatócito primário (2n)</strong> passa pela Meiose I, que é a fase mais longa. Durante a Prófase I ocorre o <span class="hl">crossing-over</span> (recombinação genética). Ao final gera dois espermatócitos secundários haplóides.',
+      esp2: 'O <strong>espermatócito secundário (n)</strong> completa a Meiose II rapidamente, gerando duas <span class="hl">espermátides haplóides</span> cada. De um espermatócito primário originam-se 4 espermátides.',
+      esptide: 'A <strong>espermátide</strong> é haplóide e redonda, sem morfologia de espermatozóide. Não sofre mais divisões. Ficam conectadas por <span class="hl">pontes citoplasmáticas</span>.',
+      espmiog: 'A <strong>espermiogênese</strong> envolve: formação do <span class="hl">acrossomo</span>, desenvolvimento do <span class="hl">flagelo</span>, compactação do DNA (histonas → protaminas), eliminação do excesso de citoplasma.',
+      sptz: 'O espermatozóide adquire <span class="hl">motilidade progressiva e capacidade fertilizante no epidídimo</span> (~10-14 dias). O reservatório principal é a <span class="hl">cauda do epidídimo</span>.'
+    },
+    hpg: {
+      hipotalamo: 'O <strong>hipotálamo</strong> secreta GnRH de forma <span class="hl">pulsátil</span>. A administração contínua paradoxalmente suprime o eixo (downregulation).',
+      hipofise: 'A <strong>hipófise anterior</strong> libera <span class="hl">LH e FSH</span> em resposta ao GnRH. Frequência alta favorece LH, frequência baixa favorece FSH.',
+      lh: 'O <strong>LH</strong> age nas <span class="hl">células de Leydig</span>, estimulando síntese de testosterona. Feedback negativo no hipotálamo e hipófise.',
+      fsh: 'O <strong>FSH</strong> age nas <span class="hl">células de Sertoli</span>, que produzem <span class="hl">Inibina B</span> · feedback negativo seletivo sobre o FSH.',
+      sertoli2: 'As <strong>células de Sertoli</strong> formam a <span class="hl">barreira hemato-testicular</span>; produzem <span class="hl">ABP</span>; secretam fatores parácrinos; fagocitam corpos residuais; produzem AMH no feto.'
+    },
+    str: {
+      cabeca: 'A <strong>cabeça</strong> contém o <span class="hl">núcleo haplóide</span> com DNA compactado por protaminas e o <span class="hl">acrossomo</span>, cobrindo 2/3 da superfície anterior.',
+      peca: 'A <strong>peça intermediária</strong> contém as <span class="hl">mitocôndrias organizadas em espiral</span> ao redor do axonema, gerando ATP.',
+      cauda: 'A <strong>cauda</strong> tem estrutura axonemal <span class="hl">9+2</span>. Defeitos na dineína causam astenozoospermia total.',
+      epid: 'O trânsito no <strong>epidídimo</strong> dura <span class="hl">~10-14 dias</span>. A <span class="hl">cauda do epidídimo</span> é o principal reservatório.',
+      capac: 'A <strong>capacitação</strong> ocorre no trato reprodutivo feminino. <span class="hl">Em equinos, a FIV convencional não funciona · o método de escolha é o ICSI.</span>',
+      acros: 'A <strong>reação acrossômica</strong> ocorre após ligação à <span class="hl">zona pelúcida</span> (ZP3/ZP2). É um evento único e irreversível.'
+    }
+  };
+  var DIFF = {
+    xy: {
+      sry: '<strong>Gene SRY</strong> · <span class="hl">determinante primário</span> do sexo masculino, localizado no cromossomo Y.',
+      sox9: '<strong>SOX9</strong> é ativado pelo SRY e instrui células a se tornarem <span class="hl">células de Sertoli</span>.',
+      sertoli: '<strong>Células de Sertoli</strong> produzem <span class="hl">AMH</span>, que provoca regressão dos ductos de Müller.',
+      leydig: '<strong>Células de Leydig</strong> produzem <span class="hl">testosterona</span> que estabiliza e diferencia os ductos de Wolff.',
+      wolff: 'Os <strong>ductos de Wolff</strong> diferenciam-se em: <span class="hl">epidídimo, canal deferente e vesícula seminal</span>.',
+      dht: 'A <strong>DHT</strong> via <span class="hl">5α-redutase tipo 2</span> é responsável pela virilização da genitália externa.'
+    },
+    xx: {
+      nosry: 'Na ausência do gene SRY, genes como RSPO1, WNT4 e FOXL2 mantêm ativamente o fenótipo ovariano.',
+      rspo: '<strong>RSPO1</strong> e <strong>WNT4</strong> <span class="hl">suprimem o SOX9</span> e ativam vias pró-ovarianas.',
+      muller: 'Na ausência de AMH, os <strong>ductos de Müller persistem</strong>: <span class="hl">trompas, útero, cérvix, vagina cranial</span>.',
+      wolff: 'Sem testosterona local, os <strong>ductos de Wolff regridem</strong>. Resíduo vestigial: <span class="hl">ducto de Gärtner</span>.'
+    }
+  };
+
+  document.addEventListener('click', function(e) {
+    var gametEl = e.target.closest('[data-gamet]');
+    if (gametEl) {
+      var g = gametEl.getAttribute('data-gamet');
+      var k = gametEl.getAttribute('data-key');
+      if (g && k && GAMET[g] && GAMET[g][k]) {
+        var el = document.getElementById('gamet-info-' + g);
+        if (el) {
+          el.innerHTML = GAMET[g][k];
+          el.classList.remove('empty');
+        }
+      }
+      return;
+    }
+    var diffEl = e.target.closest('[data-diff]');
+    if (diffEl) {
+      var s = diffEl.getAttribute('data-diff');
+      var k2 = diffEl.getAttribute('data-key');
+      if (s && k2 && DIFF[s] && DIFF[s][k2]) {
+        var el2 = document.getElementById('diff-info-' + s);
+        if (el2) {
+          el2.innerHTML = DIFF[s][k2];
+          el2.classList.remove('empty');
+        }
+      }
+      return;
+    }
+  });
+})();
+</script>
 </body>
 </html>
