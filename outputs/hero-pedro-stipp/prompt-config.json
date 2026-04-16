@@ -1,0 +1,47 @@
+{
+  "product": "Dr. Pedro Stipp — Pneumologia Veterinária",
+  "offer": "Consultas, visitas domiciliares e acompanhamento cirúrgico",
+  "tone": "authority, trust, warmth, care, professional compassion",
+  "context": "consulting",
+  "palette": "trust",
+  "subject_description": "a Brazilian man in his late 20s to early 30s with: (1) short dark brown hair, styled upward with slight volume at the top, (2) clean-shaven face with light facial hair, (3) light olive/fair skin tone, (4) dark eyes behind black rectangular-framed glasses, (5) bright warm smile, straight white teeth, (6) slim-medium build, (7) navy blue veterinary medical coat with white trim and 'Dr. Pedro Stipp / Médico Veterinário' embroidered on the chest, arms crossed confidently",
+  "symbols": [
+    {
+      "object": "stethoscope silhouette",
+      "meaning": "medical expertise and care",
+      "style": "large, navy/gold, semi-transparent, elegant"
+    },
+    {
+      "object": "paw print",
+      "meaning": "veterinary care, animals",
+      "style": "medium, subtle gold tone, midground"
+    },
+    {
+      "object": "lung anatomy outline",
+      "meaning": "pneumology specialization",
+      "style": "very faint, ghost lines, far background"
+    }
+  ],
+  "layers": {
+    "background": "deep navy blue (#02053c) gradient to dark teal, subtle bokeh light particles, soft medical clinic atmosphere",
+    "midground": "auto",
+    "foreground": "warm gold rim light on left edge, cool blue fill light on right"
+  },
+  "seed": 42,
+  "model": "gemini-3.1-flash-image-preview",
+  "api_params": {
+    "seed": 42
+  },
+  "targets": {
+    "desktop": {
+      "aspect_ratio": "16:9",
+      "prompt": "IDENTITY LOCK — CRITICAL, HIGHEST PRIORITY: The subject is a Brazilian man in his late 20s to early 30s with: (1) short dark brown hair, styled upward with slight volume at the top, (2) clean-shaven face with light facial hair, (3) light olive/fair skin tone, (4) dark eyes behind black rectangular-framed glasses, (5) bright warm smile, straight white teeth, (6) slim-medium build, (7) navy blue veterinary medical coat with white trim and 'Dr. Pedro Stipp / Médico Veterinário' embroidered on the chest, arms crossed confidently. You MUST preserve the subject's EXACT facial features, bone structure, beard pattern, hair texture, skin tone, body proportions, and clothing from the reference photo. DO NOT alter, improve, idealize, or stylize any facial feature. Camera: medium shot (waist-up), 85mm f/1.8 equivalent, subject looking directly at camera with a confident, approachable expression. Sharp focus on face and eyes.\n\nCOMPOSITION LAYERS: BACKGROUND — deep navy blue (#02053c) gradient to dark teal, subtle bokeh light particles, soft medical clinic atmosphere. MIDGROUND — a large stethoscope silhouette (large, navy/gold, semi-transparent, elegant) as the dominant midground element, a smaller paw print (medium, subtle gold tone, midground) as secondary element, a subtle hint of lung anatomy outline (very faint, ghost lines, far background). FOREGROUND — warm gold rim light on left edge, cool blue fill light on right.\n\nLAYOUT: The person is positioned on the RIGHT side of the frame, occupying approximately 40-45% of the image width. The LEFT 50-55% of the image MUST be a clean, visually rich but TEXT-FRIENDLY area — use a subtle gradient from #0a1628 to #1b3a5c with conceptual elements that create depth WITHOUT competing with text overlays.\n\nThis is a hero image for a sales page selling: Dr. Pedro Stipp — Pneumologia Veterinária. Offer: Consultas, visitas domiciliares e acompanhamento cirúrgico. The mood and tone must convey: authority, trust, warmth, care, professional compassion. STYLE: High-end advertising photography, cinematic color grading, shallow depth of field on background elements. Dramatic rim lighting separating the person from the background. Color accents in #4fc3f7. Ultra-sharp, magazine-quality resolution. The image should look like it was produced by a top-tier graphic design agency. ABSOLUTELY NO text, NO logos, NO watermarks, NO typography anywhere in the image.",
+      "negative_prompt": "blurry, low quality, distorted face, extra limbs, deformed hands, text, watermark, logo, signature, overexposed, underexposed, flat lighting, stock photo look, clipart, cartoon, illustration, painting, centered composition, symmetrical layout, wrong facial features, altered beard, different clothing than described, changed hair style, modified body proportions, added accessories not described"
+    },
+    "mobile": {
+      "aspect_ratio": "9:16",
+      "prompt": "IDENTITY LOCK — CRITICAL, HIGHEST PRIORITY: The subject is a Brazilian man in his late 20s to early 30s with: (1) short dark brown hair, styled upward with slight volume at the top, (2) clean-shaven face with light facial hair, (3) light olive/fair skin tone, (4) dark eyes behind black rectangular-framed glasses, (5) bright warm smile, straight white teeth, (6) slim-medium build, (7) navy blue veterinary medical coat with white trim and 'Dr. Pedro Stipp / Médico Veterinário' embroidered on the chest, arms crossed confidently. You MUST preserve the subject's EXACT facial features, bone structure, beard pattern, hair texture, skin tone, body proportions, and clothing from the reference photo. DO NOT alter, improve, idealize, or stylize any facial feature. Camera: close-up (head and shoulders with GENEROUS HEADROOM above the head, person positioned in the TOP QUARTER of the frame but NOT cropped — full head must be visible), 135mm f/2.0 equivalent, subject looking directly at camera with a confident, approachable expression. Sharp focus on face and eyes.\n\nCOMPOSITION LAYERS: BACKGROUND — deep navy blue (#02053c) gradient to dark teal, subtle bokeh light particles, soft medical clinic atmosphere. MIDGROUND — a SMALL stethoscope silhouette (large, navy/gold, semi-transparent, elegant, scaled down) tucked tightly behind the person's head/shoulders, a very small paw print (medium, subtle gold tone, midground, minimal size) barely visible beside the person. FOREGROUND — warm gold rim light on left edge, cool blue fill light on right.\n\nLAYOUT: CRITICAL MOBILE LAYOUT CONSTRAINT — The person and visual elements must be contained in the TOP QUARTER of the frame (20-25% of total height). Show head and shoulders with FULL HEAD VISIBLE — do NOT crop the top of the head. Leave generous headroom above the hair. The BOTTOM 75-80% of the image MUST be COMPLETELY EMPTY — nothing but a solid clean gradient from #0a1628 to #1b3a5c. NO particles, NO bokeh, NO lines, NO visual elements whatsoever in the bottom three-quarters. This massive empty area is reserved for text overlay.\n\nThis is a hero image for a sales page selling: Dr. Pedro Stipp — Pneumologia Veterinária. Offer: Consultas, visitas domiciliares e acompanhamento cirúrgico. The mood and tone must convey: authority, trust, warmth, care, professional compassion. STYLE: High-end advertising photography, cinematic color grading, shallow depth of field on background elements. Dramatic rim lighting separating the person from the background. Color accents in #4fc3f7. Ultra-sharp, magazine-quality resolution. The image should look like it was produced by a top-tier graphic design agency. ABSOLUTELY NO text, NO logos, NO watermarks, NO typography anywhere in the image.",
+      "negative_prompt": "blurry, low quality, distorted face, extra limbs, deformed hands, text, watermark, logo, signature, overexposed, underexposed, flat lighting, stock photo look, clipart, cartoon, illustration, painting, centered composition, symmetrical layout, wrong facial features, altered beard, different clothing than described, changed hair style, modified body proportions, added accessories not described"
+    }
+  }
+}

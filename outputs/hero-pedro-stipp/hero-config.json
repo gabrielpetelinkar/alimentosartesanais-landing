@@ -1,0 +1,22 @@
+{
+  "product": "Dr. Pedro Stipp — Pneumologia Veterinária",
+  "offer": "Consultas, visitas domiciliares e acompanhamento cirúrgico",
+  "tone": "authority, trust, warmth, care, professional compassion",
+  "subject_photo": "/Users/gabrielpetelinkar/Downloads/WhatsApp Image 2026-04-10 at 21.46.54.jpeg",
+  "subject_description": "a Brazilian man in his late 20s to early 30s with: (1) short dark brown hair, styled upward with slight volume at the top, (2) clean-shaven face with light facial hair, (3) light olive/fair skin tone, (4) dark eyes behind black rectangular-framed glasses, (5) bright warm smile, straight white teeth, (6) slim-medium build, (7) navy blue veterinary medical coat with white trim and 'Dr. Pedro Stipp / Médico Veterinário' embroidered on the chest, arms crossed confidently",
+  "symbols": [
+    {"object": "stethoscope silhouette", "meaning": "medical expertise and care", "style": "large, navy/gold, semi-transparent, elegant"},
+    {"object": "paw print", "meaning": "veterinary care, animals", "style": "medium, subtle gold tone, midground"},
+    {"object": "lung anatomy outline", "meaning": "pneumology specialization", "style": "very faint, ghost lines, far background"}
+  ],
+  "layers": {
+    "background": "deep navy blue (#02053c) gradient to dark teal, subtle bokeh light particles, soft medical clinic atmosphere",
+    "midground": "auto",
+    "foreground": "warm gold rim light on left edge, cool blue fill light on right"
+  },
+  "context": "consulting",
+  "palette": "trust",
+  "seed": 42,
+  "sizes": ["desktop", "mobile"],
+  "output_dir": "/Users/gabrielpetelinkar/AIOSORIZA/outputs/hero-pedro-stipp"
+}

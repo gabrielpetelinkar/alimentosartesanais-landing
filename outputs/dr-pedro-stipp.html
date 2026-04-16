@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Pedro Stipp — Pneumologia Veterinaria</title>
+  <meta name="description" content="Consultas pneumologicas, atendimento domiciliar e cirurgias para seu pet. Com cuidado, carinho e prevencao, garantiremos juntos mais saude e longevidade.">
+  <meta property="og:title" content="Dr. Pedro Stipp — Pneumologia Veterinaria">
+  <meta property="og:description" content="Especialista em pneumologia veterinaria. Agende sua consulta.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════
+       TOKENS
+    ══════════════════════════════════════ */
+    :root {
+      --dark:        #0D1117;
+      --dark-2:      #161C26;
+      --dark-3:      #1E2633;
+      --dark-border: rgba(255,255,255,0.07);
+      --gold:        #C9A84C;
+      --gold-light:  #E4C97A;
+      --gold-dim:    rgba(201,168,76,0.12);
+      --gold-glow:   rgba(201,168,76,0.22);
+      --white:       #FFFFFF;
+      --white-70:    rgba(255,255,255,0.70);
+      --white-40:    rgba(255,255,255,0.40);
+      --white-12:    rgba(255,255,255,0.12);
+      --white-06:    rgba(255,255,255,0.06);
+      /* light sections */
+      --light-bg:    #F7F6F2;
+      --light-bg2:   #FFFFFF;
+      --text-0:      #0D1117;
+      --text-1:      #2C3340;
+      --text-2:      #6B7685;
+      --border-l:    rgba(13,17,23,0.07);
+      --green:       #2D8F6F;
+      --green-dim:   rgba(45,143,111,0.12);
+      --red:         #DC3545;
+      /* misc */
+      --r-sm: 10px; --r-md: 16px; --r-lg: 24px; --r-xl: 36px;
+      --ease: cubic-bezier(0.16,1,0.3,1);
+      --font: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    ::selection { background: var(--gold-dim); color: var(--white); }
+    html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    body { font-family:var(--font); background:var(--dark); color:var(--white); overflow-x:hidden; line-height:1.7; }
+    ::-webkit-scrollbar { width:3px; }
+    ::-webkit-scrollbar-thumb { background:var(--gold-dim); border-radius:2px; }
+
+    /* ══════════════════════════════════════
+       SCROLL PROGRESS
+    ══════════════════════════════════════ */
+    .scroll-progress {
+      position:fixed; top:0; left:0; height:2px; width:0%;
+      background:linear-gradient(90deg, var(--gold), var(--gold-light));
+      z-index:9999; transition:none;
+    }
+
+    /* ══════════════════════════════════════
+       LAYOUT
+    ══════════════════════════════════════ */
+    .container { max-width:1200px; margin:0 auto; padding:0 48px; }
+
+    /* ══════════════════════════════════════
+       NAV
+    ══════════════════════════════════════ */
+    .nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      padding:0 48px;
+      display:flex; align-items:center; justify-content:space-between;
+      height:72px;
+      background:rgba(13,17,23,0.85);
+      backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--dark-border);
+      transition:background 0.3s var(--ease);
+    }
+    .nav-brand {
+      display:flex; align-items:center; gap:10px;
+      font-size:1rem; font-weight:700; color:var(--white);
+      letter-spacing:-0.01em; text-decoration:none;
+    }
+    .nav-brand span { color:var(--gold); }
+    .nav-brand-logo {
+      height:38px; width:auto;
+      filter:drop-shadow(0 0 6px rgba(201,168,76,0.5)) brightness(1.15);
+    }
+    .nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+    .nav-links a {
+      font-size:0.85rem; font-weight:500; color:var(--white-40);
+      text-decoration:none; transition:color 0.2s;
+    }
+    .nav-links a:hover { color:var(--white); }
+    .nav-cta {
+      font-size:0.85rem; font-weight:600; color:var(--dark);
+      background:var(--gold); padding:10px 24px; border-radius:60px;
+      text-decoration:none; transition:all 0.2s;
+    }
+    .nav-cta:hover { background:var(--gold-light); transform:translateY(-1px); }
+
+    /* ══════════════════════════════════════
+       HERO — Dark full-height with cutout photo
+    ══════════════════════════════════════ */
+    .hero {
+      min-height:100vh;
+      background:var(--dark);
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* Subtle radial glow behind photo */
+    .hero::before {
+      content:'';
+      position:absolute;
+      top:0; right:0;
+      width:55%; height:100%;
+      background:radial-gradient(ellipse at 80% 40%, rgba(201,168,76,0.07) 0%, transparent 65%);
+      pointer-events:none; z-index:0;
+    }
+    /* Grid texture overlay */
+    .hero::after {
+      content:'';
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size:48px 48px;
+      pointer-events:none; z-index:0;
+    }
+
+    .hero-inner {
+      flex:1;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      max-width:1200px;
+      width:100%;
+      margin:0 auto;
+      padding:0 48px;
+      position:relative; z-index:2;
+      align-items:center;
+      padding-top:72px; /* nav height */
+    }
+
+    /* LEFT — text */
+    .hero-text {
+      display:flex; flex-direction:column; gap:28px;
+      padding:80px 0 60px;
+    }
+
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:10px;
+      font-family:var(--mono); font-size:0.68rem; font-weight:500;
+      letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--gold);
+      background:var(--gold-dim);
+      border:1px solid rgba(201,168,76,0.2);
+      padding:7px 16px; border-radius:60px;
+      width:fit-content;
+      opacity:0; transform:translateY(10px);
+      transition:opacity 0.7s var(--ease) 0.1s, transform 0.7s var(--ease) 0.1s;
+    }
+    .hero-badge.visible { opacity:1; transform:none; }
+    .hero-badge-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); }
+
+    .hero-title {
+      font-size:clamp(2.6rem,4.8vw,4rem);
+      font-weight:800; line-height:1.08;
+      letter-spacing:-0.03em; color:var(--white);
+      opacity:0; transform:translateY(14px);
+      transition:opacity 0.7s var(--ease) 0.25s, transform 0.7s var(--ease) 0.25s;
+    }
+    .hero-title.visible { opacity:1; transform:none; }
+    .hero-title .gold {
+      background:linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .hero-desc {
+      font-size:1.05rem; color:var(--white-70); line-height:1.75;
+      max-width:440px;
+      opacity:0; transform:translateY(14px);
+      transition:opacity 0.7s var(--ease) 0.4s, transform 0.7s var(--ease) 0.4s;
+    }
+    .hero-desc.visible { opacity:1; transform:none; }
+    .hero-desc strong { color:var(--white); font-weight:600; }
+
+    .hero-actions {
+      display:flex; gap:12px; flex-wrap:wrap;
+      opacity:0; transform:translateY(14px);
+      transition:opacity 0.7s var(--ease) 0.55s, transform 0.7s var(--ease) 0.55s;
+    }
+    .hero-actions.visible { opacity:1; transform:none; }
+
+    /* Stats bar */
+    .hero-stats {
+      display:flex; gap:0;
+      margin-top:8px;
+      border:1px solid var(--dark-border);
+      border-radius:var(--r-lg);
+      overflow:hidden;
+      opacity:0; transform:translateY(12px);
+      transition:opacity 0.7s var(--ease) 0.7s, transform 0.7s var(--ease) 0.7s;
+    }
+    .hero-stats.visible { opacity:1; transform:none; }
+    .hero-stat {
+      flex:1; padding:20px 20px;
+      text-align:center;
+      position:relative;
+      background:var(--dark-2);
+    }
+    .hero-stat:not(:last-child)::after {
+      content:''; position:absolute;
+      top:20%; right:0; height:60%; width:1px;
+      background:var(--dark-border);
+    }
+    .hero-stat-num {
+      font-size:1.7rem; font-weight:800;
+      color:var(--white); line-height:1;
+      letter-spacing:-0.02em;
+    }
+    .hero-stat-num span { color:var(--gold); }
+    .hero-stat-label {
+      font-size:0.72rem; color:var(--white-40);
+      margin-top:5px; line-height:1.3;
+    }
+
+    /* RIGHT — photo area */
+    .hero-photo-area {
+      position:relative;
+      align-self:stretch;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+    }
+
+    .hero-photo {
+      position:absolute;
+      bottom:0;
+      left:50%;
+      transform:translateX(-30%);
+      z-index:2;
+      height:calc(100vh - 40px);
+      max-height:1000px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+    }
+    .hero-photo img {
+      height:100%;
+      width:auto;
+      display:block;
+      object-fit:contain;
+      object-position:bottom center;
+      filter:drop-shadow(-20px 0 60px rgba(0,0,0,0.7));
+    }
+
+    /* Lung decorative icon — semitransparent watermark */
+    .hero-deco-lung {
+      position:absolute;
+      top:50%; left:50%;
+      transform:translate(-50%, -50%);
+      width:340px; height:auto;
+      opacity:0.11;
+      z-index:1;
+      pointer-events:none;
+    }
+
+    /* Floating cards */
+    .hero-card {
+      position:absolute;
+      background:rgba(30,38,51,0.95);
+      backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+      border:1px solid var(--dark-border);
+      border-radius:var(--r-md);
+      padding:14px 18px;
+      display:flex; align-items:center; gap:12px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.3);
+      z-index:3;
+      animation:float 4s ease-in-out infinite;
+    }
+    .hero-card-1 { bottom:28%; left:-40px; animation-delay:0s; }
+    .hero-card-2 { top:18%; right:0px; animation-delay:2s; }
+    @keyframes float {
+      0%,100% { transform:translateY(0); }
+      50% { transform:translateY(-8px); }
+    }
+    .hero-card-icon {
+      width:38px; height:38px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .hero-card-icon.gold { background:var(--gold-dim); }
+    .hero-card-icon.green { background:var(--green-dim); }
+    .hero-card-icon svg { width:18px; height:18px; }
+    .hero-card-icon.gold svg { color:var(--gold); }
+    .hero-card-icon.green svg { color:var(--green); }
+    .hero-card-title { font-size:0.82rem; font-weight:600; color:var(--white); }
+    .hero-card-sub { font-size:0.7rem; color:var(--white-40); margin-top:1px; }
+
+    /* ══════════════════════════════════════
+       BUTTONS
+    ══════════════════════════════════════ */
+    .btn {
+      font-family:var(--font); font-size:0.92rem; font-weight:600;
+      text-decoration:none; padding:14px 28px; border-radius:60px;
+      border:none; display:inline-flex; align-items:center; gap:8px;
+      transition:all 0.25s var(--ease); cursor:pointer; will-change:transform;
+    }
+    .btn svg { width:16px; height:16px; }
+    .btn-gold {
+      background:var(--gold); color:var(--dark);
+      box-shadow:0 4px 20px rgba(201,168,76,0.25);
+    }
+    .btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 28px rgba(201,168,76,0.35); }
+    .btn-whatsapp {
+      background:#25D366; color:#fff;
+      box-shadow:0 4px 20px rgba(37,211,102,0.2);
+    }
+    .btn-whatsapp:hover { background:#20BD5A; transform:translateY(-2px); }
+    .btn-outline-dark {
+      background:transparent; color:var(--white-70);
+      box-shadow:inset 0 0 0 1.5px var(--dark-border);
+    }
+    .btn-outline-dark:hover { box-shadow:inset 0 0 0 1.5px var(--gold); color:var(--gold); }
+    .btn-outline-light {
+      background:transparent; color:var(--text-1);
+      box-shadow:inset 0 0 0 1.5px var(--border-l);
+    }
+    .btn-outline-light:hover { box-shadow:inset 0 0 0 1.5px var(--gold); color:var(--gold); }
+
+    /* ══════════════════════════════════════
+       SECTION BASE
+    ══════════════════════════════════════ */
+    .section { padding:100px 0; }
+    .section--dark { background:var(--dark); }
+    .section--dark2 { background:var(--dark-2); }
+    .section--light { background:var(--light-bg); }
+    .section--white { background:var(--light-bg2); }
+
+    .section-eyebrow {
+      font-family:var(--mono); font-size:0.68rem; font-weight:500;
+      letter-spacing:0.2em; text-transform:uppercase;
+      color:var(--gold); display:flex; align-items:center; gap:10px;
+      margin-bottom:16px;
+    }
+    .section-eyebrow-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); }
+    .section-eyebrow.dark { color:var(--gold); }
+    .section-eyebrow.light { color:var(--gold); }
+
+    .section-title {
+      font-size:clamp(1.8rem,3.2vw,2.7rem);
+      font-weight:800; line-height:1.1; letter-spacing:-0.025em;
+      max-width:560px;
+    }
+    .section-title.on-dark { color:var(--white); }
+    .section-title.on-dark em { font-style:normal; color:var(--gold); }
+    .section-title.on-light { color:var(--text-0); }
+    .section-title.on-light em { font-style:normal; color:var(--gold); }
+
+    .section-sub {
+      font-size:1rem; line-height:1.75; margin-top:14px; max-width:500px;
+    }
+    .section-sub.on-dark { color:var(--white-70); }
+    .section-sub.on-light { color:var(--text-2); }
+
+    .section-header { margin-bottom:56px; }
+
+    /* reveal */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal.visible { opacity:1; transform:none; }
+    .reveal-d1 { transition-delay:0.1s; }
+    .reveal-d2 { transition-delay:0.2s; }
+    .reveal-d3 { transition-delay:0.3s; }
+    .reveal-d4 { transition-delay:0.4s; }
+
+    /* ══════════════════════════════════════
+       SERVICOS — Cards grid on dark
+    ══════════════════════════════════════ */
+    .servicos-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    .servico-card {
+      background:var(--dark-2);
+      border:1px solid var(--dark-border);
+      border-radius:var(--r-lg);
+      padding:32px 28px;
+      position:relative; overflow:hidden;
+      transition:all 0.35s var(--ease);
+    }
+    .servico-card::before {
+      content:''; position:absolute;
+      top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg, var(--gold), var(--gold-light));
+      opacity:0; transition:opacity 0.35s;
+    }
+    .servico-card:hover { border-color:var(--gold-glow); transform:translateY(-4px); background:var(--dark-3); }
+    .servico-card:hover::before { opacity:1; }
+    .servico-card.featured {
+      grid-column:span 2;
+      display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center;
+      background:linear-gradient(135deg, var(--dark-3) 0%, #1a2235 100%);
+      border-color:rgba(201,168,76,0.1);
+    }
+    .servico-card.featured:hover { border-color:rgba(201,168,76,0.25); }
+    .servico-icon {
+      width:52px; height:52px; border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:22px;
+    }
+    .servico-icon.gold { background:var(--gold-dim); }
+    .servico-icon.green { background:var(--green-dim); }
+    .servico-icon.navy { background:var(--white-06); }
+    .servico-icon svg { width:24px; height:24px; }
+    .servico-icon.gold svg { color:var(--gold); }
+    .servico-icon.green svg { color:var(--green); }
+    .servico-icon.navy svg { color:var(--white-70); }
+    .servico-title {
+      font-size:1.1rem; font-weight:700; color:var(--white);
+      margin-bottom:10px; line-height:1.3;
+    }
+    .servico-desc { font-size:0.88rem; color:var(--white-70); line-height:1.7; }
+    .servico-cta {
+      display:inline-flex; align-items:center; gap:7px;
+      font-size:0.82rem; font-weight:600; color:var(--gold);
+      text-decoration:none; margin-top:18px;
+      transition:gap 0.2s;
+    }
+    .servico-cta:hover { gap:11px; }
+    .servico-cta svg { width:13px; height:13px; }
+    .servico-visual {
+      height:100%; min-height:160px; max-height:200px; border-radius:var(--r-md);
+      overflow:hidden; position:relative;
+    }
+    .servico-visual img {
+      width:100%; height:100%; object-fit:cover; object-position:center top;
+      transition:transform 0.5s var(--ease);
+    }
+    .servico-card.featured:hover .servico-visual img { transform:scale(1.04); }
+    .servico-visual::after {
+      content:'';
+      position:absolute; inset:0;
+      background:linear-gradient(135deg, rgba(13,17,23,0.35) 0%, rgba(13,17,23,0.05) 100%);
+    }
+
+    /* Emergencia */
+    .emergencia {
+      background:linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+      border-radius:var(--r-lg); padding:28px 36px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:24px; margin-top:20px;
+    }
+    .emergencia-left { display:flex; align-items:center; gap:14px; }
+    .emergencia-icon {
+      width:44px; height:44px; border-radius:50%;
+      background:rgba(255,255,255,0.12);
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .emergencia-icon svg { width:22px; height:22px; color:#fff; }
+    .emergencia-title { font-size:1rem; font-weight:700; color:#fff; }
+    .emergencia-sub { font-size:0.84rem; color:rgba(255,255,255,0.75); margin-top:2px; }
+    .btn-emergencia {
+      font-family:var(--font); font-size:0.85rem; font-weight:700;
+      color:var(--red); background:#fff; padding:12px 24px;
+      border-radius:60px; text-decoration:none; white-space:nowrap;
+      box-shadow:0 4px 14px rgba(0,0,0,0.2); transition:all 0.2s;
+    }
+    .btn-emergencia:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.25); }
+
+    /* ══════════════════════════════════════
+       SOBRE — Split light section
+    ══════════════════════════════════════ */
+    .sobre-grid {
+      display:grid; grid-template-columns:420px 1fr;
+      gap:72px; align-items:start;
+    }
+    .sobre-photo-wrap { position:sticky; top:100px; }
+    .sobre-photo {
+      border-radius:var(--r-xl); overflow:hidden;
+      aspect-ratio:3/4;
+      box-shadow:0 24px 64px rgba(13,17,23,0.12);
+      border:1px solid var(--border-l);
+      background:var(--light-bg);
+    }
+    .sobre-photo img { width:100%; height:100%; object-fit:cover; object-position:top center; }
+    .sobre-photo-placeholder {
+      width:100%; height:100%; min-height:460px;
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--mono); font-size:0.7rem;
+      color:var(--text-2); letter-spacing:0.1em; text-transform:uppercase;
+    }
+    .sobre-accent {
+      height:3px; border-radius:2px; margin-top:16px;
+      background:linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+    }
+
+    .sobre-quote {
+      font-size:1.45rem; font-weight:700; color:var(--text-0);
+      line-height:1.4; margin-bottom:28px;
+      padding-left:20px; border-left:3px solid var(--gold);
+    }
+    .sobre-text { display:flex; flex-direction:column; gap:16px; }
+    .sobre-text p { font-size:0.97rem; color:var(--text-2); line-height:1.8; }
+    .sobre-text strong { color:var(--text-0); font-weight:600; }
+    .sobre-tags { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
+    .sobre-tag {
+      font-size:0.76rem; font-weight:500;
+      padding:7px 16px; border-radius:60px;
+      background:rgba(201,168,76,0.08);
+      border:1px solid rgba(201,168,76,0.15);
+      color:var(--text-1);
+    }
+
+    /* ══════════════════════════════════════
+       VALORES — Dark strip
+    ══════════════════════════════════════ */
+    .valores-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      border-radius:var(--r-lg); overflow:hidden;
+      border:1px solid var(--dark-border);
+    }
+    .valor {
+      padding:48px 36px; text-align:center; position:relative;
+      background:var(--dark-2);
+    }
+    .valor:not(:last-child)::after {
+      content:''; position:absolute;
+      top:15%; right:0; height:70%; width:1px;
+      background:var(--dark-border);
+    }
+    .valor-icon {
+      width:60px; height:60px; border-radius:50%;
+      background:var(--gold-dim);
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 20px;
+    }
+    .valor-icon svg { width:26px; height:26px; color:var(--gold); }
+    .valor-title { font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:8px; }
+    .valor-desc { font-size:0.87rem; color:var(--white-70); line-height:1.65; }
+
+    /* ══════════════════════════════════════
+       EBOOKS
+    ══════════════════════════════════════ */
+    /* EBOOKS — 3 capas + CTA */
+    .ebooks-wrapper {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:48px;
+      align-items:center;
+    }
+    .ebooks-left {}
+    .ebooks-books {
+      display:flex; gap:16px; align-items:flex-end;
+    }
+    .ebook-book {
+      flex:1; position:relative;
+      transition:transform 0.4s var(--ease);
+      cursor:pointer;
+    }
+    .ebook-book:nth-child(2) { transform:translateY(-16px); }
+    .ebook-book:hover { transform:translateY(-24px) !important; }
+    .ebook-book img {
+      width:100%; border-radius:var(--r-md);
+      box-shadow:0 16px 48px rgba(13,17,23,0.18), 0 4px 12px rgba(13,17,23,0.12);
+    }
+    .ebook-book-shine {
+      position:absolute; top:0; left:0; right:0;
+      height:40%; border-radius:var(--r-md) var(--r-md) 0 0;
+      background:linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
+      pointer-events:none;
+    }
+    .ebooks-right { display:flex; flex-direction:column; gap:24px; }
+    .ebooks-count {
+      font-family:var(--mono); font-size:0.68rem; font-weight:500;
+      letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--gold);
+      display:flex; align-items:center; gap:10px;
+    }
+    .ebooks-count-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); }
+    .ebooks-title {
+      font-size:clamp(1.6rem,2.8vw,2.2rem); font-weight:800;
+      color:var(--text-0); line-height:1.15; letter-spacing:-0.02em;
+    }
+    .ebooks-title em { font-style:normal; color:var(--gold); }
+    .ebooks-desc { font-size:0.97rem; color:var(--text-2); line-height:1.8; }
+    .ebooks-list { display:flex; flex-direction:column; gap:12px; }
+    .ebook-item {
+      display:flex; align-items:center; gap:12px;
+      font-size:0.9rem; color:var(--text-1); font-weight:500;
+    }
+    .ebook-item-icon {
+      width:32px; height:32px; border-radius:8px;
+      background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.15);
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .ebook-item-icon svg { width:15px; height:15px; color:var(--gold); }
+    .ebooks-cta-wrap { display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+
+    /* ══════════════════════════════════════
+       LOCAIS
+    ══════════════════════════════════════ */
+    .local-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .local-card {
+      background:var(--dark-2); border:1px solid var(--dark-border);
+      border-radius:var(--r-lg); overflow:hidden;
+      transition:all 0.3s var(--ease);
+    }
+    .local-card:hover { border-color:var(--gold-glow); transform:translateY(-3px); }
+    .local-map {
+      height:200px;
+      position:relative;
+      overflow:hidden;
+    }
+    .local-map img {
+      width:100%; height:100%; object-fit:cover;
+      object-position:center;
+      transition:transform 0.5s var(--ease);
+    }
+    .local-card:hover .local-map img { transform:scale(1.05); }
+    .local-map::after {
+      content:'';
+      position:absolute; inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(13,17,23,0.1) 0%,
+        rgba(13,17,23,0.15) 40%,
+        rgba(13,17,23,0.75) 100%
+      );
+    }
+    .local-map-tag {
+      position:absolute; bottom:14px; left:16px;
+      z-index:2;
+      font-family:var(--mono); font-size:0.62rem; font-weight:500;
+      letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--gold);
+      background:rgba(13,17,23,0.6);
+      backdrop-filter:blur(8px);
+      border:1px solid rgba(201,168,76,0.2);
+      padding:5px 12px; border-radius:60px;
+    }
+    .local-body { padding:22px 26px 26px; }
+    .local-name { font-size:1.05rem; font-weight:700; color:var(--white); margin-bottom:8px; }
+    .local-addr { font-size:0.86rem; color:var(--white-40); line-height:1.6; margin-bottom:16px; }
+    .local-link {
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:0.8rem; font-weight:600; color:var(--gold);
+      padding:8px 18px; border-radius:60px;
+      background:var(--gold-dim); border:1px solid rgba(201,168,76,0.15);
+      text-decoration:none; transition:all 0.2s;
+    }
+    .local-link:hover { background:var(--gold-glow); }
+    .local-link svg { width:13px; height:13px; }
+
+    /* ══════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════ */
+    .faq-list { max-width:700px; margin:0 auto; display:flex; flex-direction:column; gap:10px; }
+    .faq-item {
+      border:1px solid var(--border-l); border-radius:var(--r-md);
+      overflow:hidden; background:var(--light-bg2);
+      transition:border-color 0.2s;
+    }
+    .faq-item:hover { border-color:rgba(201,168,76,0.2); }
+    .faq-q {
+      padding:18px 24px; cursor:pointer;
+      font-size:0.93rem; font-weight:600; color:var(--text-0);
+      display:flex; justify-content:space-between; align-items:center;
+      user-select:none;
+    }
+    .faq-q::after {
+      content:'+'; font-size:1.2rem; font-weight:300;
+      color:var(--gold); flex-shrink:0; margin-left:12px;
+      transition:transform 0.25s;
+    }
+    .faq-item.open .faq-q::after { content:'-'; }
+    .faq-a {
+      max-height:0; overflow:hidden;
+      padding:0 24px;
+      font-size:0.9rem; color:var(--text-2); line-height:1.75;
+      transition:max-height 0.4s var(--ease), padding 0.4s var(--ease);
+    }
+    .faq-item.open .faq-a { max-height:300px; padding:0 24px 22px; }
+
+    /* ══════════════════════════════════════
+       CTA FINAL
+    ══════════════════════════════════════ */
+    .cta-section {
+      padding:120px 0; text-align:center;
+      background:var(--dark);
+      position:relative; overflow:hidden;
+    }
+    .cta-section::before {
+      content:'';
+      position:absolute; top:-40%; left:50%; transform:translateX(-50%);
+      width:600px; height:600px; border-radius:50%;
+      background:radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .cta-content { position:relative; z-index:2; }
+    .cta-title {
+      font-size:clamp(2rem,3.8vw,3rem); font-weight:800;
+      color:var(--white); line-height:1.1; letter-spacing:-0.025em;
+      margin-bottom:18px;
+    }
+    .cta-title span {
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .cta-desc { font-size:1rem; color:var(--white-70); margin-bottom:36px; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.75; }
+    .cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .cta-slogan { font-size:0.9rem; color:rgba(201,168,76,0.35); margin-top:28px; font-style:italic; }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    .footer { padding:48px 0 32px; background:#080B10; }
+    .footer-grid {
+      display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+      gap:48px; margin-bottom:40px;
+    }
+    .footer-brand { display:flex; align-items:center; gap:10px; font-size:1.05rem; font-weight:700; color:var(--white); margin-bottom:12px; }
+    .footer-brand span { color:var(--gold); }
+    .footer-brand-logo { height:32px; width:auto; filter:brightness(1.1) drop-shadow(0 0 4px rgba(201,168,76,0.3)); }
+    .footer-brand-desc { font-size:0.85rem; color:var(--white-40); line-height:1.7; max-width:260px; }
+    .footer-col-title {
+      font-family:var(--mono); font-size:0.65rem; font-weight:600;
+      letter-spacing:0.15em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:16px;
+    }
+    .footer-col-links { list-style:none; display:flex; flex-direction:column; gap:10px; }
+    .footer-col-links a { font-size:0.85rem; color:var(--white-40); text-decoration:none; transition:color 0.2s; }
+    .footer-col-links a:hover { color:var(--white); }
+    .footer-bottom {
+      border-top:1px solid rgba(255,255,255,0.05);
+      padding-top:24px;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .footer-copy { font-size:0.76rem; color:rgba(255,255,255,0.2); }
+    .footer-social { display:flex; gap:12px; }
+    .footer-social a {
+      width:34px; height:34px; border-radius:50%;
+      background:var(--white-06);
+      display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s;
+    }
+    .footer-social a:hover { background:var(--gold-dim); }
+    .footer-social svg { width:15px; height:15px; color:var(--white-40); }
+
+    /* ══════════════════════════════════════
+       WHATSAPP FAB
+    ══════════════════════════════════════ */
+    .fab {
+      position:fixed; bottom:24px; right:24px; z-index:999;
+      width:56px; height:56px; border-radius:50%;
+      background:#25D366; color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      text-decoration:none;
+      box-shadow:0 6px 20px rgba(37,211,102,0.35);
+      transition:transform 0.2s, box-shadow 0.2s;
+      animation:fab-pulse 3s ease-in-out infinite;
+    }
+    .fab:hover { transform:scale(1.1); box-shadow:0 8px 28px rgba(37,211,102,0.45); }
+    .fab svg { width:26px; height:26px; }
+    @keyframes fab-pulse {
+      0%,100% { box-shadow:0 6px 20px rgba(37,211,102,0.35); }
+      50% { box-shadow:0 6px 20px rgba(37,211,102,0.35), 0 0 0 12px rgba(37,211,102,0.06); }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width:960px) {
+      .container { padding:0 24px; }
+      .nav { padding:0 24px; }
+      .nav-links { display:none; }
+
+      /* ── HERO MOBILE ── layout em coluna simples, sem position absolute ── */
+      .hero { min-height:100svh; }
+
+      .hero-inner {
+        display:flex;
+        flex-direction:column;
+        grid-template-columns:unset;
+        padding:0;
+        padding-top:72px;
+        min-height:100svh;
+        align-items:stretch;
+      }
+
+      /* Foto + cards: PRIMEIRO no mobile (order:-1) */
+      .hero-photo-area {
+        display:block !important;
+        position:relative !important;
+        flex:0 0 auto;
+        height:56svh;
+        min-height:280px;
+        max-height:420px;
+        order:-1;
+        overflow:visible;
+      }
+      .hero-deco-lung { display:none; }
+
+      .hero-photo {
+        position:absolute;
+        bottom:0;
+        left:50%;
+        transform:translateX(-50%);
+        height:100%;
+        max-height:420px;
+      }
+      .hero-photo img {
+        height:100%;
+        width:auto;
+        filter:drop-shadow(0 0 20px rgba(0,0,0,0.8));
+      }
+
+      /* Cards pequenos — longe do rosto (rosto fica no topo da foto) */
+      .hero-card { padding:9px 12px; gap:8px; }
+      .hero-card-icon { width:28px; height:28px; border-radius:7px; }
+      .hero-card-icon svg { width:13px; height:13px; }
+      .hero-card-title { font-size:0.7rem; }
+      .hero-card-sub { font-size:0.6rem; }
+      /* card 1: esquerda, na cintura/barriga do Pedro */
+      .hero-card-1 { bottom:22%; left:8px; top:auto; }
+      /* card 2: direita, na altura do peito */
+      .hero-card-2 { bottom:36%; right:8px; top:auto; }
+
+      /* Texto abaixo da foto */
+      .hero-text {
+        padding:20px 20px 12px;
+        text-align:center;
+        align-items:center;
+        position:relative; z-index:2;
+        flex:0 0 auto;
+        order:0;
+      }
+      .hero-title { font-size:clamp(1.85rem,7vw,2.3rem); }
+      .hero-desc { font-size:0.87rem; }
+      .hero-actions { justify-content:center; }
+
+      /* Stats bar no fundo */
+      .hero-stats {
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        flex:0 0 auto;
+        position:relative; z-index:2;
+        margin:0 20px 20px;
+        border-radius:var(--r-md);
+        order:1;
+      }
+
+      /* Demais seções */
+      .servicos-grid { grid-template-columns:1fr; }
+      .servico-card.featured { grid-column:span 1; grid-template-columns:1fr; }
+      .sobre-grid { grid-template-columns:1fr; }
+      .sobre-photo-wrap { position:static; max-width:300px; margin:0 auto; }
+      .valores-grid { grid-template-columns:1fr; }
+      .valor:not(:last-child)::after { width:60%; height:1px; top:auto; bottom:0; left:20%; right:20%; }
+      .local-grid { grid-template-columns:1fr; }
+      .emergencia { flex-direction:column; text-align:center; }
+      .emergencia-left { flex-direction:column; }
+      .footer-grid { grid-template-columns:1fr 1fr; gap:32px; }
+      .footer-bottom { flex-direction:column; gap:16px; text-align:center; }
+
+      /* ── EBOOKS MOBILE ── */
+      .ebooks-wrapper {
+        grid-template-columns:1fr;
+        gap:36px;
+      }
+      .ebooks-left { order:1; }
+      .ebooks-books {
+        gap:12px;
+        justify-content:center;
+        align-items:flex-end;
+      }
+      .ebook-book { max-width:110px; flex:0 0 auto; }
+      .ebook-book:nth-child(2) { transform:translateY(-20px); max-width:120px; }
+      .ebook-book:hover { transform:translateY(-28px) !important; }
+      .ebooks-right { order:2; text-align:center; align-items:center; }
+      .ebooks-list { align-self:stretch; }
+      .ebook-item { justify-content:flex-start; }
+      .ebooks-cta-wrap { justify-content:center; }
+    }
+    @media (max-width:480px) {
+      .section { padding:72px 0; }
+      .footer-grid { grid-template-columns:1fr; gap:24px; }
+      .hero-stats { grid-template-columns:1fr; }
+      .hero-photo-area { height:48vmax; min-height:260px; }
+      .ebook-book { max-width:90px; }
+      .ebook-book:nth-child(2) { max-width:100px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">
+    <img src="hero-pedro-stipp/logo-pedro-stipp.png" alt="Dr. Pedro Stipp" class="nav-brand-logo">
+    Dr. Pedro <span>Stipp</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#ebooks">E-books</a></li>
+    <li><a href="#locais">Locais</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="https://wa.me/message/XO3Z43EL7SGFI1" class="nav-cta" target="_blank" rel="noopener noreferrer">Agendar Consulta</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- LEFT -->
+    <div class="hero-text">
+      <div class="hero-badge" id="heroBadge">
+        <span class="hero-badge-dot"></span>
+        Pneumologia Veterinária
+      </div>
+
+      <h1 class="hero-title" id="heroTitle">
+        Saúde e longevidade para o seu <span class="gold">melhor amigo.</span>
+      </h1>
+
+      <p class="hero-desc" id="heroDesc">
+        Consultas pneumológicas especializadas, atendimento domiciliar e acompanhamento cirúrgico com <strong>cuidado, carinho e prevenção</strong>.
+      </p>
+
+      <div class="hero-actions" id="heroActions">
+        <a href="https://wa.me/message/XO3Z43EL7SGFI1" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar Consulta
+        </a>
+        <a href="#servicos" class="btn btn-outline-dark">
+          Ver serviços
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-stats" id="heroStats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">500<span>+</span></div>
+          <div class="hero-stat-label">Pets atendidos</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">2</div>
+          <div class="hero-stat-label">Locais de atendimento</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">24<span>h</span></div>
+          <div class="hero-stat-label">Suporte emergencial</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — Photo -->
+    <div class="hero-photo-area">
+      <!-- Logo watermark decorativa -->
+      <img src="hero-pedro-stipp/logo-pedro-stipp.png" alt="" class="hero-deco-lung" aria-hidden="true">
+
+      <div class="hero-photo">
+        <img src="hero-pedro-stipp/pedro-stipp-hero.png" alt="Dr. Pedro Stipp — Medico Veterinario">
+      </div>
+
+      <!-- Card 1 — Especialidade -->
+      <div class="hero-card hero-card-1">
+        <div class="hero-card-icon green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div>
+          <div class="hero-card-title">Pneumologia</div>
+          <div class="hero-card-sub">Especialidade veterinária</div>
+        </div>
+      </div>
+
+      <!-- Card 2 — Domiciliar -->
+      <div class="hero-card hero-card-2">
+        <div class="hero-card-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div class="hero-card-title">Atendimento Domiciliar</div>
+          <div class="hero-card-sub">No conforto da sua casa</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICOS -->
+<section class="section section--dark2" id="servicos">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow dark"><span class="section-eyebrow-dot"></span> Serviços</div>
+      <h2 class="section-title on-dark">Cuidados especializados para <em>cada necessidade.</em></h2>
+      <p class="section-sub on-dark">Diagnóstico preciso, tratamento humanizado e acompanhamento completo para a saúde respiratória do seu pet.</p>
+    </div>
+
+    <div class="servicos-grid">
+      <div class="servico-card featured reveal">
+        <div>
+          <div class="servico-icon gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="servico-title">Consulta Pneumológica</h3>
+          <p class="servico-desc">Avaliação completa do sistema respiratório com equipamentos especializados. Diagnóstico preciso para condições como colapso de traqueia, bronquite, pneumonia e síndrome braquicefálica.</p>
+          <a href="https://wa.me/message/XO3Z43EL7SGFI1" class="servico-cta" target="_blank" rel="noopener noreferrer">
+            Agendar consulta
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="servico-visual">
+          <img src="hero-pedro-stipp/consulta-pneumologica.png" alt="Consulta Pneumológica">
+        </div>
+      </div>
+
+      <div class="servico-card reveal reveal-d1">
+        <div class="servico-icon green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3 class="servico-title">Consulta a Domicílio</h3>
+        <p class="servico-desc">Atendimento no conforto da sua casa. Ideal para pets que ficam estressados ou precisam de cuidados especiais.</p>
+        <a href="https://wa.me/message/XO3Z43EL7SGFI1" class="servico-cta" target="_blank" rel="noopener noreferrer">
+          Agendar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="servico-card reveal reveal-d2">
+        <div class="servico-icon navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3 class="servico-title">Orçamento Cirúrgico</h3>
+        <p class="servico-desc">Avaliação pré-cirúrgica e orçamento transparente. Cada procedimento planejado com segurança.</p>
+        <a href="https://wa.me/message/XO3Z43EL7SGFI1" class="servico-cta" target="_blank" rel="noopener noreferrer">
+          Solicitar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="servico-card reveal reveal-d3">
+        <div class="servico-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3 class="servico-title">Check-up Preventivo</h3>
+        <p class="servico-desc">Avaliação periódica para prevenir problemas respiratórios. Prevenção é o melhor tratamento.</p>
+        <a href="https://wa.me/message/XO3Z43EL7SGFI1" class="servico-cta" target="_blank" rel="noopener noreferrer">
+          Saber mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="emergencia reveal" style="margin-top:20px">
+      <div class="emergencia-left">
+        <div class="emergencia-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <div class="emergencia-title">Emergência respiratória?</div>
+          <div class="emergencia-sub">Se seu pet está com dificuldade para respirar, entre em contato imediatamente.</div>
+        </div>
+      </div>
+      <a href="https://wa.me/message/XO3Z43EL7SGFI1" class="btn-emergencia" target="_blank" rel="noopener noreferrer">Contato de Emergencia</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="section section--light" id="sobre">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow light"><span class="section-eyebrow-dot"></span> Sobre</div>
+      <h2 class="section-title on-light">Quem cuida do <em>seu melhor amigo?</em></h2>
+    </div>
+
+    <div class="sobre-grid reveal">
+      <div class="sobre-photo-wrap">
+        <div class="sobre-photo">
+          <img src="hero-pedro-stipp/pedro-sobre.png" alt="Dr. Pedro Stipp">
+        </div>
+        <div class="sobre-accent"></div>
+      </div>
+
+      <div>
+        <blockquote class="sobre-quote">
+          "Com cuidado, carinho e prevenção, garantiremos juntos mais saúde e longevidade para o seu pet."
+        </blockquote>
+        <div class="sobre-text">
+          <p>O Dr. Pedro Stipp é médico veterinário especializado em <strong>pneumologia veterinária</strong>, dedicado a oferecer o melhor cuidado respiratório para cães e gatos.</p>
+          <p>Com uma abordagem que combina <strong>competência técnica e sensibilidade</strong>, cada consulta é conduzida com atenção individualizada, garantindo diagnóstico preciso e tratamento adequado para cada paciente.</p>
+          <p>Além das consultas em clínica, oferece <strong>atendimento domiciliar</strong> para pets que se beneficiam de um ambiente mais tranquilo. Atende em dois locais em João Pessoa: Tambauzinho Pet Shop e Rede Pop Bessa.</p>
+        </div>
+        <div class="sobre-tags">
+          <span class="sobre-tag">Pneumologia Veterinária</span>
+          <span class="sobre-tag">Medicina Interna</span>
+          <span class="sobre-tag">Atendimento Domiciliar</span>
+          <span class="sobre-tag">Cirurgias Respiratorias</span>
+          <span class="sobre-tag">Check-up Preventivo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="section section--dark" id="valores">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center">
+      <div class="section-eyebrow dark" style="justify-content:center"><span class="section-eyebrow-dot"></span> Nossos valores</div>
+      <h2 class="section-title on-dark" style="max-width:100%;text-align:center;margin:0 auto">O que guia <em>cada atendimento.</em></h2>
+
+    </div>
+    <div class="valores-grid">
+      <div class="valor reveal">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 class="valor-title">Amor</h3>
+        <p class="valor-desc">Cada pet é tratado com o mesmo carinho que dedicamos aos nossos. O amor pelo que fazemos se reflete em cada consulta.</p>
+      </div>
+      <div class="valor reveal reveal-d1">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="valor-title">Cuidado</h3>
+        <p class="valor-desc">Atenção meticulosa aos detalhes, diagnóstico preciso e tratamento personalizado para cada caso.</p>
+      </div>
+      <div class="valor reveal reveal-d2">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="valor-title">Respeito</h3>
+        <p class="valor-desc">Respeito pelo animal, pelo tutor e pela relação entre eles. Transparência e ética em cada decisão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EBOOKS -->
+<section class="section section--white" id="ebooks">
+  <div class="container">
+    <div class="ebooks-wrapper reveal">
+
+      <!-- Capas dos ebooks -->
+      <div class="ebooks-left">
+        <a href="https://drpedrostipp.my.canva.site/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+          <div class="ebooks-books">
+            <div class="ebook-book">
+              <img src="hero-pedro-stipp/ebook-1.png" alt="Crescendo com seu cao">
+              <div class="ebook-book-shine"></div>
+            </div>
+            <div class="ebook-book">
+              <img src="hero-pedro-stipp/ebook-2.png" alt="Sorrindo com seu pet">
+              <div class="ebook-book-shine"></div>
+            </div>
+            <div class="ebook-book">
+              <img src="hero-pedro-stipp/ebook-3.png" alt="Perigos do jardim">
+              <div class="ebook-book-shine"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Texto e CTA -->
+      <div class="ebooks-right">
+        <div class="ebooks-count">
+          <span class="ebooks-count-dot"></span>
+          3 e-books gratuitos
+        </div>
+        <h2 class="ebooks-title">Conhecimento para o tutor que <em>se importa.</em></h2>
+        <p class="ebooks-desc">Conteúdo educativo criado pelo Dr. Pedro Stipp para ajudar tutores a cuidar melhor da saúde e bem-estar dos seus pets.</p>
+        <div class="ebooks-list">
+          <div class="ebook-item">
+            <div class="ebook-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            Crescendo com seu Cão — Guia Pediátrico
+          </div>
+          <div class="ebook-item">
+            <div class="ebook-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            Sorrindo com seu Pet — Guia de Saúde Oral
+          </div>
+          <div class="ebook-item">
+            <div class="ebook-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            Perigos do Jardim — Guia de Plantas Tóxicas
+          </div>
+        </div>
+        <div class="ebooks-cta-wrap">
+          <a href="https://drpedrostipp.my.canva.site/" class="btn btn-gold" target="_blank" rel="noopener noreferrer">
+            Acessar e-books gratuitos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LOCAIS -->
+<section class="section section--dark2" id="locais">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow dark"><span class="section-eyebrow-dot"></span> Locais de atendimento</div>
+      <h2 class="section-title on-dark">Onde encontrar o <em>Dr. Pedro Stipp.</em></h2>
+      <p class="section-sub on-dark">Atendimento presencial com hora marcada. Agende pelo WhatsApp.</p>
+
+    </div>
+    <div class="local-grid">
+      <div class="local-card reveal">
+        <div class="local-map">
+          <img src="hero-pedro-stipp/tambauzinho-pet-shop.webp" alt="Tambauzinho Pet Shop">
+          <span class="local-map-tag">Tambauzinho</span>
+        </div>
+        <div class="local-body">
+          <h3 class="local-name">Tambauzinho Pet Shop</h3>
+          <p class="local-addr">João Pessoa, PB. Atendimento com hora marcada. Ambiente preparado para consultas especializadas.</p>
+          <a href="https://wa.me/message/XO3Z43EL7SGFI1" class="local-link" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Agendar
+          </a>
+        </div>
+      </div>
+      <div class="local-card reveal reveal-d1">
+        <div class="local-map">
+          <img src="hero-pedro-stipp/rede-pop-bessa.jpg" alt="Rede Pop Bessa">
+          <span class="local-map-tag">Bessa</span>
+        </div>
+        <div class="local-body">
+          <h3 class="local-name">Rede Pop Bessa</h3>
+          <p class="local-addr">João Pessoa, PB. Agende pelo WhatsApp e escolha o melhor horário para você e seu pet.</p>
+          <a href="https://wa.me/message/XO3Z43EL7SGFI1" class="local-link" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Agendar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--light" id="faq">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center">
+      <div class="section-eyebrow light" style="justify-content:center"><span class="section-eyebrow-dot"></span> Perguntas frequentes</div>
+      <h2 class="section-title on-light" style="max-width:100%;text-align:center;margin:0 auto">Dúvidas comuns sobre <em>nossos serviços.</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Quais sintomas indicam que meu pet precisa de um pneumologista?</div>
+        <div class="faq-a">Tosse persistente, dificuldade para respirar, espirros frequentes, ruídos respiratórios anormais (roncos ou chiados), cansaço excessivo e intolerância ao exercício são sinais que merecem avaliação pneumológica.</div>
+      </div>
+      <div class="faq-item reveal reveal-d1">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Como funciona o atendimento domiciliar?</div>
+        <div class="faq-a">O Dr. Pedro vai até sua casa com os equipamentos necessários para uma consulta completa. Ideal para pets idosos, com mobilidade reduzida ou que ficam muito estressados em clínicas. Agende pelo WhatsApp informando seu endereço e horário preferido.</div>
+      </div>
+      <div class="faq-item reveal reveal-d2">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Preciso de encaminhamento para agendar uma consulta?</div>
+        <div class="faq-a">Não é necessário encaminhamento. Você pode agendar diretamente pelo WhatsApp. Se outro veterinário encaminhou seu pet, traga os exames e relatórios anteriores para a consulta.</div>
+      </div>
+      <div class="faq-item reveal reveal-d3">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Quais animais o Dr. Pedro atende?</div>
+        <div class="faq-a">O Dr. Pedro é especializado no atendimento de cães e gatos com problemas respiratórios, incluindo condições como colapso de traqueia, bronquite crônica, pneumonia e síndrome braquicefálica.</div>
+      </div>
+      <div class="faq-item reveal reveal-d4">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Como funciona o orcamento para cirurgia?</div>
+        <div class="faq-a">Após a avaliação clínica, o Dr. Pedro apresenta um orçamento detalhado e transparente, explicando o procedimento, riscos, cuidados pós-operatórios e valores. Você tem tempo para decidir sem pressão.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <div class="container">
+    <div class="cta-content reveal">
+      <h2 class="cta-title">Seu pet merece o melhor cuidado.<br><span>Agende agora.</span></h2>
+      <p class="cta-desc">Consultas especializadas com o carinho e a atenção que seu companheiro merece. Presencial e domiciliar em João Pessoa.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/message/XO3Z43EL7SGFI1" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" style="font-size:1rem;padding:16px 36px">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+        <a href="https://instagram.com/pedrostippvet" class="btn btn-outline-dark" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @pedrostippvet
+        </a>
+      </div>
+      <p class="cta-slogan">"Amor, cuidado e respeito"</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="hero-pedro-stipp/logo-pedro-stipp.png" alt="" class="footer-brand-logo" aria-hidden="true">
+          Dr. Pedro <span>Stipp</span>
+        </div>
+        <p class="footer-brand-desc">Médico veterinário especialista em pneumologia. Cuidando da saúde respiratória do seu pet com amor e competência.</p>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Serviços</h4>
+        <ul class="footer-col-links">
+          <li><a href="#servicos">Consulta Pneumológica</a></li>
+          <li><a href="#servicos">Atendimento Domiciliar</a></li>
+          <li><a href="#servicos">Orçamento Cirúrgico</a></li>
+          <li><a href="#servicos">Check-up Preventivo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Locais</h4>
+        <ul class="footer-col-links">
+          <li><a href="#locais">Tambauzinho Pet Shop</a></li>
+          <li><a href="#locais">Rede Pop Bessa</a></li>
+          <li><a href="#servicos">Atendimento Domiciliar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Contato</h4>
+        <ul class="footer-col-links">
+          <li><a href="https://wa.me/message/XO3Z43EL7SGFI1" target="_blank">WhatsApp</a></li>
+          <li><a href="https://instagram.com/pedrostippvet" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Dr. Pedro Stipp — Pneumologia Veterinária. Todos os direitos reservados.</span>
+      <div class="footer-social">
+        <a href="https://instagram.com/pedrostippvet" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://wa.me/message/XO3Z43EL7SGFI1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/message/XO3Z43EL7SGFI1" class="fab" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // Scroll progress
+  (() => {
+    const bar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (window.scrollY / h * 100) + '%';
+    }, { passive:true });
+  })();
+
+  // Hero entrance
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      ['heroBadge','heroTitle','heroDesc','heroActions','heroStats'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('visible');
+      });
+    }, 150);
+  });
+
+  // Scroll reveal
+  (() => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold:0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  })();
+</script>
+</body>
+</html>

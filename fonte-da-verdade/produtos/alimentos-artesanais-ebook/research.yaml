@@ -1,0 +1,199 @@
+# Research de Mercado — Como Criar, Vender e Escalar Alimentos Artesanais
+# Gerado: 2026-04-10 | next_review: 2026-07-10
+# Fonte: sistema-perpetuo.md + ebook + brand voice + análise de mercado Luna
+
+slug: alimentos-artesanais-ebook
+research_date: "2026-04-10"
+next_review: "2026-07-10"
+researcher: "Luna (copy-chief)"
+
+# ─── Contexto de Mercado ─────────────────────────────────────────────────────
+mercado:
+  nome: "Mercado de Alimentos Artesanais Brasileiros"
+  sofisticacao: "Stage 3-4"
+  descricao: >
+    Mercado em crescimento acelerado pós-pandemia com explosão de empreendedores
+    artesanais (geleias, molhos, queijos, embutidos, conservas, chocolates, etc.).
+    Maioria opera sem sistema: vende por indicação, WhatsApp e feiras, cobra barato
+    por falta de metodologia de posicionamento. Conteúdo educativo existe mas é
+    escasso com credencial real de quem produz.
+  tamanho_estimado: "Mercado de alimentação artesanal BR: R$8+ bilhões (SEBRAE 2024)"
+  crescimento: "Crescimento de 30%+ ao ano em empreendimentos artesanais (SEBRAE)"
+  dor_dominante: "Saber fazer mas não saber cobrar — guerra de preço com industrializado"
+  momento_cultural: "Valorização do artesanal, origem, ingredientes locais, história por trás do produto"
+
+# ─── Análise Competitiva ─────────────────────────────────────────────────────
+concorrentes:
+
+  - nome: "Cursos SEBRAE de Empreendedorismo"
+    tipo: institucional-gratuito
+    posicionamento: "Burocrático, focado em formalização e gestão"
+    angulo: "Como abrir empresa / regularizar negócio"
+    fraqueza: "Não ensina posicionamento premium nem como cobrar mais. Linguagem corporativa."
+    diferencial_gabriel: "Gabriel ensina do chão de fábrica, não da sala de aula"
+
+  - nome: "Cursos genéricos de 'Negócios de Sucesso'"
+    tipo: infoproduto-generico
+    posicionamento: "Marketing digital aplicado a qualquer negócio"
+    angulo: "Como vender mais online"
+    fraqueza: "Não entendem o universo artesanal: feira, empório, rótulo, ingrediente nativo"
+    diferencial_gabriel: "Especialista vertical — só artesanal, com 12 anos de prática"
+
+  - nome: "Canais de gastronomia/culinária no YouTube"
+    tipo: conteudo-gratuito
+    posicionamento: "Receitas e técnicas de produção"
+    angulo: "Como fazer bem feito"
+    fraqueza: "Não ensinam precificação nem como entrar em canais premium"
+    diferencial_gabriel: "Gabriel pula a etapa de produção (você já sabe fazer) e vai direto ao dinheiro"
+
+  - nome: "Consultorias de branding para food"
+    tipo: servico-premium
+    posicionamento: "Identidade visual e marca"
+    angulo: "Sua marca precisa parecer premium"
+    fraqueza: "Ticket alto (R$3K-15K), sem sistema replicável, não ensina — faz por você"
+    diferencial_gabriel: "R$27. Você mesmo aplica. O sistema é do produtor, não do consultor."
+
+  - nome: "Influenciadores de alimentos artesanais no Instagram"
+    tipo: conteudo-organico
+    posicionamento: "Bastidor, receitas, vida artesanal"
+    angulo: "Inspiração e lifestyle"
+    fraqueza: "Não monetizam conhecimento de negócios — ficam no inspiracional"
+    diferencial_gabriel: "Gabriel monetiza o conhecimento COM sistema estruturado"
+
+# ─── Claims Saturados (PROIBIDO usar como ângulo) ────────────────────────────
+saturated_claims:
+  - "Transforme sua paixão em negócio"
+  - "Aprenda a empreender no mercado artesanal"
+  - "Curso completo de alimentos artesanais"
+  - "Do zero ao lucro com produtos artesanais"
+  - "Como vender mais nas redes sociais"
+  - "Empreendedorismo feminino no artesanal"
+  - "Receitas artesanais que vendem"
+
+# ─── Ângulos Virgens ─────────────────────────────────────────────────────────
+angulos_virgens:
+
+  - id: AV01
+    nome: "O Problema Não É O Produto"
+    descricao: >
+      Reframe central: o artesão acha que precisa melhorar a receita.
+      Na verdade, a receita já é boa. O problema é como apresenta.
+      Embalagem, história, canal — isso muda o preço, não a receita.
+    big_idea: "Seu produto vale 3x mais. O que falta não é receita melhor — é a história certa."
+    nivel_consciencia_alvo: solution_aware
+    cta_natural: "Descubra os 3 pilares que fazem isso acontecer"
+    prova_necessaria: "Antes/depois da Chilliepig (mesmo produto, reposicionamento)"
+    status: PRINCIPAL  # ângulo primário do produto
+
+  - id: AV02
+    nome: "Cobrar Caro Não É Ganância — É Sobrevivência"
+    descricao: >
+      Muitos artesãos cobram barato por vergonha ou "humildade".
+      Na verdade, cobrar barato é insustentável: você não consegue
+      comprar matéria-prima boa, não consegue crescer, desiste.
+      Cobrar o que vale é o que mantém o artesanal vivo.
+    big_idea: "Artesão que cobra barato não é humilde. É insustentável."
+    nivel_consciencia_alvo: problem_aware
+    cta_natural: "Aprenda a cobrar o que seu produto vale de verdade"
+    prova_necessaria: "Dado sobre desistência de artesãos por inviabilidade financeira"
+    status: SECUNDÁRIO
+
+  - id: AV03
+    nome: "O Café Especial Não É Melhor Que Sua Geleia"
+    descricao: >
+      Café especial cobra R$80 a embalagem. Geleia artesanal cobra R$12.
+      Não é porque o café é melhor — é porque ele comunica melhor.
+      Embalagem. História. Canal. Isso é o que faz a diferença de preço.
+    big_idea: "O café especial cobra 6x mais não porque é melhor. É porque conta melhor."
+    nivel_consciencia_alvo: solution_aware
+    cta_natural: "Aprenda a comunicar tão bem quanto o café especial"
+    prova_necessaria: "Comparativo visual produto genérico vs premium mesmo produto"
+    status: SECUNDÁRIO  # ótimo para ads
+
+  - id: AV04
+    nome: "12 Anos Vs 1 Ebook de R$27"
+    descricao: >
+      Ângulo de autoridade + valor absurdo. Gabriel tem 12 anos, uma marca real,
+      foi jurado nacional. Colocou tudo isso num ebook de R$27.
+      Absurdo de valor — o que ele pagou em tempo, você paga R$27.
+    big_idea: "12 anos de erros e acertos. R$27 pra você não repetir os mesmos."
+    nivel_consciencia_alvo: product_aware
+    cta_natural: "Quero os 12 anos comprimidos em um guia"
+    prova_necessaria: "Credenciais do expert + Chilliepig como evidência"
+    status: SECUNDÁRIO  # forte para retargeting
+
+  - id: AV05
+    nome: "Feira É Armadilha, Não Destino"
+    descricao: >
+      Muitos artesãos ficam presos na feira porque não sabem como entrar
+      em empórios e restaurantes. Feira é o lugar onde você compete por preço.
+      Empório é onde você compete por valor. O ebook ensina a transição.
+    big_idea: "Se você só vende em feira, está na guerra errada."
+    nivel_consciencia_alvo: solution_aware
+    cta_natural: "Aprenda a entrar em empórios e restaurantes premium"
+    prova_necessaria: "Case da Chilliepig entrando em empórios"
+    status: NICHO  # forte para segmento específico
+
+  - id: AV06
+    nome: "Ingrediente Nativo = Premium Automático (Se Souber Comunicar)"
+    descricao: >
+      Brasil tem os ingredientes mais únicos do mundo (baru, cumaru, jatobá,
+      pimenta-de-cheiro, jambu, etc.). Artesão que usa isso tem diferencial
+      automático — mas 90% não sabe comunicar. O ebook ensina.
+    big_idea: "Você está sentado em ouro e cobrando preço de ferro."
+    nivel_consciencia_alvo: solution_aware
+    cta_natural: "Aprenda a monetizar o que você já tem"
+    prova_necessaria: "Exemplo específico de produto com ingrediente nativo e preço premium"
+    status: NICHO  # forte para produtores com ingredientes regionais
+
+# ─── Ângulos por Canal ───────────────────────────────────────────────────────
+angulos_por_canal:
+
+  reels_organicos:
+    angulo_principal: AV01
+    formato: "Gancho de choque → demonstração → CTA"
+    gancho_modelo: "Seu produto artesanal vale 3x mais. Você só não sabe cobrar ainda."
+    tom: "Direto, provocativo, sem enrolação"
+
+  stories:
+    angulo_principal: AV04  # autoridade + bastidor real
+    formato: "Bastidor → valor → prova → CTA"
+    tom: "Próximo, pessoal, como conversa"
+
+  meta_ads:
+    angulo_principal: AV01  # dor direta
+    angulo_secundario: AV03  # curiosidade (café especial)
+    formato: "Headline + body 3-4 linhas + CTA"
+    tom: "Direto, específico, sem rodeio"
+
+  lp:
+    angulo_principal: AV01
+    estrutura: "Dor → identificação → mecanismo → prova → oferta → garantia → CTA"
+    tom: "Empático mas direto"
+
+# ─── Posicionamento Competitivo Final ────────────────────────────────────────
+posicionamento_competitivo:
+  categoria_propria: "Guia de posicionamento premium para alimentos artesanais"
+  diferencial_1: "Expert com produto físico real no mercado (não consultor teórico)"
+  diferencial_2: "Especialidade vertical — só artesanal, 12 anos de prática"
+  diferencial_3: "Ticket absurdamente acessível (R$27) para o que entrega"
+  diferencial_4: "Mecanismo estruturado (3 pilares) não inspiração genérica"
+
+  frase_posicionamento: >
+    Para produtores de alimentos artesanais que sabem fazer bem mas
+    não sabem cobrar o que vale — o único guia escrito por quem vive
+    do artesanal há 12 anos com uma marca real no mercado.
+
+# ─── Meta ────────────────────────────────────────────────────────────────────
+meta:
+  fontes_pesquisa:
+    - "sistema-perpetuo-alimentos-artesanais.md (análise de mercado interna)"
+    - "brand-voice-chilliepig.md (posicionamento da marca Chilliepig)"
+    - "ebook-como-criar-vender-escalar.html (produto referência)"
+    - "SEBRAE dados mercado artesanal BR 2024"
+  confianca: alta  # baseado em material primário do expert + análise Luna
+  gaps_para_proxima_revisao:
+    - "Pesquisar concorrentes diretos no Hotmart/Monetizze (cursos artesanal)"
+    - "Monitorar ângulos virgens vs concorrência surgindo"
+    - "Coletar dados reais de conversão após primeiras 30 vendas"
+  next_review: "2026-07-10"

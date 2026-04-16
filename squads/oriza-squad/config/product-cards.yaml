@@ -1,0 +1,34 @@
+# Product Cards — Copy-OS Cache Local
+# Sincronizado da fonte-da-verdade/produtos/
+# Atualizado: 2026-04-10
+
+products:
+
+  - slug: alimentos-artesanais-ebook
+    name: "Como Criar, Vender e Escalar Alimentos Artesanais"
+    price: 27
+    checkout: Hotmart
+    lp: https://alimentosartesanais.com.br
+    expert: "Gabriel Petelinkar"
+    expert_credentials:
+      - "12+ anos produzindo artesanal"
+      - "Fundador da Chilliepig"
+      - "Jurado nacional do principal prêmio artesanal do Brasil"
+    mecanismo: "3 pilares: Criar / Vender / Escalar"
+    big_idea: "Seu produto vale 3x mais. O que falta não é receita melhor — é a história certa."
+    angulo_principal: "O problema não é o produto — é como você apresenta ele"
+    avatar: "Produtor artesanal que recebe elogios mas não sabe cobrar o que o produto vale"
+    nivel_consciencia: solution_aware
+    dor_central: "Ouve 'tá caro' e cede desconto — sabe que o produto é bom mas não consegue cobrar"
+    objecao_central: "Não tenho dinheiro pra embalagem cara"
+    resposta_objecao: "Não precisa. O guia tem 7 ajustes sem custo e fornecedores verificados"
+    gatilhos: [autoridade, prova-social, especificidade, urgencia-contextual]
+    restricoes:
+      - "Nunca prometer resultado financeiro específico"
+      - "Nunca usar depoimentos fabricados (zero vendas na origem)"
+      - "Substituir prova social por case Chilliepig até ter alunos reais"
+    garantia: "7 dias, sem burocracia"
+    ficha_path: "fonte-da-verdade/produtos/alimentos-artesanais-ebook/ficha.yaml"
+    research_path: "fonte-da-verdade/produtos/alimentos-artesanais-ebook/research.yaml"
+    status: ativo
+    onboarding_date: "2026-04-10"

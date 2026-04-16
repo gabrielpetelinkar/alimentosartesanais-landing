@@ -193,7 +193,7 @@
     display: inline-block; margin-top: 20px; color: var(--green-600);
     font-size: 13px; text-decoration: underline;
   }
-  body.gate-locked > *:not(.gate-overlay):not(script):not(style) { display: none !important; }
+  /* body.gate-locked > *:not(.gate-overlay):not(script):not(style) { display: none !important; } — DESATIVADO PARA DEV */
 
   /* === LAYOUT === */
   .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
@@ -238,6 +238,9 @@
   }
   .toolbar-btn:hover { border-color: var(--green-400); color: var(--green-600); }
   .toolbar-btn.active { background: var(--green-50); border-color: var(--green-400); color: var(--green-700); }
+  .toolbar-btn.edit-active { background: #fff3e0; border-color: #e65100; color: #e65100; }
+  [contenteditable="true"] { outline: 2px dashed #e65100; outline-offset: 2px; border-radius: 3px; cursor: text; }
+  .edit-hint { display:none; position:fixed; bottom:80px; right:20px; background:#e65100; color:#fff; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:600; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,.2); }
   .toolbar-spacer { flex: 1; }
   .font-controls {
     display: flex; align-items: center; gap: 0;
@@ -742,9 +745,10 @@
   }
 </style>
 </head>
-<body class="gate-locked">
+<body>
 
-<!-- ACCESS GATE -->
+<!-- ACCESS GATE DESATIVADO PARA DESENVOLVIMENTO -->
+<!--
 <div class="gate-overlay" id="gateOverlay">
   <div class="gate-card">
     <svg style="width:48px;height:48px;color:var(--green-700)"><use href="#i-horse"/></svg>
@@ -759,6 +763,7 @@
     <a class="gate-link" href="https://hotmart.com" target="_blank" rel="noopener">Ainda não comprou? Adquira aqui</a>
   </div>
 </div>
+-->
 
 <!-- SVG SPRITE (hidden) -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
@@ -860,6 +865,9 @@
     </button>
     <button class="toolbar-btn" id="darkBtn" onclick="toggleDark()" title="Modo escuro (Ctrl+D)">
       <svg class="icon icon-sm" id="darkIconSvg"><use href="#i-moon"/></svg> <span id="darkLabel">Escuro</span>
+    </button>
+    <button class="toolbar-btn" id="editBtn" onclick="toggleEdit()" title="Ativar edição de texto">
+      ✏️ <span id="editLabel">Editar</span>
     </button>
     <div class="toolbar-spacer"></div>
     <div class="font-controls">
@@ -1996,6 +2004,34 @@ function clearNote(capId, btn) {
     });
   }
 })();
+</script>
+
+<div class="edit-hint" id="editHint">✏️ Modo edição ativo — clique em qualquer texto para editar</div>
+
+<script>
+var editMode = false;
+var EDIT_SELECTORS = 'p, h1, h2, h3, h4, h5, li, td, th, blockquote, .alert, .body-text, .chapter-body p, .note-text, .tip-text';
+function toggleEdit(){
+  editMode = !editMode;
+  var btn = document.getElementById('editBtn');
+  var label = document.getElementById('editLabel');
+  var hint = document.getElementById('editHint');
+  if(editMode){
+    btn.classList.add('edit-active');
+    label.textContent = 'Sair da edição';
+    hint.style.display = 'block';
+    document.querySelectorAll(EDIT_SELECTORS).forEach(function(el){
+      if(!el.closest('[contenteditable]')) el.setAttribute('contenteditable','true');
+    });
+  } else {
+    btn.classList.remove('edit-active');
+    label.textContent = 'Editar';
+    hint.style.display = 'none';
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el){
+      el.removeAttribute('contenteditable');
+    });
+  }
+}
 </script>
 
 </body>

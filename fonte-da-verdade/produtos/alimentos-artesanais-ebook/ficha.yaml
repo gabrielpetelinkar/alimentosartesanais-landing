@@ -1,0 +1,190 @@
+# Ficha de Produto — Como Criar, Vender e Escalar Alimentos Artesanais
+# Onboarding: 2026-04-10
+# Fonte: alimentosartesanais.com.br + ebook gerado + sistema-perpetuo.md
+
+slug: alimentos-artesanais-ebook
+name: "Como Criar, Vender e Escalar Alimentos Artesanais"
+lane: perpétuo-ticket-baixo
+price: 27
+currency: BRL
+format: [ebook-pdf, ebook-digital]
+checkout: Hotmart
+lp: https://alimentosartesanais.com.br
+instagram: "@gabrielpetelinkar"
+status: ativo  # produto e LP prontos, zero vendas no onboarding
+
+# ─── Expert ──────────────────────────────────────────────────────────────────
+expert:
+  nome: Gabriel Petelinkar
+  credentials:
+    - "Engenheiro agrônomo"
+    - "12+ anos produzindo alimentos artesanais"
+    - "Fundador da Chilliepig (marca real, produto físico no mercado)"
+    - "Jurado nacional do principal prêmio de alimentos artesanais do Brasil"
+  marca_propria: Chilliepig  # prova social substituta antes das primeiras vendas
+  instagram: "@gabrielpetelinkar"
+
+# ─── Produto ─────────────────────────────────────────────────────────────────
+produto:
+  titulo: "Como Criar, Vender e Escalar Alimentos Artesanais"
+  subtitulo: "O guia prático de quem faz para quem quer começar a cobrar o que seu produto vale"
+  formato_entrega: ebook digital (PDF + leitura online)
+  garantia: 7 dias, sem burocracia
+  mecanismo_central: "3 pilares — Criar / Vender / Escalar"
+
+  pilares:
+    - pilar: CRIAR
+      descricao: "Fazer seu produto parecer tão bom quanto ele é (embalagem, rótulo, história)"
+      capitulos: 1-7
+      cor_ebook: Terracotta (#B5563A)
+    - pilar: VENDER
+      descricao: "Cobrar 2x a 3x mais sem mudar a receita (narrativa, canal, posicionamento)"
+      capitulos: 8-11
+      cor_ebook: Marrom Quente (#8B5E3C)
+    - pilar: ESCALAR
+      descricao: "Crescer sem perder a alma artesanal (parcerias, selos, canais premium)"
+      capitulos: 12-15
+      cor_ebook: Verde Oliva (#5A7A42)
+
+  conteudos:
+    - "Estratégias de precificação premium"
+    - "Como montar embalagem que vende"
+    - "Como acessar empórios e restaurantes"
+    - "Como transformar degustação em venda"
+    - "Como escalar sem perder identidade artesanal"
+    - "Rótulo: o que a lei exige vs o que vende"
+    - "Ingredientes nativos brasileiros que dobram o valor percebido"
+    - "Canais de venda: feira vs empório vs restaurante"
+
+  bonus:
+    - nome: "Guia de Rótulo"
+      descricao: "O que a lei exige em rótulos de alimentos artesanais"
+    - nome: "Lista de Fornecedores Verificados"
+      descricao: "Fornecedores de embalagem e ingredientes verificados pelo expert"
+    - nome: "Checklist: 7 Ajustes de Valorização sem Investimento"
+      descricao: "7 mudanças que não custam nada e já elevam percepção de valor"
+
+  order_bump_futuro: "Checklist Premium de Precificação — R$17 adicional no checkout"
+  upsell_futuro: "Consultoria / Curso / Mentoria (ticket alto)"
+
+# ─── Avatar ──────────────────────────────────────────────────────────────────
+avatar:
+  nome_persona: "O Artesão Subvalorizado"
+  descricao: "Produtor de alimentos artesanais que recebe elogios mas não consegue cobrar o que o produto vale"
+
+  perfil_demografico:
+    faixa_etaria: "25-55 anos"
+    genero: "Maioria feminino, mas misto"
+    localizacao: "Brasil inteiro (foco em estados com cultura artesanal forte)"
+    renda: "Classe C/B — empreendedora informal ou semiformal"
+
+  situacao_atual:
+    - "Produz alimento artesanal com amor e qualidade real"
+    - "Recebe elogios todo dia de quem prova"
+    - "Cobra barato por vergonha ou medo de perder cliente"
+    - "Compete com industrializado em preço (guerra que não vai vencer)"
+    - "Vende em feira, WhatsApp, conhecidos — sem sistema"
+    - "Não tem embalagem profissional ou tem mas não sabe explorar"
+    - "Não chegou a empórios nem restaurantes premium"
+
+  dor_principal: "Saber que o produto é bom mas não conseguir cobrar o que vale"
+
+  dores_secundarias:
+    - "Ouve 'tá caro' de clientes — e cede desconto"
+    - "Passa horas produzindo e lucra pouco"
+    - "Não sabe como entrar em canais premium (empórios, restaurantes)"
+    - "Medo de escalar e perder a qualidade artesanal"
+    - "Não sabe o que o rótulo precisa ter por lei"
+
+  desejo_principal: "Cobrar o dobro ou o triplo pelo mesmo produto sem perder clientes"
+
+  desejos_secundarios:
+    - "Que o produto apareça em empórios e restaurantes"
+    - "Ter uma marca reconhecida, não só um produto caseiro"
+    - "Escalar sem virar indústria"
+    - "Parar de competir por preço"
+
+  nivel_consciencia: "solution_aware"  # sabe que existe solução (curso, consultoria) mas não conhece este produto
+  sofisticacao_mercado: "Stage 3-4"  # já viu outros cursos/guias, precisa de diferenciação pelo mecanismo
+
+  objecoes:
+    - objecao: "R$27 é barato demais, será que presta?"
+      resposta: "Preço de lançamento, é de expert real com 12 anos e marca no mercado"
+    - objecao: "Não tenho dinheiro pra embalagem cara"
+      resposta: "Não precisa. O guia tem fornecedores verificados + 7 ajustes sem custo"
+    - objecao: "Meu produto é muito regional, não vai funcionar"
+      resposta: "Ingrediente regional é VANTAGEM — o ebook ensina a monetizar isso"
+    - objecao: "Já tentei outras coisas e não funcionou"
+      resposta: "O problema não era o produto — era como você apresentava ele"
+
+  gatilhos_prioritarios:
+    1: autoridade  # Gabriel = 12 anos, Chilliepig, jurado nacional
+    2: prova-social  # Chilliepig como case real (antes de ter depoimentos)
+    3: especificidade  # mecanismo 3 pilares + dados concretos
+    4: urgencia-contextual  # preço de lançamento
+    5: empatia  # "eu passei por isso também"
+
+# ─── Posicionamento ──────────────────────────────────────────────────────────
+posicionamento:
+  frase: >
+    O guia prático de alimentos artesanais para produtores que já sabem fazer
+    bem mas não sabem cobrar o que o produto vale — diferente de cursos
+    genéricos porque foi escrito por quem vive do artesanal há 12 anos.
+
+  diferencial_principal: "Expert com marca física real no mercado (Chilliepig), não consultor teórico"
+  angulo_virgem: "O problema não é o produto — é como você apresenta ele"
+  big_idea_candidata: "Seu produto vale 3x mais. O que falta não é receita melhor — é a história certa."
+
+# ─── Canais e Métricas ───────────────────────────────────────────────────────
+canais:
+  organico:
+    - "Instagram Reels @gabrielpetelinkar"
+    - "Instagram Stories (rotina diária 10-12 stories)"
+  pago:
+    - "Meta Ads (Facebook + Instagram)"
+    - "Budget inicial: R$10/dia (1 ad)"
+  checkout: Hotmart
+
+metricas_alvo:
+  semana_1:
+    visitas_lp_dia: 50
+    conversao_lp: "1-2%"
+    vendas_dia: 1
+    receita_dia: "R$27"
+  mes_1:
+    visitas_lp_dia: 100
+    conversao_lp: "2-3%"
+    vendas_dia: "2-3"
+    receita_mes: "R$1.600-2.400"
+    roas_meta: "3x+"
+
+# ─── Restrições de Copy ──────────────────────────────────────────────────────
+restricoes_copy:
+  proibido:
+    - "Prometer aprovação em concurso (N/A neste produto)"
+    - "Fabricar depoimentos ou prints de venda — produto com zero vendas"
+    - "Escassez falsa"
+    - "Prometer que vai dobrar faturamento (não determinístico)"
+    - "Chamar de 'o melhor' sem dados"
+  substituicoes_fase_zero:
+    - "Usar Chilliepig como case real em vez de depoimentos de alunos"
+    - "Usar estatísticas do mercado artesanal brasileiro"
+    - "Usar bastidores reais de produção como prova"
+  tom: "Direto, prático, sem enrolação — fala de produtor pra produtor"
+
+# ─── Assets Disponíveis ──────────────────────────────────────────────────────
+assets_disponiveis:
+  ebook: "AIOSORIZA/outputs/ebook-como-criar-vender-escalar.html"
+  ebook_pdf: "AIOSORIZA/outputs/ebook-como-criar-vender-escalar.pdf"
+  brand_voice_chilliepig: "AIOSORIZA/squads/oriza-squad/data/brand-voice-chilliepig.md"
+  sistema_perpetuo: "AIOSORIZA/outputs/sistema-perpetuo-alimentos-artesanais.md"
+  imagem_hero: "AIOSORIZA/assets/images/hero-ebook-mockup.png"
+  imagem_mesa: "AIOSORIZA/outputs/images/mesa-alimentos-artesanais.png"
+  planilha_precificacao: "AIOSORIZA/outputs/bonus/planilha-precificacao-artesanal.xlsx"
+
+# ─── Meta ────────────────────────────────────────────────────────────────────
+meta:
+  onboarding_date: "2026-04-10"
+  onboarding_by: "Luna (copy-chief)"
+  next_review: "2026-07-10"
+  status_copy: "aguardando research-market para geração de copy"

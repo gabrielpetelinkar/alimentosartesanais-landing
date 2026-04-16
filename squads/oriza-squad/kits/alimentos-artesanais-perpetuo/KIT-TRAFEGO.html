@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit Tráfego — Alimentos Artesanais</title>
+<style>
+  :root {
+    --terra: #B5563A;
+    --terra-light: #f5ede8;
+    --marrom: #8B5E3C;
+    --marrom-light: #f0e8e0;
+    --verde: #5A7A42;
+    --verde-light: #eaf0e5;
+    --bg: #FDFAF7;
+    --surface: #FFFFFF;
+    --text: #2C1F14;
+    --text-secondary: #6B5744;
+    --border: rgba(61,43,31,0.1);
+    --shadow: 0 2px 12px rgba(61,43,31,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #2C1F14 0%, #4a3020 60%, #6b4530 100%);
+    color: white;
+    padding: 56px 40px 48px;
+    text-align: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 100px;
+    padding: 4px 16px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.8);
+  }
+  .hero h1 {
+    font-size: clamp(24px, 4vw, 42px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .hero-big-idea {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    max-width: 620px;
+    margin: 0 auto 28px;
+    font-style: italic;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-pill {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+  }
+  .hero-pill strong { color: #fff; }
+
+  /* ── Nav ── */
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  }
+  .nav-inner {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 4px 0;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    white-space: nowrap;
+    padding: 10px 18px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    transition: all 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .nav-btn:hover { background: var(--terra-light); color: var(--terra); }
+
+  /* ── Layout ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* ── Section header ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 56px 0 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px; color: white;
+    flex-shrink: 0;
+  }
+  .num-terra  { background: var(--terra); }
+  .num-marrom { background: var(--marrom); }
+  .num-verde  { background: var(--verde); }
+  .num-dark   { background: #2C1F14; }
+  .num-mid    { background: #7a5c3a; }
+
+  .section-header h2 { font-size: 22px; font-weight: 800; color: var(--text); }
+  .section-header span { font-size: 13px; color: var(--text-secondary); font-weight: 400; }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .card-title { font-size: 17px; font-weight: 700; color: var(--text); }
+  .badge {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+    padding: 4px 12px; border-radius: 100px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .badge-terra  { background: var(--terra-light); color: var(--terra); }
+  .badge-verde  { background: var(--verde-light); color: var(--verde); }
+  .badge-marrom { background: var(--marrom-light); color: var(--marrom); }
+  .badge-gray   { background: #f0ebe5; color: #6B5744; }
+
+  /* ── Fields ── */
+  .field { margin-bottom: 16px; }
+  .field-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--text-secondary); margin-bottom: 6px;
+  }
+  .field-value { font-size: 15px; color: var(--text); line-height: 1.6; }
+
+  /* ── Headline / body / cta ── */
+  .headline-box {
+    background: linear-gradient(135deg, var(--terra-light), #fdf5f0);
+    border: 1px solid rgba(181,86,58,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 18px; font-weight: 800; color: var(--terra);
+    margin-bottom: 16px;
+  }
+  .body-box {
+    background: #FAFAF8;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 14px; line-height: 1.7; color: var(--text);
+    white-space: pre-line;
+  }
+  .cta-box {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--terra); color: white;
+    padding: 10px 20px; border-radius: 8px;
+    font-size: 14px; font-weight: 700; margin-top: 12px;
+  }
+  .temp-row { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .temp-pill {
+    font-size: 12px; padding: 4px 12px; border-radius: 100px;
+    background: #f0ebe5; color: var(--text-secondary);
+  }
+
+  /* ── Post Única — mockup ── */
+  .post-mockup {
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .post-mockup-inner {
+    padding: 40px 32px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .post-dark {
+    background: linear-gradient(135deg, #1a0e08 0%, #2C1F14 70%, #4a3020 100%);
+    color: white;
+  }
+  .post-split {
+    background: linear-gradient(135deg, #1a0e08 0%, #3a2010 100%);
+    color: white;
+    position: relative;
+  }
+  .post-headline {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+  .post-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 480px;
+  }
+  .post-corpo {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 16px;
+    margin-bottom: 16px;
+  }
+  .post-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--terra);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .post-url {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-left: 8px;
+    letter-spacing: 0.5px;
+  }
+  /* split layout */
+  .split-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 280px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+  }
+  .split-left {
+    background: #1a0e08;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .split-right {
+    background: #2C1F14;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+  }
+  .price-crossed {
+    font-size: 52px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.25);
+    text-decoration: line-through;
+    text-decoration-color: var(--terra);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .price-real {
+    font-size: 52px;
+    font-weight: 900;
+    color: #7ec87e;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .price-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .split-bottom {
+    grid-column: 1 / -1;
+    background: var(--terra);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .split-bottom-text { font-size: 14px; font-weight: 700; color: white; }
+  .split-bottom-cta {
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 6px;
+  }
+
+  /* ── Carrossel ── */
+  .carousel-track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--terra) var(--border);
+  }
+  .carousel-track::-webkit-scrollbar { height: 4px; }
+  .carousel-track::-webkit-scrollbar-track { background: var(--border); border-radius: 4px; }
+  .carousel-track::-webkit-scrollbar-thumb { background: var(--terra); border-radius: 4px; }
+
+  .carousel-slide {
+    min-width: 240px;
+    max-width: 240px;
+    min-height: 240px;
+    border-radius: 14px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .slide-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+  }
+  .slide-cover { background: linear-gradient(135deg, #2C1F14 0%, #5a3a22 100%); color: white; }
+  .slide-cover .slide-num { background: var(--terra); color: white; }
+
+  .slide-dor { background: #fdf5f0; border: 1.5px solid rgba(181,86,58,0.2); color: var(--text); }
+  .slide-dor .slide-num { background: var(--terra-light); color: var(--terra); }
+
+  .slide-causa { background: #f5f0eb; border: 1.5px solid var(--border); color: var(--text); }
+  .slide-causa .slide-num { background: #e8ddd4; color: var(--marrom); }
+
+  .slide-mec { background: #eaf0e5; border: 1.5px solid rgba(90,122,66,0.2); color: var(--text); }
+  .slide-mec .slide-num { background: var(--verde-light); color: var(--verde); }
+
+  .slide-prova { background: linear-gradient(135deg, #1a0e08 0%, #3a2010 100%); color: white; }
+  .slide-prova .slide-num { background: rgba(255,255,255,0.15); color: white; }
+
+  .slide-perda { background: #fdf5f0; border: 1.5px solid rgba(181,86,58,0.2); color: var(--text); }
+  .slide-perda .slide-num { background: var(--terra); color: white; }
+
+  .slide-cta { background: var(--terra); color: white; }
+  .slide-cta .slide-num { background: rgba(255,255,255,0.2); color: white; }
+
+  .slide-title { font-size: 15px; font-weight: 800; line-height: 1.25; margin-bottom: 8px; }
+  .slide-body { font-size: 12px; line-height: 1.6; flex: 1; }
+  .slide-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-top: 10px;
+  }
+  .slide-cta-btn {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .slide-highlight {
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .carousel-hint {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: right;
+    margin-top: 6px;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  /* ── Reel layout ── */
+  .reel-section { display: grid; gap: 12px; }
+  .reel-block { border-radius: 10px; padding: 16px 18px; }
+  .reel-gancho { background: #1a1a2e; color: #e8e8ff; }
+  .reel-corpo  { background: #FAFAF8; border: 1px solid var(--border); }
+  .reel-cta    { background: var(--terra); color: white; }
+  .reel-block-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 1.5px;
+    text-transform: uppercase; opacity: 0.7; margin-bottom: 10px;
+  }
+  .reel-block p { font-size: 14px; line-height: 1.65; margin-bottom: 8px; }
+  .reel-block p:last-child { margin-bottom: 0; }
+  .reel-screen {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border-radius: 6px; padding: 4px 10px;
+    font-size: 13px; font-style: italic; margin-top: 6px;
+  }
+  .reel-screen-dark {
+    display: inline-block;
+    background: rgba(0,0,0,0.06);
+    border-radius: 6px; padding: 4px 10px;
+    font-size: 13px; font-style: italic;
+    color: var(--text-secondary); margin-top: 6px;
+  }
+  .reel-overlay-list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .reel-overlay-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,0,0,0.07);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* ── Activation table ── */
+  .activation-card {
+    background: linear-gradient(135deg, #1a1208, #2c1f14);
+    border-radius: 16px; padding: 32px; color: white; margin-top: 56px;
+  }
+  .activation-card h2 { font-size: 20px; font-weight: 800; margin-bottom: 24px; }
+  .act-table { width: 100%; border-collapse: collapse; }
+  .act-table th {
+    text-align: left; font-size: 11px; letter-spacing: 1px;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+    padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .act-table td {
+    padding: 12px; font-size: 13px; color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top;
+  }
+  .act-table tr:last-child td { border-bottom: none; }
+  .act-pri {
+    display: inline-block; width: 22px; height: 22px;
+    border-radius: 50%; background: var(--terra); color: white;
+    font-size: 11px; font-weight: 800; text-align: center; line-height: 22px;
+  }
+  .rules-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px; margin-top: 20px;
+  }
+  .rule-pill {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px; padding: 10px 14px; font-size: 12px; color: rgba(255,255,255,0.8);
+  }
+  .rule-pill::before { content: "✅ "; }
+
+  /* ── Divider ── */
+  .divider { height: 1px; background: var(--border); margin: 12px 0 24px; }
+
+  /* ── responsive ── */
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px 36px; }
+    .container { padding: 24px 16px 60px; }
+    .card { padding: 20px; }
+    .nav { padding: 0 16px; }
+    .activation-card { padding: 24px 20px; }
+    .split-row { grid-template-columns: 1fr 1fr; }
+    .price-crossed, .price-real { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-tag">Kit Tráfego Pago · 2026-04-11</div>
+  <h1>Criativos de Tráfego<br>Alimentos Artesanais</h1>
+  <p class="hero-big-idea">"Seu produto artesanal já é bom. O que te impede de cobrar 3x mais não é a receita — é a história que você conta sobre ele."</p>
+  <div class="hero-meta">
+    <div class="hero-pill"><strong>2</strong> Posts Página Única</div>
+    <div class="hero-pill"><strong>2</strong> Carrosseis</div>
+    <div class="hero-pill"><strong>2</strong> Reels de Venda</div>
+    <div class="hero-pill"><strong>R$27</strong> · alimentosartesanais.com.br</div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-btn" href="#posts">Posts Página Única</a>
+    <a class="nav-btn" href="#carrosseis">Carrosseis</a>
+    <a class="nav-btn" href="#reels">Reels</a>
+    <a class="nav-btn" href="#ativacao">Ativação</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════════════════════════════════════
+     PARTE 1 — POSTS PÁGINA ÚNICA
+═══════════════════════════════════════════ -->
+<div id="posts">
+  <div class="section-header">
+    <div class="section-num num-terra">1</div>
+    <div>
+      <h2>Posts Página Única</h2>
+      <span>2 peças · Feed quadrado 1:1 · Tráfego frio</span>
+    </div>
+  </div>
+
+  <!-- Post 01 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Post 01 — "Você tá cobrando barato por um motivo que não é o produto"</div>
+      <span class="badge badge-terra">Semana 1 · Prioridade</span>
+    </div>
+
+    <!-- Mockup visual -->
+    <div class="post-mockup">
+      <div class="post-mockup-inner post-dark">
+        <div>
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:14px">Gabriel Petelinkar · Chilliepig</div>
+          <div class="post-headline">Você tá cobrando barato por um motivo que não é o produto.</div>
+          <div class="post-sub">Mesma receita. Mesmo cuidado. Outro produtor cobra 3x mais — e vende mais rápido.<br>O que ele tem que você ainda não aprendeu: a história que faz o preço fazer sentido.</div>
+          <div class="post-corpo">Em 12 anos criando e vendendo artesanal com a Chilliepig, eu descobri que o problema nunca foi a receita. Foi o posicionamento. Aprenda o método por R$27.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <div class="post-badge">→ Quero Cobrar o Que Meu Produto Vale</div>
+          <div class="post-url">alimentosartesanais.com.br</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Legenda para publicação</div>
+      <div class="body-box">Você recebe elogio na feira e volta pra casa com estoque.
+O problema não é a geleia, o molho, o queijo.
+É a história que você conta — ou deixa de contar — sobre ele.
+
+Produto artesanal sem história vira commodity. Commodity compete por preço. E na guerra de preço, sempre perde quem tem custo de produção alto.
+
+Em 12 anos com a Chilliepig, aprendi que o mesmo produto pode custar R$12 ou R$38 — a diferença está no posicionamento, não na receita.
+
+Por R$27, você aprende a cobrar o que o seu produto já vale.
+→ alimentosartesanais.com.br · Garantia de 7 dias</div>
+    </div>
+
+    <div class="cta-box">Quero Cobrar o Que Meu Produto Vale →</div>
+
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Tráfego frio</span>
+      <span class="temp-pill">💰 R$10/dia semana 1</span>
+      <span class="temp-pill">🎯 Conversão direta</span>
+      <span class="temp-pill">📐 1:1 quadrado</span>
+    </div>
+  </div>
+
+  <!-- Post 02 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Post 02 — "Essa diferença de preço não é sobre qualidade"</div>
+      <span class="badge badge-gray">Semana 1–2</span>
+    </div>
+
+    <!-- Mockup visual split -->
+    <div style="margin-bottom:20px">
+      <div class="split-row">
+        <div class="split-left">
+          <div class="price-crossed">R$12</div>
+          <div class="price-label">barraquinha de feira</div>
+        </div>
+        <div class="split-right">
+          <div class="price-real">R$38</div>
+          <div class="price-label">empório especializado</div>
+        </div>
+        <div class="split-bottom">
+          <div class="split-bottom-text">Mesmo produto. Mesma receita. O que mudou foi a história.</div>
+          <div class="split-bottom-cta">alimentosartesanais.com.br →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Legenda para publicação</div>
+      <div class="body-box">Um molho artesanal custa R$12 numa barraquinha de feira.
+O mesmo tipo de molho — ingredientes iguais, processo igual — custa R$38 num empório especializado.
+
+O que mudou não foi a fórmula. Foi o rótulo, a narrativa e o canal.
+
+O café especial não é melhor que a sua geleia de figo. Ele só aprendeu a contar de onde vem, quem fez, como foi processado.
+
+Você já tem o produto. Falta o resto.
+
+Ebook por R$27 com método completo — CRIAR, VENDER e ESCALAR.
+→ alimentosartesanais.com.br · 7 dias de garantia</div>
+    </div>
+
+    <div class="cta-box">Quero Cobrar o Que Meu Produto Vale →</div>
+
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Tráfego frio-morno</span>
+      <span class="temp-pill">🎯 Comparação / curiosidade</span>
+      <span class="temp-pill">📐 1:1 quadrado</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PARTE 2 — CARROSSEIS
+═══════════════════════════════════════════ -->
+<div id="carrosseis">
+  <div class="section-header">
+    <div class="section-num num-marrom">2</div>
+    <div>
+      <h2>Carrosseis</h2>
+      <span>2 carrosseis · 7 slides cada · Feed quadrado · Arraste para ler →</span>
+    </div>
+  </div>
+
+  <!-- Carrossel 01 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Carrossel 01 — "Por que o café especial cobra R$80 e sua geleia R$12"</div>
+      <span class="badge badge-terra">Semana 1 · Educação + Conversão</span>
+    </div>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:18px;font-style:italic">Ângulo: comparação com café especial → reframe de posicionamento → CTA</p>
+
+    <div class="carousel-track">
+
+      <div class="carousel-slide slide-cover">
+        <div>
+          <div class="slide-num" style="background:var(--terra);color:white">C</div>
+          <div class="slide-title" style="font-size:17px">Por que o café especial cobra R$80 e o seu produto artesanal cobra R$12?</div>
+          <div class="slide-body" style="color:rgba(255,255,255,0.7);margin-top:8px">A resposta vai mudar como você precifica tudo.</div>
+        </div>
+        <div class="slide-tag" style="color:rgba(255,255,255,0.4)">Arraste →</div>
+      </div>
+
+      <div class="carousel-slide slide-dor">
+        <div class="slide-num">1</div>
+        <div class="slide-title">O café não é necessariamente melhor.</div>
+        <div class="slide-body">Ele só aprendeu a contar uma história. Altitude da fazenda. Nome do produtor. Perfil sensorial.<br><br>Você tem tudo isso. Só não escreve.</div>
+        <div class="slide-tag">Identificação</div>
+      </div>
+
+      <div class="carousel-slide slide-causa">
+        <div class="slide-num">2</div>
+        <div class="slide-title">O problema não é ser "artesanal".</div>
+        <div class="slide-body">É que você apresenta o produto como commodity.<br><br>Commodity compete por preço.<br>Produto com narrativa compete por valor.</div>
+        <div class="slide-highlight" style="background:#e8ddd4;color:var(--marrom)">Commodity vs Valor</div>
+        <div class="slide-tag">Causa</div>
+      </div>
+
+      <div class="carousel-slide slide-mec">
+        <div class="slide-num">3</div>
+        <div class="slide-title">3 coisas que o café faz — que você pode copiar agora.</div>
+        <div class="slide-body">
+          <strong>1.</strong> Nome específico — não "geleia de figo", mas "Geleia de Figo Negro com Extrato de Baunilha de Madagascar"<br><br>
+          <strong>2.</strong> Origem rastreável — de onde vem o ingrediente?<br><br>
+          <strong>3.</strong> Limitação real — pequenos lotes = exclusividade.
+        </div>
+        <div class="slide-tag">Mecanismo</div>
+      </div>
+
+      <div class="carousel-slide slide-prova">
+        <div class="slide-num">4</div>
+        <div class="slide-title" style="color:white">Fiz isso com a Chilliepig.</div>
+        <div class="slide-body" style="color:rgba(255,255,255,0.75)">Mesmo molho. Mesma receita.<br>Mudei: nome, rótulo, narrativa, canal.<br><br>Preço triplicou. A fila para comprar veio junto.<br><br>12 anos de mercado. Jurado nacional de alimentos artesanais.</div>
+        <div class="slide-tag" style="color:rgba(255,255,255,0.35)">Prova</div>
+      </div>
+
+      <div class="carousel-slide slide-perda">
+        <div class="slide-num">5</div>
+        <div class="slide-title">Cada semana sem isso, você está:</div>
+        <div class="slide-body">
+          ❌ Ensinando o cliente que o produto não vale mais<br>
+          ❌ Perdendo margem que deveria ser sua<br>
+          ❌ Preso na feira quando poderia estar no empório<br><br>
+          O "tá caro" não é sobre o preço. É sobre percepção.
+        </div>
+        <div class="slide-tag">Custo da inação</div>
+      </div>
+
+      <div class="carousel-slide slide-cta">
+        <div class="slide-num">6</div>
+        <div class="slide-title" style="font-size:16px">Documentei tudo isso num ebook de R$27.</div>
+        <div class="slide-body" style="color:rgba(255,255,255,0.85);font-size:11px">
+          ✔ CRIAR o produto com identidade<br>
+          ✔ VENDER com narrativa e canal certo<br>
+          ✔ ESCALAR sem perder qualidade<br>
+          + Checklist com 7 ajustes gratuitos
+        </div>
+        <div class="slide-cta-btn">→ alimentosartesanais.com.br<br><span style="font-size:10px;opacity:0.8">7 dias de garantia</span></div>
+        <div class="slide-tag" style="color:rgba(255,255,255,0.35)">R$27</div>
+      </div>
+
+    </div>
+    <div class="carousel-hint">← arraste os slides →</div>
+
+    <div class="field">
+      <div class="field-label">Legenda para publicação</div>
+      <div class="body-box">Por que o café especial cobra R$80 e a sua geleia artesanal R$12? 👇
+
+O café e o seu produto têm algo em comum: os dois são feitos com cuidado, processo lento e ingrediente de qualidade.
+
+A diferença está na narrativa construída ao redor deles.
+
+Arraste para entender o que está te impedindo de cobrar o que o seu produto já vale.
+
+→ alimentosartesanais.com.br · R$27 com 7 dias de garantia</div>
+    </div>
+
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Tráfego frio</span>
+      <span class="temp-pill">🎯 Educação + Conversão</span>
+      <span class="temp-pill">📐 7 slides · 1:1</span>
+    </div>
+  </div>
+
+  <!-- Carrossel 02 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Carrossel 02 — "5 sinais de que você está sabotando o preço do seu produto"</div>
+      <span class="badge badge-gray">Semana 2 · Alto potencial de compartilhamento</span>
+    </div>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:18px;font-style:italic">Ângulo: identificação de dor → cada sinal é um espelho → CTA</p>
+
+    <div class="carousel-track">
+
+      <div class="carousel-slide slide-cover">
+        <div>
+          <div class="slide-num" style="background:var(--terra);color:white">C</div>
+          <div style="font-size:36px;font-weight:900;color:var(--terra);line-height:1;margin-bottom:8px">5</div>
+          <div class="slide-title">sinais de que você está sabotando o preço do seu produto artesanal</div>
+          <div class="slide-body" style="color:rgba(255,255,255,0.65);font-size:11px;margin-top:8px">(e como parar)</div>
+        </div>
+        <div class="slide-tag" style="color:rgba(255,255,255,0.4)">Arraste →</div>
+      </div>
+
+      <div class="carousel-slide slide-dor">
+        <div class="slide-num">1</div>
+        <div class="slide-title">Você pede desculpa pelo preço antes de alguém reclamar.</div>
+        <div class="slide-body">"É R$28, mas é feito na mão, sabe…"<br><br>Esse "mas" comunica que você mesmo não acredita no valor.<br><br>Preço não precisa de desculpa. Precisa de contexto.</div>
+        <div class="slide-tag">Sinal 1</div>
+      </div>
+
+      <div class="carousel-slide slide-causa">
+        <div class="slide-num">2</div>
+        <div class="slide-title">Seu rótulo parece impresso em casa.</div>
+        <div class="slide-body">Rótulo genérico = produto de supermercado.<br><br>Rótulo com identidade visual consistente = produto de empório.<br><br>O sabor pode ser idêntico. O preço aceito não é.</div>
+        <div class="slide-tag">Sinal 2</div>
+      </div>
+
+      <div class="carousel-slide slide-mec">
+        <div class="slide-num">3</div>
+        <div class="slide-title">Você descreve ingredientes, não origem.</div>
+        <div class="slide-body">
+          ❌ "Feito com figo" → commodity<br><br>
+          ✅ "Figo negro colhido na Serra Gaúcha, em pequenos lotes" → produto especial<br><br>
+          Origem cria ancoragem emocional. Ingrediente cria lista.
+        </div>
+        <div class="slide-tag">Sinal 3</div>
+      </div>
+
+      <div class="carousel-slide slide-prova">
+        <div class="slide-num">4</div>
+        <div class="slide-title" style="color:white">Você só vende em feira.</div>
+        <div class="slide-body" style="color:rgba(255,255,255,0.75)">Feira é ponto de partida, não destino.<br><br>Empório, assinatura, atacado especializado — esses canais pagam mais e compram regular.<br><br>Mas exigem posicionamento. Produto sem história não entra.</div>
+        <div class="slide-tag" style="color:rgba(255,255,255,0.35)">Sinal 4</div>
+      </div>
+
+      <div class="carousel-slide slide-perda">
+        <div class="slide-num">5</div>
+        <div class="slide-title">Você baixa o preço quando alguém reclama.</div>
+        <div class="slide-body">"Tá caro" não é argumento. É teste.<br><br>O cliente quer ver se você acredita no que cobra.<br><br>Quando você cede, você confirma que ele tinha razão.</div>
+        <div class="slide-tag">Sinal 5</div>
+      </div>
+
+      <div class="carousel-slide slide-cta">
+        <div class="slide-num">6</div>
+        <div class="slide-title" style="font-size:15px">Reconheceu algum desses sinais?</div>
+        <div class="slide-body" style="color:rgba(255,255,255,0.85);font-size:11px">
+          O ebook explica como corrigir cada um — com método, não com teoria.<br><br>
+          12 anos de Chilliepig destilados em R$27.
+        </div>
+        <div class="slide-cta-btn">→ alimentosartesanais.com.br<br><span style="font-size:10px;opacity:0.8">Garantia de 7 dias</span></div>
+        <div class="slide-tag" style="color:rgba(255,255,255,0.35)">R$27</div>
+      </div>
+
+    </div>
+    <div class="carousel-hint">← arraste os slides →</div>
+
+    <div class="field">
+      <div class="field-label">Legenda para publicação</div>
+      <div class="body-box">5 sinais de que você está sabotando o preço do próprio produto (sem perceber). 👇
+
+Arraste para ver se algum te identifica.
+
+Se reconheceu mais de dois: o ebook foi feito pra você.
+→ alimentosartesanais.com.br · R$27 com garantia de 7 dias</div>
+    </div>
+
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Tráfego frio</span>
+      <span class="temp-pill">🎯 Identificação de dor · alto share</span>
+      <span class="temp-pill">📐 7 slides · 1:1</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PARTE 3 — REELS DE VENDA
+═══════════════════════════════════════════ -->
+<div id="reels">
+  <div class="section-header">
+    <div class="section-num num-verde">3</div>
+    <div>
+      <h2>Reels de Venda</h2>
+      <span>2 roteiros · 30–45s · Hook forte · Foco em conversão</span>
+    </div>
+  </div>
+
+  <!-- Reel 01 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Reel 01 — "Você vai continuar ouvindo 'tá caro' por quanto tempo?"</div>
+      <span class="badge badge-terra">Subir primeiro · Maior potencial de parada</span>
+    </div>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:18px;font-style:italic">Câmera na cara · corte direto · 30–40s · sem intro</p>
+
+    <div class="reel-section">
+
+      <div class="reel-block reel-gancho">
+        <div class="reel-block-label">⚡ HOOK · 0–3s · Texto na tela + fala simultânea</div>
+        <div class="reel-screen">"Você vai continuar ouvindo 'tá caro' por quanto tempo?"</div>
+        <p style="margin-top:12px"><strong>Fala:</strong> "Você recebe elogio, mas na hora do preço a pessoa some. Sabe por quê?"</p>
+        <p style="font-size:12px;opacity:0.65;margin-top:6px">⚠️ Pausa de 0,5s após a pergunta antes de cortar pro corpo.</p>
+      </div>
+
+      <div class="reel-block reel-corpo">
+        <div class="reel-block-label">📢 CORPO · 3–28s</div>
+        <p><strong>Fala:</strong> "Não é porque seu produto é caro. É porque ele ainda não tem a história que justifica o preço.</p>
+        <p>Olha: o café especial cobra R$80 pela mesma matéria-prima que custa R$20 em supermercado. O que o café aprendeu que você ainda não aprendeu — como transformar ingrediente em narrativa.</p>
+        <p>Em 12 anos criando e vendendo artesanal com a Chilliepig, eu vi o mesmo produto triplicar de preço sem mudar a receita. Mudamos rótulo, nome, canal. A percepção foi junto.</p>
+        <p>Produto artesanal sem história vira commodity. E na guerra de preço, sempre perde quem tem custo de produção alto."</p>
+
+        <div class="reel-overlay-list">
+          <div class="reel-overlay-item">📌 Mesmo produto → preço 3x maior</div>
+          <div class="reel-overlay-item">📌 O que mudou: a HISTÓRIA</div>
+        </div>
+      </div>
+
+      <div class="reel-block reel-cta">
+        <div class="reel-block-label">🔗 CTA · 28–38s</div>
+        <p><strong>Fala:</strong> "Documentei esse processo num ebook. R$27. Garantia de 7 dias. Link na bio."</p>
+        <div class="reel-screen">alimentosartesanais.com.br · R$27 · 7 dias de garantia</div>
+        <p style="font-size:12px;opacity:0.75;margin-top:10px">Sugestão visual: produto Chilliepig na mão ou sobre a bancada. Fundo limpo. Sem música alta — voz em primeiro plano.</p>
+      </div>
+
+    </div>
+
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Tráfego frio</span>
+      <span class="temp-pill">⏱ 30–40s</span>
+      <span class="temp-pill">📐 9:16 vertical</span>
+      <span class="temp-pill">🎯 Conversão direta</span>
+    </div>
+  </div>
+
+  <!-- Reel 02 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Reel 02 — "O erro que faz o seu produto parecer barato (mesmo sendo bom)"</div>
+      <span class="badge badge-gray">Subir junto com Reel 01 · Teaching style</span>
+    </div>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:18px;font-style:italic">POV teaching · pode usar B-roll de produto · 40–50s</p>
+
+    <div class="reel-section">
+
+      <div class="reel-block reel-gancho">
+        <div class="reel-block-label">⚡ HOOK · 0–3s</div>
+        <div class="reel-screen">"O erro que faz o seu produto parecer barato — mesmo sendo bom."</div>
+        <p style="margin-top:12px"><strong>Fala:</strong> "Tem um erro que quase todo produtor artesanal comete. E ele não está na receita."</p>
+        <p style="font-size:12px;opacity:0.65;margin-top:6px">⚠️ Corte imediato após "receita" — sem pausa.</p>
+      </div>
+
+      <div class="reel-block reel-corpo">
+        <div class="reel-block-label">📢 CORPO · 3–38s</div>
+        <p><strong>Fala:</strong> "O erro é esse: você descreve o que o produto TEM, mas não conta o que ele É.</p>
+        <p>'Geleia de figo feita em casa' e 'Geleia de Figo Negro com Extrato de Baunilha de Madagascar, produzida em pequenos lotes na Serra Gaúcha' podem ser a mesma geleia. O preço que o cliente aceita pagar é completamente diferente.</p>
+        <p>O nome carrega posicionamento. O posicionamento define a prateleira. A prateleira define o preço.</p>
+        <p>Três coisas mudam a percepção imediatamente — sem custar nada:"</p>
+
+        <div class="reel-overlay-list">
+          <div class="reel-overlay-item">1️⃣ Nome específico com ingrediente de origem</div>
+          <div class="reel-overlay-item">2️⃣ Contexto de produção — quantidade, processo</div>
+          <div class="reel-overlay-item">3️⃣ Canal de venda certo</div>
+        </div>
+
+        <p style="margin-top:12px">Sugestão B-roll: rótulo genérico vs rótulo Chilliepig — corte no "três coisas".</p>
+      </div>
+
+      <div class="reel-block reel-cta">
+        <div class="reel-block-label">🔗 CTA · 38–48s</div>
+        <p><strong>Fala:</strong> "Tem mais doze aplicações práticas como essa no ebook. R$27 com garantia de 7 dias. Acessa o link na bio agora."</p>
+        <div class="reel-screen">Ebook — alimentosartesanais.com.br · R$27 · Garantia 7 dias</div>
+      </div>
+
+    </div>
+
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Tráfego frio</span>
+      <span class="temp-pill">⏱ 40–50s</span>
+      <span class="temp-pill">📐 9:16 vertical</span>
+      <span class="temp-pill">🎯 Educação + Venda</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     GUIA DE ATIVAÇÃO
+═══════════════════════════════════════════ -->
+<div id="ativacao">
+  <div class="activation-card">
+    <h2>🚀 Guia de Ativação — Kit Tráfego</h2>
+    <table class="act-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ação</th>
+          <th>Quando</th>
+          <th>Orçamento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="act-pri">1</span></td>
+          <td>Instalar Meta Pixel + Conversions API na LP</td>
+          <td>Antes de qualquer ad</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">2</span></td>
+          <td>Gravar Reel 01 + Reel 02 e publicar orgânico primeiro</td>
+          <td>Dia 1</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">3</span></td>
+          <td>Subir Post 01 como ad — objetivo conversão</td>
+          <td>Dia 1 (após pixel)</td>
+          <td>R$10/dia</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">4</span></td>
+          <td>Subir Reel 01 como ad — objetivo conversão</td>
+          <td>Dia 2</td>
+          <td>R$10/dia</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">5</span></td>
+          <td>Publicar Carrossel 01 orgânico + boostado</td>
+          <td>Semana 1 — dia 3 ou 4</td>
+          <td>R$10/dia</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">6</span></td>
+          <td>Analisar ROAS das 3 peças após 7 dias</td>
+          <td>Semana 1 — fim</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">7</span></td>
+          <td>Escalar a peça com ROAS &gt; 1,5x (duplicar budget)</td>
+          <td>Semana 2</td>
+          <td>2× budget vencedor</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">8</span></td>
+          <td>Subir Post 02 + Carrossel 02 + Reel 02 como ads</td>
+          <td>Semana 2</td>
+          <td>R$10/dia cada</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">9</span></td>
+          <td>Retargeting com peças de autoridade (Ad 03 do kit original)</td>
+          <td>Semana 2+ · somente quem engajou</td>
+          <td>R$5/dia</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:28px;font-size:13px;color:rgba(255,255,255,0.6);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Regras inegociáveis</div>
+    <div class="rules-grid">
+      <div class="rule-pill">Pixel instalado antes do primeiro centavo de tráfego</div>
+      <div class="rule-pill">Usar Chilliepig como prova — nunca fabricar depoimento</div>
+      <div class="rule-pill">Urgência real (garantia 7 dias) — nunca "restam X vagas"</div>
+      <div class="rule-pill">Escalar somente com ROAS &gt; 1,5x após 7 dias</div>
+      <div class="rule-pill">Reel 01 orgânico primeiro — ver engajamento antes de pagar</div>
+      <div class="rule-pill">Atualizar criativos com depoimentos reais após 10 vendas</div>
+    </div>
+
+    <div style="margin-top:28px;background:rgba(255,255,255,0.06);border-radius:12px;padding:20px">
+      <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:12px">📊 Métricas de referência para R$27</div>
+      <table class="act-table">
+        <thead>
+          <tr><th>Métrica</th><th>Meta Mínima</th><th>Meta Ideal</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>CTR (link click)</td><td>1,5%</td><td>&gt; 2,5%</td></tr>
+          <tr><td>CPL (custo por lead/click)</td><td>&lt; R$3,00</td><td>&lt; R$1,50</td></tr>
+          <tr><td>Taxa de conversão na LP</td><td>2%</td><td>&gt; 4%</td></tr>
+          <tr><td>CPA (custo por venda)</td><td>&lt; R$20</td><td>&lt; R$12</td></tr>
+          <tr><td>ROAS mínimo para escalar</td><td>1,5x</td><td>&gt; 2,5x</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>

@@ -1,0 +1,149 @@
+# Briefing Estratégico — alimentos-artesanais-ebook
+# Momento: perpétuo (funil evergreen)
+# Gerado: 2026-04-10 | Luna (copy-chief)
+# Status: APROVADO (G3 auto-validação)
+
+slug: alimentos-artesanais-ebook
+momento: perpetuo
+status: APROVADO
+
+# ─── Big Idea ────────────────────────────────────────────────────────────────
+big_idea: >
+  Seu produto artesanal já é bom. O que está te impedindo de cobrar 3x mais
+  não é a receita — é a história que você conta sobre ele.
+
+angulo_principal:
+  id: AV01
+  nome: "O Problema Não É O Produto"
+  frase_sintese: "O problema não é o produto — é como você apresenta ele."
+
+angulos_secundarios:
+  - id: AV03
+    uso: "Meta Ads (headline de curiosidade)"
+  - id: AV04
+    uso: "Retargeting e stories de autoridade"
+  - id: AV02
+    uso: "Reels de conscientização / público frio"
+
+# ─── Tom ─────────────────────────────────────────────────────────────────────
+tom: direto-urgente
+voz: "De produtor pra produtor — sem paternalismo, sem teoria vazia"
+nivel_formalidade: "Informal com substância. Fala como quem conhece o mercado por dentro."
+referencias_tom:
+  - "Gary Halbert (conversa direta, urgência real)"
+  - "Brand voice Chilliepig: acolhedor, autêntico, sem fachada"
+
+# ─── Avatar Específico ───────────────────────────────────────────────────────
+avatar:
+  nome_persona: "O Artesão Subvalorizado"
+  nivel_consciencia: solution_aware
+  estado_emocional_atual: "Frustrado — sabe que o produto é bom, não entende por que não consegue cobrar mais"
+  desejo_nao_articulado: "Ser reconhecido pelo valor real do que faz, não pelo preço mais baixo"
+  gatilho_emocional_primario: "A raiva de ouvir 'tá caro' depois de horas de trabalho com produto de qualidade"
+
+# ─── Cadeia de Crenças ───────────────────────────────────────────────────────
+cadeia_de_crencas:
+  C1:
+    crenca: "Meu produto já é bom — o problema é como apresento ele"
+    prova: "Espelho: descrição precisa da situação (elogios sem venda, desconto sem dignidade)"
+    mecanismo: "Identificação emocional — o leitor se reconhece"
+  C2:
+    crenca: "A causa do preço baixo é embalagem + história + canal, não a receita"
+    prova: "Analogia do café especial (R$80 vs geleia R$12) — mesmo raciocínio, resultado visível no mercado"
+    mecanismo: "Lógica demonstrável + comparação verificável"
+  C3:
+    crenca: "Os 3 pilares (Criar / Vender / Escalar) resolvem isso de forma estruturada"
+    prova: "Descrição específica do mecanismo: o que cada pilar entrega e como se conectam"
+    mecanismo: "Mecanismo nomeado + especificidade dos entregáveis"
+  C4:
+    crenca: "Gabriel fez isso com a Chilliepig — é real e replicável"
+    prova: "Case Chilliepig: mesmo produto, reposicionamento, 3x o preço. Mais: 12 anos, jurado nacional."
+    mecanismo: "Prova social de autoridade + resultado verificável (marca no mercado)"
+  C5:
+    crenca: "R$27 agora vale mais do que continuar perdendo margem toda semana"
+    prova: "Cálculo implícito: quanto você perde cobrando barato por semana vs R$27 uma vez"
+    mecanismo: "Urgência contextual real — não escassez fabricada"
+
+# ─── Objeção Central ─────────────────────────────────────────────────────────
+objecao_central: "Não tenho dinheiro pra embalagem cara"
+resposta_objecao: >
+  Não precisa de embalagem cara. O guia tem um checklist de 7 ajustes que
+  não custam nada e já elevam a percepção de valor — e uma lista de
+  fornecedores verificados pra quando você quiser ir além.
+
+objecoes_secundarias:
+  - objecao: "R$27 é barato demais, será que presta?"
+    resposta: "É de expert real com 12 anos e uma marca física no mercado. O preço é de lançamento."
+  - objecao: "Já tentei outras coisas e não funcionou"
+    resposta: "O problema não era você — era o método genérico que não conhece o universo artesanal."
+
+# ─── Gatilhos (ordem de prioridade) ─────────────────────────────────────────
+gatilhos:
+  1: autoridade        # Gabriel: 12 anos, Chilliepig, jurado nacional
+  2: prova-social      # Chilliepig como case (substitui depoimentos — fase zero)
+  3: especificidade    # 3 pilares nomeados + entregáveis concretos + bônus específicos
+  4: urgencia-contextual  # preço de lançamento (real, não fabricado)
+  5: empatia           # "eu passei por isso — 3 anos cobrando barato"
+
+# ─── CTA Principal ───────────────────────────────────────────────────────────
+cta_principal: "Quero Cobrar o Que Meu Produto Vale →"
+
+ctas_secundarios:
+  - "Acessar o Guia por R$27 →"
+  - "Quero Meu Guia Agora →"
+  - "Descobrir os 3 Pilares →"
+
+# ─── Prova Social (Fase Zero) ────────────────────────────────────────────────
+prova_social_disponivel:
+  tipo: "Case próprio — Chilliepig"
+  descricao: >
+    Mesmo produto. Mesmo produtor. Reposicionamento de embalagem, história e canal.
+    Resultado: preço 3x maior, menos esforço de venda. Marca hoje presente em empórios.
+  nota: >
+    NUNCA fabricar depoimentos de alunos. Produto com zero vendas no onboarding.
+    Chilliepig é a prova real até os primeiros depoimentos chegarem.
+
+# ─── Anti-Padrões ────────────────────────────────────────────────────────────
+anti_patterns:
+  - "Não prometer resultado financeiro específico ('você vai dobrar seu faturamento')"
+  - "Não usar escassez fabricada ('restam apenas 10 vagas' — é ebook digital)"
+  - "Não infantilizar o artesão — ele já produz, já sabe fazer"
+  - "Não usar saturated_claims: 'transforme sua paixão', 'do zero ao lucro', etc."
+  - "Não fabricar depoimentos ou prints de venda inexistentes"
+  - "Não usar superlativos sem dado ('o melhor guia do mercado')"
+  - "Não tratar embalagem como obstáculo financeiro — é argumento de venda"
+
+# ─── Referência de Produto ───────────────────────────────────────────────────
+produto_ref:
+  slug: alimentos-artesanais-ebook
+  nome: "Como Criar, Vender e Escalar Alimentos Artesanais"
+  preco: 27
+  garantia: "7 dias, sem burocracia"
+  mecanismo: "3 pilares: Criar / Vender / Escalar"
+  bonus:
+    - "Guia de Rótulo (o que a lei exige)"
+    - "Lista de Fornecedores Verificados"
+    - "Checklist: 7 Ajustes de Valorização sem Investimento"
+
+# ─── Canais Mapeados ─────────────────────────────────────────────────────────
+canais:
+  - canal: meta-ads
+    angulo: AV01 (principal) + AV03 (variação curiosidade)
+    formato: "Headline + body 3-4 linhas + CTA"
+    temperatura: frio-morno
+  - canal: reels-organicos
+    angulo: AV01 + AV02
+    formato: "Gancho → valor → CTA (60s)"
+    temperatura: frio
+  - canal: stories
+    angulo: AV04 (autoridade) + AV01
+    formato: "Bastidor → valor → prova → CTA"
+    temperatura: morno-quente
+  - canal: email
+    angulo: AV01 (nurture) + AV04 (autoridade)
+    formato: "Email curto, direto, link claro"
+    temperatura: morno
+  - canal: whatsapp
+    angulo: AV01 + urgência real
+    formato: "Mensagem curta + link"
+    temperatura: quente

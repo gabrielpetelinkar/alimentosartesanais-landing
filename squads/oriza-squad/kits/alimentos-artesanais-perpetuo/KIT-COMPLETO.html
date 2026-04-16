@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit Perpétuo — Alimentos Artesanais</title>
+<style>
+  :root {
+    --terra: #B5563A;
+    --terra-light: #f5ede8;
+    --marrom: #8B5E3C;
+    --marrom-light: #f0e8e0;
+    --verde: #5A7A42;
+    --verde-light: #eaf0e5;
+    --bg: #FDFAF7;
+    --surface: #FFFFFF;
+    --text: #2C1F14;
+    --text-secondary: #6B5744;
+    --border: rgba(61,43,31,0.1);
+    --shadow: 0 2px 12px rgba(61,43,31,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #2C1F14 0%, #4a3020 60%, #6b4530 100%);
+    color: white;
+    padding: 56px 40px 48px;
+    text-align: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 100px;
+    padding: 4px 16px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.8);
+  }
+  .hero h1 {
+    font-size: clamp(24px, 4vw, 42px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .hero-big-idea {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    max-width: 620px;
+    margin: 0 auto 28px;
+    font-style: italic;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-pill {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+  }
+  .hero-pill strong { color: #fff; }
+
+  /* ── Nav ── */
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  }
+  .nav-inner {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 4px 0;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    white-space: nowrap;
+    padding: 10px 18px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    transition: all 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .nav-btn:hover { background: var(--terra-light); color: var(--terra); }
+
+  /* ── Layout ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* ── Section header ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 56px 0 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px; color: white;
+    flex-shrink: 0;
+  }
+  .num-terra { background: var(--terra); }
+  .num-marrom { background: var(--marrom); }
+  .num-verde { background: var(--verde); }
+  .num-dark { background: #2C1F14; }
+  .num-mid { background: #7a5c3a; }
+
+  .section-header h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .section-header span {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .card-title { font-size: 17px; font-weight: 700; color: var(--text); }
+  .badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-terra { background: var(--terra-light); color: var(--terra); }
+  .badge-verde { background: var(--verde-light); color: var(--verde); }
+  .badge-marrom { background: var(--marrom-light); color: var(--marrom); }
+  .badge-gray { background: #f0ebe5; color: #6B5744; }
+
+  /* ── Ad layout ── */
+  .field { margin-bottom: 16px; }
+  .field-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .field-value {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .headline-box {
+    background: linear-gradient(135deg, var(--terra-light), #fdf5f0);
+    border: 1px solid rgba(181,86,58,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--terra);
+    margin-bottom: 16px;
+  }
+  .body-box {
+    background: #FAFAF8;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    white-space: pre-line;
+  }
+  .cta-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--terra);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 12px;
+  }
+  .temp-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .temp-pill {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: #f0ebe5;
+    color: var(--text-secondary);
+  }
+
+  /* ── Reel layout ── */
+  .reel-section {
+    display: grid;
+    gap: 12px;
+  }
+  .reel-block {
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .reel-gancho { background: #1a1a2e; color: #e8e8ff; }
+  .reel-corpo { background: #FAFAF8; border: 1px solid var(--border); }
+  .reel-cta { background: var(--terra); color: white; }
+  .reel-block-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 10px;
+  }
+  .reel-block p { font-size: 14px; line-height: 1.65; margin-bottom: 8px; }
+  .reel-block p:last-child { margin-bottom: 0; }
+  .reel-screen {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 6px;
+  }
+  .reel-screen-dark {
+    display: inline-block;
+    background: rgba(0,0,0,0.06);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-top: 6px;
+  }
+
+  /* ── Stories ── */
+  .story-week-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    position: relative;
+  }
+  .story-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--terra);
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+  }
+  .story-text { font-size: 14px; line-height: 1.6; color: var(--text); white-space: pre-line; }
+  .story-resource {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+  }
+
+  /* ── Email ── */
+  .email-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .email-header {
+    background: linear-gradient(135deg, #2C1F14, #4a3020);
+    padding: 20px 28px;
+    color: white;
+  }
+  .email-day { font-size: 11px; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .email-subject { font-size: 18px; font-weight: 700; }
+  .email-body { padding: 24px 28px; font-size: 14px; line-height: 1.75; color: var(--text); white-space: pre-line; }
+  .email-cta {
+    margin: 20px 28px 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--terra);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  /* ── WhatsApp ── */
+  .wa-feed { display: flex; flex-direction: column; gap: 12px; }
+  .wa-bubble {
+    background: #DCF8C6;
+    border-radius: 16px 16px 4px 16px;
+    padding: 14px 18px;
+    max-width: 75%;
+    align-self: flex-end;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #111;
+    white-space: pre-line;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  .wa-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    align-self: flex-end;
+    margin-top: -4px;
+    margin-bottom: 2px;
+  }
+
+  /* ── Activation table ── */
+  .activation-card {
+    background: linear-gradient(135deg, #1a1208, #2c1f14);
+    border-radius: 16px;
+    padding: 32px;
+    color: white;
+    margin-top: 56px;
+  }
+  .activation-card h2 { font-size: 20px; font-weight: 800; margin-bottom: 24px; }
+  .act-table { width: 100%; border-collapse: collapse; }
+  .act-table th {
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .act-table td {
+    padding: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    vertical-align: top;
+  }
+  .act-table tr:last-child td { border-bottom: none; }
+  .act-pri {
+    display: inline-block;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--terra);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 22px;
+  }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .rule-pill {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+  }
+  .rule-pill::before { content: "✅ "; }
+
+  /* ── Divider ── */
+  .divider { height: 1px; background: var(--border); margin: 12px 0 24px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px 36px; }
+    .container { padding: 24px 16px 60px; }
+    .card { padding: 20px; }
+    .stories-grid { grid-template-columns: 1fr 1fr; }
+    .wa-bubble { max-width: 90%; }
+    .nav { padding: 0 16px; }
+    .email-body { padding: 18px 20px; }
+    .email-card .email-cta { margin: 16px 20px 20px; }
+    .activation-card { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-tag">Kit Perpétuo · 2026-04-10</div>
+  <h1>Como Criar, Vender e Escalar<br>Alimentos Artesanais</h1>
+  <p class="hero-big-idea">"Seu produto artesanal já é bom. O que te impede de cobrar 3x mais não é a receita — é a história que você conta sobre ele."</p>
+  <div class="hero-meta">
+    <div class="hero-pill"><strong>R$27</strong> · Hotmart</div>
+    <div class="hero-pill"><strong>alimentosartesanais.com.br</strong></div>
+    <div class="hero-pill"><strong>Gabriel Petelinkar</strong> · Chilliepig · 12 anos</div>
+    <div class="hero-pill"><strong>Garantia:</strong> 7 dias</div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-btn" href="#ads">Meta Ads</a>
+    <a class="nav-btn" href="#reels">Reels</a>
+    <a class="nav-btn" href="#stories">Stories</a>
+    <a class="nav-btn" href="#email">Email</a>
+    <a class="nav-btn" href="#whatsapp">WhatsApp</a>
+    <a class="nav-btn" href="#ativacao">Ativação</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════════════════════════════════════
+     PARTE 1 — META ADS
+═══════════════════════════════════════════ -->
+<div id="ads">
+  <div class="section-header">
+    <div class="section-num num-terra">1</div>
+    <div>
+      <h2>Meta Ads</h2>
+      <span>5 variações · Facebook + Instagram</span>
+    </div>
+  </div>
+
+  <!-- Ad 01 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Ad 01 — Dor Direta</div>
+      <span class="badge badge-terra">Prioridade: Semana 1</span>
+    </div>
+    <div class="headline-box">Seu produto é bom. Seu preço não é.</div>
+    <div class="field">
+      <div class="field-label">Texto primário</div>
+      <div class="body-box">Você recebe elogio na feira e volta pra casa com estoque.
+O problema não é a geleia, o molho, o queijo.
+É a história que você conta — ou deixa de contar — sobre ele.
+Produto artesanal que não tem história vira commodity. E commodity compete por preço.
+Por R$27, você aprende a cobrar o que o seu produto já vale.</div>
+    </div>
+    <div class="cta-box">Quero Cobrar o Que Meu Produto Vale →</div>
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Tráfego frio</span>
+      <span class="temp-pill">💰 R$10/dia semana 1</span>
+      <span class="temp-pill">🎯 Awareness + Conversão</span>
+    </div>
+  </div>
+
+  <!-- Ad 02 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Ad 02 — Curiosidade / Comparação</div>
+      <span class="badge badge-gray">Semana 2</span>
+    </div>
+    <div class="headline-box">Por que café paga R$80 e geleia R$12?</div>
+    <div class="field">
+      <div class="field-label">Texto primário</div>
+      <div class="body-box">O café especial não é necessariamente melhor.
+Ele só aprendeu a contar de onde vem, quem colheu, como foi processado.
+Seu molho artesanal tem a mesma história — você só ainda não escreveu ela direito.
+Embalagem, rótulo, canal de venda: é isso que separa R$12 de R$38 na prateleira.</div>
+    </div>
+    <div class="cta-box">Quero Cobrar o Que Meu Produto Vale →</div>
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Tráfego frio</span>
+      <span class="temp-pill">🎯 Curiosidade</span>
+    </div>
+  </div>
+
+  <!-- Ad 03 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Ad 03 — Autoridade</div>
+      <span class="badge badge-marrom">Retargeting semana 2+</span>
+    </div>
+    <div class="headline-box">12 anos criando e vendendo artesanal</div>
+    <div class="field">
+      <div class="field-label">Texto primário</div>
+      <div class="body-box">A Chilliepig começou como qualquer produção artesanal: boa receita, preço baixo, venda em feira.
+O que mudou não foi a fórmula do molho.
+Foi a embalagem, a história por trás da marca e os canais — empórios, restaurantes, parcerias.
+Eu, Gabriel Petelinkar, documentei esse processo em um guia de R$27.
+Tudo que aprendi em 12 anos como produtor e jurado nacional de alimentos artesanais.</div>
+    </div>
+    <div class="cta-box">Quero Cobrar o Que Meu Produto Vale →</div>
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Morno / Retargeting</span>
+      <span class="temp-pill">🎯 Autoridade</span>
+    </div>
+  </div>
+
+  <!-- Ad 04 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Ad 04 — Transformação Antes/Depois</div>
+      <span class="badge badge-gray">Após Ad 01 validado</span>
+    </div>
+    <div class="headline-box">Antes: "tá caro." Depois: lista de espera.</div>
+    <div class="field">
+      <div class="field-label">Texto primário</div>
+      <div class="body-box">Mesmo produto. Mesma receita. Preço 3x maior.
+O que mudou foi o rótulo, a narrativa e o canal de distribuição.
+Foi exatamente o que fizemos com a Chilliepig — e está documentado neste guia.
+CRIAR o produto certo. VENDER com a história certa. ESCALAR para os canais certos.
+R$27 para parar de ouvir "tá caro" e começar a ter fila.</div>
+    </div>
+    <div class="cta-box">Quero Cobrar o Que Meu Produto Vale →</div>
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Frio-Morno</span>
+      <span class="temp-pill">🎯 Conversão</span>
+    </div>
+  </div>
+
+  <!-- Ad 05 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Ad 05 — Objeção (embalagem cara)</div>
+      <span class="badge badge-gray">Retargeting semana 3+</span>
+    </div>
+    <div class="headline-box">Embalagem cara não é o ponto.</div>
+    <div class="field">
+      <div class="field-label">Texto primário</div>
+      <div class="body-box">A maioria dos produtores acha que valorizar o produto exige investimento alto em embalagem.
+Não exige.
+O guia inclui um checklist com 7 ajustes de valorização que não custam nada — só exigem atenção ao que você já tem.
+Rótulo, história, foto, canal: pequenos detalhes que justificam preço alto antes de você gastar um real a mais.</div>
+    </div>
+    <div class="cta-box">Quero Cobrar o Que Meu Produto Vale →</div>
+    <div class="temp-row">
+      <span class="temp-pill">🌡 Morno</span>
+      <span class="temp-pill">🎯 Quebra de objeção</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PARTE 2 — REELS
+═══════════════════════════════════════════ -->
+<div id="reels">
+  <div class="section-header">
+    <div class="section-num num-marrom">2</div>
+    <div>
+      <h2>Roteiros de Reels</h2>
+      <span>5 roteiros completos · 60s cada · Gancho + Corpo + CTA</span>
+    </div>
+  </div>
+
+  <!-- Reel 01 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Reel 01 — "O problema não é o produto"</div>
+      <span class="badge badge-terra">Semana 1 · Publicar primeiro</span>
+    </div>
+    <div class="reel-section">
+      <div class="reel-block reel-gancho">
+        <div class="reel-block-label">⚡ Gancho · 0–3s</div>
+        <p><strong>Texto na tela:</strong></p>
+        <div class="reel-screen">"Seu produto não é o problema. Você é."</div>
+        <p style="margin-top:10px"><strong>Fala:</strong> "Se você recebe elogio na feira mas sai de lá com desconto dado, o problema não é a receita — é o que você conta antes de abrir o pote."</p>
+      </div>
+      <div class="reel-block reel-corpo">
+        <div class="reel-block-label">📢 Corpo</div>
+        <p><strong>Fala:</strong> "Eu vendo molho artesanal há 12 anos com a Chilliepig. Tive uma virada de chave quando parei de descrever ingredientes e comecei a descrever origem, processo e intenção. O mesmo molho, com a mesma embalagem, passou a ser percebido de forma completamente diferente — e o preço que o cliente aceitava pagar mudou junto. Isso não é marketing enganoso. É comunicar o valor que já existe e que você está deixando invisível. Toda vez que você cede ao desconto sem questionar, você está dizendo ao mercado que o produto não vale o que você mesmo cobrou."</p>
+        <div class="reel-screen-dark">"Mesmo produto. Outra história. Outro preço."</div>
+      </div>
+      <div class="reel-block reel-cta">
+        <div class="reel-block-label">🔗 CTA</div>
+        <p><strong>Fala:</strong> "Eu documentei esse processo inteiro no meu ebook. Link na bio."</p>
+        <div class="reel-screen">"alimentosartesanais.com.br — R$27 com 7 dias de garantia"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reel 02 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Reel 02 — "Por que o café especial cobra R$80 e sua geleia R$12"</div>
+      <span class="badge badge-gray">Semana 2</span>
+    </div>
+    <div class="reel-section">
+      <div class="reel-block reel-gancho">
+        <div class="reel-block-label">⚡ Gancho · 0–3s</div>
+        <div class="reel-screen">"Café especial: R$80. Sua geleia artesanal: R$12. O que você não entendeu ainda."</div>
+        <p style="margin-top:10px"><strong>Fala:</strong> "O café especial e a sua geleia têm algo em comum: os dois são feitos com cuidado, processo lento e ingrediente de qualidade. Só que um cobra R$80 e o outro fica pedindo desculpa por custar R$15."</p>
+      </div>
+      <div class="reel-block reel-corpo">
+        <div class="reel-block-label">📢 Corpo</div>
+        <p><strong>Fala:</strong> "A diferença não está na xícara — está na narrativa construída em volta dela. O café especial te conta a altitude da fazenda, o nome do produtor, o perfil sensorial. Ele não vende café. Ele vende um universo de significado. A sua geleia de figo com baunilha tem tudo isso e mais. Mas se você chega na feira com uma etiqueta impressa em casa e um 'é caseiro, feito com amor', você está jogando fora o principal ativo que tem: a história de como aquilo foi feito. Reposicionamento não é mentira. É dar ao seu produto o vocabulário que ele merece."</p>
+        <div class="reel-screen-dark">"O produto que você tem já justifica o preço que você tem medo de cobrar."</div>
+      </div>
+      <div class="reel-block reel-cta">
+        <div class="reel-block-label">🔗 CTA</div>
+        <p><strong>Fala:</strong> "No ebook, eu mostro como construir essa narrativa do zero. Link na bio para acessar."</p>
+        <div class="reel-screen">"alimentosartesanais.com.br — R$27"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reel 03 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Reel 03 — "Cobrar barato não é humildade"</div>
+      <span class="badge badge-gray">Semana 2</span>
+    </div>
+    <div class="reel-section">
+      <div class="reel-block reel-gancho">
+        <div class="reel-block-label">⚡ Gancho · 0–3s</div>
+        <div class="reel-screen">"Cobrar barato não é humildade. É sabotagem."</div>
+        <p style="margin-top:10px"><strong>Fala:</strong> "Tem um mito no mundo artesanal que precisa acabar hoje: a ideia de que cobrar caro é arrogância. Não é. Cobrar barato pelo que você faz com dedicação é que é um problema — e vou te explicar por quê."</p>
+      </div>
+      <div class="reel-block reel-corpo">
+        <div class="reel-block-label">📢 Corpo</div>
+        <p><strong>Fala:</strong> "Quando você cede ao 'tá caro' sem questionar, você não está sendo acessível — você está ensinando o seu cliente a não respeitar o seu trabalho. Preço baixo não gera fidelidade. Gera cliente que compra só quando tem promoção. O artesão que cobra bem não é o que tem o melhor produto. É o que entende que preço é comunicação. Preço diz ao mercado em qual prateleira mental você mora. Se você cobra R$12, você mora na prateleira do descartável. Se você cobra R$38 com contexto e história, você mora na prateleira do especial — e o cliente trata diferente."</p>
+        <div class="reel-screen-dark">"Preço é posicionamento. Posicionamento é escolha."</div>
+      </div>
+      <div class="reel-block reel-cta">
+        <div class="reel-block-label">🔗 CTA</div>
+        <p><strong>Fala:</strong> "Escrevi um ebook com o método que usei. R$27 e 7 dias de garantia. Link na bio."</p>
+        <div class="reel-screen">"alimentosartesanais.com.br"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reel 04 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Reel 04 — "3 coisas que fazem seu produto parecer caro sem gastar mais"</div>
+      <span class="badge badge-terra">Semana 1 · Alto potencial de share</span>
+    </div>
+    <div class="reel-section">
+      <div class="reel-block reel-gancho">
+        <div class="reel-block-label">⚡ Gancho · 0–3s</div>
+        <div class="reel-screen">"3 coisas que fazem seu produto parecer caro — sem gastar um centavo a mais."</div>
+        <p style="margin-top:10px"><strong>Fala:</strong> "Você não precisa mudar a receita nem trocar a embalagem agora. Existem três ajustes que mudam a percepção de valor imediatamente — e nenhum deles custa dinheiro."</p>
+      </div>
+      <div class="reel-block reel-corpo">
+        <div class="reel-block-label">📢 Corpo</div>
+        <p><strong>Fala:</strong> "Primeiro: o nome. 'Geleia de figo' é commodity. 'Geleia de figo negro com extrato de baunilha de Madagascar, processada em pequenos lotes' é produto especial. Segundo: a origem. De onde vem o ingrediente principal? Quem produziu? Isso cria ancoragem emocional. Terceiro: a limitação. 'Produção em pequenos lotes' não é desculpa para não ter estoque — é argumento de exclusividade. O cliente paga mais pelo que é raro."</p>
+        <div class="reel-screen-dark">"1. Nome específico / 2. Origem rastreável / 3. Produção limitada"</div>
+      </div>
+      <div class="reel-block reel-cta">
+        <div class="reel-block-label">🔗 CTA</div>
+        <p><strong>Fala:</strong> "Tem mais doze aplicações práticas como essa no ebook. Link na bio."</p>
+        <div class="reel-screen">"alimentosartesanais.com.br — R$27 com garantia de 7 dias"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reel 05 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Reel 05 — "Como eu coloquei a Chilliepig em empórios sem conhecer ninguém"</div>
+      <span class="badge badge-verde">Semana 3</span>
+    </div>
+    <div class="reel-section">
+      <div class="reel-block reel-gancho">
+        <div class="reel-block-label">⚡ Gancho · 0–3s</div>
+        <div class="reel-screen">"Como eu entrei em empórios sem conhecer ninguém e sem pagar nada por isso."</div>
+        <p style="margin-top:10px"><strong>Fala:</strong> "Quando eu levei a Chilliepig para o primeiro empório, eu não tinha contato, não tinha distribuidor e não tinha verba de marketing. O que eu tinha era um posicionamento claro e um argumento que o comprador não conseguia ignorar."</p>
+      </div>
+      <div class="reel-block reel-corpo">
+        <div class="reel-block-label">📢 Corpo</div>
+        <p><strong>Fala:</strong> "A maioria dos artesãos chega num empório e fala assim: 'Oi, tenho um molho artesanal, quero deixar aqui pra vender.' O comprador ouve isso todos os dias. O que eu fiz foi diferente: cheguei com a história do produto construída, com o argumento de giro — por que aquele produto vende na prateleira — e com o preço já posicionado para a margem do canal fazer sentido. Eu não pedi uma oportunidade. Eu apresentei um negócio."</p>
+        <div class="reel-screen-dark">"O canal quer produto que vende. Não produto que você ama."</div>
+      </div>
+      <div class="reel-block reel-cta">
+        <div class="reel-block-label">🔗 CTA</div>
+        <p><strong>Fala:</strong> "Esse processo de escalar para canais está detalhado no ebook. Link na bio pra acessar agora."</p>
+        <div class="reel-screen">"alimentosartesanais.com.br — R$27"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PARTE 3 — STORIES
+═══════════════════════════════════════════ -->
+<div id="stories">
+  <div class="section-header">
+    <div class="section-num num-verde">3</div>
+    <div>
+      <h2>Sequências de Stories</h2>
+      <span>4 sequências semanais · Seg / Qua / Sex / Dom</span>
+    </div>
+  </div>
+
+  <!-- Seq 1 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Sequência 1 — Identificação</div>
+      <span class="badge badge-terra">Segunda-feira</span>
+    </div>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:18px;font-style:italic">"O espelho da dor" — avatar se reconhece antes de receber qualquer oferta</p>
+    <div class="stories-grid">
+      <div class="story-card">
+        <div class="story-num">1</div>
+        <div class="story-text">Você faz um produto incrível.
+Todo mundo elogia.
+E mesmo assim você cobra R$12 no pote de 200g.</div>
+        <div class="story-resource">texto simples · fundo sólido escuro</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">2</div>
+        <div class="story-text">"Ah, mas na feira não passa disso."
+"Meu cliente não paga mais."
+
+Já pensou alguma coisa assim?</div>
+        <div class="story-resource">enquete — "Já pensei isso" / "Todo dia"</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">3</div>
+        <div class="story-text">O problema não é o seu produto.
+É como você apresenta ele.
+Produto bom vendido do jeito errado parece produto ruim.</div>
+        <div class="story-resource">texto simples</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">4</div>
+        <div class="story-text">Tem produtor cobrando 3x mais pelo mesmo tipo de produto que você faz.
+A diferença não está na receita.
+Está no posicionamento.</div>
+        <div class="story-resource">fonte grande em destaque</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">5</div>
+        <div class="story-text">Você já se perguntou por que o seu produto não chegou a empório ou loja especializada?
+
+Vai ter uma resposta honesta aqui nos próximos dias.</div>
+        <div class="story-resource">caixa de perguntas — "Qual é o seu produto artesanal?"</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">6</div>
+        <div class="story-text">Fica aqui comigo essa semana.
+Vou mostrar exatamente o que muda quando você apresenta o produto certo do jeito certo.
+
+Sem fórmula mágica. Sem promessa vazia.</div>
+        <div class="story-resource">texto simples + sticker de seguir</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seq 2 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Sequência 2 — Autoridade</div>
+      <span class="badge badge-marrom">Quarta-feira</span>
+    </div>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:18px;font-style:italic">"O bastidor Chilliepig" — prova real antes de qualquer depoimento de aluno</p>
+    <div class="stories-grid">
+      <div class="story-card">
+        <div class="story-num">1</div>
+        <div class="story-text">Deixa eu te contar como a Chilliepig começou.
+
+Era molho artesanal.
+Bom. Feito com cuidado. E completamente invisível no mercado.</div>
+        <div class="story-resource">foto/vídeo de bastidor da produção</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">2</div>
+        <div class="story-text">O produto não mudou.
+A receita é a mesma.
+O que mudou foi tudo ao redor: nome, embalagem, história, canal de venda.</div>
+        <div class="story-resource">antes e depois da embalagem (foto real)</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">3</div>
+        <div class="story-text">Resultado?
+O mesmo molho passou a ser vendido por 3x o preço.
+E as pessoas pagaram sem reclamar.</div>
+        <div class="story-resource">número "3x" em destaque</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">4</div>
+        <div class="story-text">Tenho 12 anos nesse mercado.
+Já fui jurado em competição nacional de alimentos artesanais.
+Conheço o que separa quem vende de quem só elogia.</div>
+        <div class="story-resource">foto pessoal — evento ou bastidor</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">5</div>
+        <div class="story-text">O produtor artesanal brasileiro sabe fazer.
+Não aprendeu ainda como fazer valer.</div>
+        <div class="story-resource">texto simples</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">6</div>
+        <div class="story-text">Juntei tudo que aprendi nesses 12 anos num ebook de R$27.
+
+Não é curso. Não é mentoria. É o essencial, direto ao ponto.
+
+👉 alimentosartesanais.com.br</div>
+        <div class="story-resource">link com sticker</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seq 3 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Sequência 3 — Mecanismo</div>
+      <span class="badge badge-verde">Sexta-feira</span>
+    </div>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:18px;font-style:italic">"Os 3 pilares" — apresenta o produto entregando valor primeiro</p>
+    <div class="stories-grid">
+      <div class="story-card">
+        <div class="story-num">1</div>
+        <div class="story-text">Vou te mostrar o que o ebook cobre.
+Três pilares. Sem enrolação.</div>
+        <div class="story-resource">contagem visual</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">2</div>
+        <div class="story-text">Pilar 1: Criar
+Não é sobre ter a receita perfeita.
+É sobre criar um produto que tenha identidade — e que as pessoas consigam reconhecer de longe.</div>
+        <div class="story-resource">fundo terracota</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">3</div>
+        <div class="story-text">Pilar 2: Vender
+Feira não é destino. É ponto de partida.
+O ebook mostra como chegar em canais que pagam mais: empório, assinatura, atacado especializado.</div>
+        <div class="story-resource">texto simples</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">4</div>
+        <div class="story-text">Pilar 3: Escalar
+Produzir mais sem perder qualidade.
+Precificar sem medo.
+Crescer sem depender só de você.</div>
+        <div class="story-resource">texto simples</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">5</div>
+        <div class="story-text">Bônus: Checklist com 7 ajustes que não custam nada e já elevam a percepção de valor.
+
++ lista de fornecedores verificados.</div>
+        <div class="story-resource">mockup ou print do material</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">6</div>
+        <div class="story-text">R$27 por tudo isso.
+Menos do que você provavelmente cobra num pote de geleia.</div>
+        <div class="story-resource">enquete — "Faz sentido?" — "Sim" / "Quero saber mais"</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">7</div>
+        <div class="story-text">👉 alimentosartesanais.com.br</div>
+        <div class="story-resource">link com sticker grande</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seq 4 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Sequência 4 — Conversão</div>
+      <span class="badge badge-terra">Domingo</span>
+    </div>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:18px;font-style:italic">"Objeção e virada" — quebra resistências e fecha com urgência real</p>
+    <div class="stories-grid">
+      <div class="story-card">
+        <div class="story-num">1</div>
+        <div class="story-text">"Mas Gabriel, R$27 é pouco pra resolver meu problema de vendas."
+
+Vou ser honesto com você.</div>
+        <div class="story-resource">tom de conversa direta</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">2</div>
+        <div class="story-text">R$27 não resolve nada se você não aplicar.
+Mas se você aplicar os três pilares, o primeiro reposicionamento já paga o ebook umas 50 vezes.</div>
+        <div class="story-resource">texto simples</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">3</div>
+        <div class="story-text">"Já vi conteúdo sobre isso de graça."
+
+Conteúdo gratuito te dá pedaço.
+Isso aqui é o mapa completo, organizado, por R$27.</div>
+        <div class="story-resource">texto simples</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">4</div>
+        <div class="story-text">E se não servir pra você?
+7 dias de garantia. Pede reembolso. Devolvo sem burocracia.
+
+O risco é zero da sua parte.</div>
+        <div class="story-resource">destaque em "risco é zero"</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">5</div>
+        <div class="story-text">Hoje é o último dia que falo sobre o ebook por aqui.
+Amanhã o conteúdo muda.
+Se ficou na dúvida, agora é a hora.</div>
+        <div class="story-resource">texto simples — sem contagem falsa</div>
+      </div>
+      <div class="story-card">
+        <div class="story-num">6</div>
+        <div class="story-text">👉 alimentosartesanais.com.br
+
+R$27. Garantia de 7 dias.
+Pare de ouvir "tá caro" e comece a vender pelo preço certo.</div>
+        <div class="story-resource">link com sticker grande · fundo alto contraste</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PARTE 4 — EMAIL
+═══════════════════════════════════════════ -->
+<div id="email">
+  <div class="section-header">
+    <div class="section-num num-dark">4</div>
+    <div>
+      <h2>Sequência de Email</h2>
+      <span>3 emails de nurture · D1 / D3 / D5</span>
+    </div>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header">
+      <div class="email-day">Email 1 · Dia 1 · Identificação</div>
+      <div class="email-subject">"Que delícia! Mas tá caro…"</div>
+    </div>
+    <div class="email-body">Você já ouviu isso?
+
+Você passa horas produzindo. Usa ingrediente bom, processo caprichado, embalagem bonita. A pessoa prova, elogia — e na hora do preço, recua.
+
+Não é porque seu produto é caro. É porque ele não está sendo <em>apresentado</em> como caro.
+
+Existe uma diferença enorme entre um produto artesanal e um produto <em>premium</em>. O sabor pode ser o mesmo. O que muda é como você posiciona: o nome, o rótulo, a história, o contexto em que ele é vendido.
+
+Quem paga R$80 num azeite especial em empório não está pagando só pelo azeite. Está pagando pela percepção que foi construída ao redor dele.
+
+Você tem o produto. O que está faltando é a construção dessa percepção.
+
+Nos próximos dias vou te mostrar como isso funciona na prática — com um exemplo real, de produto que eu mesmo reposicionei.
+
+Acompanhe.</div>
+    <a class="email-cta" href="http://alimentosartesanais.com.br">→ Conheça o ebook agora</a>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header">
+      <div class="email-day">Email 2 · Dia 3 · Mecanismo</div>
+      <div class="email-subject">Os 3 pilares que separam quem elogia de quem compra</div>
+    </div>
+    <div class="email-body">Tem um padrão que aparece em quase todo produtor artesanal que ainda cobra barato:
+
+Ele domina o <strong>CRIAR</strong>. Sabe fazer. O produto é bom.
+
+Mas tropeça no <strong>VENDER</strong> — não sabe precificar, não sabe apresentar, não sabe para quem falar.
+
+E nunca chegou no <strong>ESCALAR</strong> — continuar crescendo sem depender só de feiras e indica-indica.
+
+Esses três pilares — Criar, Vender, Escalar — são a estrutura do ebook que escrevi depois de 12 anos no mercado artesanal.
+
+Não é teoria. É o que funcionou pra mim e para outros produtores que saíram do ciclo de elogio sem venda.
+
+Dentro do material você encontra ainda:
+→ Guia de Rótulo (porque rótulo vende antes do sabor)
+→ Lista de Fornecedores verificados
+→ Checklist com 7 ajustes que não custam nada
+
+Por R$27 — menos que um jantar fora.</div>
+    <a class="email-cta" href="http://alimentosartesanais.com.br">→ Acesse agora</a>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header">
+      <div class="email-day">Email 3 · Dia 5 · Prova + Oferta</div>
+      <div class="email-subject">Mesmo produto. Preço 3x maior. O que mudou?</div>
+    </div>
+    <div class="email-body">A Chilliepig começou como uma pimenta artesanal vendida barato em feira.
+
+Reposicionamos a marca — nome, rótulo, narrativa, canal de venda. O produto em si não mudou. O preço triplicou. A margem foi junto.
+
+Isso é o que o posicionamento faz. Não é mágica. É método.
+
+O ebook "Como Criar, Vender e Escalar Alimentos Artesanais" reúne esse método em linguagem direta, de produtor para produtor. Sem enrolação, sem papo de coach.
+
+Se você:
+→ Já tem um produto que as pessoas elogiam
+→ Quer cobrar o que ele vale
+→ Quer chegar em canais melhores que feira de rua
+
+Esse material foi feito pra você.
+
+<strong>R$27. Garantia de 7 dias — sem burocracia.</strong>
+
+Se não agregar, devolvo tudo. Sem pergunta.</div>
+    <a class="email-cta" href="http://alimentosartesanais.com.br">→ Garanta o seu agora</a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PARTE 5 — WHATSAPP
+═══════════════════════════════════════════ -->
+<div id="whatsapp">
+  <div class="section-header">
+    <div class="section-num num-mid">5</div>
+    <div>
+      <h2>Sequência WhatsApp</h2>
+      <span>3 mensagens · D+0 / D+2 / D+4</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="wa-feed">
+      <div class="wa-label">Mensagem 1 · D+0 · Gancho de entrada</div>
+      <div class="wa-bubble">Você faz alimento artesanal e ouve elogio, mas na hora do preço a pessoa some? 🤔
+
+O problema quase nunca é o produto. É como ele está sendo apresentado.
+
+Tenho um material curto e direto que explica como corrigir isso — por R$27.
+
+👉 alimentosartesanais.com.br</div>
+
+      <div class="wa-label" style="margin-top:8px">Mensagem 2 · D+2 · Valor rápido</div>
+      <div class="wa-bubble">Dica rápida pra quem vende artesanal:
+
+Rótulo genérico = produto de prateleira de mercado. Rótulo com história, ingrediente de origem e visual consistente = produto de empório. ✅
+
+Mesmo conteúdo dentro da embalagem. Percepção completamente diferente — e margem junto.
+
+Tem mais sobre isso em alimentosartesanais.com.br</div>
+
+      <div class="wa-label" style="margin-top:8px">Mensagem 3 · D+4 · Fechamento</div>
+      <div class="wa-bubble">Vou ser direto: se você ainda não ajustou como apresenta seu produto, está deixando dinheiro na mesa toda semana. 💰
+
+O ebook com tudo que aprendi em 12 anos — CRIAR, VENDER e ESCALAR — está por R$27 com garantia de 7 dias.
+
+Se não valer, devolvo. Sem complicação.
+
+👉 alimentosartesanais.com.br</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     GUIA DE ATIVAÇÃO
+═══════════════════════════════════════════ -->
+<div id="ativacao">
+  <div class="activation-card">
+    <h2>🚀 Guia de Ativação</h2>
+    <table class="act-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ação</th>
+          <th>Quando</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="act-pri">1</span></td>
+          <td>Publicar Reel 01 + Reel 04</td>
+          <td>Hoje</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">2</span></td>
+          <td>Postar Stories — Sequência 1 (Identificação)</td>
+          <td>Hoje</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">3</span></td>
+          <td>Instalar Meta Pixel + Conversions API na LP</td>
+          <td>Antes de qualquer ad</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">4</span></td>
+          <td>Subir Ad 01 — R$10/dia</td>
+          <td>Após pixel instalado</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">5</span></td>
+          <td>Stories Sequência 2 (Autoridade/Chilliepig)</td>
+          <td>Dia 3</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">6</span></td>
+          <td>Reel 02 + Stories Sequência 3 (Mecanismo)</td>
+          <td>Semana 2</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">7</span></td>
+          <td>Ad 02 + Ad 03 retargeting (somente ROAS &gt; 1,5x)</td>
+          <td>Semana 2+</td>
+        </tr>
+        <tr>
+          <td><span class="act-pri">8</span></td>
+          <td>Disparar Email + WhatsApp</td>
+          <td>Assim que tiver lista</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:24px;font-size:13px;color:rgba(255,255,255,0.6);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Regras da fase zero</div>
+    <div class="rules-grid">
+      <div class="rule-pill">Usar Chilliepig como prova — nunca fabricar depoimentos</div>
+      <div class="rule-pill">Urgência real (preço de lançamento) — nunca "restam X vagas"</div>
+      <div class="rule-pill">Escalar ad somente com ROAS &gt; 1,5x após 7 dias</div>
+      <div class="rule-pill">Atualizar kit com depoimentos reais após 10 vendas</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>

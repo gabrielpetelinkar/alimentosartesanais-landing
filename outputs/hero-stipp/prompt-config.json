@@ -1,0 +1,42 @@
+{
+  "product": "Dr. Pedro Stipp — Pneumologia Veterinária",
+  "offer": "Consultas especializadas, visitas domiciliares e check-ups preventivos",
+  "tone": "authority, warmth, trust, care, professional",
+  "context": "consulting",
+  "palette": "trust",
+  "subject_description": "a Brazilian man in his late 20s to early 30s with: (1) short dark brown hair styled upward, (2) thin-framed rectangular glasses, (3) warm olive skin tone, (4) clean-shaven face with a friendly smile, (5) medium build, (6) dark navy veterinary/medical coat with white trim details and an embroidered name tag",
+  "symbols": [
+    {
+      "object": "delicate paw print outline",
+      "meaning": "veterinary care and animal love",
+      "style": "large, very faint, golden semi-transparent overlay in background"
+    },
+    {
+      "object": "stethoscope",
+      "meaning": "medical expertise and clinical precision",
+      "style": "small, elegant, barely visible, far background"
+    }
+  ],
+  "layers": {
+    "background": "deep navy to black gradient (#0D1117 to #161C26) with subtle warm gold glow emanating from behind the subject, soft bokeh city lights visible in the far distance",
+    "midground": "auto",
+    "foreground": "warm golden-white rim light on the right edge of the subject, soft fill light from left, professional studio lighting feel"
+  },
+  "seed": 42,
+  "model": "gemini-3.1-flash-image-preview",
+  "api_params": {
+    "seed": 42
+  },
+  "targets": {
+    "desktop": {
+      "aspect_ratio": "16:9",
+      "prompt": "IDENTITY LOCK — CRITICAL, HIGHEST PRIORITY: The subject is a Brazilian man in his late 20s to early 30s with: (1) short dark brown hair styled upward, (2) thin-framed rectangular glasses, (3) warm olive skin tone, (4) clean-shaven face with a friendly smile, (5) medium build, (6) dark navy veterinary/medical coat with white trim details and an embroidered name tag. You MUST preserve the subject's EXACT facial features, bone structure, beard pattern, hair texture, skin tone, body proportions, and clothing from the reference photo. DO NOT alter, improve, idealize, or stylize any facial feature. Camera: medium shot (waist-up), 85mm f/1.8 equivalent, subject looking directly at camera with a confident, approachable expression. Sharp focus on face and eyes.\n\nCOMPOSITION LAYERS: BACKGROUND — deep navy to black gradient (#0D1117 to #161C26) with subtle warm gold glow emanating from behind the subject, soft bokeh city lights visible in the far distance. MIDGROUND — a large delicate paw print outline (large, very faint, golden semi-transparent overlay in background) as the dominant midground element, a smaller stethoscope (small, elegant, barely visible, far background) as secondary element. FOREGROUND — warm golden-white rim light on the right edge of the subject, soft fill light from left, professional studio lighting feel.\n\nLAYOUT: The person is positioned on the RIGHT side of the frame, occupying approximately 40-45% of the image width. The LEFT 50-55% of the image MUST be a clean, visually rich but TEXT-FRIENDLY area — use a subtle gradient from #0a1628 to #1b3a5c with conceptual elements that create depth WITHOUT competing with text overlays.\n\nThis is a hero image for a sales page selling: Dr. Pedro Stipp — Pneumologia Veterinária. Offer: Consultas especializadas, visitas domiciliares e check-ups preventivos. The mood and tone must convey: authority, warmth, trust, care, professional. STYLE: High-end advertising photography, cinematic color grading, shallow depth of field on background elements. Dramatic rim lighting separating the person from the background. Color accents in #4fc3f7. Ultra-sharp, magazine-quality resolution. The image should look like it was produced by a top-tier graphic design agency. ABSOLUTELY NO text, NO logos, NO watermarks, NO typography anywhere in the image.",
+      "negative_prompt": "blurry, low quality, distorted face, extra limbs, deformed hands, text, watermark, logo, signature, overexposed, underexposed, flat lighting, stock photo look, clipart, cartoon, illustration, painting, centered composition, symmetrical layout, wrong facial features, altered beard, different clothing than described, changed hair style, modified body proportions, added accessories not described"
+    },
+    "mobile": {
+      "aspect_ratio": "9:16",
+      "prompt": "IDENTITY LOCK — CRITICAL, HIGHEST PRIORITY: The subject is a Brazilian man in his late 20s to early 30s with: (1) short dark brown hair styled upward, (2) thin-framed rectangular glasses, (3) warm olive skin tone, (4) clean-shaven face with a friendly smile, (5) medium build, (6) dark navy veterinary/medical coat with white trim details and an embroidered name tag. You MUST preserve the subject's EXACT facial features, bone structure, beard pattern, hair texture, skin tone, body proportions, and clothing from the reference photo. DO NOT alter, improve, idealize, or stylize any facial feature. Camera: close-up (head and shoulders with GENEROUS HEADROOM above the head, person positioned in the TOP QUARTER of the frame but NOT cropped — full head must be visible), 135mm f/2.0 equivalent, subject looking directly at camera with a confident, approachable expression. Sharp focus on face and eyes.\n\nCOMPOSITION LAYERS: BACKGROUND — deep navy to black gradient (#0D1117 to #161C26) with subtle warm gold glow emanating from behind the subject, soft bokeh city lights visible in the far distance. MIDGROUND — a SMALL delicate paw print outline (large, very faint, golden semi-transparent overlay in background, scaled down) tucked tightly behind the person's head/shoulders, a very small stethoscope (small, elegant, barely visible, far background, minimal size) barely visible beside the person. FOREGROUND — warm golden-white rim light on the right edge of the subject, soft fill light from left, professional studio lighting feel.\n\nLAYOUT: CRITICAL MOBILE LAYOUT CONSTRAINT — The person and visual elements must be contained in the TOP QUARTER of the frame (20-25% of total height). Show head and shoulders with FULL HEAD VISIBLE — do NOT crop the top of the head. Leave generous headroom above the hair. The BOTTOM 75-80% of the image MUST be COMPLETELY EMPTY — nothing but a solid clean gradient from #0a1628 to #1b3a5c. NO particles, NO bokeh, NO lines, NO visual elements whatsoever in the bottom three-quarters. This massive empty area is reserved for text overlay.\n\nThis is a hero image for a sales page selling: Dr. Pedro Stipp — Pneumologia Veterinária. Offer: Consultas especializadas, visitas domiciliares e check-ups preventivos. The mood and tone must convey: authority, warmth, trust, care, professional. STYLE: High-end advertising photography, cinematic color grading, shallow depth of field on background elements. Dramatic rim lighting separating the person from the background. Color accents in #4fc3f7. Ultra-sharp, magazine-quality resolution. The image should look like it was produced by a top-tier graphic design agency. ABSOLUTELY NO text, NO logos, NO watermarks, NO typography anywhere in the image.",
+      "negative_prompt": "blurry, low quality, distorted face, extra limbs, deformed hands, text, watermark, logo, signature, overexposed, underexposed, flat lighting, stock photo look, clipart, cartoon, illustration, painting, centered composition, symmetrical layout, wrong facial features, altered beard, different clothing than described, changed hair style, modified body proportions, added accessories not described"
+    }
+  }
+}
