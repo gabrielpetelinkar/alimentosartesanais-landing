@@ -12356,6 +12356,9 @@ function scrollToFlashcards() {
 // Transforma h3 dentro de chapter-body em <details> recolhíveis
 (function accordionize() {
   document.querySelectorAll('.chapter-body').forEach(function(body) {
+    // Pula gametogênese — seções 1.1, 1.2, 1.3 ficam sempre abertas
+    var chapter = body.closest('.chapter');
+    if (chapter && chapter.id === 'gametogenese') return;
     var h3s = body.querySelectorAll(':scope > h3');
     if (h3s.length < 2) return; // não faz sentido com 1 só seção
     h3s.forEach(function(h3, idx) {
