@@ -2778,9 +2778,7 @@ Bulbo da glande: travamento copulatório (cão)
   <button class="diff-tab active" data-neurotab="hpg">Eixo HPG</button>
   <button class="diff-tab" data-neurotab="femea">Fêmea</button>
   <button class="diff-tab" data-neurotab="macho">Macho</button>
-  <button class="diff-tab" data-neurotab="foto">Fotoperíodismo</button>
-  <button class="diff-tab" data-neurotab="efmacho">Efeito Macho</button>
-  <button class="diff-tab" data-neurotab="anestro">Anestro Lactacional</button>
+  <button class="diff-tab" data-neurotab="ext">Regulações Externas</button>
 </div>
 
 <!-- EIXO HPG -->
@@ -2945,8 +2943,19 @@ Bulbo da glande: travamento copulatório (cão)
   </div>
 </div>
 
+<!-- REGULAÇÕES EXTERNAS (wrapper com sub-tabs) -->
+<div class="neuro-panel" id="neuro-ext">
+
+  <p>Além dos feedbacks internos dos esteroides gonadais, o eixo HPG é modulado por <strong>sinais ambientais e fisiológicos externos</strong> que agem principalmente sobre os neurônios KNDy do ARC, alterando a pulsatilidade de GnRH.</p>
+
+  <div style="display:flex;gap:8px;margin:14px 0 18px;flex-wrap:wrap" id="extTabs">
+    <button class="diff-tab active" data-exttab="foto">Fotoperíodismo</button>
+    <button class="diff-tab" data-exttab="efmacho">Efeito Macho</button>
+    <button class="diff-tab" data-exttab="anestro">Anestro Lactacional</button>
+  </div>
+
 <!-- FOTOPERÍODISMO -->
-<div class="neuro-panel" id="neuro-foto">
+<div class="ext-subpanel active" id="ext-foto">
   <p>O fotoperíodo é o principal <em>zeitgeber</em> (sincronizador ambiental) da atividade reprodutiva em espécies sazonais · age via melatonina sobre os neurônios KNDy do ARC.</p>
 
   <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa da via neural para ver detalhes</p>
@@ -3007,7 +3016,7 @@ Bulbo da glande: travamento copulatório (cão)
 </div>
 
 <!-- EFEITO MACHO -->
-<div class="neuro-panel" id="neuro-efmacho">
+<div class="ext-subpanel" id="ext-efmacho">
   <p>Fenômeno neuroendócrino em que a <strong>introdução súbita de um macho</strong> em fêmeas em anestro sazonal induz ovulação e retorno à ciclicidade · ativação dos neurônios KNDy via estímulos olfatórios.</p>
 
   <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa para ver detalhes</p>
@@ -3057,7 +3066,7 @@ Bulbo da glande: travamento copulatório (cão)
 </div>
 
 <!-- ANESTRO LACTACIONAL -->
-<div class="neuro-panel" id="neuro-anestro">
+<div class="ext-subpanel" id="ext-anestro">
   <p>Quiescência reprodutiva pós-parto associada à lactação · estratégia fisiológica de priorização metabólica · a sucção suprime a pulsatilidade de GnRH via opióides endógenos (reforçam a dinorfina KNDy).</p>
 
   <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada mecanismo para ver detalhes</p>
@@ -3110,9 +3119,13 @@ Bulbo da glande: travamento copulatório (cão)
   </div>
 </div>
 
+</div><!-- fim neuro-ext (Regulações Externas) -->
+
 <style>
 .neuro-panel { display: none; }
 .neuro-panel.active { display: block; }
+.ext-subpanel { display: none; }
+.ext-subpanel.active { display: block; }
 </style>
 
 `
@@ -14429,7 +14442,7 @@ window.infSetSp = function(sp, el){
   };
 
   document.addEventListener('click', function(e) {
-    // Tab switch neuroendocrinologia
+    // Tab switch neuroendocrinologia (principal)
     var neuroTab = e.target.closest('[data-neurotab]');
     if (neuroTab) {
       var tab = neuroTab.getAttribute('data-neurotab');
@@ -14441,6 +14454,20 @@ window.infSetSp = function(sp, el){
       document.querySelectorAll('.neuro-panel').forEach(function(p) { p.classList.remove('active'); });
       var panel = document.getElementById('neuro-' + tab);
       if (panel) panel.classList.add('active');
+      return;
+    }
+    // Sub-tab Regulações Externas
+    var extTab = e.target.closest('[data-exttab]');
+    if (extTab) {
+      var et = extTab.getAttribute('data-exttab');
+      var extTabs = document.getElementById('extTabs');
+      if (extTabs) {
+        extTabs.querySelectorAll('.diff-tab').forEach(function(t) { t.classList.remove('active'); });
+        extTab.classList.add('active');
+      }
+      document.querySelectorAll('.ext-subpanel').forEach(function(p) { p.classList.remove('active'); });
+      var extP = document.getElementById('ext-' + et);
+      if (extP) extP.classList.add('active');
       return;
     }
     // Gametogênese
