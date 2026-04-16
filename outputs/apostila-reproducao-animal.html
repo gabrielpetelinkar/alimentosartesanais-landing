@@ -13402,10 +13402,12 @@ var GAMET_DB = {
 };
 function gametInfo(group, key) {
   var el = document.getElementById('gamet-info-' + group);
-  if (!el) return;
+  if (!el || !GAMET_DB[group] || !GAMET_DB[group][key]) return;
   el.innerHTML = GAMET_DB[group][key];
   el.classList.remove('empty');
 }
+window.gametInfo = gametInfo;
+
 function setGametTab(tab, btn) {
   document.querySelectorAll('#gametTabs .diff-tab').forEach(function(t) { t.classList.remove('active'); });
   document.querySelectorAll('.gamet-panel').forEach(function(p) { p.classList.remove('active'); });
@@ -13413,6 +13415,21 @@ function setGametTab(tab, btn) {
   var panel = document.getElementById('gamet-' + tab);
   if (panel) panel.classList.add('active');
 }
+window.setGametTab = setGametTab;
+
+// Event delegation fallback para cliques nas fases da gametogênese
+document.addEventListener('click', function(e) {
+  var step = e.target.closest('.diff-step[onclick]');
+  if (step) {
+    var onclickAttr = step.getAttribute('onclick');
+    if (onclickAttr && onclickAttr.indexOf('gametInfo') !== -1) {
+      try { (new Function(onclickAttr))(); } catch(err) {}
+    }
+    if (onclickAttr && onclickAttr.indexOf('diffInfo') !== -1) {
+      try { (new Function(onclickAttr))(); } catch(err) {}
+    }
+  }
+});
 
 // === DIFERENCIAÇÃO GONADAL ===
 var DIFF_DB = {
@@ -13433,10 +13450,12 @@ var DIFF_DB = {
 };
 function diffInfo(sex, key) {
   var el = document.getElementById('diff-info-' + sex);
-  if (!el) return;
+  if (!el || !DIFF_DB[sex] || !DIFF_DB[sex][key]) return;
   el.innerHTML = DIFF_DB[sex][key];
   el.classList.remove('empty');
 }
+window.diffInfo = diffInfo;
+
 function setDiffTab(tab, btn) {
   var container = btn.closest('#diffTabs') || btn.parentElement;
   container.querySelectorAll('.diff-tab').forEach(function(t) { t.classList.remove('active'); });
@@ -13445,6 +13464,7 @@ function setDiffTab(tab, btn) {
   var panel = document.getElementById('diff-' + tab);
   if (panel) panel.classList.add('active');
 }
+window.setDiffTab = setDiffTab;
 
 // === MIND MAPS ===
 // ===== CICLO ESTRAL =====
