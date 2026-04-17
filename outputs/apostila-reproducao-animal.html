@@ -2651,7 +2651,7 @@ Bulbo da glande: travamento copulatório (cão)
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px" id="sptzGrid">
 
     <!-- BOVINO -->
-    <div class="sptz-card" onclick="sptzInfo('bov')">
+    <div class="sptz-card" data-sptz="bov">
       <div class="sptz-label">Bovino</div>
       <svg viewBox="0 0 80 160" class="sptz-svg">
         <!-- cauda -->
@@ -2668,7 +2668,7 @@ Bulbo da glande: travamento copulatório (cão)
     </div>
 
     <!-- EQUINO -->
-    <div class="sptz-card" onclick="sptzInfo('eq')">
+    <div class="sptz-card" data-sptz="eq">
       <div class="sptz-label">Equino</div>
       <svg viewBox="0 0 80 160" class="sptz-svg">
         <!-- cauda longa -->
@@ -2685,7 +2685,7 @@ Bulbo da glande: travamento copulatório (cão)
     </div>
 
     <!-- SUÍNO -->
-    <div class="sptz-card" onclick="sptzInfo('su')">
+    <div class="sptz-card" data-sptz="su">
       <div class="sptz-label">Suíno</div>
       <svg viewBox="0 0 80 160" class="sptz-svg">
         <!-- cauda -->
@@ -2702,7 +2702,7 @@ Bulbo da glande: travamento copulatório (cão)
     </div>
 
     <!-- OVINO -->
-    <div class="sptz-card" onclick="sptzInfo('ov')">
+    <div class="sptz-card" data-sptz="ov">
       <div class="sptz-label">Ovino</div>
       <svg viewBox="0 0 80 160" class="sptz-svg">
         <!-- cauda -->
@@ -2719,7 +2719,7 @@ Bulbo da glande: travamento copulatório (cão)
     </div>
 
     <!-- CANINO -->
-    <div class="sptz-card" onclick="sptzInfo('can')">
+    <div class="sptz-card" data-sptz="can">
       <div class="sptz-label">Canino</div>
       <svg viewBox="0 0 80 160" class="sptz-svg">
         <!-- cauda -->
@@ -2736,7 +2736,7 @@ Bulbo da glande: travamento copulatório (cão)
     </div>
 
     <!-- FELINO -->
-    <div class="sptz-card" onclick="sptzInfo('fel')">
+    <div class="sptz-card" data-sptz="fel">
       <div class="sptz-label">Felino</div>
       <svg viewBox="0 0 80 160" class="sptz-svg">
         <!-- cauda com leve curvatura -->
@@ -13651,7 +13651,7 @@ var SPTZ_DB = {
 };
 function sptzInfo(sp) {
   document.querySelectorAll('.sptz-card').forEach(function(c) { c.classList.remove('active'); });
-  var clicked = document.querySelector('#sptzGrid .sptz-card[onclick*="' + sp + '"]');
+  var clicked = document.querySelector('#sptzGrid .sptz-card[data-sptz="' + sp + '"]');
   if (clicked) clicked.classList.add('active');
   var d = SPTZ_DB[sp];
   var el = document.getElementById('sptz-detail');
@@ -14512,6 +14512,15 @@ window.infSetSp = function(sp, el){
           elN.innerHTML = NEURO[ng][nk];
           elN.classList.remove('empty');
         }
+      }
+      return;
+    }
+    // Morfologia espermática comparada
+    var sptzEl = e.target.closest('[data-sptz]');
+    if (sptzEl) {
+      var sp = sptzEl.getAttribute('data-sptz');
+      if (sp && typeof sptzInfo === 'function') {
+        sptzInfo(sp);
       }
       return;
     }
