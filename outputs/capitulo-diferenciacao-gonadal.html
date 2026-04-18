@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 2 — Diferenciação Gonadal</title>
+<style>
+:root {
+  --font-scale: 1;
+  --text-primary: #1a1a1a;
+  --text-secondary: #404040;
+  --text-muted: #6b7280;
+  --bg-card: #ffffff;
+  --bg-page: #f8fafc;
+  --border-light: #e5e7eb;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow-md: 0 4px 12px rgba(0,0,0,.06);
+  --blue-50: #e3f2fd; --blue-100: #bbdefb; --blue-600: #1e88e5; --blue-700: #1565c0;
+  --green-50: #e8f5e9; --green-600: #2e7d32; --green-700: #1b5e20;
+  --amber-50: #fff8e1; --amber-100: #ffecb3; --amber-600: #f57c00; --amber-700: #ff8f00;
+  --purple-100: #e1bee7; --purple-600: #6a1b9a; --purple-700: #4a148c;
+  --red-50: #ffebee; --red-700: #c62828;
+  --gray-50: #f9fafb; --gray-300: #d1d5db;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg-page); color: var(--text-primary); line-height: 1.6; }
+.chapter { max-width: 920px; margin: 24px auto; background: var(--bg-card); border-radius: var(--radius-md); box-shadow: var(--shadow-md); overflow: hidden; }
+.chapter-header { display: flex; align-items: center; gap: 16px; padding: 24px 32px; background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%); color: #fff; }
+.ch-icon { display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: rgba(255,255,255,.15); border-radius: 50%; flex-shrink: 0; }
+.ch-num { font-size: 13px; opacity: .85; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 2px; }
+.chapter-header h2 { font-size: clamp(18px, 4vw, 26px); font-weight: 800; margin: 0; line-height: 1.2; letter-spacing: -.3px; }
+.chapter-body { padding: 32px; }
+@media (max-width: 640px) { .chapter-body { padding: 22px 16px; } }
+.chapter-body h4 { font-size: calc(16px * var(--font-scale)); color: var(--green-600); margin: 24px 0 8px; font-weight: 700; }
+.chapter-body p { margin-bottom: 14px; }
+.chapter-body ul { margin: 0 0 16px 20px; }
+.chapter-body li { margin-bottom: 8px; }
+.hl { background: var(--amber-50); border-radius: 3px; padding: 1px 4px; font-weight: 600; }
+.diff-tab { padding: 10px 18px; border: 1px solid var(--border-light); background: var(--bg-card); border-radius: 999px; font-size: calc(14px * var(--font-scale)); font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: all .15s; font-family: inherit; }
+.diff-tab:hover { border-color: var(--blue-600); color: var(--blue-700); }
+.diff-tab.active { background: var(--blue-600); color: #fff; border-color: var(--blue-600); }
+.diff-step { display: flex; align-items: stretch; gap: 12px; cursor: pointer; margin-bottom: 2px; }
+.diff-spine { display: flex; flex-direction: column; align-items: center; width: 18px; flex-shrink: 0; }
+.diff-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; margin-top: 14px; }
+.diff-line { flex: 1; width: 1.5px; background: var(--border-light); margin: 3px 0; }
+.diff-card { flex: 1; margin-bottom: 8px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 10px 14px; background: var(--bg-card); transition: border-color .15s, background .15s; }
+.diff-step:hover .diff-card { border-color: var(--gray-300); background: var(--gray-50); }
+.diff-title { font-weight: 600; font-size: 13.5px; margin-bottom: 2px; }
+.diff-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+.diff-badge { display: inline-block; font-size: 10.5px; padding: 2px 7px; border-radius: 10px; font-weight: 600; margin-left: 6px; background: var(--blue-50); color: var(--blue-700); vertical-align: middle; }
+.diff-info { background: var(--gray-50); border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 12px 16px; margin-top: 10px; font-size: 13px; line-height: 1.65; color: var(--text-primary); min-height: 56px; }
+.diff-info.empty { color: var(--text-muted); font-style: italic; }
+.diff-memo { margin-top: 16px; border-radius: var(--radius-sm); border: 1px solid var(--purple-100); border-left: 4px solid var(--purple-600); padding: 12px 16px; background: rgba(106,27,154,.04); }
+.diff-memo-label { font-size: calc(11px * var(--font-scale)); font-weight: 700; color: var(--purple-700); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+.diff-memo-text { font-size: calc(11.5px * var(--font-scale)); font-family: "SF Mono","Fira Code",Consolas,monospace; line-height: 1.8; color: var(--text-primary); }
+.alert { padding: 12px 16px; border-radius: var(--radius-sm); margin-bottom: 14px; font-size: calc(14px * var(--font-scale)); line-height: 1.55; }
+.alert-exam { background: var(--blue-50); border-left: 3px solid var(--blue-600); }
+.alert-tip { background: var(--green-50); border-left: 3px solid var(--green-600); }
+.sp-info { border-left: 3px solid var(--blue-700); background: var(--blue-100); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 14px; font-size: calc(15px * var(--font-scale)); line-height: 1.55; }
+.table-wrap { overflow-x: auto; margin-bottom: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); }
+table { width: 100%; border-collapse: collapse; font-size: calc(14px * var(--font-scale)); background: var(--bg-card); }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+th { background: var(--gray-50); font-weight: 700; color: var(--text-secondary); font-size: calc(13px * var(--font-scale)); }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: rgba(0,0,0,.015); }
+.gamet-panel { display: none; }
+.gamet-panel.active { display: block; }
+.diff-panel { display: none; }
+.diff-panel.active { display: block; }
+.sptz-card { border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 10px 8px; text-align: center; cursor: pointer; transition: all .15s; background: var(--bg-card); }
+.sptz-card:hover { border-color: var(--gray-300); background: var(--gray-50); }
+.sptz-card.active { border-color: var(--green-600); background: var(--green-50); }
+.sptz-label { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+.sptz-svg { width: 60px; height: auto; margin: 4px auto; display: block; }
+.sptz-dim { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<section class="chapter">
+  <div class="chapter-header">
+    <span class="ch-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13a3 3 0 00-3 3c0 1.31.83 2.42 2 2.83V15h2v-2.17c1.17-.41 2-1.52 2-2.83a3 3 0 00-3-3zm0 4a1 1 0 110-2 1 1 0 010 2z"/></svg></span>
+    <div>
+      <div class="ch-num">Capítulo 2</div>
+      <h2>Diferenciação Gonadal</h2>
+    </div>
+  </div>
+  <div class="chapter-body">
+
+<p>A gônada indiferenciada origina-se da crista genital e possui dois potenciais de diferenciação: testículo ou ovário. O cromossomo sexual determina o destino gonadal durante o desenvolvimento embrionário.</p>
+
+<div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap" id="diffTabs">
+  <button class="diff-tab active" onclick="setDiffTab('xy',this)">Macho (XY)</button>
+  <button class="diff-tab" onclick="setDiffTab('xx',this)">Fêmea (XX)</button>
+  <button class="diff-tab" onclick="setDiffTab('compare',this)">Comparativo</button>
+</div>
+
+<!-- XY -->
+<div class="diff-panel active" id="diff-xy">
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa para ver detalhes</p>
+  <div style="display:flex;flex-direction:column">
+
+    <div class="diff-step" data-diff="xy" data-key="sry">
+      <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Gene SRY <span class="diff-badge">cromossomo Y</span></div><div class="diff-sub">Ativado na gônada indiferenciada · gatilho da via masculina</div></div>
+    </div>
+
+    <div class="diff-step" data-diff="xy" data-key="sox9">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">SRY ativa SOX9</div><div class="diff-sub">Fator de transcrição que direciona a diferênciação das células de Sertoli</div></div>
+    </div>
+
+    <div class="diff-step" data-diff="xy" data-key="sertoli">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Células de Sertoli → AMH</div><div class="diff-sub">Hormônio Anti-Mülleriano induz regressão dos ductos de Müller</div></div>
+    </div>
+
+    <div class="diff-step" data-diff="xy" data-key="leydig">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Células de Leydig → Testosterona</div><div class="diff-sub">Mantém e diferencia os ductos de Wolff</div></div>
+    </div>
+
+    <div class="diff-step" data-diff="xy" data-key="wolff">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Ductos de Wolff persistem</div><div class="diff-sub">Epidídimo, canal deferente, vesícula seminal</div></div>
+    </div>
+
+    <div class="diff-step" data-diff="xy" data-key="dht">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D85A30"></div></div>
+      <div class="diff-card"><div class="diff-title">DHT (di-hidrotestosterona)</div><div class="diff-sub">5α-redutase converte T → DHT → genitália externa masculina</div></div>
+    </div>
+  </div>
+  <div class="diff-info empty" id="diff-info-xy">Clique em uma etapa acima para ver a explicação detalhada.</div>
+  <div class="diff-memo">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">SRY → SOX9 → Sertoli → AMH (↓Müller)<br>Leydig → T → Wolff + DHT → genitália ♂</div>
+  </div>
+</div>
+
+<!-- XX -->
+<div class="diff-panel" id="diff-xx">
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">A via ovariana é o caminho "padrão" na ausência de SRY</p>
+  <div style="display:flex;flex-direction:column">
+
+    <div class="diff-step" data-diff="xx" data-key="nosry">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Ausência de SRY</div><div class="diff-sub">A cascata masculina não é iniciada · via ovariana se instala</div></div>
+    </div>
+
+    <div class="diff-step" data-diff="xx" data-key="rspo">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">RSPO1 + WNT4 ativos</div><div class="diff-sub">Suprimem SOX9 e mantêm ativamente o fenótipo ovariano</div></div>
+    </div>
+
+    <div class="diff-step" data-diff="xx" data-key="muller">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Ductos de Müller persistem</div><div class="diff-sub">Trompas de Falópio, útero, cérvix, vagina cranial</div></div>
+    </div>
+
+    <div class="diff-step" data-diff="xx" data-key="wolff">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div></div>
+      <div class="diff-card"><div class="diff-title">Ductos de Wolff regridem</div><div class="diff-sub">Regridem por falta de estímulo androgênico</div></div>
+    </div>
+  </div>
+  <div class="diff-info empty" id="diff-info-xx">Clique em uma etapa acima para ver a explicação detalhada.</div>
+  <div class="diff-memo">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">Sem SRY → RSPO1/WNT4 suprimem SOX9<br>Müller persiste (útero ♀) + Wolff regride</div>
+  </div>
+</div>
+
+<!-- Comparativo -->
+<div class="diff-panel" id="diff-compare">
+  <div class="table-wrap"><table>
+    <thead><tr>
+      <th>Estrutura / Evento</th>
+      <th style="background:var(--blue-50);color:var(--blue-700);text-align:center">XY · Macho</th>
+      <th style="background:var(--red-50);color:var(--red-700);text-align:center">XX · Fêmea</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Gene determinante</td><td>SRY (crom. Y)</td><td>Ausência de SRY</td></tr>
+      <tr><td>Fator de transcrição</td><td>SOX9 ativo</td><td>SOX9 suprimido (RSPO1/WNT4)</td></tr>
+      <tr><td>Células gonadais chave</td><td>Sertoli + Leydig</td><td>Granulosa + Teca</td></tr>
+      <tr><td>Hormônio crítico</td><td>AMH + T + DHT</td><td>Ausência de AMH e T (via ovariana ativa por RSPO1/WNT4/FOXL2)</td></tr>
+      <tr><td>Ductos de Müller</td><td>Regridem (via AMH)</td><td>Persistem → útero, trompas</td></tr>
+      <tr><td>Ductos de Wolff</td><td>Persistem → epidídimo, deferente</td><td>Regridem (sem T)</td></tr>
+      <tr><td>Genitália externa</td><td>DHT → masculina</td><td>Padrão feminino</td></tr>
+    </tbody>
+  </table></div>
+  <div class="alert alert-tip" style="margin-top:14px">
+    <strong>Atenção:</strong> A via feminina não depende de hormônios testiculares, mas é ativamente regulada por genes específicos (RSPO1, WNT4, FOXL2) que suprimem o programa masculino (SOX9/FGF9) e mantêm a identidade ovariana ao longo de toda a vida. Fêmeas XX com perda de função de RSPO1 ou WNT4 desenvolvem ovotestis, evidência direta de que a diferenciação ovariana requer sinalização ativa contínua.
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<script>
+(function() {
+  var DIFF = {
+    xy: {
+      sry: '<strong>Gene SRY</strong> · <span class="hl">determinante primário</span> do sexo masculino, localizado no cromossomo Y.',
+      sox9: '<strong>SOX9</strong> é ativado pelo SRY e instrui células a se tornarem <span class="hl">células de Sertoli</span>.',
+      sertoli: '<strong>Células de Sertoli</strong> produzem <span class="hl">AMH</span>, que provoca regressão dos ductos de Müller.',
+      leydig: '<strong>Células de Leydig</strong> produzem <span class="hl">testosterona</span> que estabiliza e diferencia os ductos de Wolff.',
+      wolff: 'Os <strong>ductos de Wolff</strong> diferenciam-se em: <span class="hl">epidídimo, canal deferente e vesícula seminal</span>.',
+      dht: 'A <strong>DHT</strong> via <span class="hl">5α-redutase tipo 2</span> é responsável pela virilização da genitália externa.'
+    },
+    xx: {
+      nosry: 'Na ausência do gene SRY, genes como RSPO1, WNT4 e FOXL2 mantêm ativamente o fenótipo ovariano.',
+      rspo: '<strong>RSPO1</strong> e <strong>WNT4</strong> <span class="hl">suprimem o SOX9</span> e ativam vias pró-ovarianas.',
+      muller: 'Na ausência de AMH, os <strong>ductos de Müller persistem</strong>: <span class="hl">trompas, útero, cérvix, vagina cranial</span>.',
+      wolff: 'Sem testosterona local, os <strong>ductos de Wolff regridem</strong>. Resíduo vestigial: <span class="hl">ducto de Gärtner</span>.'
+    }
+  };
+
+  // Tab switching
+  window.setDiffTab = function(tab, btn) {
+    var container = btn.closest('#diffTabs') || btn.parentElement;
+    container.querySelectorAll('.diff-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.diff-panel').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    var panel = document.getElementById('diff-' + tab);
+    if (panel) panel.classList.add('active');
+  };
+
+  // Click handler
+  document.addEventListener('click', function(e) {
+    var diffEl = e.target.closest('[data-diff]');
+    if (diffEl) {
+      var s = diffEl.getAttribute('data-diff');
+      var k = diffEl.getAttribute('data-key');
+      if (s && k && DIFF[s] && DIFF[s][k]) {
+        var el = document.getElementById('diff-info-' + s);
+        if (el) { el.innerHTML = DIFF[s][k]; el.classList.remove('empty'); }
+      }
+      return;
+    }
+  });
+})();
+</script>
+</body>
+</html>

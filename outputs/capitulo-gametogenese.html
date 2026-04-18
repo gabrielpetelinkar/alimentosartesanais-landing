@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 3 — Gametogênese</title>
+<style>
+:root {
+  --font-scale: 1;
+  --text-primary: #1a1a1a;
+  --text-secondary: #404040;
+  --text-muted: #6b7280;
+  --bg-card: #ffffff;
+  --bg-page: #f8fafc;
+  --border-light: #e5e7eb;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow-md: 0 4px 12px rgba(0,0,0,.06);
+  --blue-50: #e3f2fd; --blue-100: #bbdefb; --blue-600: #1e88e5; --blue-700: #1565c0;
+  --green-50: #e8f5e9; --green-600: #2e7d32; --green-700: #1b5e20;
+  --amber-50: #fff8e1; --amber-100: #ffecb3; --amber-600: #f57c00; --amber-700: #ff8f00;
+  --purple-100: #e1bee7; --purple-600: #6a1b9a; --purple-700: #4a148c;
+  --red-50: #ffebee; --red-700: #c62828;
+  --gray-50: #f9fafb; --gray-300: #d1d5db;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg-page); color: var(--text-primary); line-height: 1.6; }
+.chapter { max-width: 920px; margin: 24px auto; background: var(--bg-card); border-radius: var(--radius-md); box-shadow: var(--shadow-md); overflow: hidden; }
+.chapter-header { display: flex; align-items: center; gap: 16px; padding: 24px 32px; background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%); color: #fff; }
+.ch-icon { display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: rgba(255,255,255,.15); border-radius: 50%; flex-shrink: 0; }
+.ch-num { font-size: 13px; opacity: .85; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 2px; }
+.chapter-header h2 { font-size: clamp(18px, 4vw, 26px); font-weight: 800; margin: 0; line-height: 1.2; letter-spacing: -.3px; }
+.chapter-body { padding: 32px; }
+@media (max-width: 640px) { .chapter-body { padding: 22px 16px; } }
+.chapter-body h4 { font-size: calc(16px * var(--font-scale)); color: var(--green-600); margin: 24px 0 8px; font-weight: 700; }
+.chapter-body p { margin-bottom: 14px; }
+.chapter-body ul { margin: 0 0 16px 20px; }
+.chapter-body li { margin-bottom: 8px; }
+.hl { background: var(--amber-50); border-radius: 3px; padding: 1px 4px; font-weight: 600; }
+.diff-tab { padding: 10px 18px; border: 1px solid var(--border-light); background: var(--bg-card); border-radius: 999px; font-size: calc(14px * var(--font-scale)); font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: all .15s; font-family: inherit; }
+.diff-tab:hover { border-color: var(--blue-600); color: var(--blue-700); }
+.diff-tab.active { background: var(--blue-600); color: #fff; border-color: var(--blue-600); }
+.diff-step { display: flex; align-items: stretch; gap: 12px; cursor: pointer; margin-bottom: 2px; }
+.diff-spine { display: flex; flex-direction: column; align-items: center; width: 18px; flex-shrink: 0; }
+.diff-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; margin-top: 14px; }
+.diff-line { flex: 1; width: 1.5px; background: var(--border-light); margin: 3px 0; }
+.diff-card { flex: 1; margin-bottom: 8px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 10px 14px; background: var(--bg-card); transition: border-color .15s, background .15s; }
+.diff-step:hover .diff-card { border-color: var(--gray-300); background: var(--gray-50); }
+.diff-title { font-weight: 600; font-size: 13.5px; margin-bottom: 2px; }
+.diff-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+.diff-badge { display: inline-block; font-size: 10.5px; padding: 2px 7px; border-radius: 10px; font-weight: 600; margin-left: 6px; background: var(--blue-50); color: var(--blue-700); vertical-align: middle; }
+.diff-info { background: var(--gray-50); border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 12px 16px; margin-top: 10px; font-size: 13px; line-height: 1.65; color: var(--text-primary); min-height: 56px; }
+.diff-info.empty { color: var(--text-muted); font-style: italic; }
+.diff-memo { margin-top: 16px; border-radius: var(--radius-sm); border: 1px solid var(--purple-100); border-left: 4px solid var(--purple-600); padding: 12px 16px; background: rgba(106,27,154,.04); }
+.diff-memo-label { font-size: calc(11px * var(--font-scale)); font-weight: 700; color: var(--purple-700); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+.diff-memo-text { font-size: calc(11.5px * var(--font-scale)); font-family: "SF Mono","Fira Code",Consolas,monospace; line-height: 1.8; color: var(--text-primary); }
+.alert { padding: 12px 16px; border-radius: var(--radius-sm); margin-bottom: 14px; font-size: calc(14px * var(--font-scale)); line-height: 1.55; }
+.alert-exam { background: var(--blue-50); border-left: 3px solid var(--blue-600); }
+.alert-tip { background: var(--green-50); border-left: 3px solid var(--green-600); }
+.sp-info { border-left: 3px solid var(--blue-700); background: var(--blue-100); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 14px; font-size: calc(15px * var(--font-scale)); line-height: 1.55; }
+.table-wrap { overflow-x: auto; margin-bottom: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); }
+table { width: 100%; border-collapse: collapse; font-size: calc(14px * var(--font-scale)); background: var(--bg-card); }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+th { background: var(--gray-50); font-weight: 700; color: var(--text-secondary); font-size: calc(13px * var(--font-scale)); }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: rgba(0,0,0,.015); }
+.gamet-panel { display: none; }
+.gamet-panel.active { display: block; }
+.diff-panel { display: none; }
+.diff-panel.active { display: block; }
+.sptz-card { border-radius: var(--radius-sm); border: 1px solid var(--border-light); padding: 10px 8px; text-align: center; cursor: pointer; transition: all .15s; background: var(--bg-card); }
+.sptz-card:hover { border-color: var(--gray-300); background: var(--gray-50); }
+.sptz-card.active { border-color: var(--green-600); background: var(--green-50); }
+.sptz-label { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+.sptz-svg { width: 60px; height: auto; margin: 4px auto; display: block; }
+.sptz-dim { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<section class="chapter">
+  <div class="chapter-header">
+    <span class="ch-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M13 11.33L18 18H6l3.78-5.06A4.98 4.98 0 018 9c0-2.76 2.24-5 5-5s5 2.24 5 5a4.98 4.98 0 01-5 5.33zM13 6a3 3 0 100 6 3 3 0 000-6zM4 20h16v2H4v-2z"/></svg></span>
+    <div>
+      <div class="ch-num">Capítulo 3</div>
+      <h2>Gametogênese</h2>
+    </div>
+  </div>
+  <div class="chapter-body">
+
+<div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap" id="gametTabs">
+  <button class="diff-tab active" onclick="setGametTab('oogenese',this)">Oogênese</button>
+  <button class="diff-tab" onclick="setGametTab('oocito',this)">Estrutura do Oócito</button>
+  <button class="diff-tab" onclick="setGametTab('espermat',this)">Espermatogênese</button>
+  <button class="diff-tab" onclick="setGametTab('estrutura',this)">Estrutura do sptz</button>
+</div>
+
+<!-- OOGÊNESE -->
+<div class="gamet-panel active" id="gamet-oogenese">
+  <div class="alert alert-exam" style="margin-bottom:14px">
+    <strong>🎯 Muito cobrado em provas:</strong> o oócito primário bloqueia na Prófase I (dictioteno) desde a vida fetal. O pico de LH reduz o AMPc intracelular e derruba esse bloqueio. O oócito secundário bloqueia na Metáfase II até a penetração do espermatozóide.
+  </div>
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada fase para ver detalhes</p>
+  <div style="display:flex;flex-direction:column">
+
+    <div class="diff-step" data-gamet="oog" data-key="oogonia">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Oogônia (2n)</div><div class="diff-sub">Multiplicação por mitose · vida fetal exclusivamente</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="oog" data-key="oocito1">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Oócito primário (2n) <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">bloqueio Prófase I</span></div><div class="diff-sub">Dictioteno · mantido pelo AMPc das células do cumulus</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="oog" data-key="meiose1">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Conclusão da Meiose I <span class="diff-badge">gatilho: pico de LH</span></div><div class="diff-sub">LH reduz AMPc → retomada da meiose pouco antes da ovulação</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="oog" data-key="oocito2">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Oócito secundário (n) + 1º CP <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">bloqueio Metáfase II</span></div><div class="diff-sub">Estágio ovulado na maioria dos mamíferos domésticos</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="oog" data-key="fert">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
+      <div class="diff-card"><div class="diff-title">Ovum (n) + 2º CP <span class="diff-badge" style="background:var(--green-50);color:var(--green-700)">gatilho: fecundação</span></div><div class="diff-sub">Penetração do sptz → ativação → conclusão da Meiose II</div></div>
+    </div>
+  </div>
+  <div class="diff-info empty" id="gamet-info-oog">Clique em uma fase acima para ver a explicação detalhada.</div>
+  <div class="sp-info" style="margin-top:14px">
+    <strong>🔗 Regulação hormonal (resumo):</strong> retomada da meiose depende do <span class="hl">pico de LH</span> · crescimento folicular inicial dirigido por FSH. <em>Detalhes do eixo HPG no capítulo de Neuroendocrinologia.</em>
+  </div>
+  <div class="diff-memo">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">Oogônia → Oócito I (bloq. Prófase I · AMPc)<br>LH↑ → AMPc↓ → Meiose I → Oócito II (bloq. Met. II)<br>Sptz penetra → Meiose II → Ovum + 2º CP</div>
+  </div>
+</div>
+
+<!-- ESPERMATOGÊNESE -->
+<div class="gamet-panel" id="gamet-espermat">
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada fase para ver detalhes</p>
+  <div style="display:flex;flex-direction:column">
+
+    <div class="diff-step" data-gamet="esp" data-key="espgonia">
+      <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Espermatogônia (2n)</div><div class="diff-sub">Células-tronco; renovação contínua após a puberdade</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="esp" data-key="esp1">
+      <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Espermatócito I (2n)</div><div class="diff-sub">Meiose I · fase mais longa; crossing-over na Prófase I</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="esp" data-key="esp2">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Espermatócito II (n)</div><div class="diff-sub">Meiose II rápida → duas espermátides cada</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="esp" data-key="esptide">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Espermátide (n)</div><div class="diff-sub">Haplóide redonda · sem mais divisões; inicia diferênciação</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="esp" data-key="espmiog">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Espermiogênese <span class="diff-badge">diferênciação, sem divisão</span></div><div class="diff-sub">Formação do acrossomo, flagelo, compactação do DNA</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="esp" data-key="sptz">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div></div>
+      <div class="diff-card"><div class="diff-title">Espermatozóide (n)</div><div class="diff-sub">Motilidade progressiva adquirida no epidídimo (~10-14 dias)</div></div>
+    </div>
+  </div>
+  <div class="diff-info empty" id="gamet-info-esp">Clique em uma fase acima para ver a explicação detalhada.</div>
+
+  <div class="sp-info" style="margin-top:14px">
+    <strong>🔗 Regulação hormonal (resumo):</strong> processo dependente de <span class="hl">FSH (nas células de Sertoli)</span> e <span class="hl">testosterona (LH → células de Leydig)</span>. <em>Detalhes do eixo HPG no capítulo de Neuroendocrinologia.</em>
+  </div>
+
+  <p style="font-size:calc(12px * var(--font-scale));font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin:16px 0 10px">Duração total por espécie</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px">
+    <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:4px">Suíno</div><div style="font-size:20px;font-weight:700">~34</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">dias</div></div>
+    <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:4px">Ovino</div><div style="font-size:20px;font-weight:700">~49</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">dias</div></div>
+    <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:4px">Equino</div><div style="font-size:20px;font-weight:700">~57</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">dias</div></div>
+    <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:4px">Bovino</div><div style="font-size:20px;font-weight:700">~61</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">dias</div></div>
+    <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:4px">Canino</div><div style="font-size:20px;font-weight:700">~62</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">dias</div></div>
+    <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:4px">Humano</div><div style="font-size:20px;font-weight:700">~74</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">dias</div></div>
+  </div>
+
+
+  <div class="diff-memo" style="margin-top:16px">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">Gônia → Espócito I → Espócito II → Espermátide<br>Espermiogênese (diferência, não divide) → Sptz<br>Motilidade progressiva: adquirida no epidídimo</div>
+  </div>
+</div>
+
+<!-- OÓCITO -->
+<div class="gamet-panel" id="gamet-oocito">
+  <div class="alert alert-exam" style="margin-bottom:14px">
+    <strong>🎯 Muito cobrado em provas:</strong> o oócito ovulado encontra-se em <span class="hl">Metáfase II</span> e somente completa a meiose após a fecundação.
+  </div>
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada estrutura para ver detalhes</p>
+  <div style="display:flex;flex-direction:column">
+
+    <div class="diff-step" data-gamet="ooc" data-key="primario">
+      <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Oócito primário (2n)</div><div class="diff-sub">Parado em Prófase I (dictioteno) desde a vida fetal</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="ooc" data-key="secundario">
+      <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Oócito secundário (n) <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">estágio ovulado</span></div><div class="diff-sub">Parado em Metáfase II · aguarda fecundação</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="ooc" data-key="zp">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Zona Pelúcida</div><div class="diff-sub">Matriz glicoproteica (ZP1-4) · ligação com sptz + bloqueio polispermia</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="ooc" data-key="cumulus">
+      <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+      <div class="diff-card"><div class="diff-title">Corona radiata / Cumulus oophorus</div><div class="diff-sub">Células da granulosa · nutrição, suporte e sinalização</div></div>
+    </div>
+
+    <div class="diff-step" data-gamet="ooc" data-key="citop">
+      <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div></div>
+      <div class="diff-card"><div class="diff-title">Citoplasma (ooplasma)</div><div class="diff-sub">Rico em organelas · reserva para o desenvolvimento inicial do embrião</div></div>
+    </div>
+  </div>
+  <div class="diff-info empty" id="gamet-info-ooc">Clique em uma estrutura acima para ver a explicação detalhada.</div>
+
+  <div style="margin-top:16px;padding:14px 16px;border-radius:var(--radius-sm);background:var(--blue-50);border-left:3px solid var(--blue-600)">
+    <div style="font-size:calc(12px * var(--font-scale));font-weight:700;color:var(--blue-700);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">🔗 Conexões rápidas</div>
+    <ul style="margin:0;padding-left:18px;font-size:calc(14px * var(--font-scale));line-height:1.7">
+      <li><strong>LH</strong> → retoma a meiose (derruba bloqueio da Prófase I)</li>
+      <li><strong>Fertilização</strong> → completa a Meiose II (via influxo de Ca²⁺ → inativa CSF)</li>
+      <li><strong>Zona pelúcida</strong> → interação espécie-específica com espermatozoide (ZP3/ZP2)</li>
+      <li><strong>Cumulus</strong> → relevante em biotecnologias: <span class="hl">OPU, FIV, ICSI</span></li>
+    </ul>
+  </div>
+
+  <div class="diff-memo" style="margin-top:16px">
+    <div class="diff-memo-label">Mnemônico</div>
+    <div class="diff-memo-text">Primário (2n) → Prófase I (dictioteno)<br>Secundário (n) → Metáfase II (ovulado) → fecundação completa meiose II<br>ZP = interação sptz + bloqueio polispermia | Cumulus = nutrição + biotec</div>
+  </div>
+
+  <figure style="margin:20px auto 4px;text-align:center;max-width:280px">
+    <img src="img-oocito-estrutura.png" alt="Esquema do oócito mostrando células foliculares da corona radiata, membrana plasmática, citoplasma, núcleo e zona pelúcida" style="width:100%;height:auto;border-radius:var(--radius-sm);opacity:.95">
+    <figcaption style="font-size:calc(11.5px * var(--font-scale));color:var(--text-muted);margin-top:6px;line-height:1.4;font-style:italic">
+      Estrutura do oócito: corona radiata, membrana plasmática, núcleo e zona pelúcida <span style="font-size:.85em">(Moore, 2012)</span>
+    </figcaption>
+  </figure>
+</div>
+
+<!-- ESTRUTURA DO SPTZ -->
+<div class="gamet-panel" id="gamet-estrutura">
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada compartimento para ver detalhes</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:4px">
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="cabeca"><div class="diff-title">Cabeça</div><div class="diff-sub">Acrossomo + núcleo haplóide</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="peca"><div class="diff-title">Peça intermediária</div><div class="diff-sub">Mitocôndrias em espiral</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="cauda"><div class="diff-title">Cauda (flagelo)</div><div class="diff-sub">Axonema 9+2</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="epid"><div class="diff-title">Epidídimo</div><div class="diff-sub">Maturação e reservatório</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="capac"><div class="diff-title">Capacitação</div><div class="diff-sub">Trato reprodutivo feminino</div></div>
+    <div class="diff-card" style="cursor:pointer" data-gamet="str" data-key="acros"><div class="diff-title">Reação acrossômica</div><div class="diff-sub">Fusão com zona pelúcida</div></div>
+  </div>
+
+  <!-- MORFOLOGIA ESPERMÁTICA COMPARADA (movido da aba Espermatogênese) -->
+  <!-- MORFOLOGIA ESPERMÁTICA POR ESPÉCIE -->
+  <p style="font-size:calc(12px * var(--font-scale));font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin:24px 0 10px">Morfologia espermática comparada</p>
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:14px">Ilustrações em escala relativa entre espécies. Clique em cada card para ver características detalhadas.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px" id="sptzGrid">
+
+    <!-- BOVINO -->
+    <div class="sptz-card" data-sptz="bov">
+      <div class="sptz-label">Bovino</div>
+      <svg viewBox="0 0 80 160" class="sptz-svg">
+        <!-- cauda -->
+        <path d="M 40 62 Q 42 100 38 130 Q 37 145 40 158" stroke="#388e3c" stroke-width="1.4" fill="none"/>
+        <!-- peça intermediária -->
+        <rect x="36" y="48" width="8" height="14" rx="2" fill="#66bb6a"/>
+        <!-- cabeça · oval alongada -->
+        <ellipse cx="40" cy="30" rx="9" ry="17" fill="#1b5e20"/>
+        <!-- acrossomo -->
+        <ellipse cx="40" cy="15" rx="7" ry="7" fill="#43a047" opacity=".85"/>
+        <text x="40" y="175" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">oval</text>
+      </svg>
+      <div class="sptz-dim">8-9 µm</div>
+    </div>
+
+    <!-- EQUINO -->
+    <div class="sptz-card" data-sptz="eq">
+      <div class="sptz-label">Equino</div>
+      <svg viewBox="0 0 80 160" class="sptz-svg">
+        <!-- cauda longa -->
+        <path d="M 40 58 Q 43 100 37 135 Q 36 150 40 158" stroke="#388e3c" stroke-width="1.4" fill="none"/>
+        <!-- peça intermediária curta -->
+        <rect x="37" y="46" width="6" height="12" rx="2" fill="#66bb6a"/>
+        <!-- cabeça · oval mais achatada/larga -->
+        <ellipse cx="40" cy="28" rx="11" ry="15" fill="#1b5e20"/>
+        <!-- acrossomo bem desenvolvido ~40% -->
+        <ellipse cx="40" cy="16" rx="9.5" ry="8" fill="#43a047" opacity=".85"/>
+        <text x="40" y="175" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">oval-achat.</text>
+      </svg>
+      <div class="sptz-dim">6-7 µm</div>
+    </div>
+
+    <!-- SUÍNO -->
+    <div class="sptz-card" data-sptz="su">
+      <div class="sptz-label">Suíno</div>
+      <svg viewBox="0 0 80 160" class="sptz-svg">
+        <!-- cauda -->
+        <path d="M 40 60 Q 41 95 39 125 Q 38 142 40 158" stroke="#388e3c" stroke-width="1.4" fill="none"/>
+        <!-- peça intermediária -->
+        <rect x="36.5" y="46" width="7" height="14" rx="2" fill="#66bb6a"/>
+        <!-- cabeça · espiral/gancho no ápice -->
+        <ellipse cx="40" cy="28" rx="9" ry="16" fill="#1b5e20"/>
+        <!-- acrossomo com gancho apical -->
+        <path d="M 40 13 Q 49 12 50 16 Q 50 21 40 22" fill="#43a047" opacity=".85"/>
+        <text x="40" y="175" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">gancho apical</text>
+      </svg>
+      <div class="sptz-dim">8-9 µm</div>
+    </div>
+
+    <!-- OVINO -->
+    <div class="sptz-card" data-sptz="ov">
+      <div class="sptz-label">Ovino</div>
+      <svg viewBox="0 0 80 160" class="sptz-svg">
+        <!-- cauda -->
+        <path d="M 40 60 Q 42 95 38 128 Q 37 144 40 158" stroke="#388e3c" stroke-width="1.4" fill="none"/>
+        <!-- peça intermediária -->
+        <rect x="37" y="47" width="6" height="13" rx="2" fill="#66bb6a"/>
+        <!-- cabeça · oval semelhante ao bovino, ligeiramente menor -->
+        <ellipse cx="40" cy="29" rx="8" ry="16" fill="#1b5e20"/>
+        <!-- acrossomo pontiagudo -->
+        <path d="M 32 22 Q 40 10 48 22 Z" fill="#43a047" opacity=".85"/>
+        <text x="40" y="175" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">oval-fino</text>
+      </svg>
+      <div class="sptz-dim">7-8 µm</div>
+    </div>
+
+    <!-- CANINO -->
+    <div class="sptz-card" data-sptz="can">
+      <div class="sptz-label">Canino</div>
+      <svg viewBox="0 0 80 160" class="sptz-svg">
+        <!-- cauda -->
+        <path d="M 40 62 Q 41 98 39 130 Q 38 145 40 158" stroke="#388e3c" stroke-width="1.4" fill="none"/>
+        <!-- peça intermediária longa -->
+        <rect x="36" y="45" width="8" height="17" rx="2" fill="#66bb6a"/>
+        <!-- cabeça · oval com ápice mais pontiagudo -->
+        <ellipse cx="40" cy="27" rx="9" ry="16" fill="#1b5e20"/>
+        <!-- acrossomo -->
+        <ellipse cx="40" cy="14" rx="7" ry="6" fill="#43a047" opacity=".85"/>
+        <text x="40" y="175" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">oval-piriforme</text>
+      </svg>
+      <div class="sptz-dim">6-7 µm</div>
+    </div>
+
+    <!-- FELINO -->
+    <div class="sptz-card" data-sptz="fel">
+      <div class="sptz-label">Felino</div>
+      <svg viewBox="0 0 80 160" class="sptz-svg">
+        <!-- cauda com leve curvatura -->
+        <path d="M 40 62 Q 44 97 39 128 Q 37 143 40 158" stroke="#388e3c" stroke-width="1.4" fill="none"/>
+        <!-- peça intermediária -->
+        <rect x="37" y="47" width="6" height="15" rx="2" fill="#66bb6a"/>
+        <!-- cabeça · oval, com muitos defeitos naturais na espécie -->
+        <ellipse cx="40" cy="28" rx="8.5" ry="17" fill="#1b5e20"/>
+        <!-- acrossomo -->
+        <ellipse cx="40" cy="14" rx="6.5" ry="6" fill="#43a047" opacity=".85"/>
+        <text x="40" y="175" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="inherit">oval (↑defeitos)</text>
+      </svg>
+      <div class="sptz-dim">5-6 µm</div>
+    </div>
+
+  </div><!-- sptzGrid -->
+
+  <!-- Painel de detalhes por espécie -->
+  <div class="diff-info empty" id="sptz-detail" style="margin-top:12px">Clique em uma espécie acima para ver características detalhadas.</div>
+
+  <!-- Legenda de cores -->
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:calc(12px * var(--font-scale));color:var(--text-muted);align-items:center">
+    <span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:12px;background:#1b5e20;border-radius:2px;display:inline-block"></span> Núcleo</span>
+    <span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:12px;background:#43a047;border-radius:2px;display:inline-block"></span> Acrossomo</span>
+    <span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:12px;background:#66bb6a;border-radius:2px;display:inline-block"></span> Peça intermediária</span>
+    <span style="display:flex;align-items:center;gap:4px"><span style="width:2px;height:12px;background:#388e3c;display:inline-block"></span> Cauda (flagelo)</span>
+  </div>
+
+  <div class="diff-info empty" id="gamet-info-str">Clique em um compartimento acima para ver detalhes.</div>
+</div>
+
+
+  </div>
+</section>
+
+<script>
+(function() {
+  var GAMET = {
+    oog: {
+      oogonia: 'As <strong>oogônias</strong> são as células germinativas diplóides (2n) que se multiplicam por <span class="hl">mitose exclusivamente durante a vida fetal</span>. Após o nascimento, não há mais oogônias na maioria dos mamíferos domésticos · o pool de oócitos primários formado na vida fetal é fixo e não renovável.',
+      oocito1: 'O <strong>oócito primário</strong> inicia a Meiose I mas para no <span class="hl">estágio dictioteno da Prófase I</span>. O bloqueio é mantido pelo <span class="hl">AMPc elevado</span> dentro do oócito, produzido pelas células do cumulus via gap junctions.',
+      meiose1: 'O <strong>pico pré-ovulatório de LH</strong> age nas células da granulosa, que reduzem o fornecimento de AMPc ao oócito. A queda do AMPc ativa o <span class="hl">MPF (M-phase Promoting Factor)</span>, retomando a meiose. Gera o <strong>oócito secundário</strong> e o <strong>1º corpúsculo polar</strong>.',
+      oocito2: 'O <strong>oócito secundário</strong> é o estágio ovulado na maioria dos mamíferos domésticos. O bloqueio na Metáfase II é mantido pelo <span class="hl">CSF (Cytostatic Factor)</span>. Exceções: a égua ovula em dictioteno e a cadela ovula como oócito primário.',
+      fert: 'A penetração do espermatozóide libera <span class="hl">Ca²⁺ intracelular</span> em ondas, que inativa o CSF e permite a conclusão da Meiose II, gerando o <strong>ovum maduro</strong> e o <strong>2º corpúsculo polar</strong>.'
+    },
+    esp: {
+      espgonia: 'As <strong>espermatogônias</strong> são as células-tronco da linhagem germinativa masculina, na membrana basal dos túbulos seminíferos. Tipo A (renovação do pool) e Tipo B (comprometidas com a diferenciação).',
+      esp1: 'O <strong>espermatócito primário (2n)</strong> passa pela Meiose I, que é a fase mais longa. Durante a Prófase I ocorre o <span class="hl">crossing-over</span> (recombinação genética). Ao final gera dois espermatócitos secundários haplóides.',
+      esp2: 'O <strong>espermatócito secundário (n)</strong> completa a Meiose II rapidamente, gerando duas <span class="hl">espermátides haplóides</span> cada. De um espermatócito primário originam-se 4 espermátides.',
+      esptide: 'A <strong>espermátide</strong> é haplóide e redonda, sem morfologia de espermatozóide. Não sofre mais divisões. Ficam conectadas por <span class="hl">pontes citoplasmáticas</span>.',
+      espmiog: 'A <strong>espermiogênese</strong> envolve: formação do <span class="hl">acrossomo</span>, desenvolvimento do <span class="hl">flagelo</span>, compactação do DNA (histonas → protaminas), eliminação do excesso de citoplasma.',
+      sptz: 'O espermatozóide adquire <span class="hl">motilidade progressiva e capacidade fertilizante no epidídimo</span> (~10-14 dias). O reservatório principal é a <span class="hl">cauda do epidídimo</span>.'
+    },
+    hpg: {
+      hipotalamo: 'O <strong>hipotálamo</strong> secreta GnRH de forma <span class="hl">pulsátil</span>. A administração contínua paradoxalmente suprime o eixo (downregulation).',
+      hipofise: 'A <strong>hipófise anterior</strong> libera <span class="hl">LH e FSH</span> em resposta ao GnRH. Frequência alta favorece LH, frequência baixa favorece FSH.',
+      lh: 'O <strong>LH</strong> age nas <span class="hl">células de Leydig</span>, estimulando síntese de testosterona. Feedback negativo no hipotálamo e hipófise.',
+      fsh: 'O <strong>FSH</strong> age nas <span class="hl">células de Sertoli</span>, que produzem <span class="hl">Inibina B</span> · feedback negativo seletivo sobre o FSH.',
+      sertoli2: 'As <strong>células de Sertoli</strong> formam a <span class="hl">barreira hemato-testicular</span>; produzem <span class="hl">ABP</span>; secretam fatores parácrinos; fagocitam corpos residuais; produzem AMH no feto.'
+    },
+    str: {
+      cabeca: 'A <strong>cabeça</strong> contém o <span class="hl">núcleo haplóide</span> com DNA compactado por protaminas e o <span class="hl">acrossomo</span>, cobrindo 2/3 da superfície anterior.',
+      peca: 'A <strong>peça intermediária</strong> contém as <span class="hl">mitocôndrias organizadas em espiral</span> ao redor do axonema, gerando ATP.',
+      cauda: 'A <strong>cauda</strong> tem estrutura axonemal <span class="hl">9+2</span>. Defeitos na dineína causam astenozoospermia total.',
+      epid: 'O trânsito no <strong>epidídimo</strong> dura <span class="hl">~10-14 dias</span>. A <span class="hl">cauda do epidídimo</span> é o principal reservatório.',
+      capac: 'A <strong>capacitação</strong> ocorre no trato reprodutivo feminino. <span class="hl">Em equinos, a FIV convencional não funciona · o método de escolha é o ICSI.</span>',
+      acros: 'A <strong>reação acrossômica</strong> ocorre após ligação à <span class="hl">zona pelúcida</span> (ZP3/ZP2). É um evento único e irreversível.'
+    },
+    ooc: {
+      primario: 'O <strong>oócito primário (2n)</strong> fica <span class="hl">parado em Prófase I (estágio dictioteno)</span> desde a vida fetal. O bloqueio é mantido pelo AMPc elevado, fornecido pelas células do cumulus via gap junctions. Pode durar anos até que o folículo seja recrutado num ciclo ovulatório.',
+      secundario: 'O <strong>oócito secundário (n)</strong> é o <span class="hl">estágio ovulado na maioria dos mamíferos domésticos</span>. Está bloqueado em Metáfase II (pelo CSF) e somente completa a meiose após a fecundação. Exceções: égua ovula em Prófase I (dictioteno) e cadela ovula como oócito primário.',
+      zp: 'A <strong>zona pelúcida (ZP)</strong> é uma matriz glicoproteica composta por <span class="hl">ZP1, ZP2, ZP3 e ZP4</span> (a composição varia entre espécies). Funções: (1) ligação espécie-específica com o espermatozoide (ZP3/ZP2); (2) indução da reação acrossômica; (3) <span class="hl">bloqueio da polispermia</span> após a fecundação via reação de zona.',
+      cumulus: 'As <strong>células da granulosa</strong> formam a <span class="hl">corona radiata</span> (camada mais interna, radial) e o <span class="hl">cumulus oophorus</span> (estrato externo). Funções: nutrição do oócito (gap junctions), manutenção do bloqueio meiótico (via AMPc), expansão em resposta ao LH (hialuronato). São cruciais em <strong>biotecnologias reprodutivas (OPU, FIV, ICSI)</strong>.',
+      citop: 'O <strong>citoplasma (ooplasma)</strong> do oócito é excepcionalmente rico em organelas: mitocôndrias, ribossomos, grânulos corticais, RNAs e proteínas maternas. Esse estoque é a <span class="hl">reserva que sustenta o desenvolvimento embrionário inicial</span> até a ativação do genoma embrionário (momento que varia entre espécies).'
+    }
+  };
+
+  var SPTZ_DB = {
+  bov: {
+    nome: 'Bovino (Bos taurus)',
+    cabeca: 'Oval alongada, com leve assimetria. Comprimento: 8-9 µm. Largura: 4-5 µm. Relação comprimento/largura ~1,8.',
+    acrossomo: 'Cobre ~65-70% da superfície da cabeça. Bem desenvolvido e uniforme. Sua integridade é critério essencial no exame andrológico (avaliação por coloração de Giemsa ou Coomassie).',
+    peca_int: 'Bem delimitada, ligeiramente mais espessa que a cauda. Comprimento ~10-14 µm. Inserção axial na cabeça (coluna axonemal centralizada).',
+    cauda: 'Flagelo longo e regular. Comprimento total do sptz: ~60-65 µm. Motilidade predominantemente progressiva linear em amostra fresca.',
+    defeitos: 'Defeitos maiores frequentes: gota citoplasmática proximal (imaturidade), cabeça isolada, defeitos de inserção. Defeitos menores: gota distal, cauda dobrada. Limiar de normalidade CBRA: ≥70% normais.',
+    relevância: 'Espécie com maior volume de pesquisa em andrologia veterinária. Sêmen congelado: 6-8M sptz/dose. Parâmetro referência para comparações interespecíficas.'
+  },
+  eq: {
+    nome: 'Equino (Equus caballus)',
+    cabeca: 'Oval achatada, mais larga que na maioria dos ruminantes. Comprimento: 6-7 µm. Largura: 3,5-4,5 µm. Perfil lateral mais plano.',
+    acrossomo: 'Cobre ~35-40% da cabeça (proporcionalmente menor que no bovino). Formato de calotas esférica. Avaliado por FITC-PNA ou coloração de Coomassie.',
+    peca_int: 'Curta e bem definida. Comprimento ~8-10 µm. Mitocôndrias em espiral compacto · relevante para avaliação da função mitocondrial (sonda JC-1, MitoTracker).',
+    cauda: 'Comprimento total: ~55-60 µm. Motilidade hiperativa importante para capacitação · em equinos, difícil de induzir in vitro.',
+    defeitos: 'Alta variabilidade individual entre garanhões. Defeitos comuns: cabeça piriforme, defeitos de acrossomo, cauda enrolada. Garanhões "bad coolers" têm alterações associadas à refrigeração.',
+    relevância: 'FIV convencional não funciona em equinos · espécie de escolha para ICSI. OPU-ICSI é a biotecnologia padrão. Sêmen resfriado (5°C) ou congelado usado em IA.'
+  },
+  su: {
+    nome: 'Suíno (Sus scrofa)',
+    cabeca: 'Característica distintiva: <strong>gancho apical proeminente</strong> no acrossomo, formando o "capuz" suíno. Oval com ápice curvado. Comprimento: 8-9 µm.',
+    acrossomo: 'Muito bem desenvolvido, com <strong>projeção apical em forma de gancho</strong> · estrutura única entre as espécies domésticas. Avaliado por FITC-PNA. Fundamental para penetração da zona pelúcida.',
+    peca_int: 'Comprimento moderado (~10-12 µm). Gota citoplasmática proximal comum em varrões jovens · indica imaturidade epididimária.',
+    cauda: 'Comprimento total: ~45-55 µm. Motilidade progressiva em espiral característica. Concentração espermática ejaculado: 150-300M/mL em volume alto (100-500 mL).',
+    defeitos: 'Defeitos do acrossomo (acrossomo inchado, irregular) têm alto impacto fertilizante pela importância do gancho. Gota proximal >20% = comprometimento significativo.',
+    relevância: 'Alto volume ejaculado (maior dos domésticos). IA amplamente usada. Inseminação profunda ou intrauterina por via endoscópica permite reduzir dose espermática.'
+  },
+  ov: {
+    nome: 'Ovino (Ovis aries)',
+    cabeca: 'Oval com ápice mais pontiagudo que o bovino. Comprimento: 7-8 µm. Morfologia similar ao bovino mas ligeiramente menor e mais estreita.',
+    acrossomo: 'Cobre ~60-65% da cabeça. Formato pontiagudo no ápice, conferindo perfil mais afilado que o bovino. Avaliado por coloração de Giemsa.',
+    peca_int: 'Bem definida, comprimento ~10-12 µm. Similar ao bovino. Mitocôndrias em arranjo helicoidal típico.',
+    cauda: 'Comprimento total: ~55-60 µm. Motilidade progressiva linear de alta velocidade · importante para penetração do muco cervical (IA cervical em ovelhas é desafiadora pela anatomia das pregas).',
+    defeitos: 'Defeitos de cabeça (microcefalia, macrocefalia) e gota citoplasmática são os mais avaliados. Estacionalidade reprodutiva impacta qualidade seminal.',
+    relevância: 'IA cervical padrão em ovinos. Devido à anatomia cervical ovina, IA transcervical ou laparoscópica é usada para sêmen congelado. Qualidade seminal varia com a estação reprodutiva (fotoperíodo curto = melhor qualidade).'
+  },
+  can: {
+    nome: 'Canino (Canis lupus familiaris)',
+    cabeca: 'Oval-piriforme, com base mais larga e ápice afunilado. Comprimento: 6-7 µm. Característica: contorno irregular leve é normal na espécie.',
+    acrossomo: 'Cobre ~40-50% da cabeça. Avaliado por coloração de Giemsa ou azul de tripano. A integridade acrossomal é parâmetro no exame andrológico canino.',
+    peca_int: 'Relativamente longa (10-14 µm) em proporção ao comprimento total da cabeça · parâmetro relevante na avaliação morfométrica.',
+    cauda: 'Comprimento total: ~60-65 µm. Ejaculado trifracionado: 1ª fração (pré-espermática, uretral), 2ª fração (espermática · avaliada), 3ª fração (prostática).',
+    defeitos: 'Alta proporção de morfologias atípicas é aceita · ponto de corte de normalidade canina é diferente de bovinos. Defeitos de cabeça (piriformes, arredondadas) são comuns. >60% normais é parâmetro usual.',
+    relevância: 'Exame andrológico canino avalia as 3 frações separadamente. Criopreservação desafiadora · crioprotetores e protocolos diferentes dos bovinos. Anestro prolongado dificulta programação de IA.'
+  },
+  fel: {
+    nome: 'Felino (Felis catus)',
+    cabeca: 'Oval, similar ao ovino. Comprimento: 5-6 µm. Característica marcante: <strong>alta proporção natural de defeitos morfológicos</strong> (~60-70% de defeitos é comum em felinos férteis).',
+    acrossomo: 'Cobre ~50-60% da cabeça. A avaliação da integridade acrossomal é importante pois a espécie naturalmente apresenta alta frequência de defeitos de acrossomo sem impacto direto na fertilidade.',
+    peca_int: 'Comprimento ~8-10 µm. Gota citoplasmática distal é achado comum e considerado defeito menor nesta espécie.',
+    cauda: 'Comprimento total: ~50-55 µm. Cauda com leve curvatura na peça terminal é achado frequente sem relevância clínica. Motilidade progressiva esperada ≥70%.',
+    defeitos: '<strong>Espécie com maior índice natural de teratozoospermia entre os domésticos.</strong> Aceitam-se até 60-70% de defeitos em gatos férteis. Padrão de normalidade diverge completamente dos grandes animais. Alta proporção de cabeças piriformes, caudas enroladas e duplas.',
+    relevância: 'Ovuladora induzida · sem cópula não há ovulação (e portanto sem utilidade de IA simples). IA felina requer indução de ovulação (hCG ou GnRH). Criopreservação de sêmen felino tem baixa eficiência. ICSI com sêmen criopreservado é relatada em gatos selvagens para conservação de espécies.'
+  }
+};
+
+  function sptzInfo(sp) {
+  document.querySelectorAll('.sptz-card').forEach(function(c) { c.classList.remove('active'); });
+  var clicked = document.querySelector('#sptzGrid .sptz-card[data-sptz="' + sp + '"]');
+  if (clicked) clicked.classList.add('active');
+  var d = SPTZ_DB[sp];
+  var el = document.getElementById('sptz-detail');
+  if (!el || !d) return;
+  el.classList.remove('empty');
+  el.innerHTML =
+    '<strong style="font-size:13px">' + d.nome + '</strong>' +
+    '<table style="width:100%;border-collapse:collapse;margin-top:10px;font-size:12px">' +
+    '<tr><td style="padding:5px 8px;border-bottom:1px solid var(--border-light);font-weight:600;width:36%;color:var(--text-secondary)">Cabeça</td><td style="padding:5px 8px;border-bottom:1px solid var(--border-light)">' + d.cabeca + '</td></tr>' +
+    '<tr><td style="padding:5px 8px;border-bottom:1px solid var(--border-light);font-weight:600;color:var(--text-secondary)">Acrossomo</td><td style="padding:5px 8px;border-bottom:1px solid var(--border-light)">' + d.acrossomo + '</td></tr>' +
+    '<tr><td style="padding:5px 8px;border-bottom:1px solid var(--border-light);font-weight:600;color:var(--text-secondary)">Peça intermediária</td><td style="padding:5px 8px;border-bottom:1px solid var(--border-light)">' + d.peca_int + '</td></tr>' +
+    '<tr><td style="padding:5px 8px;border-bottom:1px solid var(--border-light);font-weight:600;color:var(--text-secondary)">Cauda</td><td style="padding:5px 8px;border-bottom:1px solid var(--border-light)">' + d.cauda + '</td></tr>' +
+    '<tr><td style="padding:5px 8px;border-bottom:1px solid var(--border-light);font-weight:600;color:var(--text-secondary)">Defeitos relevantes</td><td style="padding:5px 8px;border-bottom:1px solid var(--border-light)">' + d.defeitos + '</td></tr>' +
+    '<tr><td style="padding:5px 8px;font-weight:600;color:var(--text-secondary)">Relevância clínica</td><td style="padding:5px 8px">' + d.relevância + '</td></tr>' +
+    '</table>';
+}
+
+  // Tab switching
+  window.setGametTab = function(tab, btn) {
+    document.querySelectorAll('#gametTabs .diff-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.gamet-panel').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    var panel = document.getElementById('gamet-' + tab);
+    if (panel) panel.classList.add('active');
+  };
+
+  // Click handler
+  document.addEventListener('click', function(e) {
+    var gametEl = e.target.closest('[data-gamet]');
+    if (gametEl) {
+      var g = gametEl.getAttribute('data-gamet');
+      var k = gametEl.getAttribute('data-key');
+      if (g && k && GAMET[g] && GAMET[g][k]) {
+        var el = document.getElementById('gamet-info-' + g);
+        if (el) { el.innerHTML = GAMET[g][k]; el.classList.remove('empty'); }
+      }
+      return;
+    }
+    var sptzEl = e.target.closest('[data-sptz]');
+    if (sptzEl) {
+      var sp = sptzEl.getAttribute('data-sptz');
+      if (sp) sptzInfo(sp);
+      return;
+    }
+  });
+})();
+</script>
+</body>
+</html>
