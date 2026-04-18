@@ -3464,6 +3464,7 @@ IATF com P4+E2 funciona em anestro profundo
   <button class="ce-tab" onclick="ceSetTab('folicular',this)">Dinâmica folicular</button>
   <button class="ce-tab" onclick="ceSetTab('fluxo',this)">Fluxogramas</button>
   <button class="ce-tab" onclick="ceSetTab('estação',this)">Sazonalidade</button>
+  <button class="ce-tab" onclick="ceSetTab('sinais',this)">Sinais de cio</button>
 </div>
 
 <!-- FASES -->
@@ -3820,6 +3821,65 @@ IATF com P4+E2 funciona em anestro profundo
       Dias-curtos (ovinos, búfala): melatonina ↑ <span class="ce-arr">→</span> GnRH pulsátil ↑ <span class="ce-arr">→</span> ciclicidade<br>
       Dias-longos (égua, gata): melatonina ↓ <span class="ce-arr">→</span> GnRH pulsátil ↑ <span class="ce-arr">→</span> ciclicidade<br>
       Implantes de melatonina: antecipam estação reprodutiva em ovinos e búfalas
+    </div>
+  </div>
+</div>
+
+<!-- SINAIS DE CIO -->
+<div class="ce-panel" id="ce-panel-sinais">
+  <p style="font-size:13px;color:var(--text-secondary);margin-bottom:14px">Os sinais de cio variam muito entre espécies. Reconhecer essas diferenças é essencial para o manejo reprodutivo e para evitar erros de detecção.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Espécie</th><th>Sinais principais</th><th>Duração do estro</th><th>Observações</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Vaca</strong></td>
+        <td>Aceita monta (reflexo de imobilização), monta em outras vacas, muco cervical filante e cristalino, inquietação, edema vulvar, redução da produção de leite</td>
+        <td>12-18 h</td>
+        <td>Melhor detecção no início da manhã e final da tarde. 60-70% dos cios ocorrem à noite</td>
+      </tr>
+      <tr>
+        <td><strong>Égua</strong></td>
+        <td>Postura de micção frequente ("winking" clitoriano), cauda levantada lateralmente, aceitação do garanhão, edema vulvar, secreção vaginal, micção em pequenas quantidades</td>
+        <td>5-7 dias</td>
+        <td>Cio longo e variável. Ovulação 24-48h ANTES do final do estro. Rufiação é essencial para detecção</td>
+      </tr>
+      <tr>
+        <td><strong>Ovelha/Cabra</strong></td>
+        <td>Sinais discretos sem a presença do macho. Agitação, procura ativa pelo macho, movimentação da cauda, aceitação da monta. Cabra: vocalização intensa e muco vaginal</td>
+        <td>Ovelha: 24-36 h<br>Cabra: 24-48 h</td>
+        <td>Detecção difícil sem rufiões. Efeito macho facilita a identificação</td>
+      </tr>
+      <tr>
+        <td><strong>Porca</strong></td>
+        <td>Reflexo de tolerância ao macho (RTM), imobilização dorso-lombar à pressão manual ("teste do homem"), edema vulvar, orelhas eretas, lordose reflexa</td>
+        <td>48-72 h</td>
+        <td>RTM é o sinal mais confiável. Presença do macho potencializa o reflexo. IA no momento do RTM</td>
+      </tr>
+      <tr>
+        <td><strong>Cadela</strong></td>
+        <td>Proestro: edema vulvar, secreção serossanguinolenta, atrai machos mas recusa monta. Estro: aceitação do macho, desvio lateral da cauda, vulva amolecida, secreção clara</td>
+        <td>Estro: 5-9 dias<br>(proestro + estro: ~18 d)</td>
+        <td>Ovulação ocorre 2-3 dias após o início do estro. Oócito precisa de 48-72h para maturar após ovulação</td>
+      </tr>
+      <tr>
+        <td><strong>Gata</strong></td>
+        <td>Vocalização intensa e característica ("chamado"), lordose com desvio lateral da cauda, rolamento no chão, fricção da cabeça em objetos, aumento da afetuosidade</td>
+        <td>4-10 dias (se não acasalar)</td>
+        <td>Ovulação INDUZIDA pelo coito (neuroovulação). Sem monta, retorna ao cio em 2-3 semanas</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="ce-memo" style="margin-top:16px">
+    <div class="ce-memo-label">Sinais-chave por espécie</div>
+    <div class="ce-memo-text">
+      Vaca: reflexo de imobilização (aceita monta) - sinal mais confiável<br>
+      Égua: winking clitoriano + postura de micção - cio longo (5-7 d)<br>
+      Porca: RTM (teste do homem) - pressão dorso-lombar → imobiliza<br>
+      Cadela: proestro ≠ estro - secreção muda de sanguinolenta p/ clara<br>
+      Gata: ovulação INDUZIDA pelo coito - sem monta = sem ovulação<br>
+      Ovelha/cabra: sinais discretos - difícil detectar sem rufião
     </div>
   </div>
 </div>
@@ -12206,21 +12266,20 @@ var bookmarks = JSON.parse(localStorage.getItem('repro-animal-bookmarks') || '[]
 
 // === CAPÍTULO 2 · CICLO ESTRAL COMPARADO ===
 var ceSpData = {
-  vaca:   { label:'Vaca',   tipo:'Poliéstrica contínua', puberd:'8-18 m', ciclo:'21 d (18-24)', estro:'12-18 h', ovul:'Espontânea; 10-12 h pós-fim estro', diametro:'12-18 mm', novul:'1 (raro 2)', local:'Qualquer', gestação:'280 d' },
-  egua:   { label:'Égua',   tipo:'Poliéstrica estacional (dias longos)', puberd:'12-18 m', ciclo:'21 d (19-26)', estro:'4-7 dias', ovul:'Espontânea; 24-48 h antes fim estro', diametro:'35-50 mm', novul:'1 (2 em ~25%)', local:'Fossa ov. (exclusiva)', gestação:'335-342 d' },
-  ovelha: { label:'Ovelha', tipo:'Poliéstrica estacional (dias curtos)', puberd:'6-8 m', ciclo:'17 d (14-19)', estro:'24-36 h', ovul:'Espontânea; 24-30 h pós-início', diametro:'5-8 mm', novul:'1-3', local:'Qualquer', gestação:'148-152 d' },
-  cabra:  { label:'Cabra',  tipo:'Poliéstrica estacional (dias curtos)', puberd:'4-6 m', ciclo:'21 d (19-23)', estro:'24-48 h', ovul:'Espontânea; 30-36 h pós-início', diametro:'7-9 mm', novul:'1-3', local:'Qualquer', gestação:'148-152 d' },
-  porca:  { label:'Porca',  tipo:'Poliéstrica contínua', puberd:'5-7 m', ciclo:'21 d (18-24)', estro:'40-72 h', ovul:'Espontânea; 38-42 h pós-início', diametro:'7-10 mm', novul:'10-25', local:'Qualquer', gestação:'114 d' },
-  bufala: { label:'Búfala', tipo:'Poliéstrica estacional (dias curtos)', puberd:'18-24 m', ciclo:'~21 d', estro:'20-22 h', ovul:'Espontânea', diametro:'10-15 mm', novul:'1-2', local:'Superfície cortical (como bovinos)', gestação:'~310 d' },
-  cadela: { label:'Cadela', tipo:'Monoéstrica', puberd:'6-12 m', ciclo:'6-12 m', estro:'7-10 dias', ovul:'Espontânea', diametro:'6-10 mm', novul:'6-12', local:'Qualquer', gestação:'63 d' },
-  gata:   { label:'Gata',   tipo:'Poliéstrica estacional (dias longos / induzida)', puberd:'4-9 m', ciclo:'Variável', estro:'3-10 dias', ovul:'Induzida pela cópula', diametro:'3-5 mm', novul:'3-8', local:'Qualquer', gestação:'63-65 d' }
+  vaca:   { label:'Vaca',   tipo:'Poliéstrica contínua', puberd:'8-18 m', ciclo:'21 d (18-24)', estro:'12-18 h', ovul:'Espontânea; 10-12 h pós-fim estro', diametro:'12-18 mm', novul:'1 (raro 2)', local:'Qualquer' },
+  egua:   { label:'Égua',   tipo:'Poliéstrica estacional (dias longos)', puberd:'12-18 m', ciclo:'21 d (19-26)', estro:'4-7 dias', ovul:'Espontânea; 24-48 h antes fim estro', diametro:'35-50 mm', novul:'1 (2 em ~25%)', local:'Fossa ov. (exclusiva)' },
+  ovelha: { label:'Ovelha', tipo:'Poliéstrica estacional (dias curtos)', puberd:'6-8 m', ciclo:'17 d (14-19)', estro:'24-36 h', ovul:'Espontânea; 24-30 h pós-início', diametro:'5-8 mm', novul:'1-3', local:'Qualquer' },
+  cabra:  { label:'Cabra',  tipo:'Poliéstrica estacional (dias curtos)', puberd:'4-6 m', ciclo:'21 d (19-23)', estro:'24-48 h', ovul:'Espontânea; 30-36 h pós-início', diametro:'7-9 mm', novul:'1-3', local:'Qualquer' },
+  porca:  { label:'Porca',  tipo:'Poliéstrica contínua', puberd:'5-7 m', ciclo:'21 d (18-24)', estro:'40-72 h', ovul:'Espontânea; 38-42 h pós-início', diametro:'7-10 mm', novul:'10-25', local:'Qualquer' },
+  bufala: { label:'Búfala', tipo:'Poliéstrica estacional (dias curtos)', puberd:'18-24 m', ciclo:'~21 d', estro:'20-22 h', ovul:'Espontânea', diametro:'10-15 mm', novul:'1-2', local:'Superfície cortical (como bovinos)' },
+  cadela: { label:'Cadela', tipo:'Monoéstrica', puberd:'6-12 m', ciclo:'6-12 m', estro:'7-10 dias', ovul:'Espontânea', diametro:'6-10 mm', novul:'6-12', local:'Qualquer' },
+  gata:   { label:'Gata',   tipo:'Poliéstrica estacional (dias longos / induzida)', puberd:'4-9 m', ciclo:'Variável', estro:'3-10 dias', ovul:'Induzida pela cópula', diametro:'3-5 mm', novul:'3-8', local:'Qualquer' }
 };
 var ceParams = [
   { key:'tipo', label:'Tipo' }, { key:'puberd', label:'Puberdade' },
   { key:'ciclo', label:'Duração do ciclo' }, { key:'estro', label:'Duração do estro' },
   { key:'ovul', label:'Ovulação' }, { key:'diametro', label:'Diâm. folicular' },
   { key:'novul', label:'Nº ovulações' }, { key:'local', label:'Local ovulação' },
-  { key:'gestação', label:'Gestação' }
 ];
 var ceSelected = ['vaca','egua','ovelha','cabra'];
 function ceRenderTable() {
@@ -14011,21 +14070,20 @@ window.setDiffTab = setDiffTab;
 // === MIND MAPS ===
 // ===== CICLO ESTRAL =====
 var ceSpData = {
-  vaca:   { label:'Vaca',   tipo:'Poliéstrica contínua', puberd:'8-18 m', ciclo:'21 d (18-24)', estro:'12-18 h', ovul:'Espontânea; 10-12 h pós-fim estro', diametro:'12-18 mm', novul:'1 (raro 2)', local:'Fossa ov.', gestação:'280 d' },
-  egua:   { label:'Égua',   tipo:'Poliéstrica estacional (dias longos)', puberd:'12-18 m', ciclo:'21 d (19-26)', estro:'4-7 dias', ovul:'Espontânea; 24-48 h antes fim estro', diametro:'35-50 mm', novul:'1 (2 em ~25%)', local:'Fossa ov. (exclusiva)', gestação:'335-342 d' },
-  ovelha: { label:'Ovelha', tipo:'Poliéstrica estacional (dias curtos)', puberd:'6-8 m', ciclo:'17 d (14-19)', estro:'24-36 h', ovul:'Espontânea; 24-30 h pós-início', diametro:'5-8 mm', novul:'1-3', local:'Qualquer', gestação:'148-152 d' },
-  cabra:  { label:'Cabra',  tipo:'Poliéstrica estacional (dias curtos)', puberd:'4-6 m', ciclo:'21 d (19-23)', estro:'24-48 h', ovul:'Espontânea; 30-36 h pós-início', diametro:'7-9 mm', novul:'1-3', local:'Qualquer', gestação:'148-152 d' },
-  porca:  { label:'Porca',  tipo:'Poliéstrica contínua', puberd:'5-7 m', ciclo:'21 d (18-24)', estro:'40-72 h', ovul:'Espontânea; 38-42 h pós-início', diametro:'7-10 mm', novul:'10-25', local:'Qualquer', gestação:'114 d' },
-  bufala: { label:'Búfala', tipo:'Poliéstrica estacional (dias curtos)', puberd:'18-24 m', ciclo:'~21 d', estro:'20-22 h', ovul:'Espontânea', diametro:'10-15 mm', novul:'1-2', local:'Superfície cortical (como bovinos)', gestação:'~310 d' },
-  cadela: { label:'Cadela', tipo:'Monoéstrica', puberd:'6-12 m', ciclo:'6-12 m', estro:'7-10 dias', ovul:'Espontânea', diametro:'6-10 mm', novul:'6-12', local:'Qualquer', gestação:'63 d' },
-  gata:   { label:'Gata',   tipo:'Poliéstrica estacional (dias longos / induzida)', puberd:'4-9 m', ciclo:'Variável', estro:'3-10 dias', ovul:'Induzida pela cópula', diametro:'3-5 mm', novul:'3-8', local:'Qualquer', gestação:'63-65 d' }
+  vaca:   { label:'Vaca',   tipo:'Poliéstrica contínua', puberd:'8-18 m', ciclo:'21 d (18-24)', estro:'12-18 h', ovul:'Espontânea; 10-12 h pós-fim estro', diametro:'12-18 mm', novul:'1 (raro 2)', local:'Fossa ov.' },
+  egua:   { label:'Égua',   tipo:'Poliéstrica estacional (dias longos)', puberd:'12-18 m', ciclo:'21 d (19-26)', estro:'4-7 dias', ovul:'Espontânea; 24-48 h antes fim estro', diametro:'35-50 mm', novul:'1 (2 em ~25%)', local:'Fossa ov. (exclusiva)' },
+  ovelha: { label:'Ovelha', tipo:'Poliéstrica estacional (dias curtos)', puberd:'6-8 m', ciclo:'17 d (14-19)', estro:'24-36 h', ovul:'Espontânea; 24-30 h pós-início', diametro:'5-8 mm', novul:'1-3', local:'Qualquer' },
+  cabra:  { label:'Cabra',  tipo:'Poliéstrica estacional (dias curtos)', puberd:'4-6 m', ciclo:'21 d (19-23)', estro:'24-48 h', ovul:'Espontânea; 30-36 h pós-início', diametro:'7-9 mm', novul:'1-3', local:'Qualquer' },
+  porca:  { label:'Porca',  tipo:'Poliéstrica contínua', puberd:'5-7 m', ciclo:'21 d (18-24)', estro:'40-72 h', ovul:'Espontânea; 38-42 h pós-início', diametro:'7-10 mm', novul:'10-25', local:'Qualquer' },
+  bufala: { label:'Búfala', tipo:'Poliéstrica estacional (dias curtos)', puberd:'18-24 m', ciclo:'~21 d', estro:'20-22 h', ovul:'Espontânea', diametro:'10-15 mm', novul:'1-2', local:'Superfície cortical (como bovinos)' },
+  cadela: { label:'Cadela', tipo:'Monoéstrica', puberd:'6-12 m', ciclo:'6-12 m', estro:'7-10 dias', ovul:'Espontânea', diametro:'6-10 mm', novul:'6-12', local:'Qualquer' },
+  gata:   { label:'Gata',   tipo:'Poliéstrica estacional (dias longos / induzida)', puberd:'4-9 m', ciclo:'Variável', estro:'3-10 dias', ovul:'Induzida pela cópula', diametro:'3-5 mm', novul:'3-8', local:'Qualquer' }
 };
 var ceParams = [
   { key:'tipo', label:'Tipo' }, { key:'puberd', label:'Puberdade' },
   { key:'ciclo', label:'Duração do ciclo' }, { key:'estro', label:'Duração do estro' },
   { key:'ovul', label:'Ovulação' }, { key:'diametro', label:'Diâm. folicular' },
   { key:'novul', label:'Nº ovulações' }, { key:'local', label:'Local ovulação' },
-  { key:'gestação', label:'Gestação' }
 ];
 var ceSelected = ['vaca','egua','ovelha','cabra'];
 function ceToggleSp(sp, el) {
