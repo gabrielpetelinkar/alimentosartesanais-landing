@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 3 — Neuroendocrinologia da Reprodução</title>
+<style>
+:root {
+  --font-scale: 1;
+  --text-primary: #1a1a1a;
+  --text-secondary: #404040;
+  --text-muted: #6b7280;
+  --bg-card: #ffffff;
+  --bg-page: #f8fafc;
+  --border-light: #e5e7eb;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.06);
+
+  --blue-50: #e3f2fd;
+  --blue-100: #bbdefb;
+  --blue-600: #1e88e5;
+  --blue-700: #1565c0;
+
+  --green-50: #e8f5e9;
+  --green-600: #2e7d32;
+  --green-700: #1b5e20;
+
+  --amber-50: #fff8e1;
+  --amber-600: #f57c00;
+  --amber-700: #ff8f00;
+
+  --purple-100: #e1bee7;
+  --purple-600: #6a1b9a;
+  --purple-700: #4a148c;
+
+  --red-50: #ffebee;
+  --red-700: #c62828;
+
+  --gray-50: #f9fafb;
+  --gray-300: #d1d5db;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.chapter {
+  max-width: 920px;
+  margin: 24px auto;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.chapter-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 32px;
+  background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+  color: #fff;
+}
+
+.ch-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,.15);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ch-num {
+  font-size: 13px;
+  opacity: .85;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.chapter-header h2 {
+  font-size: clamp(18px, 4vw, 26px);
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -.3px;
+}
+
+.chapter-body {
+  padding: 32px;
+}
+
+@media (max-width: 640px) {
+  .chapter-body { padding: 22px 16px; }
+}
+
+.chapter-body h3 {
+  font-size: calc(20px * var(--font-scale));
+  color: var(--blue-700);
+  margin: 28px 0 14px;
+  font-weight: 700;
+  letter-spacing: -.2px;
+}
+
+.chapter-body h3:first-child { margin-top: 0; }
+
+.chapter-body h4 {
+  font-size: calc(16px * var(--font-scale));
+  color: var(--green-600);
+  margin: 24px 0 8px;
+  font-weight: 700;
+}
+
+.chapter-body p {
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+.chapter-body ul,
+.chapter-body ol {
+  margin: 0 0 16px 20px;
+}
+
+.chapter-body li {
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.hl {
+  background: var(--amber-50);
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-weight: 600;
+}
+
+/* === TABS === */
+.diff-tab {
+  padding: 10px 18px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  border-radius: 999px;
+  font-size: calc(14px * var(--font-scale));
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all .15s;
+  font-family: inherit;
+}
+
+.diff-tab:hover {
+  border-color: var(--blue-600);
+  color: var(--blue-700);
+}
+
+.diff-tab.active {
+  background: var(--blue-600);
+  color: #fff;
+  border-color: var(--blue-600);
+}
+
+/* === DIFF STEPS === */
+.diff-step {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+.diff-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.diff-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 14px;
+}
+
+.diff-line {
+  flex: 1;
+  width: 1.5px;
+  background: var(--border-light);
+  margin: 3px 0;
+}
+
+.diff-card {
+  flex: 1;
+  margin-bottom: 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  padding: 10px 14px;
+  background: var(--bg-card);
+  transition: border-color .15s, background .15s;
+}
+
+.diff-step:hover .diff-card {
+  border-color: var(--gray-300);
+  background: var(--gray-50);
+}
+
+.diff-title {
+  font-weight: 600;
+  font-size: 13.5px;
+  margin-bottom: 2px;
+}
+
+.diff-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.diff-badge {
+  display: inline-block;
+  font-size: 10.5px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-left: 6px;
+  background: var(--blue-50);
+  color: var(--blue-700);
+  vertical-align: middle;
+}
+
+.diff-info {
+  background: var(--gray-50);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  padding: 12px 16px;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-primary);
+  min-height: 56px;
+}
+
+.diff-info.empty {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* === ALERT-EXAM === */
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+  font-size: calc(14px * var(--font-scale));
+  line-height: 1.55;
+}
+
+.alert-exam {
+  background: var(--blue-50);
+  border-left: 3px solid var(--blue-600);
+}
+
+/* === SP HELPERS === */
+.sp-info {
+  border-left: 3px solid var(--blue-700);
+  background: var(--blue-100);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: calc(15px * var(--font-scale));
+  line-height: 1.55;
+}
+
+.sp-prova {
+  border-left: 3px solid #BA7517;
+  background: #fef3db;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: calc(15px * var(--font-scale));
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+
+.sp-prova strong { color: #633806; }
+
+.sp-memo {
+  margin-top: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--purple-100);
+  border-left: 4px solid var(--purple-600);
+  padding: 12px 16px;
+  background: rgba(106,27,154,.04);
+}
+
+.sp-memo-label {
+  font-size: calc(11px * var(--font-scale));
+  font-weight: 700;
+  color: var(--purple-700);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-bottom: 6px;
+}
+
+.sp-memo-text {
+  font-size: calc(11.5px * var(--font-scale));
+  font-family: "SF Mono", "Fira Code", Consolas, monospace;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+
+/* === TABLES === */
+.table-wrap {
+  overflow-x: auto;
+  margin-bottom: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(14px * var(--font-scale));
+  background: var(--bg-card);
+}
+
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+}
+
+th {
+  background: var(--gray-50);
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: calc(13px * var(--font-scale));
+}
+
+tbody tr:last-child td { border-bottom: 0; }
+
+tbody tr:hover { background: rgba(0,0,0,.015); }
+
+/* === NEURO PANEL === */
+.neuro-panel { display: none; }
+.neuro-panel.active { display: block; }
+</style>
+</head>
+<body>
+
+<section class="chapter">
+  <div class="chapter-header">
+    <span class="ch-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6 22a2 2 0 01-1.74-3L9 12.13V4H8V2h8v2h-1v8.13L19.74 19A2 2 0 0118 22H6zm5-10.87V4h2v7.13l1.68 2.87H9.32L11 11.13z"/>
+      </svg>
+    </span>
+    <div>
+      <div class="ch-num">Capítulo 3</div>
+      <h2>Neuroendocrinologia da Reprodução</h2>
+    </div>
+  </div>
+
+  <div class="chapter-body">
+
+    <div class="alert alert-exam" style="margin-bottom:14px">
+      <strong>Tópicos-chave deste capítulo:</strong> Fotoperíodismo (melatonina × kisspeptina × GnRH), Efeito Macho (feromônios → ovulação), Anestro Lactacional (sucção → opióides → ↓GnRH). Clique em cada etapa dos diagramas para ver explicações detalhadas.
+    </div>
+
+    <div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap" id="neuroTabs">
+      <button class="diff-tab active" data-neurotab="foto">Fotoperíodismo</button>
+      <button class="diff-tab" data-neurotab="macho">Efeito Macho</button>
+      <button class="diff-tab" data-neurotab="anestro">Anestro Lactacional</button>
+    </div>
+
+    <!-- FOTOPERÍODISMO -->
+    <div class="neuro-panel active" id="neuro-foto">
+
+      <h4>Fotoperíodismo e Controle da Sazonalidade Reprodutiva</h4>
+
+      <p>O fotoperíodo é o principal zeitgeber (sincronizador ambiental) da atividade reprodutiva em espécies sazonais.</p>
+
+      <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa da via neural para ver detalhes</p>
+      <div style="display:flex;flex-direction:column">
+
+        <div class="diff-step" data-neuro="foto" data-key="retina">
+          <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">Fotorreceptores retinianos</div><div class="diff-sub">Células ganglionares com melanopsina (não cones/bastonetes)</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="foto" data-key="nsq">
+          <div class="diff-spine"><div class="diff-dot" style="background:#378ADD"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">Núcleo Supraquiasmático (NSQ)</div><div class="diff-sub">Trato retino-hipotalâmico → "relógio biológico"</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="foto" data-key="pineal">
+          <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">Glândula Pineal → Melatonina</div><div class="diff-sub">Síntese exclusiva no escuro · duração codifica comprimento do dia</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="foto" data-key="kiss">
+          <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">Melatonina → Kisspeptina → GnRH</div><div class="diff-sub">Pars tuberalis + tanícitos · modulação da pulsatilidade de GnRH</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="foto" data-key="classif">
+          <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div></div>
+          <div class="diff-card"><div class="diff-title">Classificação reprodutiva sazonal <span class="diff-badge">espécies</span></div><div class="diff-sub">Dias curtos (ovinos/caprinos) × Dias longos (equinos) × Não-sazonal (bovinos)</div></div>
+        </div>
+      </div>
+      <div class="diff-info empty" id="neuro-info-foto">Clique em uma etapa acima para ver a explicação detalhada.</div>
+
+      <div class="table-wrap" style="margin-top:16px"><table>
+        <thead><tr><th>Classificação</th><th>Estímulo ativador</th><th>Melatonina</th><th>Espécies</th><th>Estação (hemisfério sul)</th></tr></thead>
+        <tbody>
+          <tr><td>Poliéstrica estacional de dias curtos</td><td>Dias curtos (fotoperíodo decrescente)</td><td>Alta estimula eixo reprodutivo</td><td>Ovinos, caprinos, búfalos</td><td>Outono/inverno (março–agosto)</td></tr>
+          <tr><td>Poliéstrica estacional de dias longos</td><td>Dias longos (fotoperíodo crescente)</td><td>Baixa estimula eixo reprodutivo</td><td>Equinos (égua), felinos (gata)</td><td>Primavera/verão (setembro–fevereiro)</td></tr>
+          <tr><td>Poliéstrica não estacional</td><td>Baixa influência do fotoperíodo</td><td>Sem efeito dominante</td><td>Bovinos, suínos</td><td>Ano todo</td></tr>
+          <tr><td>Monoéstrica não estacional</td><td>Independente do fotoperíodo</td><td>Sem influência relevante</td><td>Caninos (cadela)</td><td>Ano todo</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="sp-info" style="margin-top:12px"><strong>Observação:</strong> Felinos são espécies <span class="hl">poliéstricas estacionais de dias longos</span>, apresentando atividade reprodutiva dependente do fotoperíodo. Em contraste, caninos são <span class="hl">monoéstricos não estacionais</span>, com ciclo reprodutivo independente da variação luminosa. Essa diferença é fundamental na clínica e frequentemente explorada em provas.</div>
+
+      <p style="margin-top:16px"><strong>Aplicações práticas:</strong></p>
+      <ul>
+        <li><strong>Implante de melatonina (ovinos/caprinos):</strong> implante subcutâneo auricular → simula dias curtos → antecipa estação reprodutiva em 6–8 semanas. Protocolo: 30–40 dias antes da estação desejada</li>
+        <li><strong>Programa de luz artificial (éguas):</strong> 14,5–16h de luz/dia → antecipa ciclicidade em 6–10 semanas. Pode ser luz contínua ou pulso ("flash")</li>
+        <li><strong>Alternância dia longo/dia curto (carneiros):</strong> 2–3 meses de dias longos artificiais seguidos de dias curtos → estimula espermatogênese e libido fora da estação</li>
+      </ul>
+
+      <div class="sp-prova"><strong>Ponto clássico de prova:</strong> Ovinos/caprinos → melatonina (simula dias curtos). Éguas → luz artificial (simula dias longos). NÃO confundir: melatonina estimula pequenos ruminantes mas NÃO ativa equinos.</div>
+
+    </div>
+
+    <!-- EFEITO MACHO -->
+    <div class="neuro-panel" id="neuro-macho">
+
+      <h4>Efeito Macho (Male Effect / Ram Effect / Buck Effect)</h4>
+
+      <p>Fenômeno neuroendócrino em que a <strong>introdução súbita de um macho</strong> em fêmeas em anestro sazonal induz ovulação e retorno à ciclicidade.</p>
+
+      <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada etapa para ver detalhes</p>
+      <div style="display:flex;flex-direction:column">
+
+        <div class="diff-step" data-neuro="macho" data-key="fero">
+          <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">Feromônios do macho</div><div class="diff-sub">16-androstenos, ácidos graxos ramificados → órgão vomeronasal</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="macho" data-key="gnrh">
+          <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">Hipotálamo → GnRH → pico de LH</div><div class="diff-sub">Estímulos sensoriais → aumento da pulsatilidade de GnRH → LH em 24–48h</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="macho" data-key="ov1">
+          <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">1ª ovulação <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">silenciosa</span></div><div class="diff-sub">Sem estro · CL de vida curta (~5–6 dias) · luteólise precoce por PGF2α</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="macho" data-key="ov2">
+          <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">2ª ovulação (~17–24 dias)</div><div class="diff-sub">Estro variável · CL pode ser normal</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="macho" data-key="ov3">
+          <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
+          <div class="diff-card"><div class="diff-title">3ª ovulação → ciclo normal <span class="diff-badge" style="background:var(--green-50);color:var(--green-700)">fértil</span></div><div class="diff-sub">Estro evidente · CL funcional · sincronização em ~18–21 dias</div></div>
+        </div>
+      </div>
+      <div class="diff-info empty" id="neuro-info-macho">Clique em uma etapa acima para ver a explicação detalhada.</div>
+
+      <p style="font-size:calc(12px * var(--font-scale));font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin:16px 0 10px">Eficiência por espécie</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px">
+        <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));font-weight:700;margin-bottom:4px">Ovinos</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">Muito eficiente</div><div style="font-size:calc(11px * var(--font-scale));color:var(--green-600);font-weight:600">60-80% ovulam</div></div>
+        <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));font-weight:700;margin-bottom:4px">Caprinos</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">Muito eficiente</div><div style="font-size:calc(11px * var(--font-scale));color:var(--green-600);font-weight:600">Odor hircino potente</div></div>
+        <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));font-weight:700;margin-bottom:4px">Equinos</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">Limitado</div><div style="font-size:calc(11px * var(--font-scale));color:var(--amber-600);font-weight:600">Inconsistente</div></div>
+        <div style="border-radius:var(--radius-sm);border:1px solid var(--border-light);padding:10px 12px;text-align:center;background:var(--bg-card)"><div style="font-size:calc(14px * var(--font-scale));font-weight:700;margin-bottom:4px">Bovinos</div><div style="font-size:calc(12px * var(--font-scale));color:var(--text-muted)">Bioestimulatório</div><div style="font-size:calc(11px * var(--font-scale));color:var(--amber-600);font-weight:600">Reduz intervalo PP</div></div>
+      </div>
+
+      <div class="sp-memo" style="margin-top:16px"><div class="sp-memo-label">Você precisa saber</div><div class="sp-memo-text">Isolamento &ge;3 semanas → macho intacto → feromônios → GnRH → LH → ovulação<br>1ª ovulação SILENCIOSA (CL curto 5-6d) → 2ª variável → 3ª fértil<br>Prática: vasectomizado 17-21d antes dos férteis = sincronização natural</div></div>
+
+    </div>
+
+    <!-- ANESTRO LACTACIONAL -->
+    <div class="neuro-panel" id="neuro-anestro">
+
+      <h4>Anestro Lactacional</h4>
+
+      <p>Período de quiescência reprodutiva pós-parto associado à lactação. Estratégia fisiológica: prioridade metabólica direcionada para produção de leite e cuidado parental.</p>
+
+      <p style="font-size:calc(14px * var(--font-scale));color:var(--text-muted);margin-bottom:12px">Clique em cada mecanismo para ver detalhes</p>
+      <div style="display:flex;flex-direction:column">
+
+        <div class="diff-step" data-neuro="anestro" data-key="succao">
+          <div class="diff-spine"><div class="diff-dot" style="background:#D4537E"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">Sucção / Amamentação</div><div class="diff-sub">Estímulos aferentes do mamilo → hipotálamo</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="anestro" data-key="opioides">
+          <div class="diff-spine"><div class="diff-dot" style="background:#7F77DD"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">Opióides endógenos + Dopamina <span class="diff-badge">principal mecanismo</span></div><div class="diff-sub">β-endorfina inibe pulsatilidade de GnRH</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="anestro" data-key="lh">
+          <div class="diff-spine"><div class="diff-dot" style="background:#BA7517"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">LH basal → sem ovulação</div><div class="diff-sub">FSH menos afetado · folículos crescem mas não completam maturação</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="anestro" data-key="ben">
+          <div class="diff-spine"><div class="diff-dot" style="background:#D85A30"></div><div class="diff-line"></div></div>
+          <div class="diff-card"><div class="diff-title">Balanço Energético Negativo (BEN) <span class="diff-badge" style="background:var(--amber-50);color:var(--amber-700)">amplificador</span></div><div class="diff-sub">Leptina↓, IGF-I↓, insulina↓ → reforçam inibição de GnRH</div></div>
+        </div>
+
+        <div class="diff-step" data-neuro="anestro" data-key="manejo">
+          <div class="diff-spine"><div class="diff-dot" style="background:#1D9E75"></div></div>
+          <div class="diff-card"><div class="diff-title">Manejo para retomada <span class="diff-badge" style="background:var(--green-50);color:var(--green-700)">soluções</span></div><div class="diff-sub">Desmame, separação 48h, IATF com P4+E2, flushing nutricional</div></div>
+        </div>
+      </div>
+      <div class="diff-info empty" id="neuro-info-anestro">Clique em um mecanismo acima para ver a explicação detalhada.</div>
+
+      <p style="font-size:calc(12px * var(--font-scale));font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin:16px 0 10px">Duração por espécie</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Espécie</th><th>Duração típica</th><th>Fatores que prolongam</th><th>Fatores que reduzem</th></tr></thead>
+        <tbody>
+          <tr><td>Vaca leiteira</td><td>40–60 dias</td><td>BEN severo, ECC &lt;2,5, alta produção</td><td>Manejo nutricional, ECC &ge;3,0</td></tr>
+          <tr><td>Vaca de corte</td><td>90–120+ dias</td><td>Amamentação contínua, baixa nutrição, primípara</td><td>Desmame precoce, separação 48h</td></tr>
+          <tr><td>Égua</td><td>Variável</td><td>Lactação + anestro sazonal sobrepostos</td><td>"Cio do potro" (5–12d pós-parto)</td></tr>
+          <tr><td>Porca</td><td>5–7 dias pós-desmame</td><td>Perda &gt;10% peso, primípara</td><td>Desmame 21–28d, contato com varrão</td></tr>
+          <tr><td>Cadela</td><td>Meses</td><td>Ninhada grande, lactação prolongada</td><td>Retorno variável (4–12 meses)</td></tr>
+          <tr><td>Ovelha/Cabra</td><td>Sobreposto à sazonalidade</td><td>Lactação + fotoperíodo crescente</td><td>Desmame precoce + efeito macho</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="sp-prova" style="margin-top:14px"><strong>Pergunta típica:</strong> "Vaca Nelore primípara, ECC 2,0, amamentando continuamente, 120 dias pós-parto sem ciclicidade. Qual o principal mecanismo do anestro?" → Sucção contínua suprime GnRH/LH via opióides endógenos + BEN reduz leptina/IGF-I. Manejo: IATF + melhoria nutricional + separação temporária do bezerro.</div>
+
+      <div class="sp-memo" style="margin-top:14px"><div class="sp-memo-label">Você precisa saber</div><div class="sp-memo-text">Sucção → opióides → ↓GnRH → LH basal → SEM ovulação<br>BEN amplifica: leptina↓ + IGF-I↓ → hipotálamo "sem energia para gestar"<br>Vaca corte: 90-120d | Vaca leite: 40-60d | Porca: 5-7d pós-desmame<br>IATF com P4+E2 funciona em anestro profundo | Desmame/separação 48h acelera</div></div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  var NEURO = {
+    foto: {
+      retina: 'Os <strong>fotorreceptores retinianos</strong> envolvidos na regulação do fotoperíodo NÃO são os cones ou bastonetes, mas sim <span class="hl">células ganglionares especializadas contendo melanopsina</span>. Estas projetam fibras pelo trato retino-hipotalâmico até o NSQ, transmitindo informação sobre a duração do dia independentemente da visão formal.',
+      nsq: 'O <strong>Núcleo Supraquiasmático (NSQ)</strong> é o "relógio biológico" central · principal oscilador circadiano dos mamíferos. Envia projeções ao núcleo paraventricular → medula espinhal (coluna intermédio-lateral) → gânglio cervical superior → <span class="hl">glândula pineal</span>, controlando a secreção de melatonina de acordo com o ciclo claro/escuro.',
+      pineal: 'A <strong>melatonina</strong> é sintetizada pela pineal <span class="hl">exclusivamente durante o período escuro</span> (N-acetil-5-metoxitriptamina). Dias curtos = noites longas = <span class="hl">duração prolongada</span> da secreção. Dias longos = noites curtas = duração curta. A DURAÇÃO do pulso de melatonina é o sinal que codifica o comprimento do dia (não a amplitude).',
+      kiss: 'A melatonina modula o eixo HPG <span class="hl">indiretamente</span>, via pars tuberalis (TSH) e mecanismos hipotalâmicos locais (tanícitos → regulação de T3/T4). Essas vias influenciam os <strong>neurônios de kisspeptina</strong> no núcleo arcuato, que são o <span class="hl">principal estimulador dos neurônios de GnRH</span>, regulando pulsatilidade de GnRH → LH/FSH.',
+      classif: '<strong>Poliéstricas de dias curtos</strong> (ovinos, caprinos, búfalos): melatonina alta ATIVA o eixo. <strong>Poliéstricas de dias longos</strong> (equinos, felinos): melatonina baixa ativa o eixo. <strong>Não-estacionais</strong> (bovinos, suínos): fotoperíodo tem pouca influência. <strong>Monoéstricos não estacionais</strong> (caninos): independente da variação luminosa. <span class="hl">Ponto de prova: melatonina estimula pequenos ruminantes mas NÃO ativa equinos.</span>'
+    },
+    macho: {
+      fero: 'O macho libera <strong>feromônios</strong> (principalmente 16-androstenos e ácidos graxos ramificados do velo/pelo). Em caprinos, o <span class="hl">odor hircino</span> é particularmente potente. Detecção pelo <strong>órgão vomeronasal (Jacobson)</strong> + mucosa olfatória → vias aferentes ao hipotálamo.',
+      gnrh: 'Estímulos sensoriais (olfatórios + visuais + auditivos) → hipotálamo → <span class="hl">liberação pulsátil aguda de GnRH</span> → pico pré-ovulatório de LH em <span class="hl">12–48h após a introdução do macho</span> → ovulação. É um exemplo notável de como sinais sensoriais externos podem disparar eventos endócrinos rápidos.',
+      ov1: 'A <strong>1ª ovulação é SILENCIOSA</strong> (sem estro comportamental) e forma um <span class="hl">CL de vida curta (5–6 dias)</span>. Há luteólise precoce mediada por PGF2α uterina devido à ausência de priming progesterônico adequado. <span class="hl">Importante ponto de prova.</span>',
+      ov2: 'A <strong>2ª ovulação</strong> ocorre ~17–24 dias após o estímulo do macho. O estro pode ou não estar presente; o CL pode ser de vida curta ou normal. É uma fase de transição antes do ciclo totalmente normal.',
+      ov3: 'A <strong>3ª ovulação</strong> apresenta <span class="hl">estro evidente + CL funcional + ciclo fértil</span>. O resultado final é uma sincronização das fêmeas do lote em aproximadamente 18–21 dias após a introdução do macho · base dos protocolos naturais de sincronização com machos vasectomizados.'
+    },
+    anestro: {
+      succao: 'O estímulo da <strong>sucção/amamentação</strong> é percebido por vias aferentes sensoriais do mamilo, que ascendem ao hipotálamo. Este é o gatilho central do anestro lactacional: sem sucção, o mecanismo se desfaz rapidamente (como se vê no desmame precoce).',
+      opioides: 'A sucção aumenta <span class="hl">β-endorfina (opióide endógeno)</span> e modula a transmissão dopaminérgica no hipotálamo. Os opióides <strong>inibem a pulsatilidade de GnRH</strong>, reduzindo a frequência dos pulsos de LH para níveis insuficientes para o crescimento folicular final e ovulação. Em suínos e caninos, a <span class="hl">prolactina elevada</span> também contribui.',
+      lh: 'O <strong>LH permanece em níveis basais</strong> (pulsatilidade suprimida). O FSH é menos afetado, permitindo crescimento folicular inicial, mas os folículos não completam a maturação sem os pulsos adequados de LH. Resultado: <span class="hl">anovulação persistente</span> enquanto a sucção continuar.',
+      ben: 'O <strong>Balanço Energético Negativo (BEN)</strong> pós-parto reforça o anestro: <span class="hl">leptina↓, IGF-I↓, insulina↓</span> sinalizam para o hipotálamo que as reservas energéticas são insuficientes para nova gestação. Amplifica a supressão de GnRH já imposta pelos opióides. Comum em vacas de alta produção e primíparas com ECC baixo.',
+      manejo: 'Opções de manejo: <strong>Desmame precoce</strong> (retorno ao estro em 4–10 dias); <strong>Separação temporária 48–72h</strong> (~60% retornam ao cio); <strong>Amamentação 1x/dia</strong> durante IATF; <strong>Flushing nutricional</strong> pré-parto (ECC ≥3,0); <strong>IATF com P4+E2</strong> — a progesterona exógena "reinicia" o eixo; sua retirada mimetiza luteólise → pico de LH → ovulação. <span class="hl">Funciona mesmo em anestro profundo.</span>'
+    }
+  };
+
+  document.addEventListener('click', function(e) {
+    // Tab switch
+    var neuroTab = e.target.closest('[data-neurotab]');
+    if (neuroTab) {
+      var tab = neuroTab.getAttribute('data-neurotab');
+      var tabsContainer = document.getElementById('neuroTabs');
+      if (tabsContainer) {
+        tabsContainer.querySelectorAll('.diff-tab').forEach(function(t) { t.classList.remove('active'); });
+        neuroTab.classList.add('active');
+      }
+      document.querySelectorAll('.neuro-panel').forEach(function(p) { p.classList.remove('active'); });
+      var panel = document.getElementById('neuro-' + tab);
+      if (panel) panel.classList.add('active');
+      return;
+    }
+    // Subtópico clicável
+    var neuroEl = e.target.closest('[data-neuro]');
+    if (neuroEl) {
+      var ng = neuroEl.getAttribute('data-neuro');
+      var nk = neuroEl.getAttribute('data-key');
+      if (ng && nk && NEURO[ng] && NEURO[ng][nk]) {
+        var elN = document.getElementById('neuro-info-' + ng);
+        if (elN) {
+          elN.innerHTML = NEURO[ng][nk];
+          elN.classList.remove('empty');
+        }
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
