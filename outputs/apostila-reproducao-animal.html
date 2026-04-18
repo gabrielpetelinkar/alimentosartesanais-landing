@@ -4360,12 +4360,11 @@ IATF com P4+E2 funciona em anestro profundo
 `
 },
 {
-  id: 'implantação-placentação',
+  id: 'implantacao',
   num: 8,
-  title: 'Implantação, Placentação e Anexos Fetais',
+  title: 'Implantação Embrionária',
   icon: '#i-pregnant',
   content: `
-
 <style>
   .imp-header { margin-bottom: 16px; }
   .imp-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
@@ -4578,6 +4577,15 @@ IATF com P4+E2 funciona em anestro profundo
 
 
 
+
+`
+},
+{
+  id: 'placentacao',
+  num: 9,
+  title: 'Placentação',
+  icon: '#i-pregnant',
+  content: `
 <style>
   .plac2-section-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
   .plac2-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
@@ -4632,7 +4640,6 @@ IATF com P4+E2 funciona em anestro profundo
   <button class="plac2-tab active" onclick="plac2SetTab('anatomica',this)">Classificação anatômica</button>
   <button class="plac2-tab" onclick="plac2SetTab('histologica',this)">Classificação histológica</button>
   <button class="plac2-tab" onclick="plac2SetTab('resumo',this)">Resumo por espécie</button>
-  <button class="plac2-tab" onclick="plac2SetTab('anexos',this)">Anexos fetais</button>
   <button class="plac2-tab" onclick="plac2SetTab('bovequi',this)">Bovino vs. Equino</button>
 </div>
 
@@ -4650,17 +4657,11 @@ IATF com P4+E2 funciona em anestro profundo
     <div class="plac2-vis-row">
       <div class="plac2-vis-card">
         <div class="plac2-vis-label">Esquema · placenta difusa</div>
-        <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="150" cy="80" rx="110" ry="62" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1"/>
-          <ellipse cx="150" cy="80" rx="75" ry="42" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
-          <text x="150" y="74" text-anchor="middle" font-size="11" fill="#085041" font-family="sans-serif" font-weight="500">Córion</text>
-          <text x="150" y="89" text-anchor="middle" font-size="10" fill="#633806" font-family="sans-serif">vilosidades em toda superfície</text>
-          <text x="150" y="140" text-anchor="middle" font-size="10" fill="#5a5a56" font-family="sans-serif">Égua, Porca, Jumenta</text>
-        </svg>
+        <img class="plac2-vis-img" src="img-placenta-difusa.png" alt="Esquema da placenta difusa: alantóide, âmnion, vesícula vitelina e córion" style="max-height:200px;object-fit:contain">
       </div>
       <div class="plac2-vis-card">
         <div class="plac2-vis-label">Foto · placenta de égua</div>
-        <img class="plac2-vis-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Mare_placenta_microcotyledonary.jpg/640px-Mare_placenta_microcotyledonary.jpg" alt="Placenta difusa da égua" onerror="this.parentNode.innerHTML='<div class=\'plac2-vis-placeholder\'>Superfície uniforme do córion da égua · microcotilédones visíveis à inspeção cuidadosa</div>'">
+        <img class="plac2-vis-img" src="img-placenta-egua.jpg" alt="Placenta difusa da égua - foto real" style="max-height:200px;object-fit:cover;border-radius:4px">
       </div>
     </div>
     <div class="plac2-sp-detail">
@@ -4927,54 +4928,6 @@ IATF com P4+E2 funciona em anestro profundo
 </div>
 
 <!-- ANEXOS FETAIS -->
-<div class="plac2-panel" id="plac2-panel-anexos">
-  <p class="plac2-hint">Clique em cada anexo para ver detalhes</p>
-  <div class="plac2-vis-row" style="margin-bottom:14px">
-    <div class="plac2-vis-card">
-      <div class="plac2-vis-label">Esquema · anexos fetais (ruminante)</div>
-      <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="150" cy="80" rx="100" ry="58" fill="#E6F1FB" stroke="#378ADD" stroke-width="1"/>
-        <text x="246" y="34" text-anchor="start" font-size="9" fill="#0c447c" font-family="sans-serif">Córion</text>
-        <ellipse cx="150" cy="80" rx="70" ry="40" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
-        <text x="218" y="56" text-anchor="start" font-size="9" fill="#633806" font-family="sans-serif">Alantoide</text>
-        <ellipse cx="150" cy="80" rx="40" ry="26" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1"/>
-        <text x="188" y="76" text-anchor="start" font-size="9" fill="#27500a" font-family="sans-serif">Âmnio</text>
-        <ellipse cx="150" cy="80" rx="18" ry="13" fill="#FBEAF0" stroke="#993556" stroke-width="1"/>
-        <text x="166" y="96" text-anchor="start" font-size="9" fill="#72243e" font-family="sans-serif">Feto</text>
-        <circle cx="60" cy="38" r="7" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
-        <text x="46" y="24" text-anchor="middle" font-size="8" fill="#633806" font-family="sans-serif">Vesícula</text>
-        <text x="46" y="34" text-anchor="middle" font-size="8" fill="#633806" font-family="sans-serif">umbilical</text>
-      </svg>
-    </div>
-    <div class="plac2-vis-card">
-      <div class="plac2-vis-label">Foto · membranas fetais bovinas</div>
-      <img class="plac2-vis-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Bovine_fetal_membranes.jpg/640px-Bovine_fetal_membranes.jpg" alt="Membranas fetais bovinas" onerror="this.parentNode.innerHTML='<div class=\'plac2-vis-placeholder\'>Membranas fetais bovinas · âmnio (interno, transparente), alantoide (externo, vascularizado) e placentomas no córion</div>'">
-    </div>
-  </div>
-  <div class="plac2-anx-grid">
-    <div class="plac2-anx-card" onclick="plac2InfoAnx('amnio')"><div class="plac2-anx-title">Âmnio</div><div class="plac2-anx-sub">Envolve diretamente o feto · líquido amniótico</div></div>
-    <div class="plac2-anx-card" onclick="plac2InfoAnx('alantoide')"><div class="plac2-anx-title">Alantoide</div><div class="plac2-anx-sub">Excretor fetal · urina fetal · vasos umbilicais</div></div>
-    <div class="plac2-anx-card" onclick="plac2InfoAnx('vitelino')"><div class="plac2-anx-title">Saco vitelino</div><div class="plac2-anx-sub">Nutrição inicial · regride com placenta corioalantoide</div></div>
-    <div class="plac2-anx-card" onclick="plac2InfoAnx('corio')"><div class="plac2-anx-title">Córion (alantocório)</div><div class="plac2-anx-sub">Camada mais externa · trofoblasto · placenta</div></div>
-    <div class="plac2-anx-card" onclick="plac2InfoAnx('cordao')"><div class="plac2-anx-title">Cordão umbilical</div><div class="plac2-anx-sub">Conexão feto: placenta · 2 artérias + 1 veia + uraco</div></div>
-    <div class="plac2-anx-card" onclick="plac2InfoAnx('liquidos')"><div class="plac2-anx-title">Líquidos fetais</div><div class="plac2-anx-sub">Amniótico vs. alantoideo · funções · diferenças</div></div>
-  </div>
-  <div class="plac2-info-panel empty" id="plac2-info-anx">Clique em um anexo para ver detalhes.</div>
-
-  <div style="margin-top:18px;border-left:3px solid #BA7517;background:#fef3db;border-radius:0 8px 8px 0;padding:10px 14px;font-size:calc(15px * var(--font-scale));line-height:1.55">
-    <strong style="color:#633806">Passagem embrião → feto</strong> · ocorre quando completa a organogênese:
-    <span style="font-family:monospace;font-size:calc(14px * var(--font-scale));display:block;margin-top:6px;line-height:1.9">
-      Bovino: 45 dias · Equino: 40 dias · Ovino: 34 dias · Canino: 35 dias
-    </span>
-  </div>
-
-  <div style="margin-top:10px;border-left:3px solid #378ADD;background:#e8f1fb;border-radius:0 8px 8px 0;padding:10px 14px;font-size:calc(15px * var(--font-scale));line-height:1.6">
-    <strong>Funções dos líquidos fetais:</strong> proteção física (trauma, temperatura, desidratação), filtração, respiração, nutrição fetal, meio estéril para crescimento, movimentação e desenvolvimento musculoesquelético.<br>
-    <strong>Funções da placenta:</strong> barreira imunológica, órgão secretor de hormônios, trocas materno-fetais (O₂, nutrientes, resíduos), abertura e lubrificação da via fetal no parto.
-  </div>
-</div>
-
-<!-- BOVINO VS EQUINO -->
 <div class="plac2-panel" id="plac2-panel-bovequi">
   <div style="border-left:3px solid #BA7517;background:#fef3db;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:calc(15px * var(--font-scale));line-height:1.55">
     <strong style="color:#633806">Tópico de prova frequente</strong> · diferenças entre bovinos e equinos nos anexos fetais, migração embrionária e parto
@@ -5040,11 +4993,119 @@ IATF com P4+E2 funciona em anestro profundo
 </div>
 
 
+
+`
+},
+{
+  id: 'anexos-fetais',
+  num: 10,
+  title: 'Anexos Fetais',
+  icon: '#i-pregnant',
+  content: `
+<style>
+  .plac2-section-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+  .plac2-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .plac2-tab { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border-light); background: transparent; cursor: pointer; font-size: 13px; color: var(--text-secondary); transition: all .18s; font-family: inherit; }
+  .plac2-tab:hover { background: var(--bg-hover); }
+  .plac2-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .plac2-panel { display: none; }
+  .plac2-panel.active { display: block; }
+  .plac2-hint { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+  .plac2-sp-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .plac2-sp-tab { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border-light); background: transparent; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: all .15s; }
+  .plac2-sp-tab:hover { background: var(--bg-hover); }
+  .plac2-sp-tab.active { background: var(--blue-100); color: var(--blue-700); border-color: transparent; font-weight: 600; }
+  .plac2-sp-panel { display: none; }
+  .plac2-sp-panel.active { display: block; }
+  .plac2-vis-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .plac2-vis-card { border-radius: 8px; border: 1px solid var(--border-card); overflow: hidden; background: var(--bg-card); }
+  .plac2-vis-label { font-size: 11px; font-weight: 600; color: var(--text-secondary); padding: 6px 10px; background: var(--bg-hover); border-bottom: 1px solid var(--border-card); text-transform: uppercase; letter-spacing: .05em; }
+  .plac2-vis-img { width: 100%; height: 160px; object-fit: cover; display: block; }
+  .plac2-vis-svg { width: 100%; height: 160px; display: block; }
+  .plac2-vis-placeholder { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--text-muted); padding: 12px; text-align: center; background: var(--bg-hover); }
+  .plac2-sp-detail { border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 16px; background: var(--bg-card); }
+  .plac2-sp-row { display: flex; gap: 8px; margin-bottom: 7px; font-size: 12px; }
+  .plac2-sp-key { color: var(--text-secondary); min-width: 140px; flex-shrink: 0; font-weight: 600; }
+  .plac2-sp-val { color: var(--text-primary); line-height: 1.5; }
+  .plac2-badge { display: inline-block; font-size: 10.5px; padding: 1px 7px; border-radius: 10px; font-weight: 600; margin-left: 4px; vertical-align: middle; }
+  .plac2-bwarn { background: #fef3db; color: #633806; }
+  .plac2-binfo { background: var(--blue-100); color: var(--blue-700); }
+  .plac2-hist-info { padding: 12px; font-size: 12px; color: var(--text-primary); line-height: 1.6; }
+  .plac2-hist-info .plac2-title { font-weight: 600; margin-bottom: 8px; }
+  .plac2-hist-info .plac2-note { padding: 8px; background: var(--bg-hover); border-radius: 6px; font-size: 11px; margin-top: 8px; }
+  .plac2-memo { margin-top: 14px; border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 16px; background: var(--bg-hover); }
+  .plac2-memo-label { font-size: 10.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+  .plac2-memo-text { font-size: 13px; font-family: "SF Mono","Fira Code","Consolas",monospace; line-height: 1.8; color: var(--text-primary); }
+  .plac2-arr { color: var(--text-muted); margin: 0 1px; }
+  .plac2-anx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+  .plac2-anx-card { border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 14px; background: var(--bg-card); cursor: pointer; transition: border-color .15s, background .15s; }
+  .plac2-anx-card:hover { border-color: var(--border-light); background: var(--bg-hover); }
+  .plac2-anx-title { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+  .plac2-anx-sub { font-size: 11px; color: var(--text-secondary); line-height: 1.3; }
+  .plac2-info-panel { background: var(--bg-hover); border-radius: 8px; border: 1px solid var(--border-card); padding: 12px 16px; margin-top: 8px; font-size: 13px; line-height: 1.65; min-height: 56px; color: var(--text-primary); }
+  .plac2-info-panel.empty { color: var(--text-muted); font-style: italic; }
+  .plac2-hl { background: #fef3db; border-radius: 3px; padding: 1px 4px; font-weight: 600; }
+  .plac2-cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .plac2-cmp-table th { padding: 7px 10px; border-bottom: 2px solid var(--border-card); font-weight: 600; color: var(--text-secondary); font-size: 11px; text-align: left; background: var(--bg-hover); }
+  .plac2-cmp-table td { padding: 6px 10px; border-bottom: 1px solid var(--border-card); color: var(--text-primary); vertical-align: top; }
+  .plac2-cmp-table tr:nth-child(even) td { background: var(--bg-hover); }
+  @media (max-width: 500px) { .plac2-vis-row, .plac2-anx-grid { grid-template-columns: 1fr; } }
+</style>
+
+<div>
+  <p class="plac2-hint">Clique em cada anexo para ver detalhes</p>
+  <div class="plac2-vis-row" style="margin-bottom:14px">
+    <div class="plac2-vis-card">
+      <div class="plac2-vis-label">Esquema · anexos fetais (ruminante)</div>
+      <svg class="plac2-vis-svg" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="150" cy="80" rx="100" ry="58" fill="#E6F1FB" stroke="#378ADD" stroke-width="1"/>
+        <text x="246" y="34" text-anchor="start" font-size="9" fill="#0c447c" font-family="sans-serif">Córion</text>
+        <ellipse cx="150" cy="80" rx="70" ry="40" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
+        <text x="218" y="56" text-anchor="start" font-size="9" fill="#633806" font-family="sans-serif">Alantoide</text>
+        <ellipse cx="150" cy="80" rx="40" ry="26" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1"/>
+        <text x="188" y="76" text-anchor="start" font-size="9" fill="#27500a" font-family="sans-serif">Âmnio</text>
+        <ellipse cx="150" cy="80" rx="18" ry="13" fill="#FBEAF0" stroke="#993556" stroke-width="1"/>
+        <text x="166" y="96" text-anchor="start" font-size="9" fill="#72243e" font-family="sans-serif">Feto</text>
+        <circle cx="60" cy="38" r="7" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
+        <text x="46" y="24" text-anchor="middle" font-size="8" fill="#633806" font-family="sans-serif">Vesícula</text>
+        <text x="46" y="34" text-anchor="middle" font-size="8" fill="#633806" font-family="sans-serif">umbilical</text>
+      </svg>
+    </div>
+    <div class="plac2-vis-card">
+      <div class="plac2-vis-label">Foto · membranas fetais bovinas</div>
+      <img class="plac2-vis-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Bovine_fetal_membranes.jpg/640px-Bovine_fetal_membranes.jpg" alt="Membranas fetais bovinas" onerror="this.parentNode.innerHTML='<div class=\'plac2-vis-placeholder\'>Membranas fetais bovinas · âmnio (interno, transparente), alantoide (externo, vascularizado) e placentomas no córion</div>'">
+    </div>
+  </div>
+  <div class="plac2-anx-grid">
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('amnio')"><div class="plac2-anx-title">Âmnio</div><div class="plac2-anx-sub">Envolve diretamente o feto · líquido amniótico</div></div>
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('alantoide')"><div class="plac2-anx-title">Alantoide</div><div class="plac2-anx-sub">Excretor fetal · urina fetal · vasos umbilicais</div></div>
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('vitelino')"><div class="plac2-anx-title">Saco vitelino</div><div class="plac2-anx-sub">Nutrição inicial · regride com placenta corioalantoide</div></div>
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('corio')"><div class="plac2-anx-title">Córion (alantocório)</div><div class="plac2-anx-sub">Camada mais externa · trofoblasto · placenta</div></div>
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('cordao')"><div class="plac2-anx-title">Cordão umbilical</div><div class="plac2-anx-sub">Conexão feto: placenta · 2 artérias + 1 veia + uraco</div></div>
+    <div class="plac2-anx-card" onclick="plac2InfoAnx('liquidos')"><div class="plac2-anx-title">Líquidos fetais</div><div class="plac2-anx-sub">Amniótico vs. alantoideo · funções · diferenças</div></div>
+  </div>
+  <div class="plac2-info-panel empty" id="plac2-info-anx">Clique em um anexo para ver detalhes.</div>
+
+  <div style="margin-top:18px;border-left:3px solid #BA7517;background:#fef3db;border-radius:0 8px 8px 0;padding:10px 14px;font-size:calc(15px * var(--font-scale));line-height:1.55">
+    <strong style="color:#633806">Passagem embrião → feto</strong> · ocorre quando completa a organogênese:
+    <span style="font-family:monospace;font-size:calc(14px * var(--font-scale));display:block;margin-top:6px;line-height:1.9">
+      Bovino: 45 dias · Equino: 40 dias · Ovino: 34 dias · Canino: 35 dias
+    </span>
+  </div>
+
+  <div style="margin-top:10px;border-left:3px solid #378ADD;background:#e8f1fb;border-radius:0 8px 8px 0;padding:10px 14px;font-size:calc(15px * var(--font-scale));line-height:1.6">
+    <strong>Funções dos líquidos fetais:</strong> proteção física (trauma, temperatura, desidratação), filtração, respiração, nutrição fetal, meio estéril para crescimento, movimentação e desenvolvimento musculoesquelético.<br>
+    <strong>Funções da placenta:</strong> barreira imunológica, órgão secretor de hormônios, trocas materno-fetais (O₂, nutrientes, resíduos), abertura e lubrificação da via fetal no parto.
+  </div>
+</div>
+
+<!-- BOVINO VS EQUINO -->
+
 `
 },
 {
   id: 'gestação',
-  num: 9,
+  num: 11,
   title: 'Gestação: Diagnóstico, Período e Fisiologia',
   icon: '#i-calendar',
   content: `
@@ -5450,7 +5511,7 @@ IATF com P4+E2 funciona em anestro profundo
 },
 {
   id: 'pelviologia-higiene',
-  num: 10,
+  num: 12,
   title: 'Pelviologia e Higiene da Gestação e Parto',
   icon: '#i-clipboard',
   content: `
@@ -5635,7 +5696,7 @@ IATF com P4+E2 funciona em anestro profundo
 },
 {
   id: 'parto',
-  num: 11,
+  num: 13,
   title: 'Parto: Fisiologia, Estática Fetal e Higiene',
   icon: '#i-baby',
   content: `
@@ -5908,7 +5969,7 @@ Cadela: E2 antes D22 = embriotóxico · aglepristone = melhor opção · efeitos
 },
 {
   id: 'distocias',
-  num: 12,
+  num: 14,
   title: 'Distocias e Auxílio ao Parto',
   icon: '#i-alert',
   content: `
@@ -6171,7 +6232,7 @@ Feto transverso (na prática) → cesariana</div></div>
 },
 {
   id: 'puerpério',
-  num: 13,
+  num: 15,
   title: 'Puerpério, Involução Uterina e Neonato',
   icon: '#i-heart',
   content: `
@@ -6260,7 +6321,7 @@ Os enterocitos neonatais possuem capacidade de absorção de macromoleculas inta
 },
 {
   id: 'andrológico',
-  num: 14,
+  num: 16,
   title: 'Exame Andrológico e Espermiograma',
   icon: '#i-microscope',
   content: `
@@ -7108,7 +7169,7 @@ Os enterocitos neonatais possuem capacidade de absorção de macromoleculas inta
 },
 {
   id: 'patologias-macho',
-  num: 15,
+  num: 17,
   title: 'Patologias do Macho e Impotências',
   icon: '#i-alert',
   content: `
@@ -7852,7 +7913,7 @@ Atrofia: redução de volume + dureza = fibrose avançada
 },
 {
   id: 'patologias-fêmea',
-  num: 16,
+  num: 18,
   title: 'Patologias da Fêmea e Exame Ginecológico',
   icon: '#i-stethoscope',
   content: `
@@ -8603,7 +8664,7 @@ Espermatozóide dura: 6-7 dias · oócito fértil: 2-3 dias pós-ovulação
 },
 {
   id: 'patologias-gestação',
-  num: 17,
+  num: 19,
   title: 'Patologias da Gestação',
   icon: '#i-virus',
   content: `
@@ -9256,7 +9317,7 @@ Emergência: prolapso uterino é mais grave (risco de choque, morte por hemorrag
 },
 {
   id: 'infecciosas',
-  num: 18,
+  num: 20,
   title: 'Doenças Infecciosas da Reprodução',
   icon: '#i-virus',
   content: `
@@ -9591,7 +9652,7 @@ B. canis: macho (orquiepididimite) e fêmea (aborto) · ambos excretam</div></di
 },
 {
   id: 'freemartinismo',
-  num: 19,
+  num: 21,
   title: 'Freemartinismo e Anomalias Congênitas',
   icon: '#i-ban',
   content: `
@@ -9704,7 +9765,7 @@ B. canis: macho (orquiepididimite) e fêmea (aborto) · ambos excretam</div></di
 },
 {
   id: 'fisiologia-mamaria',
-  num: 20,
+  num: 22,
   title: 'Fisiologia da Glândula Mamária',
   icon: '#i-heart',
   content: `
@@ -9848,7 +9909,7 @@ B. canis: macho (orquiepididimite) e fêmea (aborto) · ambos excretam</div></di
 },
 {
   id: 'biotecnologias',
-  num: 21,
+  num: 23,
   title: 'Biotecnologias da Reprodução',
   icon: '#i-settings',
   content: `
@@ -10929,7 +10990,7 @@ Diluir para 25-50 x 10<sup>6</sup> sptz moveis/mL (concentração ideal para tra
 },
 {
   id: 'casos-clinicos',
-  num: 22,
+  num: 24,
   title: 'Casos Clínicos e Questões de Residência',
   icon: '#i-clipboard',
   content: `
@@ -11436,7 +11497,7 @@ Diluir para 25-50 x 10<sup>6</sup> sptz moveis/mL (concentração ideal para tra
 },
 {
   id: 'saude-publica',
-  num: 23,
+  num: 25,
   title: 'Saúde Pública Veterinária',
   icon: '#i-hospital',
   content: `
@@ -11797,7 +11858,7 @@ Diluir para 25-50 x 10<sup>6</sup> sptz moveis/mL (concentração ideal para tra
 },
 {
   id: 'conhecimentos-gerais',
-  num: 24,
+  num: 26,
   title: 'Conhecimentos Gerais em Med. Vet.',
   icon: '#i-stethoscope',
   content: `
