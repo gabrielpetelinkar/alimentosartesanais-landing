@@ -884,8 +884,145 @@
       <div id="daysResult" style="margin-top:12px;padding:12px 14px;border-radius:var(--radius-sm);font-weight:700;display:none;"></div>
     </div>
 
+    <!-- CALCULADORA SINCRONIZAÇÃO RECEPTORA × DOADORA -->
+    <div class="card" style="background:var(--bg-card);border:2px solid var(--green-400);padding:22px;margin-top:12px;">
+      <div class="card-title" style="color:var(--green-700);margin-bottom:14px;"><svg class="icon icon-sm"><use href="#i-embryo"/></svg> Sincronização — Receptora por Doadora</div>
+
+      <div style="margin-bottom:16px;">
+        <div style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Doadora</div>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+          <label style="font-size:14px;color:var(--text-secondary)">Data de ovulação</label>
+          <input type="date" id="calc-donor-date" style="padding:8px 12px;border:2px solid var(--border-light);border-radius:var(--radius-sm);font-size:14px;font-family:inherit;background:var(--bg-card-alt);color:var(--text-primary);"/>
+        </div>
+        <div id="calc-coleta-box" style="display:none;margin-top:12px;">
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:6px;">Janela de coleta de embrião</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+            <div style="background:var(--bg-card-alt);border-radius:var(--radius-sm);padding:8px;text-align:center;">
+              <div style="font-size:11px;color:var(--text-muted);">D7</div>
+              <div style="font-size:15px;font-weight:500;color:var(--text-primary);" id="calc-d7"></div>
+            </div>
+            <div style="background:#D4EDDA;border:1.5px solid #1A6B3A;border-radius:var(--radius-sm);padding:8px;text-align:center;">
+              <div style="font-size:11px;color:#1A6B3A;">D8</div>
+              <div style="font-size:15px;font-weight:500;color:#1A6B3A;" id="calc-d8"></div>
+            </div>
+            <div style="background:var(--bg-card-alt);border-radius:var(--radius-sm);padding:8px;text-align:center;">
+              <div style="font-size:11px;color:var(--text-muted);">D9</div>
+              <div style="font-size:15px;font-weight:500;color:var(--text-primary);" id="calc-d9"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <div style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Receptoras</div>
+        <div id="calc-rec-list"></div>
+        <button onclick="calcAddRec()" style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;color:var(--green-700);background:none;border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:6px 12px;margin-top:8px;font-family:inherit;">+ adicionar receptora</button>
+      </div>
+
+      <div id="calc-result-card" style="display:none;">
+        <div style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Resultado — calcular para qual dia de coleta?</div>
+        <div style="display:flex;gap:6px;margin-bottom:12px;">
+          <button class="collect-btn-sync" onclick="calcSetDay(7)" id="calc-tab7" style="font-size:13px;padding:5px 12px;border-radius:var(--radius-sm);border:1px solid var(--border-light);cursor:pointer;background:var(--bg-card-alt);color:var(--text-secondary);font-family:inherit;">D7</button>
+          <button class="collect-btn-sync active" onclick="calcSetDay(8)" id="calc-tab8" style="font-size:13px;padding:5px 12px;border-radius:var(--radius-sm);border:1px solid var(--green-700);cursor:pointer;background:var(--green-700);color:#fff;font-family:inherit;">D8</button>
+          <button class="collect-btn-sync" onclick="calcSetDay(9)" id="calc-tab9" style="font-size:13px;padding:5px 12px;border-radius:var(--radius-sm);border:1px solid var(--border-light);cursor:pointer;background:var(--bg-card-alt);color:var(--text-secondary);font-family:inherit;">D9</button>
+        </div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead><tr>
+              <th style="text-align:left;padding:6px 8px;font-size:12px;font-weight:500;color:var(--text-muted);border-bottom:1px solid var(--border-light);">Receptora</th>
+              <th style="text-align:left;padding:6px 8px;font-size:12px;font-weight:500;color:var(--text-muted);border-bottom:1px solid var(--border-light);">Tipo</th>
+              <th style="text-align:left;padding:6px 8px;font-size:12px;font-weight:500;color:var(--text-muted);border-bottom:1px solid var(--border-light);">D0</th>
+              <th style="text-align:left;padding:6px 8px;font-size:12px;font-weight:500;color:var(--text-muted);border-bottom:1px solid var(--border-light);">D no dia da coleta</th>
+              <th style="text-align:left;padding:6px 8px;font-size:12px;font-weight:500;color:var(--text-muted);border-bottom:1px solid var(--border-light);">Status</th>
+            </tr></thead>
+            <tbody id="calc-result-body"></tbody>
+          </table>
+        </div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:10px;">
+          Janela aceitável: D4–D9 &nbsp;|&nbsp; D3 → suplementar P4 &nbsp;|&nbsp; CL >D9 → descartar
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
+
+<script>
+(function(){
+  var recs=[], collectDay=8;
+  function fmt(d){var p=d.toISOString().split('T')[0].split('-');return p[2]+'/'+p[1]+'/'+p[0]}
+  function addDays(s,n){var d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return d}
+  function diffDays(a,b){return Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000)}
+  function donorChange(){
+    var v=document.getElementById('calc-donor-date').value;
+    if(!v){document.getElementById('calc-coleta-box').style.display='none';return}
+    document.getElementById('calc-coleta-box').style.display='block';
+    document.getElementById('calc-d7').textContent=fmt(addDays(v,7));
+    document.getElementById('calc-d8').textContent=fmt(addDays(v,8));
+    document.getElementById('calc-d9').textContent=fmt(addDays(v,9));
+    renderResults();
+  }
+  window.calcAddRec=function(){recs.push({name:'',type:'ciclica',date:''});renderRecs();}
+  window.calcRemoveRec=function(i){recs.splice(i,1);renderRecs();renderResults();}
+  window.calcUpdateRec=function(i,f,v){recs[i][f]=v;renderResults();}
+  window.calcSetDay=function(d){
+    collectDay=d;
+    ['7','8','9'].forEach(function(x){
+      var el=document.getElementById('calc-tab'+x);
+      if(x==d){el.style.background='var(--green-700)';el.style.color='#fff';el.style.borderColor='var(--green-700)';}
+      else{el.style.background='var(--bg-card-alt)';el.style.color='var(--text-secondary)';el.style.borderColor='var(--border-light)';}
+    });
+    renderResults();
+  }
+  function renderRecs(){
+    document.getElementById('calc-rec-list').innerHTML=recs.map(function(r,i){
+      return '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 0;border-bottom:1px solid var(--border-light);">'
+        +'<input type="text" placeholder="Nome" value="'+(r.name||'')+'" onchange="calcUpdateRec('+i+',\'name\',this.value)" style="width:120px;padding:6px 10px;border:1px solid var(--border-light);border-radius:var(--radius-sm);font-size:13px;font-family:inherit;background:var(--bg-card-alt);color:var(--text-primary);"/>'
+        +'<select onchange="calcUpdateRec('+i+',\'type\',this.value)" style="padding:6px 10px;border:1px solid var(--border-light);border-radius:var(--radius-sm);font-size:13px;font-family:inherit;background:var(--bg-card-alt);color:var(--text-primary);">'
+        +'<option value="ciclica"'+(r.type==='ciclica'?' selected':'')+'>Cíclica (ovulação)</option>'
+        +'<option value="preparada"'+(r.type==='preparada'?' selected':'')+'>Preparada (início P4)</option>'
+        +'</select>'
+        +'<input type="date" value="'+(r.date||'')+'" onchange="calcUpdateRec('+i+',\'date\',this.value)" style="padding:6px 10px;border:1px solid var(--border-light);border-radius:var(--radius-sm);font-size:13px;font-family:inherit;background:var(--bg-card-alt);color:var(--text-primary);"/>'
+        +'<button onclick="calcRemoveRec('+i+')" style="background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:18px;padding:0 4px;">×</button>'
+        +'</div>';
+    }).join('');
+  }
+  function status(d){
+    if(d===8)return{label:'D8 — ideal',cls:'background:#1A6B3A;color:#fff'};
+    if(d>=4&&d<=9)return{label:'D'+d+' — ok',cls:'background:#D4EDDA;color:#1A6B3A'};
+    if(d===3)return{label:'D3 — utilizável',cls:'background:#FFF3CD;color:#856404',note:'suplementar P4 exógena'};
+    if(d===10)return{label:'D10 — limite',cls:'background:#FFF3CD;color:#856404'};
+    if(d>10)return{label:'D'+d+' — fora',cls:'background:#FDEAEA;color:#A32D2D',note:'CL muito velho — descartar'};
+    return{label:'D'+d+' — cedo demais',cls:'background:#FDEAEA;color:#A32D2D'};
+  }
+  function renderResults(){
+    var donor=document.getElementById('calc-donor-date').value;
+    var valid=recs.filter(function(r){return r.date});
+    var rc=document.getElementById('calc-result-card');
+    if(!donor||valid.length===0){rc.style.display='none';return}
+    rc.style.display='block';
+    var col=addDays(donor,collectDay).toISOString().split('T')[0];
+    var rows=valid.map(function(r){
+      var d=diffDays(r.date,col);
+      return{name:r.name,type:r.type,date:r.date,d:d,s:status(d)};
+    }).sort(function(a,b){
+      function sc(x){return x===8?0:x>=4&&x<=9?Math.abs(x-8):x===3?8:x===10?9:99+Math.abs(x-8)}
+      return sc(a.d)-sc(b.d);
+    });
+    document.getElementById('calc-result-body').innerHTML=rows.map(function(r){
+      return '<tr>'
+        +'<td style="padding:7px 8px;border-bottom:1px solid var(--border-light);font-weight:500;">'+(r.name||'—')+'</td>'
+        +'<td style="padding:7px 8px;border-bottom:1px solid var(--border-light);color:var(--text-secondary);">'+(r.type==='ciclica'?'Cíclica':'Preparada')+'</td>'
+        +'<td style="padding:7px 8px;border-bottom:1px solid var(--border-light);color:var(--text-secondary);font-size:12px;">'+r.date.split('-').reverse().join('/')+'</td>'
+        +'<td style="padding:7px 8px;border-bottom:1px solid var(--border-light);font-weight:500;">D'+r.d+'</td>'
+        +'<td style="padding:7px 8px;border-bottom:1px solid var(--border-light);"><span style="display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;'+r.s.cls+'">'+r.s.label+'</span>'
+        +(r.s.note?'<div style="font-size:11px;color:#856404;margin-top:2px;">'+r.s.note+'</div>':'')+'</td>'
+        +'</tr>';
+    }).join('');
+  }
+  document.getElementById('calc-donor-date').addEventListener('change',donorChange);
+})();
+</script>
 
 <!-- ========== CAPÍTULO 1 — US→Conduta ========== -->
 <section class="chapter" id="cap1">
