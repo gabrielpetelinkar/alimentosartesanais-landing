@@ -939,7 +939,7 @@
           </table>
         </div>
         <div style="font-size:11px;color:var(--text-muted);margin-top:10px;">
-          Janela aceitável: D4–D9 &nbsp;|&nbsp; D3 → suplementar P4 &nbsp;|&nbsp; CL >D9 → descartar
+          Janela aceitável: D4–D9 &nbsp;|&nbsp; D3 cíclica → suplementar P4 (CL jovem) &nbsp;|&nbsp; CL >D9 → descartar
         </div>
       </div>
     </div>
@@ -987,10 +987,11 @@
         +'</div>';
     }).join('');
   }
-  function status(d){
+  function status(d,tipo){
     if(d===8)return{label:'D8 — ideal',cls:'background:#1A6B3A;color:#fff'};
     if(d>=4&&d<=9)return{label:'D'+d+' — ok',cls:'background:#D4EDDA;color:#1A6B3A'};
-    if(d===3)return{label:'D3 — utilizável',cls:'background:#FFF3CD;color:#856404',note:'suplementar P4 exógena'};
+    if(d===3&&tipo==='ciclica')return{label:'D3 — utilizável',cls:'background:#FFF3CD;color:#856404',note:'CL jovem — suplementar P4 exógena'};
+    if(d===3)return{label:'D3 — cedo demais',cls:'background:#FDEAEA;color:#A32D2D'};
     if(d===10)return{label:'D10 — limite',cls:'background:#FFF3CD;color:#856404'};
     if(d>10)return{label:'D'+d+' — fora',cls:'background:#FDEAEA;color:#A32D2D',note:'CL muito velho — descartar'};
     return{label:'D'+d+' — cedo demais',cls:'background:#FDEAEA;color:#A32D2D'};
@@ -1004,7 +1005,7 @@
     var col=addDays(donor,collectDay).toISOString().split('T')[0];
     var rows=valid.map(function(r){
       var d=diffDays(r.date,col);
-      return{name:r.name,type:r.type,date:r.date,d:d,s:status(d)};
+      return{name:r.name,type:r.type,date:r.date,d:d,s:status(d,r.type)};
     }).sort(function(a,b){
       function sc(x){return x===8?0:x>=4&&x<=9?Math.abs(x-8):x===3?8:x===10?9:99+Math.abs(x-8)}
       return sc(a.d)-sc(b.d);
