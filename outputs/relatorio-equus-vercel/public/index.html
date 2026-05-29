@@ -514,61 +514,6 @@
   .decision-icon { font-size: 18px; margin-right: 4px; }
 
   /* === CHAPTER NOTES === */
-  .chapter-notes {
-    margin-top: 28px; border-top: 1px dashed var(--border-light); padding-top: 0;
-  }
-  .chapter-notes summary {
-    display: flex; align-items: center; gap: 8px;
-    padding: 14px 0; cursor: pointer; list-style: none;
-    color: var(--text-muted); font-size: calc(13px * var(--font-scale));
-    font-weight: 700; letter-spacing: .3px; transition: color .2s;
-    user-select: none;
-  }
-  .chapter-notes summary::-webkit-details-marker { display: none; }
-  .chapter-notes summary:hover { color: var(--green-600); }
-  .chapter-notes summary .notes-chevron {
-    transition: transform .2s; flex-shrink: 0;
-  }
-  .chapter-notes[open] summary .notes-chevron { transform: rotate(90deg); }
-  .chapter-notes summary .notes-badge {
-    display: inline-flex; align-items: center; justify-content: center;
-    min-width: 18px; height: 18px; padding: 0 5px;
-    background: var(--green-600); color: #fff;
-    border-radius: 50px; font-size: 10px; font-weight: 800;
-    margin-left: 4px; opacity: 0; transition: opacity .2s;
-  }
-  .chapter-notes summary .notes-badge.has-notes { opacity: 1; }
-  .chapter-notes .notes-area {
-    width: 100%; min-height: 100px; max-height: 300px;
-    padding: 14px 16px; margin-top: 4px;
-    border: 1px solid var(--border-light); border-radius: var(--radius-sm);
-    background: var(--bg-card-alt); color: var(--text-primary);
-    font-family: inherit; font-size: calc(14px * var(--font-scale));
-    line-height: 1.7; resize: vertical; outline: none;
-    transition: border-color .2s, background .2s;
-  }
-  .chapter-notes .notes-area:focus {
-    border-color: var(--green-400);
-    background: var(--bg-card);
-  }
-  .chapter-notes .notes-area::placeholder { color: var(--text-muted); }
-  .chapter-notes .notes-meta {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-top: 8px; padding-bottom: 4px;
-  }
-  .chapter-notes .notes-saved {
-    font-size: 11px; color: var(--text-muted); opacity: 0;
-    transition: opacity .3s;
-  }
-  .chapter-notes .notes-saved.visible { opacity: 1; }
-  .chapter-notes .notes-clear {
-    background: none; border: none; color: var(--red-600);
-    font-size: 11px; font-weight: 700; cursor: pointer;
-    padding: 4px 8px; border-radius: 4px; opacity: 0;
-    transition: opacity .2s, background .2s; font-family: inherit;
-  }
-  .chapter-notes .notes-clear.visible { opacity: 1; }
-  .chapter-notes .notes-clear:hover { background: var(--red-50); }
 
   /* === FOOTER === */
   .back-top {
@@ -626,7 +571,7 @@
     /* Hide UI chrome */
     .nav-bar, .toolbar, .fab-group, .edit-hint, .back-top,
     .progress-bar, .toast, .search-overlay,
-    .ch-bookmark, .chapter-notes { display: none !important; }
+    .ch-bookmark,
 
     /* Base */
     html { font-size: 11pt; }
@@ -1122,12 +1067,6 @@
         <tfoot><tr><td colspan="3" style="font-size:11px;color:var(--text-muted);font-style:italic;">Tamanhos de folículos são exemplos — cada égua tem seu padrão.</td></tr></tfoot>
       </table>
     </div>
-
-    <details class="chapter-notes" data-notes="cap1">
-      <summary><svg class="icon icon-sm notes-chevron"><use href="#i-chevron-r"/></svg><svg class="icon icon-sm"><use href="#i-notes"/></svg> Minhas Notas <span class="notes-badge">0</span></summary>
-      <textarea class="notes-area" placeholder="Escreva suas anotações sobre este capítulo..." oninput="saveNote('cap1',this)"></textarea>
-      <div class="notes-meta"><span class="notes-saved">Salvo automaticamente</span><button class="notes-clear" onclick="clearNote('cap1',this)"><svg class="icon icon-sm"><use href="#i-trash"/></svg> Limpar</button></div>
-    </details>
   </div>
 </section>
 
@@ -1232,12 +1171,6 @@
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Éguas com Endometrite</div>
       <p>Inseminar pela manhã para que lavado uterino e ocitocina possam ser feitos durante o dia.</p>
     </div>
-
-    <details class="chapter-notes" data-notes="cap2">
-      <summary><svg class="icon icon-sm notes-chevron"><use href="#i-chevron-r"/></svg><svg class="icon icon-sm"><use href="#i-notes"/></svg> Minhas Notas <span class="notes-badge">0</span></summary>
-      <textarea class="notes-area" placeholder="Escreva suas anotações sobre este capítulo..." oninput="saveNote('cap2',this)"></textarea>
-      <div class="notes-meta"><span class="notes-saved">Salvo automaticamente</span><button class="notes-clear" onclick="clearNote('cap2',this)"><svg class="icon icon-sm"><use href="#i-trash"/></svg> Limpar</button></div>
-    </details>
   </div>
 </section>
 
@@ -1282,12 +1215,6 @@
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Dentro da janela de 6h — existe diferença?</div>
       <p>Estudos com inseminação em intervalos de 3 horas pós-ovulação não demonstraram diferença estatística entre 0–3h e 3–6h. O que impacta a fertilidade não é o subintervalo dentro da janela, mas sim <strong>ultrapassar as 6h</strong>. Com sêmen de garanhão de alto valor, priorizar a inseminação o mais próximo possível da ovulação como precaução prática — a <strong>monitorização intensiva a cada 2–4h</strong> aumenta as chances de acertar o momento ideal.</p>
     </div>
-
-    <details class="chapter-notes" data-notes="cap3">
-      <summary><svg class="icon icon-sm notes-chevron"><use href="#i-chevron-r"/></svg><svg class="icon icon-sm"><use href="#i-notes"/></svg> Minhas Notas <span class="notes-badge">0</span></summary>
-      <textarea class="notes-area" placeholder="Escreva suas anotações sobre este capítulo..." oninput="saveNote('cap3',this)"></textarea>
-      <div class="notes-meta"><span class="notes-saved">Salvo automaticamente</span><button class="notes-clear" onclick="clearNote('cap3',this)"><svg class="icon icon-sm"><use href="#i-trash"/></svg> Limpar</button></div>
-    </details>
   </div>
 </section>
 
@@ -1525,12 +1452,6 @@
       <strong style="color:var(--text-secondary);">Nota sobre produtos comerciais</strong><br>
       Os produtos citados neste guia são exemplos disponíveis no mercado brasileiro no momento da publicação. Portfólios comerciais podem mudar — produtos podem sair do mercado, ter disponibilidade regional limitada ou ser substituídos por equivalentes com o mesmo princípio ativo. Outros produtos registrados no MAPA com o mesmo princípio ativo podem ser utilizados nas mesmas doses. Sempre verifique disponibilidade e registro atualizado antes de utilizar.
     </div>
-
-    <details class="chapter-notes" data-notes="cap4">
-      <summary><svg class="icon icon-sm notes-chevron"><use href="#i-chevron-r"/></svg><svg class="icon icon-sm"><use href="#i-notes"/></svg> Minhas Notas <span class="notes-badge">0</span></summary>
-      <textarea class="notes-area" placeholder="Escreva suas anotações sobre este capítulo..." oninput="saveNote('cap4',this)"></textarea>
-      <div class="notes-meta"><span class="notes-saved">Salvo automaticamente</span><button class="notes-clear" onclick="clearNote('cap4',this)"><svg class="icon icon-sm"><use href="#i-trash"/></svg> Limpar</button></div>
-    </details>
   </div>
 </section>
 
@@ -1571,12 +1492,6 @@
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-clock"/></svg> Coleta</div>
       <p>A ovulação geralmente é sincrônica. Quando não, ambas as ovulações devem ter entre <strong>7 e 9 dias</strong> no momento da coleta.</p>
     </div>
-
-    <details class="chapter-notes" data-notes="cap5">
-      <summary><svg class="icon icon-sm notes-chevron"><use href="#i-chevron-r"/></svg><svg class="icon icon-sm"><use href="#i-notes"/></svg> Minhas Notas <span class="notes-badge">0</span></summary>
-      <textarea class="notes-area" placeholder="Escreva suas anotações sobre este capítulo..." oninput="saveNote('cap5',this)"></textarea>
-      <div class="notes-meta"><span class="notes-saved">Salvo automaticamente</span><button class="notes-clear" onclick="clearNote('cap5',this)"><svg class="icon icon-sm"><use href="#i-trash"/></svg> Limpar</button></div>
-    </details>
   </div>
 </section>
 
@@ -1935,12 +1850,6 @@
         </div>
       </div>
     </div>
-
-    <details class="chapter-notes" data-notes="cap7">
-      <summary><svg class="icon icon-sm notes-chevron"><use href="#i-chevron-r"/></svg><svg class="icon icon-sm"><use href="#i-notes"/></svg> Minhas Notas <span class="notes-badge">0</span></summary>
-      <textarea class="notes-area" placeholder="Escreva suas anotações sobre este capítulo..." oninput="saveNote('cap7',this)"></textarea>
-      <div class="notes-meta"><span class="notes-saved">Salvo automaticamente</span><button class="notes-clear" onclick="clearNote('cap7',this)"><svg class="icon icon-sm"><use href="#i-trash"/></svg> Limpar</button></div>
-    </details>
   </div>
 </section>
 
@@ -1961,12 +1870,6 @@
     <details class="faq-item"><summary>Induzi e o edema sumiu mas o folículo não cresceu. Falhou?</summary><div class="faq-answer"><strong>Não necessariamente — mas confirme obrigatoriamente com US.</strong> A diminuição do edema é consistente com resposta ao indutor, pois indica queda de estrógeno. Porém, não confirma ovulação. Se o folículo <strong>manteve o tamanho ou cresceu</strong> em relação ao exame anterior, a indução provavelmente falhou. Se <strong>reduziu ou desapareceu</strong>, ovulou. Não interprete o edema sozinho.</div></details>
     <details class="faq-item"><summary>Cloprostenol realmente funciona em éguas?</summary><div class="faq-answer"><strong>Sim.</strong> <a href="#ficha-pgf" style="color:inherit;text-decoration:underline;">Ver ficha completa de Prostaglandinas — Cap. 4</a> (bloco "Eficácia comparativa").</div></details>
     <details class="faq-item"><summary>CL com "buraco preto" no centro é ruim?</summary><div class="faq-answer"><strong>Não.</strong> CLs com cavidade central são comuns e <strong>perfeitamente funcionais</strong>. A luteinização ocorre na periferia. São tão eficientes quanto CLs compactos.</div></details>
-
-    <details class="chapter-notes" data-notes="cap8">
-      <summary><svg class="icon icon-sm notes-chevron"><use href="#i-chevron-r"/></svg><svg class="icon icon-sm"><use href="#i-notes"/></svg> Minhas Notas <span class="notes-badge">0</span></summary>
-      <textarea class="notes-area" placeholder="Escreva suas anotações sobre este capítulo..." oninput="saveNote('cap8',this)"></textarea>
-      <div class="notes-meta"><span class="notes-saved">Salvo automaticamente</span><button class="notes-clear" onclick="clearNote('cap8',this)"><svg class="icon icon-sm"><use href="#i-trash"/></svg> Limpar</button></div>
-    </details>
   </div>
 </section>
 
@@ -2185,8 +2088,6 @@ function exportPDF() {
   var faqStates = [];
   faqItems.forEach(function(d) { faqStates.push(d.hasAttribute('open')); d.setAttribute('open', ''); });
   // Close all notes
-  var noteItems = document.querySelectorAll('.chapter-notes[open]');
-  noteItems.forEach(function(d) { d.removeAttribute('open'); });
 
   setTimeout(function() {
     window.print();
@@ -2202,23 +2103,7 @@ function showHint(msg) { var h = document.getElementById('editHint'); h.textCont
 
 // Chapter Notes
 var noteTimers = {};
-function saveNote(capId, textarea) {
-  var val = textarea.value;
-  // Debounce save (500ms)
-  if (noteTimers[capId]) clearTimeout(noteTimers[capId]);
-  noteTimers[capId] = setTimeout(function() {
-    localStorage.setItem('guia-note-' + capId, val);
-    // Update badge
-    var details = document.querySelector('[data-notes="' + capId + '"]');
-    var badge = details.querySelector('.notes-badge');
-    var savedLabel = details.querySelector('.notes-saved');
-    var clearBtn = details.querySelector('.notes-clear');
-    var lines = val.trim() ? val.trim().split('\n').length : 0;
-    if (val.trim()) {
-      badge.textContent = lines;
-      badge.classList.add('has-notes');
-      clearBtn.classList.add('visible');
-    } else {
+ else {
       badge.classList.remove('has-notes');
       clearBtn.classList.remove('visible');
     }
@@ -2227,36 +2112,10 @@ function saveNote(capId, textarea) {
   }, 500);
 }
 
-function clearNote(capId, btn) {
-  if (!confirm('Limpar todas as notas deste capítulo?')) return;
-  localStorage.removeItem('guia-note-' + capId);
-  var details = document.querySelector('[data-notes="' + capId + '"]');
-  var textarea = details.querySelector('.notes-area');
-  var badge = details.querySelector('.notes-badge');
-  var clearBtn = details.querySelector('.notes-clear');
-  textarea.value = '';
-  badge.classList.remove('has-notes');
-  clearBtn.classList.remove('visible');
-  showToast('Notas do capítulo removidas');
-}
+
 
 // Load saved notes on init
 (function() {
-  for (var i = 1; i <= 8; i++) {
-    var capId = 'cap' + i;
-    var saved = localStorage.getItem('guia-note-' + capId);
-    if (saved) {
-      var details = document.querySelector('[data-notes="' + capId + '"]');
-      if (!details) continue;
-      var textarea = details.querySelector('.notes-area');
-      var badge = details.querySelector('.notes-badge');
-      var clearBtn = details.querySelector('.notes-clear');
-      textarea.value = saved;
-      var lines = saved.trim().split('\n').length;
-      badge.textContent = lines;
-      badge.classList.add('has-notes');
-      clearBtn.classList.add('visible');
-    }
   }
 })();
 
