@@ -2268,15 +2268,6 @@ function showToast(msg) { var t = document.getElementById('toast'); t.textConten
 function showHint(msg) { var h = document.getElementById('editHint'); h.textContent = msg; h.classList.add('visible'); setTimeout(function() { h.classList.remove('visible'); }, 4000); }
 
 // Chapter Notes
-var noteTimers = {};
- else {
-      badge.classList.remove('has-notes');
-      clearBtn.classList.remove('visible');
-    }
-    savedLabel.classList.add('visible');
-    setTimeout(function() { savedLabel.classList.remove('visible'); }, 2000);
-  }, 500);
-}
 
 
 
