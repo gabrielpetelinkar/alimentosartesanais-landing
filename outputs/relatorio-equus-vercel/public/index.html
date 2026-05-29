@@ -939,7 +939,7 @@
           </table>
         </div>
         <div style="font-size:11px;color:var(--text-muted);margin-top:10px;">
-          Janela aceitável: D4–D9 &nbsp;|&nbsp; <D4 → cedo demais &nbsp;|&nbsp; >D9 → descartar
+          D4–D9 → dentro da janela &nbsp;|&nbsp; ≤D3 → cedo demais &nbsp;|&nbsp; ≥D10 → descartar
         </div>
       </div>
     </div>
@@ -988,11 +988,8 @@
     }).join('');
   }
   function status(d,tipo){
-    if(d===8)return{label:'D8 — ideal',cls:'background:#1A6B3A;color:#fff'};
-    if(d>=4&&d<=9)return{label:'D'+d+' — ok',cls:'background:#D4EDDA;color:#1A6B3A'};
-    if(d===3)return{label:'D3 — cedo demais',cls:'background:#FDEAEA;color:#A32D2D'};
-    if(d===10)return{label:'D10 — limite',cls:'background:#FFF3CD;color:#856404'};
-    if(d>10)return{label:'D'+d+' — fora',cls:'background:#FDEAEA;color:#A32D2D',note:'CL muito velho — descartar'};
+    if(d>=4&&d<=9)return{label:'D'+d+' — dentro da janela',cls:'background:#D4EDDA;color:#1A6B3A'};
+    if(d>=10)return{label:'D'+d+' — fora',cls:'background:#FDEAEA;color:#A32D2D',note:'descartar'};
     return{label:'D'+d+' — cedo demais',cls:'background:#FDEAEA;color:#A32D2D'};
   }
   function renderResults(){
