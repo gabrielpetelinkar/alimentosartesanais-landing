@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guia de Campo — Hormonioterapia em Éguas</title>
+<title>Guia de Campo - Hormonioterapia em Éguas</title>
 <meta name="description" content="Doses, protocolos e decisões clínicas para a rotina reprodutiva da fêmea equina.">
 <meta name="theme-color" content="#0f1824">
 <link rel="manifest" href="manifest.json">
@@ -591,7 +591,7 @@
     .cover::before, .cover::after { display: none; }
     .cover .scroll-hint { display: none; }
 
-    /* Chapters flow naturally — NO forced page-break-before */
+    /* Chapters flow naturally - NO forced page-break-before */
     .chapter { margin-top: 24px; }
 
     /* Chapter header */
@@ -614,7 +614,7 @@
       margin-top: 20px;
     }
 
-    /* Cards — never split */
+    /* Cards - never split */
     .card, .hormone-card, .error-card, .case-study, .faq-item {
       break-inside: avoid; page-break-inside: avoid;
       box-shadow: none; border: 1px solid #ddd;
@@ -632,7 +632,7 @@
       background: #37474f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;
     }
 
-    /* Tables — never split if possible, allow if too long */
+    /* Tables - never split if possible, allow if too long */
     .table-wrap {
       break-inside: avoid; page-break-inside: avoid;
       border: 1px solid #ccc; box-shadow: none;
@@ -644,7 +644,7 @@
     /* Repeat table header on each page if table overflows */
     thead { display: table-header-group; }
 
-    /* Protocol steps — keep together */
+    /* Protocol steps - keep together */
     .protocol-steps {
       break-inside: avoid; page-break-inside: avoid;
     }
@@ -653,11 +653,11 @@
       -webkit-print-color-adjust: exact; print-color-adjust: exact;
     }
 
-    /* Checklist — keep together */
+    /* Checklist - keep together */
     .checklist { break-inside: avoid; page-break-inside: avoid; }
     .checklist li::before { border-color: #1e3254 !important; }
 
-    /* FAQ — open all, keep each together */
+    /* FAQ - open all, keep each together */
     .faq-item { border: 1px solid #ddd; }
     .faq-item .faq-answer { display: block !important; }
 
@@ -689,7 +689,7 @@
     /* Widows/orphans */
     p, li { orphans: 3; widows: 3; }
 
-    /* Links — no underline in print */
+    /* Links - no underline in print */
     a { color: inherit !important; text-decoration: none !important; }
   }
 
@@ -790,13 +790,13 @@
     <button class="cover-install-dismiss" onclick="dismissInstall()">Agora não</button>
   </div>
 
-  <p class="cover-author">Conteúdo técnico: <strong>M.V. Dra. Iara Macedo Petelinkar</strong> — Reprodução Equina — <a href="https://instagram.com/iaranmacedo" target="_blank" rel="noopener" style="color:rgba(255,255,255,.85);text-decoration:underline">@iaranmacedo</a></p>
+  <p class="cover-author">Conteúdo técnico: <strong>M.V. Dra. Iara Macedo Petelinkar</strong> - Reprodução Equina - <a href="https://instagram.com/iaranmacedo" target="_blank" rel="noopener" style="color:rgba(255,255,255,.85);text-decoration:underline">@iaranmacedo</a></p>
 
   <div class="scroll-hint">
     <svg class="icon" style="width:18px;height:18px"><use href="#i-arrow-down"/></svg>
     <span>Deslize para navegar</span>
   </div>
-  <span class="version">v3.0 — 2026</span>
+  <span class="version">v3.0 - 2026</span>
 </div>
 
 <!-- === NAV === -->
@@ -872,7 +872,7 @@
         <span style="font-weight:700;color:var(--text-muted);">+</span>
         <input type="number" id="folM2" placeholder="Medida 2" style="width:100px;padding:10px 12px;border:2px solid var(--border-light);border-radius:var(--radius-sm);font-size:16px;font-family:inherit;background:var(--bg-card-alt);color:var(--text-primary);text-align:center;" inputmode="decimal" oninput="calcFol()">
         <span style="font-weight:700;color:var(--text-muted);">÷ 2 =</span>
-        <span id="folResult" style="font-size:28px;font-weight:900;color:var(--green-700);min-width:60px;">—</span>
+        <span id="folResult" style="font-size:28px;font-weight:900;color:var(--green-700);min-width:60px;"> - </span>
         <span style="font-size:14px;color:var(--text-muted);">mm</span>
       </div>
       <div id="folDays" style="margin-top:12px;padding:10px 14px;border-radius:var(--radius-sm);font-size:calc(14px * var(--font-scale));font-weight:700;display:none;"></div>
@@ -880,7 +880,7 @@
 
     <div class="card" style="background:var(--bg-card);border:2px solid var(--green-400);padding:22px;margin-top:12px;">
       <div class="card-title" style="color:var(--green-700);margin-bottom:14px;"><svg class="icon icon-sm"><use href="#i-clock"/></svg> Previsão para Indução (≥35 mm)</div>
-      <p style="font-size:calc(13px * var(--font-scale));color:var(--text-secondary);margin-bottom:12px;">Tamanho atual do folículo (mm) — crescimento médio: 3 mm/dia:</p>
+      <p style="font-size:calc(13px * var(--font-scale));color:var(--text-secondary);margin-bottom:12px;">Tamanho atual do folículo (mm) - crescimento médio: 3 mm/dia:</p>
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
         <input type="number" id="folSize" placeholder="Ex: 28" style="width:120px;padding:10px 12px;border:2px solid var(--border-light);border-radius:var(--radius-sm);font-size:16px;font-family:inherit;background:var(--bg-card-alt);color:var(--text-primary);text-align:center;" inputmode="decimal" oninput="calcDays()">
         <span style="font-size:14px;color:var(--text-muted);">mm</span>
@@ -890,7 +890,7 @@
 
     <!-- CALCULADORA SINCRONIZAÇÃO RECEPTORA × DOADORA -->
     <div class="card" style="background:var(--bg-card);border:2px solid var(--green-400);padding:22px;margin-top:12px;">
-      <div class="card-title" style="color:var(--green-700);margin-bottom:14px;"><svg class="icon icon-sm"><use href="#i-embryo"/></svg> Sincronização — Receptora por Doadora</div>
+      <div class="card-title" style="color:var(--green-700);margin-bottom:14px;"><svg class="icon icon-sm"><use href="#i-embryo"/></svg> Sincronização - Receptora por Doadora</div>
 
       <div style="margin-bottom:16px;">
         <div style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Doadora</div>
@@ -924,7 +924,7 @@
       </div>
 
       <div id="calc-result-card" style="display:none;">
-        <div style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Resultado — calcular para qual dia de coleta?</div>
+        <div style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Resultado - calcular para qual dia de coleta?</div>
         <div style="display:flex;gap:6px;margin-bottom:12px;">
           <button class="collect-btn-sync" onclick="calcSetDay(7)" id="calc-tab7" style="font-size:13px;padding:5px 12px;border-radius:var(--radius-sm);border:1px solid var(--border-light);cursor:pointer;background:var(--bg-card-alt);color:var(--text-secondary);font-family:inherit;">D7</button>
           <button class="collect-btn-sync active" onclick="calcSetDay(8)" id="calc-tab8" style="font-size:13px;padding:5px 12px;border-radius:var(--radius-sm);border:1px solid var(--green-700);cursor:pointer;background:var(--green-700);color:#fff;font-family:inherit;">D8</button>
@@ -943,7 +943,7 @@
           </table>
         </div>
         <div style="font-size:11px;color:var(--text-muted);margin-top:10px;">
-          D4–D9 → dentro da janela &nbsp;|&nbsp; ≤D3 → cedo demais &nbsp;|&nbsp; ≥D10 → descartar
+          D4 - D9 → dentro da janela &nbsp;|&nbsp; ≤D3 → cedo demais &nbsp;|&nbsp; ≥D10 → descartar
         </div>
       </div>
     </div>
@@ -992,9 +992,9 @@
     }).join('');
   }
   function status(d,tipo){
-    if(d>=4&&d<=9)return{label:'D'+d+' — dentro da janela',cls:'background:#D4EDDA;color:#1A6B3A'};
-    if(d>=10)return{label:'D'+d+' — fora',cls:'background:#FDEAEA;color:#A32D2D',note:'descartar'};
-    return{label:'D'+d+' — cedo demais',cls:'background:#FDEAEA;color:#A32D2D'};
+    if(d>=4&&d<=9)return{label:'D'+d+' - dentro da janela',cls:'background:#D4EDDA;color:#1A6B3A'};
+    if(d>=10)return{label:'D'+d+' - fora',cls:'background:#FDEAEA;color:#A32D2D',note:'descartar'};
+    return{label:'D'+d+' - cedo demais',cls:'background:#FDEAEA;color:#A32D2D'};
   }
   function renderResults(){
     var donor=document.getElementById('calc-donor-date').value;
@@ -1012,7 +1012,7 @@
     });
     document.getElementById('calc-result-body').innerHTML=rows.map(function(r){
       return '<tr>'
-        +'<td style="padding:7px 8px;border-bottom:1px solid var(--border-light);font-weight:500;">'+(r.name||'—')+'</td>'
+        +'<td style="padding:7px 8px;border-bottom:1px solid var(--border-light);font-weight:500;">'+(r.name||' - ')+'</td>'
         +'<td style="padding:7px 8px;border-bottom:1px solid var(--border-light);color:var(--text-secondary);">'+(r.type==='ciclica'?'Cíclica':'Preparada')+'</td>'
         +'<td style="padding:7px 8px;border-bottom:1px solid var(--border-light);color:var(--text-secondary);font-size:12px;">'+r.date.split('-').reverse().join('/')+'</td>'
         +'<td style="padding:7px 8px;border-bottom:1px solid var(--border-light);font-weight:500;">D'+r.d+'</td>'
@@ -1027,21 +1027,21 @@
 
     <!-- FICHAS DE CAMPO PARA DOWNLOAD -->
     <div class="card" style="background:var(--bg-card);border:2px solid var(--green-400);padding:22px;margin-top:12px;">
-      <div class="card-title" style="color:var(--green-700);margin-bottom:14px;"><svg class="icon icon-sm"><use href="#i-download"/></svg> Fichas de Campo — Impressão</div>
+      <div class="card-title" style="color:var(--green-700);margin-bottom:14px;"><svg class="icon icon-sm"><use href="#i-download"/></svg> Fichas de Campo - Impressão</div>
       <p style="font-size:calc(13px * var(--font-scale));color:var(--text-secondary);margin-bottom:16px;">Fichas para imprimir e usar na rotina do haras. Clique para baixar o PDF.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
         <a href="ficha-acompanhamento-egua.pdf" target="_blank" rel="noopener" download style="display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--bg-card-alt);border:1px solid var(--border-light);border-radius:var(--radius-sm);text-decoration:none;color:var(--text-primary);flex:1;min-width:240px;">
           <svg style="width:32px;height:32px;color:var(--green-700);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
           <div>
             <div style="font-weight:700;font-size:14px;">Ficha de Acompanhamento</div>
-            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Ovários, útero, medicação — por égua</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Ovários, útero, medicação - por égua</div>
           </div>
         </a>
         <a href="tabela-receptoras-doadora.pdf" target="_blank" rel="noopener" download style="display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--bg-card-alt);border:1px solid var(--border-light);border-radius:var(--radius-sm);text-decoration:none;color:var(--text-primary);flex:1;min-width:240px;">
           <svg style="width:32px;height:32px;color:var(--green-700);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
           <div>
             <div style="font-weight:700;font-size:14px;">Tabela Receptoras × Doadora</div>
-            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Protocolo E2, acompanhamento D0–D9, coleta</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Protocolo E2, acompanhamento D0 - D9, coleta</div>
           </div>
         </a>
       </div>
@@ -1050,7 +1050,7 @@
   </div>
 </section>
 
-<!-- ========== CAPÍTULO 1 — US→Conduta ========== -->
+<!-- ========== CAPÍTULO 1 - US→Conduta ========== -->
 <section class="chapter" id="cap1">
   <div class="chapter-header">
     <span class="ch-icon"><svg class="icon" style="width:28px;height:28px"><use href="#i-microscope"/></svg></span>
@@ -1061,10 +1061,10 @@
     <button class="ch-bookmark" data-chapter="cap1" onclick="toggleBookmark(this)" title="Salvar nos favoritos"><svg class="icon icon-lg"><use href="#i-star-o"/></svg></button>
   </div>
   <div class="chapter-body">
-    <p>Guia visual para identificar o que você está vendo no ultrassom — da preparação uterina até a formação do corpo lúteo.</p>
+    <p>Guia visual para identificar o que você está vendo no ultrassom - da preparação uterina até a formação do corpo lúteo.</p>
 
-    <!-- 1. EDEMA UTERINO — Graus -->
-    <h3 id="edema-graus">Edema Uterino — Graus de Classificação</h3>
+    <!-- 1. EDEMA UTERINO - Graus -->
+    <h3 id="edema-graus">Edema Uterino - Graus de Classificação</h3>
     <div style="margin:16px 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-card);background:var(--bg-card);">
       <img src="edema-uterino.png" alt="Graus de edema uterino" style="width:100%;display:block;">
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--border-light);">
@@ -1096,7 +1096,7 @@
       <p>Dobras uterinas começando a definir. <strong>Ação:</strong> Monitorar crescimento folicular.</p>
     </div>
     <div class="card card-green">
-      <div class="card-title"><svg class="icon icon-sm"><use href="#i-target"/></svg> Edema Máximo (Grau 3) — JANELA IDEAL</div>
+      <div class="card-title"><svg class="icon icon-sm"><use href="#i-target"/></svg> Edema Máximo (Grau 3) - JANELA IDEAL</div>
       <p>Imagem de "gomos de laranja" / "roda de carroça". Folículo &gt;35mm. <strong>APLICAR INDUTOR AGORA.</strong></p>
     </div>
 
@@ -1106,12 +1106,12 @@
       <p>Folículos crescem em média <strong>3 mm/dia</strong>. É a partir disso que se calcula quando induzir, quando inseminar e quando a receptora deve ovular.</p>
     </div>
 
-    <h3>Folículos Pré-Ovulatórios — Sinais de Proximidade</h3>
+    <h3>Folículos Pré-Ovulatórios - Sinais de Proximidade</h3>
 
     <div style="margin:16px 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-card);background:var(--bg-card);max-width:500px;">
-      <img src="foliculo-pre-ovulatorio.png" alt="Folículo pré-ovulatório — duas éguas em momentos distintos antes da ovulação" style="width:100%;display:block;">
+      <img src="foliculo-pre-ovulatorio.png" alt="Folículo pré-ovulatório - duas éguas em momentos distintos antes da ovulação" style="width:100%;display:block;">
       <div style="padding:12px 14px;border-top:1px solid var(--border-light);">
-        <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Folículo pré-ovulatório de duas éguas em momentos distintos antes da ovulação. <strong>A–B</strong> (égua 1): 20h e 4h. <strong>C–D</strong> (égua 2): 29h e 1h. <strong>Fonte:</strong> Gastal, Gastal e Ginther (2006).</div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Folículo pré-ovulatório de duas éguas em momentos distintos antes da ovulação. <strong>A - B</strong> (égua 1): 20h e 4h. <strong>C - D</strong> (égua 2): 29h e 1h. <strong>Fonte:</strong> Gastal, Gastal e Ginther (2006).</div>
       </div>
     </div>
 
@@ -1119,7 +1119,7 @@
       <table class="decision-table">
         <thead><tr><th>Quando</th><th>O que observar no US</th></tr></thead>
         <tbody>
-          <tr><td><strong>3–1 dias antes</strong></td><td>Parede dupla — camada anecoica abaixo da granulosa</td></tr>
+          <tr><td><strong>3 - 1 dias antes</strong></td><td>Parede dupla - camada anecoica abaixo da granulosa</td></tr>
           <tr><td><strong>~36h antes</strong></td><td>Folículo para de crescer</td></tr>
           <tr><td><strong>Últimas 24h</strong></td><td>Granulosa serrilhada · perda do formato esférico · parede apical mais fina · pontos ecogênicos</td></tr>
         </tbody>
@@ -1128,19 +1128,19 @@
 
     <div class="card card-green">
       <div class="card-title" id="dica-palpacao"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Dica de Palpação</div>
-      <p><strong>Pré-ovulação:</strong> o ovário fica mais <strong>flácido</strong> conforme se aproxima da ovulação, e a égua demonstra mais <strong>sensibilidade à palpação</strong> (ovário dolorido). <strong>Pós-ovulação:</strong> sente-se uma <strong>depressão palpável</strong> na fossa de ovulação — indica ovulação recente (dentro da janela para IA com sêmen refrigerado).</p>
+      <p><strong>Pré-ovulação:</strong> o ovário fica mais <strong>flácido</strong> conforme se aproxima da ovulação, e a égua demonstra mais <strong>sensibilidade à palpação</strong> (ovário dolorido). <strong>Pós-ovulação:</strong> sente-se uma <strong>depressão palpável</strong> na fossa de ovulação - indica ovulação recente (dentro da janela para IA com sêmen refrigerado).</p>
     </div>
 
 
     <h3>Leitura do Folículo Pré-Ovulatório</h3>
 
     <div class="card card-blue">
-      <div class="card-title"><svg class="icon icon-sm"><use href="#i-search"/></svg> Folículo dominante + edema baixo — o que está acontecendo?</div>
+      <div class="card-title"><svg class="icon icon-sm"><use href="#i-search"/></svg> Folículo dominante + edema baixo - o que está acontecendo?</div>
       <p>Três possibilidades:</p>
       <ol style="margin:8px 0 0 16px;font-size:inherit;line-height:1.7;">
-        <li><strong>Edema ainda vai subir</strong> — folículo em crescimento, estrógeno subindo. Volte em 24h para reavaliar.</li>
-        <li><strong style="color:var(--red-600);">Edema já subiu e está descendo</strong> — a égua já liberou LH e vai ovular por conta própria. Você perde a previsibilidade — não é mais uma indução, é uma corrida. (<a href="#dica-palpacao" style="color:inherit;text-decoration:underline;">ver Dica de Palpação acima</a>).</li>
-        <li><strong>Edema nunca subiu</strong> — dissociação folículo/edema. Suspeitar de CL residual bloqueando o estrógeno, ou disfunção ovulatória (obesidade, final da estação).</li>
+        <li><strong>Edema ainda vai subir</strong> - folículo em crescimento, estrógeno subindo. Volte em 24h para reavaliar.</li>
+        <li><strong style="color:var(--red-600);">Edema já subiu e está descendo</strong> - a égua já liberou LH e vai ovular por conta própria. Você perde a previsibilidade - não é mais uma indução, é uma corrida. (<a href="#dica-palpacao" style="color:inherit;text-decoration:underline;">ver Dica de Palpação acima</a>).</li>
+        <li><strong>Edema nunca subiu</strong> - dissociação folículo/edema. Suspeitar de CL residual bloqueando o estrógeno, ou disfunção ovulatória (obesidade, final da estação).</li>
       </ol>
     </div>
 
@@ -1154,17 +1154,17 @@
       </div>
     </div>
 
-    <p>Após a ovulação, forma-se o <strong>corpo hemorrágico (CH)</strong> — que em 2–3 dias se organiza em corpo lúteo (CL). O desafio no US é diferenciá-lo de um <strong>folículo anovulatório (FAH)</strong>, que luteiniza sem romper.</p>
+    <p>Após a ovulação, forma-se o <strong>corpo hemorrágico (CH)</strong> - que em 2 - 3 dias se organiza em corpo lúteo (CL). O desafio no US é diferenciá-lo de um <strong>folículo anovulatório (FAH)</strong>, que luteiniza sem romper.</p>
 
     <div class="card card-amber" style="margin:12px 0;">
-      <div class="card-title"><svg class="icon icon-sm"><use href="#i-alert"/></svg> CH — Normal</div>
-      <p>Anecoico ou trabeculado. <strong>Reduz e se organiza</strong> em 24–48h → evolui para CL.</p>
+      <div class="card-title"><svg class="icon icon-sm"><use href="#i-alert"/></svg> CH - Normal</div>
+      <p>Anecoico ou trabeculado. <strong>Reduz e se organiza</strong> em 24 - 48h → evolui para CL.</p>
     </div>
 
     <div style="margin:16px 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-card);background:var(--bg-card);">
       <img src="fig10-fah.png" alt="Monitorização ecográfica do folículo hemorrágico anovulatório" style="width:100%;display:block;">
       <div style="padding:12px 14px;border-top:1px solid var(--border-light);">
-        <div style="font-weight:800;font-size:13px;color:var(--red-600);margin-bottom:4px;">FAH — Folículo Anovulatório Hemorrágico</div>
+        <div style="font-weight:800;font-size:13px;color:var(--red-600);margin-bottom:4px;">FAH - Folículo Anovulatório Hemorrágico</div>
         <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Monitorização ecográfica do desenvolvimento e organização de um folículo hemorrágico anovulatório. <strong>Persiste com mesmo tamanho</strong> em 24h. Não evolui para CL funcional. <strong>Fonte:</strong> Wilsher (Sharjah Equine Hospital), in Fernandes (2018).</div>
       </div>
     </div>
@@ -1176,16 +1176,16 @@
 
     <!-- 4. CORPO LÚTEO -->
     <h3>Corpo Lúteo (CL)</h3>
-    <p>É a estrutura que produz <strong>progesterona</strong> e mantém a gestação. Permanece funcional por ~<strong>14–16 dias</strong> se não houver gestação — depois entra em luteólise naturalmente.</p>
+    <p>É a estrutura que produz <strong>progesterona</strong> e mantém a gestação. Permanece funcional por ~<strong>14 - 16 dias</strong> se não houver gestação - depois entra em luteólise naturalmente.</p>
 
     <div class="card card-green">
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-check"/></svg> Identificação</div>
-      <p>Pode ser <strong>compacto</strong> (homogêneo) ou ter <strong>cavidade central</strong> — ambos são funcionais!</p>
+      <p>Pode ser <strong>compacto</strong> (homogêneo) ou ter <strong>cavidade central</strong> - ambos são funcionais!</p>
       <p><strong>ERRO COMUM:</strong> Descartar CL com cavidade central, acreditando ser não funcional. É perfeitamente normal em éguas.</p>
     </div>
 
     <div class="card card-amber">
-      <div class="card-title"><svg class="icon icon-sm"><use href="#i-search"/></svg> Encontrei CL no ovário — está funcional ou já está em luteólise?</div>
+      <div class="card-title"><svg class="icon icon-sm"><use href="#i-search"/></svg> Encontrei CL no ovário - está funcional ou já está em luteólise?</div>
       <p><strong>Tem edema no útero?</strong> → CL <strong>não está funcional</strong>. P4 já caiu, luteólise já ocorreu ou está ocorrendo. Novo ciclo em curso.</p>
       <p><strong>Não tem edema?</strong> → CL <strong>pode estar funcional</strong>. P4 alta bloqueando estrógeno. Se precisar antecipar o retorno ao cio, aplicar PGF2α.</p>
     </div>
@@ -1194,7 +1194,7 @@
       <p>US mostra CL <strong>menor</strong>, mais <strong>ecogênico</strong> (branco/brilhante) e <strong>formato irregular</strong> (triangular vs arredondado). Edema uterino aparecendo confirma que P4 caiu e o novo ciclo iniciou.</p>
     </div>
 
-    <h3>Doppler do CL — Quando usar?</h3>
+    <h3>Doppler do CL - Quando usar?</h3>
     <p>O modo B resolve a maioria dos casos. O Doppler acrescenta quando o CL está presente mas o exame em modo B <strong>não é conclusivo</strong> sobre sua funcionalidade.</p>
 
     <div class="table-wrap">
@@ -1210,7 +1210,7 @@
 
     <div class="card card-green">
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Dica prática</div>
-      <p>Se o edema uterino já tirou a dúvida, o Doppler não é necessário. Reserve para os casos de <strong>dissociação — CL presente, sem edema</strong> — quando você precisa decidir entre aplicar PGF2α ou aguardar.</p>
+      <p>Se o edema uterino já tirou a dúvida, o Doppler não é necessário. Reserve para os casos de <strong>dissociação - CL presente, sem edema</strong> - quando você precisa decidir entre aplicar PGF2α ou aguardar.</p>
     </div>
 
     <!-- TABELA RESUMO -->
@@ -1221,19 +1221,19 @@
         <tbody>
           <tr><td>Folículos pequenos, sem edema</td><td><strong>Início de ciclo</strong></td><td>Reavaliar em alguns dias. Folículos ainda em crescimento.</td></tr>
           <tr><td>Folículo ~35 mm + edema grau 3</td><td><strong>Momento de induzir</strong></td><td>Aplicar indutor (hCG ou GnRH). Janela ideal.</td></tr>
-          <tr><td>Folículo ~39 mm + edema grau 1</td><td><strong>Próximo da ovulação?</strong></td><td>Palpar ovário: flácido? Égua dolorida? Se sim, ovulação iminente — edema já passou do pico.</td></tr>
-          <tr><td>Estrutura anecoica ou trabeculada (pós-ovulação)</td><td><strong>Corpo Hemorrágico (CH)</strong></td><td>NORMAL. Reavaliar em 24-48h — evolui para CL.</td></tr>
+          <tr><td>Folículo ~39 mm + edema grau 1</td><td><strong>Próximo da ovulação?</strong></td><td>Palpar ovário: flácido? Égua dolorida? Se sim, ovulação iminente - edema já passou do pico.</td></tr>
+          <tr><td>Estrutura anecoica ou trabeculada (pós-ovulação)</td><td><strong>Corpo Hemorrágico (CH)</strong></td><td>NORMAL. Reavaliar em 24-48h - evolui para CL.</td></tr>
           <tr><td>Estrutura grande, ecogênica heterogênea, persiste</td><td><strong>Folículo Anovulatório</strong></td><td>NÃO ovulou. Reavaliar em 24h para confirmar.</td></tr>
           <tr><td>CL + sem edema uterino</td><td><strong>CL funcional</strong></td><td>P4 alta. PGF2α se precisar antecipar retorno ao cio.</td></tr>
           <tr><td>CL + edema uterino aparecendo</td><td><strong>CL em luteólise</strong></td><td>P4 caindo. Novo ciclo em curso.</td></tr>
         </tbody>
-        <tfoot><tr><td colspan="3" style="font-size:11px;color:var(--text-muted);font-style:italic;">Tamanhos de folículos são exemplos — cada égua tem seu padrão.</td></tr></tfoot>
+        <tfoot><tr><td colspan="3" style="font-size:11px;color:var(--text-muted);font-style:italic;">Tamanhos de folículos são exemplos - cada égua tem seu padrão.</td></tr></tfoot>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ========== CAPÍTULO 2 — Indução ========== -->
+<!-- ========== CAPÍTULO 2 - Indução ========== -->
 <section class="chapter" id="cap2">
   <div class="chapter-header">
     <span class="ch-icon"><svg class="icon" style="width:28px;height:28px"><use href="#i-target"/></svg></span>
@@ -1251,10 +1251,10 @@
       <table>
         <thead><tr><th>Parâmetro</th><th>hCG</th><th>GnRH (Deslorelina)</th></tr></thead>
         <tbody>
-          <tr><td><strong>Tempo p/ ovulação</strong></td><td><strong>32-34h</strong></td><td><strong>36–48h</strong></td></tr>
+          <tr><td><strong>Tempo p/ ovulação</strong></td><td><strong>32-34h</strong></td><td><strong>36 - 48h</strong></td></tr>
           <tr><td><strong>Via</strong></td><td><strong>IV</strong> (bula)</td><td><strong>IM</strong></td></tr>
           <tr><td><strong>Vantagem</strong></td><td>Mais rápido. Mais confiável.</td><td>Não cria anticorpos. Custo menor.</td></tr>
-          <tr><td><strong>Limitação</strong></td><td>Refratariedade após uso consecutivo (<a href="#ficha-hcg" style="color:inherit;text-decoration:underline;">ver ficha hCG — Cap. 4</a>)</td><td>Maior taxa de falha</td></tr>
+          <tr><td><strong>Limitação</strong></td><td>Refratariedade após uso consecutivo (<a href="#ficha-hcg" style="color:inherit;text-decoration:underline;">ver ficha hCG - Cap. 4</a>)</td><td>Maior taxa de falha</td></tr>
           <tr><td><strong>Caso ideal</strong></td><td>1ª ovulação do ano. Éguas velhas.</td><td>Rotina. Doadoras de embrião.</td></tr>
         </tbody>
       </table>
@@ -1265,10 +1265,10 @@
       <p>Válido para éguas velhas ou início/fim da estação. O <strong>hCG comanda o tempo</strong> pela ação direta no folículo, o GnRH complementa pela via hipofisária. Existe combo comercial pronto (Rancho das Américas).</p>
     </div>
 
-    <h3>Quando Induzir — Critérios de Entrada</h3>
+    <h3>Quando Induzir - Critérios de Entrada</h3>
     <ul class="checklist">
       <li><strong>Folículo ≥ 35 mm</strong></li>
-      <li><strong>Edema uterino MÁXIMO (grau 3)</strong> — pico de estrógeno <a href="#edema-graus" style="color:var(--text-muted);text-decoration:underline;">(ver graus de edema — Cap. 1)</a></li>
+      <li><strong>Edema uterino MÁXIMO (grau 3)</strong> - pico de estrógeno <a href="#edema-graus" style="color:var(--text-muted);text-decoration:underline;">(ver graus de edema - Cap. 1)</a></li>
     </ul>
 
 
@@ -1277,32 +1277,32 @@
       <p>Folículo <strong>manteve ou reduziu</strong> o diâmetro → respondeu. Se estava com 35 mm e foi para 38 mm → <strong>provavelmente não respondeu</strong>. Vale para hCG e GnRH. <em style="color:var(--text-muted);">Biologia não é matemática, mas geralmente é isso que acontece.</em></p>
     </div>
 
-    <h3>Indutor falhou — o que fazer?</h3>
+    <h3>Indutor falhou - o que fazer?</h3>
     <div class="table-wrap">
       <table class="decision-table">
         <thead><tr><th>Situação</th><th>Conduta</th></tr></thead>
         <tbody>
-          <tr><td>Usou hCG → folículo cresceu ou não respondeu</td><td>Trocar para GnRH no próximo ciclo — mecanismo diferente</td></tr>
+          <tr><td>Usou hCG → folículo cresceu ou não respondeu</td><td>Trocar para GnRH no próximo ciclo - mecanismo diferente</td></tr>
           <tr><td>Usou GnRH → não respondeu</td><td>Tentar hCG ou COMBO no próximo ciclo</td></tr>
-          <tr><td>Ambos falharam repetidamente</td><td>Suspeitar de FAH ou disfunção ovulatória — <a href="#cap1" style="color:inherit;text-decoration:underline;">ver Cap. 1</a></td></tr>
-          <tr><td>Folículo regrediu sem ovular</td><td>Aguardar nova onda folicular. Reavaliar ovários em 7–10 dias. Se estrutura luteinizada formou — <a href="#cap1" style="color:inherit;text-decoration:underline;">ver FAH, Cap. 1</a></td></tr>
+          <tr><td>Ambos falharam repetidamente</td><td>Suspeitar de FAH ou disfunção ovulatória - <a href="#cap1" style="color:inherit;text-decoration:underline;">ver Cap. 1</a></td></tr>
+          <tr><td>Folículo regrediu sem ovular</td><td>Aguardar nova onda folicular. Reavaliar ovários em 7 - 10 dias. Se estrutura luteinizada formou - <a href="#cap1" style="color:inherit;text-decoration:underline;">ver FAH, Cap. 1</a></td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="card card-amber">
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-alert"/></svg> Atenção</div>
-      <p>Falha recorrente ao hCG pode indicar refratariedade por anticorpos — suspender por uma estação (<a href="#ficha-hcg" style="color:inherit;text-decoration:underline;">ver ficha hCG — Cap. 4</a>).</p>
+      <p>Falha recorrente ao hCG pode indicar refratariedade por anticorpos - suspender por uma estação (<a href="#ficha-hcg" style="color:inherit;text-decoration:underline;">ver ficha hCG - Cap. 4</a>).</p>
     </div>
 
-    <h3>Causas não farmacológicas de falha — investigar antes de trocar o indutor</h3>
+    <h3>Causas não farmacológicas de falha - investigar antes de trocar o indutor</h3>
     <div class="table-wrap">
       <table class="decision-table">
         <thead><tr><th>Causa</th><th>Sinal de alerta</th><th>Conduta</th></tr></thead>
         <tbody>
           <tr><td><strong>Desnutrição / baixo ECC</strong></td><td>Folículo cresce mas não ovula, ausência de edema</td><td>Melhorar condição corporal antes da próxima tentativa</td></tr>
-          <tr><td><strong>Sazonalidade</strong> (transição/anestro)</td><td>Final ou início da estação — folículos grandes sem edema</td><td>Aguardar estação ou usar protocolo de indução de ciclicidade</td></tr>
-          <tr><td><strong>Obesidade / SME</strong></td><td>Folículo grande sem edema, FAH recorrente</td><td>Causa indireta — obesidade gera distúrbios metabólicos no folículo. Ajuste de dieta (baixo amido) + exercício (<a href="#cap7" style="color:inherit;text-decoration:underline;">ver Caso 2 — Cap. 7</a>)</td></tr>
+          <tr><td><strong>Sazonalidade</strong> (transição/anestro)</td><td>Final ou início da estação - folículos grandes sem edema</td><td>Aguardar estação ou usar protocolo de indução de ciclicidade</td></tr>
+          <tr><td><strong>Obesidade / SME</strong></td><td>Folículo grande sem edema, FAH recorrente</td><td>Causa indireta - obesidade gera distúrbios metabólicos no folículo. Ajuste de dieta (baixo amido) + exercício (<a href="#cap7" style="color:inherit;text-decoration:underline;">ver Caso 2 - Cap. 7</a>)</td></tr>
           <tr><td><strong>Égua velha</strong></td><td>Resposta hormonal irregular, ovulações tardias</td><td>Preferir COMBO (hCG + GnRH), monitoramento mais frequente</td></tr>
           <tr><td><strong>Estresse / transporte</strong></td><td>Ciclo irregular, edema inconsistente</td><td>Período de adaptação antes de iniciar protocolo</td></tr>
         </tbody>
@@ -1311,23 +1311,23 @@
 
     <div class="card card-amber">
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-alert"/></svg> Regra prática</div>
-      <p>Se o folículo cresce mas o edema não aparece — o problema é <strong>fisiológico, não farmacológico</strong>. O edema precede a indução, não depende dela.</p>
+      <p>Se o folículo cresce mas o edema não aparece - o problema é <strong>fisiológico, não farmacológico</strong>. O edema precede a indução, não depende dela.</p>
     </div>
 
     <h3>Protocolo 1: Indução para Sêmen Refrigerado</h3>
     <ol class="protocol-steps">
-      <li data-step="1"><span class="step-label">Monitorar</span> — US até folículo &gt;35mm + edema grau 3</li>
-      <li data-step="2"><span class="step-label">Induzir</span> — Aplicar hCG ou GnRH</li>
-      <li data-step="3"><span class="step-label">Inseminar</span> — 24h após a aplicação do indutor</li>
-      <li data-step="4"><span class="step-label">Confirmar</span> — US para verificar ovulação</li>
+      <li data-step="1"><span class="step-label">Monitorar</span> - US até folículo &gt;35mm + edema grau 3</li>
+      <li data-step="2"><span class="step-label">Induzir</span> - Aplicar hCG ou GnRH</li>
+      <li data-step="3"><span class="step-label">Inseminar</span> - 24h após a aplicação do indutor</li>
+      <li data-step="4"><span class="step-label">Confirmar</span> - US para verificar ovulação</li>
     </ol>
 
     <h3>Protocolo 2: Indução para Sêmen Congelado</h3>
     <ol class="protocol-steps">
-      <li data-step="1"><span class="step-label">Monitorar</span> — US até folículo &gt;35mm + edema máximo</li>
-      <li data-step="2"><span class="step-label">Induzir à noite</span> — GnRH às 20h (ovulação em 36–48h) ou hCG às 22h (ovulação em 32–34h)</li>
-      <li data-step="3"><span class="step-label">US intensiva</span> — Avaliar 24h após a indução. Conforme se aproxima da ovulação, intensificar a cada 2–4h</li>
-      <li data-step="4"><span class="step-label">Inseminar</span> — O mais próximo possível da ovulação — <a href="#cap3" style="color:inherit;text-decoration:underline;">ver Timing Cap. 3</a></li>
+      <li data-step="1"><span class="step-label">Monitorar</span> - US até folículo &gt;35mm + edema máximo</li>
+      <li data-step="2"><span class="step-label">Induzir à noite</span> - GnRH às 20h (ovulação em 36 - 48h) ou hCG às 22h (ovulação em 32 - 34h)</li>
+      <li data-step="3"><span class="step-label">US intensiva</span> - Avaliar 24h após a indução. Conforme se aproxima da ovulação, intensificar a cada 2 - 4h</li>
+      <li data-step="4"><span class="step-label">Inseminar</span> - O mais próximo possível da ovulação - <a href="#cap3" style="color:inherit;text-decoration:underline;">ver Timing Cap. 3</a></li>
     </ol>
 
     <div class="card card-amber">
@@ -1337,7 +1337,7 @@
   </div>
 </section>
 
-<!-- ========== CAPÍTULO 3 — Timing ========== -->
+<!-- ========== CAPÍTULO 3 - Timing ========== -->
 <section class="chapter" id="cap3">
   <div class="chapter-header">
     <span class="ch-icon"><svg class="icon" style="width:28px;height:28px"><use href="#i-clock"/></svg></span>
@@ -1362,7 +1362,7 @@
         <tbody>
           <tr><td><strong>Até 8h</strong></td><td>~60%</td><td>~8% (normal)</td><td style="color:var(--green-600);font-weight:700;">Bom</td></tr>
           <tr><td><strong>8-16h</strong></td><td>~54%</td><td>34%</td><td style="color:var(--amber-600);font-weight:700;">Aceitável com risco</td></tr>
-          <tr><td><strong>&gt;24h</strong></td><td>~28%</td><td>~75%</td><td style="color:var(--red-600);font-weight:700;">7% prenhez final — NÃO recomendado</td></tr>
+          <tr><td><strong>&gt;24h</strong></td><td>~28%</td><td>~75%</td><td style="color:var(--red-600);font-weight:700;">7% prenhez final - NÃO recomendado</td></tr>
         </tbody>
       </table>
       <p style="font-size:11px;color:var(--text-muted);margin:8px 0 0;line-height:1.5;"><em>Valores baseados em estudos de timing com sêmen refrigerado de boa qualidade. Resultados podem variar conforme diluidor, concentração e morfologia espermática.</em></p>
@@ -1370,18 +1370,18 @@
 
     <h3>Sêmen Congelado</h3>
     <div class="card card-blue">
-      <div class="card-title"><svg class="icon icon-sm"><use href="#i-snowflake"/></svg> Janela: idealmente até 6h antes — limite até ~6h após</div>
+      <div class="card-title"><svg class="icon icon-sm"><use href="#i-snowflake"/></svg> Janela: idealmente até 6h antes - limite até ~6h após</div>
       <p>Inseminar o mais próximo possível da ovulação. Até ~6h pós-ovulação ainda é aceitável, mas a <strong>fertilidade reduz progressivamente</strong>. IA pós-ovulatória tardia não é recomendada.</p>
     </div>
 
     <div class="card card-green">
-      <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Dentro da janela de 6h — existe diferença?</div>
-      <p>Estudos com inseminação em intervalos de 3 horas pós-ovulação não demonstraram diferença estatística entre 0–3h e 3–6h. O que impacta a fertilidade não é o subintervalo dentro da janela, mas sim <strong>ultrapassar as 6h</strong>. Com sêmen de garanhão de alto valor, priorizar a inseminação o mais próximo possível da ovulação como precaução prática — a <strong>monitorização intensiva a cada 2–4h</strong> aumenta as chances de acertar o momento ideal.</p>
+      <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Dentro da janela de 6h - existe diferença?</div>
+      <p>Estudos com inseminação em intervalos de 3 horas pós-ovulação não demonstraram diferença estatística entre 0 - 3h e 3 - 6h. O que impacta a fertilidade não é o subintervalo dentro da janela, mas sim <strong>ultrapassar as 6h</strong>. Com sêmen de garanhão de alto valor, priorizar a inseminação o mais próximo possível da ovulação como precaução prática - a <strong>monitorização intensiva a cada 2 - 4h</strong> aumenta as chances de acertar o momento ideal.</p>
     </div>
   </div>
 </section>
 
-<!-- ========== CAPÍTULO 4 — Fichas ========== -->
+<!-- ========== CAPÍTULO 4 - Fichas ========== -->
 <section class="chapter" id="cap4">
   <div class="chapter-header">
     <span class="ch-icon"><svg class="icon" style="width:28px;height:28px"><use href="#i-flask"/></svg></span>
@@ -1401,24 +1401,24 @@
     <div class="hormone-card">
       <div class="hormone-card-header hc-prostaglandins" id="ficha-pgf"><svg class="icon" style="width:20px;height:20px;color:#fff"><use href="#i-circle"/></svg> Prostaglandinas (Cloprostenol / Dinoprost)</div>
       <div class="hormone-card-body">
-        <div class="hc-row"><span class="hc-label">Mecanismo</span><span class="hc-value">Agentes luteolíticos — promovem a regressão do corpo lúteo (CL), causando queda nos níveis de progesterona e retorno ao estro.</span></div>
+        <div class="hc-row"><span class="hc-label">Mecanismo</span><span class="hc-value">Agentes luteolíticos - promovem a regressão do corpo lúteo (CL), causando queda nos níveis de progesterona e retorno ao estro.</span></div>
         <div class="hc-row"><span class="hc-label">Indicação</span><span class="hc-value">Indução da luteólise para antecipar o retorno ao estro.</span></div>
-        <div class="hc-row"><span class="hc-label">CL Jovem (&lt;5d)</span><span class="hc-value">CL com menos de 5 dias responde mal à PGF2α com dose única (~20% de resposta). Utilizar <strong>dose dobrada ou duas doses em dias consecutivos</strong> (~70% de sucesso). Sinais de resposta esperados 24–36h após a aplicação: surgimento de edema uterino, CL visivelmente menor, mais ecogênico e com formato irregular (triangular).</span></div>
-        <div class="hc-row"><span class="hc-label">CL Maduro (&gt;5d)</span><span class="hc-value">Dose convencional (1,0 mL) — altamente eficaz.</span></div>
+        <div class="hc-row"><span class="hc-label">CL Jovem (&lt;5d)</span><span class="hc-value">CL com menos de 5 dias responde mal à PGF2α com dose única (~20% de resposta). Utilizar <strong>dose dobrada ou duas doses em dias consecutivos</strong> (~70% de sucesso). Sinais de resposta esperados 24 - 36h após a aplicação: surgimento de edema uterino, CL visivelmente menor, mais ecogênico e com formato irregular (triangular).</span></div>
+        <div class="hc-row"><span class="hc-label">CL Maduro (&gt;5d)</span><span class="hc-value">Dose convencional (1,0 mL) - altamente eficaz.</span></div>
         <div class="hc-row"><span class="hc-label">Meia dose</span><span class="hc-value">Para contrações uterinas (limpeza de fluido) sem luteólise. Ex: 0,5 mL.</span></div>
-        <div class="hc-row"><span class="hc-label">Efeitos</span><span class="hc-value">O Dinoprost tende a causar mais efeitos colaterais sistêmicos que o Cloprostenol — sudorese, cólica leve e desconforto. A sudorese ocorre em pelo menos <strong>30% das éguas</strong> tratadas com Dinoprost e é um sinal clínico de que o fármaco foi absorvido e está biologicamente ativo. Sua ausência, no entanto, não indica falha de absorção.</span></div>
-        <div class="hc-row"><span class="hc-label">Eficácia comparativa</span><span class="hc-value">Existe o mito de que o Cloprostenol não funciona em éguas. Isso é <strong>incorreto</strong> — ambos os princípios ativos são eficazes. Falhas geralmente ocorrem por duas razões: aplicação em CL muito jovem (&lt;5 dias) ou armazenamento inadequado com perda de potência. A diferença clínica relevante está no CL jovem: nessa janela, o Dinoprost tende a ter resposta mais consistente com dose única, enquanto o Cloprostenol pode exigir dose dupla ou reaplicação para garantir a luteólise.</span></div>
+        <div class="hc-row"><span class="hc-label">Efeitos</span><span class="hc-value">O Dinoprost tende a causar mais efeitos colaterais sistêmicos que o Cloprostenol - sudorese, cólica leve e desconforto. A sudorese ocorre em pelo menos <strong>30% das éguas</strong> tratadas com Dinoprost e é um sinal clínico de que o fármaco foi absorvido e está biologicamente ativo. Sua ausência, no entanto, não indica falha de absorção.</span></div>
+        <div class="hc-row"><span class="hc-label">Eficácia comparativa</span><span class="hc-value">Existe o mito de que o Cloprostenol não funciona em éguas. Isso é <strong>incorreto</strong> - ambos os princípios ativos são eficazes. Falhas geralmente ocorrem por duas razões: aplicação em CL muito jovem (&lt;5 dias) ou armazenamento inadequado com perda de potência. A diferença clínica relevante está no CL jovem: nessa janela, o Dinoprost tende a ter resposta mais consistente com dose única, enquanto o Cloprostenol pode exigir dose dupla ou reaplicação para garantir a luteólise.</span></div>
         <div class="card card-blue" style="margin:12px 0;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Nota técnica — Concentrações</div>
-          <p><strong>Cloprostenol</strong> (ex: Sincrocio): 75 µg/mL → 1 mL = 75 µg. <strong>Dinoprost</strong> (ex: Lutalyse): 5 mg/mL → 1 mL = 5 mg. O volume coincide entre os produtos, mas a dose ativa é diferente — sempre verificar a concentração do produto utilizado.</p>
+          <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Nota técnica - Concentrações</div>
+          <p><strong>Cloprostenol</strong> (ex: Sincrocio): 75 µg/mL → 1 mL = 75 µg. <strong>Dinoprost</strong> (ex: Lutalyse): 5 mg/mL → 1 mL = 5 mg. O volume coincide entre os produtos, mas a dose ativa é diferente - sempre verificar a concentração do produto utilizado.</p>
         </div>
         <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0 0;">
           <div style="text-align:center;">
-            <img src="prod-dinoprost.png" alt="Lutalyse Zoetis — Dinoprost" style="max-width:140px;border-radius:var(--radius-sm);">
+            <img src="prod-dinoprost.png" alt="Lutalyse Zoetis - Dinoprost" style="max-width:140px;border-radius:var(--radius-sm);">
             <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Lutalyse (Zoetis)<br>Dinoprost</div>
           </div>
           <div style="text-align:center;">
-            <img src="prod-prostaglandina.png" alt="Sincrocio Ourofino — Cloprostenol" style="max-width:140px;border-radius:var(--radius-sm);">
+            <img src="prod-prostaglandina.png" alt="Sincrocio Ourofino - Cloprostenol" style="max-width:140px;border-radius:var(--radius-sm);">
             <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Sincrocio (Ourofino)<br>Cloprostenol</div>
           </div>
         </div>
@@ -1428,20 +1428,20 @@
     <div class="hormone-card">
       <div class="hormone-card-header hc-gnrh"><svg class="icon" style="width:20px;height:20px;color:#fff"><use href="#i-circle"/></svg> Análogos de GnRH (Deslorelina / Histrelina)</div>
       <div class="hormone-card-body">
-        <div class="hc-row"><span class="hc-label">Mecanismo</span><span class="hc-value">Atuam na hipófise, estimulando liberação de LH. A égua precisa de uma <strong>onda de LH longa e sustentada</strong> (diferente da vaca). Deslorelina e Histrelina são <strong>muito mais potentes</strong> que análogos desenvolvidos para bovinos (ex: buserelina) — a potência relativa varia drasticamente entre os análogos.</span></div>
-        <div class="hc-row"><span class="hc-label">Buserelina (emergência)</span><span class="hc-value">Não é rotina em equinos — meia-vida muito curta não sustenta o pico de LH necessário. Em <strong>emergência</strong> (apenas análogo bovino disponível), a dose deve ser <strong>5 a 10× maior</strong> que a dose para bovinos (mínimo de 5 mL por aplicação).</span></div>
+        <div class="hc-row"><span class="hc-label">Mecanismo</span><span class="hc-value">Atuam na hipófise, estimulando liberação de LH. A égua precisa de uma <strong>onda de LH longa e sustentada</strong> (diferente da vaca). Deslorelina e Histrelina são <strong>muito mais potentes</strong> que análogos desenvolvidos para bovinos (ex: buserelina) - a potência relativa varia drasticamente entre os análogos.</span></div>
+        <div class="hc-row"><span class="hc-label">Buserelina (emergência)</span><span class="hc-value">Não é rotina em equinos - meia-vida muito curta não sustenta o pico de LH necessário. Em <strong>emergência</strong> (apenas análogo bovino disponível), a dose deve ser <strong>5 a 10× maior</strong> que a dose para bovinos (mínimo de 5 mL por aplicação).</span></div>
 
         <div class="hc-row"><span class="hc-label">Dose</span><span class="hc-value">Deslorelina: <strong>1,5 mg (3 mL)</strong>. Histrelina: <strong>250 µg (1 mL)</strong>. Via <strong>IM</strong>.</span></div>
-        <div class="hc-row"><span class="hc-label">Ovulação</span><span class="hc-value"><strong>36–48 horas</strong> após aplicação (média ~40–42h).</span></div>
-        <div class="hc-row"><span class="hc-label">Vantagem</span><span class="hc-value">Não cria anticorpos — ideal para <strong>uso repetido</strong>. Custo mais acessível. Manejo mais fácil.</span></div>
-        <div class="hc-row"><span class="hc-label">Limitação</span><span class="hc-value">Taxa de falha maior que hCG. Há éguas que respondem melhor ao GnRH e outras que respondem melhor ao hCG — testar individualmente.</span></div>
+        <div class="hc-row"><span class="hc-label">Ovulação</span><span class="hc-value"><strong>36 - 48 horas</strong> após aplicação (média ~40 - 42h).</span></div>
+        <div class="hc-row"><span class="hc-label">Vantagem</span><span class="hc-value">Não cria anticorpos - ideal para <strong>uso repetido</strong>. Custo mais acessível. Manejo mais fácil.</span></div>
+        <div class="hc-row"><span class="hc-label">Limitação</span><span class="hc-value">Taxa de falha maior que hCG. Há éguas que respondem melhor ao GnRH e outras que respondem melhor ao hCG - testar individualmente.</span></div>
         <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0 0;">
           <div style="text-align:center;">
-            <img src="prod-gnrh.png" alt="Sincrorrelin Ourofino — Deslorelina" style="max-width:140px;border-radius:var(--radius-sm);">
+            <img src="prod-gnrh.png" alt="Sincrorrelin Ourofino - Deslorelina" style="max-width:140px;border-radius:var(--radius-sm);">
             <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Sincrorrelin (Ourofino)<br>Deslorelina</div>
           </div>
           <div style="text-align:center;">
-            <img src="prod-histrelina.png" alt="Strelin Botupharma — Histrelina" style="max-width:140px;border-radius:var(--radius-sm);">
+            <img src="prod-histrelina.png" alt="Strelin Botupharma - Histrelina" style="max-width:140px;border-radius:var(--radius-sm);">
             <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Strelin (Botupharma)<br>Histrelina</div>
           </div>
         </div>
@@ -1452,12 +1452,12 @@
       <div class="hormone-card-header hc-hcg" id="ficha-hcg"><svg class="icon" style="width:20px;height:20px;color:#fff"><use href="#i-circle"/></svg> hCG (Gonadotrofina Coriônica Humana)</div>
       <div class="hormone-card-body">
         <div class="hc-row"><span class="hc-label">Mecanismo</span><span class="hc-value">Ação <strong>direta no folículo</strong>, mimetizando o LH. Meia-vida longa (ácido siálico).</span></div>
-        <div class="hc-row"><span class="hc-label">Dose</span><span class="hc-value"><strong>1.500–2.500 UI.</strong> A literatura não demonstra diferença de eficácia entre doses nessa faixa. Doses acima de 2.500 UI não trazem benefício adicional e podem fazer downregulation do eixo hipofisário. Na prática de campo, <strong>~1.666 UI</strong> (frasco dividido em 3) tem apresentado bons resultados.</span></div>
+        <div class="hc-row"><span class="hc-label">Dose</span><span class="hc-value"><strong>1.500 - 2.500 UI.</strong> A literatura não demonstra diferença de eficácia entre doses nessa faixa. Doses acima de 2.500 UI não trazem benefício adicional e podem fazer downregulation do eixo hipofisário. Na prática de campo, <strong>~1.666 UI</strong> (frasco dividido em 3) tem apresentado bons resultados.</span></div>
         <div class="hc-row"><span class="hc-label">Via</span><span class="hc-value"><strong>IV</strong> (indicação de bula). A via IM tem eficácia equivalente e é alternativa segura, especialmente em animais de difícil manejo.</span></div>
         <div class="hc-row"><span class="hc-label">Ovulação</span><span class="hc-value"><strong>32-34 horas</strong> após aplicação (mais rápido que GnRH).</span></div>
         <div class="hc-row"><span class="hc-label">1ª ovulação do ano</span><span class="hc-value">Ideal induzir com <strong>hCG</strong>. Início da estação tem resposta menos previsível ao GnRH.</span></div>
         <div class="hc-row" style="flex-direction:column;align-items:flex-start;">
-          <span class="hc-label" style="margin-bottom:8px;">Diluição e Armazenamento — Passo a Passo</span>
+          <span class="hc-label" style="margin-bottom:8px;">Diluição e Armazenamento - Passo a Passo</span>
           <ol style="margin:0 0 0 18px;line-height:1.8;font-size:inherit;">
             <li>Pegue um frasco de <strong>5.000 UI</strong> de hCG liofilizado (pó)</li>
             <li>Ressuspenda o pó com parte do diluente e complete o volume final para <strong>6 mL</strong> com solução fisiológica</li>
@@ -1468,14 +1468,14 @@
             <p>Uma vez diluído, o hCG perde eficácia em até <strong>3 dias se refrigerado</strong>. Congelado em doses individuais, é <strong>estável por anos</strong>. Para usar, aqueça a seringa na mão até descongelar. Não refrigere após o descongelamento.</p>
           </div>
         </div>
-        <div class="hc-row"><span class="hc-label">Risco</span><span class="hc-value">O uso repetido pode induzir formação de <strong>anticorpos anti-hCG</strong>, reduzindo a previsibilidade do timing ovulatório e, em alguns casos, causando <strong>falha ovulatória</strong>. O impacto clínico varia entre animais. Recomenda-se <strong>alternar com GnRH</strong> como precaução — se houver suspeita de refratariedade (falhas em ciclos anteriores), suspender o uso por pelo menos uma estação e utilizar exclusivamente GnRH.</span></div>
+        <div class="hc-row"><span class="hc-label">Risco</span><span class="hc-value">O uso repetido pode induzir formação de <strong>anticorpos anti-hCG</strong>, reduzindo a previsibilidade do timing ovulatório e, em alguns casos, causando <strong>falha ovulatória</strong>. O impacto clínico varia entre animais. Recomenda-se <strong>alternar com GnRH</strong> como precaução - se houver suspeita de refratariedade (falhas em ciclos anteriores), suspender o uso por pelo menos uma estação e utilizar exclusivamente GnRH.</span></div>
         <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0 0;">
           <div style="text-align:center;">
             <img src="prod-hcg.png" alt="Fertcor 5000" style="max-width:140px;border-radius:var(--radius-sm);">
             <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Fertcor 5000</div>
           </div>
           <div style="text-align:center;">
-            <img src="prod-chorulon.png" alt="Chorulon 5000 UI — MSD" style="max-width:140px;border-radius:var(--radius-sm);">
+            <img src="prod-chorulon.png" alt="Chorulon 5000 UI - MSD" style="max-width:140px;border-radius:var(--radius-sm);">
             <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Chorulon 5000 UI (MSD)</div>
           </div>
         </div>
@@ -1486,34 +1486,34 @@
       <div class="hormone-card-header hc-progesterone" id="ficha-progesterona"><svg class="icon" style="width:20px;height:20px;color:#fff"><use href="#i-circle"/></svg> Progesterona e Progestágenos (Altrenogest)</div>
       <div class="hormone-card-body">
         <div class="hc-row"><span class="hc-label">Mecanismo</span><span class="hc-value">Suprime GnRH → bloqueia desenvolvimento folicular, cio e ovulação.</span></div>
-        <div class="hc-row"><span class="hc-label">Indicações</span><span class="hc-value">Sincronização de receptoras (T.E.) e supressão de cio em éguas de competição. Existe na forma <strong>oral</strong> (comum fora do Brasil — em países onde se consome carne de cavalo, não se pode usar hormônio injetável). Alguns veterinários importam a versão oral para uso em doadoras que vão para provas, suprimindo comportamento de cio. <em style="color:var(--amber-600);">Nota: o uso de produtos importados sem registro no MAPA é de responsabilidade exclusiva do médico veterinário responsável, sujeito à legislação vigente.</em></span></div>
-        <div class="hc-row"><span class="hc-label">Aplicação</span><span class="hc-value"><strong>Rotacionar locais IM</strong> — dividir a garupa em 4 quadrantes, alternar lado direito e esquerdo, usar também pescoço. Não repetir mesmo local em &lt;15 dias. Risco de <strong>abscesso</strong> se não rotacionar.</span></div>
-        <div class="hc-row"><span class="hc-label">P4-300</span><span class="hc-value">Reaplicação a cada <strong>7 dias (1,5 g — 5 mL)</strong> ou <strong>14 dias (3 g — 10 mL)</strong>. Manutenção de gestação em receptoras: até <strong>120 dias</strong>. <em>Dica prática:</em> o protocolo semanal facilita a rotina — dia fixo para o tratador, sem risco de esquecimento.</span></div>
+        <div class="hc-row"><span class="hc-label">Indicações</span><span class="hc-value">Sincronização de receptoras (T.E.) e supressão de cio em éguas de competição. Existe na forma <strong>oral</strong> (comum fora do Brasil - em países onde se consome carne de cavalo, não se pode usar hormônio injetável). Alguns veterinários importam a versão oral para uso em doadoras que vão para provas, suprimindo comportamento de cio. <em style="color:var(--amber-600);">Nota: o uso de produtos importados sem registro no MAPA é de responsabilidade exclusiva do médico veterinário responsável, sujeito à legislação vigente.</em></span></div>
+        <div class="hc-row"><span class="hc-label">Aplicação</span><span class="hc-value"><strong>Rotacionar locais IM</strong> - dividir a garupa em 4 quadrantes, alternar lado direito e esquerdo, usar também pescoço. Não repetir mesmo local em &lt;15 dias. Risco de <strong>abscesso</strong> se não rotacionar.</span></div>
+        <div class="hc-row"><span class="hc-label">P4-300</span><span class="hc-value">Reaplicação a cada <strong>7 dias (1,5 g - 5 mL)</strong> ou <strong>14 dias (3 g - 10 mL)</strong>. Manutenção de gestação em receptoras: até <strong>120 dias</strong>. <em>Dica prática:</em> o protocolo semanal facilita a rotina - dia fixo para o tratador, sem risco de esquecimento.</span></div>
         <div class="hc-row"><span class="hc-label">Se cristalizar</span><span class="hc-value">Aquecer a 45-50°C (banho-maria ou secador) até ficar límpido. <strong>JAMAIS aplicar cristalizado</strong> → abscessos.</span></div>
         <div class="hc-row"><span class="hc-label">Implante</span><span class="hc-value">Dispositivo intravaginal de liberação lenta. <strong>1,9 g</strong> para sincronização e suporte gestacional. Implante de <strong>1 g: apenas para antecipar ciclicidade</strong>. A marca fica a critério (CIDR é o mais utilizado).</span></div>
         <div class="hc-row" style="flex-direction:column;align-items:flex-start;">
-          <span class="hc-label" style="margin-bottom:8px;">Inserção do Implante — Passo a Passo</span>
+          <span class="hc-label" style="margin-bottom:8px;">Inserção do Implante - Passo a Passo</span>
           <div class="card card-red" style="width:100%;margin-bottom:10px;">
-            <p><strong>Não utilizar aplicador bovino em éguas</strong> — a vagina equina é muito maior e a inserção é manual.</p>
+            <p><strong>Não utilizar aplicador bovino em éguas</strong> - a vagina equina é muito maior e a inserção é manual.</p>
           </div>
           <ol style="margin:0 0 0 18px;line-height:1.9;font-size:inherit;">
             <li>Retirar a cordinha do implante antes da inserção</li>
-            <li>Aplicar <strong>Terracam Spray ou Terracortril</strong> em abundância no implante e na luva de palpação — reduz o risco de vaginite e reação local ao dispositivo</li>
+            <li>Aplicar <strong>Terracam Spray ou Terracortril</strong> em abundância no implante e na luva de palpação - reduz o risco de vaginite e reação local ao dispositivo</li>
             <li>Fechar o implante manualmente, dobrando as hastes do Y sobre o corpo do dispositivo</li>
             <li>Introduzir manualmente pelo canal vaginal, posicionando o implante no <strong>fundo da vagina, próximo à cérvix</strong></li>
             <li>Após a inserção, lubrificar a luva de palpação e realizar <strong>palpação transretal para retirar o ar</strong></li>
           </ol>
         </div>
-        <div class="hc-row"><span class="hc-label">Implante × P4-300</span><span class="hc-value">O implante atinge ~<strong>6–8 ng/mL</strong> de P4 em 24h. A P4-300 atinge ~<strong>15 ng/mL</strong> no mesmo período. P4 abaixo de 6 ng/mL é <strong>risco para gestação</strong> — considerar ao escolher a via de suplementação.</span></div>
-        <div class="hc-row"><span class="hc-label">P4-300 × Altrenogest × Implante</span><span class="hc-value">Se a receptora preparada com <strong>P4-300 não for utilizada</strong> (doadora sem embrião), a égua pode ficar ~40 dias sem ciclar. <strong>Altrenogest e implante não causam esse bloqueio prolongado</strong> — por isso são preferidos para sincronização de receptoras.</span></div>
+        <div class="hc-row"><span class="hc-label">Implante × P4-300</span><span class="hc-value">O implante atinge ~<strong>6 - 8 ng/mL</strong> de P4 em 24h. A P4-300 atinge ~<strong>15 ng/mL</strong> no mesmo período. P4 abaixo de 6 ng/mL é <strong>risco para gestação</strong> - considerar ao escolher a via de suplementação.</span></div>
+        <div class="hc-row"><span class="hc-label">P4-300 × Altrenogest × Implante</span><span class="hc-value">Se a receptora preparada com <strong>P4-300 não for utilizada</strong> (doadora sem embrião), a égua pode ficar ~40 dias sem ciclar. <strong>Altrenogest e implante não causam esse bloqueio prolongado</strong> - por isso são preferidos para sincronização de receptoras.</span></div>
         <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0 0;">
           <div style="text-align:center;">
             <img src="prod-progesterona.png" alt="P4-300 Botupharma" style="max-width:140px;border-radius:var(--radius-sm);">
             <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">P4-300 (Botupharma)</div>
           </div>
           <div style="text-align:center;">
-            <img src="prod-cidr.png" alt="CIDR — Implante de progesterona" style="max-width:140px;border-radius:var(--radius-sm);">
-            <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">CIDR — Implante intravaginal</div>
+            <img src="prod-cidr.png" alt="CIDR - Implante de progesterona" style="max-width:140px;border-radius:var(--radius-sm);">
+            <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">CIDR - Implante intravaginal</div>
           </div>
           <div style="text-align:center;">
             <img src="prod-altrenogest.png" alt="Altrenogest Botupharma" style="max-width:140px;border-radius:var(--radius-sm);">
@@ -1526,12 +1526,12 @@
     <div class="hormone-card">
       <div class="hormone-card-header" id="ficha-estrogenos" style="background:linear-gradient(135deg,#e65100,#f57f17);"><svg class="icon" style="width:20px;height:20px;color:#fff"><use href="#i-circle"/></svg> Estrógenos (17β-estradiol / Benzoato / Cipionato)</div>
       <div class="hormone-card-body">
-        <div class="hc-row"><span class="hc-label">Mecanismo</span><span class="hc-value">Preparo estrogênico do endométrio — induz edema uterino e prepara o útero para receber progesterona. Usado na preparação de receptoras de embrião.</span></div>
+        <div class="hc-row"><span class="hc-label">Mecanismo</span><span class="hc-value">Preparo estrogênico do endométrio - induz edema uterino e prepara o útero para receber progesterona. Usado na preparação de receptoras de embrião.</span></div>
         <div class="hc-row"><span class="hc-label">Indicação</span><span class="hc-value">Sincronização de receptoras em programas de T.E.</span></div>
         <div class="card card-red" style="margin:8px 0;">
-          <p><svg class="icon icon-sm"><use href="#i-alert"/></svg> <strong>Na doadora, estrógeno exógeno pode causar falha ovulatória — nunca usar.</strong></p>
+          <p><svg class="icon icon-sm"><use href="#i-alert"/></svg> <strong>Na doadora, estrógeno exógeno pode causar falha ovulatória - nunca usar.</strong></p>
         </div>
-        <div class="hc-row"><span class="hc-label">Doses</span><span class="hc-value"><strong>2,5–10 mg IM.</strong> Ajustar conforme resposta ao edema. (<a href="#cap6" style="color:inherit;text-decoration:underline;">Ver protocolo completo — Cap. 6</a>)</span></div>
+        <div class="hc-row"><span class="hc-label">Doses</span><span class="hc-value"><strong>2,5 - 10 mg IM.</strong> Ajustar conforme resposta ao edema. (<a href="#cap6" style="color:inherit;text-decoration:underline;">Ver protocolo completo - Cap. 6</a>)</span></div>
         <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0 0;">
           <div style="text-align:center;">
             <img src="prod-estrogeno.png" alt="17 Beta Botupharma" style="max-width:140px;border-radius:var(--radius-sm);">
@@ -1554,10 +1554,10 @@
       <div class="hormone-card-body">
         <div class="hc-row"><span class="hc-label">Mecanismo</span><span class="hc-value">Estimula contração da musculatura lisa uterina. Promove <strong>limpeza mecânica</strong> do conteúdo intrauterino (fluido, debris, espermatozoides mortos).</span></div>
         <div class="hc-row"><span class="hc-label">Indicações</span><span class="hc-value"><strong>Pós-IA:</strong> limpeza uterina em éguas susceptíveis a endometrite pós-cobertura. <strong>Pós-lavado:</strong> eliminação de fluido residual. <strong>Retenção de placenta:</strong> estimular expulsão.</span></div>
-        <div class="hc-row"><span class="hc-label">Dose</span><span class="hc-value"><strong>10–20 UI</strong> (IV ou IM). Pode repetir a cada 4–6h se necessário.</span></div>
-        <div class="hc-row"><span class="hc-label">Timing</span><span class="hc-value">Pós-IA: aplicar <strong>4–8h após</strong> a inseminação. Precoce demais pode prejudicar o transporte espermático.</span></div>
+        <div class="hc-row"><span class="hc-label">Dose</span><span class="hc-value"><strong>10 - 20 UI</strong> (IV ou IM). Pode repetir a cada 4 - 6h se necessário.</span></div>
+        <div class="hc-row"><span class="hc-label">Timing</span><span class="hc-value">Pós-IA: aplicar <strong>4 - 8h após</strong> a inseminação. Precoce demais pode prejudicar o transporte espermático.</span></div>
         <div class="hc-row"><span class="hc-label">Ação</span><span class="hc-value">Efeito rápido e curto (~30 min).</span></div>
-        <div class="hc-row"><span class="hc-label">Dica de campo</span><span class="hc-value"><strong>Égua com útero penduloso:</strong> no último lavado, após infundir o Ringer com Lactato, aplicar 10 UI IV → esperar 3–5 min → retirar. Facilita a drenagem completa. Só usar quando tiver certeza de que é o último lavado.</span></div>
+        <div class="hc-row"><span class="hc-label">Dica de campo</span><span class="hc-value"><strong>Égua com útero penduloso:</strong> no último lavado, após infundir o Ringer com Lactato, aplicar 10 UI IV → esperar 3 - 5 min → retirar. Facilita a drenagem completa. Só usar quando tiver certeza de que é o último lavado.</span></div>
         <div style="margin:12px 0 0;text-align:center;">
           <img src="prod-ocitocina.png" alt="Ocitocina Forte UCBVet" style="max-width:140px;border-radius:var(--radius-sm);">
           <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Ocitocina Forte (UCBVet)</div>
@@ -1565,7 +1565,7 @@
       </div>
     </div>
 
-    <h3>Tabela Rápida — Armazenamento</h3>
+    <h3>Tabela Rápida - Armazenamento</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Hormônio</th><th>Local</th><th>Ponto Crítico</th></tr></thead>
@@ -1587,21 +1587,21 @@
       <strong>Esteroides</strong> (Progesterona, Estrógeno) → <strong>TEMPERATURA AMBIENTE</strong></p>
     </div>
 
-    <h3>Tabela Rápida — Doses</h3>
+    <h3>Tabela Rápida - Doses</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Hormônio</th><th>Dose</th><th>Via</th><th>Observação</th></tr></thead>
         <tbody>
           <tr><td><strong>PGF2α</strong></td><td>1,0 mL (convencional)</td><td>IM</td><td>CL &gt;5d. Meia dose (0,5 mL) p/ limpeza uterina</td></tr>
           <tr><td><strong>PGF2α</strong> (CL jovem)</td><td>Dose dobrada ou 2 doses em dias consecutivos</td><td>IM</td><td>CL &lt;5d (~70% vs ~20%)</td></tr>
-          <tr><td><strong>Deslorelina</strong></td><td>1,5 mg (3 mL)</td><td>IM</td><td>Ovulação em 36–48h</td></tr>
-          <tr><td><strong>Histrelina</strong></td><td>250 µg (1 mL)</td><td>IM</td><td>Ovulação em 36–48h</td></tr>
-          <tr><td><strong>hCG</strong></td><td>1.500–2.500 UI</td><td>IV</td><td>Ovulação em 32–34h. Fracionamento: ~1.666 UI por seringa</td></tr>
-          <tr><td><strong>Ocitocina</strong></td><td>10–20 UI</td><td>IV ou IM</td><td>Repetir a cada 4–6h. Pós-IA: 4–8h após</td></tr>
+          <tr><td><strong>Deslorelina</strong></td><td>1,5 mg (3 mL)</td><td>IM</td><td>Ovulação em 36 - 48h</td></tr>
+          <tr><td><strong>Histrelina</strong></td><td>250 µg (1 mL)</td><td>IM</td><td>Ovulação em 36 - 48h</td></tr>
+          <tr><td><strong>hCG</strong></td><td>1.500 - 2.500 UI</td><td>IV</td><td>Ovulação em 32 - 34h. Fracionamento: ~1.666 UI por seringa</td></tr>
+          <tr><td><strong>Ocitocina</strong></td><td>10 - 20 UI</td><td>IV ou IM</td><td>Repetir a cada 4 - 6h. Pós-IA: 4 - 8h após</td></tr>
           <tr><td><strong>P4-300</strong></td><td>1,5 g/5 mL (7d) ou 3 g/10 mL (14d)</td><td>IM</td><td>Rotacionar garupa + pescoço. Até 120d em receptoras</td></tr>
           <tr><td><strong>17β-estradiol</strong> (17 Beta)</td><td>10→20→10 mg</td><td>IM</td><td>1→2→1 mL. Protocolo Botupharma</td></tr>
           <tr><td><strong>BE</strong> (Sincrodiol)</td><td>Dose única: 2,5 mg ou decrescente: 5→3→2 mg</td><td>IM</td><td>2,5 mL ou 5→3→2 mL</td></tr>
-          <tr><td><strong>ECP</strong> (E.C.P.)</td><td>5–10 mg</td><td>IM</td><td>2,5–5 mL. Meia-vida ~5–7 dias</td></tr>
+          <tr><td><strong>ECP</strong> (E.C.P.)</td><td>5 - 10 mg</td><td>IM</td><td>2,5 - 5 mL. Meia-vida ~5 - 7 dias</td></tr>
         </tbody>
       </table>
     </div>
@@ -1613,12 +1613,12 @@
 
     <div style="margin:16px 0;padding:16px;background:var(--bg-card-alt);border-radius:var(--radius);border:1px solid var(--border-card);font-size:calc(13px * var(--font-scale));color:var(--text-muted);line-height:1.6;">
       <strong style="color:var(--text-secondary);">Nota sobre produtos comerciais</strong><br>
-      Os produtos citados neste guia são exemplos disponíveis no mercado brasileiro no momento da publicação. Portfólios comerciais podem mudar — produtos podem sair do mercado, ter disponibilidade regional limitada ou ser substituídos por equivalentes com o mesmo princípio ativo. Outros produtos registrados no MAPA com o mesmo princípio ativo podem ser utilizados nas mesmas doses. Sempre verifique disponibilidade e registro atualizado antes de utilizar.
+      Os produtos citados neste guia são exemplos disponíveis no mercado brasileiro no momento da publicação. Portfólios comerciais podem mudar - produtos podem sair do mercado, ter disponibilidade regional limitada ou ser substituídos por equivalentes com o mesmo princípio ativo. Outros produtos registrados no MAPA com o mesmo princípio ativo podem ser utilizados nas mesmas doses. Sempre verifique disponibilidade e registro atualizado antes de utilizar.
     </div>
   </div>
 </section>
 
-<!-- ========== CAPÍTULO 5 — Dupla Ovulação ========== -->
+<!-- ========== CAPÍTULO 5 - Dupla Ovulação ========== -->
 <section class="chapter" id="cap5">
   <div class="chapter-header">
     <span class="ch-icon"><svg class="icon" style="width:28px;height:28px"><use href="#i-target"/></svg></span>
@@ -1630,24 +1630,24 @@
   </div>
   <div class="chapter-body">
 
-    <p><strong>Objetivo:</strong> Aumentar a probabilidade estatística de recuperar pelo menos um embrião. Éguas com ovulação simples têm taxa de recuperação de ~50% por ciclo. Com dupla ovulação, essa probabilidade sobe para ~100% — tornando a recuperação de ao menos um embrião quase certa. O objetivo não é necessariamente obter dois embriões, mas <strong>garantir um</strong>.</p>
+    <p><strong>Objetivo:</strong> Aumentar a probabilidade estatística de recuperar pelo menos um embrião. Éguas com ovulação simples têm taxa de recuperação de ~50% por ciclo. Com dupla ovulação, essa probabilidade sobe para ~100% - tornando a recuperação de ao menos um embrião quase certa. O objetivo não é necessariamente obter dois embriões, mas <strong>garantir um</strong>.</p>
 
     <ol class="protocol-steps">
-      <li data-step="1"><span class="step-label">PGF2α</span> — No dia da coleta anterior</li>
-      <li data-step="2"><span class="step-label">Monitorar</span> — 2 folículos entre 20–25 mm (diferença máx. 5 mm entre eles)</li>
-      <li data-step="3"><span class="step-label">Microdose GnRH 2×/dia</span> — manhã e tarde, via IM:<br>
-        &nbsp;&nbsp;• Deslorelina: <strong>100–150 µg</strong> por aplicação (0,4–0,5 mL de Sincrorrelin, Ourofino)<br>
-        &nbsp;&nbsp;• Histrelina: <strong>25–50 µg</strong> por aplicação (0,1–0,2 mL de Strelin, Botupharma)<br>
+      <li data-step="1"><span class="step-label">PGF2α</span> - No dia da coleta anterior</li>
+      <li data-step="2"><span class="step-label">Monitorar</span> - 2 folículos entre 20 - 25 mm (diferença máx. 5 mm entre eles)</li>
+      <li data-step="3"><span class="step-label">Microdose GnRH 2×/dia</span> - manhã e tarde, via IM:<br>
+        &nbsp;&nbsp;• Deslorelina: <strong>100 - 150 µg</strong> por aplicação (0,4 - 0,5 mL de Sincrorrelin, Ourofino)<br>
+        &nbsp;&nbsp;• Histrelina: <strong>25 - 50 µg</strong> por aplicação (0,1 - 0,2 mL de Strelin, Botupharma)<br>
         Preparar seringas identificadas e deixar com o tratador.</li>
-      <li data-step="4"><span class="step-label">4–5 dias</span> — até ambos atingirem ~35 mm</li>
-      <li data-step="5"><span class="step-label">Indução</span> — hCG 2.500 UI + GnRH</li>
+      <li data-step="4"><span class="step-label">4 - 5 dias</span> - até ambos atingirem ~35 mm</li>
+      <li data-step="5"><span class="step-label">Indução</span> - hCG 2.500 UI + GnRH</li>
     </ol>
 
     <div class="card card-red">
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-alert"/></svg> Dois critérios obrigatórios para iniciar</div>
       <ul style="margin:6px 0 0 16px;line-height:1.8;">
-        <li>Dois folículos entre <strong>20 e 25 mm</strong> — acima de 25 mm a dominância já está estabelecida</li>
-        <li>Diferença entre os dois folículos <strong>≤ 5 mm</strong> — precisam estar próximos em tamanho</li>
+        <li>Dois folículos entre <strong>20 e 25 mm</strong> - acima de 25 mm a dominância já está estabelecida</li>
+        <li>Diferença entre os dois folículos <strong>≤ 5 mm</strong> - precisam estar próximos em tamanho</li>
       </ul>
     </div>
 
@@ -1658,7 +1658,7 @@
   </div>
 </section>
 
-<!-- ========== CAPÍTULO 6 — T.E. ========== -->
+<!-- ========== CAPÍTULO 6 - T.E. ========== -->
 <section class="chapter" id="cap6">
   <div class="chapter-header">
     <span class="ch-icon"><svg class="icon" style="width:28px;height:28px"><use href="#i-embryo"/></svg></span>
@@ -1678,14 +1678,14 @@
 
     <!-- PREMISSA -->
     <div class="card card-blue">
-      <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Premissa — A Lógica do Protocolo</div>
+      <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Premissa - A Lógica do Protocolo</div>
       <div class="card card-red" style="margin-bottom:12px;">
         <div class="card-title"><svg class="icon icon-sm"><use href="#i-alert"/></svg> REGRA CENTRAL DA SINCRONIZAÇÃO</div>
-        <p>A receptora deve estar entre o <strong>D4 e o D9 de progesterona</strong> no momento da transferência. Este é o critério que define se uma égua pode ou não ser usada — toda a sincronização é construída para garantir que ela esteja nessa janela no dia da TE.</p>
+        <p>A receptora deve estar entre o <strong>D4 e o D9 de progesterona</strong> no momento da transferência. Este é o critério que define se uma égua pode ou não ser usada - toda a sincronização é construída para garantir que ela esteja nessa janela no dia da TE.</p>
         <p style="margin-top:8px;"><strong>CL com mais de 9 dias no dia da TE → receptora descartada.</strong></p>
       </div>
-      <p>Para que a receptora esteja nessa janela, o útero precisa ter passado por <strong>alguns dias de estrógeno</strong> seguidos de <strong>alguns dias de progesterona</strong>. Conhecendo essa fisiologia, <strong>qualquer égua pode ser receptora — cíclica ou acíclica</strong>. O que muda é a origem dos hormônios: endógenos (égua ciclando) ou exógenos (protocolo hormonal).</p>
-      <p style="margin-top:8px;"><svg class="icon icon-sm"><use href="#i-alert"/></svg> <strong>Na doadora, estrógeno exógeno pode causar falha ovulatória — nunca usar.</strong></p>
+      <p>Para que a receptora esteja nessa janela, o útero precisa ter passado por <strong>alguns dias de estrógeno</strong> seguidos de <strong>alguns dias de progesterona</strong>. Conhecendo essa fisiologia, <strong>qualquer égua pode ser receptora - cíclica ou acíclica</strong>. O que muda é a origem dos hormônios: endógenos (égua ciclando) ou exógenos (protocolo hormonal).</p>
+      <p style="margin-top:8px;"><svg class="icon icon-sm"><use href="#i-alert"/></svg> <strong>Na doadora, estrógeno exógeno pode causar falha ovulatória - nunca usar.</strong></p>
     </div>
 
     <!-- TABELA DE TRIAGEM -->
@@ -1695,10 +1695,10 @@
       <table class="decision-table">
         <thead><tr><th>Tipo de receptora</th><th>Conduta resumida</th><th>Ver</th></tr></thead>
         <tbody>
-          <tr><td>Cíclica — CL + folículo ≥35 mm</td><td>PGF2α → aguardar ovulação da doadora → induzir</td><td><strong>Caso 4</strong></td></tr>
-          <tr><td>Cíclica — CL + folículo ~14 mm</td><td>PGF2α → monitorar crescimento folicular</td><td><strong>Caso 6</strong></td></tr>
-          <tr><td>Cíclica — folículo pronto mas "atrasado" (D5+)</td><td>Indutor + P4 simultâneos</td><td><strong>Caso 8</strong></td></tr>
-          <tr><td>Ciclante com CL ativo — timing não funciona</td><td>Protocolo dia a dia — ver seção abaixo</td><td>—</td></tr>
+          <tr><td>Cíclica - CL + folículo ≥35 mm</td><td>PGF2α → aguardar ovulação da doadora → induzir</td><td><strong>Caso 4</strong></td></tr>
+          <tr><td>Cíclica - CL + folículo ~14 mm</td><td>PGF2α → monitorar crescimento folicular</td><td><strong>Caso 6</strong></td></tr>
+          <tr><td>Cíclica - folículo pronto mas "atrasado" (D5+)</td><td>Indutor + P4 simultâneos</td><td><strong>Caso 8</strong></td></tr>
+          <tr><td>Ciclante com CL ativo - timing não funciona</td><td>Protocolo dia a dia - ver seção abaixo</td><td> - </td></tr>
           <tr><td>Acíclica (sem folículo)</td><td>Protocolo completo E2 + P4</td><td><strong>Caso 5</strong></td></tr>
           <tr><td>Formou FAH</td><td>P4 exógena a partir do D0 estimado</td><td><strong>Caso 7</strong></td></tr>
         </tbody>
@@ -1710,10 +1710,10 @@
     </div>
 
     <!-- 1. FASE ESTROGÊNICA -->
-    <h3>1. Fase Estrogênica — Preparação e Seleção da Receptora</h3>
-    <p>Aplicar estrógeno em todas as éguas candidatas disponíveis. O objetivo não é mimetizar o ciclo — é garantir a janela mínima de exposição endometrial. A égua precisa manter edema uterino por pelo menos 3 dias consecutivos.</p>
+    <h3>1. Fase Estrogênica - Preparação e Seleção da Receptora</h3>
+    <p>Aplicar estrógeno em todas as éguas candidatas disponíveis. O objetivo não é mimetizar o ciclo - é garantir a janela mínima de exposição endometrial. A égua precisa manter edema uterino por pelo menos 3 dias consecutivos.</p>
 
-    <p><a href="#ficha-estrogenos" style="color:inherit;text-decoration:underline;">Para produtos e imagens — ver ficha Estrógenos no Cap. 4.</a></p>
+    <p><a href="#ficha-estrogenos" style="color:inherit;text-decoration:underline;">Para produtos e imagens - ver ficha Estrógenos no Cap. 4.</a></p>
 
     <h4>Quanto aplicar?</h4>
     <div class="table-wrap">
@@ -1723,7 +1723,7 @@
           <tr><td><strong>17β-estradiol</strong> (17 Beta, Botupharma)</td><td>10 → 20 → 10 mg</td><td>1 → 2 → 1 mL</td><td>Protocolo do fabricante</td></tr>
           <tr><td rowspan="2"><strong>BE</strong> (Sincrodiol, Ourofino)</td><td>Dose única: 2,5 mg</td><td>2,5 mL</td><td>Literatura</td></tr>
           <tr><td>Doses decrescentes: 5 → 3 → 2 mg</td><td>5 → 3 → 2 mL</td><td>Literatura</td></tr>
-          <tr><td><strong>ECP</strong> (E.C.P., Zoetis)</td><td>5–10 mg (dose única)</td><td>2,5–5 mL</td><td>Bula para éguas</td></tr>
+          <tr><td><strong>ECP</strong> (E.C.P., Zoetis)</td><td>5 - 10 mg (dose única)</td><td>2,5 - 5 mL</td><td>Bula para éguas</td></tr>
         </tbody>
       </table>
     </div>
@@ -1731,7 +1731,7 @@
 
     <div class="card card-blue">
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Por que as doses do 17β-estradiol são maiores que as do BE?</div>
-      <p>O 17β-estradiol tem meia-vida mais curta (~1–2 dias) — o pico ocorre em 6 horas e cai rapidamente. Por isso doses maiores são necessárias para manter o edema uterino. O BE, com meia-vida maior (~3 dias), e o ECP (~5–7 dias) sustentam o efeito com doses menores.</p>
+      <p>O 17β-estradiol tem meia-vida mais curta (~1 - 2 dias) - o pico ocorre em 6 horas e cai rapidamente. Por isso doses maiores são necessárias para manter o edema uterino. O BE, com meia-vida maior (~3 dias), e o ECP (~5 - 7 dias) sustentam o efeito com doses menores.</p>
     </div>
 
     <div class="card card-green">
@@ -1746,17 +1746,17 @@
     </div>
 
     <!-- PROTOCOLO RECEPTORA CICLANTE COM CL -->
-    <h3>Protocolo: Receptora Ciclante com CL — Passo a Passo</h3>
-    <p><strong>Quando usar:</strong> receptora ciclante com CL ativo cujo timing natural não permite sincronizar com a doadora — folículo fora da janela ou impossibilidade de monitorar a ovulação da receptora.</p>
+    <h3>Protocolo: Receptora Ciclante com CL - Passo a Passo</h3>
+    <p><strong>Quando usar:</strong> receptora ciclante com CL ativo cujo timing natural não permite sincronizar com a doadora - folículo fora da janela ou impossibilidade de monitorar a ovulação da receptora.</p>
 
     <div class="table-wrap">
       <table class="decision-table">
         <thead><tr><th>Dia</th><th>Conduta</th></tr></thead>
         <tbody>
-          <tr><td><strong>Dia 0</strong> — ovulação da doadora</td><td>PGF2α dose dobrada + 17β-estradiol 10 mg IM</td></tr>
+          <tr><td><strong>Dia 0</strong> - ovulação da doadora</td><td>PGF2α dose dobrada + 17β-estradiol 10 mg IM</td></tr>
           <tr><td><strong>Dia 1</strong></td><td>PGF2α dose dobrada + 17β-estradiol 20 mg IM</td></tr>
           <tr><td><strong>Dia 2</strong></td><td>17β-estradiol 10 mg IM</td></tr>
-          <tr><td><strong>Dia 3</strong></td><td>Sem medicação — intervalo para regressão do edema uterino</td></tr>
+          <tr><td><strong>Dia 3</strong></td><td>Sem medicação - intervalo para regressão do edema uterino</td></tr>
           <tr><td><strong>Dia 4</strong></td><td>Iniciar P4 injetável</td></tr>
           <tr><td><strong>Dia 8</strong></td><td><strong>Transferência do embrião</strong></td></tr>
         </tbody>
@@ -1774,7 +1774,7 @@
     </div>
 
     <!-- 2. FASE DE PROGESTERONA -->
-    <h3>2. Fase de Progesterona — Janela Mínima e D0</h3>
+    <h3>2. Fase de Progesterona - Janela Mínima e D0</h3>
     <p><strong>D0 da receptora</strong> = aplicação da P4 (protocolo preparado) ou ovulação confirmada (receptora cíclica). A TE convencional ocorre no <strong>D8</strong>.</p>
 
     <div class="table-wrap">
@@ -1794,17 +1794,17 @@
       <table class="decision-table">
         <thead><tr><th>Parâmetro</th><th>Implante (1,9 g)</th><th>P4-300 Injetável</th></tr></thead>
         <tbody>
-          <tr><td>Pico de P4</td><td>~6–8 ng/mL em até 24h</td><td>~15 ng/mL em 24h</td></tr>
-          <tr><td>Curva</td><td>Sobe rápido, cai rápido</td><td>Sustentada por 7–14 dias</td></tr>
-          <tr><td>Necessidade de troca</td><td>Sim — trocar antes do diagnóstico</td><td>Reaplicar a cada 7 ou 14 dias</td></tr>
-          <tr><td>Risco de bloqueio prolongado</td><td>Não</td><td>Sim (<a href="#ficha-progesterona" style="color:inherit;text-decoration:underline;">ver ficha Progesterona — Cap. 4</a>)</td></tr>
-          <tr><td>Risco de vaginite</td><td>Sim — aplicar Terracam Spray ou Terracortril antes da inserção</td><td>—</td></tr>
+          <tr><td>Pico de P4</td><td>~6 - 8 ng/mL em até 24h</td><td>~15 ng/mL em 24h</td></tr>
+          <tr><td>Curva</td><td>Sobe rápido, cai rápido</td><td>Sustentada por 7 - 14 dias</td></tr>
+          <tr><td>Necessidade de troca</td><td>Sim - trocar antes do diagnóstico</td><td>Reaplicar a cada 7 ou 14 dias</td></tr>
+          <tr><td>Risco de bloqueio prolongado</td><td>Não</td><td>Sim (<a href="#ficha-progesterona" style="color:inherit;text-decoration:underline;">ver ficha Progesterona - Cap. 4</a>)</td></tr>
+          <tr><td>Risco de vaginite</td><td>Sim - aplicar Terracam Spray ou Terracortril antes da inserção</td><td> - </td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="card card-red">
-      <div class="card-title"><svg class="icon icon-sm"><use href="#i-alert"/></svg> Atenção — Sustentação do implante</div>
+      <div class="card-title"><svg class="icon icon-sm"><use href="#i-alert"/></svg> Atenção - Sustentação do implante</div>
       <p>O implante pode não sustentar P4 acima de 6 ng/mL a médio prazo. Em receptoras de alto valor, considerar <strong>associar P4 injetável</strong> ou <strong>monitorar P4 sérica</strong>.</p>
     </div>
 
@@ -1813,29 +1813,29 @@
       <p><strong>Implante de 1 g</strong> → apenas para antecipar ciclicidade, não para suporte gestacional. Para sincronização e gestação → <strong>implante de 1,9 g</strong>.</p>
     </div>
 
-    <!-- CASO ESPECIAL — ICSI -->
-    <h3>Caso especial — Embrião vitrificado (ICSI)</h3>
-    <p>Quando o embrião já está produzido e aguarda receptora, a lógica muda: não há urgência de coleta, e a janela da receptora pode ser planejada com mais precisão. O embrião ICSI é transferido no estágio de blastocisto precoce, equivalente a um embrião in vivo de ~D6–6,5.</p>
+    <!-- CASO ESPECIAL - ICSI -->
+    <h3>Caso especial - Embrião vitrificado (ICSI)</h3>
+    <p>Quando o embrião já está produzido e aguarda receptora, a lógica muda: não há urgência de coleta, e a janela da receptora pode ser planejada com mais precisão. O embrião ICSI é transferido no estágio de blastocisto precoce, equivalente a um embrião in vivo de ~D6 - 6,5.</p>
 
     <div class="card card-green">
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-check"/></svg> Janela ideal</div>
       <ul style="margin:8px 0 0 16px;line-height:1.8;">
-        <li><strong>Janela ideal:</strong> receptora em D4 de P4 (D4–D5 são aceitáveis)</li>
-        <li><strong>Dupla ovulação em D3:</strong> aproveitável — dois CLs geram P4 maior, compensando o dia a menos</li>
-        <li><strong>Embriões vitrificados:</strong> janela pode ser ainda mais estreita — preferir D4</li>
+        <li><strong>Janela ideal:</strong> receptora em D4 de P4 (D4 - D5 são aceitáveis)</li>
+        <li><strong>Dupla ovulação em D3:</strong> aproveitável - dois CLs geram P4 maior, compensando o dia a menos</li>
+        <li><strong>Embriões vitrificados:</strong> janela pode ser ainda mais estreita - preferir D4</li>
       </ul>
     </div>
 
     <!-- DOPPLER COMO DESEMPATE -->
-    <h3>Qual receptora recebe o embrião? — Doppler como desempate</h3>
+    <h3>Qual receptora recebe o embrião? - Doppler como desempate</h3>
     <p>Entre receptoras que passam pelos critérios clínicos com desempenho semelhante ao modo B, o <strong>Doppler colorido do CL</strong> ajuda a priorizar.</p>
 
     <div class="card card-blue">
       <div class="card-title"><svg class="icon icon-sm"><use href="#i-search"/></svg> Como funciona?</div>
-      <p>CL com <strong>alta perfusão vascular</strong> ao Doppler indica estrutura ativa e bem vascularizada — mais apta a sustentar a gestação do que um CL de aspecto similar ao modo B mas com sinal vascular reduzido.</p>
-      <p style="margin-top:8px;">Não é exame de rotina obrigatória — é um <strong>desempate objetivo</strong> quando o modo B não distingue.</p>
+      <p>CL com <strong>alta perfusão vascular</strong> ao Doppler indica estrutura ativa e bem vascularizada - mais apta a sustentar a gestação do que um CL de aspecto similar ao modo B mas com sinal vascular reduzido.</p>
+      <p style="margin-top:8px;">Não é exame de rotina obrigatória - é um <strong>desempate objetivo</strong> quando o modo B não distingue.</p>
       <div style="margin-top:12px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border-card);">
-        <img src="doppler-cl-azevedo.png" alt="Doppler do CL — perfusão vascular de 5% a 90% em receptoras" style="width:100%;display:block;">
+        <img src="doppler-cl-azevedo.png" alt="Doppler do CL - perfusão vascular de 5% a 90% em receptoras" style="width:100%;display:block;">
         <div style="padding:10px 14px;background:var(--bg-card-alt);border-top:1px solid var(--border-light);">
           <div style="font-size:11px;color:var(--text-secondary);line-height:1.5;">Avaliação subjetiva da perfusão vascular do CL ao Doppler em receptoras. A = 5%, B = 10%, C = 20%, D = 30%, E = 50%, F = 60%, G = 70%, H = 80%, I = 90%. <strong>Fonte:</strong> Azevedo et al. (2021).</div>
         </div>
@@ -1845,7 +1845,7 @@
   </div>
 </section>
 
-<!-- ========== CAPÍTULO 7 — Casos ========== -->
+<!-- ========== CAPÍTULO 7 - Casos ========== -->
 <section class="chapter" id="cap7">
   <div class="chapter-header">
     <span class="ch-icon"><svg class="icon" style="width:28px;height:28px"><use href="#i-clipboard"/></svg></span>
@@ -1862,8 +1862,8 @@
     <div class="case-study">
       <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-race"/></svg> Caso 1: A Égua que Ovulou "Rápido Demais"</div>
       <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Égua Mangalarga induzida com Histrelina às 18h (folículo 35mm, edema grau 3). Veterinário retorna 36h depois para IA com sêmen refrigerado — égua já ovulada, cérvix fechada e tensa.</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>Cérvix fechada = progesterona já subindo significativamente → ovulação provavelmente há &gt;12h. Algumas éguas respondem mais rápido que a média (36–48h).</p></div>
+        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Égua Mangalarga induzida com Histrelina às 18h (folículo 35mm, edema grau 3). Veterinário retorna 36h depois para IA com sêmen refrigerado - égua já ovulada, cérvix fechada e tensa.</p></div>
+        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>Cérvix fechada = progesterona já subindo significativamente → ovulação provavelmente há &gt;12h. Algumas éguas respondem mais rápido que a média (36 - 48h).</p></div>
         <div class="cs-section"><div class="cs-section-label">Conduta</div><p>IA realizada com baixa expectativa. Probabilidade de concepção muito reduzida pelo envelhecimento do oócito.</p></div>
         <div class="card card-green" style="margin-top:12px;">
           <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Lição</div>
@@ -1894,7 +1894,7 @@
       <div class="case-study-body">
         <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora acíclica preparada com estrógeno + implante de progesterona. T.E. bem-sucedida, gestação perdida aos 27 dias. Causa provável: <strong>janela de progesterona baixa</strong> entre a remoção do implante e a absorção da P4 injetável.</p></div>
         <div class="card card-red" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Lição — CRÍTICA</div>
+          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Lição - CRÍTICA</div>
           <p>Ao trocar fontes de progesterona, <strong>sobrepor os tratamentos por no mínimo 48h</strong>. Para conduta detalhada, ver <strong>Caso 10</strong>.</p>
         </div>
       </div>
@@ -1915,10 +1915,10 @@
     <div class="case-study">
       <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-syringe"/></svg> Caso 5: Receptora acíclica (sem folículo, com ou sem CL)</div>
       <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora sem folículo — sem estrógeno endógeno. Precisa de protocolo hormonal completo.</p></div>
+        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora sem folículo - sem estrógeno endógeno. Precisa de protocolo hormonal completo.</p></div>
         <div class="card card-green" style="margin-top:12px;">
           <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
-          <p>Se houver CL, aplicar <strong>PGF2α primeiro</strong> (2 doses se CL recente) → 5 dias de estrógeno <strong>sem P4</strong> → No D4 da doadora iniciar P4 (= D0 da receptora). <strong>TE no D8.</strong> Manter P4 até ~120 dias — depende totalmente de P4 exógena.</p>
+          <p>Se houver CL, aplicar <strong>PGF2α primeiro</strong> (2 doses se CL recente) → 5 dias de estrógeno <strong>sem P4</strong> → No D4 da doadora iniciar P4 (= D0 da receptora). <strong>TE no D8.</strong> Manter P4 até ~120 dias - depende totalmente de P4 exógena.</p>
         </div>
       </div>
     </div>
@@ -1927,14 +1927,14 @@
       <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-target"/></svg> Caso 6: Receptora com CL + folículo ~14 mm</div>
       <div class="case-study-body">
         <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora com folículo de ~14 mm em crescimento, ainda sem edema uterino.</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>Com 14 mm o estrógeno endógeno ainda não é suficiente para gerar edema — mas vai ser. Crescendo ~3 mm/dia, em ~7 dias estará em 35 mm. Não precisa de estrógeno exógeno.</p></div>
+        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>Com 14 mm o estrógeno endógeno ainda não é suficiente para gerar edema - mas vai ser. Crescendo ~3 mm/dia, em ~7 dias estará em 35 mm. Não precisa de estrógeno exógeno.</p></div>
         <div class="card card-green" style="margin-top:12px;">
           <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
           <p>PGF2α para lisar o CL → monitorar crescimento folicular → quando atingir ≥35 mm + edema, confirmar ovulação da doadora e <strong>induzir a receptora</strong>. Após ovulação da receptora, iniciar P4 exógena imediatamente e manter por ~7 dias até o CL próprio assumir. <strong>TE no D8 da receptora.</strong></p>
         </div>
         <div class="card card-amber" style="margin-top:12px;">
           <div class="card-title"><svg class="icon icon-sm"><use href="#i-alert"/></svg> Atenção</div>
-          <p>O timing precisa ser calculado a partir da doadora — a receptora deve ovular de forma que seu D8 coincida com a data da coleta. Se o folículo estiver crescendo rápido demais ou devagar, ajustar com indução ou nova PGF2α conforme necessário.</p>
+          <p>O timing precisa ser calculado a partir da doadora - a receptora deve ovular de forma que seu D8 coincida com a data da coleta. Se o folículo estiver crescendo rápido demais ou devagar, ajustar com indução ou nova PGF2α conforme necessário.</p>
         </div>
       </div>
     </div>
@@ -1943,10 +1943,10 @@
       <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-alert"/></svg> Caso 7: Receptora formou FAH (Folículo Anovulatório Hemorrágico)</div>
       <div class="case-study-body">
         <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora acompanhada para ovular, mas formou folículo hemorrágico anovulatório.</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>O FAH não ovulou, mas o útero passou pela fase estrogênica. Ainda utilizável <strong>se sabemos quando se formou</strong> — porque conseguimos definir o D0 e iniciar P4 exógena no momento certo.</p></div>
+        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>O FAH não ovulou, mas o útero passou pela fase estrogênica. Ainda utilizável <strong>se sabemos quando se formou</strong> - porque conseguimos definir o D0 e iniciar P4 exógena no momento certo.</p></div>
         <div class="card card-green" style="margin-top:12px;">
           <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
-          <p>Iniciar P4 exógena no momento em que a ovulação deveria ter ocorrido = D0. <strong>TE no D8.</strong> Manter P4 durante toda a gestação — FAH não produz P4 adequada.</p>
+          <p>Iniciar P4 exógena no momento em que a ovulação deveria ter ocorrido = D0. <strong>TE no D8.</strong> Manter P4 durante toda a gestação - FAH não produz P4 adequada.</p>
         </div>
         <div class="card card-red" style="margin-top:12px;">
           <div class="card-title"><svg class="icon icon-sm"><use href="#i-ban"/></svg> FAH de ciclo anterior sem histórico → NÃO utilizar</div>
@@ -1958,8 +1958,8 @@
     <div class="case-study">
       <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-bolt"/></svg> Caso 8: Folículo da receptora atinge 35 mm no D5 da doadora</div>
       <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Folículo da receptora atinge 35 mm no D5 da doadora — pronto, mas "atrasado".</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>O pico de LH endógeno provocado pelo indutor sobrepõe a inibição da P4 — é possível aplicar ambos ao mesmo tempo.</p></div>
+        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Folículo da receptora atinge 35 mm no D5 da doadora - pronto, mas "atrasado".</p></div>
+        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>O pico de LH endógeno provocado pelo indutor sobrepõe a inibição da P4 - é possível aplicar ambos ao mesmo tempo.</p></div>
         <div class="card card-green" style="margin-top:12px;">
           <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
           <p><strong>Indutor + P4 simultâneos.</strong> P4 por ~7 dias até CL próprio assumir. <strong>TE no D8.</strong></p>
@@ -1973,7 +1973,7 @@
         <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora com folículo ≥35 mm mas <strong>sem edema uterino</strong>. Estrógeno exógeno não está sendo utilizado.</p></div>
         <div class="card card-green" style="margin-top:12px;">
           <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
-          <p><strong>PGF2α antes de descartar.</strong> Reavaliar em 24–36h — se o edema aparecer, a égua é utilizável. CL residual não identificado é a causa mais comum.</p>
+          <p><strong>PGF2α antes de descartar.</strong> Reavaliar em 24 - 36h - se o edema aparecer, a égua é utilizável. CL residual não identificado é a causa mais comum.</p>
         </div>
       </div>
     </div>
@@ -1984,7 +1984,7 @@
         <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora gestante com implante intravaginal. O veterinário remove o implante e aplica a P4 injetável no mesmo dia.</p></div>
         <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>A P4 injetável leva tempo para atingir níveis plasmáticos adequados. Ao remover o implante no mesmo dia, há uma <strong>janela de progesterona baixa</strong> que pode causar perda gestacional.</p></div>
         <div class="card card-red" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta — CRÍTICA</div>
+          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta - CRÍTICA</div>
           <p>Iniciar a P4 injetável e remover o implante <strong>somente 2 dias APÓS</strong>. Nunca remover antes. <strong>Sobrepor os tratamentos</strong> para evitar queda abrupta de progesterona.</p>
         </div>
       </div>
@@ -1998,13 +1998,13 @@
         <div class="cs-section"><div class="cs-section-label">Cenário A</div><p>Maior folículo com 20 mm, segundo com 17 mm.</p></div>
         <div class="card card-green" style="margin-top:12px;">
           <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Resposta</div>
-          <p><strong>Iniciar amanhã.</strong> Amanhã o maior terá ~23 mm e o segundo ~20 mm — ambos na janela.</p>
+          <p><strong>Iniciar amanhã.</strong> Amanhã o maior terá ~23 mm e o segundo ~20 mm - ambos na janela.</p>
         </div>
 
         <div class="cs-section" style="margin-top:20px;"><div class="cs-section-label">Cenário B</div><p>Maior folículo com 23 mm, segundo com 19 mm.</p></div>
         <div class="card card-amber" style="margin-top:12px;">
           <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Resposta</div>
-          <p><strong>Iniciar hoje.</strong> Amanhã o maior terá ~26 mm — já estabeleceu dominância.</p>
+          <p><strong>Iniciar hoje.</strong> Amanhã o maior terá ~26 mm - já estabeleceu dominância.</p>
         </div>
 
         <div class="card card-red" style="margin-top:12px;">
@@ -2017,21 +2017,21 @@
 </section>
 
 
-<!-- ========== CAPÍTULO 8 — FAQ ========== -->
+<!-- ========== CAPÍTULO 8 - FAQ ========== -->
 <section class="chapter" id="cap8">
   <div class="chapter-header">
     <span class="ch-icon"><svg class="icon" style="width:28px;height:28px"><use href="#i-help"/></svg></span>
     <div>
       <div class="ch-num">Capítulo 8</div>
-      <h2>FAQ — Perguntas Frequentes</h2>
+      <h2>FAQ - Perguntas Frequentes</h2>
     </div>
     <button class="ch-bookmark" data-chapter="cap8" onclick="toggleBookmark(this)" title="Salvar nos favoritos"><svg class="icon icon-lg"><use href="#i-star-o"/></svg></button>
   </div>
   <div class="chapter-body">
 
-    <details class="faq-item"><summary>Melhor horário para induzir ovulação com sêmen congelado?</summary><div class="faq-answer">Induzir entre 20–22h. A ovulação ocorre durante o horário de trabalho, facilitando o monitoramento por US e o manejo da IA. <a href="#cap2" style="color:inherit;text-decoration:underline;">Ver protocolo no Cap. 2.</a></div></details>
-    <details class="faq-item"><summary>Induzi e o edema sumiu mas o folículo não cresceu. Falhou?</summary><div class="faq-answer"><strong>Não necessariamente — mas confirme obrigatoriamente com US.</strong> A diminuição do edema é consistente com resposta ao indutor, pois indica queda de estrógeno. Porém, não confirma ovulação. Se o folículo <strong>manteve o tamanho ou cresceu</strong> em relação ao exame anterior, a indução provavelmente falhou. Se <strong>reduziu ou desapareceu</strong>, ovulou. Não interprete o edema sozinho.</div></details>
-    <details class="faq-item"><summary>Cloprostenol realmente funciona em éguas?</summary><div class="faq-answer"><strong>Sim.</strong> <a href="#ficha-pgf" style="color:inherit;text-decoration:underline;">Ver ficha completa de Prostaglandinas — Cap. 4</a> (bloco "Eficácia comparativa").</div></details>
+    <details class="faq-item"><summary>Melhor horário para induzir ovulação com sêmen congelado?</summary><div class="faq-answer">Induzir entre 20 - 22h. A ovulação ocorre durante o horário de trabalho, facilitando o monitoramento por US e o manejo da IA. <a href="#cap2" style="color:inherit;text-decoration:underline;">Ver protocolo no Cap. 2.</a></div></details>
+    <details class="faq-item"><summary>Induzi e o edema sumiu mas o folículo não cresceu. Falhou?</summary><div class="faq-answer"><strong>Não necessariamente - mas confirme obrigatoriamente com US.</strong> A diminuição do edema é consistente com resposta ao indutor, pois indica queda de estrógeno. Porém, não confirma ovulação. Se o folículo <strong>manteve o tamanho ou cresceu</strong> em relação ao exame anterior, a indução provavelmente falhou. Se <strong>reduziu ou desapareceu</strong>, ovulou. Não interprete o edema sozinho.</div></details>
+    <details class="faq-item"><summary>Cloprostenol realmente funciona em éguas?</summary><div class="faq-answer"><strong>Sim.</strong> <a href="#ficha-pgf" style="color:inherit;text-decoration:underline;">Ver ficha completa de Prostaglandinas - Cap. 4</a> (bloco "Eficácia comparativa").</div></details>
     <details class="faq-item"><summary>CL com "buraco preto" no centro é ruim?</summary><div class="faq-answer"><strong>Não.</strong> CLs com cavidade central são comuns e <strong>perfeitamente funcionais</strong>. A luteinização ocorre na periferia. São tão eficientes quanto CLs compactos.</div></details>
   </div>
 </section>
@@ -2041,7 +2041,7 @@
 <div id="sobre" style="scroll-margin-top:110px;margin:40px 0;background:var(--bg-card);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border-card);padding:28px;text-align:center;">
   <img src="logo.png" alt="IP Reprodução Equina" style="width:100px;height:auto;margin-bottom:16px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.15));">
   <h3 style="color:var(--green-700);margin:0 0 8px;">M.V. Dra. Iara Macedo Petelinkar</h3>
-  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-secondary);line-height:1.7;max-width:600px;margin:0 auto;">Médica Veterinária (UFPB), Mestre em Ciência Animal (UFPB), Doutoranda em Biotecnologia Animal (UNESP Botucatu), Especialização em Reprodução Equina (IBVET). Experiência em campo com exames ginecológicos, exame andrológico, inseminação artificial, transferência de embriões e acompanhamento gestacional e neonatal de equinos. Ex-docente em Medicina Veterinária e ex-coordenadora do GERA — Grupo de Estudos em Reprodução Animal.</p>
+  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-secondary);line-height:1.7;max-width:600px;margin:0 auto;">Médica Veterinária (UFPB), Mestre em Ciência Animal (UFPB), Doutoranda em Biotecnologia Animal (UNESP Botucatu), Especialização em Reprodução Equina (IBVET). Experiência em campo com exames ginecológicos, exame andrológico, inseminação artificial, transferência de embriões e acompanhamento gestacional e neonatal de equinos. Ex-docente em Medicina Veterinária e ex-coordenadora do GERA - Grupo de Estudos em Reprodução Animal.</p>
   <a href="https://instagram.com/iaranmacedo" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;color:var(--green-400);font-weight:700;font-size:14px;text-decoration:none;">@iaranmacedo</a>
 </div>
 
@@ -2051,9 +2051,9 @@
 
 <footer class="footer">
   <img src="logo.png" alt="IP Reprodução Equina" style="width:80px;height:80px;object-fit:contain;border-radius:14px;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);">
-  <p><strong>Guia de Campo — Hormonioterapia em Éguas</strong></p>
-  <p>M.V. Dra. Iara Macedo Petelinkar — Reprodução Equina</p>
-  <p style="margin-top:8px; opacity:.6;">v3.0 — Atualizado em maio/2026 | Consulta rápida para veterinários de campo</p>
+  <p><strong>Guia de Campo - Hormonioterapia em Éguas</strong></p>
+  <p>M.V. Dra. Iara Macedo Petelinkar - Reprodução Equina</p>
+  <p style="margin-top:8px; opacity:.6;">v3.0 - Atualizado em maio/2026 | Consulta rápida para veterinários de campo</p>
 </footer>
 
 <!-- FAB -->
@@ -2173,7 +2173,7 @@ function doSearch(query) {
         var snippet = (start > 0 ? '...' : '') + text.substring(start, end) + (end < text.length ? '...' : '');
         var re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
         snippet = snippet.replace(re, '<mark>$1</mark>');
-        results.push({ chapter: chNum + ' — ' + chTitle, snippet: snippet, id: ch.id });
+        results.push({ chapter: chNum + ' - ' + chTitle, snippet: snippet, id: ch.id });
       }
     });
   });
@@ -2229,7 +2229,7 @@ function toggleEdit() {
     label.textContent = 'Salvar';
     if (labelFab) labelFab.textContent = 'Salvar';
     document.body.classList.add('editing');
-    showHint('Modo edição ativo — clique em qualquer texto para editar');
+    showHint('Modo edição ativo - clique em qualquer texto para editar');
   } else {
     document.querySelectorAll('[contenteditable="true"]').forEach(function(el) { el.removeAttribute('contenteditable'); });
     btn.classList.remove('active');
@@ -2315,7 +2315,7 @@ function showHint(msg) { var h = document.getElementById('editHint'); h.textCont
   };
 })();
 
-/* === ACCESS GATE — TOKEN VALIDATION === */
+/* === ACCESS GATE - TOKEN VALIDATION === */
 (function() {
   var SUPABASE_URL = 'https://qfkzjhuuoudecxjfsigt.supabase.co';
   var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFma3pqaHV1b3VkZWN4amZzaWd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODgyMzQsImV4cCI6MjA5MTE2NDIzNH0.3ui1iHsU6Z6PKNhqFAEKbO_ajbc8NM3wIP7M8bleZYI';
@@ -2387,7 +2387,7 @@ function showHint(msg) { var h = document.getElementById('editHint'); h.textCont
           .then(function(r) { return r.json(); })
           .then(function(devices) {
             if (devices.length > 0) {
-              // Already registered device — allow
+              // Already registered device - allow
               localStorage.setItem(STORAGE_KEY, token);
               unlock();
               return;
@@ -2407,7 +2407,7 @@ function showHint(msg) { var h = document.getElementById('editHint'); h.textCont
               headers: { 'Prefer': 'return=minimal' },
               body: JSON.stringify({ token_id: t.id, fingerprint: fp, user_agent: navigator.userAgent.substring(0, 200) })
             }).then(function() {
-              // Increment devices_used via service — use anon-safe approach
+              // Increment devices_used via service - use anon-safe approach
               // We rely on the count from ebook_devices for accuracy
               localStorage.setItem(STORAGE_KEY, token);
               unlock();
@@ -2455,7 +2455,7 @@ function calcFol() {
   var m2 = parseFloat(document.getElementById('folM2').value);
   var resEl = document.getElementById('folResult');
   var daysEl = document.getElementById('folDays');
-  if (!m1 || !m2 || m1 <= 0 || m2 <= 0) { resEl.textContent = '—'; daysEl.style.display = 'none'; return; }
+  if (!m1 || !m2 || m1 <= 0 || m2 <= 0) { resEl.textContent = ' - '; daysEl.style.display = 'none'; return; }
   var avg = (m1 + m2) / 2;
   resEl.textContent = avg.toFixed(1);
   daysEl.style.display = 'none';
@@ -2469,14 +2469,14 @@ function calcDays() {
   if (size >= 35) {
     resEl.style.background = 'var(--green-50)';
     resEl.style.color = 'var(--green-700)';
-    resEl.innerHTML = '<svg class="icon icon-sm" style="vertical-align:-2px;margin-right:4px"><use href="#i-check"/></svg> Folículo já ≥35 mm — avaliar indução agora!';
+    resEl.innerHTML = '<svg class="icon icon-sm" style="vertical-align:-2px;margin-right:4px"><use href="#i-check"/></svg> Folículo já ≥35 mm - avaliar indução agora!';
   } else {
     var diff = 35 - size;
     var days = Math.ceil(diff / 3);
     resEl.style.background = 'var(--amber-50)';
     resEl.style.color = 'var(--amber-700)';
     var retorno = days > 1 ? (days - 1) : 1;
-    resEl.innerHTML = 'Faltam ~<strong>' + diff.toFixed(1) + ' mm</strong> → ~<strong>' + days + ' dia' + (days > 1 ? 's' : '') + '</strong> para ≥35 mm<br><span style="font-weight:400;font-size:13px;">Crescimento médio: 3 mm/dia. Retornar em <strong>' + retorno + ' dia' + (retorno > 1 ? 's' : '') + '</strong> — algumas éguas ovulam com folículo menor.</span>';
+    resEl.innerHTML = 'Faltam ~<strong>' + diff.toFixed(1) + ' mm</strong> → ~<strong>' + days + ' dia' + (days > 1 ? 's' : '') + '</strong> para ≥35 mm<br><span style="font-weight:400;font-size:13px;">Crescimento médio: 3 mm/dia. Retornar em <strong>' + retorno + ' dia' + (retorno > 1 ? 's' : '') + '</strong> - algumas éguas ovulam com folículo menor.</span>';
   }
 }
 </script>
