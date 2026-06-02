@@ -456,7 +456,7 @@
   }
   .protocol-steps li .step-label { font-weight: 800; color: var(--green-700); }
 
-  /* === CASE STUDY === */
+  /* === CASE STUDY (legacy kept for reference) === */
   .case-study {
     background: var(--bg-card); border-radius: var(--radius); margin: 24px 0;
     box-shadow: var(--shadow-sm); overflow: hidden; border: 1px solid var(--border-card);
@@ -473,6 +473,148 @@
     letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px;
   }
   .cs-section p { color: var(--text-primary); }
+
+  /* === CASOS v2 - Blocos + Fullscreen === */
+  .casos-listing { display: flex; flex-direction: column; gap: 28px; }
+  .caso-bloco-title {
+    font-size: calc(13px * var(--font-scale)); font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.2px; color: var(--green-700); margin-bottom: 10px;
+    padding-bottom: 6px; border-bottom: 2px solid var(--green-400);
+  }
+  .caso-card {
+    background: var(--bg-card); border: 0.5px solid var(--border-card);
+    border-radius: 12px; padding: 16px 18px; margin-bottom: 8px;
+    cursor: pointer; transition: box-shadow .2s, border-color .2s;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .caso-card:hover { box-shadow: var(--shadow-md); border-color: var(--green-400); }
+  .caso-card .caso-card-bloco {
+    font-size: calc(11px * var(--font-scale)); font-weight: 600; text-transform: uppercase;
+    letter-spacing: .8px; color: var(--text-muted);
+  }
+  .caso-card .caso-card-num {
+    font-size: calc(13px * var(--font-scale)); font-weight: 800; color: var(--green-700);
+  }
+  .caso-card .caso-card-title {
+    font-size: calc(15px * var(--font-scale)); font-weight: 600; color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  /* Caso fullscreen */
+  .caso-full {
+    display: none; flex-direction: column; gap: 0;
+    animation: casoFadeIn .25s ease;
+  }
+  .caso-full.active { display: flex; }
+  @keyframes casoFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .caso-back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: none; border: none; color: var(--green-700); font-size: calc(14px * var(--font-scale));
+    font-weight: 700; cursor: pointer; padding: 8px 0; margin-bottom: 12px; font-family: inherit;
+  }
+  .caso-back-btn:hover { color: var(--green-400); }
+  .caso-full-header {
+    font-size: calc(20px * var(--font-scale)); font-weight: 800; color: var(--text-primary);
+    margin-bottom: 4px; line-height: 1.3;
+  }
+  .caso-full-bloco {
+    font-size: calc(12px * var(--font-scale)); font-weight: 600; text-transform: uppercase;
+    letter-spacing: .8px; color: var(--text-muted); margin-bottom: 16px;
+  }
+
+  /* Timeline badges */
+  .caso-timeline { display: flex; flex-direction: column; gap: 0; margin-bottom: 20px; }
+  .caso-tl-item {
+    display: flex; gap: 12px; padding: 10px 0;
+    border-left: 3px solid var(--border-light); padding-left: 16px;
+    position: relative;
+  }
+  .caso-tl-item::before {
+    content: ''; position: absolute; left: -6px; top: 14px;
+    width: 9px; height: 9px; border-radius: 50%; background: var(--border-light);
+  }
+  .caso-tl-item.tl-warn { border-left-color: var(--amber-600); }
+  .caso-tl-item.tl-warn::before { background: var(--amber-600); }
+  .caso-tl-item.tl-alert { border-left-color: var(--red-600); }
+  .caso-tl-item.tl-alert::before { background: var(--red-600); }
+  .caso-tl-item.tl-ok { border-left-color: #2e7d32; }
+  .caso-tl-item.tl-ok::before { background: #2e7d32; }
+  .caso-tl-label {
+    font-size: calc(12px * var(--font-scale)); font-weight: 700; color: var(--text-muted);
+    min-width: 70px; flex-shrink: 0;
+  }
+  .caso-tl-text { font-size: calc(14px * var(--font-scale)); color: var(--text-primary); line-height: 1.5; }
+
+  /* Pergunta destaque */
+  .caso-pergunta {
+    background: var(--green-50); border: 1px solid var(--green-400);
+    border-radius: 12px; padding: 18px 20px; margin-bottom: 20px;
+    font-size: calc(15px * var(--font-scale)); font-weight: 600;
+    color: var(--green-900); line-height: 1.6;
+  }
+
+  /* Reveal buttons */
+  .caso-reveal-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px; border-radius: 10px; border: none;
+    font-size: calc(14px * var(--font-scale)); font-weight: 700;
+    cursor: pointer; font-family: inherit; margin-bottom: 8px;
+    transition: opacity .2s, transform .1s; width: 100%;
+    justify-content: center;
+  }
+  .caso-reveal-btn:active { transform: scale(.98); }
+  .caso-reveal-btn.btn-raciocinio { background: var(--blue-100); color: var(--blue-700); }
+  .caso-reveal-btn.btn-conduta { background: var(--green-100); color: #2e7d32; }
+  .caso-reveal-btn.btn-dica { background: var(--amber-100); color: var(--amber-700); }
+  .caso-reveal-btn[disabled] { opacity: .5; cursor: default; }
+
+  /* Reveal content */
+  .caso-reveal {
+    display: none; margin-bottom: 16px;
+    animation: casoFadeIn .3s ease;
+  }
+  .caso-reveal.open { display: block; }
+  .caso-reveal-inner {
+    background: var(--bg-card); border: 1px solid var(--border-card);
+    border-radius: 12px; padding: 18px 20px;
+  }
+  .caso-reveal-inner p { margin-bottom: 10px; line-height: 1.7; }
+  .caso-reveal-inner p:last-child { margin-bottom: 0; }
+
+  /* Dica de bolso */
+  .caso-dica-inner {
+    background: var(--gray-900); color: #f0e6c8; border-radius: 12px;
+    padding: 20px 22px; font-size: calc(14px * var(--font-scale));
+    line-height: 1.7;
+  }
+  [data-theme="dark"] .caso-dica-inner { background: #0a1018; }
+  .caso-dica-inner strong { color: var(--green-300); }
+
+  /* Tabelas dentro dos casos */
+  .caso-reveal-inner table {
+    width: 100%; border-collapse: collapse; margin: 12px 0;
+    font-size: calc(13px * var(--font-scale));
+  }
+  .caso-reveal-inner thead th {
+    background: var(--bg-card-alt); padding: 8px 12px; text-align: left;
+    font-weight: 700; font-size: calc(12px * var(--font-scale));
+    text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted);
+    border-bottom: 2px solid var(--border-light);
+  }
+  .caso-reveal-inner tbody td {
+    padding: 8px 12px; border-bottom: 1px solid var(--border-light);
+  }
+
+  /* Info/alert inline */
+  .caso-info {
+    display: flex; gap: 10px; padding: 12px 14px; border-radius: 10px;
+    margin: 10px 0; font-size: calc(13px * var(--font-scale)); line-height: 1.6;
+    align-items: flex-start;
+  }
+  .caso-info.info-warn { background: var(--amber-50); color: var(--amber-700); border: 1px solid var(--amber-100); }
+  .caso-info.info-alert { background: var(--red-50); color: var(--red-700); border: 1px solid var(--red-100); }
+  .caso-info.info-ok { background: var(--green-50); color: #2e7d32; border: 1px solid var(--green-100); }
+  .caso-info svg { flex-shrink: 0; margin-top: 2px; }
 
   /* === FAQ === */
   .faq-item {
@@ -1695,12 +1837,12 @@
       <table class="decision-table">
         <thead><tr><th>Tipo de receptora</th><th>Conduta resumida</th><th>Ver</th></tr></thead>
         <tbody>
-          <tr><td>Cíclica: CL + folículo ≥35 mm</td><td>PGF2α → aguardar ovulação da doadora → induzir</td><td><strong>Caso 4</strong></td></tr>
-          <tr><td>Cíclica: CL + folículo ~14 mm</td><td>PGF2α → monitorar crescimento folicular</td><td><strong>Caso 6</strong></td></tr>
-          <tr><td>Cíclica: folículo pronto mas "atrasado" (D5+)</td><td>Indutor + P4 simultâneos</td><td><strong>Caso 8</strong></td></tr>
+          <tr><td>Cíclica: CL + folículo ≥35 mm + edema</td><td>PGF2α opcional → induzir</td><td><strong>Caso 4</strong></td></tr>
+          <tr><td>Cíclica: folículo em crescimento, ainda não pronta</td><td>PGF2α → monitorar → induzir quando pronta → P4 exógena</td><td><strong>Caso 5</strong></td></tr>
+          <tr><td>Cíclica: receptora ovulou antes da doadora</td><td>Coletar D7 ou D8, evitar D9</td><td><strong>Caso 6</strong></td></tr>
           <tr><td>Ciclante com CL ativo (timing não funciona)</td><td>Protocolo dia a dia (ver seção abaixo)</td><td> - </td></tr>
-          <tr><td>Acíclica (sem folículo)</td><td>Protocolo completo E2 + P4</td><td><strong>Caso 5</strong></td></tr>
-          <tr><td>Formou FAH</td><td>P4 exógena a partir do D0 estimado</td><td><strong>Caso 7</strong></td></tr>
+          <tr><td>Acíclica (sem folículo)</td><td>Protocolo completo E2 + P4</td><td><strong>Caso 8</strong></td></tr>
+          <tr><td>Formou FAH (com acompanhamento)</td><td>P4 exógena a partir do D0 estimado</td><td><strong>Caso 7</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -1857,162 +1999,493 @@
   </div>
   <div class="chapter-body">
 
-    <h3>Casos de IA</h3>
+    <!-- === LISTAGEM DE BLOCOS === -->
+    <div class="casos-listing" id="casosListing">
 
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-race"/></svg> Caso 1: A Égua que Ovulou "Rápido Demais"</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Égua Mangalarga induzida com Histrelina às 18h (folículo 35mm, edema grau 3). Veterinário retorna 36h depois para IA com sêmen refrigerado. Égua já ovulada, cérvix fechada e tensa.</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>Cérvix fechada = progesterona já subindo significativamente → ovulação provavelmente há &gt;12h. Algumas éguas respondem mais rápido que a média (36-48h).</p></div>
-        <div class="cs-section"><div class="cs-section-label">Conduta</div><p>IA realizada com baixa expectativa. Probabilidade de concepção muito reduzida pelo envelhecimento do oócito.</p></div>
-        <div class="card card-green" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Lição</div>
-          <p><strong>Anote as particularidades de cada égua.</strong> No próximo ciclo, programar IA para 24h após indução com monitoramento mais próximo.</p>
+      <!-- BLOCO 1 -->
+      <div>
+        <div class="caso-bloco-title">Bloco 1. Monitoramento e indução</div>
+        <div class="caso-card" onclick="openCaso('caso1')">
+          <span class="caso-card-bloco">Monitoramento e indução</span>
+          <span class="caso-card-num">Caso 1</span>
+          <span class="caso-card-title">Sêmen congelado na mao. Algo não está certo.</span>
+        </div>
+        <div class="caso-card" onclick="openCaso('caso2')">
+          <span class="caso-card-bloco">Monitoramento e indução</span>
+          <span class="caso-card-num">Caso 2</span>
+          <span class="caso-card-title">O folículo cresceu quatro dias. O útero não respondeu.</span>
+        </div>
+      </div>
+
+      <!-- BLOCO 2 -->
+      <div>
+        <div class="caso-bloco-title">Bloco 2. Dupla ovulação</div>
+        <div class="caso-card" onclick="openCaso('caso3')">
+          <span class="caso-card-bloco">Dupla ovulação</span>
+          <span class="caso-card-num">Caso 3</span>
+          <span class="caso-card-title">Dois folículos na tela. Você começa hoje ou amanhã?</span>
+        </div>
+      </div>
+
+      <!-- BLOCO 3 -->
+      <div>
+        <div class="caso-bloco-title">Bloco 3. Receptoras e transferência de embriões</div>
+        <div class="caso-card" onclick="openCaso('caso4')">
+          <span class="caso-card-bloco">Receptoras e T.E.</span>
+          <span class="caso-card-num">Caso 4</span>
+          <span class="caso-card-title">Tem CL no ovário. E agora?</span>
+        </div>
+        <div class="caso-card" onclick="openCaso('caso5')">
+          <span class="caso-card-bloco">Receptoras e T.E.</span>
+          <span class="caso-card-num">Caso 5</span>
+          <span class="caso-card-title">A melhor receptora que você tem está atrasada.</span>
+        </div>
+        <div class="caso-card" onclick="openCaso('caso6')">
+          <span class="caso-card-bloco">Receptoras e T.E.</span>
+          <span class="caso-card-num">Caso 6</span>
+          <span class="caso-card-title">A receptora ovulou antes da doadora.</span>
+        </div>
+        <div class="caso-card" onclick="openCaso('caso7')">
+          <span class="caso-card-bloco">Receptoras e T.E.</span>
+          <span class="caso-card-num">Caso 7</span>
+          <span class="caso-card-title">Ela não ovulou. O que fazer?</span>
+        </div>
+        <div class="caso-card" onclick="openCaso('caso8')">
+          <span class="caso-card-bloco">Receptoras e T.E.</span>
+          <span class="caso-card-num">Caso 8</span>
+          <span class="caso-card-title">Nenhuma receptora boa ciclando.</span>
+        </div>
+      </div>
+
+      <!-- BLOCO 4 -->
+      <div>
+        <div class="caso-bloco-title">Bloco 4. Suporte gestacional</div>
+        <div class="caso-card" onclick="openCaso('caso9')">
+          <span class="caso-card-bloco">Suporte gestacional</span>
+          <span class="caso-card-num">Caso 9</span>
+          <span class="caso-card-title">Gestação confirmada. Você trocou a progesterona.</span>
+        </div>
+      </div>
+
+    </div><!-- /casosListing -->
+
+    <!-- ============================================================ -->
+    <!-- === CASO 1 === -->
+    <!-- ============================================================ -->
+    <div class="caso-full" id="caso1">
+      <button class="caso-back-btn" onclick="closeCaso()"><svg class="icon icon-sm"><use href="#i-arrow-up" style="transform:rotate(-90deg)"/></svg> Voltar aos casos</button>
+      <div class="caso-full-bloco">Monitoramento e indução</div>
+      <div class="caso-full-header">Caso 1: Sêmen congelado na mao. Algo não está certo.</div>
+
+      <div class="caso-timeline">
+        <div class="caso-tl-item tl-ok"><span class="caso-tl-label">Dia anterior</span><span class="caso-tl-text">Folículo 32 mm, edema não avaliado.</span></div>
+        <div class="caso-tl-item tl-warn"><span class="caso-tl-label">Dia da indução</span><span class="caso-tl-text">Folículo 35 mm, GnRH aplicado. Edema grau 2 lido como grau 3.</span></div>
+        <div class="caso-tl-item tl-alert"><span class="caso-tl-label">~24h depois</span><span class="caso-tl-text">Sem avaliação. Não retornou.</span></div>
+        <div class="caso-tl-item tl-alert"><span class="caso-tl-label">~30h depois</span><span class="caso-tl-text">Chega com sêmen congelado para inseminar.</span></div>
+      </div>
+
+      <div class="caso-pergunta">No US antes de inseminar: no lugar do folículo, uma estrutura escura e irregular. Cérvix fechada e firme. Ela ovulou, mas você não sabe quando. Insemina ou guarda o sêmen?</div>
+
+      <button class="caso-reveal-btn btn-raciocinio" onclick="toggleReveal(this,'caso1-rac')">Revelar raciocínio</button>
+      <div class="caso-reveal" id="caso1-rac">
+        <div class="caso-reveal-inner">
+          <p>O edema lido como grau 3 era grau 2 em regressão. Edema descendo significa que o pico estrogênico já passou. O LH endógeno já foi liberado e a égua estava ovulando por conta própria. O GnRH apenas coincidiu com um processo que já estava em curso.</p>
+          <p>Com sêmen congelado a janela fértil é de ~6h após a ovulação. Sem saber quando ovulou, não sabe se está dentro ou fora da janela.</p>
+          <p>Se tivesse retornado 24h após a indução, teria visto o folículo evoluindo e poderia ter pegado a ovulação na hora certa.</p>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-conduta" onclick="toggleReveal(this,'caso1-cond')">Ver conduta</button>
+      <div class="caso-reveal" id="caso1-cond">
+        <div class="caso-reveal-inner">
+          <p><strong>Sêmen barato ou doses sobrando:</strong> pode inseminar, sem expectativa.</p>
+          <p><strong>Sêmen de alto valor:</strong> guarda a dose.</p>
+          <p><strong>No próximo ciclo:</strong></p>
+          <ul style="margin:8px 0 0 18px;line-height:1.8;">
+            <li>Acompanhar edema nos dias anteriores (grau 2 subindo é diferente de grau 2 descendo)</li>
+            <li>Retornar ~24h após a indução e monitorar a cada 2 a 4h</li>
+            <li>Nunca chegar para inseminar sem antes fazer o US</li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-dica" onclick="toggleReveal(this,'caso1-dica')">Dica de bolso</button>
+      <div class="caso-reveal" id="caso1-dica">
+        <div class="caso-dica-inner">
+          <strong>Grau 2 subindo e grau 2 descendo parecem iguais e são opostos no ciclo.</strong> Com sêmen congelado, chegar sem ter acompanhado é o erro. O US antes de inseminar não é opcional.
         </div>
       </div>
     </div>
 
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-search"/></svg> Caso 2: Folículo Grande Sem Edema</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Égua obesa, final da estação. Folículo chega a 50mm mas SEM edema uterino. GnRH não induziu ovulação → folículo luteinizado/hemorrágico. PGF2α não lisou a estrutura.</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>Obesidade + final da estação = fatores de risco para disfunção ovulatória. Ausência de edema com folículo grande = ambiente estrogênico inadequado.</p></div>
-        <div class="card card-amber" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Lição</div>
-          <p><strong>Edema uterino é tão importante quanto o tamanho do folículo.</strong> Dissociação entre os dois = sinal de alerta. Investigar: CL residual? Condição corporal? Ajustar dieta (baixo amido) + exercício.</p>
+    <!-- ============================================================ -->
+    <!-- === CASO 2 === -->
+    <!-- ============================================================ -->
+    <div class="caso-full" id="caso2">
+      <button class="caso-back-btn" onclick="closeCaso()"><svg class="icon icon-sm"><use href="#i-arrow-up" style="transform:rotate(-90deg)"/></svg> Voltar aos casos</button>
+      <div class="caso-full-bloco">Monitoramento e indução</div>
+      <div class="caso-full-header">Caso 2: O folículo cresceu quatro dias. O útero não respondeu.</div>
+
+      <div class="caso-timeline">
+        <div class="caso-tl-item tl-warn"><span class="caso-tl-label">Dia 1</span><span class="caso-tl-text">38 mm, edema ausente.</span></div>
+        <div class="caso-tl-item tl-warn"><span class="caso-tl-label">Dia 2</span><span class="caso-tl-text">41 mm, edema ausente.</span></div>
+        <div class="caso-tl-item tl-warn"><span class="caso-tl-label">Dia 3</span><span class="caso-tl-text">44 mm, edema ausente.</span></div>
+        <div class="caso-tl-item tl-alert"><span class="caso-tl-label">Dia 4</span><span class="caso-tl-text">47 mm, GnRH aplicado, sem resposta ovulatória. Égua ECC 9/9, final da estação.</span></div>
+      </div>
+
+      <div class="caso-pergunta">Você acompanhou esse ciclo inteiro. O edema nunca apareceu. O GnRH não funcionou. O que estava bloqueando o edema? Por que o GnRH falhou?</div>
+
+      <button class="caso-reveal-btn btn-raciocinio" onclick="toggleReveal(this,'caso2-rac')">Revelar raciocínio</button>
+      <div class="caso-reveal" id="caso2-rac">
+        <div class="caso-reveal-inner">
+          <p>Se o edema nunca apareceu em nenhum dia de acompanhamento, não é edema que subiu e desceu. Ele simplesmente nunca existiu.</p>
+          <p><strong>Hipótese 1:</strong> CL residual funcional bloqueando o estrogênio. Causa mais comum.</p>
+          <p><strong>Hipótese 2:</strong> Disfunção folicular por obesidade e final da estação. Folículo cresce mecanicamente mas não produz estrogênio suficiente para gerar edema nem para ovular após indução.</p>
+          <p>Esse folículo pode ovular fora do momento útil, formar anovulatório ou regredir. Você não sabe qual vai ser o destino dele, e não importa. Nas duas hipóteses, o ciclo acabou. O próximo ciclo é que vai separar uma da outra.</p>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-conduta" onclick="toggleReveal(this,'caso2-cond')">Ver conduta</button>
+      <div class="caso-reveal" id="caso2-cond">
+        <div class="caso-reveal-inner">
+          <p><strong>Ciclo sem perspectiva de ovulação útil.</strong> Não há indicação de nova intervenção. Acompanhar a próxima onda.</p>
+          <p><strong>Próximo ciclo com edema:</strong> suspeita de CL residual bloqueando o ciclo atual. Acompanhar normalmente.</p>
+          <p><strong>Próximo ciclo sem edema:</strong> investigar síndrome metabólica. ECC, deposição regional de gordura, histórico de laminite. Orientar o proprietário sobre redução de peso antes de nova tentativa reprodutiva.</p>
+          <p>Não há indicação de PGF agora. Mesmo que exista CL residual, intervir nesse momento impede entender o que está errado. O próximo ciclo é o diagnóstico.</p>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-dica" onclick="toggleReveal(this,'caso2-dica')">Dica de bolso</button>
+      <div class="caso-reveal" id="caso2-dica">
+        <div class="caso-dica-inner">
+          <strong>Folículo grande não é ciclo funcionando.</strong> Sem edema, sem ovulação útil. Não use estrogênio exógeno em doadora para forçar edema. O útero fala antes do ovário.
         </div>
       </div>
     </div>
 
+    <!-- ============================================================ -->
+    <!-- === CASO 3 === -->
+    <!-- ============================================================ -->
+    <div class="caso-full" id="caso3">
+      <button class="caso-back-btn" onclick="closeCaso()"><svg class="icon icon-sm"><use href="#i-arrow-up" style="transform:rotate(-90deg)"/></svg> Voltar aos casos</button>
+      <div class="caso-full-bloco">Dupla ovulação</div>
+      <div class="caso-full-header">Caso 3: Dois folículos na tela. Você começa hoje ou amanhã?</div>
 
+      <div class="caso-reveal-inner" style="margin-bottom:20px;">
+        <table>
+          <thead><tr><th>Cenário</th><th>Maior</th><th>Segundo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>A</strong></td><td>20 mm</td><td>17 mm</td></tr>
+            <tr><td><strong>B</strong></td><td>23 mm</td><td>20 mm</td></tr>
+          </tbody>
+        </table>
+      </div>
 
+      <div class="caso-pergunta">Em qual cenário você começa hoje? Em qual ainda dá para esperar até amanhã?</div>
 
-    <h3>Casos de Receptoras e T.E.</h3>
+      <button class="caso-reveal-btn btn-raciocinio" onclick="toggleReveal(this,'caso3-rac')">Revelar raciocínio</button>
+      <div class="caso-reveal" id="caso3-rac">
+        <div class="caso-reveal-inner">
+          <p><strong>Cenário A, amanhã:</strong> maior ~23 mm, segundo ~20 mm. Ambos ainda dentro da janela. Pode esperar.</p>
+          <p><strong>Cenário B, amanhã:</strong> maior ~26 mm. Passou da janela ideal. Dominância consolidada ou em consolidação. O segundo não vai conseguir acompanhar. Não têm amanhã.</p>
+        </div>
+      </div>
 
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-embryo"/></svg> Caso 3: Perda Gestacional por Janela de Progesterona Baixa</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora acíclica preparada com estrógeno + implante de progesterona. T.E. bem-sucedida, gestação perdida aos 27 dias. Causa provável: <strong>janela de progesterona baixa</strong> entre a remoção do implante e a absorção da P4 injetável.</p></div>
-        <div class="card card-red" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Lição CRÍTICA</div>
-          <p>Ao trocar fontes de progesterona, <strong>sobrepor os tratamentos por no mínimo 48h</strong>. Para conduta detalhada, ver <strong>Caso 10</strong>.</p>
+      <button class="caso-reveal-btn btn-conduta" onclick="toggleReveal(this,'caso3-cond')">Ver conduta</button>
+      <div class="caso-reveal" id="caso3-cond">
+        <div class="caso-reveal-inner">
+          <p><strong>Cenário A:</strong> iniciar amanhã.</p>
+          <p><strong>Cenário B:</strong> iniciar hoje, sem exceção.</p>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-dica" onclick="toggleReveal(this,'caso3-dica')">Dica de bolso</button>
+      <div class="caso-reveal" id="caso3-dica">
+        <div class="caso-dica-inner">
+          <strong>Protocolo de dupla ovulação deve começar com ambos os folículos entre 20 e 25 mm.</strong> Crescimento médio ~3 mm/dia. Nunca decida pelo tamanho de hoje. Pense onde vão estar amanhã. Se o maior passa de 25 mm, você perdeu a janela.
         </div>
       </div>
     </div>
 
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-embryo"/></svg> Caso 4: Receptora com CL + folículo ≥35 mm</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>No dia da indução da doadora, a receptora apresenta CL + folículo ≥35 mm. Melhor cenário possível.</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>Receptora com folículo pronto, mas não se pode induzir antes da ovulação confirmada da doadora.</p></div>
-        <div class="card card-green" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
-          <p>Aplicar <strong>PGF2α para lisar o CL</strong>. Não induzir a ovulação agora. Aguardar ovulação da doadora, depois induzir ou deixar ovular espontaneamente. <strong>TE no D8</strong> (receptora ~D6 de CL).</p>
+    <!-- ============================================================ -->
+    <!-- === CASO 4 === -->
+    <!-- ============================================================ -->
+    <div class="caso-full" id="caso4">
+      <button class="caso-back-btn" onclick="closeCaso()"><svg class="icon icon-sm"><use href="#i-arrow-up" style="transform:rotate(-90deg)"/></svg> Voltar aos casos</button>
+      <div class="caso-full-bloco">Receptoras e T.E.</div>
+      <div class="caso-full-header">Caso 4: Tem CL no ovário. E agora?</div>
+
+      <div class="caso-timeline">
+        <div class="caso-tl-item tl-ok"><span class="caso-tl-label">Doadora</span><span class="caso-tl-text">Ovulou hoje (D0).</span></div>
+        <div class="caso-tl-item tl-warn"><span class="caso-tl-label">Receptora</span><span class="caso-tl-text">Folículo 38 mm + edema grau 3 + CL visível ao US.</span></div>
+      </div>
+
+      <div class="caso-pergunta">Você está com o indutor na mao. Tem CL no ovário da receptora. Esse CL te impede de induzir agora?</div>
+
+      <button class="caso-reveal-btn btn-raciocinio" onclick="toggleReveal(this,'caso4-rac')">Revelar raciocínio</button>
+      <div class="caso-reveal" id="caso4-rac">
+        <div class="caso-reveal-inner">
+          <p>CL visível não significa CL funcional. Edema grau 3 significa que o estrogênio está prevalecendo. Se a progesterona estivesse alta, o útero estaria sem edema.</p>
+          <p>CL visível com edema grau 3 = CL em regressão.</p>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-conduta" onclick="toggleReveal(this,'caso4-cond')">Ver conduta</button>
+      <div class="caso-reveal" id="caso4-cond">
+        <div class="caso-reveal-inner">
+          <p><strong>PGF2α opcional.</strong> O edema já confirma que a progesterona caiu. Na prática não precisa, mas pode aplicar se quiser garantir.</p>
+          <p><strong>Induzir a receptora.</strong> A doadora já ovulou, então o caminho está livre. Nunca induzir receptora antes da ovulação confirmada da doadora.</p>
+          <p>Coleta no D7 a D9 da doadora. Receptora estará entre D5 e D7.</p>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-dica" onclick="toggleReveal(this,'caso4-dica')">Dica de bolso</button>
+      <div class="caso-reveal" id="caso4-dica">
+        <div class="caso-dica-inner">
+          <strong>CL no ovário não é o que define o ciclo. O útero define.</strong> Edema grau 3 com CL visível significa que a progesterona já caiu. Confie no útero.
         </div>
       </div>
     </div>
 
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-syringe"/></svg> Caso 5: Receptora acíclica (sem folículo, com ou sem CL)</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora sem folículo, sem estrógeno endógeno. Precisa de protocolo hormonal completo.</p></div>
-        <div class="card card-green" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
-          <p>Se houver CL, aplicar <strong>PGF2α primeiro</strong> (2 doses se CL recente) → 5 dias de estrógeno <strong>sem P4</strong> → No D4 da doadora iniciar P4 (= D0 da receptora). <strong>TE no D8.</strong> Manter P4 até ~120 dias. Depende totalmente de P4 exógena.</p>
+    <!-- ============================================================ -->
+    <!-- === CASO 5 === -->
+    <!-- ============================================================ -->
+    <div class="caso-full" id="caso5">
+      <button class="caso-back-btn" onclick="closeCaso()"><svg class="icon icon-sm"><use href="#i-arrow-up" style="transform:rotate(-90deg)"/></svg> Voltar aos casos</button>
+      <div class="caso-full-bloco">Receptoras e T.E.</div>
+      <div class="caso-full-header">Caso 5: A melhor receptora que você tem está atrasada.</div>
+
+      <div class="caso-timeline">
+        <div class="caso-tl-item tl-ok"><span class="caso-tl-label">Doadora</span><span class="caso-tl-text">Ovulou hoje (D0).</span></div>
+        <div class="caso-tl-item tl-warn"><span class="caso-tl-label">Receptora</span><span class="caso-tl-text">Folículo 23 mm em crescimento, sem edema, CL presente.</span></div>
+      </div>
+
+      <div class="caso-pergunta">A receptora não está pronta, mas está crescendo. Ainda dá para usar essa receptora nesse ciclo?</div>
+
+      <button class="caso-reveal-btn btn-raciocinio" onclick="toggleReveal(this,'caso5-rac')">Revelar raciocínio</button>
+      <div class="caso-reveal" id="caso5-rac">
+        <div class="caso-reveal-inner">
+          <table>
+            <thead><tr><th>Dia</th><th>Folículo</th><th>Ação</th></tr></thead>
+            <tbody>
+              <tr><td>D0 da doadora</td><td>23 mm</td><td></td></tr>
+              <tr><td>D1 da doadora</td><td>26 mm</td><td></td></tr>
+              <tr><td>D2 da doadora</td><td>29 mm</td><td></td></tr>
+              <tr><td>D3 da doadora</td><td>32 mm</td><td></td></tr>
+              <tr><td>D4 da doadora</td><td>35 mm</td><td>Induzir receptora</td></tr>
+              <tr><td>D6 da doadora</td><td>Ovulação receptora</td><td>Iniciar P4 exógena imediatamente</td></tr>
+              <tr><td>D9 da doadora</td><td>Coleta</td><td>Receptora em D3 de P4</td></tr>
+            </tbody>
+          </table>
+          <p>Em ciclo natural seriam necessários pelo menos 4 dias de P4 para usar com segurança. Com P4 exógena desde o dia da ovulação, a subida é mais rápida do que a do CL sozinho. No D9 da doadora a receptora está em D3, mas com nível de P4 compatível com o necessário. O CL próprio amadurece e assume depois.</p>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-conduta" onclick="toggleReveal(this,'caso5-cond')">Ver conduta</button>
+      <div class="caso-reveal" id="caso5-cond">
+        <div class="caso-reveal-inner">
+          <ul style="margin:0 0 0 18px;line-height:1.8;">
+            <li>PGF2α agora para lisar o CL</li>
+            <li>Monitorar crescimento folicular diariamente</li>
+            <li>Induzir no D4 da doadora com 35 mm + edema</li>
+            <li>Iniciar P4 exógena no dia da ovulação</li>
+            <li>Coletar no D9 da doadora. Receptora em D3 com suporte ativo</li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-dica" onclick="toggleReveal(this,'caso5-dica')">Dica de bolso</button>
+      <div class="caso-reveal" id="caso5-dica">
+        <div class="caso-dica-inner">
+          <strong>Receptora não precisa estar pronta no D0 da doadora.</strong> Precisa estar na janela no dia da coleta. Projete, não descarte. P4 exógena desde a ovulação garante o que o CL ainda não consegue entregar.
         </div>
       </div>
     </div>
 
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-target"/></svg> Caso 6: Receptora com CL + folículo ~14 mm</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora com folículo de ~14 mm em crescimento, ainda sem edema uterino.</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>Com 14 mm o estrógeno endógeno ainda não é suficiente para gerar edema, mas vai ser. Crescendo ~3 mm/dia, em ~7 dias estará em 35 mm. Não precisa de estrógeno exógeno.</p></div>
-        <div class="card card-green" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
-          <p>PGF2α para lisar o CL → monitorar crescimento folicular → quando atingir ≥35 mm + edema, confirmar ovulação da doadora e <strong>induzir a receptora</strong>. Após ovulação da receptora, iniciar P4 exógena imediatamente e manter por ~7 dias até o CL próprio assumir. <strong>TE no D8 da receptora.</strong></p>
+    <!-- ============================================================ -->
+    <!-- === CASO 6 === -->
+    <!-- ============================================================ -->
+    <div class="caso-full" id="caso6">
+      <button class="caso-back-btn" onclick="closeCaso()"><svg class="icon icon-sm"><use href="#i-arrow-up" style="transform:rotate(-90deg)"/></svg> Voltar aos casos</button>
+      <div class="caso-full-bloco">Receptoras e T.E.</div>
+      <div class="caso-full-header">Caso 6: A receptora ovulou antes da doadora.</div>
+
+      <div class="caso-timeline">
+        <div class="caso-tl-item tl-warn"><span class="caso-tl-label">Ontem</span><span class="caso-tl-text">Receptora ovulou (D0 dela).</span></div>
+        <div class="caso-tl-item tl-ok"><span class="caso-tl-label">Hoje</span><span class="caso-tl-text">Doadora ovulou (D0 dela).</span></div>
+      </div>
+
+      <div class="caso-pergunta">A coleta pode ser no D7, D8 ou D9 da doadora. Em qual dia a receptora ainda está dentro da janela?</div>
+
+      <button class="caso-reveal-btn btn-raciocinio" onclick="toggleReveal(this,'caso6-rac')">Revelar raciocínio</button>
+      <div class="caso-reveal" id="caso6-rac">
+        <div class="caso-reveal-inner">
+          <table>
+            <thead><tr><th>Dia da coleta (doadora)</th><th>Dia da receptora</th><th>Janela</th></tr></thead>
+            <tbody>
+              <tr><td>D7</td><td>D8</td><td style="color:#2e7d32;font-weight:700;">Dentro</td></tr>
+              <tr><td>D8</td><td>D9</td><td style="color:#2e7d32;font-weight:700;">Dentro</td></tr>
+              <tr><td>D9</td><td>D10</td><td style="color:var(--red-600);font-weight:700;">Fora</td></tr>
+            </tbody>
+          </table>
+          <p>No D10 a receptora já passou da janela. A decisão mais importante não é sobre a receptora. É sobre quando coletar.</p>
         </div>
-        <div class="card card-amber" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-alert"/></svg> Atenção</div>
-          <p>O timing precisa ser calculado a partir da doadora. A receptora deve ovular de forma que seu D8 coincida com a data da coleta. Se o folículo estiver crescendo rápido demais ou devagar, ajustar com indução ou nova PGF2α conforme necessário.</p>
+      </div>
+
+      <button class="caso-reveal-btn btn-conduta" onclick="toggleReveal(this,'caso6-cond')">Ver conduta</button>
+      <div class="caso-reveal" id="caso6-cond">
+        <div class="caso-reveal-inner">
+          <p><strong>Coletar no D7 ou D8 da doadora.</strong> Evitar D9. Receptora estará em D10, fora da janela.</p>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-dica" onclick="toggleReveal(this,'caso6-dica')">Dica de bolso</button>
+      <div class="caso-reveal" id="caso6-dica">
+        <div class="caso-dica-inner">
+          <strong>O limite não é a ovulação. É o dia do útero.</strong> Às vezes a decisão mais importante não é qual receptora usar, mas quando coletar.
         </div>
       </div>
     </div>
 
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-alert"/></svg> Caso 7: Receptora formou FAH (Folículo Anovulatório Hemorrágico)</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora acompanhada para ovular, mas formou folículo hemorrágico anovulatório.</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>O FAH não ovulou, mas o útero passou pela fase estrogênica. Ainda utilizável <strong>se sabemos quando se formou</strong>. Porque conseguimos definir o D0 e iniciar P4 exógena no momento certo.</p></div>
-        <div class="card card-green" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
-          <p>Iniciar P4 exógena no momento em que a ovulação deveria ter ocorrido = D0. <strong>TE no D8.</strong> Manter P4 durante toda a gestação. FAH não produz P4 adequada.</p>
+    <!-- ============================================================ -->
+    <!-- === CASO 7 === -->
+    <!-- ============================================================ -->
+    <div class="caso-full" id="caso7">
+      <button class="caso-back-btn" onclick="closeCaso()"><svg class="icon icon-sm"><use href="#i-arrow-up" style="transform:rotate(-90deg)"/></svg> Voltar aos casos</button>
+      <div class="caso-full-bloco">Receptoras e T.E.</div>
+      <div class="caso-full-header">Caso 7: Ela não ovulou. O que fazer?</div>
+
+      <div class="caso-timeline">
+        <div class="caso-tl-item tl-ok"><span class="caso-tl-label">Dias anteriores</span><span class="caso-tl-text">Receptora acompanhada, folículo crescendo, edema presente.</span></div>
+        <div class="caso-tl-item tl-alert"><span class="caso-tl-label">Hoje</span><span class="caso-tl-text">Égua não ovulou. Folículo evoluiu para FAH.</span></div>
+      </div>
+
+      <div class="caso-pergunta">Você acompanhou esse ciclo inteiro. Sabe exatamente quando o FAH se formou. Ainda dá para usar essa receptora?</div>
+
+      <button class="caso-reveal-btn btn-raciocinio" onclick="toggleReveal(this,'caso7-rac')">Revelar raciocínio</button>
+      <div class="caso-reveal" id="caso7-rac">
+        <div class="caso-reveal-inner">
+          <p>A égua não ovulou, mas o útero passou pela fase estrogênica. O endométrio foi preparado.</p>
+          <p>Como você acompanhou o ciclo inteiro, sabe quando a ovulação deveria ter ocorrido. Esse momento vira o D0 funcional. Sem esse dado, não há como sincronizar.</p>
         </div>
-        <div class="card card-red" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-ban"/></svg> FAH de ciclo anterior sem histórico → NÃO utilizar</div>
-          <p>Sem saber quando se formou, não há como definir o D0.</p>
+      </div>
+
+      <button class="caso-reveal-btn btn-conduta" onclick="toggleReveal(this,'caso7-cond')">Ver conduta</button>
+      <div class="caso-reveal" id="caso7-cond">
+        <div class="caso-reveal-inner">
+          <ul style="margin:0 0 0 18px;line-height:1.8;">
+            <li>Definir D0 = momento em que a ovulação deveria ter ocorrido</li>
+            <li>Iniciar P4 exógena imediatamente</li>
+            <li>TE na janela de D4 a D9 de P4 da receptora</li>
+            <li>Manter P4 durante toda a gestação (FAH não produz progesterona adequada)</li>
+          </ul>
+          <div class="caso-info info-alert" style="margin-top:12px;"><svg class="icon icon-sm"><use href="#i-ban"/></svg><span><strong>Não usar quando:</strong> FAH de ciclo anterior sem monitoramento. Impossível definir o D0.</span></div>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-dica" onclick="toggleReveal(this,'caso7-dica')">Dica de bolso</button>
+      <div class="caso-reveal" id="caso7-dica">
+        <div class="caso-dica-inner">
+          <strong>FAH não é descarte automático.</strong> É descarte quando você não sabe quando começou. Quem acompanhou o ciclo tem o D0. Quem não acompanhou, não têm.
         </div>
       </div>
     </div>
 
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-bolt"/></svg> Caso 8: Folículo da receptora atinge 35 mm no D5 da doadora</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Folículo da receptora atinge 35 mm no D5 da doadora. Pronto, mas "atrasado".</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>O pico de LH endógeno provocado pelo indutor sobrepõe a inibição da P4. É possível aplicar ambos ao mesmo tempo.</p></div>
-        <div class="card card-green" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
-          <p><strong>Indutor + P4 simultâneos.</strong> P4 por ~7 dias até CL próprio assumir. <strong>TE no D8.</strong></p>
+    <!-- ============================================================ -->
+    <!-- === CASO 8 === -->
+    <!-- ============================================================ -->
+    <div class="caso-full" id="caso8">
+      <button class="caso-back-btn" onclick="closeCaso()"><svg class="icon icon-sm"><use href="#i-arrow-up" style="transform:rotate(-90deg)"/></svg> Voltar aos casos</button>
+      <div class="caso-full-bloco">Receptoras e T.E.</div>
+      <div class="caso-full-header">Caso 8: Nenhuma receptora boa ciclando.</div>
+
+      <div class="caso-timeline">
+        <div class="caso-tl-item tl-ok"><span class="caso-tl-label">Doadora</span><span class="caso-tl-text">Ovulou hoje (D0).</span></div>
+        <div class="caso-tl-item tl-warn"><span class="caso-tl-label">Ciclicas</span><span class="caso-tl-text">Folículos pequenos, sem previsão confiável na janela.</span></div>
+        <div class="caso-tl-item"><span class="caso-tl-label">Acíclica</span><span class="caso-tl-text">Sem atividade ovariana, disponível para protocolo.</span></div>
+      </div>
+
+      <div class="caso-pergunta">As cíclicas não têm previsão confiável. Você tem uma acíclica disponível. Espera uma das cíclicas evoluir ou prepara a acíclica?</div>
+
+      <button class="caso-reveal-btn btn-raciocinio" onclick="toggleReveal(this,'caso8-rac')">Revelar raciocínio</button>
+      <div class="caso-reveal" id="caso8-rac">
+        <div class="caso-reveal-inner">
+          <p>Receptora cíclica parece mais simples, mas nem sempre é. Folículo pode crescer mais devagar, ovular antes ou virar FAH. Você fica na dependência do ovário dela.</p>
+          <p>A acíclica dá controle total: a idade uterina é determinada pelo início da progesterona, não por uma ovulação que você não controla. Você escolhe o D0 dela, programando para a coleta cair no momento ideal.</p>
+          <table>
+            <thead><tr><th>Dia</th><th>Ação</th></tr></thead>
+            <tbody>
+              <tr><td>D0</td><td>Estrogênio</td></tr>
+              <tr><td>D1</td><td>Estrogênio</td></tr>
+              <tr><td>D2</td><td>Estrogênio</td></tr>
+              <tr><td>D3</td><td>Iniciar P4 (D0 da receptora)</td></tr>
+              <tr><td>D7 a D9 da doadora</td><td>Coleta (receptora em D4 a D6)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-conduta" onclick="toggleReveal(this,'caso8-cond')">Ver conduta</button>
+      <div class="caso-reveal" id="caso8-cond">
+        <div class="caso-reveal-inner">
+          <p><strong>Se alguma cíclica tiver chance real:</strong> monitorar em paralelo.</p>
+          <p><strong>Se sincronização for incerta:</strong> preparar a acíclica.</p>
+          <p>Estrogênio D0 a D2 da doadora, P4 a partir do D3. Coleta D7 a D9 da doadora. Receptora entre D4 e D6. Manter P4 até ~120 dias.</p>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-dica" onclick="toggleReveal(this,'caso8-dica')">Dica de bolso</button>
+      <div class="caso-reveal" id="caso8-dica">
+        <div class="caso-dica-inner">
+          <strong>Receptora acíclica não é segunda opção. É uma opção com mais controle.</strong> Quando o ovário não coopera, o protocolo assume. E quando você controla o D0, você escolhe o dia da coleta.
         </div>
       </div>
     </div>
 
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-search"/></svg> Caso 9: Receptora com folículo ≥35 mm mas sem edema</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora com folículo ≥35 mm mas <strong>sem edema uterino</strong>. Estrógeno exógeno não está sendo utilizado.</p></div>
-        <div class="card card-green" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta</div>
-          <p><strong>PGF2α antes de descartar.</strong> Reavaliar em 24-36h. Se o edema aparecer, a égua é utilizável. CL residual não identificado é a causa mais comum.</p>
+    <!-- ============================================================ -->
+    <!-- === CASO 9 === -->
+    <!-- ============================================================ -->
+    <div class="caso-full" id="caso9">
+      <button class="caso-back-btn" onclick="closeCaso()"><svg class="icon icon-sm"><use href="#i-arrow-up" style="transform:rotate(-90deg)"/></svg> Voltar aos casos</button>
+      <div class="caso-full-bloco">Suporte gestacional</div>
+      <div class="caso-full-header">Caso 9: Gestação confirmada. Você trocou a progesterona.</div>
+
+      <div class="caso-timeline">
+        <div class="caso-tl-item tl-ok"><span class="caso-tl-label">TE realizada</span><span class="caso-tl-text">Receptora com implante intravaginal de P4.</span></div>
+        <div class="caso-tl-item tl-ok"><span class="caso-tl-label">Confirmação</span><span class="caso-tl-text">US positivo, gestação confirmada.</span></div>
+        <div class="caso-tl-item tl-alert"><span class="caso-tl-label">Mesma visita</span><span class="caso-tl-text">Implante retirado + P4 injetável aplicada.</span></div>
+        <div class="caso-tl-item tl-alert"><span class="caso-tl-label">Dias depois</span><span class="caso-tl-text">Perda gestacional.</span></div>
+      </div>
+
+      <div class="caso-pergunta">A gestação estava confirmada. A troca parecia simples. O que causou a perda?</div>
+
+      <button class="caso-reveal-btn btn-raciocinio" onclick="toggleReveal(this,'caso9-rac')">Revelar raciocínio</button>
+      <div class="caso-reveal" id="caso9-rac">
+        <div class="caso-reveal-inner">
+          <p>A P4 injetável é a que sobe mais rápido entre as opções disponíveis, mas ainda assim não atinge nível sérico adequado imediatamente. E ao retirar o implante, os níveis de P4 dele caem rapidamente. Ao fazer os dois no mesmo dia, criou-se uma janela sem suporte hormonal suficiente.</p>
+          <p>O embrião nos primeiros dias depende totalmente de progesterona. Qualquer queda abrupta pode comprometer a gestação.</p>
+          <p>O erro não foi trocar a fonte de progesterona. Foi não sobrepor as duas antes de retirar o implante.</p>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-conduta" onclick="toggleReveal(this,'caso9-cond')">Ver conduta</button>
+      <div class="caso-reveal" id="caso9-cond">
+        <div class="caso-reveal-inner">
+          <ul style="margin:0 0 0 18px;line-height:1.8;">
+            <li>Aplicar P4 injetável primeiro, mantendo o implante</li>
+            <li>Aguardar 48h para a injetável atingir nível sérico adequado</li>
+            <li>Só então retirar o implante</li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="caso-reveal-btn btn-dica" onclick="toggleReveal(this,'caso9-dica')">Dica de bolso</button>
+      <div class="caso-reveal" id="caso9-dica">
+        <div class="caso-dica-inner">
+          <strong>Não existe troca de progesterona. Existe transição com sobreposição obrigatória.</strong> O risco não é o tipo de P4, é o intervalo sem suporte.
         </div>
       </div>
     </div>
 
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-embryo"/></svg> Caso 10: Transição de implante para P4 injetável</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">Cenário</div><p>Receptora gestante com implante intravaginal. O veterinário remove o implante e aplica a P4 injetável no mesmo dia.</p></div>
-        <div class="cs-section"><div class="cs-section-label">Raciocínio</div><p>A P4 injetável leva tempo para atingir níveis plasmáticos adequados. Ao remover o implante no mesmo dia, há uma <strong>janela de progesterona baixa</strong> que pode causar perda gestacional.</p></div>
-        <div class="card card-red" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Conduta CRÍTICA</div>
-          <p>Iniciar a P4 injetável e remover o implante <strong>somente 2 dias APÓS</strong>. Nunca remover antes. <strong>Sobrepor os tratamentos</strong> para evitar queda abrupta de progesterona.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="case-study">
-      <div class="case-study-header"><svg class="icon icon-lg" style="color:#fff"><use href="#i-target"/></svg> Caso 11: Quando iniciar dupla ovulação?</div>
-      <div class="case-study-body">
-        <div class="cs-section"><div class="cs-section-label">O problema</div><p>O protocolo precisa começar quando os folículos estão entre 20 e 25 mm. Acima de 25 mm no folículo dominante, a dominância já está estabelecida.</p></div>
-
-        <div class="cs-section"><div class="cs-section-label">Cenário A</div><p>Maior folículo com 20 mm, segundo com 17 mm.</p></div>
-        <div class="card card-green" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Resposta</div>
-          <p><strong>Iniciar amanhã.</strong> Amanhã o maior terá ~23 mm e o segundo ~20 mm. Ambos na janela.</p>
-        </div>
-
-        <div class="cs-section" style="margin-top:20px;"><div class="cs-section-label">Cenário B</div><p>Maior folículo com 23 mm, segundo com 19 mm.</p></div>
-        <div class="card card-amber" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-memo"/></svg> Resposta</div>
-          <p><strong>Iniciar hoje.</strong> Amanhã o maior terá ~26 mm. Já estabeleceu dominância.</p>
-        </div>
-
-        <div class="card card-red" style="margin-top:12px;">
-          <div class="card-title"><svg class="icon icon-sm"><use href="#i-bulb"/></svg> Regra prática</div>
-          <p>Sempre pensar no <strong>tamanho que o maior folículo terá amanhã</strong> (~3 mm/dia). Se ultrapassar 25 mm, iniciar hoje.</p>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -2038,11 +2511,20 @@
 
 
 <!-- === SOBRE === -->
-<div id="sobre" style="scroll-margin-top:110px;margin:40px 0;background:var(--bg-card);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border-card);padding:28px;text-align:center;">
-  <img src="logo.png" alt="IP Reprodução Equina" style="width:100px;height:auto;margin-bottom:16px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.15));">
-  <h3 style="color:var(--green-700);margin:0 0 8px;">M.V. Dra. Iara Macedo Petelinkar</h3>
-  <p style="font-size:calc(14px * var(--font-scale));color:var(--text-secondary);line-height:1.7;max-width:600px;margin:0 auto;">Médica Veterinária (UFPB), Mestre em Ciência Animal (UFPB), Doutoranda em Biotecnologia Animal (UNESP Botucatu), Especialização em Reprodução Equina (IBVET). Experiência em campo com exames ginecológicos, exame andrológico, inseminação artificial, transferência de embriões e acompanhamento gestacional e neonatal de equinos. Ex-docente em Medicina Veterinária e ex-coordenadora do GERA - Grupo de Estudos em Reprodução Animal.</p>
-  <a href="https://instagram.com/iaranmacedo" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;color:var(--green-400);font-weight:700;font-size:14px;text-decoration:none;">@iaranmacedo</a>
+<div id="sobre" style="scroll-margin-top:110px;margin:40px 0;background:var(--bg-card);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border-card);padding:28px 24px;text-align:center;">
+  <img src="foto-iara.jpg" alt="Dra. Iara Macedo Petelinkar" style="width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:14px;box-shadow:0 4px 20px rgba(0,0,0,.15);border:3px solid var(--green-400);">
+  <h3 style="color:var(--green-700);margin:0 0 16px;font-size:calc(18px * var(--font-scale));">Quem desenvolveu este guia?</h3>
+  <div style="font-size:calc(14px * var(--font-scale));color:var(--text-primary);line-height:1.6;max-width:900px;margin:0 auto 16px;text-align:justify;">
+    <p style="margin-bottom:8px;">Sou <strong>Iara Macedo Petelinkar</strong>, médica veterinária formada pela UFPB, com especialização em reprodução equina em andamento pelo IBVET, mestre em Ciência Animal e doutoranda em Biotecnologia Animal pela UNESP Botucatu.</p>
+    <p style="margin-bottom:8px;">Atuo com reprodução equina, área em que me especializei e escolhi seguir, com forte vivência de campo e constante aprofundamento acadêmico. É um campo dinâmico, em que a tomada de decisão precisa ser rápida, prática e baseada em conhecimento que funcione fora da teoria.</p>
+    <p style="margin-bottom:8px;">Ao longo dos anos inseminando, sincronizando receptoras, transferindo, dando aula e tendo contato com alunos, ficou muito claro para mim que muitas dificuldades não vêm da falta de conhecimento técnico, mas da dificuldade de organizar esse conhecimento na prática, no momento da decisão.</p>
+    <p style="margin-bottom:8px;">Esse guia surgiu exatamente dessa necessidade. Da rotina real. Daquilo que eu gostaria de ter tido mais estruturado no início da minha trajetória, para ganhar clareza, evitar erros simples e tornar o raciocínio mais seguro no campo.</p>
+    <p style="margin-bottom:12px;">Ele foi construído a partir da integração entre vivência prática em reprodução equina e a formação acadêmica desenvolvida ao longo da minha trajetória.</p>
+  </div>
+  <div style="background:var(--green-50);border:1px solid var(--green-400);border-radius:12px;padding:12px 20px;max-width:900px;margin:0 auto 16px;font-size:calc(14px * var(--font-scale));font-weight:600;color:var(--green-900);line-height:1.5;font-style:italic;text-align:center;">
+    Este guia foi feito para funcionar onde o protocolo precisa funcionar: no campo.
+  </div>
+  <a href="https://instagram.com/iaranmacedo" target="_blank" rel="noopener" style="display:inline-block;color:var(--green-400);font-weight:700;font-size:14px;text-decoration:none;">@iaranmacedo</a>
 </div>
 
 <a href="#top" class="back-top"><svg class="icon icon-md"><use href="#i-arrow-up"/></svg> Voltar ao Topo</a>
@@ -2069,6 +2551,40 @@
 <div class="toast" id="toast"></div>
 
 <script>
+/* === Casos v2: navegacao bloco/fullscreen === */
+function openCaso(id) {
+  document.getElementById('casosListing').style.display = 'none';
+  var all = document.querySelectorAll('.caso-full');
+  for (var i = 0; i < all.length; i++) all[i].classList.remove('active');
+  var el = document.getElementById(id);
+  if (el) {
+    el.classList.add('active');
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+function closeCaso() {
+  var all = document.querySelectorAll('.caso-full');
+  for (var i = 0; i < all.length; i++) all[i].classList.remove('active');
+  document.getElementById('casosListing').style.display = 'flex';
+  document.getElementById('cap7').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function toggleReveal(btn, id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var isOpen = el.classList.contains('open');
+  el.classList.toggle('open');
+  btn.textContent = isOpen ? btn.getAttribute('data-label') : btn.getAttribute('data-label-open');
+}
+/* Init reveal button labels */
+document.addEventListener('DOMContentLoaded', function() {
+  var labels = { 'btn-raciocinio': ['Revelar raciocínio', 'Ocultar raciocínio'], 'btn-conduta': ['Ver conduta', 'Ocultar conduta'], 'btn-dica': ['Dica de bolso', 'Ocultar dica'] };
+  document.querySelectorAll('.caso-reveal-btn').forEach(function(btn) {
+    var cls = btn.classList.contains('btn-raciocinio') ? 'btn-raciocinio' : btn.classList.contains('btn-conduta') ? 'btn-conduta' : 'btn-dica';
+    btn.setAttribute('data-label', labels[cls][0]);
+    btn.setAttribute('data-label-open', labels[cls][1]);
+  });
+});
+
 var isEditing = false;
 var bookmarks = JSON.parse(localStorage.getItem('guia-bookmarks') || '[]');
 
