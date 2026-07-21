@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cancelar inscrição - Radar Artesanal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #EDE5D5;
+    color: #3D2B1F;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+  }
+  .card {
+    background: #F5EDE0;
+    border: 1px solid rgba(181,86,58,0.08);
+    border-radius: 12px;
+    padding: 40px 32px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+  }
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  p { font-size: 15px; color: #6B5744; line-height: 1.7; margin-bottom: 20px; }
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border: none;
+    transition: all .2s;
+  }
+  .btn-cancel { background: #B5563A; color: #fff; }
+  .btn-cancel:hover { background: #9A4528; }
+  .btn-back { background: transparent; color: #8A7A68; border: 1px solid rgba(181,86,58,0.15); margin-left: 8px; text-decoration: none; }
+  .success { display: none; }
+  .mono { font-family: 'Courier New', monospace; font-size: 11px; color: #8A7A68; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div id="form-view">
+    <p class="mono">Radar Artesanal</p>
+    <h1>Cancelar inscrição</h1>
+    <p>Tem certeza que deseja deixar de receber o Radar Artesanal?</p>
+    <p id="email-display" style="font-weight:600;color:#3D2B1F;"></p>
+    <button class="btn btn-cancel" onclick="unsubscribe()">Confirmar cancelamento</button>
+    <a href="https://alimentosartesanais.com.br" class="btn btn-back">Voltar</a>
+  </div>
+  <div id="success-view" class="success">
+    <p class="mono">Radar Artesanal</p>
+    <h1>Inscrição cancelada</h1>
+    <p>Você não receberá mais o Radar Artesanal. Se mudar de ideia, pode se inscrever novamente a qualquer momento.</p>
+    <a href="https://radar.alimentosartesanais.com.br" class="btn btn-back" style="margin:0;">Voltar ao Radar</a>
+  </div>
+</div>
+
+<script>
+var SUPA_URL = 'https://kgsigsirzvajtltebvsf.supabase.co';
+var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtnc2lnc2lyenZhanRsdGVidnNmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDc4MzY5NiwiZXhwIjoyMDk2MzU5Njk2fQ.oB_9keYfvCVJzTjJlW5fQm9o2cYCEMp1C_GlQvWf-fM';
+
+var params = new URLSearchParams(window.location.search);
+var email = params.get('email') || '';
+document.getElementById('email-display').textContent = email;
+
+function unsubscribe() {
+  if (!email) return;
+  fetch(SUPA_URL + '/rest/v1/radar_leads?email=eq.' + encodeURIComponent(email), {
+    method: 'DELETE',
+    headers: {
+      'apikey': SUPA_KEY,
+      'Authorization': 'Bearer ' + SUPA_KEY
+    }
+  }).then(function() {
+    document.getElementById('form-view').style.display = 'none';
+    document.getElementById('success-view').style.display = 'block';
+  });
+}
+</script>
+</body>
+</html>

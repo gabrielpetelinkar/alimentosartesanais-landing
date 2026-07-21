@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avaliar edição - Radar Artesanal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #EDE5D5;
+    color: #3D2B1F;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+  }
+  .card {
+    background: #F5EDE0;
+    border: 1px solid rgba(181,86,58,0.08);
+    border-radius: 12px;
+    padding: 48px 36px;
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+  }
+  .mono {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: #8A7A68;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #3D2B1F;
+  }
+  .edicao-tag {
+    display: inline-block;
+    background: rgba(181,86,58,0.08);
+    color: #B5563A;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 15px;
+    color: #6B5744;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .btn-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-voto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 28px;
+    border-radius: 12px;
+    border: 2px solid rgba(181,86,58,0.15);
+    background: white;
+    cursor: pointer;
+    transition: all .2s;
+    font-family: 'DM Sans', sans-serif;
+    min-width: 140px;
+  }
+  .btn-voto:hover {
+    border-color: #B5563A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(181,86,58,0.12);
+  }
+  .btn-voto.gostei:hover { background: #FFF8F5; }
+  .btn-voto.melhorar:hover { background: #F5F0EB; }
+  .btn-voto .emoji { font-size: 36px; }
+  .btn-voto .label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #3D2B1F;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .btn-voto .sublabel {
+    font-size: 11px;
+    color: #8A7A68;
+  }
+  .success, .already, .error-view { display: none; }
+  .result-emoji { font-size: 48px; margin-bottom: 16px; }
+  .loading { display: none; color: #8A7A68; font-size: 14px; margin-top: 16px; }
+  .voltar {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #8A7A68;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(138,122,104,0.3);
+  }
+  .voltar:hover { color: #B5563A; border-color: #B5563A; }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- Formulário de avaliação -->
+  <div id="form-view">
+    <p class="mono">Radar Artesanal</p>
+    <h1>O que achou desta edição?</h1>
+    <div id="edicao-tag" class="edicao-tag"></div>
+    <p>Sua opinião ajuda a melhorar o Radar Artesanal para toda a comunidade.</p>
+    <div class="btn-group">
+      <button class="btn-voto gostei" onclick="votar(1)">
+        <span class="emoji">👍</span>
+        <span class="label">Gostei</span>
+        <span class="sublabel">Conteúdo relevante</span>
+      </button>
+      <button class="btn-voto melhorar" onclick="votar(0)">
+        <span class="emoji">👎</span>
+        <span class="label">Pode melhorar</span>
+        <span class="sublabel">Tenho sugestões</span>
+      </button>
+    </div>
+    <div class="loading" id="loading">Registrando avaliação...</div>
+  </div>
+
+  <!-- Sucesso gostei -->
+  <div id="success-view" class="success">
+    <div class="result-emoji">🙌</div>
+    <p class="mono">Radar Artesanal</p>
+    <h1>Obrigado pelo feedback!</h1>
+    <p>Fico feliz que você gostou. Continuarei trazendo o melhor do setor artesanal toda semana.</p>
+    <a href="https://radar.alimentosartesanais.com.br" class="voltar">Voltar ao Radar</a>
+  </div>
+
+  <!-- Sucesso pode melhorar -->
+  <div id="melhora-view" class="success">
+    <div class="result-emoji">📝</div>
+    <p class="mono">Radar Artesanal</p>
+    <h1>Anotado!</h1>
+    <p>Vou usar esse feedback para melhorar as próximas edições. Se quiser detalhar, responda o email da newsletter diretamente.</p>
+    <a href="https://radar.alimentosartesanais.com.br" class="voltar">Voltar ao Radar</a>
+  </div>
+
+  <!-- Já votou -->
+  <div id="already-view" class="already">
+    <div class="result-emoji">✅</div>
+    <p class="mono">Radar Artesanal</p>
+    <h1>Você já avaliou esta edição</h1>
+    <p>Sua avaliação já foi registrada. Obrigado pela participação!</p>
+    <a href="https://radar.alimentosartesanais.com.br" class="voltar">Voltar ao Radar</a>
+  </div>
+
+  <!-- Erro -->
+  <div id="error-view" class="error-view">
+    <div class="result-emoji">😕</div>
+    <p class="mono">Radar Artesanal</p>
+    <h1>Algo deu errado</h1>
+    <p>Não foi possível registrar sua avaliação. Tente novamente ou responda o email da newsletter.</p>
+    <a href="https://radar.alimentosartesanais.com.br" class="voltar">Voltar ao Radar</a>
+  </div>
+
+</div>
+
+<script>
+var SUPA_URL = 'https://kgsigsirzvajtltebvsf.supabase.co';
+var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtnc2lnc2lyenZhanRsdGVidnNmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDc4MzY5NiwiZXhwIjoyMDk2MzU5Njk2fQ.oB_9keYfvCVJzTjJlW5fQm9o2cYCEMp1C_GlQvWf-fM';
+
+var params = new URLSearchParams(window.location.search);
+var email = params.get('email') || '';
+var edicao = params.get('edicao') || '001';
+
+// Mostrar tag da edição
+document.getElementById('edicao-tag').textContent = 'Edição #' + edicao;
+
+function show(id) {
+  ['form-view','success-view','melhora-view','already-view','error-view'].forEach(function(v) {
+    document.getElementById(v).style.display = v === id ? 'block' : 'none';
+  });
+}
+
+function votar(nota) {
+  if (!email) { show('error-view'); return; }
+  document.getElementById('loading').style.display = 'block';
+  document.querySelectorAll('.btn-voto').forEach(function(b) { b.disabled = true; b.style.opacity = '0.5'; });
+
+  fetch(SUPA_URL + '/rest/v1/radar_ratings', {
+    method: 'POST',
+    headers: {
+      'apikey': SUPA_KEY,
+      'Authorization': 'Bearer ' + SUPA_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({ email: email, edicao: edicao, nota: nota })
+  }).then(function(res) {
+    if (res.status === 201) {
+      show(nota === 1 ? 'success-view' : 'melhora-view');
+    } else if (res.status === 409) {
+      show('already-view');
+    } else {
+      show('error-view');
+    }
+  }).catch(function() {
+    show('error-view');
+  });
+}
+</script>
+</body>
+</html>
