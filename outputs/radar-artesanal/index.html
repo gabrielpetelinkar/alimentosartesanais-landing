@@ -332,6 +332,20 @@
     .form-card { padding: 24px 20px; }
   }
 </style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '36292978087015933');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=36292978087015933&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -419,7 +433,7 @@
 
 <script>
 var SUPA_URL = 'https://kgsigsirzvajtltebvsf.supabase.co';
-var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtnc2lnc2lyenZhanRsdGVidnNmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDc4MzY5NiwiZXhwIjoyMDk2MzU5Njk2fQ.oB_9keYfvCVJzTjJlW5fQm9o2cYCEMp1C_GlQvWf-fM';
+var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtnc2lnc2lyenZhanRsdGVidnNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3ODM2OTYsImV4cCI6MjA5NjM1OTY5Nn0.hr_Pn1iRqTuH-iNv1okngr6c6V4L3ckG34Ff_whmWiA';
 
 function submitForm() {
   var name = document.getElementById('input-name').value.trim();
@@ -449,10 +463,11 @@ function submitForm() {
       email: email,
       name: name || null,
       source: (new URLSearchParams(window.location.search).get('ref') ? 'indicacao' : 'lp-instagram'),
-      referred_by: new URLSearchParams(window.location.search).get('ref') || null
+      referred_by: (function() { var r = new URLSearchParams(window.location.search).get('ref'); return r && r.indexOf('@') === -1 ? r : null; })() || null
     })
   }).then(function(res) {
     if (res.ok || res.status === 201 || res.status === 409) {
+      if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Radar Artesanal'});
       document.getElementById('form-card').style.display = 'none';
       document.getElementById('success-card').style.display = 'block'; setupShareLinks(email);
     } else {
@@ -482,9 +497,17 @@ document.getElementById('input-email').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') submitForm();
 });
 
+// Gerar código opaco a partir do email (não expõe PII na URL)
+function hashEmail(e) {
+  var h = 0;
+  for (var i = 0; i < e.length; i++) { h = ((h << 5) - h + e.charCodeAt(i)) | 0; }
+  return Math.abs(h).toString(36);
+}
+
 // Referral link after signup
 function setupShareLinks(email) {
-  var refLink = 'https://radar.alimentosartesanais.com.br?ref=' + encodeURIComponent(email);
+  var refCode = hashEmail(email);
+  var refLink = 'https://radar.alimentosartesanais.com.br?ref=' + refCode;
   var whatsMsg = 'Olha essa newsletter gratuita sobre o mercado de alimentos artesanais. Toda semana chega uma curadoria com notícias, tendências e oportunidades. Se inscreve: ' + refLink;
   var wa = document.getElementById('share-whatsapp');
   if (wa) wa.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(whatsMsg);
