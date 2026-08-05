@@ -223,3 +223,31 @@ testar trocar Calculadora↔Tabela no checkout do ebook.
 3. lp-47: conferir destinos dos anúncios no Gerenciador antes de aposentar
 4. Merge do PR #1 (decisão Gabriel)
 5. Em ~2 semanas: conversão dos bumps na Hotmart; em 5-7 dias: ROAS real no Gerenciador
+
+### Lote 6 — Comunidade pós-venda + estrutura de tráfego (04/08, tarde)
+
+**Comunidade (commits `39ebc4a`, `b90ad58`, `6e04420` — tudo em produção):**
+- Ferramentas: membros usam as standalone completas (redirects; componentes
+  reduzidos removidos)
+- Welcome email consertado (envs Resend inexistentes + rota só COMPLETE);
+  Marcelo (1ª venda, HP1915067649) recebeu acesso via replay manual — delivered
+- Pente fino: notícias alimentadas pelo Radar (backfill 25 itens + automação
+  permanente na VPS), calendário com 4 eventos reais verificados, gamificação
+  LIGADA (/api/gamification + hooks), /mentoria virou cross-sell (expunha
+  painel da Doces Carmen), membro novo → radar_leads automático
+- Admin resetado: orizabrasil@gmail.com (senha nova entregue ao Gabriel no chat)
+
+**Tráfego (planejado + estrutura criada via API, tudo PAUSADO):**
+- Plano completo: `outputs/plano-trafego-passo-a-passo-2026-08.md`
+  (orçamento 55/27/18: Ebook R$50 > Tabela R$25 > Comunidade R$15/dia,
+  otimização por Purchase — 1ª vez possível, CAPI de hoje)
+- Criativos: `outputs/criativos-comunidade-2026-08.md` (11 conceitos) +
+  `outputs/producao-criativos-lote1.md` (copies prontas: 3 variações do
+  Carrossel TOP1, carrossel Comunidade, roteiro Reels selo, email fundador)
+- Dado-chave (jun-ago): Carrossel TOP1 = R$9,25/IC (vencedor); quiz criativos
+  fracos; CP com CTR bom e 0 IC (não escalar sem retrabalhar LP)
+- Criado via API: campanhas [AGO26] Ebook (120250961156550693) e Comunidade
+  Remarketing (120250961157680693) + adsets; públicos Visitou site 30d,
+  Compradores (158), Radar (178) — termos de custom audience aceitos
+- Pendências: Gabriel monta 4 carrosséis no Canva, cria público Engajou 90d
+  na UI, define bônus fundador do email A5 (aguarda aprovação para disparo)
