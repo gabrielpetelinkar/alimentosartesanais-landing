@@ -1,22 +1,21 @@
 {
-  "product": "Guia Estratégico: Como Criar, Vender e Escalar Alimentos Artesanais",
-  "offer": "De R$97 por R$27",
-  "tone": "authority, trust, warmth, artisanal mastery, premium quality",
-  "subject_photo": "assets/images/author-photo.jpg",
-  "subject_description": "a Brazilian man in his mid-30s with: (1) short dark brown wavy hair, (2) clean-shaven face with no beard or stubble, (3) fair olive skin tone, (4) brown eyes, (5) medium build, (6) wearing a black Ralph Lauren button-down polo shirt with small green logo on chest, (7) blue jeans, (8) silver dive watch on left wrist, (9) warm confident smile showing teeth, (10) sitting relaxed on a stool",
+  "product": "Ebook: Como Criar, Vender e Escalar Alimentos Artesanais",
+  "offer": "De R$148 por R$57",
+  "tone": "authority, trust, warmth, artisanal expertise",
+  "subject_photo": "/Users/gabrielpetelinkar/AIOSORIZA/gabriel-emporio.png",
+  "subject_description": "a Brazilian man in his early 30s with: (1) short dark brown hair slightly wavy, (2) clean-shaven face with slight stubble, (3) warm olive skin tone, (4) brown eyes, (5) medium-stocky build, (6) wearing a fitted black button-down Ralph Lauren shirt with white buttons and green logo, (7) silver wristwatch on left wrist, (8) confident warm smile showing teeth, (9) holding a glass jar of artisanal preserves in right hand and a craft paper coffee bag in left hand",
   "symbols": [
-    {"object": "artisanal glass jars with golden preserves and jams", "meaning": "artisanal food craftsmanship", "style": "large, warm-lit, semi-transparent, positioned behind subject"},
-    {"object": "wooden cutting board with aged cheese and herbs", "meaning": "premium quality ingredients", "style": "faint, lower background, barely visible"},
-    {"object": "subtle golden wheat stalks", "meaning": "natural, organic origins", "style": "very faint, far background, decorative only"}
+    {"object": "artisanal glass jars with preserved foods and spices on rustic wooden shelves", "meaning": "artisanal food production", "style": "large, warm-lit, natural, occupying upper background"},
+    {"object": "warm smoke wisps rising gently", "meaning": "artisanal craft and process", "style": "very subtle, barely visible, adds slight atmosphere"}
   ],
   "layers": {
-    "background": "warm dark kitchen studio environment (#0A0A0A base) with soft amber backlighting, rustic wooden textures barely visible, warm smoke wisps",
+    "background": "dark rustic artisanal emporio interior with wooden shelves filled with glass jars of preserves, spices, artisanal sauces, craft coffee bags, and beverages. Warm amber and brown tones. Dark wood textures. Moody atmospheric lighting with depth.",
     "midground": "auto",
-    "foreground": "warm golden rim light on right edge of subject, subtle amber fill light from left"
+    "foreground": "very subtle warm ambient light, minimal rim lighting, natural-looking illumination that does NOT create a strong glowing edge around the subject. The lighting should feel natural and cinematic, not artificial or composited."
   },
-  "context": "course",
+  "context": "Artisanal food production studio — rustic emporio with wooden shelves, glass jars of preserves, craft packaging, warm amber lighting, professional yet approachable atmosphere. Subject is a food artisan entrepreneur holding his own products.",
   "palette": "warm",
-  "seed": 42,
+  "seed": 55,
   "sizes": ["desktop"],
-  "output_dir": "./outputs/premium-design/obsidian_gold/hero-output"
+  "output_dir": "/Users/gabrielpetelinkar/AIOSORIZA/hero-output"
 }
