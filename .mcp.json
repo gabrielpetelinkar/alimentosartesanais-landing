@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "hotmart": {
-      "command": "npx",
-      "args": ["-y", "@theyahia/hotmart-mcp"],
+      "command": "node",
+      "args": ["/Users/gabrielpetelinkar/mentorias/hotmart-mcp-patched/node_modules/@theyahia/hotmart-mcp/dist/index.js"],
       "env": {
         "HOTMART_CLIENT_ID": "02c9b9f6-ce60-46aa-b41f-f4fd434f7bb5",
         "HOTMART_CLIENT_SECRET": "ef865002-44d1-4a6e-b29d-9f70a7669010",
