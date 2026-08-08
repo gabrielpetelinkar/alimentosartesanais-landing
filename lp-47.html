@@ -1350,12 +1350,12 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1653329678086878');
+  fbq('init', '2259771754833856');
   fbq('init', '1630329678088878');
   fbq('track', 'PageView');
   </script>
   <noscript>
-  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1653329678086878&ev=PageView&noscript=1"/>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2259771754833856&ev=PageView&noscript=1"/>
   <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1630329678088878&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
@@ -1596,7 +1596,7 @@
           <div class="entregavel-mockup">
             <div class="ebook-mockup">
               <div class="ebook-cover">
-                <img src="capa-hotmart-600x600.png" alt="Ebook: Como Criar, Vender e Escalar Alimentos Artesanais">
+                <img src="capa-hotmart-600x600.webp" width="600" height="600" loading="lazy" decoding="async" alt="Ebook: Como Criar, Vender e Escalar Alimentos Artesanais">
               </div>
               <div class="ebook-spine"></div>
             </div>
@@ -1849,6 +1849,25 @@
         if (diff > 0) requestAnimationFrame(tick);
       }
       tick();
+    })();
+
+    // INITIATE CHECKOUT — Dispara ao clicar em qualquer CTA de compra.
+    // Alimenta otimização de campanha e público de remarketing.
+    (() => {
+      if (typeof fbq !== 'function') return;
+      // eventID permite deduplicar contra a Conversions API no futuro.
+      const newEventId = () => 'ic-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+      document.querySelectorAll('a[href*="hotmart.com"]').forEach(link => {
+        link.addEventListener('click', () => {
+          fbq('track', 'InitiateCheckout', {
+            content_name: 'Como Criar, Vender e Escalar Alimentos Artesanais',
+            content_ids: ['ebook-47'],
+            content_type: 'product',
+            value: 47.00,
+            currency: 'BRL'
+          }, { eventID: newEventId() });
+        });
+      });
     })();
   </script>
 
