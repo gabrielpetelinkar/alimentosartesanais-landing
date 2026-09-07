@@ -9,6 +9,7 @@
   <meta property="og:description" content="Descubra como cobrar 2x a 3x mais pelo mesmo produto artesanal. Ebook estratégico R$57 + 3 bônus.">
   <meta property="og:type" content="product">
   <meta name="theme-color" content="#050505">
+  <meta name="facebook-domain-verification" content="slw80nb98s15yfptf57xlcxwbns7jt" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -141,8 +142,8 @@
        HERO
        ════════════════════════════════════════════════════ */
     .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: 160px 0 120px; position: relative; overflow: hidden;
+      min-height: 70vh; display: flex; align-items: center;
+      padding: 50px 0 40px; position: relative; overflow: hidden;
     }
     .hero-horizon {
       position: absolute; top: 56%; left: 0; right: 0; height: 1px;
@@ -324,7 +325,7 @@
       font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 700; color: var(--text-0);
       letter-spacing: -0.03em; line-height: 1.1;
-      margin-bottom: 40px; max-width: 600px;
+      margin-bottom: 20px; max-width: 600px;
     }
     .section-title em { font-style: normal; color: var(--text-2); font-weight: 500; }
 
@@ -348,7 +349,7 @@
     .result-card--hero {
       grid-column: 1 / -1;
       background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-base) 60%);
-      display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center;
+      display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center;
       border-color: rgba(181, 86, 58, 0.1);
     }
     .result-metric {
@@ -468,7 +469,7 @@
     /* ════════════════════════════════════════════════════
        QUOTE
        ════════════════════════════════════════════════════ */
-    .quote-section { padding: 80px 0; text-align: center; position: relative; }
+    .quote-section { padding: 50px 0; text-align: center; position: relative; }
     .quote-section::before {
       content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(181, 86, 58, 0.08) 0%, transparent 70%);
@@ -1028,7 +1029,7 @@
        ════════════════════════════════════════════════════ */
     .mecanismo-box {
       background: #FFFFFF; border: 1px solid rgba(184,146,46,0.12);
-      border-radius: 20px; padding: 40px 36px; margin-bottom: 48px;
+      border-radius: 20px; padding: 40px 36px; margin-bottom: 24px;
       max-width: 760px;
     }
     .mecanismo-box p {
@@ -1038,7 +1039,7 @@
     .mecanismo-box strong { color: #3D2B1F; font-weight: 600; }
     .mecanismo-lead {
       font-size: 1.05rem; color: var(--text-1); line-height: 1.75;
-      max-width: 680px; margin-bottom: 48px;
+      max-width: 680px; margin-bottom: 24px;
     }
     .mecanismo-lead strong { color: var(--text-0); font-weight: 600; }
     .section--light .mecanismo-lead { color: #4A3728; }
@@ -1074,7 +1075,7 @@
        ════════════════════════════════════════════════════ */
     .entregavel-sub {
       font-size: 1.05rem; color: var(--text-1); line-height: 1.75;
-      max-width: 680px; margin-bottom: 48px;
+      max-width: 680px; margin-bottom: 24px;
     }
     .entregavel-sub strong { color: var(--text-0); }
     .entregavel-list { display: grid; gap: 20px; max-width: 780px; }
@@ -1277,7 +1278,7 @@
        CREDIBILIDADE — Grid com foto
        ════════════════════════════════════════════════════ */
     .credibilidade-grid {
-      display: grid; grid-template-columns: 260px 1fr; gap: 48px;
+      display: grid; grid-template-columns: 260px 1fr; gap: 24px;
       align-items: start;
     }
     .credibilidade-foto {
@@ -1339,6 +1340,43 @@
       .faq-item summary { font-size: 0.95rem; padding: 18px 20px; }
       .faq-item p { padding: 0 20px 18px; }
     }
+    /* ════════════════════════════════════════════════════
+       STICKY CTA MOBILE
+       ════════════════════════════════════════════════════ */
+    .sticky-cta {
+      position: fixed; bottom: -80px; left: 0; right: 0; z-index: 99;
+      background: rgba(245, 237, 224, 0.97);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+      padding: 12px 20px;
+      transition: bottom 0.4s var(--ease);
+      display: none;
+    }
+    .sticky-cta.sticky-visible { bottom: 0; }
+    .sticky-cta-inner {
+      max-width: 480px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .sticky-cta-price {
+      font-family: var(--heading-font); font-size: 1.1rem; font-weight: 700;
+      color: var(--accent); white-space: nowrap;
+    }
+    .sticky-cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: #fff;
+      font-family: var(--body-font); font-size: 0.88rem; font-weight: 600;
+      padding: 12px 24px; border-radius: 10px; border: none;
+      text-decoration: none; white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(181, 86, 58, 0.2);
+    }
+    @media (max-width: 960px) {
+      .sticky-cta { display: block; }
+    }
+    @media (min-width: 961px) {
+      .sticky-cta { display: none !important; }
+    }
+
   </style>
   <!-- Meta Pixel Code -->
   <script>
@@ -1373,11 +1411,10 @@
     <!-- NAV -->
     <nav class="nav">
       <div class="nav-urgency">
-        <span class="nav-urgency-badge">🔥 OFERTA DE LANÇAMENTO</span>
-        <span class="nav-urgency-text">De R$148 por apenas R$57. Acaba em</span>
-        <span class="nav-countdown-timer" data-countdown>00:15:00</span>
+        <span class="nav-urgency-badge">OFERTA ESPECIAL</span>
+        <span class="nav-urgency-text">De R$148 por apenas R$57 — preço promocional</span>
       </div>
-      <a href="https://pay.hotmart.com/D105263783H?off=q90ec1wq&checkoutMode=10" class="nav-cta" target="_blank" rel="noopener noreferrer">Quero Meu Guia</a>
+      <a href="https://pay.hotmart.com/D105263783H?off=q90ec1wq&checkoutMode=10&bid=1777427478389" class="nav-cta" rel="noopener noreferrer">Quero Meu Guia</a>
     </nav>
 
     <!-- HERO -->
@@ -1405,7 +1442,7 @@
             <span class="hero-tag">Entre outros</span>
           </div>
           <div class="hero-actions" id="heroActions">
-            <a href="https://pay.hotmart.com/D105263783H?off=q90ec1wq&checkoutMode=10" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            <a href="https://pay.hotmart.com/D105263783H?off=q90ec1wq&checkoutMode=10&bid=1777427478389" class="btn btn-primary" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               Quero Cobrar o Que Meu Produto Vale
             </a>
@@ -1461,31 +1498,43 @@
           </div>
           <div class="pain-item reveal reveal-d2">
             <div class="pain-icon-wrap">
-              <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <span class="pain-text">Já pensou em desistir porque vender só para amigos e familiares não paga as contas</span>
-          </div>
-          <div class="pain-item reveal reveal-d1">
-            <div class="pain-icon-wrap">
               <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
-            <span class="pain-text">Não sabe como chegar em loja gourmet, restaurante ou empório</span>
-          </div>
-          <div class="pain-item reveal reveal-d2">
-            <div class="pain-icon-wrap">
-              <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </div>
-            <span class="pain-text">Posta no Instagram, faz stories, mas as vendas não aparecem</span>
-          </div>
-          <div class="pain-item reveal reveal-d3">
-            <div class="pain-icon-wrap">
-              <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-            </div>
-            <span class="pain-text">Tem medo de errar no rótulo e tomar multa dos órgãos competentes</span>
+            <span class="pain-text">Não sabe como chegar em loja gourmet, restaurante ou empório — e fica preso vendendo só pra amigos</span>
           </div>
         </div>
 
         <p class="section-transition reveal">Qualidade você já tem. O que falta é <strong>o cliente enxergar isso antes de provar.</strong> E tem um motivo claro pra isso estar acontecendo.</p>
+      </div>
+    </section>
+
+    <!-- PARA QUEM É / NÃO É -->
+    <section class="section audience-section" id="para-quem">
+      <div class="container">
+        <div class="section-eyebrow reveal" style="justify-content:center"><span class="num">→</span> Clareza</div>
+        <h2 class="section-title reveal" style="max-width:100%;text-align:center">Este guia é pra você <em>se...</em></h2>
+
+        <div class="audience-grid">
+          <div class="audience-card audience-card--yes reveal">
+            <h3>Este guia é pra você se:</h3>
+            <ul>
+              <li>Produz alimento artesanal (geleia, molho, queijo, doce, café, biscoito, bebida, fermentado)</li>
+              <li>Sabe que seu produto é bom mas não consegue cobrar o que vale</li>
+              <li>Quer chegar em empórios, restaurantes e lojas sem se desvalorizar</li>
+              <li>Está cansado de competir por preço com industrializado</li>
+              <li>Quer profissionalizar a apresentação do produto sem gastar uma fortuna</li>
+            </ul>
+          </div>
+          <div class="audience-card audience-card--no reveal reveal-d1">
+            <h3>Este guia NÃO é pra você se:</h3>
+            <ul>
+              <li>Produz em escala industrial e quer parecer artesanal</li>
+              <li>Não tem intenção de mudar nada na apresentação do produto</li>
+              <li>Acha que preço baixo é a única forma de competir</li>
+              <li>Procura receitas — aqui o foco é estratégia de negócio, não culinária</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1566,6 +1615,31 @@
       </div>
     </section>
 
+    <!-- DEPOIMENTOS — adicionar quando tiver os prints dos compradores -->
+    <!--
+    <section class="section" id="depoimentos">
+      <div class="container">
+        <div class="section-eyebrow reveal" style="justify-content:center"><span class="num">★</span> Quem já aplicou</div>
+        <h2 class="section-title reveal" style="max-width:100%;text-align:center;margin-left:auto;margin-right:auto">O que produtores estão dizendo <em>depois de ler o guia.</em></h2>
+
+        <div class="audience-grid" style="grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px">
+          <div class="bonus-card reveal" style="text-align:left">
+            <p style="font-size:0.9rem;color:var(--text-1);line-height:1.6;font-style:italic">"[DEPOIMENTO 1]"</p>
+            <p style="font-size:0.8rem;color:var(--accent);font-weight:600;margin-top:12px">— [Nome], [produto]</p>
+          </div>
+          <div class="bonus-card reveal reveal-d1" style="text-align:left">
+            <p style="font-size:0.9rem;color:var(--text-1);line-height:1.6;font-style:italic">"[DEPOIMENTO 2]"</p>
+            <p style="font-size:0.8rem;color:var(--accent);font-weight:600;margin-top:12px">— [Nome], [produto]</p>
+          </div>
+          <div class="bonus-card reveal reveal-d2" style="text-align:left">
+            <p style="font-size:0.9rem;color:var(--text-1);line-height:1.6;font-style:italic">"[DEPOIMENTO 3]"</p>
+            <p style="font-size:0.8rem;color:var(--accent);font-weight:600;margin-top:12px">— [Nome], [produto]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+
     <!-- ENTREGÁVEIS -->
     <section class="section" id="entregaveis">
       <div class="container">
@@ -1594,12 +1668,7 @@
           </div>
 
           <div class="entregavel-mockup">
-            <div class="ebook-mockup">
-              <div class="ebook-cover">
-                <img src="capa-hotmart-600x600.webp" width="600" height="600" loading="lazy" decoding="async" alt="Ebook: Como Criar, Vender e Escalar Alimentos Artesanais">
-              </div>
-              <div class="ebook-spine"></div>
-            </div>
+            <img src="gabriel-ebook-mockup.png" alt="Gabriel Petelinkar segurando o ebook Como Criar, Vender e Escalar Alimentos Artesanais" style="width:300px;border-radius:16px;box-shadow:8px 8px 30px rgba(61,43,31,0.25)">
           </div>
         </div>
 
@@ -1627,7 +1696,7 @@
             <img class="bonus-img" src="bonus-fornecedores.jpg" alt="Lista de Fornecedores" loading="lazy">
             <h3 class="bonus-name">Lista de Fornecedores Verificados</h3>
             <p class="bonus-desc">Embalagens, insumos, matérias-primas, já testados e aprovados. Pula semanas de pesquisa e ligação perdida.</p>
-            <span class="bonus-value"><s>R$ 37</s> GRÁTIS</span>
+            <span class="bonus-value"><s>R$ 47</s> GRÁTIS</span>
           </div>
 
           <div class="bonus-card reveal reveal-d2">
@@ -1672,26 +1741,53 @@
       <div class="container reveal">
         <div class="section-eyebrow" style="justify-content:center"><span class="num">06</span> Oferta</div>
 
-        <ul class="oferta-items" style="margin-top:48px">
-          <li>O sistema completo para cobrar 2x a 3x mais pelo que você já produz, em ebook que lê no celular</li>
-          <li>Guia de rótulo com todas as informações obrigatórias pela legislação atualizada <span class="value">(R$47)</span></li>
-          <li>Lista de fornecedores testados e aprovados <span class="value">(R$37)</span></li>
-          <li>Checklist dos 7 ajustes que valorizam seu produto esta semana <span class="value">(novo)</span></li>
-          <li>Acesso imediato, chega no seu email em 2 minutos</li>
-          <li>Garantia de 7 dias, não gostou, devolvemos tudo, sem pergunta</li>
-        </ul>
-
-        <div class="countdown-bar" id="countdownOferta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span class="countdown-text">Preço de lançamento volta pra <strong>R$148</strong> em</span>
-          <span class="countdown-digits" data-countdown>00:15:00</span>
+        <div class="value-total" style="margin-top:48px">
+          <div class="value-total-label">O que você leva</div>
+          <ul class="value-items">
+            <li>Ebook completo — 15 capítulos estratégicos <span class="value" style="margin-left:auto;color:var(--text-3)">R$ 148</span></li>
+            <li>Guia de Rótulo: Informações Obrigatórias <span class="value" style="margin-left:auto;color:var(--text-3)">R$ 47</span></li>
+            <li>Lista de Fornecedores Verificados <span class="value" style="margin-left:auto;color:var(--text-3)">R$ 47</span></li>
+            <li>Checklist: 7 Ajustes Imediatos <span class="value" style="margin-left:auto;color:var(--text-3)">R$ 27</span></li>
+            <li>Acesso imediato + Garantia 7 dias</li>
+          </ul>
+          <div style="border-top:1px solid rgba(181,86,58,0.15);margin:20px 0;max-width:360px;margin-left:auto;margin-right:auto"></div>
+          <div class="value-total-label" style="margin-bottom:4px">VALOR TOTAL: <s style="color:var(--text-3)">R$ 269</s></div>
+          <div class="value-total-original" style="color:#8A7A68">de R$ 148</div>
+          <div class="value-total-price" style="font-family:var(--heading-font);font-size:3.5rem;font-weight:800;color:#B5563A;margin-bottom:8px">R$ 57</div>
+          <p class="oferta-payment" style="color:#6B5744">Paga no Pix, cartão ou boleto.</p>
+          <p style="font-size:0.78rem;color:var(--text-3);margin-top:8px;font-style:italic">Preço promocional — pode mudar a qualquer momento.</p>
         </div>
-        <div class="value-total-original" style="color:#8A7A68">R$ 148</div>
-        <div class="value-total-price" style="font-family:var(--heading-font);font-size:3.5rem;font-weight:800;color:#B5563A;margin-bottom:8px">R$ 57</div>
-        <p class="oferta-payment" style="color:#6B5744">Paga no Pix, cartão ou boleto.</p>
 
-        <div style="margin-top:36px">
-          <a href="https://pay.hotmart.com/D105263783H?off=q90ec1wq&checkoutMode=10" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="background:#B5563A;color:#FAF5EB;font-size:1rem;padding:18px 36px">
+        <!-- PROVA SOCIAL -->
+        <div style="margin-top:24px;max-width:700px;margin-left:auto;margin-right:auto">
+          <h3 style="text-align:center;font-family:var(--heading-font);font-size:1.3rem;color:var(--heading);margin-bottom:16px">O que nossos alunos estão dizendo</h3>
+          
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <!-- Depoimento 1: Amélia -->
+            <div style="background:rgba(181,86,58,0.05);border:1px solid rgba(181,86,58,0.12);border-radius:12px;padding:16px;text-align:center">
+              <img src="depoimento-amelia.jpg" alt="Depoimento Amélia Doces Artesanais" style="width:100%;border-radius:8px;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08)" loading="lazy">
+              <p style="font-weight:700;font-size:0.9rem;color:var(--heading);margin-bottom:2px">Amélia Doces Artesanais</p>
+              <p style="font-size:0.78rem;color:var(--text-3)">Mirandópolis, SP</p>
+            </div>
+
+            <!-- Depoimento 2: Lumiar -->
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="background:rgba(181,86,58,0.05);border:1px solid rgba(181,86,58,0.12);border-radius:12px;padding:12px;text-align:center;flex:1">
+                <img src="depoimento-lumiar1.jpg" alt="Depoimento Lumiar Cestar" style="width:100%;border-radius:8px;margin-bottom:8px;box-shadow:0 2px 12px rgba(0,0,0,0.08)" loading="lazy">
+              </div>
+              <div style="background:rgba(181,86,58,0.05);border:1px solid rgba(181,86,58,0.12);border-radius:12px;padding:12px;text-align:center;flex:1">
+                <img src="depoimento-lumiar2.jpg" alt="Depoimento Lumiar Cestar" style="width:100%;border-radius:8px;margin-bottom:8px;box-shadow:0 2px 12px rgba(0,0,0,0.08)" loading="lazy">
+                <p style="font-weight:700;font-size:0.9rem;color:var(--heading);margin-bottom:2px">Lumiar Cestar</p>
+                <p style="font-size:0.78rem;color:var(--text-3)">Brasília, DF</p>
+              </div>
+            </div>
+          </div>
+
+          <p style="text-align:center;font-size:0.78rem;color:var(--text-3);margin-top:12px;font-style:italic">Depoimentos reais de alunos do ebook</p>
+        </div>
+
+        <div style="margin-top:20px">
+          <a href="https://pay.hotmart.com/D105263783H?off=q90ec1wq&checkoutMode=10&bid=1777427478389" class="btn btn-primary" rel="noopener noreferrer" style="background:#B5563A;color:#FAF5EB;font-size:1rem;padding:18px 36px">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Quero Cobrar o Que Meu Produto Vale
           </a>
@@ -1699,20 +1795,16 @@
       </div>
     </section>
 
-    <!-- CTA FINAL -->
+    <!-- CTA FINAL + DESPEDIDA -->
     <section class="cta-section" id="cta">
       <div class="container reveal">
         <h2 class="cta-title">Seu produto já é incrível.<br><span>Agora o preço precisa contar essa história.</span></h2>
-        <p class="cta-desc">Ebook + 3 bônus. Acesso imediato. Lê no celular. Garantia de 7 dias.</p>
-        <div class="countdown-bar" id="countdownCta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span class="countdown-text">Volta pra <strong>R$148</strong> em</span>
-          <span class="countdown-digits" data-countdown>00:15:00</span>
-        </div>
+        <p class="cta-desc">Você pode continuar cobrando barato por um produto que merece mais. Ou pode ler este guia numa tarde e mudar o jeito que o cliente enxerga o que você faz.</p>
+        <p class="cta-desc" style="margin-top:-24px;font-size:0.9rem">Ebook + 3 bônus. Acesso imediato. Lê no celular. Garantia de 7 dias.</p>
         <div class="cta-price">R$ 57</div>
-        <a href="https://pay.hotmart.com/D105263783H?off=q90ec1wq&checkoutMode=10" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        <a href="https://pay.hotmart.com/D105263783H?off=q90ec1wq&checkoutMode=10&bid=1777427478389" class="btn btn-primary" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Quero Meu Guia Agora
+          Quero Cobrar o Que Meu Produto Vale
         </a>
         <p class="cta-guarantee">Garantia incondicional de 7 dias. Se não fizer sentido, devolvemos cada centavo.</p>
       </div>
@@ -1724,40 +1816,42 @@
         <div class="section-eyebrow reveal" style="justify-content:center"><span class="num">?</span> Perguntas frequentes</div>
         <div class="faq-list">
           <div class="faq-item reveal">
-            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Preciso de CNPJ pra aplicar o que está no guia?</div>
-            <div class="faq-a">Não. A maioria das estratégias funciona mesmo sem CNPJ. O guia também explica quando e como formalizar quando fizer sentido pro seu negócio.</div>
-          </div>
-          <div class="faq-item reveal">
-            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Consigo ler no celular?</div>
-            <div class="faq-a">Sim. O ebook é um PDF que abre em qualquer celular. Não precisa instalar nada.</div>
-          </div>
-          <div class="faq-item reveal">
-            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">O guia de rótulo está atualizado?</div>
-            <div class="faq-a">Sim. Ele traz todas as informações obrigatórias exigidas pela legislação vigente. Você consulta, confere o que precisa constar no seu rótulo e evita multas e problemas com fiscalização.</div>
-          </div>
-          <div class="faq-item reveal">
             <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">E se eu não gostar?</div>
             <div class="faq-a">Você tem 7 dias pra pedir reembolso. Sem justificativa, sem burocracia. Devolvemos o valor total.</div>
           </div>
           <div class="faq-item reveal">
-            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Como recebo o material?</div>
-            <div class="faq-a">Assim que o pagamento for confirmado, você recebe um email com o link pra baixar tudo. No Pix, chega em menos de 2 minutos.</div>
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Funciona pro meu tipo de produto?</div>
+            <div class="faq-a">Sim. As estratégias se aplicam a qualquer alimento artesanal: geleias, molhos, queijos, cafés gourmet, doces, biscoitos, bebidas, fermentados, compotas, conservas, temperos e mais. Se você produz artesanalmente e quer cobrar mais, este guia é pra você.</div>
           </div>
           <div class="faq-item reveal">
-            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Serve pra quem está começando do zero?</div>
-            <div class="faq-a">Sim. O guia foi feito pra quem já produz e quer cobrar mais, mas também pra quem está montando o primeiro produto e quer começar já com a estratégia certa.</div>
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Como recebo e onde leio?</div>
+            <div class="faq-a">Assim que o pagamento for confirmado, você recebe um email com o link pra baixar. É um PDF que abre em qualquer celular. No Pix, chega em menos de 2 minutos.</div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">R$57 é caro pra um ebook?</div>
+            <div class="faq-a">Se você cobra R$15 a menos por pote do que deveria, em 50 vendas são R$750 perdidos. O guia se paga na primeira semana.</div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- STICKY CTA MOBILE -->
+    <div class="sticky-cta" id="stickyCta">
+      <div class="sticky-cta-inner">
+        <div class="sticky-cta-price"><s style="color:var(--text-3);font-size:0.75rem">R$148</s> <strong>R$ 57</strong></div>
+        <a href="https://pay.hotmart.com/D105263783H?off=q90ec1wq&checkoutMode=10&bid=1777427478389" class="sticky-cta-btn" rel="noopener noreferrer">
+          Quero Meu Guia
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="width:14px;height:14px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
         <div class="footer-left">&copy; 2026 Gabriel Petelinkar Pereira</div>
         <ul class="footer-links">
-          <li><a href="https://www.alimentosartesanais.com.br" target="_blank">alimentosartesanais.com.br</a></li>
-          <li><a href="https://instagram.com/gabrielpetelinkar" target="_blank">Instagram</a></li>
+          <li style="color:var(--text-3);font-size:0.85rem">alimentosartesanais.com.br</li>
         </ul>
       </div>
     </footer>
@@ -1828,46 +1922,34 @@
       window.addEventListener('touchend', () => { dragging = false; });
     })();
 
-    // COUNTDOWN — Evergreen 15min per visitor
+    // Countdown removed — using honest urgency instead
+
+    // UTM TRACKING — Captura UTMs e injeta como sck/src nos links do checkout
     (() => {
-      const KEY = 'aa_countdown_end_v2';
-      const MINUTES = 15;
-      let end = localStorage.getItem(KEY);
-      if (!end) {
-        end = Date.now() + MINUTES * 60 * 1000;
-        localStorage.setItem(KEY, end);
+      const params = new URLSearchParams(window.location.search);
+      const sck = params.get('utm_campaign') || params.get('sck') || '';
+      const src = params.get('utm_source') || params.get('src') || '';
+      if (sck || src) {
+        document.querySelectorAll('a[href*="hotmart.com"]').forEach(link => {
+          const url = new URL(link.href);
+          if (sck) url.searchParams.set('sck', sck);
+          if (src) url.searchParams.set('src', src);
+          link.href = url.toString();
+        });
       }
-      end = parseInt(end, 10);
-      const els = document.querySelectorAll('[data-countdown]');
-      function tick() {
-        const diff = Math.max(0, end - Date.now());
-        const h = String(Math.floor(diff / 3600000)).padStart(2, '0');
-        const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-        const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
-        const str = h + ':' + m + ':' + s;
-        els.forEach(el => el.textContent = str);
-        if (diff > 0) requestAnimationFrame(tick);
-      }
-      tick();
     })();
 
-    // INITIATE CHECKOUT — Dispara ao clicar em qualquer CTA de compra.
-    // Alimenta otimização de campanha e público de remarketing.
+    // STICKY CTA MOBILE — Aparece após scroll do hero
     (() => {
-      if (typeof fbq !== 'function') return;
-      // eventID permite deduplicar contra a Conversions API no futuro.
-      const newEventId = () => 'ic-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
-      document.querySelectorAll('a[href*="hotmart.com"]').forEach(link => {
-        link.addEventListener('click', () => {
-          fbq('track', 'InitiateCheckout', {
-            content_name: 'Como Criar, Vender e Escalar Alimentos Artesanais',
-            content_ids: ['ebook-57'],
-            content_type: 'product',
-            value: 57.00,
-            currency: 'BRL'
-          }, { eventID: newEventId() });
+      const sticky = document.getElementById('stickyCta');
+      if (!sticky) return;
+      const hero = document.querySelector('.hero');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          sticky.classList.toggle('sticky-visible', !e.isIntersecting);
         });
-      });
+      }, { threshold: 0 });
+      if (hero) obs.observe(hero);
     })();
   </script>
 

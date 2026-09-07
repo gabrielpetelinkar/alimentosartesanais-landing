@@ -8,6 +8,12 @@
   <meta property="og:title" content="Seu produto já é bom. O problema é que o preço não mostra isso.">
   <meta property="og:description" content="Descubra como cobrar 2x a 3x mais pelo mesmo produto artesanal. Ebook estratégico R$57 + 3 bônus.">
   <meta property="og:type" content="product">
+  <meta property="og:url" content="https://alimentosartesanais.com.br/">
+  <meta property="og:image" content="https://alimentosartesanais.com.br/capa-hotmart-600x600-final.png">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="600">
+  <link rel="icon" type="image/png" href="capa-hotmart-600x600-final.png">
+  <link rel="preload" as="image" href="hero-desktop.jpg">
   <meta name="theme-color" content="#050505">
   <meta name="facebook-domain-verification" content="slw80nb98s15yfptf57xlcxwbns7jt" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -439,9 +445,13 @@
       .nav-urgency { gap: 8px; margin-right: 12px; }
       .hero { min-height: auto; padding: 0; flex-direction: column; margin-top: 48px; }
       .hero-bg { position: relative; width: 100%; height: 38vh; min-height: 260px; background-position: 60% 20%; margin-bottom: -32px; z-index: 0; }
-      .proof-bar { display: none; }
+      .proof-bar { padding: 20px 0; }
+      .proof-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 12px; align-items: start; }
+      .proof-sep { display: none; }
+      .proof-icon { width: 15px; height: 15px; margin-bottom: 4px; }
+      .proof-label { font-size: 0.72rem; line-height: 1.4; }
       .hero-label { display: none !important; }
-      .hero-micro { display: none !important; }
+      .hero-micro { order: 4; font-size: 0.75rem; margin-top: -4px; }
       .hero-bg::after {
         background: linear-gradient(to top,
           rgba(245,237,224,1) 0%,
@@ -460,7 +470,7 @@
       .hero-desc { max-width: 100%; font-size: 0.88rem; order: 2; }
       .hero-actions { justify-content: center; flex-wrap: wrap; order: 3; }
       .hero-name { font-size: clamp(1.5rem, 5.5vw, 2.2rem); order: 1; }
-      .hero-labels { order: 4; justify-content: center; gap: 8px; margin-top: 20px; padding-bottom: 24px; }
+      .hero-labels { order: 5; justify-content: center; gap: 8px; margin-top: 20px; padding-bottom: 24px; }
       .hero-tag:nth-child(n+6) { display: none; }
       .pain-grid { grid-template-columns: 1fr; }
       .entregavel-split { grid-template-columns: 1fr; gap: 40px; }
@@ -545,7 +555,7 @@
       padding: 0 0 24px; max-height: 0; overflow: hidden;
       transition: max-height 0.4s var(--ease), padding 0.4s var(--ease);
     }
-    .faq-item.open .faq-a { max-height: 200px; }
+    .faq-item.open .faq-a { max-height: 420px; }
 
     /* Sticky CTA Mobile */
     .sticky-cta {
@@ -708,7 +718,7 @@
         <div class="proof-sep"></div>
         <div class="proof-stat reveal reveal-d3">
           <svg aria-hidden="true" class="proof-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-          <div class="proof-label">Dados reais e atualizados do mercado artesanal</div>
+          <div class="proof-label">Mais de 100 produtores já compraram este guia</div>
         </div>
       </div>
     </div>
@@ -818,6 +828,14 @@
         </div>
 
         <p style="text-align:center;font-size:0.85rem;color:var(--text-3);margin-top:20px;font-style:italic" class="reveal"><strong>Mesmo produto. Mesma receita.</strong> A diferença está na estratégia.</p>
+
+        <div class="reveal" style="text-align:center;margin-top:28px">
+          <a href="https://pay.hotmart.com/D105263783H?off=q90ec1wq&checkoutMode=10&bid=1777427478389" class="btn btn-primary" rel="noopener noreferrer">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Quero Essa Transformação — R$ 57
+          </a>
+          <p style="font-size:0.8rem;color:var(--text-3);margin-top:10px">Acesso imediato · Garantia de 7 dias</p>
+        </div>
       </div>
     </section>
 
@@ -958,10 +976,11 @@
             <li>Acesso imediato + Garantia 7 dias</li>
           </ul>
           <div style="border-top:1px solid rgba(181,86,58,0.15);margin:20px 0;max-width:360px;margin-left:auto;margin-right:auto"></div>
-          <div class="value-total-label" style="margin-bottom:4px">VALOR TOTAL: <s style="color:var(--text-3)">R$ 269</s></div>
-          <div class="value-total-original" style="color:#8A7A68">de R$ 148</div>
+          <div class="value-total-label" style="margin-bottom:4px">Valor total: <s style="color:var(--text-3)">R$ 269</s></div>
+          <div style="font-size:0.92rem;color:#6B5744;margin-bottom:4px">Hoje você leva tudo por</div>
           <div class="value-total-price" style="font-family:var(--heading-font);font-size:3.5rem;font-weight:800;color:#B5563A;margin-bottom:8px">R$ 57</div>
           <p class="oferta-payment" style="color:#6B5744">Paga no Pix, cartão ou boleto.</p>
+          <p style="font-size:0.82rem;color:#6B5744;margin-top:6px;font-weight:600">Mais de 100 produtores já compraram este guia.</p>
           <p style="font-size:0.78rem;color:var(--text-3);margin-top:8px;font-style:italic">Preço promocional — pode mudar a qualquer momento.</p>
         </div>
 
@@ -972,6 +991,11 @@
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Quero Cobrar o Que Meu Produto Vale
           </a>
+        </div>
+
+        <div class="reveal" style="max-width:480px;margin:28px auto 0;display:flex;gap:14px;align-items:center;text-align:left;background:rgba(90,122,66,0.07);border:1px solid rgba(90,122,66,0.22);border-radius:14px;padding:18px 20px">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#5A7A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:34px;height:34px;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          <p style="font-size:0.88rem;color:#3D2B1F;line-height:1.55;margin:0"><strong>Garantia incondicional de 7 dias.</strong> Leu e achou que não vale? Devolvemos 100% do valor, sem perguntas. O risco é todo nosso.</p>
         </div>
       </div>
     </section>
@@ -996,6 +1020,14 @@
           <div class="faq-item reveal">
             <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">R$57 é caro pra um ebook?</button>
             <div class="faq-a">Se você cobra R$15 a menos por pote do que deveria, em 50 vendas são R$750 perdidos. O guia se paga na primeira semana.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">Não tenho tempo de estudar. Vale mesmo assim?</button>
+            <div class="faq-a">O guia foi feito pra quem passa o dia produzindo. Dá pra ler em uma tarde, e o bônus "7 Ajustes Imediatos" é um checklist pra aplicar no mesmo dia, sem precisar estudar nada antes.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button type="button" class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.parentElement.classList.toggle('open'))">Já vendo há anos. Vou aprender algo novo?</button>
+            <div class="faq-a">Se a produção você já domina, o guia vale principalmente pelos blocos VENDER e ESCALAR: como entrar em empório e restaurante, negociar sem se desvalorizar e crescer sem perder a alma artesanal — justamente onde a maioria dos produtores experientes trava.</div>
           </div>
         </div>
       </div>
